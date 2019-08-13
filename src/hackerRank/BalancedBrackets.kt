@@ -4,20 +4,29 @@ package hackerRank
 import java.util.*
 
 fun isBalanced(s: String): String {
+    if (s.isEmpty()) {
+        return "YES"
+    }
     val stk = Stack<Char>()
-    for(c in s) {
-        when(c) {
+    var result = false
+    for (c in s) {
+        when (c) {
             '[', '{', '(' -> stk.push(c)
             ']', '}', ')' -> {
-                val result = when(stk.pop()) {
+                result = when (stk.pop()) {
                     '[' -> c == ']'
                     '{' -> c == '}'
-                    '(' -> c == ')' 
+                    '(' -> c == ')'
                     else -> false
                 }
+                if (!result) {
+                    return "NO"
+                }
             }
+            else -> return "NO"
         }
     }
+    return "YES"
 }
 
 fun main(args: Array<String>) {
