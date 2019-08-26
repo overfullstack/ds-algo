@@ -13,6 +13,9 @@ fun isBalanced(s: String): String {
         when (c) {
             '[', '{', '(' -> stk.push(c)
             ']', '}', ')' -> {
+                if(stk.isEmpty()) {
+                    return "NO"
+                }
                 result = when (stk.pop()) {
                     '[' -> c == ']'
                     '{' -> c == '}'
@@ -26,7 +29,7 @@ fun isBalanced(s: String): String {
             else -> return "NO"
         }
     }
-    return "YES"
+    return if (stk.isEmpty()) "YES" else "NO"
 }
 
 fun main(args: Array<String>) {

@@ -1,7 +1,5 @@
 package sorting
 
-import java.util.*
-
 fun bubbleSort(arr: IntArray): IntArray {
     val len = arr.size
     for (i in 0 until len) {
@@ -18,5 +16,5 @@ fun bubbleSort(arr: IntArray): IntArray {
 
 fun main() {
     val nums = intArrayOf(2, 12, 89, 23, 76, 43, 12)
-    print(Arrays.toString(bubbleSort(nums)))
+    print(bubbleSort(nums).contentToString())
 }

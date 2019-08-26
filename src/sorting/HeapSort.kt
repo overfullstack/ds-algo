@@ -1,7 +1,5 @@
 package sorting
 
-import java.util.*
-
 fun IntArray.heapSort() {
     val mid = size / 2 - 1
     for (i in mid downTo 0) {
@@ -33,5 +31,5 @@ fun IntArray.heapify(heapSize: Int, rootIndex: Int) {
 fun main() {
     val nums = intArrayOf(2, 12, 89, 23, 76, 43, 12)
     nums.heapSort()
-    print(Arrays.toString(nums))
+    print(nums.contentToString())
 }
