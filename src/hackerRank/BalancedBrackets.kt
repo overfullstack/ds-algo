@@ -8,7 +8,7 @@ fun isBalanced(s: String): String {
         return "YES"
     }
     val stk = Stack<Char>()
-    var result = false
+    var result: Boolean
     for (c in s) {
         when (c) {
             '[', '{', '(' -> stk.push(c)
