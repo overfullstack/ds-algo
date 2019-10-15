@@ -1,5 +1,5 @@
 /* gakshintala created on 8/8/19 */
-package hackerRank
+package hackerrank
 
 import java.util.*
 
@@ -17,9 +17,7 @@ fun maxSubsetSum(arr: Array<Int>): Int {
 
 fun main(args: Array<String>) {
     val scan = Scanner(System.`in`)
-
-    val n = scan.nextLine().trim().toInt()
-
+    
     val arr = scan.nextLine().split(" ").map{ it.trim().toInt() }.toTypedArray()
 
     val res = maxSubsetSum(arr)

@@ -1,7 +1,6 @@
 package sorting
 
 fun IntArray.insertionSort() {
-    val len = size
     for (i in 1 until size) {
         val key = this[i]
         var j = i - 1;

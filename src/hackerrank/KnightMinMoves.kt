@@ -1,5 +1,5 @@
 /* gakshintala created on 9/2/19 */
-package hackerRank
+package hackerrank
 
 import java.util.*
 

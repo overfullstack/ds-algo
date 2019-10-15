@@ -1,4 +1,4 @@
-package backTracking
+package backtracking
 
 fun permutations(str: String, res: String, used: BooleanArray) {
     var result = res

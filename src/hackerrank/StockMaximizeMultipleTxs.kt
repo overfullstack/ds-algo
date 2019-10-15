@@ -1,22 +1,23 @@
-package hackerRank
+package hackerrank
 
 fun maxProfit(prices: IntArray): Int {
     var i = 0
     var maxProfit = 0
     val size = prices.size
     while (i < size) {
+        // Get rid of slope-downs and only buy when it's rising.
         while (i < size - 1 && prices[i] >= prices[i + 1]) {
             i++
         }
         if (i == size - 1) {
             return maxProfit
         }
-        val localMinimum = prices[i]
+        val localMin = prices[i]
         while (i < size - 1 && prices[i] <= prices[i + 1]) {
             i++
         }
 
-        maxProfit += (prices[i] - localMinimum)
+        maxProfit += (prices[i] - localMin)
     
     }
     return maxProfit

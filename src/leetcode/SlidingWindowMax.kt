@@ -3,7 +3,7 @@ package leetcode
 
 import java.util.*
 
-fun maxSlidingWindow(nums: IntArray, k: Int): IntArray {
+fun slidingWindowMax(nums: IntArray, k: Int): IntArray {
     val result = mutableListOf<Int>()
     val deque = ArrayDeque<Int>()
     for (i in 0 until k) {
@@ -22,6 +22,7 @@ fun maxSlidingWindow(nums: IntArray, k: Int): IntArray {
         }
         deque.addLast(i)
     }
+    
     if(!deque.isEmpty()) {
         result.add(nums[deque.peekFirst()])
     }
@@ -33,6 +34,6 @@ fun main() {
     repeat(noOfTests) {
         val k = readLine()?.toInt() ?: 0
         val arr = readLine()!!.split(" ").map { it.toInt() }.toIntArray()
-        maxSlidingWindow(arr, k).forEach { print("$it ") }
+        slidingWindowMax(arr, k).forEach { print("$it ") }
     }
 }

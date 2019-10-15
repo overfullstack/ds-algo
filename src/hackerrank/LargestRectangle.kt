@@ -1,9 +1,8 @@
 /* gakshintala created on 8/23/19 */
-package hackerRank
+package hackerrank
 
 import java.util.*
 
-// Complete the largestRectangle function below.
 fun largestRectangle(h: Array<Int>): Long {
     val indexStk = ArrayDeque<Int>()
     var maxArea = Long.MIN_VALUE
@@ -26,11 +25,9 @@ fun largestRectangle(h: Array<Int>): Long {
     return maxArea
 }
 
-fun main(args: Array<String>) {
+fun main() {
     val scan = Scanner(System.`in`)
-
-    val n = scan.nextLine().trim().toInt()
-
+    
     val h = scan.nextLine().split(" ").map { it.trim().toInt() }.toTypedArray()
 
     val result = largestRectangle(h)

@@ -2,11 +2,8 @@
 package leetcode
 
 fun main() {
-    val noOfTests = readLine()!!.toInt()
-    repeat(noOfTests) {
-        val arr = readLine()!!.split(",").map { it.toInt() }.toIntArray()
-        println(trap(arr))
-    }
+    val arr = readLine()!!.split(",").map { it.toInt() }.toIntArray()
+    println(trap(arr))
 }
 
 fun trap(height: IntArray): Int {
@@ -17,14 +14,14 @@ fun trap(height: IntArray): Int {
     var high = height.size - 1
     while (low < high) {
         if (height[low] < height[high]) {
-            if(height[low] > leftMax) {
+            if (height[low] > leftMax) {
                 leftMax = height[low]
             } else {
                 result += leftMax - height[low]
             }
             low++
         } else {
-            if(height[high] > rightMax) {
+            if (height[high] > rightMax) {
                 rightMax = height[high]
             } else {
                 result += rightMax - height[high]

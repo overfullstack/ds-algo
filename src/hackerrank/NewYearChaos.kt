@@ -1,4 +1,4 @@
-package hackerRank
+package hackerrank
 
 fun newYearChaos(array: IntArray): String {
     var swaps = 0

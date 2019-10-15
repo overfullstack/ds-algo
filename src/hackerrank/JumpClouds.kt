@@ -1,5 +1,5 @@
 /* gakshintala created on 8/8/19 */
-package hackerRank
+package hackerrank
 
 fun jumpingOnClouds(c: Array<Int>): Int {
     val jumpTable = IntArray(c.size) { 0 }
