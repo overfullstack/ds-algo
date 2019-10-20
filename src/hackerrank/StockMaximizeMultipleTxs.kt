@@ -16,9 +16,7 @@ fun maxProfit(prices: IntArray): Int {
         while (i < size - 1 && prices[i] <= prices[i + 1]) {
             i++
         }
-
         maxProfit += (prices[i] - localMin)
-    
     }
     return maxProfit
 }

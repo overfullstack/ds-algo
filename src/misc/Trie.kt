@@ -45,11 +45,8 @@ class Trie(val value: Char = Char.MIN_VALUE) {
     private fun printRecommendations(trieNode: Trie, curPrefix: String) {
         if (trieNode.isEnd) {
             println(curPrefix)
-        }
-        for (child in trieNode.children) {
-            if (child != null) {
-                printRecommendations(child, curPrefix + child.value)
-            }
+        } else {
+            trieNode.children.filterNotNull().forEach { printRecommendations(it, curPrefix + it.value) }
         }
     }
 }

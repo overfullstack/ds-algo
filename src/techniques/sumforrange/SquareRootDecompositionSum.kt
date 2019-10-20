@@ -1,17 +1,17 @@
 /* gakshintala created on 9/6/19 */
-package queryoptmization
+package techniques.sumforrange
 
 import kotlin.math.sqrt
 
 class SquareRootDecompositionSum(var arr: MutableList<Int>) {
-    private var sumArr: MutableList<Int> = mutableListOf()
+    private var sumArr = mutableListOf<Int>()
     private var windowSize: Int = 0
 
     fun process() {
         windowSize = sqrt(arr.size.toDouble()).toInt()
         sumArr = arr.asSequence()
             .windowed(windowSize, windowSize, true)
-            .flatMap { sequenceOf(it.sum()) }
+            .map { it.sum() }
             .toMutableList()
     }
 
@@ -24,8 +24,8 @@ class SquareRootDecompositionSum(var arr: MutableList<Int>) {
         val endBlock = endIndex / windowSize
 
         return (sumArr.slice(startBlock..endBlock).sum()
-                - arr.slice(startBlock * windowSize until startIndex).sum()
-                - arr.slice(endIndex + 1..endBlock * windowSize).sum())
+                - arr.slice(startBlock * windowSize until startIndex).sum() // Excluding StartIndex.
+                - arr.slice(endIndex + 1..endBlock * windowSize).sum()) // Excluding EndIndex.
     }
     
     fun update(index: Int, value: Int) {

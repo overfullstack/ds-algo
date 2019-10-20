@@ -2,18 +2,17 @@
 package leetcode
 
 fun mergeIntervals(intervals: List<Pair<Int, Int>>): MutableList<Pair<Int, Int>> {
-    val mergedIntervals = mutableListOf<Pair<Int, Int>>()
     val sortedIntervals = intervals.sortedBy { it.first }
-    mergedIntervals.add(sortedIntervals[0])
-    for (curInterval in sortedIntervals.drop(1)) {
-        if (curInterval.first <= mergedIntervals.last().second) {
-            mergedIntervals[mergedIntervals.lastIndex] =
-                Pair(mergedIntervals.last().first, maxOf(curInterval.second, mergedIntervals.last().second))
-        } else {
-            mergedIntervals.add(curInterval)
+    return sortedIntervals.drop(1).fold(mutableListOf(sortedIntervals.first())) { mergedIntervals, curInterval ->
+        mergedIntervals.also {
+            if (curInterval.first <= it.last().second) {
+                it[it.lastIndex] =
+                    Pair(it.last().first, maxOf(curInterval.second, it.last().second))
+            } else {
+                it.add(curInterval)
+            }
         }
     }
-    return mergedIntervals
 }
 
 fun merge(intervals: Array<IntArray>): Array<IntArray> {

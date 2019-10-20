@@ -1,4 +1,4 @@
-package hackerrank
+package hackerrank.arrays
 
 
 fun main() {
@@ -16,12 +16,10 @@ fun minSwapsToSort(arr: Array<Int>): Int {
     valueToIndex.sortBy { it.first }
     // Sort array first and try and recreate the original one, noting down all the swaps in-between
     for (i in valueToIndex.indices) {
-        if (valueToIndex[i].second != i) {
-            while (valueToIndex[i].second != i) {
-                valueToIndex[i] =
-                    valueToIndex[valueToIndex[i].second].also { valueToIndex[valueToIndex[i].second] = valueToIndex[i] }
-                swaps++
-            }
+        while (valueToIndex[i].second != i) {
+            valueToIndex[i] =
+                valueToIndex[valueToIndex[i].second].also { valueToIndex[valueToIndex[i].second] = valueToIndex[i] }
+            swaps++
         }
     }
     return swaps

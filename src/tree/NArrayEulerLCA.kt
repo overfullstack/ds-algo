@@ -21,27 +21,27 @@ data class NArrayEulerTour(var value: Int) {
 
     private fun eulersTour(counter: Int): Array<NArrayEulerTour> {
         firstOccurrence = firstOccurrence ?: counter
+        // this is both prepended and appended, counter is to check for firstOccurrence
         return arrayOf(this) + children.fold(
-            emptyArray(),
+            emptyArray<NArrayEulerTour>(), 
             { tourResult, child ->
                 tourResult + (child?.eulersTour(counter + tourResult.size + 1) ?: emptyArray()) + this
             })
     }
 }
 
-fun lcaNNodes(
+fun lcaMultipleNodes(
     nodes: List<Int>,
     treeGraph: Map<Int, NArrayEulerTour>,
-    sparseTableRMQ: SparseTableRMQ,
+    depthsSparseTableRMQ: SparseTableRMQ,
     eulersTourArr: Array<NArrayEulerTour>
-): Int {
-    return nodes.reduce { first, second ->
-        eulersTourArr[sparseTableRMQ.rmqIndex(
-            treeGraph[first]?.firstOccurrence!!,
-            treeGraph[second]?.firstOccurrence!!
-        )].value
-    }
+) = nodes.reduce { first, second ->
+    eulersTourArr[depthsSparseTableRMQ.rmqIndex( // Find min depth in the range. DepthArr is in same sequence as eulerTourArr.
+        treeGraph[first]?.firstOccurrence!!,
+        treeGraph[second]?.firstOccurrence!!
+    )].value
 }
+
 
 fun main() {
     val delimiters = " "
@@ -59,8 +59,8 @@ fun main() {
     val eulersTourArr = treeGraph[0]?.eulersTour()
     val depthArr = eulersTourArr!!.map { it.depth }.toIntArray()
 
-    val sparseTableRMQ = SparseTableRMQ(depthArr)
-    sparseTableRMQ.process()
+    val depthsSparseTableRMQ = SparseTableRMQ(depthArr)
+    depthsSparseTableRMQ.process()
 
-    println(lcaNNodes(nodes, treeGraph, sparseTableRMQ, eulersTourArr))
+    println(lcaMultipleNodes(nodes, treeGraph, depthsSparseTableRMQ, eulersTourArr))
 }

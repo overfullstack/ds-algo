@@ -1,7 +1,7 @@
 /* gakshintala created on 10/2/19 */
 package leetcode
 
-private fun wordBreak(s: String, wordDict: List<String>): Boolean {
+private fun wordBreakDp(s: String, wordDict: List<String>): Boolean {
     val table = Array(s.length) { BooleanArray(s.length) }
     val wordDictSet = wordDict.toSet()
     when {
@@ -21,14 +21,15 @@ private fun wordBreak(s: String, wordDict: List<String>): Boolean {
     return table[0][s.lastIndex]
 }
 
-private fun wordBreakOptimized(s: String, wordDict: List<String>): Boolean {
+private fun wordBreakOptimized(word: String, wordDict: List<String>): Boolean {
     val wordDictSet = wordDict.toSet()
-    return s.indices.fold(mutableListOf(0)) { wordEndIndices, strIndex ->
-        if (wordEndIndices.any { wordDictSet.contains(s.substring(it..strIndex)) }) {
-            wordEndIndices.add(strIndex + 1)
+    return word.indices.fold(mutableListOf(-1)) { wordEndIndices, wordIndex ->
+        wordEndIndices.also {
+            if (it.any { endIndex -> wordDictSet.contains(word.substring(endIndex + 1..wordIndex)) }) {
+                it.add(wordIndex)
+            }
         }
-        wordEndIndices
-    }.last() - 1 == s.lastIndex
+    }.last() == word.lastIndex
 }
 
 fun main() {

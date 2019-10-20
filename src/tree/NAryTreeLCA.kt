@@ -40,7 +40,7 @@ fun lcaWithSqrtDecomposition(node1: NAryTreeNode?, node2: NAryTreeNode?): NAryTr
     var nodeOne = node1
     var nodeTwo = node2
     while (nodeOne?.jumpParent != nodeTwo?.jumpParent) {
-        if(nodeOne?.depth!! > nodeTwo?.depth!!) {
+        if (nodeOne?.depth!! > nodeTwo?.depth!!) {
             nodeOne = nodeOne.jumpParent
         } else {
             nodeTwo = nodeTwo.jumpParent

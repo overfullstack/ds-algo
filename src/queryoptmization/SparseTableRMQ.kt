@@ -7,13 +7,13 @@ import kotlin.math.log2
 import kotlin.math.pow
 
 class SparseTableRMQ(var arr: IntArray) {
-    private var sparseTable: Array<IntArray> = Array(arr.size) { IntArray(ceil(log2(arr.size.toFloat())).toInt()) }
+    private var sparseTable = Array(arr.size) { IntArray(ceil(log2(arr.size.toFloat())).toInt()) }
 
     fun process() {
         sparseTable.forEachIndexed { index, row -> row[0] = index }
 
         for (sparseInterval in 1 until sparseTable[0].size) {
-            for (row in sparseTable.indices) {
+            for (row in sparseTable.indices) { // row represent array indeces 
                 val halfIndex = row + 2.0.pow(sparseInterval - 1).toInt()
                 if (halfIndex < arr.size) {
                     sparseTable[row][sparseInterval] =

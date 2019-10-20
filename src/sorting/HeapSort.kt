@@ -5,7 +5,7 @@ fun IntArray.heapSort() {
     for (i in mid downTo 0) {
         heapify(size, i)
     }
-    for (i in size - 1 downTo 0) {
+    for (i in lastIndex downTo 0) {
         this[i] = this[0].also { this[0] = this[i] }
         heapify(i, 0)
     }
