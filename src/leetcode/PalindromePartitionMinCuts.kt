@@ -13,10 +13,9 @@ fun minCutsForPalindromePartition(s: String): Int {
     for (gap in 1..s.lastIndex) {
         for ((i, j) in (gap..s.lastIndex).withIndex()) {
             isPalTable[i][j] = if (gap == 1) s[i] == s[j] else s[i] == s[j] && isPalTable[i + 1][j - 1]
-            cutsTable[i][j] = if (isPalTable[i][j]) 0 else
-                (i until j).fold(Int.MAX_VALUE) { min, partition ->
-                    minOf(min, cutsTable[i][partition] + 1 + cutsTable[partition + 1][j])
-                }
+            cutsTable[i][j] =
+                if (isPalTable[i][j]) 0
+                else (i until j).map { cutsTable[i][it] + 1 + cutsTable[it + 1][j] }.min() ?: 0
         }
     }
     return cutsTable[0][s.lastIndex]

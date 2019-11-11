@@ -1,5 +1,5 @@
 /* gakshintala created on 9/12/19 */
-package leetcode
+package leetcode.MinWindowSubString
 
 fun main() {
     val str = readLine()!!
@@ -23,7 +23,10 @@ fun minWindow(str: String, pattern: String): String {
         if (letterFreqInStr!! <= (patternLetterFreq[letter] ?: 0)) {
             matchCount++
         }
+        // Once matchCount meets patternLength, it always goes inside this if condition. No one touches matchCount again.
         if (matchCount == pattern.length) {
+            // Compress from start by eliminating irrelevant characters or characters with extra frequency
+            // Then parent loop takes care of extending on the right side.
             while (!patternLetterFreq.containsKey(str[startIndex]) || (strLetterFreq[str[startIndex]]!! > patternLetterFreq[str[startIndex]] ?: 0)) {
                 strLetterFreq.computeIfPresent(str[startIndex]) { _, value -> value.dec() }
                 startIndex++

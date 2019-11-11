@@ -1,11 +1,10 @@
 /* gakshintala created on 9/23/19 */
-package leetcode
+package leetcode.dp
 
 fun longestPalindromeSubseq(s: String): Int {
     val table = Array(s.length) { IntArray(s.length) }
-    for (i in table.indices) {
-        table[i][i] = 1
-    }
+    table.indices.forEach { table[it][it] = 1 }
+    
     for (gap in 1 until s.length) {
         for ((i, j) in (gap until s.length).withIndex()) {
             table[i][j] = if (s[i] == s[j]) {

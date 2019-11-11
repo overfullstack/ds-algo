@@ -1,5 +1,5 @@
 /* gakshintala created on 10/2/19 */
-package leetcode
+package leetcode.backtracking
 
 private fun wordBreakDp(s: String, wordDict: List<String>): Boolean {
     val table = Array(s.length) { BooleanArray(s.length) }
@@ -12,7 +12,9 @@ private fun wordBreakDp(s: String, wordDict: List<String>): Boolean {
 
     for (gap in 1..s.length) {
         for ((i, j) in (gap..s.lastIndex).withIndex()) {
-            table[i][j] = if (wordDictSet.contains(s.substring(i..j))) true else
+            table[i][j] = if (wordDictSet.contains(s.substring(i..j)))
+                true
+            else
                 (i until j).fold(false) { res, partition ->
                     res || (table[i][partition] && table[partition + 1][j])
                 }
@@ -23,10 +25,10 @@ private fun wordBreakDp(s: String, wordDict: List<String>): Boolean {
 
 private fun wordBreakOptimized(word: String, wordDict: List<String>): Boolean {
     val wordDictSet = wordDict.toSet()
-    return word.indices.fold(mutableListOf(-1)) { wordEndIndices, wordIndex ->
+    return word.indices.fold(mutableListOf(-1)) { wordEndIndices, index ->
         wordEndIndices.also {
-            if (it.any { endIndex -> wordDictSet.contains(word.substring(endIndex + 1..wordIndex)) }) {
-                it.add(wordIndex)
+            if (it.any { prevWordEndIndex -> wordDictSet.contains(word.substring(prevWordEndIndex + 1..index)) }) {
+                it.add(index)
             }
         }
     }.last() == word.lastIndex
@@ -35,7 +37,12 @@ private fun wordBreakOptimized(word: String, wordDict: List<String>): Boolean {
 fun main() {
     println(wordBreakOptimized("leetcode", listOf("leet", "code")))
     println(wordBreakOptimized("applepenapple", listOf("apple", "pen")))
-    println(wordBreakOptimized("catsandog", listOf("cats", "dog", "sand", "and", "cat")))
+    println(
+        wordBreakOptimized(
+            "catsandog",
+            listOf("cats", "dog", "sand", "and", "cat")
+        )
+    )
     println(wordBreakOptimized("a", listOf("a")))
     println(wordBreakOptimized("ab", listOf("a", "b")))
 }
