@@ -1,0 +1,36 @@
+http://www.geeksforgeeks.org/find-triplets-array-whose-sum-equal-zero/
+http://www.practice.geeksforgeeks.org/problem-page.php?pid=700466
+
+Given an array of distinct elements. The task is to find triplets in array whose sum is zero.
+
+Examples:
+
+Input : arr[] = {0, -1, 2, -3, 1}
+Output : 0 -1 1
+         2 -3 1
+
+Input : arr[] = {1, -2, 1, 0, 5}
+Output : 1 -2  1
+
+---
+
+Given an array A[] of n elements. The task is to complete the function which returns true if triplets exists in array A[] whose sum is zero else returns false.
+
+Input:
+The first line of input contains an integer T, denoting the no of test cases. Then T test cases follow. The first line of each test case contains an integer N, denoting the number of elements in array. The second line of each test case contains N space separated values of the array A[].
+
+
+Output:
+For each test case in a new line output will be 1 if triplet exists else 0.
+
+
+Example(To be used only for expected output) :
+Input:
+2
+5
+0 -1 2 -3 1
+3
+1 2 3
+Output:
+1
+0
