@@ -14,9 +14,9 @@ private fun subsetsWithDupUtil(
     if (startIndex == nums.lastIndex) {
         return listOf(combination + nums[startIndex])
     }
-    return (startIndex..nums.lastIndex).foldIndexed(emptyList()) { index, results, num ->
-        results + if (index == startIndex || num != nums[index - 1]) {
-            val curCombination = combination + num
+    return (startIndex..nums.lastIndex).fold(emptyList()) { results, index ->
+        results + if (index == startIndex || nums[index] != nums[index - 1]) {
+            val curCombination = combination + nums[index]
             listOf(curCombination) + subsetsWithDupUtil(nums, index + 1, curCombination)
         } else {
             emptyList()

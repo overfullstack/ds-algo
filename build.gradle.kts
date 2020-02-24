@@ -8,24 +8,24 @@ version = "1.0-SNAPSHOT"
 
 repositories {
     jcenter()
+    maven(url = "http://dl.bintray.com/kotlin/kotlin-eap")
 }
 
 dependencies {
+    implementation(kotlin("stdlib-jdk8"))
+    implementation(kotlin("script-runtime"))
+    
     testImplementation("org.junit.jupiter:junit-jupiter:+")
     //testImplementation("org.amshove.kluent:kluent:+")
     testImplementation("io.kotlintest:kotlintest-runner-junit5:+")
-
-    testCompile("org.slf4j:slf4j-simple:+")
-    
-
-    implementation(kotlin("stdlib-jdk8"))
+    testImplementation("org.slf4j:slf4j-simple:+")
 }
-    
-tasks {
+
+/*tasks {
     compileKotlin {
-        kotlinOptions.jvmTarget = "12"
+        kotlinOptions.jvmTarget = JavaVersion.VERSION_13.toString()
     }
     compileTestKotlin {
-        kotlinOptions.jvmTarget = "12"
+        kotlinOptions.jvmTarget = JavaVersion.VERSION_13.toString()
     }
-}
+}*/

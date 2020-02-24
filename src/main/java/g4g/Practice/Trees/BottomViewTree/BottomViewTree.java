@@ -28,7 +28,7 @@ public class BottomViewTree {
         if (root == null) {
             return;
         }
-
+        // Top-Down
         var node = map.get(horizontalDistance);
         if (node == null || node.level <= height) { // Replace if node not present, or node is of lesser height.
             map.put(horizontalDistance, new TreeNode(root.val, height));

@@ -22,16 +22,15 @@ public class SortPortionToSortAll {
         }
         var j = findAnomalyFromRight(arr);
 
-        // Find least and height elements inside anamoly
+        // Find min and max elements inside the anomaly
         int minIndex = i, maxIndex = j;
         for (var k = i + 1; k <= j - 1; k++) {
             if (arr[k] < arr[minIndex]) minIndex = k;
             if (arr[k] > arr[maxIndex]) maxIndex = k;
         }
 
-        // Although anomaly is found, it doesn't necessarily has to be the point of array to be sorted.
-        // We find the least and highest elements inside anomaly to check how broad does this portion spread.
-
+        // Although we found the anomaly, it doesn't necessarily be the point of array to be sorted.
+        // We find the max and min elements inside anomaly to check how broad does this portion spread.
         var m = findStartOfPortion(arr, minIndex);
         var n = findEndOfPortion(arr, maxIndex);
         System.out.println("Sort Portion Start:" + m + " End:" + n);

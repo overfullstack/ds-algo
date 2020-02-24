@@ -40,7 +40,7 @@ public class NutsBolts {
         // Partition nuts.
         var partitionPoint = partition(nuts, low, high, bolts[high]);
 
-        // Partition bolts with nut at partition point. Post partition, the nut and bolt at partition point match.
+        // Partition bolts with the nut at partition point. Post partition, the nut and bolt at partition point match.
         partition(bolts, low, high, nuts[partitionPoint]);
 
         // Recur this for left and right half.

@@ -14,16 +14,17 @@ public class CommonAncestor {
     }
 
     private static TreeNode commonAncestorOptimized(TreeNode root, TreeNode p, TreeNode q) {
-        // Initially the search is to find either p or q
+        // Top-down - Initially the search is to find either p or q
         if (root == null || root == p || root == q) {
-            return root;
+            return root; // Found p or q
         }
 
         var x = commonAncestorOptimized(root.left, p, q);
         if (x != null && x != p && x != q) { // This fails when in trace back, after p or q is found. This avoids spawning right when common ancestor is found.
             return x; // Which means it originated from * Found Ancestor *
         }
-
+        // Once you find p, you search the right side of the tree for q, 
+        // if q not found, this below call returns null, and the entire computation returns x as per `return x == null ? y : x;`
         var y = commonAncestorOptimized(root.right, p, q);
         if (y != null && y != p && y != q) {
             return y; // Which means it originated from * Found Ancestor *

@@ -1,25 +1,31 @@
 /* gakshintala created on 1/1/20 */
 package leetcode.sortandsearch
 
-fun searchInRotatedSorted(nums: IntArray, target: Int, left: Int = 0, right: Int = nums.lastIndex): Int {
+/**
+ * 4 paths
+ * Left is Sorted
+ *  - target in left range
+ *  - target in right range
+ * Right is Sorted
+ *  - target in right range
+ *  - target in left range
+ */
+tailrec fun search(nums: IntArray, target: Int, left: Int = 0, right: Int = nums.lastIndex): Int {
     if (left > right) {
         return -1
     }
     val mid = (left + right) / 2
-    if (nums[mid] == target) {
-        return mid
-    }
-
-    if (nums[left] <= nums[mid]) {
-        if (target >= nums[left] && target < nums[mid]) {
-            return searchInRotatedSorted(nums, target, left, mid - 1)
+    return when {
+        nums[mid] == target -> mid
+        nums[left] == target -> left
+        nums[right] == target -> right
+        nums[left] <= nums[mid] -> when { // <= indicates left may be same as mid, not the duplicate case.
+            target > nums[left] && target < nums[mid] -> search(nums, target, left, mid - 1) // Is left sorted
+            // if above condition is not true, the element would have slipped through rotation to the right side.
+            else -> search(nums, target, mid + 1, right)
         }
-        return searchInRotatedSorted(nums, target, mid + 1, right)
+        target < nums[right] && target > nums[mid] -> search(nums, target, mid + 1, right)
+        else -> search(nums, target, left, mid - 1)
+        // A rotated array still have the rotated part sorted in ascending order only.
     }
-
-    if (target <= nums[right] && target > nums[mid]) {
-        return searchInRotatedSorted(nums, target, mid + 1, right)
-    }
-    return searchInRotatedSorted(nums, target, left, mid - 1)
-    
 }

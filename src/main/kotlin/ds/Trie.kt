@@ -27,10 +27,10 @@ class Trie(val value: Char = Char.MIN_VALUE) {
             if (isEnd) {
                 isEnd = false
             }
-            return if (isEmptyChildren()) null else this
+            return if (isEmptyChildren()) null else this // This has no sub-branches, the only branch is being totally dedicated for this word.
         }
         children[key[depth] - 'a'] = children[key[depth] - 'a']?.removeKey(key, depth + 1)
-        return if (!isEnd && isEmptyChildren()) null else this
+        return if (!isEnd && isEmptyChildren()) null else this // A single branch may have multiple ends
     }
 
     private fun isEmptyChildren(): Boolean {

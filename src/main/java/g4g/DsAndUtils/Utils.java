@@ -38,7 +38,7 @@ public class Utils {
             return;
         }
         if (isPosInvalid(pos1, arr) || isPosInvalid(pos2, arr)) {
-            throw new IllegalArgumentException("Invalid Position to Swap");
+            throw new IllegalArgumentException("Invalid Positions to Swap: " + pos1 + ", " + pos2);
         }
         var temp = arr[pos1];
         arr[pos1] = arr[pos2];

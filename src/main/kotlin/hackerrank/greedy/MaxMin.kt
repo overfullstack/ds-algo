@@ -5,7 +5,7 @@ import java.util.*
 
 fun maxMinOptimized(k: Int, arr: IntArray): Int {
     arr.sort()
-    return arr.dropLast(k - 1).indices.fold(Int.MAX_VALUE) { result, i -> minOf(result, arr[i + k - 1] - arr[i]) }
+    return arr.dropLast(k - 1).mapIndexed { i, value -> arr[i + k - 1] - value }.min() ?: 0
 }
 
 fun maxMin(k: Int, arr: IntArray): Int {

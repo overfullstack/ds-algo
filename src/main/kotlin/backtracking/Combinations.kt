@@ -11,8 +11,8 @@ fun combinations(str: String, combination: String = "", startIndex: Int = 0): Li
     if (startIndex > str.lastIndex) {
         return listOf(combination)
     }
-    return (startIndex..str.lastIndex).foldIndexed(emptyList()) { index, results, char ->
-        val curCombination = combination + char
+    return (startIndex..str.lastIndex).fold(emptyList()) { results, index ->
+        val curCombination = combination + str[index]
         results + curCombination + combinations(str, curCombination, index + 1)
     }
 }

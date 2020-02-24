@@ -9,11 +9,11 @@ fun diameterOfBinaryTree(root: TreeNode?): Int {
 
 fun TreeNode.findMaxDiameter(): Pair<Int, Int> { // Pair of height and diameter
     // Bottom-up approach, DFS traversal
-    val (leftHeight, leftMaxDiameter) = left?.findMaxDiameter() ?: 0 to 0
-    val (rightHeight, rightMaxDiameter) = right?.findMaxDiameter() ?: 0 to 0
+    val (leftHeight, maxDiameterInLeft) = left?.findMaxDiameter() ?: 0 to 0
+    val (rightHeight, maxDiameterInRight) = right?.findMaxDiameter() ?: 0 to 0
 
     val diameterViaRoot = leftHeight + rightHeight + 1
-    val curMaxDiameter = maxOf(diameterViaRoot, leftMaxDiameter, rightMaxDiameter)
+    val curMaxDiameter = maxOf(diameterViaRoot, maxDiameterInLeft, maxDiameterInRight)
     
     val curHeight = maxOf(leftHeight, rightHeight) + 1
     
@@ -22,5 +22,5 @@ fun TreeNode.findMaxDiameter(): Pair<Int, Int> { // Pair of height and diameter
 
 fun main() {
     val arr = readLine()!!.split(",").map { it.trim().toInt() }
-    println(diameterOfBinaryTree(TreeNode.readPreOrderListToTree(arr)))
+    println(diameterOfBinaryTree(TreeNode.listToCompleteTree(arr)))
 }

@@ -19,12 +19,12 @@ public class CakeThief {
     private static int maxDuffelBagValue(Cake[] cakes, int capacity) {
         var maxVal = new int[capacity + 1];
         maxVal[0] = 0;
-        for (var cap = 1; cap <= capacity; cap++) {
-            for (var cake : cakes) {
-                if (cake.weight <= cap)
-                    // Math.max(Excluding Cake, Including Cake)
-                    // if excluded, that slot is filled by others
-                    maxVal[cap] = Math.max(maxVal[cap], cake.value + maxVal[cap - cake.weight]);
+
+        for (var cake : cakes) {
+            for (var cap = cake.weight; cap <= capacity; cap++) {
+                // Math.max(Excluding Cake, Including Cake)
+                // if excluded, that slot is filled by others
+                maxVal[cap] = Math.max(maxVal[cap], cake.value + maxVal[cap - cake.weight]);
             }
         }
         return maxVal[capacity];

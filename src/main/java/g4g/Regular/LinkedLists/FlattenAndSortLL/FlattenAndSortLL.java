@@ -42,7 +42,7 @@ public class FlattenAndSortLL {
         if (ll1 == null) return ll2;
         if (ll2 == null) return ll1;
 
-        // Bottom-up way to attach values to resultNode in ascending order
+        // Top-down way to attach values to resultNode in ascending order
         SLLNode resultNode;
         if (ll1.val < ll2.val) {
             resultNode = ll1;

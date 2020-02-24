@@ -5,11 +5,11 @@ import java.util.*
 data class TreeNode(var `val`: Int, var left: TreeNode? = null, var right: TreeNode? = null) {
     private var leftSize: Int = 0
 
-    fun traversalInOrder(
+    fun traversalAnyOrder(
         order: (Int, Array<Int>, Array<Int>) -> Array<Int> = { `val`, left, right -> arrayOf(`val`) + left + right }
     ): Array<Int> {
-        val left = left?.traversalInOrder(order) ?: emptyArray()
-        val right = right?.traversalInOrder(order) ?: emptyArray()
+        val left = left?.traversalAnyOrder(order) ?: emptyArray()
+        val right = right?.traversalAnyOrder(order) ?: emptyArray()
         return order(`val`, left, right)
     }
 
@@ -19,113 +19,88 @@ data class TreeNode(var `val`: Int, var left: TreeNode? = null, var right: TreeN
         right?.inorderTraversal()
     }
 
-    fun insertForRank(valToInsert: Int): Int {
-        return if (valToInsert <= `val`) {
+    fun insertForRank(valToInsert: Int): Int =
+        if (valToInsert <= `val`) {
             leftSize++
             left?.insertForRank(valToInsert) ?: run {
                 left = TreeNode(valToInsert)
                 leftSize
             }
-        } else {
+        } else { // 1 - for current node, leftSize for it's rank (all the nodes less than the cur node)
             1 + leftSize + (right?.insertForRank(valToInsert) ?: run {
                 right = TreeNode(valToInsert)
                 0
             })
         }
-    }
 
-    fun getNodeAtRank(rank: Int): TreeNode? {
-        return when {
+
+    fun getNodeAtRank(rank: Int): TreeNode? =
+        when {
             rank == leftSize + 1 -> this
             rank <= leftSize + 1 -> left?.getNodeAtRank(rank)
             else -> right?.getNodeAtRank(rank - leftSize - 1)
         }
-    }
 
-    fun getRank(valForRank: Int): Int {
-        return when {
+
+    fun getRank(valForRank: Int): Int =
+        when {
             valForRank == this.`val` -> leftSize
             valForRank < this.`val` -> left?.getRank(valForRank) ?: -1
             else -> right?.let { 1 + leftSize + it.getRank(valForRank) } ?: -1
         }
-    }
 
-    fun insert(valToInsert: Int) {
+    fun insert(valToInsert: Int): Unit =
         if (valToInsert <= `val`) {
             left?.insert(valToInsert) ?: run { left = TreeNode(valToInsert) }
         } else {
             right?.insert(valToInsert) ?: run { right = TreeNode(valToInsert) }
         }
-    }
-    
+
+
     companion object Utils {
-        fun readArrToTree(arr: IntArray): TreeNode? {
+        fun arrToBST(arr: IntArray): TreeNode? {
             if (arr.isEmpty()) {
                 return null
             }
             return TreeNode(arr[0]).also { root -> arr.drop(1).forEach { root.insert(it) } }
         }
 
-        fun readPreOrderListToTree(inputArr: List<Int?>): TreeNode? {
-            if (inputArr.isEmpty()) {
+        fun listToCompleteTree(list: List<Int?>): TreeNode? {
+            if (list.isEmpty() || list[0] == null) {
                 return null
             }
-            return inputArr[0]?.let { TreeNode(it).readPreOrderListToTree(inputArr) }
+            return buildCompleteTreeFromList(list)
         }
 
-        private fun TreeNode.readPreOrderListToTree(inputArr: List<Int?>, index: Int = 0): TreeNode? {
-            if (index > inputArr.lastIndex) {
+        private fun buildCompleteTreeFromList(list: List<Int?>, index: Int = 0): TreeNode? {
+            if (index > list.lastIndex) {
                 return null
             }
-            if (index >= inputArr.size / 2) {
-                return inputArr[index]?.let { TreeNode(it) } // Leaf node
-            }
-            val leftIndex = 2 * index + 1
-            val rightIndex = 2 * index + 2
-            return inputArr[index]?.let {
-                TreeNode(it, readPreOrderListToTree(inputArr, leftIndex), readPreOrderListToTree(inputArr, rightIndex))
-            }
-        }
-
-        fun inorderTraversalWithStack() {
-            val stk = ArrayDeque<TreeNode>()
-            var cur = this as TreeNode?
-            while (cur != null || stk.isNotEmpty()) {
-                while (cur != null) {
-                    stk.push(cur)
-                    cur = cur.left
-                }
-                cur = stk.pop()
-                print(cur.`val`)
-                cur = cur.right
+            return list[index]?.let {
+                TreeNode(
+                    it,
+                    buildCompleteTreeFromList(list, 2 * index + 1),
+                    buildCompleteTreeFromList(list, 2 * index + 2)
+                )
             }
         }
 
-        fun inorderTraversalMorris(root: TreeNode?) {
-            if (root == null) {
-                return
-            }
-            var cur = root
-            while (cur != null) {
-                if (cur.left == null) {
-                    print(cur.`val`) // We finish visiting a node
-                    cur = cur.right // goto right or goto predecessor 
-                } else {
-                    var pre = cur.left
-                    while (pre?.right != null && pre.right != cur) { // Find inorder predecessor.
-                        pre = pre.right
-                    }
-                    if (pre?.right == null) {
-                        pre?.right = cur
-                        cur = cur.left // we can safely go to the left after establishing link to predecessor.
-                    } else { // This happens when we revisit the node through predecessor link. This indicates we have finished traversing the left side.
-                        pre.right = null // reset the pointer
-                        print(cur.`val`) // We finish visiting a node
-                        cur = cur.right // Now left visit is complete, safely go to right side
-                    }
+        fun listToIncompleteTree(valList: List<Int?>): TreeNode? {
+            val valQueue = LinkedList(valList) // Can't use ArrayDeque as it won't allow nulls.
+            val rootVal = valQueue.poll() ?: return null
+            val treeNodeQueue = ArrayDeque<TreeNode>()
+            val root = TreeNode(rootVal)
+            treeNodeQueue.push(root)
+            while (valQueue.isNotEmpty()) {
+                val curRoot = treeNodeQueue.poll()
+                valQueue.poll()?.let { leftValue ->
+                    treeNodeQueue.addLast(TreeNode(leftValue).also { curRoot.left = it })
+                }
+                valQueue.poll()?.let { rightValue ->
+                    treeNodeQueue.addLast(TreeNode(rightValue).also { curRoot.right = it })
                 }
             }
+            return root
         }
     }
 }
-

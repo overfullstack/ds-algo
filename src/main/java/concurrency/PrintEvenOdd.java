@@ -9,7 +9,7 @@ package concurrency;/*
 public class PrintEvenOdd {
     public static void main(String[] args) {
         var max = 10;
-        var printer = new Printer();
+        var printer = new SharedPrinter();
         var evenThread = new MyThread(true, printer, max);
         var oddThread = new MyThread(false, printer, max);
         evenThread.start();
@@ -20,12 +20,12 @@ public class PrintEvenOdd {
 // This is common code for both threads. You could instead have two different thread classes for even and odd.
 class MyThread extends Thread {
     private boolean isEven; // Switch-1, this is constant for a Thread, used to initialize first number to 2 or 1, then increment +=2
-    private Printer printer;
+    private SharedPrinter sharedPrinter;
     private int max;
 
-    MyThread(boolean isEven, Printer printer, int max) {
+    MyThread(boolean isEven, SharedPrinter sharedPrinter, int max) {
         this.isEven = isEven;
-        this.printer = printer;
+        this.sharedPrinter = sharedPrinter;
         this.max = max;
     }
 
@@ -34,9 +34,9 @@ class MyThread extends Thread {
         var num = isEven ? 2 : 1;
         while (num <= max) { // The idea is to prevent this loop to run only once per thread invocation and go on wait state.
             if (isEven) {
-                printer.printEven(num);
+                sharedPrinter.printEven(num);
             } else {
-                printer.printOdd(num);
+                sharedPrinter.printOdd(num);
             }
             num += 2;
         }
@@ -44,7 +44,7 @@ class MyThread extends Thread {
 }
 
 // This is shared code for both threads, so has synchronized functions.
-class Printer {
+class SharedPrinter {
     private boolean printOddNow = true; // Switch-2, this is common switch and gets switched by threads
 
     synchronized void printOdd(int numToPrint) {

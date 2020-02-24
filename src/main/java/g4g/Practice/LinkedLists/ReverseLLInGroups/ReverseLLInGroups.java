@@ -29,7 +29,7 @@ public class ReverseLLInGroups {
     private static SLLNode reverseLLInBlocks(SLLNode head, int group) {
         SLLNode prev = null, next = head, cur;
         var count = 0;
-        while (count < group && next != null) {
+        while (count < group && next != null) { // reverse current group.
             cur = next;
             next = next.next;
             cur.next = prev;
@@ -37,8 +37,8 @@ public class ReverseLLInGroups {
             count++;
         }
         if (next != null) {
-            head.next = reverseLLInBlocks(next, group);
+            head.next = reverseLLInBlocks(next, group); // next points to head of next group.
         }
-        return prev;
+        return prev; // prev would point to reversed end of current group (which is the start of reversed group).
     }
 }

@@ -20,7 +20,7 @@ public class MergeSortLL {
 
     }
 
-    // The idea is to split the LL into smallest chains and merge them back
+    // The idea is to split the LL into the smallest chains and merge them back
     private static SLLNode mergeSortLL(SLLNode head) {
         // When the list has only 1 element return it
         if (head == null || head.next == null) {
@@ -29,7 +29,7 @@ public class MergeSortLL {
         // Split the LL into two list to the middle
         var middle = frontBackSplit(head);
 
-        // Split each list further by recursion, in return we receive merged lists
+        // Split each list further by the recursion, in return we receive merged lists
         head = mergeSortLL(head);
         middle = mergeSortLL(middle);
 

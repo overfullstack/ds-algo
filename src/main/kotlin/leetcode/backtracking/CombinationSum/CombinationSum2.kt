@@ -14,7 +14,7 @@ private fun combinationSum2(
         return listOf(combination)
     }
     return (startIndex..arr.lastIndex).fold(emptyList()) { results, index ->
-        // As this is sorted, all duplicates appear next to each other. For every index, allow the first one and skip all the following duplicates.
+        // As this is ***sorted***, all duplicates appear next to each other. For every index, allow the first one and skip all the following duplicates.
         results + if (index == startIndex || arr[index] != arr[index - 1]) {
             combinationSum2(arr, sumLeft - arr[index], index + 1, combination + arr[index])
         } else {

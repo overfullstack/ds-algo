@@ -2,7 +2,6 @@ package g4g.Practice.Arrays.LongestConsecutiveSubsequence;
 
 import java.util.Arrays;
 import java.util.Scanner;
-import java.util.Set;
 import java.util.stream.Collectors;
 
 /**

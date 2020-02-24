@@ -27,8 +27,9 @@ public class LRUCache {
     }
 
     private void referPage(int pageNo) {
-        // Motto is not to have faster refers for recently used cache, but not to remove least recently used cache.
-        // So HashMap is always referred.
+        // HashMap provide O(1) insertion and lookup.
+        // But HashMap does not has mechanism of tracking which entry has been queried recently and which not.
+        // So DLL is used.
         var node = lruQueue.getNodeForPage(pageNo);
         if (node == null) { // New page
             node = new DLLNode(pageNo);
@@ -54,15 +55,15 @@ public class LRUCache {
 class LRUQueue {
     private static final int SIZE = 5;
     DLLNode front, rear;
-    private int count = 0;
-    private Map<Integer, DLLNode> pageToNodeMap = new HashMap<>();
+    private int size = 0;
+    private final Map<Integer, DLLNode> pageToNodeMap = new HashMap<>();
 
     void enqueue(int pageNo, DLLNode node) {
         // If queue is full, dequeue rear.
         if (isQueueFull()) {
             dequeue();
         }
-        // Initial state with front and rear are not initialized
+        // Initial state with front and rear are not initialized.
         if (front == null) {
             front = rear = node;
         } else { // Enqueue in front
@@ -72,14 +73,14 @@ class LRUQueue {
         }
         // Put node in Hashmap for quick access.
         pageToNodeMap.put(pageNo, node);
-        count++;
+        size++;
     }
 
     private void dequeue() {
         if (rear != null) {
             rear = rear.prev;
             rear.next = null;
-            count--;
+            size--;
         }
     }
 
@@ -88,6 +89,6 @@ class LRUQueue {
     }
 
     public boolean isQueueFull() {
-        return count >= SIZE;
+        return size >= SIZE;
     }
 }

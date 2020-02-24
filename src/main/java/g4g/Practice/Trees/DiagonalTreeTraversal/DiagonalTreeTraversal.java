@@ -39,8 +39,7 @@ public class DiagonalTreeTraversal {
         if (root == null) {
             return;
         }
-        var diagonalList = map.computeIfAbsent(diagonal, k -> new ArrayList<>());
-        diagonalList.add(root);
+        map.computeIfAbsent(diagonal, ignore -> new ArrayList<>()).add(root);
         // Observe right is traversed before left
         diagonalTreeTraversal(root.left, map, diagonal + 1); // A left node falls in adjacent diagonal
         diagonalTreeTraversal(root.right, map, diagonal); // All right nodes fall in same diagonal

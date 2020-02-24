@@ -23,11 +23,12 @@ public class PeakFinder {
         if ((mid == 0 || arr[mid] >= arr[mid - 1]) && (mid == arr.length - 1 || arr[mid] >= arr[mid + 1])) {
             return mid;
         }
-        if (mid > 0 && arr[mid - 1] > arr[mid])
+        if (mid >= 1 && arr[mid - 1] > arr[mid]) { // Always mind checking the index range for `mid`.
             return findPeak(arr, left, (mid - 1));
+        }
 
         // If middle element is not peak and its right neighbor is greater than it, then right half must have a peak
-        // element. Since this indicates positive slope, Travel towards the peak i.e right side
+        // element. Since this indicates positive slope, Travel towards the peak i.e., right-side.
         return findPeak(arr, (mid + 1), right);
     }
 

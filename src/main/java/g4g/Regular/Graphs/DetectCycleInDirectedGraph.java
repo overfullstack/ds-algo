@@ -39,7 +39,7 @@ public class DetectCycleInDirectedGraph {
         visited[i] = true;
         hasCycle[i] = true; // We are starting to check for hasCycle
         for (int neighbour : g.getAllOutgoingVertices(i)) {
-            // If not visited, then send that node for isCyclePresent. If it passes to have cycle, return true;
+            // If not visited, then send that node for isCyclePresent. If it passes to have a cycle, return true;
             if (!visited[neighbour] && isCyclePresent(neighbour)) {
                 return true;
             }
