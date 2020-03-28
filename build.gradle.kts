@@ -1,5 +1,5 @@
 plugins {
-    kotlin("jvm") version "1.3.61"
+    kotlin("jvm") version "1.3.71"
     idea
 }
 
@@ -14,18 +14,27 @@ repositories {
 dependencies {
     implementation(kotlin("stdlib-jdk8"))
     implementation(kotlin("script-runtime"))
-    
+
     testImplementation("org.junit.jupiter:junit-jupiter:+")
     //testImplementation("org.amshove.kluent:kluent:+")
-    testImplementation("io.kotlintest:kotlintest-runner-junit5:+")
+    testImplementation("io.kotest:kotest-runner-junit5-jvm:+") // for kotest framework
+    testImplementation("io.kotest:kotest-assertions-core-jvm:+") // for kotest core jvm assertions
     testImplementation("org.slf4j:slf4j-simple:+")
 }
 
-/*tasks {
+tasks.withType<Test> {
+    useJUnitPlatform()
+}
+
+tasks {
     compileKotlin {
         kotlinOptions.jvmTarget = JavaVersion.VERSION_13.toString()
+    }
+    compileJava {
+        sourceCompatibility = JavaVersion.VERSION_13.toString()
+        targetCompatibility = JavaVersion.VERSION_13.toString()
     }
     compileTestKotlin {
         kotlinOptions.jvmTarget = JavaVersion.VERSION_13.toString()
     }
-}*/
+}

@@ -15,7 +15,8 @@ private fun TreeNode.allPathsForSum(sum: Int, result: List<Int> = emptyList()): 
 fun main() {
     val arrCsv = readLine()!!
     val arr =
-        if (arrCsv.trim().isEmpty()) emptyList() else arrCsv.split(",").map { it.trim() }.map { if (it == "null") null else it.toInt() }
+        if (arrCsv.trim().isEmpty()) emptyList() else arrCsv.split(",").map { it.trim() }
+            .map { if (it == "null") null else it.toInt() }
     val targetSum = readLine()!!.toInt()
     TreeNode.listToCompleteTree(arr)?.allPathsForSum(targetSum)?.forEach(::println)
 }

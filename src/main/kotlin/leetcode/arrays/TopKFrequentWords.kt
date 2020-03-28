@@ -5,9 +5,9 @@ import java.util.*
 
 private val COMPARATOR =
     Comparator.comparingInt<Map.Entry<String, Int>> { it.value }
-        .thenComparator { a, b -> b.key.compareTo(a.key) } 
-        // Observe `b` comes before `a`, imagine you have "a" and "b" with same frequency, 
-        // we push "b" towards head so it is more prone to `poll()` 
+        .thenComparator { a, b -> b.key.compareTo(a.key) }
+// Observe `b` comes before `a`, imagine you have "a" and "b" with same frequency, 
+// we push "b" towards head so it is more prone to `poll()` 
 
 fun topKFrequent(words: Array<String>, k: Int): List<String> {
     val wordToFrequency = mutableMapOf<String, Int>()

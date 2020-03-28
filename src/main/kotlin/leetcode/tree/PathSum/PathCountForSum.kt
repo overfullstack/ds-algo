@@ -26,7 +26,8 @@ private fun TreeNode?.pathCountForSum(
 fun main() {
     val arrCsv = readLine()!!
     val arr =
-        if (arrCsv.trim().isEmpty()) emptyList() else arrCsv.split(",").map { it.trim() }.map { if (it == "null") null else it.toInt() }
+        if (arrCsv.trim().isEmpty()) emptyList() else arrCsv.split(",").map { it.trim() }
+            .map { if (it == "null") null else it.toInt() }
     val targetSum = readLine()!!.toInt()
     println(pathSum(TreeNode.listToCompleteTree(arr), targetSum))
 }

@@ -19,7 +19,7 @@ private fun combinationSum(
             sumLeft - arr[index],
             index, // passing same `index` instead of `index+1`, as problem allows repetition.
             combination + arr[index]
-        ) 
+        )
     }
 }
 

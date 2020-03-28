@@ -41,4 +41,5 @@ public class EdgeWeightedDigraph {
     }
 }
 
-class DiNeighbour extends  LinkedList<DirectedEdge> {}
+class DiNeighbour extends LinkedList<DirectedEdge> {
+}

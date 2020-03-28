@@ -1,16 +1,16 @@
 package leetcode.tree
 
 import ds.TreeNode
-import io.kotlintest.data.forall
-import io.kotlintest.shouldBe
-import io.kotlintest.specs.StringSpec
-import io.kotlintest.tables.row
+import io.kotest.core.spec.style.StringSpec
+import io.kotest.data.forAll
+import io.kotest.matchers.shouldBe
+import io.kotest.data.row
 
 class SumRootToLeafKtTest : StringSpec() {
 
     init {
         "sumFromRootToLeaf" {
-            forall(
+            forAll(
                 row(listOf(1, 2, 3), 25),
                 row(listOf(4, 9, 0, 5, 1), 1026),
                 row(listOf(4), 4),

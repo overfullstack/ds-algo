@@ -9,7 +9,7 @@ fun lengthOfLongestSubstringWithoutCharRepeat(s: String): Int {
         map.merge(char, index) { lastOccurrence, curOccurrence ->
             // maxOf is required, as we need the later most of previous `windowStart` and `lastOccurrence`
             // We can't blindly take the lastOccurrence, as prev windowStart may be later than that, which indicates a repeating number pointing at prev windowStart. 
-            windowStart = maxOf(windowStart, lastOccurrence + 1) 
+            windowStart = maxOf(windowStart, lastOccurrence + 1)
             curOccurrence
         }
         maxWindow = maxOf(maxWindow, index - windowStart + 1)

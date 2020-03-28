@@ -13,7 +13,10 @@ fun findKthLargest(nums: MutableList<Int>, k: Int): Int {
     val (smaller, larger) = nums.partition { it < pivot }
     return when {
         larger.size > k - 1 -> findKthLargest(larger.toMutableList(), k)
-        larger.size < k - 1 -> findKthLargest(smaller.toMutableList(), k - larger.size - 1) // -1 discarding current pivot
+        larger.size < k - 1 -> findKthLargest(
+            smaller.toMutableList(),
+            k - larger.size - 1
+        ) // -1 discarding current pivot
         else -> pivot
     }
 }

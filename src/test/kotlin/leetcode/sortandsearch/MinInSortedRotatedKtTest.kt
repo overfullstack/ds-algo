@@ -1,15 +1,15 @@
 package leetcode.sortandsearch
 
-import io.kotlintest.data.suspend.forall
-import io.kotlintest.shouldBe
-import io.kotlintest.specs.StringSpec
-import io.kotlintest.tables.row
+import io.kotest.core.spec.style.StringSpec
+import io.kotest.data.forAll
+import io.kotest.data.row
+import io.kotest.matchers.shouldBe
 
 class MinInSortedRotatedKtTest : StringSpec() {
 
     init {
         "findMin" {
-            forall(
+            forAll(
                 row(intArrayOf(3, 4, 5, 1, 2), 1),
                 row(intArrayOf(4, 5, 6, 7, 0, 1, 2), 0),
                 row(intArrayOf(1), 1),

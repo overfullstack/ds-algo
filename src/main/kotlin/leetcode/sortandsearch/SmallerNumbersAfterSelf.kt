@@ -36,7 +36,7 @@ private fun mergeSortWithIndexes(
     var mergeIndex = 0
     var mergedIndexes = IntArray(end - start + 1)
     var count = 0
-    
+
     while (leftIndex <= mid && rightIndex <= end) {
         if (nums[indexes[rightIndex]] < nums[indexes[leftIndex]]) { // No <= because if right = left, we don't count++ as smaller element for right side
             mergedIndexes[mergeIndex] = indexes[rightIndex]
@@ -62,7 +62,7 @@ private fun mergeSortWithIndexes(
         rightIndex++
         mergeIndex++
     }
-    
+
     for (i in start..end) {
         indexes[i] = mergedIndexes[i - start]
     }

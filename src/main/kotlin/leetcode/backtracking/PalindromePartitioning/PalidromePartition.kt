@@ -16,7 +16,11 @@ fun palindromePartition(
         subStr += str[index] // Appending in loop takes care of marching ahead.
         // If palindrome found, this `subStr` is recorded by appending it to palindromes list and branch out from here to find palindrome freshly starting after this `index` i.e `index + 1`
         if (isPalindrome(subStr)) {
-            results + palindromePartition(str, palindromes + subStr, index + 1) // `palindromes + subStr` accumulates the results.
+            results + palindromePartition(
+                str,
+                palindromes + subStr,
+                index + 1
+            ) // `palindromes + subStr` accumulates the results.
         } else {
             results
         }

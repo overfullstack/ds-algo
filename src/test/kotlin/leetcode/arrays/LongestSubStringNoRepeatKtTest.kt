@@ -1,15 +1,15 @@
 package leetcode.arrays
 
-import io.kotlintest.data.forall
-import io.kotlintest.shouldBe
-import io.kotlintest.specs.StringSpec
-import io.kotlintest.tables.row
+import io.kotest.core.spec.style.StringSpec
+import io.kotest.data.forAll
+import io.kotest.matchers.shouldBe
+import io.kotest.data.row
 
 class LongestSubStringNoRepeatKtTest : StringSpec() {
 
     init {
         "lengthOfLongestSubstringWithoutCharRepeat" {
-            forall(
+            forAll(
                 row("abcabcbb", 3),
                 row("bbbbb", 1),
                 row("pwwkew", 3),

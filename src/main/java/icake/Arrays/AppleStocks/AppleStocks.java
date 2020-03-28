@@ -5,7 +5,7 @@ package icake.Arrays.AppleStocks;
  */
 public class AppleStocks {
     public static void main(String[] args) {
-        int[] stocks = {4,3,2,1};
+        int[] stocks = {4, 3, 2, 1};
         System.out.println(maxProfit2(stocks));
     }
 
@@ -27,22 +27,19 @@ public class AppleStocks {
         }
         return maxProfit;
     }
-    
+
     private static int maxProfit2(int[] arr) {
         var maxDiff = -1;
         var n = arr.length;
         // Initialize max element from right side 
-        var maxRight = arr[n-1];
+        var maxRight = arr[n - 1];
 
-        for (var i = n-2; i >= 0; i--)
-        {
+        for (var i = n - 2; i >= 0; i--) {
             if (arr[i] > maxRight)
                 maxRight = arr[i];
-            else
-            {
+            else {
                 var diff = maxRight - arr[i];
-                if (diff > maxDiff)
-                {
+                if (diff > maxDiff) {
                     maxDiff = diff;
                 }
             }

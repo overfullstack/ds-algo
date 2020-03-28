@@ -10,7 +10,7 @@ fun getLookup(minFrequency: Int, sortedFrequencies: List<Int>): List<Int> {
     }
     return lookups.map { it.count() }
 }
-    
+
 
 fun main() {
     val (minFrequency, noOfQueries) = readLine()!!.split(" ").map { it.toInt() }

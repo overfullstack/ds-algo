@@ -1,10 +1,6 @@
 package g4g.Practice.Graphs.SnakesAndLadders;
 
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.Map;
-import java.util.Queue;
-import java.util.Scanner;
+import java.util.*;
 
 /**
  * Created by Gopala Akshintala on 22/02/17.

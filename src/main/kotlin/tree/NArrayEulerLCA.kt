@@ -23,7 +23,7 @@ data class NArrayEulerTour(var value: Int) {
         firstOccurrence = firstOccurrence ?: counter
         // this is both prepended and appended, counter is to check for firstOccurrence
         return arrayOf(this) + children.fold(
-            emptyArray<NArrayEulerTour>(), 
+            emptyArray<NArrayEulerTour>(),
             { tourResult, child ->
                 tourResult + (child?.eulersTour(counter + tourResult.size + 1) ?: emptyArray()) + this
             })

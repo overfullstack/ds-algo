@@ -6,8 +6,8 @@ import cci.DS.TreeNode;
  * Created by gakshintala on 3/29/16.
  */
 public class FindPathForSum {
-    private static int[] path; // Path with level allows us to check sum with left and then right nodes.
     private static final int SUM_TO_FIND = 6;
+    private static int[] path; // Path with level allows us to check sum with left and then right nodes.
 
     public static void main(String[] args) {
         var treeNode8 = new TreeNode(8, null, null);

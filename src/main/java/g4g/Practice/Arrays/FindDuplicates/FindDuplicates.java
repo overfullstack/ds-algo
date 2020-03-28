@@ -22,14 +22,14 @@ public class FindDuplicates {
     private static void printDuplicates(int[] arr, int len) {
         var isNoDuplicatesFoundFlag = true;
         for (var i = 0; i < len; i++) {
-            if(arr[Math.abs(arr[i])] >= 0) {
+            if (arr[Math.abs(arr[i])] >= 0) {
                 arr[Math.abs(arr[i])] = -arr[Math.abs(arr[i])];
             } else {
                 isNoDuplicatesFoundFlag = false;
                 System.out.print(Math.abs(arr[i]) + " ");
             }
         }
-        if(isNoDuplicatesFoundFlag) {
+        if (isNoDuplicatesFoundFlag) {
             System.out.print("-1 ");
         }
 

@@ -1,9 +1,14 @@
 /* gakshintala created on 1/23/20 */
 package leetcode.backtracking
 
-fun generateParenthesis(n: Int): List<String> = if (n==0) emptyList() else generateParenthesisUtil(n)
+fun generateParenthesis(n: Int): List<String> = if (n == 0) emptyList() else generateParenthesisUtil(n)
 
-fun generateParenthesisUtil(n: Int, leftRemaining: Int = n, rightRemaining: Int = n, parentStr: String = ""): List<String> {
+fun generateParenthesisUtil(
+    n: Int,
+    leftRemaining: Int = n,
+    rightRemaining: Int = n,
+    parentStr: String = ""
+): List<String> {
     if (leftRemaining < 0 || rightRemaining < leftRemaining) { // `rightRemaining < leftRemaining` which means we have exhausted all rightRemaining
         return emptyList()
     }

@@ -18,7 +18,7 @@ public class HighestProductOf3 {
         var maxProduct2 = arr[0] * arr[1];
         var minProduct2 = arr[0] * arr[1];
         System.out.println("Two - " + maxProduct2 + " " + minProduct2);
-        
+
         var maxProduct3 = maxProduct2 * arr[2];
         System.out.println("Three - " + maxProduct3);
 

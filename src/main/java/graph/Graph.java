@@ -14,7 +14,7 @@ public class Graph {
 
     Graph(int vertexCount) {
         this.vertexCount = vertexCount;
-        adj =  new LinkedList[vertexCount];
+        adj = new LinkedList[vertexCount];
         for (var i = 0; i < adj.length; i++) {
             adj[i] = new LinkedList<>();
         }

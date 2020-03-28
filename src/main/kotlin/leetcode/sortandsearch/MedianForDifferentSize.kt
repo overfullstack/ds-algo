@@ -14,7 +14,8 @@ fun medianWithDifferentSize(a: IntArray, b: IntArray): Double {
     while (low <= high) {
         // This is more like binary search and has nothing to do with the search item being a median
         val aPartition = (low + high) / 2 // Driven always by the smaller array `a`. 
-        val bPartition = mergedMid - aPartition // coz (left on a + left on b) is partitioned by (right on a + right on b)  
+        val bPartition =
+            mergedMid - aPartition // coz (left on a + left on b) is partitioned by (right on a + right on b)  
 
         val aLeft = if (aPartition == 0) Int.MIN_VALUE else a[aPartition - 1]
         val aOnPartition = if (aPartition == a.size) Int.MAX_VALUE else a[aPartition]

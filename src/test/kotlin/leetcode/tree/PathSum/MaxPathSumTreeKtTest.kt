@@ -1,16 +1,16 @@
 package leetcode.tree.PathSum
 
 import ds.TreeNode
-import io.kotlintest.data.forall
-import io.kotlintest.shouldBe
-import io.kotlintest.specs.StringSpec
-import io.kotlintest.tables.row
+import io.kotest.core.spec.style.StringSpec
+import io.kotest.data.forAll
+import io.kotest.data.row
+import io.kotest.matchers.shouldBe
 
 class MaxPathSumTreeKtTest : StringSpec() {
 
     init {
         "maxPathSum" {
-            forall(
+            forAll(
                 row(listOf(1, 2, 3), 6),
                 row(listOf(-10, 9, 20, null, null, 15, 7), 42),
                 row(listOf(-3), -3),

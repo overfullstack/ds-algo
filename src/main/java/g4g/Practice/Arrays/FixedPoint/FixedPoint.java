@@ -1,6 +1,7 @@
 package g4g.Practice.Arrays.FixedPoint;
 
 import java.util.Scanner;
+
 //TBD
 public class FixedPoint {
     public static void main(String[] args) {

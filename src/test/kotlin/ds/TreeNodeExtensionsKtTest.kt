@@ -1,7 +1,8 @@
 package ds
 
-import io.kotlintest.matchers.collections.shouldContainInOrder
-import io.kotlintest.specs.StringSpec
+import io.kotest.core.spec.style.StringSpec
+import io.kotest.matchers.collections.shouldContainInOrder
+
 
 class TreeNodeExtensionsKtTest : StringSpec() {
 

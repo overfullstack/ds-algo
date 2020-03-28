@@ -4,7 +4,7 @@ import g4g.DsAndUtils.TreeNode;
 
 /**
  * Created by gakshintala on 4/13/16.
- *
+ * <p>
  * Not complete
  */
 public class SwappedNodes {
@@ -43,10 +43,10 @@ public class SwappedNodes {
         if (root == null) {
             return refs;
         }
-        
+
         // Inorder traversal
         correctSwappedNodes(root.left, parent, refs); // Parent node of left most node in left tree will be null
-        
+
         if (parent != null && root.val < parent.val) {
             if (refs[0] == null) { // ref[1] is if adjacent nodes are swapped, in that case we wont find another anomaly
                 refs[0] = root;

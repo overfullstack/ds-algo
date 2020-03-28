@@ -28,12 +28,12 @@ class SquareRootDecompositionSum(var arr: MutableList<Int>) {
 
         val startBlockStartIndex = startBlock * chunkSize
         val endBlockEndIndex = (endBlock * chunkSize) + chunkSize
-        
+
         return (sumArr.slice(startBlock..endBlock).sum()
                 - arr.slice(startBlockStartIndex until startIndex).sum() // Excluding StartIndex.
                 - arr.slice(endIndex + 1 until endBlockEndIndex).sum()) // Excluding EndIndex.
     }
-    
+
     fun update(index: Int, value: Int) {
         val windowIndex = index / chunkSize
         sumArr[windowIndex] = sumArr[windowIndex] - arr[index] + value

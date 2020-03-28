@@ -4,11 +4,7 @@ import hackerrank.DS.DirectedEdge;
 import hackerrank.DS.EdgeWeightedDigraph;
 import hackerrank.DS.Vertex;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.PriorityQueue;
-import java.util.Scanner;
+import java.util.*;
 
 /**
  * Created by gakshintala on 1/6/16.

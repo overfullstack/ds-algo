@@ -10,7 +10,8 @@ private fun TreeNode.hasPathSum(sum: Int): Boolean =
 fun main() {
     val arrCsv = readLine()!!
     val arr =
-        if (arrCsv.trim().isEmpty()) emptyList() else arrCsv.split(",").map { it.trim() }.map { if (it == "null") null else it.toInt() }
+        if (arrCsv.trim().isEmpty()) emptyList() else arrCsv.split(",").map { it.trim() }
+            .map { if (it == "null") null else it.toInt() }
     val targetSum = readLine()!!.toInt()
     println(TreeNode.listToCompleteTree(arr)?.hasPathSum(targetSum))
 }

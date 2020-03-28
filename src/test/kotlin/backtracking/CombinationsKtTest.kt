@@ -1,6 +1,6 @@
 package backtracking
 
-import io.kotlintest.matchers.collections.shouldContainAll
+import io.kotest.matchers.collections.shouldContainAll
 import org.junit.jupiter.api.Test
 
 internal class CombinationsKtTest {

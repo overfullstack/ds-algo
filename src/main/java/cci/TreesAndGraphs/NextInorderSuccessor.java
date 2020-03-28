@@ -50,7 +50,7 @@ public class NextInorderSuccessor {
         if (root.left == null) return root;
         return leftMostNode(root.left);
     }
-    
+
     private static TreeNode findNexInorderSuccessorWithoutParent(TreeNode root, TreeNode nodeForSuccessor) {
         if (nodeForSuccessor.right != null) {
             return leftMostNode(nodeForSuccessor.right);

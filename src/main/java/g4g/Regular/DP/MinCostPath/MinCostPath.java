@@ -19,7 +19,7 @@ public class MinCostPath {
         }
 
         for (var j = 1; j < col; j++) {
-            table[0][j] = table[0][j-1] + mat[0][j];
+            table[0][j] = table[0][j - 1] + mat[0][j];
         }
 
         for (var i = 1; i < row; i++) {

@@ -13,7 +13,7 @@ public class UniqueInSortedArray {
         if (low > high) return;
 
         var mid = (low + high) / 2;
-        
+
         // this can also be replaced by low==high, but the below condition can detect early, in cases like unique 
         // element falls in middle of an array
         if ((arr[mid] != arr[mid - 1]) && (arr[mid] != arr[mid + 1])) {

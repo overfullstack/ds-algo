@@ -13,7 +13,7 @@ fun isBalanced(s: String): String {
         when (c) {
             '[', '{', '(' -> stk.push(c)
             ']', '}', ')' -> {
-                if(stk.isEmpty()) {
+                if (stk.isEmpty()) {
                     return "NO"
                 }
                 result = when (stk.pop()) {

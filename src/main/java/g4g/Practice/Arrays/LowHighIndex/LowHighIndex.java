@@ -16,30 +16,30 @@ public class LowHighIndex {
 
     private static void printFirstLastOccurence(int[] arr, int searchNum) {
         var firstOccurrence = findFirstOccurrence(arr, searchNum, 0, arr.length - 1);
-        if(firstOccurrence == -1) {
+        if (firstOccurrence == -1) {
             System.out.println(-1);
             return;
         }
-        var lastOccurrence = findLastOccurrence(arr, searchNum, firstOccurrence, arr.length-1);
+        var lastOccurrence = findLastOccurrence(arr, searchNum, firstOccurrence, arr.length - 1);
         System.out.println(firstOccurrence + " " + lastOccurrence);
     }
 
     private static int findLastOccurrence(int[] arr, int searchNum, int left, int right) {
-        if(left > right) {
+        if (left > right) {
             return -1;
         }
-        var mid = (left + right)/2;
-        if((mid == arr.length - 1 || arr[mid + 1] > searchNum) && arr[mid] == searchNum) {
+        var mid = (left + right) / 2;
+        if ((mid == arr.length - 1 || arr[mid + 1] > searchNum) && arr[mid] == searchNum) {
             return mid;
         }
-        if(arr[mid] > searchNum) {
+        if (arr[mid] > searchNum) {
             return findLastOccurrence(arr, searchNum, left, mid - 1);
         }
         return findLastOccurrence(arr, searchNum, mid + 1, right);
     }
 
     private static int findFirstOccurrence(int[] arr, int searchNum, int left, int right) {
-        if(left > right) {
+        if (left > right) {
             return -1;
         }
         var mid = (left + right) / 2;

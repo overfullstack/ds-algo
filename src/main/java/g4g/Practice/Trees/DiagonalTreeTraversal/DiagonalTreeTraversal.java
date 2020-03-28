@@ -2,11 +2,7 @@ package g4g.Practice.Trees.DiagonalTreeTraversal;
 
 import g4g.DsAndUtils.TreeNode;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Created by gakshintala on 6/21/16.

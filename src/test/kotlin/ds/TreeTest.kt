@@ -1,11 +1,11 @@
 package ds
 
-import io.kotlintest.specs.StringSpec
+import io.kotest.core.spec.style.StringSpec
 
 class TreeTest : StringSpec() {
 
     init {
-        "Empty left right should form leaf node" { 
+        "Empty left right should form leaf node" {
         }
     }
 

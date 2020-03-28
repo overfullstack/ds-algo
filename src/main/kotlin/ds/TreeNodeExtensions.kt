@@ -16,7 +16,8 @@ fun TreeNode?.inorderTraversalMorris() {
             }
             if (pre?.right == null) {
                 pre?.right = cur // establishing link to predecessor.
-                cur = cur.left // we can safely go to the left after establishing link to predecessor, because as we finish traversing left side, we know where to return.
+                cur =
+                    cur.left // we can safely go to the left after establishing link to predecessor, because as we finish traversing left side, we know where to return.
             } else { // This happens when we revisit the node through predecessor link. This indicates we have finished traversing the left side.
                 pre.right = null // reset the pointer
                 print(cur.`val`) // We finish visiting a node
@@ -71,10 +72,10 @@ fun TreeNode.incompleteTreeToList(): List<Int?> {
     while (treeNodeQueue.isNotEmpty()) {
         if (left != null || right != null) {
             val curTreeNode = treeNodeQueue.poll()
-            
+
             curTreeNode.left?.let { treeNodeQueue.addLast(it) }
             curTreeNode.right?.let { treeNodeQueue.addLast(it) }
-            
+
             valQueue.addLast(curTreeNode.left?.`val`)
             valQueue.addLast(curTreeNode.right?.`val`)
         }

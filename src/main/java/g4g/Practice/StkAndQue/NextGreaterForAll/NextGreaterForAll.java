@@ -1,10 +1,6 @@
 package g4g.Practice.StkAndQue.NextGreaterForAll;
 
-import java.util.ArrayDeque;
-import java.util.Deque;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Scanner;
+import java.util.*;
 
 /**
  * Created by gakshintala on 6/13/16.

@@ -1,15 +1,15 @@
 package leetcode.greedy
 
-import io.kotlintest.data.forall
-import io.kotlintest.shouldBe
-import io.kotlintest.specs.StringSpec
-import io.kotlintest.tables.row
+import io.kotest.core.spec.style.StringSpec
+import io.kotest.data.forAll
+import io.kotest.matchers.shouldBe
+import io.kotest.data.row
 
 class MaxNumberFromArraysKtTest : StringSpec() {
 
     init {
         "maxNumber" {
-            forall(
+            forAll(
                 row(intArrayOf(3, 4, 6, 5), intArrayOf(9, 1, 2, 5, 8, 3), 5, intArrayOf(9, 8, 6, 5, 3)),
                 row(intArrayOf(6, 7), intArrayOf(6, 0, 4), 5, intArrayOf(6, 7, 6, 0, 4)),
                 row(intArrayOf(3, 9), intArrayOf(8, 9), 3, intArrayOf(9, 8, 9)),

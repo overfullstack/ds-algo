@@ -24,7 +24,8 @@ fun removeKDuplicates(originalStr: String, k: Int): String {
     for (char in originalStr) {
         result[resultIndex] = char
         if (resultIndex > 0 && result[resultIndex - 1] == result[resultIndex]) {
-            count[resultIndex] = count[resultIndex - 1] + 1 // We need an array, coz as new chars get concatenated we need to count them along with previous characters 
+            count[resultIndex] =
+                count[resultIndex - 1] + 1 // We need an array, coz as new chars get concatenated we need to count them along with previous characters 
             if (count[resultIndex] == k) {
                 resultIndex -= k
             }

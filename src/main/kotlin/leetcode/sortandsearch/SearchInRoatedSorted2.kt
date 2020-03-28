@@ -19,10 +19,10 @@ fun searchInRotatedSorted2(nums: IntArray, target: Int, left: Int = 0, right: In
         }
         // Implicit `nums[left] != nums[mid]`
         nums[right] != nums[mid] -> searchInRotatedSorted2(nums, target, mid + 1, right)
-        
+
         // If mid equals both left and right, search both sides, if not found on left, search right.
         else -> searchInRotatedSorted2(nums, target, left, mid - 1)
-                || searchInRotatedSorted2(nums, target, mid + 1, right) 
+                || searchInRotatedSorted2(nums, target, mid + 1, right)
         // The worst case - O(n), where all are repeated except the one we are searching.
     }
 }

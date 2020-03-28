@@ -1,10 +1,6 @@
 package hackerrank;
 
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
-import java.util.Scanner;
+import java.util.*;
 
 /**
  * Created by gakshintala on 12/7/15.

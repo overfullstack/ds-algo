@@ -54,9 +54,9 @@ public class LRUCache {
 
 class LRUQueue {
     private static final int SIZE = 5;
+    private final Map<Integer, DLLNode> pageToNodeMap = new HashMap<>();
     DLLNode front, rear;
     private int size = 0;
-    private final Map<Integer, DLLNode> pageToNodeMap = new HashMap<>();
 
     void enqueue(int pageNo, DLLNode node) {
         // If queue is full, dequeue rear.

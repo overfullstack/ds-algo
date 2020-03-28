@@ -12,4 +12,4 @@ private fun TreeNode.allPathsFromRootToLeaf(path: String = ""): List<String> {
             + (right?.allPathsFromRootToLeaf(path + `val`) ?: emptyList()))
 }
 
-fun TreeNode.sumFromRootToLeaf() =  allPathsFromRootToLeaf().map { it.toInt() }.sum()
+fun TreeNode.sumFromRootToLeaf() = allPathsFromRootToLeaf().map { it.toInt() }.sum()

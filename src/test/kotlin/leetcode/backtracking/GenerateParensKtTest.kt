@@ -1,19 +1,20 @@
 package leetcode.backtracking
 
-import io.kotlintest.matchers.collections.shouldContainExactlyInAnyOrder
-import io.kotlintest.shouldBe
-import io.kotlintest.specs.StringSpec
+import io.kotest.core.spec.style.StringSpec
+import io.kotest.matchers.collections.shouldContainExactlyInAnyOrder
+import io.kotest.matchers.shouldBe
 
 class GenerateParensKtTest : StringSpec() {
 
     init {
-        "generateParenthesis" { 
+        "generateParenthesis" {
             generateParenthesis(3) shouldContainExactlyInAnyOrder listOf(
                 "((()))",
                 "(()())",
                 "(())()",
                 "()(())",
-                "()()()")
+                "()()()"
+            )
             generateParenthesis(0) shouldBe emptyList()
         }
     }

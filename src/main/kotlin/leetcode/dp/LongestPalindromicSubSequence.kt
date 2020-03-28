@@ -4,7 +4,7 @@ package leetcode.dp
 fun longestPalindromeSubseq(s: String): Int {
     val table = Array(s.length) { IntArray(s.length) }
     table.indices.forEach { table[it][it] = 1 }
-    
+
     for (gap in 1 until s.length) {
         for ((i, j) in (gap until s.length).withIndex()) { // window iteration
             table[i][j] = if (s[i] == s[j]) {

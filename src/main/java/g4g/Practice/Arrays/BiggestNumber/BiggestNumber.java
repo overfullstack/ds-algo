@@ -1,7 +1,6 @@
 package g4g.Practice.Arrays.BiggestNumber;
 
 import java.util.Arrays;
-import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 

@@ -1,6 +1,6 @@
 package leetcode.graphs
 
-import io.kotlintest.matchers.collections.shouldContainExactlyInAnyOrder
+import io.kotest.matchers.collections.shouldContainExactlyInAnyOrder
 import leetcode.backtracking.findWords
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test

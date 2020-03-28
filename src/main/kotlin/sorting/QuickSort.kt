@@ -1,7 +1,7 @@
 package sorting
 
 fun IntArray.quickSort(left: Int, right: Int) {
-    if(left < right) {
+    if (left < right) {
         val partitionPoint = partition(left, right)
         quickSort(left, partitionPoint - 1)
         quickSort(partitionPoint + 1, right)
@@ -17,9 +17,9 @@ fun IntArray.partition(left: Int, right: Int): Int {
             this[i] = this[j].also { this[j] = this[i] }
         }
     }
-    this[right] = this[i+1]
+    this[right] = this[i + 1]
     this[i + 1] = pivot
-    
+
     return i + 1
 }
 

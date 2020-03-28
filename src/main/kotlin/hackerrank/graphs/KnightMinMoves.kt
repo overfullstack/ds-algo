@@ -5,12 +5,14 @@ import java.util.*
 
 fun knightOnAChessboard(n: Int): Array<Array<Int>> {
     val startCoOrdinates = (1 until n).map { x -> (1 until n).map { y -> Pair(x, y) } }
-    return startCoOrdinates.map { pairs -> pairs.map {
-        findMinStepsToReachEnd(
-            it,
-            n
-        )
-    }.toTypedArray() }.toTypedArray()
+    return startCoOrdinates.map { pairs ->
+        pairs.map {
+            findMinStepsToReachEnd(
+                it,
+                n
+            )
+        }.toTypedArray()
+    }.toTypedArray()
 }
 
 fun findMinStepsToReachEnd(pairOffset: Pair<Int, Int>, n: Int): Int {
@@ -44,13 +46,13 @@ fun isPairInBounds(pair: Pair<Int, Int>, n: Int) = pair.first in 0 until n && pa
 private fun offSetCombinations(pairOffset: Pair<Int, Int>): List<Pair<Int, Int>> {
     val swapPairOffSet = Pair(pairOffset.second, pairOffset.first)
     return listOf(pairOffset, swapPairOffSet).flatMap {
-            listOf(
-                Pair(it.first, it.second),
-                Pair(it.first, -it.second),
-                Pair(-it.first, it.second),
-                Pair(-it.first, -it.second)
-            )
-        }
+        listOf(
+            Pair(it.first, it.second),
+            Pair(it.first, -it.second),
+            Pair(-it.first, it.second),
+            Pair(-it.first, -it.second)
+        )
+    }
 }
 
 fun main() {

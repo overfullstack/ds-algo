@@ -1,15 +1,15 @@
 package leetcode.arrays
 
-import io.kotlintest.data.forall
-import io.kotlintest.shouldBe
-import io.kotlintest.specs.StringSpec
-import io.kotlintest.tables.row
+import io.kotest.core.spec.style.StringSpec
+import io.kotest.data.forAll
+import io.kotest.matchers.shouldBe
+import io.kotest.data.row
 
 class RemoveAdjacentDuplicatesKtTest : StringSpec() {
 
     init {
         "removeDuplicates" {
-            forall(
+            forAll(
                 row("abbaca", "ca"),
                 row("aaaaa", "a"),
                 row("a", "a"),
@@ -19,7 +19,7 @@ class RemoveAdjacentDuplicatesKtTest : StringSpec() {
             }
         }
         "removeKDuplicates" {
-            forall(
+            forAll(
                 row("abcd", 2, "abcd"),
                 row("deeedbbcccbdaa", 3, "aa"),
                 row("pbbcggttciiippooaais", 2, "ps")

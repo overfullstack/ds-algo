@@ -15,13 +15,15 @@ fun largestRectangle(histogram: Array<Int>): Long {
             val top = indexStk.pop()
             // This is equivalent to getting area with every hist or all hists higher than this. 
             // Observe we are operating on indexes, so even the popped hists come into count.
-            val areaWithTop = histogram[top] * if (indexStk.isEmpty()) histToInsertIndex else histToInsertIndex - indexStk.peek() - 1
+            val areaWithTop =
+                histogram[top] * if (indexStk.isEmpty()) histToInsertIndex else histToInsertIndex - indexStk.peek() - 1
             maxArea = maxOf(maxArea, areaWithTop.toLong())
         }
     }
     while (!indexStk.isEmpty()) {
         val top = indexStk.pop()
-        val areaWithTop = histogram[top] * if (indexStk.isEmpty()) histToInsertIndex else histToInsertIndex - indexStk.peek() - 1
+        val areaWithTop =
+            histogram[top] * if (indexStk.isEmpty()) histToInsertIndex else histToInsertIndex - indexStk.peek() - 1
         maxArea = maxOf(maxArea, areaWithTop.toLong())
     }
     return maxArea
@@ -29,7 +31,7 @@ fun largestRectangle(histogram: Array<Int>): Long {
 
 fun main() {
     val scan = Scanner(System.`in`)
-    
+
     val h = scan.nextLine().split(" ").map { it.trim().toInt() }.toTypedArray()
 
     val result = largestRectangle(h)

@@ -2,7 +2,7 @@
 package challenges
 
 fun noOfTopicsLikesAndDislikes(aLikes: BooleanArray, bLikes: BooleanArray) =
-     aLikes.zip(bLikes) { a, b -> !a.xor(b) }.filter { it }.count()
+    aLikes.zip(bLikes) { a, b -> !a.xor(b) }.filter { it }.count()
 
 
 fun main() {

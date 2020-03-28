@@ -12,7 +12,11 @@ fun IntArray.heapSort() {
 }
 
 
-fun IntArray.heapify(heapSize: Int, rootIndex: Int, heapComparator: Int.(Int) -> Boolean = fun Int.(b: Int) = this > b) {
+fun IntArray.heapify(
+    heapSize: Int,
+    rootIndex: Int,
+    heapComparator: Int.(Int) -> Boolean = fun Int.(b: Int) = this > b
+) {
     var heapIndex = rootIndex
     val leftIndex = 2 * rootIndex + 1
     val rightIndex = 2 * rootIndex + 2

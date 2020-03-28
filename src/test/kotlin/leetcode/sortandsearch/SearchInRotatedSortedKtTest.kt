@@ -1,12 +1,12 @@
 package leetcode.sortandsearch
 
-import io.kotlintest.shouldBe
-import io.kotlintest.specs.StringSpec
+import io.kotest.core.spec.style.StringSpec
+import io.kotest.matchers.shouldBe
 
 class SearchInRotatedSortedKtTest : StringSpec() {
 
     init {
-        "searchInRotatedSorted1" { 
+        "searchInRotatedSorted1" {
             search(intArrayOf(4, 5, 6, 7, 0, 1, 2), 0) shouldBe 4
         }
         "searchInRotatedSorted2" {

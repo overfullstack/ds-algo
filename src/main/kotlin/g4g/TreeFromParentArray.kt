@@ -6,12 +6,12 @@ import ds.TreeNode
 fun main() {
     val testCases = readLine()!!.toInt()
     repeat(testCases) {
-        val size = readLine()!!.toInt()
+        readLine()!!.toInt() // size
         val parentArr = readLine()!!.split(" ").map { it.toInt() }
         parentArr.indices.forEach {
             constructTree(it, parentArr)
         }
-        
+
     }
 }
 

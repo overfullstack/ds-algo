@@ -39,5 +39,5 @@ fun minWindow(str: String, pattern: String): String {
         }
     }
     return if (windowStartIndex == -1) "" else str.substring(windowStartIndex, windowStartIndex + minWindowLength)
-    
+
 }

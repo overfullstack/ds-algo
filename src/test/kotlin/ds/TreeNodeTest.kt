@@ -1,6 +1,6 @@
 package ds
 
-import io.kotlintest.specs.StringSpec
+import io.kotest.core.spec.style.StringSpec
 
 class TreeNodeTest : StringSpec() {
 

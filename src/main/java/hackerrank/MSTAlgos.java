@@ -1,12 +1,6 @@
 package hackerrank;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.PriorityQueue;
-import java.util.Scanner;
-import java.util.Set;
+import java.util.*;
 
 /**
  * Created by gakshintala on 12/16/15.

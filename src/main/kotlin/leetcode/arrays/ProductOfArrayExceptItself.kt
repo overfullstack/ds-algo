@@ -6,7 +6,7 @@ fun productExceptSelf(nums: IntArray): IntArray {
         return intArrayOf(0)
     }
     val product = IntArray(nums.size)
-    
+
     product[0] = 1
     product[1] = nums[0]
     for (left in 2..nums.lastIndex) {
