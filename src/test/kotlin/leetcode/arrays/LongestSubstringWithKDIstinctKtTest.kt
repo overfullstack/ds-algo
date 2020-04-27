@@ -9,6 +9,7 @@ class LongestSubstringWithKDIstinctKtTest : StringSpec() {
     init {
         "lengthOfLongestSubstringKDistinct" {
             lengthOfLongestSubstringKDistinct("eceba", 2) shouldBe 3
+            lengthOfLongestSubstringKDistinct("xxyxz", 2) shouldBe 4
         }
     }
 
