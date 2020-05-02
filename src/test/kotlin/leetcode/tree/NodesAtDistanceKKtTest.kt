@@ -1,6 +1,6 @@
 package leetcode.tree
 
-import ds.TreeNode
+import ds.tree.TreeNode
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.data.forAll
 import io.kotest.data.row
@@ -16,7 +16,7 @@ class NodesAtDistanceKKtTest : StringSpec() {
                 row(listOf(0, 5, 1, null, null, 2, 6, null, 3, null, null, 4, null, 7), 7, 3, listOf(2))
             ) { treeList: List<Int?>, targetValue: Int, K: Int, result: List<Int> ->
                 distanceK(
-                    TreeNode.listToIncompleteTree(treeList),
+                    TreeNode.levelOrderToTree(treeList),
                     TreeNode(targetValue),
                     K
                 ) shouldContainExactlyInAnyOrder result

@@ -1,9 +1,9 @@
 /* gakshintala created on 12/21/19 */
 package leetcode.tree
 
-import ds.TreeNode
-import ds.TreeNode.Utils.arrToBST
-import ds.getKthLargestReverseMorris
+import ds.tree.TreeNode
+import ds.tree.TreeNode.Utils.arrToBST
+import ds.tree.getKthLargestReverseMorris
 
 class KthLargestInStream(private val kth: Int, nums: IntArray) {
     private var root = arrToBST(nums)
@@ -21,7 +21,7 @@ class KthLargestInStream(private val kth: Int, nums: IntArray) {
         }
 
         k = 0
-        return kthLargest?.`val` ?: 0
+        return kthLargest?.value ?: 0
     }
 }
 

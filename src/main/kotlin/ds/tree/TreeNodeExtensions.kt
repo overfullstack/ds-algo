@@ -1,5 +1,5 @@
 /* gakshintala created on 9/3/19 */
-package ds
+package ds.tree
 
 import java.util.*
 
@@ -7,7 +7,7 @@ fun TreeNode?.inorderTraversalMorris() {
     var cur = this
     while (cur != null) {
         if (cur.left == null) { // No left side
-            print(cur.`val`) // We finish visiting a node
+            print(cur.value) // We finish visiting a node
             cur = cur.right // goto right or goto predecessor (if this is a leaf node)
         } else {
             var pre = cur.left
@@ -20,7 +20,7 @@ fun TreeNode?.inorderTraversalMorris() {
                     cur.left // we can safely go to the left after establishing link to predecessor, because as we finish traversing left side, we know where to return.
             } else { // This happens when we revisit the node through predecessor link. This indicates we have finished traversing the left side.
                 pre.right = null // reset the pointer
-                print(cur.`val`) // We finish visiting a node
+                print(cur.value) // We finish visiting a node
                 cur = cur.right // Now left visit is complete, safely go to right side
             }
         }
@@ -59,30 +59,7 @@ fun TreeNode?.inorderTraversalWithStack() {
             cur = cur.left
         }
         cur = stk.pop()
-        print(cur.`val`)
+        print(cur.value)
         cur = cur.right
     }
 }
-
-fun TreeNode.incompleteTreeToList(): List<Int?> {
-    val valQueue = LinkedList<Int?>()
-    val treeNodeQueue = ArrayDeque<TreeNode>()
-    treeNodeQueue.add(this)
-    valQueue.add(this.`val`)
-    while (treeNodeQueue.isNotEmpty()) {
-        if (left != null || right != null) {
-            val curTreeNode = treeNodeQueue.poll()
-
-            curTreeNode.left?.let { treeNodeQueue.addLast(it) }
-            curTreeNode.right?.let { treeNodeQueue.addLast(it) }
-
-            valQueue.addLast(curTreeNode.left?.`val`)
-            valQueue.addLast(curTreeNode.right?.`val`)
-        }
-    }
-    return valQueue
-}
-
-
-
-

@@ -1,6 +1,6 @@
 package leetcode.tree
 
-import ds.TreeNode
+import ds.tree.TreeNode
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.data.forAll
 import io.kotest.matchers.shouldBe
@@ -16,7 +16,7 @@ class SumRootToLeafKtTest : StringSpec() {
                 row(listOf(4), 4),
                 row(listOf(4, 2), 42)
             ) { list, result ->
-                TreeNode.listToIncompleteTree(list)!!.sumFromRootToLeaf() shouldBe result
+                TreeNode.levelOrderToTree(list)!!.sumFromRootToLeaf() shouldBe result
             }
         }
     }

@@ -23,7 +23,7 @@ public class DetectCycleInDirectedGraph {
 
         g = readGraph(scn, vertexCount, edgeCount);
 
-        // Let us say first vertex with value '1' is on border, it won't start a cycle. So need to check paths starting 
+        // Let us say first vertex with value '1' is on border, it won't start a cycle. So need to check paths starting
         // from all vertices to see which one of them can cause a cycle.
         for (var i = 1; i <= vertexCount; i++) {
             if (!visited[i] && isCyclePresent(i)) {
@@ -38,20 +38,20 @@ public class DetectCycleInDirectedGraph {
     private static boolean isCyclePresent(int i) {
         visited[i] = true;
         hasCycle[i] = true; // We are starting to check for hasCycle
-        for (int neighbour : g.getAllOutgoingVertices(i)) {
+        for (int neighbor : g.getAllOutgoingVertices(i)) {
             // If not visited, then send that node for isCyclePresent. If it passes to have a cycle, return true;
-            if (!visited[neighbour] && isCyclePresent(neighbour)) {
+            if (!visited[neighbor] && isCyclePresent(neighbor)) {
                 return true;
             }
             // If above check is skipped due to visited, we still have record of hasCycle and we shall check as below.
             // It says a node with hasCycle true is encountered before giving clearance for this dfs traversal
-            // hasCycle is set at the start of DFT for each node, 
-            // if any hasCycle detected during the traversal of it's neighbours or their children, then cycle detected.
-            if (hasCycle[neighbour]) {
+            // hasCycle is set at the start of DFT for each node,
+            // if any hasCycle detected during the traversal of it's neighbors or their children, then cycle detected.
+            if (hasCycle[neighbor]) {
                 return true;
             }
         }
-        hasCycle[i] = false; // DFT of all the neighbours and their children complete. This node is clear, doesn't cause any cycle due to its outgoing nodes;
+        hasCycle[i] = false; // DFT of all the neighbors and their children complete. This node is clear, doesn't cause any cycle due to its outgoing nodes;
         return false; // No cycle here
     }
 
@@ -63,4 +63,3 @@ public class DetectCycleInDirectedGraph {
         return graph;
     }
 }
-

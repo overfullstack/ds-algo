@@ -1,7 +1,7 @@
 /* gakshintala created on 1/18/20 */
 package leetcode.tree
 
-import ds.TreeNode
+import ds.tree.TreeNode
 import java.util.*
 
 fun TreeNode.isPairWithSumPresent(targetSum: Int): Boolean {
@@ -11,8 +11,8 @@ fun TreeNode.isPairWithSumPresent(targetSum: Int): Boolean {
     this.addLeftMost(smallStk)
     this.addRightMost(bigStk)
 
-    while (smallStk.peek().`val` < bigStk.peek().`val`) { // Loop till they cross each other. 
-        val curSum = smallStk.peek().`val` + bigStk.peek().`val`
+    while (smallStk.peek().value < bigStk.peek().value) { // Loop till they cross each other. 
+        val curSum = smallStk.peek().value + bigStk.peek().value
         when {
             curSum < targetSum -> smallStk.pop().right?.addLeftMost(smallStk) // Next in inorder, or next smallest number.
             curSum > targetSum -> bigStk.pop().left?.addRightMost(bigStk) // Next in reverse inorder, or next greater number.

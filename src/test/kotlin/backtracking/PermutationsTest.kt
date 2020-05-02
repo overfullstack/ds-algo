@@ -3,7 +3,7 @@ package backtracking
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.matchers.collections.shouldContainExactlyInAnyOrder
 
-class PermutationsKtTest : StringSpec() {
+class PermutationsTest : StringSpec() {
 
     init {
         "permutations" {

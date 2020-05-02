@@ -1,6 +1,6 @@
 package leetcode.tree.PathSum
 
-import ds.TreeNode
+import ds.tree.TreeNode
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.data.forAll
 import io.kotest.data.row
@@ -18,7 +18,7 @@ class MaxPathSumTreeKtTest : StringSpec() {
                 row(listOf(1, -2, 3), 4),
                 row(listOf(5, 4, 8, 11, null, 13, 4, 7, 2, null, null, null, 1), 48)
             ) { list, maxPathSum ->
-                TreeNode.listToIncompleteTree(list)!!.maxPathSum().second shouldBe maxPathSum
+                TreeNode.levelOrderToTree(list)!!.maxPathSum().second shouldBe maxPathSum
             }
         }
     }

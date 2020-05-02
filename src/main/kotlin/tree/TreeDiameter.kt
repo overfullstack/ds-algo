@@ -1,7 +1,8 @@
 /* gakshintala created on 10/16/19 */
 package tree
 
-import ds.TreeNode
+import ds.tree.TreeNode
+import ds.tree.TreeNode.Utils.levelOrderToCompleteTree
 
 fun diameterOfBinaryTree(root: TreeNode?): Int {
     return if (root == null) 0 else root.findMaxDiameter().second - 1 // n nodes shall have n-1 edges.
@@ -22,5 +23,5 @@ fun TreeNode.findMaxDiameter(): Pair<Int, Int> { // Pair of height and diameter
 
 fun main() {
     val arr = readLine()!!.split(",").map { it.trim().toInt() }
-    println(diameterOfBinaryTree(TreeNode.listToCompleteTree(arr)))
+    println(diameterOfBinaryTree(levelOrderToCompleteTree(arr)))
 }

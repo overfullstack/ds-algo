@@ -3,7 +3,7 @@ package backtracking
 import io.kotest.matchers.collections.shouldContainAll
 import org.junit.jupiter.api.Test
 
-internal class CombinationsKtTest {
+internal class CombinationsTest {
 
     @Test
     fun combinations1() {

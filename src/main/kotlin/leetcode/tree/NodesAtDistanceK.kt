@@ -1,7 +1,7 @@
 /* gakshintala created on 1/26/20 */
 package leetcode.tree
 
-import ds.TreeNode
+import ds.tree.TreeNode
 import leetcode.tree.NodeAtDistanceK.*
 
 sealed class NodeAtDistanceK {
@@ -13,13 +13,13 @@ sealed class NodeAtDistanceK {
 }
 
 fun distanceK(root: TreeNode?, target: TreeNode?, K: Int) =
-    if (target == null) emptyList() else root.nodesAtDistanceK(target.`val`, K).second
+    if (target == null) emptyList() else root.nodesAtDistanceK(target.value, K).second
 
 private fun TreeNode?.nodesAtDistanceK(target: Int, K: Int): Pair<NodeAtDistanceK, List<Int>> {
     if (this == null) {
         return NotFound to emptyList()
     }
-    if (this.`val` == target) {
+    if (this.value == target) {
         return FoundAtDistance(0) to this.bottomNodesAtDistanceK(K)
     }
     val (leftDistance, leftResult) = left.nodesAtDistanceK(target, K)
@@ -27,7 +27,7 @@ private fun TreeNode?.nodesAtDistanceK(target: Int, K: Int): Pair<NodeAtDistance
         is AllNodesFound -> AllNodesFound to leftResult
         is FoundAtDistance ->
             if (leftDistance + 1 == K) {
-                AllNodesFound to leftResult + this.`val`
+                AllNodesFound to leftResult + this.value
             } else { // At every ancestor, covering all the directions apart from the direction in which the recursion rolled-up (left in this case)
                 FoundAtDistance(leftDistance + 1) to // As coming from left, search Top and right
                         leftResult + right.bottomNodesAtDistanceK(K - (leftDistance + 2))
@@ -38,7 +38,7 @@ private fun TreeNode?.nodesAtDistanceK(target: Int, K: Int): Pair<NodeAtDistance
                 is AllNodesFound -> AllNodesFound to rightResult
                 is FoundAtDistance -> {
                     if (rightDistance + 1 == K) {
-                        AllNodesFound to rightResult + this.`val`
+                        AllNodesFound to rightResult + this.value
                     } else { // At every ancestor, covering all the directions apart from the direction in which the recursion rolled-up (right in this case)
                         FoundAtDistance(rightDistance + 1) to // As coming from right, search Top and left
                                 rightResult + left.bottomNodesAtDistanceK(K - (rightDistance + 2))
@@ -52,7 +52,7 @@ private fun TreeNode?.nodesAtDistanceK(target: Int, K: Int): Pair<NodeAtDistance
 
 private fun TreeNode?.bottomNodesAtDistanceK(K: Int): List<Int> = when {
     this == null -> emptyList()
-    K == 0 -> listOf(this.`val`)
+    K == 0 -> listOf(this.value)
     else -> left.bottomNodesAtDistanceK(K - 1) + right.bottomNodesAtDistanceK(K - 1)
 }
 

@@ -1,7 +1,7 @@
 /* gakshintala created on 2/2/20 */
 package g4g
 
-import ds.TreeNode
+import ds.tree.TreeNode
 
 fun main() {
     val testCases = readLine()!!.toInt()
