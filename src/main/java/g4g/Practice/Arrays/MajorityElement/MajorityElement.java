@@ -31,7 +31,7 @@ public class MajorityElement {
                 count = 1;
             }
         }
-        if (isElementMajority(curEle, arr)) {
+        if (isElementMajority(curEle, arr)) { // As there is a case where no majority element exits, we are verifying.
             System.out.println(curEle);
         } else {
             System.out.println("NO Majority Element");

@@ -10,11 +10,12 @@ fun letterCombinations(digits: String): List<String> {
     return letterCombinationsUtil(digits)
 }
 
-fun letterCombinationsUtil(digits: String, combination: String = "", digitIndex: Int = 0): List<String> {
+private fun letterCombinationsUtil(digits: String, combination: String = "", digitIndex: Int = 0): List<String> =
     if (combination.length == digits.length) {
-        return listOf(combination)
+        listOf(combination)
+    } else {
+        // Every letter in current word starts a branch with next word.
+        DICTIONARY[digits[digitIndex] - '0'].flatMap {
+            letterCombinationsUtil(digits, combination + it, digitIndex + 1)
+        }
     }
-    return DICTIONARY[digits[digitIndex] - '0'].fold(emptyList()) { results, char ->
-        results + letterCombinationsUtil(digits, combination + char, digitIndex + 1)
-    }
-}

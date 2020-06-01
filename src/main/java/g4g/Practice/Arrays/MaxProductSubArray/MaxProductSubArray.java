@@ -24,7 +24,7 @@ public class MaxProductSubArray {
         for (int value : arr) {
             if (value > 0) {
                 curMax *= value;
-                curMin = Math.min(curMin * value, 1);
+                curMin = Math.min(curMin * value, 1); // `Math.min` as curMin might not have got into negative zone
             } else if (value == 0) {
                 curMax = curMin = 1;
             } else {

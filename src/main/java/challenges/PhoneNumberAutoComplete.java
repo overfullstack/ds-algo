@@ -24,8 +24,9 @@ public class PhoneNumberAutoComplete {
         if (numPadDigit == 0 || numPadDigit == 1) {
             getAllPossibleWords(numbers, word, digitIndex + 1);
         }
-        for (var subIndex = 0; subIndex < NUM_PAD[numPadDigit].length(); subIndex++) {
-            word[digitIndex] = NUM_PAD[numPadDigit].charAt(subIndex);
+        final var numPadLetters = NUM_PAD[numPadDigit];
+        for (var subIndex = 0; subIndex < numPadLetters.length(); subIndex++) {
+            word[digitIndex] = numPadLetters.charAt(subIndex);
             getAllPossibleWords(numbers, word, digitIndex + 1);
         }
     }

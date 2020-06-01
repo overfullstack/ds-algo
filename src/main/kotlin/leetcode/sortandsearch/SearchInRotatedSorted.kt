@@ -19,9 +19,9 @@ tailrec fun search(nums: IntArray, target: Int, left: Int = 0, right: Int = nums
         nums[mid] == target -> mid
         nums[left] == target -> left
         nums[right] == target -> right
-        nums[left] <= nums[mid] -> when { // <= indicates left may be same as mid, not the duplicate case.
-            target > nums[left] && target < nums[mid] -> search(nums, target, left, mid - 1) // Is left sorted
-            // if above condition is not true, the element would have slipped through rotation to the right side.
+        nums[left] < nums[mid] -> when { // If left sorted
+            target > nums[left] && target < nums[mid] -> search(nums, target, left, mid - 1) // Is target in left range.
+            // If above condition is not true, the element would have slipped through rotation to the right side.
             else -> search(nums, target, mid + 1, right)
         }
         target < nums[right] && target > nums[mid] -> search(nums, target, mid + 1, right)

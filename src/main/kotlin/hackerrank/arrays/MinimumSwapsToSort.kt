@@ -13,8 +13,8 @@ fun main() {
 fun minSwapsToSort(arr: Array<Int>): Int {
     var swaps = 0
     val valueToIndex = arr.mapIndexed { index, value -> index to value }.toTypedArray()
-    valueToIndex.sortBy { it.second }
-    // Sort array first and try to recreate the original one, noting down all the swaps in-between
+    // *** Sort array first and try to recreate the original one, noting down all the swaps in-between
+    valueToIndex.sortBy { it.second } 
     for (i in valueToIndex.indices) {
         while (valueToIndex[i].first != i) { // Swapping until the original index matches with the current index.
             valueToIndex[i] = // Swapping in a cycle - to original index until it finds a match.

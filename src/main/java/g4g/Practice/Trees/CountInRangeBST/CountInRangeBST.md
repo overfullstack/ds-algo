@@ -12,9 +12,9 @@ Input:
    /       /  \
  1       40   100
 Range: [5, 45]
-Output:  1 
+Output:  1
 There is only 1 node whose subtree is in the given range.
-The node is 40 
+The node is 40
 
 
 Input:
@@ -24,7 +24,7 @@ Input:
    /       /  \
  1       40   100
 Range: [1, 45]
-Output:  3 
+Output:  3
 There are three nodes whose subtree is in the given range.
 The nodes are 1, 5 and 40
 
@@ -32,7 +32,7 @@ Given a Binary Search Tree (BST) and a range, freq the number of nodes in the BS
 
 
 Input (only to be used for Expected Output):
-The first line of the input contains an integer 'T' denoting the nummber of test cases. Then 'T' test cases follow. Each test case consists of three lines. Description of  test cases is as follows:
+The first line of the input contains an integer 'T' denoting the number of test cases. Then 'T' test cases follow. Each test case consists of three lines. Description of  test cases is as follows:
 The First line of each test case contains an integer 'N' which denotes the no of nodes in the BST.   .
 The Second line of each test case contains 'N' space separated values of the nodes in the BST.
 The Third line of each test case contains two space separated integers 'l' and 'h' denoting the range, where l < h

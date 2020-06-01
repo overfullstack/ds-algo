@@ -38,7 +38,7 @@ public class ConnectAtSameLevelForIncompleteTree {
             return;
         }
         // Deal with horizontal right most side (Not tree right) of the tree first, making sure all those have nextRight pointers.
-        // Move in a zig-zag fashion: (root->left) -> (left->nextRight most) -> (root->left)
+        // Move in a zig-zag ⚡️ fashion: (root->left) -> (left->nextRight most) -> (root->left)
         if (root.nextRight != null) {
             connect(root.nextRight);
         }

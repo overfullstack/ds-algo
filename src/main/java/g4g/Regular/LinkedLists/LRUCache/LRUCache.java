@@ -66,7 +66,7 @@ class LRUQueue {
         // Initial state with front and rear are not initialized.
         if (front == null) {
             front = rear = node;
-        } else { // Enqueue in front
+        } else { // Enqueue in front. The linked list grows in reverse direction.
             node.next = front;
             front.prev = node;
             front = node;

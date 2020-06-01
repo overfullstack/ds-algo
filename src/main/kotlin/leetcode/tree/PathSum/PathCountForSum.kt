@@ -3,14 +3,10 @@ package leetcode.tree.PathSum
 
 import ds.tree.TreeNode
 
-private fun pathSum(root: TreeNode?, sum: Int): Int {
-    return root.pathCountForSum(sum, mutableMapOf(), 0)
-}
-
 private fun TreeNode?.pathCountForSum(
     targetSum: Int,
-    sumToPathCount: MutableMap<Int, Int>,
-    runningSum: Int
+    sumToPathCount: MutableMap<Int, Int> = mutableMapOf(),
+    runningSum: Int = 0
 ): Int {
     val curSum = runningSum + (this?.value ?: return 0)
     var totalPathCount = sumToPathCount.getOrDefault(curSum - targetSum, 0) + if (curSum == targetSum) 1 else 0
@@ -21,7 +17,7 @@ private fun TreeNode?.pathCountForSum(
     // Backtraking, removing the path contributed by this node, by decrementing the pathCount for curSum.
     // This makes this hashmap reusable for other paths.
     // We still have our `totalPathCount` safe for this path, which shall be returned up for accumulation.
-    sumToPathCount.computeIfPresent(curSum) { _, pathCount -> if (pathCount > 0) pathCount.dec() else null }
+    sumToPathCount.computeIfPresent(curSum) { _, pathCount -> if (pathCount > 1) pathCount.dec() else null }
     return totalPathCount
 }
 
@@ -31,5 +27,5 @@ fun main() {
         if (arrCsv.trim().isEmpty()) emptyList() else arrCsv.split(",").map { it.trim() }
             .map { if (it == "null") null else it.toInt() }
     val targetSum = readLine()!!.toInt()
-    println(pathSum(TreeNode.levelOrderToCompleteTree(arr), targetSum))
+    println(TreeNode.levelOrderToCompleteTree(arr).pathCountForSum(targetSum))
 }

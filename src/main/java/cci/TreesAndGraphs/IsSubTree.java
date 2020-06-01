@@ -39,9 +39,9 @@ public class IsSubTree {
     private static boolean isAllChildrenSame(TreeNode pt, TreeNode st) {
         if (pt == null && st == null) return true;
 
-        //if(st == null || pt==null) return false; // I guess this is a bug in CCI book
-        if (st != null && pt == null) return false;
-        if (st == null) return true;
+        if(st == null || pt==null) return false; // This is same as below
+        // if (st != null && pt == null) return false;
+        // if (st == null) return true;
 
         if (pt.data != st.data) {
             return false;

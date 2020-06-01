@@ -45,7 +45,8 @@ public class DetectCycleInDirectedGraph {
             }
             // If above check is skipped due to visited, we still have record of hasCycle and we shall check as below.
             // It says a node with hasCycle true is encountered before giving clearance for this dfs traversal
-            // hasCycle is set at the start of DFT for each node,
+            // `visited` is common for all nodes
+            // `hasCycle` is specific for a node as it is reset below. It only holds info about DFT of a particular node.
             // if any hasCycle detected during the traversal of it's neighbors or their children, then cycle detected.
             if (hasCycle[neighbor]) {
                 return true;

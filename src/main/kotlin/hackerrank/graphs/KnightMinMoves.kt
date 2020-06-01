@@ -6,12 +6,8 @@ import java.util.*
 fun knightOnAChessboard(n: Int): Array<Array<Int>> {
     val startCoOrdinates = (1 until n).map { x -> (1 until n).map { y -> Pair(x, y) } }
     return startCoOrdinates.map { pairs ->
-        pairs.map {
-            findMinStepsToReachEnd(
-                it,
-                n
-            )
-        }.toTypedArray()
+        pairs.map { findMinStepsToReachEnd(it, n) }
+        .toTypedArray()
     }.toTypedArray()
 }
 

@@ -4,13 +4,15 @@ import java.util.*
 
 typealias DiGraphNode = Int
 
-data class DiGraph(val adjacencyMap: MutableMap<Int, MutableSet<Int>> = mutableMapOf()) {
+data class DiGraph(private val adjacencyMap: MutableMap<Int, MutableSet<Int>> = mutableMapOf()) {
+
     fun addEdge(source: Int, destination: Int) {
         adjacencyMap.merge(source, mutableSetOf(destination)) { oldSet, _ ->
-            oldSet.add(destination)
-            oldSet
+            oldSet.apply { add(destination) }
         }
     }
+
+    fun getNeighbours(node: DiGraphNode): Set<DiGraphNode>? = adjacencyMap[node]
 
     tailrec fun bfs(
         valToSearch: Int,
@@ -25,7 +27,7 @@ data class DiGraph(val adjacencyMap: MutableMap<Int, MutableSet<Int>> = mutableM
                 true
             } else {
                 visited.add(node)
-                val neighbours = adjacencyMap.get(node)?.filter { !visited.contains(it) } ?: emptySet<Int>()
+                val neighbours = adjacencyMap[node]?.filter { !visited.contains(it) } ?: emptySet()
                 queue.addAll(neighbours)
                 bfs(valToSearch, visited, queue)
             }
@@ -35,33 +37,48 @@ data class DiGraph(val adjacencyMap: MutableMap<Int, MutableSet<Int>> = mutableM
         if (currentNode == valToSearch) {
             true
         } else {
-            visited.add(currentNode)
-            val neighbours = adjacencyMap.get(currentNode)?.filter { !visited.contains(it) }
-            neighbours?.any { dfs(it, valToSearch, visited) } ?: false
+            adjacencyMap[currentNode]?.asSequence()
+                ?.filter { !visited.contains(it) }
+                ?.any { dfs(it, valToSearch, visited.apply { add(it) }) }
+                ?: false
         }
+
+    fun dft(currentNode: DiGraphNode): List<Int> = dftSequence(currentNode).toList()
+
+    private fun dftSequence(currentNode: DiGraphNode, visited: MutableSet<Int> = mutableSetOf(), path: Sequence<Int> = emptySequence()): Sequence<Int> =
+        adjacencyMap[currentNode]?.asSequence()
+            ?.filter { !visited.contains(it) }
+            ?.flatMap { dftSequence(it, visited.apply { add(it) }, path + it) }
+            ?: path
 
     fun hasCycle(): Boolean {
         val visited = mutableSetOf<Int>()
-        return adjacencyMap.keys.filter { !visited.contains(it) }.any { it.hasCycle(visited) }
+        return adjacencyMap.keys.asSequence().filter { !visited.contains(it) }
+            .any { it.hasCycle(visited.apply { add(it) }, setOf(it)) }
     }
 
     private fun DiGraphNode.hasCycle(
         visited: MutableSet<Int>,
-        visitedInBranch: MutableSet<Int> = mutableSetOf()
-    ): Boolean {
-        visited.add(this)
-        visitedInBranch.add(this)
+        visitedInBranch: Set<Int>
+    ): Boolean =
+        adjacencyMap[this]?.asSequence()?.any {
+            (!visited.contains(it)
+                    && it.hasCycle(visited.apply { add(it) }, visitedInBranch + it))
+                    || visitedInBranch.contains(it)
+        } ?: false
 
-        val neighbors = adjacencyMap[this]
-        neighbors?.forEach {
-            if (!visited.contains(it) && it.hasCycle(visited, visitedInBranch)) {
-                return true
-            }
-            if (visitedInBranch.contains(it)) {
-                return true
-            }
-        }
-        visitedInBranch.remove(this)
-        return false
+    fun topologicalSort(): List<Int> {
+        val visited = mutableSetOf<Int>()
+        return adjacencyMap.keys.asSequence().filter { !visited.contains(it) }
+            .flatMap { it.topologicalSort(visited.apply { add(it) }, setOf(it)) + it }.toList()
     }
+
+    private fun DiGraphNode.topologicalSort(visited: MutableSet<Int>, visitedInBranch: Set<Int>): Sequence<Int> =
+        adjacencyMap[this]?.asSequence()?.flatMap {
+            when {
+                !visited.contains(it) -> it.topologicalSort(visited.apply { add(it) }, visitedInBranch + it) + it
+                visitedInBranch.contains(it) -> throw IllegalArgumentException("Graph has Cycle")
+                else -> emptySequence() // All connections are visited.
+            }
+        } ?: emptySequence() // No connections.
 }

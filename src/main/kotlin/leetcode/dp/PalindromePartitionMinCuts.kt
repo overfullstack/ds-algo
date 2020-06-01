@@ -17,8 +17,8 @@ fun minCutsForPalindromePartition(s: String): Int {
                 else s[i] == s[j] && isPalTable[i + 1][j - 1]
             cutsTable[i][j] = // Two tables for DP
                 if (isPalTable[i][j]) 0
-                else (i until j).map { cutsTable[i][it] + 1 + cutsTable[it + 1][j] }.min()
-                    ?: 0 // +1 is the extra cut required for partition two palindromes.
+                // +1 is the extra cut required for partitioning two palindromes.
+                else (i until j).map { cutsTable[i][it] + 1 + cutsTable[it + 1][j] }.min() ?: 0
         }
     }
     return cutsTable[0][s.lastIndex]

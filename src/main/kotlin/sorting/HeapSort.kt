@@ -11,7 +11,6 @@ fun IntArray.heapSort() {
     }
 }
 
-
 fun IntArray.heapify(
     heapSize: Int,
     rootIndex: Int,

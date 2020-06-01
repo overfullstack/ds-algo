@@ -13,10 +13,12 @@ fun medianWithDifferentSize(a: IntArray, b: IntArray): Double {
 
     while (low <= high) {
         // This is more like binary search and has nothing to do with the search item being a median
-        val aPartition = (low + high) / 2 // Driven always by the smaller array `a`. 
-        val bPartition =
-            mergedMid - aPartition // coz (left on a + left on b) is partitioned by (right on a + right on b)  
+        val aPartition = (low + high) / 2 // Driven always by the smaller array `a`.
+        val bPartition = mergedMid - aPartition // (left on a + left on b) | (right on a + right on b)
 
+        // Just values on and left (off by -1) partition with edge cases 0, size.
+        // Partition is not actually a line between two elements,
+        // so it shall be on an element which is treated as being on the right side of | and left is partition-1
         val aLeft = if (aPartition == 0) Int.MIN_VALUE else a[aPartition - 1]
         val aOnPartition = if (aPartition == a.size) Int.MAX_VALUE else a[aPartition]
 
@@ -27,8 +29,8 @@ fun medianWithDifferentSize(a: IntArray, b: IntArray): Double {
         // (0-aLeft) (aOnPartition - end)
         // (0-bLeft) (bOnPartition - end)
         when {
-            aLeft <= bOnPartition && aOnPartition >= bLeft ->
-                return when ((a.size + b.size) % 2) {
+            aLeft <= bOnPartition && aOnPartition >= bLeft -> // Found the right paritition
+                when ((a.size + b.size) % 2) { // is size even or odd
                     // maxOf and minOf to determine who is closest to the merged partition.
                     0 -> (maxOf(aLeft, bLeft) + minOf(aOnPartition, bOnPartition)).toDouble() / 2
 

@@ -1,23 +1,27 @@
 package ds
 
+import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.core.spec.style.StringSpec
-import io.kotest.data.forAll
-import io.kotest.data.row
+import io.kotest.matchers.collections.shouldContainExactly
 import io.kotest.matchers.shouldBe
 
-val diGraph = DiGraph(mutableMapOf(
-    0 to mutableSetOf(1,2,3,4),
-    1 to mutableSetOf(4),
-    2 to mutableSetOf(5),
-))
+val diGraph = DiGraph(
+    mutableMapOf(
+        0 to mutableSetOf(1, 2, 3, 4),
+        1 to mutableSetOf(4),
+        2 to mutableSetOf(5),
+    )
+)
 
-val diGraphWithCycle = DiGraph(mutableMapOf(
-    0 to mutableSetOf(1),
-    1 to mutableSetOf(2),
-    2 to mutableSetOf(0),
-))
+val diGraphWithCycle = DiGraph(
+    mutableMapOf(
+        0 to mutableSetOf(1),
+        1 to mutableSetOf(2),
+        2 to mutableSetOf(0),
+    )
+)
 
-class DiGraphTest: StringSpec({
+class DiGraphTest : StringSpec({
     "bfs" {
         diGraph.bfs(5) shouldBe true
         diGraph.bfs(2) shouldBe true
@@ -30,8 +34,19 @@ class DiGraphTest: StringSpec({
         diGraph.bfs(6) shouldBe false
     }
 
+    "dft" {
+        diGraph.dft(0) shouldContainExactly listOf(0, 1, 4, 2, 5, 3)
+    }
+
     "Digraph has Cycle" {
         diGraph.hasCycle() shouldBe false
         diGraphWithCycle.hasCycle() shouldBe true
+    }
+
+    "Topological sort" {
+        diGraph.topologicalSort() shouldContainExactly listOf(4, 1, 5, 2, 3, 0)
+        shouldThrow<IllegalArgumentException> {
+            diGraphWithCycle.topologicalSort()
+        }
     }
 })

@@ -27,7 +27,7 @@ public class MinPlatforms {
         Arrays.sort(dep);
         // Just like Merge sort
         var len = arr.length;
-        int arrivals = 0, maxArrivals = 1, i = 0, j = 0; // maxArrivals is atleast 1
+        int arrivals = 0, maxArrivals = 1, i = 0, j = 0; // maxArrivals is at-least 1
         while (i < len && j < len) {
             if (arr[i] < dep[j]) {
                 i++;
@@ -39,8 +39,8 @@ public class MinPlatforms {
                 // It's ok, they get neutralized as we encounter arrival times.
             }
         }
-        // No need of this code, cause here the departure time lesser than arrival time is depicted by train leaving 
-        // nextRight day. So we encounter their departures earlier than their arrival in the sorted array.
+        // No need of this code, cause here the departure time lesser than arrival time is depicted by train leaving
+        // next day. So we encounter their departures earlier than their arrival in the sorted array.
         /*if (j == len) {
             maxArrivals += (len - 1 - i);
         }*/

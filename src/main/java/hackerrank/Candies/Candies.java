@@ -26,7 +26,7 @@ public class Candies {
         }
 
         for (var i = childrenCount - 1; i > 0; i--) {
-            if (rating[i] < rating[i - 1])
+            if (rating[i] < rating[i-1])
                 candies[i - 1] = Math.max(candies[i - 1], candies[i] + 1); // This is required at peak points
         }
 

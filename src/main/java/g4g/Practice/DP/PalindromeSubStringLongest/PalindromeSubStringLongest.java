@@ -27,7 +27,7 @@ public class PalindromeSubStringLongest {
                 if (str.charAt(i) == str.charAt(j)) {
                     if (gap == 1) {
                         table[i][j] = true;
-                    } else if (table[i + 1][j - 1]) {
+                    } else if (table[i + 1][j - 1]) { // This is the substring which starts a char after and ends a char before.
                         table[i][j] = true;
                     }
                     // Storing results

@@ -24,7 +24,7 @@ public class MaximumSubArray {
 
     /*public static Subarray findMaximumSubarray2(List<Integer> A) {
         Subarray range = new Subarray(0, 0, 0);
-        int startIndex = 0, sum = 0; 
+        int startIndex = 0, sum = 0;
         int maxSum = 0, minSum = 0;
         for (int i = 0; i < A.size(); ++i) {
             sum += A.get(i);
@@ -45,7 +45,9 @@ public class MaximumSubArray {
         int sum = 0, startIndex = 0, maxSum = 0;
         for (var i = 0; i < arr.size(); i++) {
             sum += arr.get(i);
-            if (sum < 0) { // Nullifying the Negative portion of sum by making it 0
+            // Only a bigger negative, can nullify the sum that was accumulated till now. It essentially is an indication for end of this chain
+            // If current negative hasn't made the sum negative, the sum survives until a big positive bumps up its value.
+            if (sum < 0) {
                 sum = 0;
                 startIndex = i + 1;
             } else if (sum > maxSum) {

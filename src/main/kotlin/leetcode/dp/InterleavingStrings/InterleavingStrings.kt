@@ -9,13 +9,13 @@ fun interLeavingStrings(str1: String, str2: String, str3: String): Boolean {
 
     table[0] = true
     for (i in 1..table.lastIndex) {
-        table[0] = table[0] && str3[i - 1] == str1[i - 1] // for first column.
+        table[0] = table[0] && str3[i - 1] == str1[i - 1] // Analogous to first column in 1D, accumulating into index `0`.
     }
     for (j in 1..table.lastIndex) {
         table[j] = table[j - 1] && str3[j - 1] == str2[j - 1]
     }
 
-    for (i in 1..str1.length) {
+    for (i in 1..str1.length) { // Taking both strings partially
         for (j in 1..str2.length) {
             // Excluding char from str2, If u imagine a 2D array, `table[j]` indicates we are in the same column and previous row.
             val includeCharFromStr1 = table[j] && str3[i + j - 1] == str1[i - 1]

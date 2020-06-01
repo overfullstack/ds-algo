@@ -25,7 +25,7 @@ private fun wordBreakDp(s: String, wordDict: List<String>): Boolean {
 
 private fun wordBreakOptimized(word: String, wordDict: List<String>): Boolean {
     val wordDictSet = wordDict.toSet()
-    return word.indices.fold(listOf(-1)) { wordEndIndices, index ->
+    return word.indices.fold(listOf(-1)) { wordEndIndices, index -> // Checked with all end indices, including -1.
         if (wordEndIndices.any { prevWordEndIndex -> wordDictSet.contains(word.substring(prevWordEndIndex + 1..index)) }) {
             wordEndIndices + index
         } else {

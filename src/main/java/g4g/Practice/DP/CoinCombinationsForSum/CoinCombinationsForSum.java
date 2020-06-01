@@ -23,7 +23,7 @@ public class CoinCombinationsForSum {
         // For every coin, loop through all the sums
         for (var coin : coins) {
             // If you include this coin, minimum sum you make starts from that coin
-            for (var j = coin; j <= sum; j++) {
+            for (var j = coin; j <= sum; j++) { // Only coins <= sum allowed
                 table[j] += table[j - coin]; // including the coin
             }
         }

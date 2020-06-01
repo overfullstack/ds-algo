@@ -1,10 +1,10 @@
 /* gakshintala created on 12/27/19 */
 package leetcode.backtracking
 
-import ds.Trie
+import ds.TrieNode
 
 fun findWords(board: Array<CharArray>, words: Array<String>): List<String> {
-    val trie = Trie().also { words.toSet().forEach { word -> it.insert(word) } }
+    val trie = TrieNode().also { words.toSet().forEach { word -> it.insert(word) } }
     return board.indices.fold(emptyList()) { results, row ->
         results + board[0].indices.flatMap { col ->
             (trie.children[board[row][col] - 'a']?.let {
@@ -23,11 +23,11 @@ private val directions = listOf(0 to 1, 0 to -1, 1 to 0, -1 to 0)
 
 private fun findWords(
     board: Array<CharArray>,
-    trie: Trie?,
+    trieNode: TrieNode?,
     gridPoint: Pair<Int, Int>,
     visited: Array<BooleanArray> = Array(board.size) { BooleanArray(board[0].size) }
 ): Set<String> {
-    if (trie == null || !gridPoint.isValid(board, visited)) {
+    if (trieNode == null || !gridPoint.isValid(board, visited)) {
         return emptySet()
     }
 
@@ -36,10 +36,10 @@ private fun findWords(
     return directions
         .map { (gridPoint.first + it.first) to (gridPoint.second + it.second) }
         .filter { it.isValid(board, visited) }
-        .fold(if (trie.isEnd) setOf(trie.word) else emptySet()) { wordsFound, nextGridPoint ->
+        .fold(if (trieNode.isEnd) setOf(trieNode.word) else emptySet()) { wordsFound, nextGridPoint ->
             wordsFound + findWords(
                 board,
-                trie.children[board[nextGridPoint.first][nextGridPoint.second] - 'a'],
+                trieNode.children[board[nextGridPoint.first][nextGridPoint.second] - 'a'],
                 nextGridPoint,
                 visited
             )

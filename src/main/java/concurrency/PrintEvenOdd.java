@@ -1,8 +1,4 @@
-package concurrency;/*
- * Copyright (c) 2016 - 2017
- * This source code is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License.
- */
-
+package concurrency;
 /**
  * Created by Gopala Akshintala on 5/20/17.
  */
@@ -19,9 +15,9 @@ public class PrintEvenOdd {
 
 // This is common code for both threads. You could instead have two different thread classes for even and odd.
 class MyThread extends Thread {
-    private boolean isEven; // Switch-1, this is constant for a Thread, used to initialize first number to 2 or 1, then increment +=2
-    private SharedPrinter sharedPrinter;
-    private int max;
+    private final boolean isEven; // Switch-1, this is constant for a Thread, used to initialize first number to 2 or 1, then increment +=2
+    private final SharedPrinter sharedPrinter;
+    private final int max;
 
     MyThread(boolean isEven, SharedPrinter sharedPrinter, int max) {
         this.isEven = isEven;
@@ -32,7 +28,7 @@ class MyThread extends Thread {
     @Override
     public void run() {
         var num = isEven ? 2 : 1;
-        while (num <= max) { // The idea is to prevent this loop to run only once per thread invocation and go on wait state.
+        while (num <= max) { // In a thread only if or else is always called.
             if (isEven) {
                 sharedPrinter.printEven(num);
             } else {

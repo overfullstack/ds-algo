@@ -3,15 +3,21 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 plugins {
     kotlin("jvm") version "1.4-M1"
     id("com.adarshr.test-logger") version "2.0.0"
+    id("io.gitlab.arturbosch.detekt") version "1.7.4"
     idea
 }
 
 group = "com.gakshintala.ds-algo"
 version = "1.0-SNAPSHOT"
 
+/*configurations.all {
+    resolutionStrategy.cacheChangingModulesFor(0, "seconds")
+}*/
+
 repositories {
     jcenter()
     maven("https://dl.bintray.com/kotlin/kotlin-eap")
+    maven("https://oss.sonatype.org/content/repositories/snapshots/")
 }
 
 dependencies {
@@ -24,9 +30,10 @@ dependencies {
 
     testImplementation("org.junit.jupiter:junit-jupiter-api:+")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:+")
-    //testImplementation("org.amshove.kluent:kluent:+")
-    testImplementation("io.kotest:kotest-runner-junit5-jvm:+") // for kotest framework
-    testImplementation("io.kotest:kotest-assertions-core-jvm:+") // for kotest core jvm assertions
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:+")
+    listOf("runner-junit5", "assertions-core", "runner-console").forEach {
+        testImplementation("io.kotest:kotest-$it-jvm:latest.integration")
+    }
 }
 
 java {
@@ -45,6 +52,7 @@ tasks.withType<KotlinCompile> {
 }
 
 tasks.withType<Test> {
+    ignoreFailures = true
     useJUnitPlatform {
         excludeEngines("junit-vintage")
     }

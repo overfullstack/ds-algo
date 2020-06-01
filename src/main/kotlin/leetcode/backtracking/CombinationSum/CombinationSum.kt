@@ -1,31 +1,25 @@
 /* gakshintala created on 12/7/19 */
 package leetcode.backtracking.CombinationSum
 
-private fun combinationSum(
+fun combinationSum(
     arr: IntArray,
     sumLeft: Int,
     startIndex: Int = 0,
     combination: List<Int> = emptyList()
-): List<List<Int>> {
-    if (sumLeft < 0) {
-        return emptyList()
-    }
-    if (sumLeft == 0) {
-        return listOf(combination)
-    }
-    return (startIndex..arr.lastIndex).fold(emptyList()) { results, index ->
-        results + combinationSum(
+): List<List<Int>> =
+    when {
+        sumLeft < 0 -> emptyList()
+        sumLeft == 0 -> listOf(combination)
+        else -> (startIndex..arr.lastIndex).flatMap { combinationSum(
             arr,
-            sumLeft - arr[index],
-            index, // passing same `index` instead of `index+1`, as problem allows repetition.
-            combination + arr[index]
-        )
+            sumLeft - arr[it],
+            it, // passing same `index` instead of `index+1`, as problem allows repetition.
+            combination + arr[it]
+        )}
     }
-}
 
 fun main() {
     val candidates = readLine()!!.split(",").map { it.trim().toInt() }
-        .sorted().toIntArray() // **** Sort the array before calling. Sorting is to keep all duplicates together ****
     val target = readLine()!!.toInt()
-    combinationSum(candidates, target).forEach(::println)
-} 
+    combinationSum(candidates.toIntArray(), target).forEach(::println)
+}

@@ -21,7 +21,7 @@ public class BottomViewTree {
         constructBottomView(root, map, 0, 0);
         map.entrySet().stream()
                 .sorted(Map.Entry.comparingByKey())
-                .forEachOrdered(entry -> System.out.print(entry.getValue().val + " "));
+                .forEach(entry -> System.out.print(entry.getValue().val + " "));
     }
 
     private static void constructBottomView(TreeNode root, Map<Integer, TreeNode> map, int horizontalDistance, int height) {
@@ -38,5 +38,3 @@ public class BottomViewTree {
         constructBottomView(root.right, map, horizontalDistance + 1, height + 1);
     }
 }
-
-

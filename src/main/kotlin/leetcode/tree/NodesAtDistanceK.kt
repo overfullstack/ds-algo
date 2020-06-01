@@ -34,7 +34,7 @@ private fun TreeNode?.nodesAtDistanceK(target: Int, K: Int): Pair<NodeAtDistance
             }
         else -> {
             val (rightDistance, rightResult) = right.nodesAtDistanceK(target, K)
-            return when (rightDistance) {
+            when (rightDistance) {
                 is AllNodesFound -> AllNodesFound to rightResult
                 is FoundAtDistance -> {
                     if (rightDistance + 1 == K) {
@@ -55,5 +55,3 @@ private fun TreeNode?.bottomNodesAtDistanceK(K: Int): List<Int> = when {
     K == 0 -> listOf(this.value)
     else -> left.bottomNodesAtDistanceK(K - 1) + right.bottomNodesAtDistanceK(K - 1)
 }
-
-

@@ -7,7 +7,7 @@ class StockSpan {
     private val stk = Stack<Pair<Int, Int>>()
 
     fun next(price: Int): Int {
-        var span = 0
+        var span = 0 // made 0 every time
         while (stk.isNotEmpty() && price >= stk.peek().first) {
             span += stk.pop().second
         }

@@ -12,10 +12,9 @@ fun uniquePathsWithObstacles(obstacleGrid: Array<IntArray>): Int {
 
     for (i in 1 until rows) {
         for (j in 1 until cols) {
-            if (obstacleGrid[i][j] == 1) {
-                continue
+            if (obstacleGrid[i][j] != 1) {
+                table[i][j] = table[i - 1][j] + table[i][j - 1]
             }
-            table[i][j] = table[i - 1][j] + table[i][j - 1]
         }
     }
     return table[rows - 1][cols - 1]

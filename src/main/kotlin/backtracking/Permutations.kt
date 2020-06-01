@@ -15,24 +15,34 @@ fun printPermutations(str: String, permutation: String, used: BooleanArray) {
     }
 }
 
+fun main() {
+    printPermutations("abc", "", BooleanArray(3))
+}
+
 fun permute(
     nums: IntArray,
     permutation: List<Int> = emptyList(),
     used: BooleanArray = BooleanArray(nums.size)
-): List<List<Int>> {
+): List<List<Int>> =
     if (permutation.size == nums.size) {
-        return listOf(permutation)
-    }
-    return nums.foldIndexed(emptyList()) { index, results, num ->
-        results + if (!used[index]) {
-            used[index] = true
-            permute(nums, permutation + num, used).also { used[index] = false }
-        } else {
-            emptyList()
+        listOf(permutation)
+    } else {
+        nums.indices.filter { !used[it] }.flatMap { unusedIndex ->
+            used[unusedIndex] = true
+            permute(nums, permutation + nums[unusedIndex], used).also { used[unusedIndex] = false }
         }
     }
-}
 
-fun main() {
-    printPermutations("abc", "", BooleanArray(3))
-}
+fun permuteWithDups(
+    nums: IntArray,
+    freqMap: MutableMap<Int, Int> = nums.groupBy { it }.mapValues { it.value.size }.toMutableMap(),
+    permutation: List<Int> = emptyList(),
+): List<List<Int>> =
+    if (permutation.size == nums.size) {
+        listOf(permutation)
+    } else {
+        freqMap.keys.toList().flatMap { num ->
+            freqMap.compute(num) { _, freq -> if (freq == 1) null else freq?.dec() }
+            permuteWithDups(nums, freqMap, permutation + num).also { freqMap.merge(num, 1) { old, _ -> old.inc() } }
+        }
+    }

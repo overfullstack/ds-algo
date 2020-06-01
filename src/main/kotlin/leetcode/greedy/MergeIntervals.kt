@@ -5,12 +5,12 @@ fun mergeIntervals(intervals: List<Pair<Int, Int>>): List<Pair<Int, Int>> {
     val sortedIntervals = intervals.sortedBy { it.first }
     val mergedIntervals = mutableListOf<Pair<Int, Int>>()
 
-    return mergedIntervals + sortedIntervals.reduce { mergedInterval, curInterval ->
+    return mergedIntervals + sortedIntervals.reduce { mergedInterval, curInterval -> // aggregate (to previous) or replace (with current)
         if (curInterval.first <= mergedInterval.second) {
-            mergedInterval.first to maxOf(curInterval.second, mergedInterval.second)
+            mergedInterval.first to maxOf(curInterval.second, mergedInterval.second) // aggregate an interval.
         } else {
             mergedIntervals += mergedInterval
-            curInterval
+            curInterval // repalce prev aggergate with current interval.
         }
     }
 }

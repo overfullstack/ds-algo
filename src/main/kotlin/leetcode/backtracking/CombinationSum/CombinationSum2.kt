@@ -1,31 +1,26 @@
 /* gakshintala created on 12/7/19 */
 package leetcode.backtracking.CombinationSum
 
-private fun combinationSum2(
+// **** Sort the array before calling. Sorting is to keep all duplicates together ****
+fun combinationSum2(arr: IntArray, targetSum: Int): List<IntArray> = combinationSum2(arr.sorted(), targetSum)
+
+fun combinationSum2(
     arr: List<Int>,
     sumLeft: Int,
     startIndex: Int = 0,
     combination: IntArray = IntArray(0)
-): List<IntArray> {
-    if (sumLeft < 0) {
-        return emptyList()
-    }
-    if (sumLeft == 0) {
-        return listOf(combination)
-    }
-    return (startIndex..arr.lastIndex).fold(emptyList()) { results, index ->
-        // As this is ***sorted***, all duplicates appear next to each other. For every index, allow the first one and skip all the following duplicates.
-        results + if (index == startIndex || arr[index] != arr[index - 1]) {
-            combinationSum2(arr, sumLeft - arr[index], index + 1, combination + arr[index])
-        } else {
-            emptyList()
+): List<IntArray> =
+    when {
+        sumLeft < 0 -> emptyList()
+        sumLeft == 0 -> listOf(combination)
+        else -> (startIndex..arr.lastIndex).filter { it == startIndex || arr[it] != arr[it - 1] }.flatMap {
+            combinationSum2(arr, sumLeft - arr[it], it + 1, combination + arr[it])
         }
     }
-}
 
 fun main() {
     val candidates = readLine()!!.split(",").map { it.trim().toInt() }
         .sorted() // **** Sort the array before calling. Sorting is to keep all duplicates together ****
     val target = readLine()!!.toInt()
     combinationSum2(candidates, target).forEach { println(it.joinToString(",")) }
-} 
+}
