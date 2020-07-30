@@ -11,7 +11,6 @@ fun main() {
         parentArr.indices.forEach {
             constructTree(it, parentArr)
         }
-
     }
 }
 

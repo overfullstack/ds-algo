@@ -5,7 +5,7 @@ import io.kotest.data.forAll
 import io.kotest.data.row
 import io.kotest.matchers.shouldBe
 
-class TripleStepTest: StringSpec({
+class TripleStepTest : StringSpec({
     "Triple Step" {
         forAll(
             row(0, 1),

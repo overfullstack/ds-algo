@@ -39,9 +39,9 @@ public class MedianOf2ArraysSameSize {
             return m1;
         }
 
-        if (m1 > m2) { // arr1 has bigger elements, balance it out by talking left of arr1 and right of arr2 
+        if (m1 > m2) { // arr1 has bigger elements, balance it out by talking left of arr1 and right of arr2
             if (len % 2 == 0) {
-                return medianOf2Arrays(Arrays.copyOfRange(arr1, 0, len / 2 + 1), Arrays.copyOfRange(arr2, len / 2 - 1, len));
+                return medianOf2Arrays(Arrays.copyOfRange(arr1, 0, len / 2 + 1), Arrays.copyOfRange(arr2, len / 2 - 1, len)); // Adding extra elements len + 1, len - 1
             }
             return medianOf2Arrays(Arrays.copyOfRange(arr1, 0, len / 2), Arrays.copyOfRange(arr2, len / 2, len));
         } else {
@@ -54,12 +54,12 @@ public class MedianOf2ArraysSameSize {
     }
 
     private static int medianOfArray(int[] arr) {
-        var len = arr.length;
+        var len = arr.length; // length instead of length - 1, left shall hv extra element if even.
         var mid = len / 2;
         if (len % 2 == 1) {
             return arr[mid];
         } else {
-            return (arr[mid] + arr[mid - 1]) / 2;
+            return (arr[mid] + arr[mid - 1]) / 2; // mid-1 as left has extra element.
         }
     }
 

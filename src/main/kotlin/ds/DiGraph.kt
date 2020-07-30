@@ -27,7 +27,7 @@ data class DiGraph(private val adjacencyMap: MutableMap<Int, MutableSet<Int>> = 
                 true
             } else {
                 visited.add(node)
-                val neighbours = adjacencyMap[node]?.filter { !visited.contains(it) } ?: emptySet()
+                val neighbours = adjacencyMap[node]?.filter { it !in visited } ?: emptySet()
                 queue.addAll(neighbours)
                 bfs(valToSearch, visited, queue)
             }
@@ -38,22 +38,35 @@ data class DiGraph(private val adjacencyMap: MutableMap<Int, MutableSet<Int>> = 
             true
         } else {
             adjacencyMap[currentNode]?.asSequence()
-                ?.filter { !visited.contains(it) }
+                ?.filter { it !in visited }
                 ?.any { dfs(it, valToSearch, visited.apply { add(it) }) }
                 ?: false
         }
 
-    fun dft(currentNode: DiGraphNode): List<Int> = dftSequence(currentNode).toList()
+    /** -> DFT */
 
-    private fun dftSequence(currentNode: DiGraphNode, visited: MutableSet<Int> = mutableSetOf(), path: Sequence<Int> = emptySequence()): Sequence<Int> =
-        adjacencyMap[currentNode]?.asSequence()
-            ?.filter { !visited.contains(it) }
-            ?.flatMap { dftSequence(it, visited.apply { add(it) }, path + it) }
+    fun dft(): List<Int> {
+        val visited = mutableSetOf<Int>() // * Global Visited, as no need to backtrack.
+        return adjacencyMap.keys.asSequence().filter { it !in visited }
+            .flatMap { sequenceOf(it) + it.dft(visited.apply { add(it) }) }.toList()
+    }
+
+    private fun DiGraphNode.dft(
+        visited: MutableSet<Int> = mutableSetOf(),
+        path: Sequence<Int> = emptySequence()
+    ): Sequence<Int> =
+        adjacencyMap[this]?.asSequence()
+            ?.filter { it !in visited }
+            ?.flatMap { it.dft(visited.apply { add(it) }, path + it) }
             ?: path
+
+    /** DFT <- */
+
+    /** -> DETECT CYCLE */
 
     fun hasCycle(): Boolean {
         val visited = mutableSetOf<Int>()
-        return adjacencyMap.keys.asSequence().filter { !visited.contains(it) }
+        return adjacencyMap.keys.asSequence().filter { it !in visited }
             .any { it.hasCycle(visited.apply { add(it) }, setOf(it)) }
     }
 
@@ -62,23 +75,30 @@ data class DiGraph(private val adjacencyMap: MutableMap<Int, MutableSet<Int>> = 
         visitedInBranch: Set<Int>
     ): Boolean =
         adjacencyMap[this]?.asSequence()?.any {
-            (!visited.contains(it)
-                    && it.hasCycle(visited.apply { add(it) }, visitedInBranch + it))
-                    || visitedInBranch.contains(it)
+            (it !in visited &&
+                    it.hasCycle(visited.apply { add(it) }, visitedInBranch + it)) ||
+                    visitedInBranch.contains(it)
         } ?: false
+
+    /** DETECT CYCLE -> */
+
+    /** -> TOPOLOGICAL SORT with Cycle Detection */
 
     fun topologicalSort(): List<Int> {
         val visited = mutableSetOf<Int>()
-        return adjacencyMap.keys.asSequence().filter { !visited.contains(it) }
+        return adjacencyMap.keys.asSequence().filter { it !in visited }
             .flatMap { it.topologicalSort(visited.apply { add(it) }, setOf(it)) + it }.toList()
     }
 
     private fun DiGraphNode.topologicalSort(visited: MutableSet<Int>, visitedInBranch: Set<Int>): Sequence<Int> =
         adjacencyMap[this]?.asSequence()?.flatMap {
             when {
-                !visited.contains(it) -> it.topologicalSort(visited.apply { add(it) }, visitedInBranch + it) + it
-                visitedInBranch.contains(it) -> throw IllegalArgumentException("Graph has Cycle")
-                else -> emptySequence() // All connections are visited.
+                // `visited.apply { add(it) }` coz we need to retain it across recursions. `visitedInBranch + it` no need to retain.
+                it !in visited -> it.topologicalSort(visited.apply { add(it) }, visitedInBranch + it) + it
+                it in visitedInBranch -> throw IllegalArgumentException("Graph has Cycle")
+                else -> emptySequence() // This node is visited so can't contribute to any sequence.
             }
         } ?: emptySequence() // No connections.
+
+    /** TOPOLOGICAL SORT with Cycle Detection -> */
 }

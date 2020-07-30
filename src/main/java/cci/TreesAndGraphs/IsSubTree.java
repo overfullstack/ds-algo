@@ -39,7 +39,7 @@ public class IsSubTree {
     private static boolean isAllChildrenSame(TreeNode pt, TreeNode st) {
         if (pt == null && st == null) return true;
 
-        if(st == null || pt==null) return false; // This is same as below
+        if (st == null || pt == null) return false; // This is same as below
         // if (st != null && pt == null) return false;
         // if (st == null) return true;
 

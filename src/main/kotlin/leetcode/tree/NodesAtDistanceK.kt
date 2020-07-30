@@ -13,35 +13,37 @@ sealed class NodeAtDistanceK {
 }
 
 fun distanceK(root: TreeNode?, target: TreeNode?, K: Int) =
-    if (target == null) emptyList() else root.nodesAtDistanceK(target.value, K).second
+    if (target == null) emptyList() else root.nodesAtDistanceK(target.`val`, K).second
 
 private fun TreeNode?.nodesAtDistanceK(target: Int, K: Int): Pair<NodeAtDistanceK, List<Int>> {
     if (this == null) {
         return NotFound to emptyList()
     }
-    if (this.value == target) {
+    if (this.`val` == target) {
+        // * When found, return along with all bottom-nodes, so bottom direction is covered.
         return FoundAtDistance(0) to this.bottomNodesAtDistanceK(K)
     }
-    val (leftDistance, leftResult) = left.nodesAtDistanceK(target, K)
-    return when (leftDistance) {
+    val (leftStatus, leftResult) = left.nodesAtDistanceK(target, K)
+
+    return when (leftStatus) {
         is AllNodesFound -> AllNodesFound to leftResult
         is FoundAtDistance ->
-            if (leftDistance + 1 == K) {
-                AllNodesFound to leftResult + this.value
+            if (leftStatus + 1 == K) {
+                AllNodesFound to leftResult + this.`val`
             } else { // At every ancestor, covering all the directions apart from the direction in which the recursion rolled-up (left in this case)
-                FoundAtDistance(leftDistance + 1) to // As coming from left, search Top and right
-                        leftResult + right.bottomNodesAtDistanceK(K - (leftDistance + 2))
+                FoundAtDistance(leftStatus + 1) to // As coming from left, search Top and right
+                        leftResult + right.bottomNodesAtDistanceK(K - (leftStatus + 2))
             }
         else -> {
-            val (rightDistance, rightResult) = right.nodesAtDistanceK(target, K)
-            when (rightDistance) {
+            val (rightStatus, rightResult) = right.nodesAtDistanceK(target, K)
+            when (rightStatus) {
                 is AllNodesFound -> AllNodesFound to rightResult
                 is FoundAtDistance -> {
-                    if (rightDistance + 1 == K) {
-                        AllNodesFound to rightResult + this.value
+                    if (rightStatus + 1 == K) {
+                        AllNodesFound to rightResult + this.`val`
                     } else { // At every ancestor, covering all the directions apart from the direction in which the recursion rolled-up (right in this case)
-                        FoundAtDistance(rightDistance + 1) to // As coming from right, search Top and left
-                                rightResult + left.bottomNodesAtDistanceK(K - (rightDistance + 2))
+                        FoundAtDistance(rightStatus + 1) to // As coming from right, search Top and left
+                                rightResult + left.bottomNodesAtDistanceK(K - (rightStatus + 2))
                     }
                 }
                 else -> NotFound to emptyList()
@@ -52,6 +54,6 @@ private fun TreeNode?.nodesAtDistanceK(target: Int, K: Int): Pair<NodeAtDistance
 
 private fun TreeNode?.bottomNodesAtDistanceK(K: Int): List<Int> = when {
     this == null -> emptyList()
-    K == 0 -> listOf(this.value)
+    K == 0 -> listOf(this.`val`)
     else -> left.bottomNodesAtDistanceK(K - 1) + right.bottomNodesAtDistanceK(K - 1)
 }

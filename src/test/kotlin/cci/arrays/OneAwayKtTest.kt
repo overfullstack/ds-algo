@@ -6,7 +6,7 @@ import io.kotest.data.row
 import io.kotest.matchers.shouldBe
 
 
-class OneAwayKtTest: StringSpec({
+class OneAwayKtTest : StringSpec({
     "one way Test" {
         forAll(
             row("", "", true),

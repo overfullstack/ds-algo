@@ -1,10 +1,10 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-    kotlin("jvm") version "1.4-M1"
-    id("com.adarshr.test-logger") version "2.0.0"
-    id("io.gitlab.arturbosch.detekt") version "1.7.4"
-    idea
+    kotlin("jvm")
+    id("com.adarshr.test-logger") version "2.1.0"
+    id("io.gitlab.arturbosch.detekt") version "1.10.0"
+    application
 }
 
 group = "com.gakshintala.ds-algo"
@@ -17,7 +17,7 @@ version = "1.0-SNAPSHOT"
 repositories {
     jcenter()
     maven("https://dl.bintray.com/kotlin/kotlin-eap")
-    maven("https://oss.sonatype.org/content/repositories/snapshots/")
+    maven("https://dl.bintray.com/kotlin/kotlin-dev")
 }
 
 dependencies {
@@ -31,7 +31,8 @@ dependencies {
     testImplementation("org.junit.jupiter:junit-jupiter-api:+")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:+")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:+")
-    listOf("runner-junit5", "assertions-core", "runner-console").forEach {
+
+    listOf("runner-junit5", "assertions-core", "runner-console", "property").forEach {
         testImplementation("io.kotest:kotest-$it-jvm:latest.integration")
     }
 }
@@ -46,7 +47,7 @@ tasks.withType<JavaCompile> {
 
 tasks.withType<KotlinCompile> {
     kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_13.toString()
+        jvmTarget = JavaVersion.VERSION_14.toString()
         freeCompilerArgs = listOf("-Xjsr305=strict", "-Xjvm-default=enable")
     }
 }
@@ -61,18 +62,18 @@ tasks.withType<Test> {
 
 testlogger {
     setTheme("mocha")
-    showExceptions=true
-    showStackTraces=true
-    showFullStackTraces=false
-    showCauses=true
-    slowThreshold=2000
-    showSummary=true
-    showSimpleNames=true
-    showPassed=true
-    showSkipped=true
-    showFailed=true
-    showStandardStreams=true
-    showPassedStandardStreams=true
-    showSkippedStandardStreams=true
-    showFailedStandardStreams=true
+    showExceptions = true
+    showStackTraces = true
+    showFullStackTraces = true
+    showCauses = true
+    slowThreshold = 2000
+    showSummary = true
+    showSimpleNames = true
+    showPassed = true
+    showSkipped = true
+    showFailed = true
+    showStandardStreams = true
+    showPassedStandardStreams = true
+    showSkippedStandardStreams = true
+    showFailedStandardStreams = true
 }

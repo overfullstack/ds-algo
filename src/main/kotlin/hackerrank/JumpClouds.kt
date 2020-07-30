@@ -9,10 +9,10 @@ fun jumpingOnClouds(c: Array<Int>): Int {
     jumpTable[0] = 0
     jumpTable[1] = if (c[1] == 1) Int.MAX_VALUE else 1
 
-    for (i in 2 until jumpTable.size) {
+    for (i in 2..jumpTable.lastIndex) {
         jumpTable[i] = if (c[i] == 1) Int.MAX_VALUE else minOf(jumpTable[i - 1], jumpTable[i - 2]) + 1
     }
-    return jumpTable[jumpTable.size - 1]
+    return jumpTable[jumpTable.lastIndex]
 }
 
 fun main() {

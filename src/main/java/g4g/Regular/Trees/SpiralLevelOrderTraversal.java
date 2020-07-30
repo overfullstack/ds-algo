@@ -22,8 +22,8 @@ public class SpiralLevelOrderTraversal {
     }
 
     private static void printInSpiral(TreeNode root) {
-        Stack<TreeNode> s1 = new Stack();
-        Stack<TreeNode> s2 = new Stack();
+        var s1 = new Stack<TreeNode>();
+        var s2 = new Stack<TreeNode>();
 
         s1.add(root);
         System.out.println(root);

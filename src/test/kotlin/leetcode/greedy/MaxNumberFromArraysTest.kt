@@ -2,10 +2,10 @@ package leetcode.greedy
 
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.data.forAll
-import io.kotest.matchers.shouldBe
 import io.kotest.data.row
+import io.kotest.matchers.shouldBe
 
-class MaxNumberFromArraysTest: StringSpec({
+class MaxNumberFromArraysTest : StringSpec({
     "Max Number from arrays" {
         forAll(
             row(intArrayOf(3, 4, 6, 5), intArrayOf(9, 1, 2, 5, 8, 3), 5, intArrayOf(9, 8, 6, 5, 3)),

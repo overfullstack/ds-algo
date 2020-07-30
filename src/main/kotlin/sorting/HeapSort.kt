@@ -26,7 +26,7 @@ fun IntArray.heapify(
         heapIndex = rightIndex
     }
 
-    if (heapIndex != rootIndex) {
+    if (heapIndex != rootIndex) { // Observe we use index to swap.
         this[heapIndex] = this[rootIndex].also { this[rootIndex] = this[heapIndex] }
         heapify(heapSize, heapIndex)
     }

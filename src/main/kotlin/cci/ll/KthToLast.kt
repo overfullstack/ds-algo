@@ -13,5 +13,5 @@ fun SLLNode.getKthToLast(k: Int): SLLNode? {
             kPtr = kPtr.next!!
         }
         ptr
-     }
+    }
 }

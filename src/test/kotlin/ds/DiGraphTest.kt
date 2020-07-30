@@ -35,7 +35,7 @@ class DiGraphTest : StringSpec({
     }
 
     "dft" {
-        diGraph.dft(0) shouldContainExactly listOf(0, 1, 4, 2, 5, 3)
+        diGraph.dft() shouldContainExactly listOf(0, 1, 4, 2, 5, 3)
     }
 
     "Digraph has Cycle" {

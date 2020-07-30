@@ -10,12 +10,14 @@ fun combinationSum(
     when {
         sumLeft < 0 -> emptyList()
         sumLeft == 0 -> listOf(combination)
-        else -> (startIndex..arr.lastIndex).flatMap { combinationSum(
-            arr,
-            sumLeft - arr[it],
-            it, // passing same `index` instead of `index+1`, as problem allows repetition.
-            combination + arr[it]
-        )}
+        else -> (startIndex..arr.lastIndex).flatMap {
+            combinationSum(
+                arr,
+                sumLeft - arr[it],
+                it, // passing same `index` instead of `index+1`, as problem allows repetition.
+                combination + arr[it]
+            )
+        }
     }
 
 fun main() {

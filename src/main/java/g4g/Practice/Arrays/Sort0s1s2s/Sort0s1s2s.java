@@ -22,18 +22,16 @@ public class Sort0s1s2s {
 
         while (mid <= high) { // <= high because even the high needs to be checked in cases without 2 like 0010
             switch (arr[mid]) {
-                case 0:
+                case 0 -> {
                     swap(low, mid, arr);
                     low++;
                     mid++;
-                    break;
-                case 1:
-                    mid++;
-                    break;
-                case 2: // notice mid++ is not done, as the value swapped needs to checked again
+                }
+                case 1 -> mid++;
+                case 2 -> {// notice mid++ is not done, as the value swapped from high needs to checked again
                     swap(mid, high, arr);
                     high--;
-                    break;
+                }
             }
         }
         return arr;

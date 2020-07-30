@@ -15,7 +15,8 @@ private fun letterCombinationsUtil(digits: String, combination: String = "", dig
         listOf(combination)
     } else {
         // Every letter in current word starts a branch with next word.
-        DICTIONARY[digits[digitIndex] - '0'].flatMap {
+        val lettersOnButton = DICTIONARY[digits[digitIndex] - '0']
+        lettersOnButton.flatMap {
             letterCombinationsUtil(digits, combination + it, digitIndex + 1)
         }
     }

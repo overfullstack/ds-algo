@@ -2,7 +2,7 @@ package searching
 
 fun IntArray.binarySearch(key: Int): Int {
     var left = 0
-    var right = size - 1
+    var right = lastIndex
     while (left < right) {
         val mid = (left + right) / 2
         val compare = this[mid].compareTo(key)

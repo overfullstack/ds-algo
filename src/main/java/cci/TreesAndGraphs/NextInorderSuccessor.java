@@ -28,8 +28,8 @@ public class NextInorderSuccessor {
 
     private static TreeNode findNextInorderSuccessor(TreeNode root) {
         if (root == null) {
-            return null; // Can happen when we run into root parent, in case we are checking successor for rightmost 
-            // node in the tree 
+            return null; // Can happen when we run into root parent, in case we are checking successor for rightmost
+            // node in the tree
         }
         // Normally Inorder successor shall be right node, so emphasis is on checking the right side
         if (root.right != null) {
@@ -51,18 +51,21 @@ public class NextInorderSuccessor {
         return leftMostNode(root.left);
     }
 
+    /**
+     * This only applies to BST.
+     */
     private static TreeNode findNexInorderSuccessorWithoutParent(TreeNode root, TreeNode nodeForSuccessor) {
         if (nodeForSuccessor.right != null) {
             return leftMostNode(nodeForSuccessor.right);
         }
         TreeNode successor = null;
-        while (root != null) {
+        while (root != null) { // Searching from the top, keeping reference to parent
             if (nodeForSuccessor.data < root.data) {
                 successor = root;
                 root = root.left;
-            } else if (nodeForSuccessor.data > root.data) {
+            } else if (nodeForSuccessor.data > root.data) { // Stop updating successor when taking right turn
                 root = root.right;
-            } else {
+            } else { // Found
                 break;
             }
         }

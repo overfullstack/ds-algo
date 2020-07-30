@@ -2,11 +2,4 @@ package cci.ll
 
 import ds.SLLNode
 
-fun SLLNode.deleteMe() {
-    value = next!!.value
-    if (next?.next != null) {
-        next!!.deleteMe()
-    } else {
-        next = null
-    }
-}
+tailrec fun SLLNode.deleteMe(): Unit = if (next?.next == null) next = null else next!!.deleteMe()

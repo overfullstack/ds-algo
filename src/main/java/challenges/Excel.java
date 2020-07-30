@@ -5,19 +5,8 @@ import java.util.Map;
 import java.util.Stack;
 
 class Excel {
-    class Cell {
-        int value;
-        Map<String, Integer> children;
-
-        Cell(int value, Map<String, Integer> children) {
-            this.value = value;
-            this.children = children;
-        }
-    }
-
     private Cell[][] form;
     private Stack<int[]> stack = new Stack<>();
-
     public Excel(int H, char W) {
         form = new Cell[H][W - 'A' + 1];
     }
@@ -47,12 +36,12 @@ class Excel {
     private void topologicalSort(int row, int col) {
         for (int i = 0; i < form.length; i++) {
             for (int j = 0; j < form[0].length; j++) {
-                if (form[i][j] != null && form[i][j].children.containsKey("" + (char)('A' + col) + (row + 1))) {
+                if (form[i][j] != null && form[i][j].children.containsKey("" + (char) ('A' + col) + (row + 1))) {
                     topologicalSort(i, j);
                 }
             }
         }
-        stack.push(new int[]{ row, col });
+        stack.push(new int[]{row, col});
     }
 
     private void sumStack() {
@@ -98,6 +87,16 @@ class Excel {
             }
         }
         return map;
+    }
+
+    class Cell {
+        int value;
+        Map<String, Integer> children;
+
+        Cell(int value, Map<String, Integer> children) {
+            this.value = value;
+            this.children = children;
+        }
     }
 }
 

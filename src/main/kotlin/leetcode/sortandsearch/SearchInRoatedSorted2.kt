@@ -22,7 +22,12 @@ fun searchInRotatedSorted2(nums: IntArray, target: Int, left: Int = 0, right: In
 
         // If mid equals both left and right (2 3 4 2 2 2),
         // search both side, as duplicates may flow through mid, you don't have a way to say which side is filled with duplicates.
-        else -> searchInRotatedSorted2(nums, target, left, mid - 1) || searchInRotatedSorted2(nums, target, mid + 1, right)
+        else -> searchInRotatedSorted2(nums, target, left, mid - 1) || searchInRotatedSorted2(
+            nums,
+            target,
+            mid + 1,
+            right
+        )
         // The worst case - O(n), where all are repeated except the one we are searching.
     }
 }

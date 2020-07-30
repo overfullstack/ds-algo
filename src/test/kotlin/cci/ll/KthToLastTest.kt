@@ -1,12 +1,12 @@
 package cci.ll
 
+import ds.SLLNode
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.data.forAll
 import io.kotest.data.row
 import io.kotest.matchers.shouldBe
-import ds.SLLNode
 
-class KthToLastTest: StringSpec({
+class KthToLastTest : StringSpec({
     "Kth to Last" {
         forAll(
             row(intArrayOf(1, 2, 3, 4), 2, 2),

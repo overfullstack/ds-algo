@@ -8,7 +8,7 @@ private fun TreeNode?.pathCountForSum(
     sumToPathCount: MutableMap<Int, Int> = mutableMapOf(),
     runningSum: Int = 0
 ): Int {
-    val curSum = runningSum + (this?.value ?: return 0)
+    val curSum = runningSum + (this?.`val` ?: return 0)
     var totalPathCount = sumToPathCount.getOrDefault(curSum - targetSum, 0) + if (curSum == targetSum) 1 else 0
 
     sumToPathCount.merge(curSum, 1, Int::plus)
@@ -27,5 +27,5 @@ fun main() {
         if (arrCsv.trim().isEmpty()) emptyList() else arrCsv.split(",").map { it.trim() }
             .map { if (it == "null") null else it.toInt() }
     val targetSum = readLine()!!.toInt()
-    println(TreeNode.levelOrderToCompleteTree(arr).pathCountForSum(targetSum))
+    println(TreeNode.levelOrderToTree(arr).pathCountForSum(targetSum))
 }

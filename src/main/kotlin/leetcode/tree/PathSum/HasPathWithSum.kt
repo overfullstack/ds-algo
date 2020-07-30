@@ -3,15 +3,13 @@ package leetcode.tree.PathSum
 
 import ds.tree.TreeNode
 
-private fun TreeNode.hasPathSum(sum: Int): Boolean =
-    left?.hasPathSum(sum - value) ?: right?.hasPathSum(sum - value) ?: sum - value == 0
-
-
-fun main() {
-    val arrCsv = readLine()!!
-    val arr =
-        if (arrCsv.trim().isEmpty()) emptyList() else arrCsv.split(",").map { it.trim() }
-            .map { if (it == "null") null else it.toInt() }
-    val targetSum = readLine()!!.toInt()
-    println(TreeNode.levelOrderToCompleteTree(arr)?.hasPathSum(targetSum))
-}
+/**
+ * https://leetcode.com/problems/path-sum/
+ * Sum from root-to-leaf
+ */
+private fun TreeNode?.hasPathSum(sum: Int): Boolean =
+    when {
+        this == null -> false
+        left == null && right == null -> (sum - `val`) == 0
+        else -> left.hasPathSum(sum - `val`) || right.hasPathSum(sum - `val`)
+    }

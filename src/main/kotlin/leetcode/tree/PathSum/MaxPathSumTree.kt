@@ -7,8 +7,12 @@ fun TreeNode.maxPathSum(): Pair<Int, Int> {
     val (leftSum, maxSumInLeft) = left?.maxPathSum() ?: 0 to Int.MIN_VALUE
     val (rightSum, maxSumInRight) = right?.maxPathSum() ?: 0 to Int.MIN_VALUE
     // maxOf(0,...) is to avoid anything that lessens the sum, any negative numbers
-    val sumViaRoot = maxOf(0, leftSum) + maxOf(0,rightSum) + value
+    val sumViaRoot = maxOf(0, leftSum) + maxOf(0, rightSum) + `val`
+    val curMaxSum = maxOf(sumViaRoot, maxSumInLeft, maxSumInRight)
 
-    // pick from left or right, compare current sum with left/right, no need to add current val and compare because that is done in next recursion
-    return (maxOf(0, leftSum, rightSum) + value) to maxOf(sumViaRoot, maxSumInLeft, maxSumInRight)
+    val maxSumInPath = maxOf(0, leftSum, rightSum) + `val`
+
+    // pick from left or right, compare current sum with left/right.
+    // In the below pair, first is like you are open to check sum with upper roots, second is like you closed the max path
+    return maxSumInPath to curMaxSum
 }

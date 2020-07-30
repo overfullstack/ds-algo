@@ -15,7 +15,7 @@ public class SortTwoElementsSwapped {
     private static void correctArray(int[] arr) {
         var len = arr.length;
         // Right to left
-        for (var i = len - 1; i >= 1; i--) {
+        for (var i = len - 1; i >= 1; i--) { // The edge case is both swapped nodes are side-by-side.
             if (arr[i] < arr[i - 1]) { // find anomaly
                 var j = i - 1;
 
@@ -26,7 +26,7 @@ public class SortTwoElementsSwapped {
                 }
 
                 // Swap the number before the first smaller encounter
-                swap(arr, i, j + 1);
+                swap(arr, i, j + 1); // `j` points to prev number of anomaly.
                 break;
             }
         }

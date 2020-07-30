@@ -1,49 +1,40 @@
 package leetcode.graph
 
-import java.util.*
+@ExperimentalStdlibApi
+fun ladderLength(beginWord: String, endWord: String, wordList: List<String>): Int {
+    val wordSet = wordList.toMutableSet()
+    if (endWord !in wordSet) {
+        return 0
+    }
 
-
-fun ladderLength(beginWord: String, endWord: String, wordAsList: List<String>): Int {
-    if (!wordAsList.contains(endWord)) return 0
-
-    val wordList: MutableSet<String> = HashSet<String>(wordAsList)
-    var start: MutableSet<String> = HashSet()
-    var end: MutableSet<String> = HashSet()
-    var length = 1
+    var start = ArrayDeque<String>()
     start.add(beginWord)
+    wordSet.remove(beginWord)
+    var end = ArrayDeque<String>()
     end.add(endWord)
-    wordList.remove(beginWord)
-    wordList.remove(endWord)
+    wordSet.remove(endWord)
 
+    var length = 0
     while (start.isNotEmpty()) {
-        val next: MutableSet<String> = HashSet()
-        for (word in start) {
-            val wordArray = word.toCharArray()
+        length++
+        val size = start.size
+        repeat(size) {
+            val word = start.removeFirst()
             for (i in word.indices) {
-                val old = wordArray[i]
-                var c = 'a'
-                while (c <= 'z') {
-                    wordArray[i] = c
-                    val str = String(wordArray)
-                    if (end.contains(str)) {
-                        return length + 1
+                for (c in 'a'..'z') {
+                    when (val transform = word.slice(0 until i) + c + word.slice(i + 1..word.lastIndex)) {
+                        in end -> return length + 1
+                        in wordSet -> {
+                            start.add(transform)
+                            wordSet.remove(transform)
+                        }
                     }
-                    if (wordList.contains(str)) {
-                        next.add(str)
-                        wordList.remove(str)
-                    }
-                    c++
                 }
-                wordArray[i] = old
             }
         }
-        start = if (next.size < end.size) next else end
-        end = if (start.size < end.size) end else next
-        length++
+        if (start.size > end.size) {
+            start = end.also { end = start }
+        }
     }
     return 0
-}
-
-fun main() {
-    println(ladderLength("hit", "dot", listOf("hot", "dot", "dog", "lot", "log", "cog")))
 }

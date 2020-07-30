@@ -4,13 +4,13 @@ import io.kotest.core.spec.style.StringSpec
 import io.kotest.data.forAll
 import io.kotest.data.row
 import io.kotest.matchers.shouldBe
-import java.util.Stack
+import java.util.*
 
-class StackSortTest: StringSpec({
+class StackSortTest : StringSpec({
     "Stack Sort" {
         forAll(
             row(intArrayOf(2, 5, 3, 4)),
-            row(intArrayOf(1,2,3,4)),
+            row(intArrayOf(1, 2, 3, 4)),
             row(intArrayOf())
         ) { arr ->
             val stk = Stack<Int>()

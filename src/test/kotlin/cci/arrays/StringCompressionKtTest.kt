@@ -5,7 +5,7 @@ import io.kotest.data.forAll
 import io.kotest.data.row
 import io.kotest.matchers.shouldBe
 
-class StringCompressionKtTest: StringSpec({
+class StringCompressionKtTest : StringSpec({
     "String Compression" {
         forAll(
             row("", ""),

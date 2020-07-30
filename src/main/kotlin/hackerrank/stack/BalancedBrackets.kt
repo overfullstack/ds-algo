@@ -29,7 +29,7 @@ fun isBalanced(s: String): String {
             else -> return "NO"
         }
     }
-    return if (stk.isEmpty()) "YES" else "NO"
+    return if (stk.isEmpty()) "YES" else "NO" // ! Check stack status in the end.
 }
 
 fun main() {

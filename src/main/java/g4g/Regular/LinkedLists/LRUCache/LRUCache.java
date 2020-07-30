@@ -28,8 +28,9 @@ public class LRUCache {
 
     private void referPage(int pageNo) {
         // HashMap provide O(1) insertion and lookup.
-        // But HashMap does not has mechanism of tracking which entry has been queried recently and which not.
+        // But HashMap does not has mechanism of tracking which entry has been queried recently.
         // So DLL is used.
+        // DLL is used over SLL because you can remove or move a node with it's own pointer, unlike SLL where you need previous pointer
         var node = lruQueue.getNodeForPage(pageNo);
         if (node == null) { // New page
             node = new DLLNode(pageNo);

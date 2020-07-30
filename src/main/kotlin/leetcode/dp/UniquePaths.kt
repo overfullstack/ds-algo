@@ -7,9 +7,9 @@ fun uniquePaths(m: Int, n: Int): Int {
     (0 until m).forEach { table[it][0] = 1 }
     (0 until n).forEach { table[0][it] = 1 }
 
-    for (i in 1 until m) {
-        for (j in 1 until n) {
-            table[i][j] = table[i - 1][j] + table[i][j - 1]
+    for (row in 1 until m) {
+        for (col in 1 until n) {
+            table[row][col] = table[row - 1][col] + table[row][col - 1]
         }
     }
     return table[m - 1][n - 1]

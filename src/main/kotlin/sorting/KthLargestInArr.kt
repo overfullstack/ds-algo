@@ -15,7 +15,7 @@ fun findKthLargest(nums: MutableList<Int>, k: Int): Int {
         // Kth largest is K from last when sorted. So larger index goes unchanged.
         larger.size > k - 1 -> findKthLargest(larger.toMutableList(), k)
         // -1 discarding current pivot
-        larger.size < k - 1 -> findKthLargest(smaller.toMutableList(), k - larger.size - 1) 
+        larger.size < k - 1 -> findKthLargest(smaller.toMutableList(), k - larger.size - 1)
         else -> pivot
     }
 }

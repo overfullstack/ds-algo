@@ -5,7 +5,7 @@ import io.kotest.data.forAll
 import io.kotest.data.row
 import io.kotest.matchers.collections.shouldContainExactlyInAnyOrder
 
-class PalindromePartitionTest: StringSpec({
+class PalindromePartitionTest : StringSpec({
     "Palindrome Partition" {
         forAll(
             row("aab", listOf(listOf("aa", "b"), listOf("a", "a", "b")))

@@ -3,7 +3,7 @@ package leetcode.tree
 
 import ds.tree.TreeNode
 import ds.tree.TreeNode.Utils.arrToBST
-import ds.tree.getKthLargestReverseMorris
+import ds.tree.reverseInorderTraversalMorris
 
 class KthLargestInStream(private val kth: Int, nums: IntArray) {
     private var root = arrToBST(nums)
@@ -12,16 +12,15 @@ class KthLargestInStream(private val kth: Int, nums: IntArray) {
     fun add(`val`: Int): Int {
         root?.insert(`val`) ?: run { root = TreeNode(`val`) }
         var k = 0
-        root?.getKthLargestReverseMorris {
+        root?.reverseInorderTraversalMorris {
             k++
             if (k == kth) {
-                kthLargest =
-                    it // Not returning right away, as in morris traversal - successor pointers needs to be reset, which needs complete traversing.
+                // Not returning right away, as in morris traversal - successor pointers needs to be reset, which needs complete traversing.
+                kthLargest = it
             }
         }
-
         k = 0
-        return kthLargest?.value ?: 0
+        return kthLargest?.`val` ?: 0
     }
 }
 

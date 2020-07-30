@@ -7,7 +7,7 @@ tailrec fun findMin(nums: IntArray, left: Int = 0, right: Int = nums.lastIndex):
     }
     val mid = (left + right) / 2
     return when {
-        nums[left] <= nums[mid] -> findMin(nums, mid + 1, right) // *** Search the non-sorted side.***
+        nums[left] <= nums[mid] -> findMin(nums, mid + 1, right) // * Search the non-sorted side.*
         else -> findMin(nums, left, mid)
     }
 }

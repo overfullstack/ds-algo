@@ -2,7 +2,13 @@ package ds.tree
 
 import java.util.*
 
-data class TreeNode(var value: Int, var left: TreeNode? = null, var right: TreeNode? = null, var parent: TreeNode? = null) {
+data class TreeNode(
+    var `val`: Int,
+    var left: TreeNode? = null,
+    var right: TreeNode? = null,
+    var parent: TreeNode? = null,
+    var next: TreeNode? = null
+) {
     private var leftSize: Int = 0
 
     fun traversalAnyOrder(
@@ -10,17 +16,20 @@ data class TreeNode(var value: Int, var left: TreeNode? = null, var right: TreeN
     ): Array<Int> {
         val left = left?.traversalAnyOrder(order) ?: emptyArray()
         val right = right?.traversalAnyOrder(order) ?: emptyArray()
-        return order(value, left, right)
+        return order(`val`, left, right)
     }
 
-    fun inorderTraversal() {
-        left?.inorderTraversal()
-        print(value)
-        right?.inorderTraversal()
-    }
+    fun inorderTraversal(): List<Int> =
+        (left?.inorderTraversal() ?: emptyList()) + listOf(`val`) + (right?.inorderTraversal() ?: emptyList())
 
-    fun insertForRank(valToInsert: Int): Int =
-        if (valToInsert <= value) {
+    fun isValidBST(min: Int = Int.MIN_VALUE, max: Int = Int.MAX_VALUE): Boolean =
+        when {
+            `val` !in min + 1..max - 1 -> false
+            else -> left?.isValidBST(min, `val`) ?: true && right?.isValidBST(`val`, max) ?: true
+        }
+
+    fun insertForRank(valToInsert: Int): Int = // returns leftSize
+        if (valToInsert <= `val`) {
             leftSize++
             left?.insertForRank(valToInsert) ?: run {
                 left = TreeNode(valToInsert)
@@ -42,13 +51,13 @@ data class TreeNode(var value: Int, var left: TreeNode? = null, var right: TreeN
 
     fun getRank(valForRank: Int): Int =
         when {
-            valForRank == this.value -> leftSize
-            valForRank < this.value -> left?.getRank(valForRank) ?: -1
+            valForRank == this.`val` -> leftSize
+            valForRank < this.`val` -> left?.getRank(valForRank) ?: -1 // -1 for val not found
             else -> right?.let { 1 + leftSize + it.getRank(valForRank) } ?: -1
         }
 
     fun insert(valToInsert: Int): Unit =
-        if (valToInsert <= value) {
+        if (valToInsert <= `val`) {
             left?.insert(valToInsert) ?: run { left = TreeNode(valToInsert) }
         } else {
             right?.insert(valToInsert) ?: run { right = TreeNode(valToInsert) }
@@ -58,7 +67,7 @@ data class TreeNode(var value: Int, var left: TreeNode? = null, var right: TreeN
         val valQueue = LinkedList<Int?>()
         val treeNodeQueue = ArrayDeque<TreeNode>()
         treeNodeQueue.add(this)
-        valQueue.add(this.value)
+        valQueue.add(this.`val`)
         while (treeNodeQueue.isNotEmpty()) {
             if (left != null || right != null) {
                 val curTreeNode = treeNodeQueue.poll()
@@ -66,8 +75,8 @@ data class TreeNode(var value: Int, var left: TreeNode? = null, var right: TreeN
                 curTreeNode.left?.let { treeNodeQueue.addLast(it) }
                 curTreeNode.right?.let { treeNodeQueue.addLast(it) }
 
-                valQueue.addLast(curTreeNode.left?.value)
-                valQueue.addLast(curTreeNode.right?.value)
+                valQueue.addLast(curTreeNode.left?.`val`)
+                valQueue.addLast(curTreeNode.right?.`val`)
             }
         }
         return valQueue
@@ -82,7 +91,7 @@ data class TreeNode(var value: Int, var left: TreeNode? = null, var right: TreeN
     }
 
     fun getNodeWithValue(valToFind: Int): TreeNode? =
-        if (value == valToFind) {
+        if (`val` == valToFind) {
             this
         } else {
             left?.getNodeWithValue(valToFind) ?: right?.getNodeWithValue(valToFind)
@@ -96,24 +105,22 @@ data class TreeNode(var value: Int, var left: TreeNode? = null, var right: TreeN
             return TreeNode(arr[0]).also { root -> arr.drop(1).forEach { root.insert(it) } }
         }
 
-        fun levelOrderToCompleteTree(levelOrder: List<Int?>): TreeNode? {
+        fun levelOrderToCompleteTree(levelOrder: List<Int>): TreeNode? {
             if (levelOrder.isEmpty() || levelOrder[0] == null) {
                 return null
             }
             return buildCompleteTreeFromPreOrder(levelOrder)
         }
 
-        private fun buildCompleteTreeFromPreOrder(levelOrder: List<Int?>, index: Int = 0): TreeNode? {
+        private fun buildCompleteTreeFromPreOrder(levelOrder: List<Int>, index: Int = 0): TreeNode? {
             if (index > levelOrder.lastIndex) {
                 return null
             }
-            return levelOrder[index]?.let {
-                TreeNode(
-                    it,
-                    buildCompleteTreeFromPreOrder(levelOrder, 2 * index + 1),
-                    buildCompleteTreeFromPreOrder(levelOrder, 2 * index + 2)
-                )
-            }
+            return TreeNode(
+                levelOrder[index],
+                buildCompleteTreeFromPreOrder(levelOrder, 2 * index + 1),
+                buildCompleteTreeFromPreOrder(levelOrder, 2 * index + 2)
+            )
         }
 
         fun levelOrderToTree(levelOrder: List<Int?>): TreeNode? {
@@ -125,10 +132,10 @@ data class TreeNode(var value: Int, var left: TreeNode? = null, var right: TreeN
             while (valQueue.isNotEmpty()) {
                 val curRoot = treeNodeQueue.poll()
                 valQueue.poll()?.let { leftValue ->
-                    treeNodeQueue.addLast(TreeNode(leftValue).also { curRoot.left = it })
+                    curRoot.left = TreeNode(leftValue).also { treeNodeQueue.addLast(it) }
                 }
                 valQueue.poll()?.let { rightValue ->
-                    treeNodeQueue.addLast(TreeNode(rightValue).also { curRoot.right = it })
+                    curRoot.right = TreeNode(rightValue).also { treeNodeQueue.addLast(it) }
                 }
             }
             return root

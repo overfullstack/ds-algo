@@ -13,7 +13,7 @@ fun SLLNode?.partition(pivot: Int) {
             return
         }
         lPtr = gPtr.next
-        while(lPtr != null && lPtr.value >= pivot) {
+        while (lPtr != null && lPtr.value >= pivot) {
             lPtr = lPtr.next
         }
         if (lPtr == null) {
@@ -24,7 +24,7 @@ fun SLLNode?.partition(pivot: Int) {
 }
 
 private fun SLLNode.swapValue(node: SLLNode) {
-     value = node.value.also { node.value = value }
+    value = node.value.also { node.value = value }
 }
 
 

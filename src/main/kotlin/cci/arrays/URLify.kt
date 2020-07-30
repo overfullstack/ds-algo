@@ -1,7 +1,5 @@
 package cci.arrays
 
-private val logger = mu.KotlinLogging.logger {}
-
 fun urlify(str: CharArray, trueLength: Int): String {
     var spaceCount = 0
     for (index in trueLength - 1 downTo 0) {

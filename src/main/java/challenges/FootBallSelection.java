@@ -56,7 +56,7 @@ public class FootBallSelection {
         bufferedReader.close();
         bufferedWriter.close();
     }
-    
+
     public static List<List<String>> getSelectionStatus(List<List<String>> applications) {
         final List<Player> allPlayers = applications.stream()
                 .map(FootBallSelection::toPlayer).collect(Collectors.toList());
@@ -76,13 +76,13 @@ public class FootBallSelection {
             }
         }
         int minOfBoth = Math.min(strikersOnly.size(), defendersOnly.size());
-        final Set<Player> strikersOnlySelected = new HashSet<>(strikersOnly.subList(0, minOfBoth)); 
-        strikersOnlySelected.addAll(both.subList(0, both.size()/2 + 1));
+        final Set<Player> strikersOnlySelected = new HashSet<>(strikersOnly.subList(0, minOfBoth));
+        strikersOnlySelected.addAll(both.subList(0, both.size() / 2 + 1));
         final Set<Player> defendersOnlySelected = new HashSet<>(defendersOnly.subList(0, minOfBoth));
-        defendersOnlySelected.addAll(both.subList((both.size()/2) + 1, both.size()));
-        
+        defendersOnlySelected.addAll(both.subList((both.size() / 2) + 1, both.size()));
+
         return allPlayers.stream().map(player -> {
-            if(strikersOnlySelected.contains(player)) {
+            if (strikersOnlySelected.contains(player)) {
                 return player.toSelectedList("STRIKER");
             } else if (defendersOnlySelected.contains(player)) {
                 return player.toSelectedList("DEFENDER");
@@ -101,7 +101,7 @@ public class FootBallSelection {
         player.defends = Integer.parseInt(attributes.get(4));
         return player;
     }
-    
+
 }
 
 class Player {

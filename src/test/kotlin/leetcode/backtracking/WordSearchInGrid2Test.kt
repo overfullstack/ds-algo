@@ -1,11 +1,10 @@
-package leetcode.graphs
+package leetcode.backtracking
 
 import io.kotest.matchers.collections.shouldContainExactlyInAnyOrder
-import leetcode.backtracking.findWords
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
 
-internal class WordSearchInGridTest {
+internal class WordSearchInGrid2Test {
 
     @Test
     fun test1() {

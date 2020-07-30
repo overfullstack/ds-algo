@@ -42,9 +42,9 @@ public class MinJumpsToEnd {
 
         // For every position, check from start left-to-right and set value based on the first encountered reachable
         for (var i = 1; i < len; i++) {
-            table[i] = Integer.MAX_VALUE;
+            table[i] = Integer.MAX_VALUE; // MAX_VALUE indicates this is unreachable, if the below loop can't find a reachable node, this value remains
             for (var j = 0; j < i; j++) {
-                if (j + arr[j] >= i && table[j] != Integer.MAX_VALUE) {
+                if (table[j] != Integer.MAX_VALUE && (j + arr[j]) >= i) {
                     table[i] = Math.min(table[i], table[j] + 1);
                     break; // At every position we shall be storing minimum steps,
                     // so table[j] itself is minimum to reach j, so you cannot get better than table[j]+1

@@ -15,8 +15,8 @@ fun canCompleteCircuit(gas: IntArray, cost: IntArray): Int {
             curTank = 0
         }
     }
-    // If finally totalGas is high, then the growth after `i` should compensate the deficit, which can be carried over for the round trip
-    // from 0 to `i`
+    // If finally totalGas is high, then the growth after `i` should compensate the deficit,
+    // which can be carried over for the round trip from 0 to `i`
     return if (totalGas > totalCost) start else -1
 }
 

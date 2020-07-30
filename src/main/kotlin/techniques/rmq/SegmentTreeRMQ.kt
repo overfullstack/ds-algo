@@ -10,7 +10,7 @@ class SegmentTreeRMQ(var arr: IntArray) {
         IntArray(2 * 2.0.pow(ceil(log2(arr.size.toDouble()))).toInt() - 1) { Int.MAX_VALUE }
 
     fun process() {
-        construct(0, 0, arr.size - 1)
+        construct(0, 0, arr.lastIndex)
     }
 
     private fun construct(segmentTreeIndex: Int, startIndex: Int, endIndex: Int): Int {
@@ -51,7 +51,7 @@ class SegmentTreeRMQ(var arr: IntArray) {
 
     fun update(index: Int, value: Int) {
         arr[index] = value
-        updateIndex(index, 0, arr.size - 1, 0)
+        updateIndex(index, 0, arr.lastIndex, 0)
     }
 
     private fun updateIndex(index: Int, segmentStart: Int, segmentEnd: Int, segmentTreeIndex: Int) {

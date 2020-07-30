@@ -88,7 +88,7 @@ internal class TrieNodeTest {
         trieNode.insert("gopal")
         trieNode.insert("gopals")
         trieNode.insert("go")
-        
+
         trieNode.recommendations("go") shouldContainExactlyInAnyOrder listOf("gopal", "gopals")
     }
 

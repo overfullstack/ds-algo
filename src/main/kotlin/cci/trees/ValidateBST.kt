@@ -6,6 +6,6 @@ fun TreeNode?.validateBST(min: Int = Int.MIN_VALUE, max: Int = Int.MAX_VALUE): B
     if (this == null) {
         true
     } else {
-        val isValValid = value >= min && value < max
-        isValValid && left.validateBST(min, value) && right.validateBST(value, max)
+        val isValValid = `val` >= min && `val` < max
+        isValValid && left.validateBST(min, `val`) && right.validateBST(`val`, max)
     }

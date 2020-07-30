@@ -16,7 +16,7 @@ class SquareRootDecompositionSum(var arr: MutableList<Int>) {
     }
 
     fun query(startIndex: Int, endIndex: Int): Int {
-        if (startIndex > endIndex || startIndex < 0 || endIndex > arr.size - 1) {
+        if (startIndex > endIndex || startIndex < 0 || endIndex > arr.lastIndex) {
             return -1
         }
         if (startIndex == endIndex) {

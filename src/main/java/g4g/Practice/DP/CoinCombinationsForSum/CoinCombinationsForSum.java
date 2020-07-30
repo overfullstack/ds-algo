@@ -21,7 +21,7 @@ public class CoinCombinationsForSum {
         var table = new int[sum + 1];
         table[0] = 1; // for 0 sum, 1 solution - Don't include any coin
         // For every coin, loop through all the sums
-        for (var coin : coins) {
+        for (var coin : coins) { // Because we have unlimited coins, we can use a coin for all the sum.
             // If you include this coin, minimum sum you make starts from that coin
             for (var j = coin; j <= sum; j++) { // Only coins <= sum allowed
                 table[j] += table[j - coin]; // including the coin

@@ -2,15 +2,17 @@
 package g4g
 
 fun numOfWaysToPaint(noOfSlots: Int, numOfColors: Int): Int {
-    var paintSameColorCount: Int
-    var paintDifferentColorCount = numOfColors // For Single slot
+    var paintSameColor: Int
+    var paintDifferentColor = numOfColors // For Single slot
     var totalNoOfWaysToPaintTillNow = numOfColors // For Single slot
-    for (i in 2..noOfSlots) {
+    repeat(noOfSlots - 1) {
         // Atmost 2 posts can have same color, so painting this with last one with same color is same as painting (n-1) with different colors.
-        paintSameColorCount = paintDifferentColorCount
-        paintDifferentColorCount =
+        // = `paintDifferentColor` instead of `totalNoOfWaysToPaintTillNow`
+        // If `n` and `n-1` hv same color than `n-1` and `n-2` must have different colors. So not considering paintsame from previous.
+        paintSameColor = paintDifferentColor
+        paintDifferentColor =
             totalNoOfWaysToPaintTillNow * (numOfColors - 1) // Except the previous slot color
-        totalNoOfWaysToPaintTillNow = paintSameColorCount + paintDifferentColorCount
+        totalNoOfWaysToPaintTillNow = paintSameColor + paintDifferentColor
     }
     return totalNoOfWaysToPaintTillNow
 }

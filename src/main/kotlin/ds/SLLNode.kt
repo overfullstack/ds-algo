@@ -23,7 +23,8 @@ data class SLLNode(var value: Int, var next: SLLNode? = null) {
 
 fun SLLNode.toArray(): IntArray = intArrayOf(value, *(next?.toArray() ?: intArrayOf()))
 
-tailrec fun SLLNode.getNodeForValue(valToFind: Int): SLLNode? = if (value == valToFind) this else next?.getNodeForValue(valToFind)
+tailrec fun SLLNode.getNodeForValue(valToFind: Int): SLLNode? =
+    if (value == valToFind) this else next?.getNodeForValue(valToFind)
 
 tailrec fun SLLNode.reverse(prev: SLLNode? = null): SLLNode =
     if (next == null) {

@@ -28,14 +28,14 @@ public class MirrorTree {
 
     private static void mirrorTree(TreeNode root) {
         if (root == null) return;
-        // Bottom-up approach, post order traversal. Top-down approach can also be used, where swap shall be first followed by recursion.
+        // Bottom-up approach, post order traversal. Top-down approach can also be used, where swapChildren shall be first followed by recursion.
         // Go as deep as possible, both on left and right side before swapping for the first time
         mirrorTree(root.left);
         mirrorTree(root.right);
-        swap(root);
+        swapChildren(root);
     }
 
-    private static void swap(TreeNode root) {
+    private static void swapChildren(TreeNode root) {
         var temp = root.left;
         root.left = root.right;
         root.right = temp;

@@ -15,4 +15,4 @@ fun TreeNode.successor(): TreeNode? =
         parent
     }
 
-fun TreeNode.leftMost(): TreeNode = if (left == null) this else left!!.leftMost()
+fun TreeNode.leftMost(): TreeNode = left?.leftMost() ?: this

@@ -56,7 +56,7 @@ public class NutsBolts {
                 i++;
             } else if (arr[j] == pivot) {
                 swap(arr, j, high);
-                j--; // To compensate the ++ in nextRight iteration, so that the newly swapped element from high is checked.
+                j--; // To compensate the ++ in next iteration, so that the newly swapped element from high is checked.
             }
         }
         swap(arr, i, high);

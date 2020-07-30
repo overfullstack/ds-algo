@@ -14,7 +14,8 @@ fun SLLNode.getIntersectionNode(that: SLLNode?): SLLNode? {
     }
 }
 
-private fun SLLNode.getMatchingNode(headStart: Int, that: SLLNode?): SLLNode? = getNodeAt(headStart)?.getMatchingNode(that)
+private fun SLLNode.getMatchingNode(headStart: Int, that: SLLNode?): SLLNode? =
+    getNodeAt(headStart)?.getMatchingNode(that)
 
 tailrec private fun SLLNode.getMatchingNode(that: SLLNode?): SLLNode? =
     when {

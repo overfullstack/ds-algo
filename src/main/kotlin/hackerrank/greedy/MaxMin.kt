@@ -4,12 +4,12 @@ package hackerrank.greedy
 
 fun maxMinOptimized(k: Int, arr: IntArray): Int {
     arr.sort()
-    return arr.dropLast(k - 1).mapIndexed { i, value -> arr[i + k - 1] - value }.min() ?: 0
+    return arr.dropLast(k - 1).mapIndexed { i, value -> arr[i + k - 1] - value }.minOrNull() ?: 0
 }
 
 fun maxMin(k: Int, arr: IntArray): Int {
     arr.sort()
-    return arr.asSequence().windowed(k).map { it.max()?.minus((it.min() ?: 0)) ?: 0 }.min() ?: 0
+    return arr.asSequence().windowed(k).map { it.maxOrNull()?.minus((it.minOrNull() ?: 0)) ?: 0 }.minOrNull() ?: 0
 }
 
 @ExperimentalStdlibApi
@@ -19,7 +19,7 @@ fun maxMinWithQueue(k: Int, arr: IntArray): Int {
     }
     arr.sort()
     val (slidingWindowMaxs, slidingWindowMins) = slidingWindow(arr, k)
-    return slidingWindowMaxs.zip(slidingWindowMins) { max, min -> max - min }.min() ?: 0
+    return slidingWindowMaxs.zip(slidingWindowMins) { max, min -> max - min }.minOrNull() ?: 0
 }
 
 @ExperimentalStdlibApi

@@ -1,6 +1,6 @@
 package ds
 
-class TrieNode(val value: Char = Char.MIN_VALUE) {
+class TrieNode(val value: Char = Char.MIN_VALUE) { // First node of a Trie is a dummy.
     var isEnd = false
         private set
     var children = arrayOfNulls<TrieNode>(26)
@@ -66,8 +66,10 @@ class TrieNode(val value: Char = Char.MIN_VALUE) {
     }
 
     private fun getRecommendations(prefix: String, curRecommendation: String = ""): List<String> =
-        (if (isEnd) listOf(prefix + curRecommendation) else emptyList()) + (children.filterNotNull().flatMap {
-            val recommendation = curRecommendation + it.value
-            it.getRecommendations(prefix, recommendation) // dfs
-        })
+        ((if (isEnd) listOf(prefix + curRecommendation) else emptyList()) +
+                children.asSequence().filterNotNull().flatMap { // It ends at leaf when all children are null
+                    val recommendation = curRecommendation + it.value
+                    it.getRecommendations(prefix, recommendation) // dfs
+                })
+
 }
