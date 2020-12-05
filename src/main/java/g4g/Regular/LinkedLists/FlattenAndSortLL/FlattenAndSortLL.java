@@ -6,30 +6,6 @@ import g4g.DsAndUtils.SLLNode;
  * Created by gakshintala on 6/21/16.
  */
 public class FlattenAndSortLL {
-    public static void main(String[] args) {
-        var head = new SLLNode(5);
-        head.down = new SLLNode(7);
-        head.down.down = new SLLNode(8);
-        head.down.down.down = new SLLNode(30);
-
-        var node = new SLLNode(10);
-        head.next = node;
-        node.down = new SLLNode(20);
-
-        node = new SLLNode(19);
-        head.next.next = node;
-        node.down = new SLLNode(22);
-        node.down.down = new SLLNode(50);
-
-        node = new SLLNode(19);
-        head.next.next.next = node;
-        node.down = new SLLNode(28);
-        node.down.down = new SLLNode(35);
-        node.down.down.down = new SLLNode(40);
-        node.down.down.down.down = new SLLNode(45);
-
-        printSLL(flattenLinkedList(head));
-    }
 
     private static SLLNode flattenLinkedList(SLLNode head) {
         if (head.next == null) return head;
@@ -59,5 +35,30 @@ public class FlattenAndSortLL {
             System.out.print(head + " -> ");
             head = head.down;
         }
+    }
+    
+    public static void main(String[] args) {
+        var head = new SLLNode(5);
+        head.down = new SLLNode(7);
+        head.down.down = new SLLNode(8);
+        head.down.down.down = new SLLNode(30);
+
+        var node = new SLLNode(10);
+        head.next = node;
+        node.down = new SLLNode(20);
+
+        node = new SLLNode(19);
+        head.next.next = node;
+        node.down = new SLLNode(22);
+        node.down.down = new SLLNode(50);
+
+        node = new SLLNode(19);
+        head.next.next.next = node;
+        node.down = new SLLNode(28);
+        node.down.down = new SLLNode(35);
+        node.down.down.down = new SLLNode(40);
+        node.down.down.down.down = new SLLNode(45);
+
+        printSLL(flattenLinkedList(head));
     }
 }

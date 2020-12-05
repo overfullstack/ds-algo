@@ -3,9 +3,8 @@ package leetcode.arrays.slidingwindow
 /**
  * Does contain negative numbers.
  */
-@ExperimentalStdlibApi
 fun shortestSubarrayWithSumAtLeastK(nums: IntArray, k: Int): Int {
-    val sumArr = nums.scan(0, Int::plus) // Starts with 0
+    val sumArr = nums.runningReduce(Int::plus) // Starts with 0
     // val sumArr = IntArray(nums.size + 1)
     // for ((i, num) in nums.withIndex()) {
     //     sumArr[i + 1] = sumArr[i] + num

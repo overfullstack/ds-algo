@@ -7,17 +7,17 @@ import io.kotest.matchers.shouldBe
 
 val diGraph = DiGraph(
     mutableMapOf(
-        0 to mutableSetOf(1, 2, 3, 4),
-        1 to mutableSetOf(4),
-        2 to mutableSetOf(5),
+        0 to setOf(1, 2, 3, 4),
+        1 to setOf(4),
+        2 to setOf(5),
     )
 )
 
 val diGraphWithCycle = DiGraph(
     mutableMapOf(
-        0 to mutableSetOf(1),
-        1 to mutableSetOf(2),
-        2 to mutableSetOf(0),
+        0 to setOf(1),
+        1 to setOf(2),
+        2 to setOf(0),
     )
 )
 
@@ -35,6 +35,7 @@ class DiGraphTest : StringSpec({
     }
 
     "dft" {
+        diGraph.dft() shouldContainExactly listOf(0, 1, 4, 2, 5, 3)
         diGraph.dft() shouldContainExactly listOf(0, 1, 4, 2, 5, 3)
     }
 

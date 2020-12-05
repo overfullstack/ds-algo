@@ -5,9 +5,8 @@ import io.kotest.data.forAll
 import io.kotest.data.row
 import io.kotest.matchers.shouldBe
 
-@ExperimentalStdlibApi
 class MeetingRooms2Test : StringSpec({
-    "Can attend all meetings" {
+    "Min meetings rooms required" {
         forAll(
             row(arrayOf(0 to 30, 5 to 10, 15 to 20), 2),
             row(arrayOf(0 to 10, 10 to 20, 20 to 30), 1)

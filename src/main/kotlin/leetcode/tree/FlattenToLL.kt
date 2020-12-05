@@ -6,15 +6,12 @@ import ds.tree.TreeNode
 /**
  * https://leetcode.com/problems/flatten-binary-tree-to-linked-list/
  */
-fun TreeNode?.flatten(next: TreeNode? = null): TreeNode? {
-    if (this == null) {
-        return next
-    }
-    // * Reverse PreOrder
-    // Right is is next to left, left is next to root
-    var nextForRoot = right.flatten(next)
-    nextForRoot = left.flatten(nextForRoot)
-    right = nextForRoot // using `right` as `next` in LL
-    left = null
+fun TreeNode.flatten(terminal: TreeNode? = null): TreeNode? {
+    // * root -> left -> right
+    // root coordinates linking left -> right, it passes terminal from right to left
+    val terminalForLeft = right?.flatten(terminal) ?: terminal
+    val terminalForRoot = left?.flatten(terminalForLeft) ?: terminalForLeft
+    right = terminalForRoot // using `right` as slot for LL `next` (Problem specific)
+    left = null // Dummy out left
     return this
 }

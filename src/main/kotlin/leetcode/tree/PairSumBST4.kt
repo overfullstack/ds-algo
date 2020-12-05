@@ -2,7 +2,6 @@
 package leetcode.tree
 
 import ds.tree.TreeNode
-import java.util.*
 
 fun TreeNode.isPairWithSumPresent(targetSum: Int): Boolean {
     val smallStk = ArrayDeque<TreeNode>()
@@ -11,12 +10,12 @@ fun TreeNode.isPairWithSumPresent(targetSum: Int): Boolean {
     this.addLeftMost(smallStk)
     this.addRightMost(bigStk)
 
-    while (smallStk.peek().`val` < bigStk.peek().`val`) { // * Loop till they cross each other.
-        val curSum = smallStk.peek().`val` + bigStk.peek().`val`
+    while (smallStk.first().`val` < bigStk.first().`val`) { // * Loop till they cross each other.
+        val curSum = smallStk.first().`val` + bigStk.first().`val`
         when {
             // * Next in inorder, or next smallest number. If no `right`, `pop()` takes care of exposing next smallest number.
-            curSum < targetSum -> smallStk.pop().right?.addLeftMost(smallStk)
-            curSum > targetSum -> bigStk.pop().left?.addRightMost(bigStk) // Next in reverse inorder, or next greater number.
+            curSum < targetSum -> smallStk.removeFirst().right?.addLeftMost(smallStk)
+            curSum > targetSum -> bigStk.removeLast().left?.addRightMost(bigStk) // Next in reverse inorder, or next greater number.
             else -> return true
         }
     }
@@ -24,11 +23,11 @@ fun TreeNode.isPairWithSumPresent(targetSum: Int): Boolean {
 }
 
 private tailrec fun TreeNode.addLeftMost(smallStk: ArrayDeque<TreeNode>) {
-    smallStk.push(this)
+    smallStk.add(this)
     left?.addLeftMost(smallStk)
 }
 
 private tailrec fun TreeNode.addRightMost(bigStk: ArrayDeque<TreeNode>) {
-    bigStk.push(this)
+    bigStk.add(this)
     right?.addRightMost(bigStk)
 }

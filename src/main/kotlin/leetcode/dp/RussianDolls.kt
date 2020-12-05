@@ -1,5 +1,8 @@
 package leetcode.dp
 
+/**
+ * https://leetcode.com/problems/russian-doll-envelopes/
+ */
 fun maxEnvelops(envelopes: Array<IntArray>): Int {
     if (envelopes.isEmpty()) {
         return 0
@@ -7,12 +10,13 @@ fun maxEnvelops(envelopes: Array<IntArray>): Int {
     val sortedByWidth = envelopes.map { it[0] to it[1] }.sortedWith(compareBy({ it.first }, { it.second }))
 
     // After above sorting, this turns into Longest Increasing subsequence problem.
-    return sortedByWidth.indices.fold(IntArray(envelopes.size) { 1 }) { table, i ->
+    return sortedByWidth.indices.fold(IntArray(envelopes.size)) { table, i ->
         table.apply { // Just the regular DP in FP style.
-            this[i] += (0 until i)
+            val lisUntilCur = (0 until i)
                 .filter { sortedByWidth[it] canFitInside sortedByWidth[i] }
-                .map { valid -> this[valid] }
+                .map { validIndex -> this[validIndex] }
                 .maxOrNull() ?: 0
+            this[i] = lisUntilCur + 1
         }
     }.maxOrNull() ?: 1
 }

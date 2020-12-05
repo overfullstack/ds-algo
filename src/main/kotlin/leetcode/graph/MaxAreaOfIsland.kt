@@ -13,7 +13,7 @@ fun maxAreaOfIsland(grid: Array<IntArray>): Int =
 private val directions = listOf(0 to 1, 0 to -1, 1 to 0, -1 to 0)
 
 private fun Array<IntArray>.dft(nextGridPoint: Pair<Int, Int>): Int {
-    this[nextGridPoint.first][nextGridPoint.second] = 0
+    this[nextGridPoint.first][nextGridPoint.second] = 0 // marking visited.
     return 1 + directions.asSequence() // * +1 for current node
         .map { (nextGridPoint.first + it.first) to (nextGridPoint.second + it.second) }
         .filter { it.isValid(this) }

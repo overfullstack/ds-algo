@@ -11,7 +11,7 @@ class MinInSortedRotated2Test : StringSpec({
             row(intArrayOf(1, 3, 5), 1),
             row(intArrayOf(2, 2, 2, 0, 1), 0),
         ) { arr, result ->
-            findMinInSortedRoated2(arr) shouldBe result
+            findMinInSortedRotated2(arr) shouldBe result
         }
     }
 })

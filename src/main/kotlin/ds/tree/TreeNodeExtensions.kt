@@ -1,8 +1,6 @@
 /* gakshintala created on 9/3/19 */
 package ds.tree
 
-import java.util.*
-
 fun TreeNode?.inorderTraversalMorris() {
     var cur = this
     while (cur != null) {
@@ -57,10 +55,10 @@ fun TreeNode?.inorderTraversalWithStack() {
     var cur = this
     while (cur != null || stk.isNotEmpty()) {
         while (cur != null) {
-            stk.push(cur)
+            stk.add(cur)
             cur = cur.left
         }
-        cur = stk.pop()
+        cur = stk.removeLast()
         print(cur.`val`)
         cur = cur.right
     }

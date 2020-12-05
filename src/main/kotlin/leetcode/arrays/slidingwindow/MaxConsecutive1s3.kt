@@ -1,5 +1,9 @@
 package leetcode.arrays.slidingwindow
 
+/**
+ * https://leetcode.com/problems/max-consecutive-ones-iii/
+ * We may change up to K values from 0 to 1
+ */
 fun longestOnes(nums: IntArray, k: Int): Int {
     var zeroCount = 0
     var start = 0

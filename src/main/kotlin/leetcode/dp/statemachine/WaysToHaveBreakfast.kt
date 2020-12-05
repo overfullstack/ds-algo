@@ -13,9 +13,9 @@ fun waysToHaveBreakfast(n: Int): Int {
 
     for (i in 2..n) {
         table[i][0] = table[i - 1][0] + table[i - 1][1] + table[i - 1][2] // Yesterday had anything
-        table[i][1] = table[i - 1][0] + table[i - 1][2] // Yesterday had either Bread or Pizza
-        // Yesterday Bread or Pizza. But from above equations, their calculation include Burger from day-before-yesterday
-        // So it needs to be negated.
+        table[i][1] = table[i - 1][0] + table[i - 1][2] // Yesterday had either Bread or Burger
+        // Yesterday Bread or Pizza. But from above equations, their calculation include Burger from
+        // yesterday and day-before-yesterday, so it needs to be negated.
         table[i][2] = table[i - 1][0] + table[i - 1][1] - 2 * table[i - 2][2]
     }
     return table[n][0] + table[n][1] + table[n][2]

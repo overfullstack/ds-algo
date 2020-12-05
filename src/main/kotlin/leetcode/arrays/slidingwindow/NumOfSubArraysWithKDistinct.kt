@@ -1,5 +1,8 @@
 package leetcode.arrays.slidingwindow
 
+/**
+ * https://leetcode.com/problems/subarrays-with-k-different-integers/
+ */
 fun subarraysWithKDistinct(A: IntArray, K: Int): Int =
     subArraysWithAtMostKDistinct(A, K) - subArraysWithAtMostKDistinct(A, K - 1)
 
@@ -19,7 +22,7 @@ fun subArraysWithAtMostKDistinct(A: IntArray, K: Int): Int {
                 }
             }
         }
-        windowLenWithAtMostK += (index - start + 1)
+        windowLenWithAtMostK += (index - start + 1) // * This cumulates all sub arrays length
     }
     return windowLenWithAtMostK
 }

@@ -11,7 +11,7 @@ class CombinationSumTest : StringSpec({
             row(intArrayOf(2, 3, 6, 7), 7, listOf(listOf(7), listOf(2, 2, 3))),
             row(intArrayOf(2, 3, 5), 8, listOf(listOf(2, 2, 2, 2), listOf(2, 3, 3), listOf(3, 5))),
         ) { arr, target, result ->
-            combinationSum(arr, target) shouldContainExactlyInAnyOrder result
+            arr.combinationSum(target) shouldContainExactlyInAnyOrder result
         }
     }
 })

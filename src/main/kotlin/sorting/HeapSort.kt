@@ -1,28 +1,30 @@
 package sorting
 
 fun IntArray.heapSort() {
-    val mid = size / 2 - 1
-    for (i in mid downTo 0) {
+    // * To apply `heapify`, all the children must be heapified.
+    // * Starting from `(size/2)-1` coz imagine the array like a binary tree. Parent for first set of leaf nodes would be (size/2) - 1
+    val mid = (size / 2) - 1
+    for (i in mid downTo 0) { // ! Traverse in reverse - mid to 0
         heapify(size, i)
     }
-    for (i in lastIndex downTo 0) {
-        this[i] = this[0].also { this[0] = this[i] } // swap with first node, and keep compressing from the end.
+    for (i in lastIndex downTo 0) { // ! Sorts from last to first
+        this[i] = this[0].also { this[0] = this[i] } // swap last in the **window** with first
         heapify(i, 0)
     }
 }
 
-fun IntArray.heapify(
+tailrec fun IntArray.heapify(
     heapSize: Int,
     rootIndex: Int,
-    heapComparator: Int.(Int) -> Boolean = fun Int.(b: Int) = this > b
+    compare: Int.(Int) -> Boolean = fun Int.(b: Int) = this > b
 ) {
     var heapIndex = rootIndex
     val leftIndex = 2 * rootIndex + 1
     val rightIndex = 2 * rootIndex + 2
-    if (leftIndex < heapSize && this[leftIndex].heapComparator(this[heapIndex])) {
+    if (leftIndex < heapSize && this[leftIndex].compare(this[heapIndex])) {
         heapIndex = leftIndex
     }
-    if (rightIndex < heapSize && this[rightIndex].heapComparator(this[heapIndex])) {
+    if (rightIndex < heapSize && this[rightIndex].compare(this[heapIndex])) {
         heapIndex = rightIndex
     }
 
@@ -35,5 +37,5 @@ fun IntArray.heapify(
 fun main() {
     val nums = intArrayOf(2, 12, 89, 23, 76, 43, 12)
     nums.heapSort()
-    print(nums.contentToString())
+    print(nums.joinToString())
 }

@@ -2,19 +2,18 @@ package leetcode.greedy
 
 /**
  * https://leetcode.com/problems/non-overlapping-intervals/
+ * Find the minimum number of intervals to be removed.
  */
 fun eraseOverlapIntervals(intervals: Array<IntArray>): Int {
     if (intervals.isEmpty()) {
         return 0
     }
-    val sortedIntervals = intervals.map { it[0] to it[1] }.sortedBy { it.second }
+    val sortedByEndIntervals = intervals.map { it[0] to it[1] }.sortedBy { it.second }
 
-    var end = sortedIntervals[0].second // Cannot use Int.MIN_VALUE as it can be a valid start interval
-    val nonOverlapCount = 1 + sortedIntervals.asSequence().drop(1)
-        .filter { it.first >= end }
-        .onEach {
-            end = it.second
-        } // You will keep the end of a window, untill you find a window which starts after this end.
+    var curIntervalEnd = sortedByEndIntervals[0].second // Cannot use Int.MIN_VALUE as it can be a valid start interval
+    val nonOverlapCount = 1 + sortedByEndIntervals.asSequence().drop(1)
+        .filter { it.first >= curIntervalEnd }
+        .onEach { curIntervalEnd = it.second } // Update `curIntervalEnd` to find interval that starts after this
         .count()
-    return intervals.size - nonOverlapCount
+    return intervals.size - nonOverlapCount // Problem needs min no.of intervals to be removed.
 }

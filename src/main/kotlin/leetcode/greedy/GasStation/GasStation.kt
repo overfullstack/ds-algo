@@ -1,12 +1,15 @@
 /* gakshintala created on 11/17/19 */
 package leetcode.arrays.GasStation
 
+/**
+ * https://leetcode.com/problems/gas-station/
+ */
 fun canCompleteCircuit(gas: IntArray, cost: IntArray): Int {
     var start = 0
     var totalGas = 0
     var totalCost = 0
     var curTank = 0
-    for (i in gas.indices) { // Imagine gas and tank racing.
+    for (i in gas.indices) { // * Imagine gas and tank racing.
         totalGas += gas[i]
         totalCost += cost[i]
         curTank += (gas[i] - cost[i])
@@ -15,8 +18,9 @@ fun canCompleteCircuit(gas: IntArray, cost: IntArray): Int {
             curTank = 0
         }
     }
-    // If finally totalGas is high, then the growth after `i` should compensate the deficit,
-    // which can be carried over for the round trip from 0 to `i`
+    // *  Ultimately, if `totalGas > totalCost`, a solution exists and there is no way cost can beat gas.
+    // so to balance the equation `totalGas > totalCost`, the growth after `i` should compensate the deficit,
+    // which can be carried over to complete loop from 0 to `i`
     return if (totalGas > totalCost) start else -1
 }
 

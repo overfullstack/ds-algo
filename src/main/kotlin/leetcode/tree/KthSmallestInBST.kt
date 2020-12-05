@@ -9,16 +9,16 @@ fun TreeNode.kthSmallest(k: Int): Int =
     }
 
 private fun TreeNode.kthSmallest(result: Pair<Boolean, Int>): Pair<Boolean, Int> {
-    val leftResult = left?.kthSmallest(result) ?: result
-    return if (!leftResult.first) {
-        if (leftResult.second == 1) {
-            (true to `val`)
+    val (foundOnLeft, curK) = left?.kthSmallest(result) ?: result
+    return if (!foundOnLeft) {
+        if (curK == 1) {
+            true to `val`
         } else {
-            val next = false to leftResult.second - 1 // -1 for current node
+            val next = false to curK - 1 // -1 for current node
             right?.kthSmallest(next) ?: next
         }
     } else {
-        leftResult
+        true to curK // curK here is filled with `val` of kthSmallest
     }
 }
 

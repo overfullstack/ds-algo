@@ -106,7 +106,7 @@ data class TreeNode(
         }
 
         fun levelOrderToCompleteTree(levelOrder: List<Int>): TreeNode? {
-            if (levelOrder.isEmpty() || levelOrder[0] == null) {
+            if (levelOrder.isEmpty()) {
                 return null
             }
             return buildCompleteTreeFromPreOrder(levelOrder)

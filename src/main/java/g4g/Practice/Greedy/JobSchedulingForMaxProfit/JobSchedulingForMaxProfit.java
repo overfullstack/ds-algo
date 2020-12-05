@@ -21,7 +21,7 @@ public class JobSchedulingForMaxProfit {
         var jobLen = jobs.size();
         var schedule = new Job[jobLen];
         for (var curJob : jobs) {
-            for (var j = Math.min(jobLen, curJob.deadLine) - 1; j >= 0; j--) { // notice -1 after Math.min
+            for (var j = Math.min(jobLen, curJob.deadLine) - 1; j >= 0; j--) { // ! notice `-1` after Math.min
                 if (schedule[j] == null) {
                     schedule[j] = curJob;
                     break;

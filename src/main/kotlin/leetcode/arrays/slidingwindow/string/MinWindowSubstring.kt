@@ -28,5 +28,5 @@ fun minWindowLen(str: String, pattern: String): String {
             start++
         }
     }
-    return if (minWindowLen == Int.MAX_VALUE) "" else str.substring(minWindowStart, minWindowStart + minWindowLen)
+    return if (minWindowLen == Int.MAX_VALUE) "" else str.substring(minWindowStart..(minWindowStart + minWindowLen))
 }

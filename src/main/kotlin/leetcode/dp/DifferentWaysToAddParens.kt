@@ -25,5 +25,6 @@ fun diffWaysToCompute(input: String): List<Int> =
                             }
                         }
                     }
-                }.toList().ifEmpty { listOf(input.toInt()) }
+                }.toList()
+                .ifEmpty { listOf(input.toInt()) } // ! Base case with only single/multi-digit number
     }

@@ -21,6 +21,7 @@ public class MergeSortLL {
     }
 
     // The idea is to split the LL into the smallest chains and merge them back
+    // 🕶 Cutting a half into a half into a half
     private static SLLNode mergeSortLL(SLLNode head) {
         // When the list has only 1 element return it
         if (head == null || head.next == null) {

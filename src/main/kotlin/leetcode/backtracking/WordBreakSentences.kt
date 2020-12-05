@@ -15,8 +15,11 @@ private fun wordBreakSentences(
     cache: MutableMap<Int, List<List<String>>> = mutableMapOf()
 ): List<List<String>> {
     cache[startIndex]?.let { return it }
+    val sentenceList =
+    (startIndex..str.lastIndex)
     // filter for all the points which can be broken as word for this recursion.
-    val sentenceList = (startIndex..str.lastIndex).filter { wordDict.contains(str.substring(startIndex..it)) }.flatMap {
+    .filter { wordDict.contains(str.substring(startIndex..it)) }
+    .flatMap {
         val word = str.substring(startIndex..it)
         if (it == str.lastIndex) {
             listOf(listOf(word)) // If this is placed at the start of recursion, we need to update cache at two places.

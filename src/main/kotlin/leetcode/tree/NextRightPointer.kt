@@ -4,6 +4,7 @@ import ds.tree.TreeNode
 
 /**
  * https://leetcode.com/problems/populating-next-right-pointers-in-each-node/
+ * * This is for balanced tree.
  */
 fun TreeNode.connect(): TreeNode {
     left?.next = right

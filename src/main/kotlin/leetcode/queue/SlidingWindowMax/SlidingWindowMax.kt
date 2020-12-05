@@ -1,7 +1,6 @@
 /* gakshintala created on 8/25/19 */
 package leetcode.queue.SlidingWindowMax
 
-@ExperimentalStdlibApi
 fun slidingWindowMax(nums: IntArray, k: Int): IntArray {
     if (nums.isEmpty() || k == 0) {
         return IntArray(0)

@@ -1,14 +1,13 @@
 /* gakshintala created on 8/23/19 */
 package leetcode.stack
 
-@ExperimentalStdlibApi
 fun largestRectangle(histogram: Array<Int>): Long {
     val indexStk = ArrayDeque<Int>()
     var maxArea = 0
     for (histIndex in histogram.indices) {
         // * A bar can make rectangle till it's next lowest on the right.
         // * When a lower bar than `last()` is encountered, `pop()` bars from right to left,
-        // * calculating area made by EACH bar with its right side bars.
+        // * calculating area made by EACH bar left till righ most.
         while (indexStk.isNotEmpty() && histogram[histIndex] < histogram[indexStk.last()]) {
             val top = indexStk.removeLast()
             // `leftStart` can be immediate previous or few higher rectangles away which were popped while inserting this.
@@ -32,7 +31,6 @@ fun largestRectangle(histogram: Array<Int>): Long {
     return maxArea.toLong()
 }
 
-@ExperimentalStdlibApi
 fun largestRectangle_g4g(histogram: Array<Int>): Long {
     val indexStk = ArrayDeque<Int>()
     var maxArea = Long.MIN_VALUE

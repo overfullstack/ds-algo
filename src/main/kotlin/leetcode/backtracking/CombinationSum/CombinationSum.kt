@@ -1,8 +1,10 @@
 /* gakshintala created on 12/7/19 */
 package leetcode.backtracking.CombinationSum
 
-fun combinationSum(
-    arr: IntArray,
+/**
+ * https://leetcode.com/problems/combination-sum/
+ */
+fun IntArray.combinationSum(
     sumLeft: Int,
     startIndex: Int = 0,
     combination: List<Int> = emptyList()
@@ -10,12 +12,11 @@ fun combinationSum(
     when {
         sumLeft < 0 -> emptyList()
         sumLeft == 0 -> listOf(combination)
-        else -> (startIndex..arr.lastIndex).flatMap {
+        else -> (startIndex..lastIndex).flatMap {
             combinationSum(
-                arr,
-                sumLeft - arr[it],
+                sumLeft - this[it],
                 it, // passing same `index` instead of `index+1`, as problem allows repetition.
-                combination + arr[it]
+                combination + this[it]
             )
         }
     }
@@ -23,5 +24,5 @@ fun combinationSum(
 fun main() {
     val candidates = readLine()!!.split(",").map { it.trim().toInt() }
     val target = readLine()!!.toInt()
-    combinationSum(candidates.toIntArray(), target).forEach(::println)
+    candidates.toIntArray().combinationSum(target).forEach(::println)
 }

@@ -13,7 +13,7 @@ class MedianForDifferentSizeKtTest : StringSpec() {
                 row(intArrayOf(1, 3), intArrayOf(2), 2.0),
                 row(intArrayOf(1, 2), intArrayOf(3, 4), 2.5)
             ) { a, b, result ->
-                medianWithDifferentSize(a, b) shouldBe result
+                findMedianSortedArrays(a, b) shouldBe result
             }
         }
     }

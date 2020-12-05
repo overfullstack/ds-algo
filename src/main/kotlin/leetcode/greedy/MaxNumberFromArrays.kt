@@ -6,7 +6,7 @@ import java.util.*
 fun maxNumber(nums1: IntArray, nums2: IntArray, k: Int): IntArray =
     (maxOf(0, k - nums1.size)..minOf(k, nums2.size))
         .map { mergeMaxNums(maxNumberWithArr(nums1, k - it), maxNumberWithArr(nums2, it)) }
-        .maxWith(Comparator { list1, list2 -> list1.compareTo(list2) })?.toIntArray() ?: IntArray(0)
+        .maxWithOrNull(Comparator { list1, list2 -> list1.compareTo(list2) })?.toIntArray() ?: IntArray(0)
 
 
 private tailrec operator fun List<Int>.compareTo(other: List<Int>): Int =

@@ -3,7 +3,6 @@ package leetcode.graph
 /**
  * https://leetcode.com/problems/01-matrix/
  */
-@kotlin.ExperimentalStdlibApi
 fun updateMatrix(matrix: Array<IntArray>): Array<IntArray> { // DFS
     val queue = ArrayDeque<Pair<Int, Int>>()
     for (row in matrix.indices) {
@@ -14,7 +13,7 @@ fun updateMatrix(matrix: Array<IntArray>): Array<IntArray> { // DFS
             }
         }
     }
-    while (queue.isNotEmpty()) { // BFS from 0s to 1s
+    while (queue.isNotEmpty()) { // * BFS from 0s to 1s
         val gridPoint = queue.removeFirst()
         val nextDistance = matrix[gridPoint.first][gridPoint.second] + 1
         directions.asSequence()
@@ -33,12 +32,11 @@ private val directions = listOf(0 to 1, 0 to -1, 1 to 0, -1 to 0)
 private fun Pair<Int, Int>.isValid(matrix: Array<IntArray>, distance: Int) =
     first >= 0 && first <= matrix.lastIndex &&
             second >= 0 && second <= matrix[0].lastIndex &&
-            // * 1. For skipping 0s and letting 1s
+            // * 1. Cells with 0s never pass this as distance is always positive, so 0s are never overriden.
             // * 2. For Storing min distance
             // If a 0 is totally surround by 0s, it's useless as it can never be a nearst 0 for any 1, so skip it.
             distance < matrix[first][second]
 
-@kotlin.ExperimentalStdlibApi
 fun updateMatrix2(matrix: Array<IntArray>): Array<IntArray> { // BFS
     val queue = ArrayDeque<Pair<Int, Int>>()
     for (row in matrix.indices) {

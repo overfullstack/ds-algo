@@ -11,7 +11,7 @@ fun maxCoins(nums: IntArray): Int {
             table[windowStart + 1][windowEnd] =
                 (windowStart + 1 until windowEnd)
                     .map {
-                        table[windowStart + 1][it] + table[it + 1][windowEnd] + balloons[windowStart] * balloons[it] * balloons[windowEnd]
+                        table[windowStart + 1][it] + balloons[windowStart] * balloons[it] * balloons[windowEnd] + table[it + 1][windowEnd]
                         // For Balloon B, with neighbours A and C - Matrix dimensions - A(p*q), B(q*r), C(r*s). So we need to pick max from [(AB) C] or [A(BC)].
                         // We have results stored for first [(AB) or A] and second [C or (BC)] partitions. We just need to compute the result of multiplying both the partitions.
                         // balloons[windowStart] * balloons[partition] * balloons[windowEnd] - This is multiplying two matrices between [start-partition] [partition-end]

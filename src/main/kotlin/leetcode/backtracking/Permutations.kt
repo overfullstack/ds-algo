@@ -1,15 +1,14 @@
 package leetcode.backtracking
 
-fun permute(
-    nums: IntArray,
+fun IntArray.permute(
     permutation: List<Int> = emptyList(),
-    used: BooleanArray = BooleanArray(nums.size)
+    used: BooleanArray = BooleanArray(size)
 ): List<List<Int>> =
-    if (permutation.size == nums.size) {
+    if (permutation.size == size) {
         listOf(permutation)
     } else {
-        nums.indices.filter { !used[it] }.flatMap { unusedIndex ->
+        indices.filterNot { used[it] }.flatMap { unusedIndex ->
             used[unusedIndex] = true
-            permute(nums, permutation + nums[unusedIndex], used).also { used[unusedIndex] = false }
+            permute(permutation + this[unusedIndex], used).also { used[unusedIndex] = false }
         }
     }

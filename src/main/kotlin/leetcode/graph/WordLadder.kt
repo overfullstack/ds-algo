@@ -1,6 +1,5 @@
 package leetcode.graph
 
-@ExperimentalStdlibApi
 fun ladderLength(beginWord: String, endWord: String, wordList: List<String>): Int {
     val wordSet = wordList.toMutableSet()
     if (endWord !in wordSet) {
@@ -32,7 +31,7 @@ fun ladderLength(beginWord: String, endWord: String, wordList: List<String>): In
                 }
             }
         }
-        if (start.size > end.size) {
+        if (start.size > end.size) { // Bi-directional DFS, swapping start with end.
             start = end.also { end = start }
         }
     }

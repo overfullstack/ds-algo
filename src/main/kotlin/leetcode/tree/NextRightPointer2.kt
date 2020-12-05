@@ -10,7 +10,7 @@ fun TreeNode.connect2(): TreeNode {
     left?.next = right ?: findNext()
     right?.next = findNext()
 
-    right?.connect2() // * right is traversed before left
+    right?.connect2() // ! right is traversed before left
     left?.connect2()
 
     return this

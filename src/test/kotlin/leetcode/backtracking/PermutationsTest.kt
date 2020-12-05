@@ -5,7 +5,7 @@ import io.kotest.matchers.collections.shouldContainExactlyInAnyOrder
 
 class PermutationsTest : StringSpec({
     "Permutations" {
-        permute(intArrayOf(1, 2, 3)) shouldContainExactlyInAnyOrder listOf(
+        intArrayOf(1, 2, 3).permute() shouldContainExactlyInAnyOrder listOf(
             listOf(1, 2, 3),
             listOf(1, 3, 2),
             listOf(2, 1, 3),

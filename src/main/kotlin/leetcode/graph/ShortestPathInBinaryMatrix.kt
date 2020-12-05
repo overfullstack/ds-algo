@@ -4,7 +4,6 @@ package leetcode.graph
  * https://leetcode.com/problems/shortest-path-in-binary-matrix/
  * Top-left to Bottom-right. 0-Empty 1-Blocked
  */
-@kotlin.ExperimentalStdlibApi
 fun shortestPathBinaryMatrix(grid: Array<IntArray>): Int {
     when {
         grid.isEmpty() -> return 0

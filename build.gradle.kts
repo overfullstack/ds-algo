@@ -3,7 +3,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 plugins {
     kotlin("jvm")
     id("com.adarshr.test-logger") version "2.1.0"
-    id("io.gitlab.arturbosch.detekt") version "1.10.0"
+    id("io.gitlab.arturbosch.detekt") version "1.12.0"
     application
 }
 
@@ -21,20 +21,20 @@ repositories {
 }
 
 dependencies {
-    implementation(kotlin("stdlib-jdk8"))
     implementation(kotlin("script-runtime"))
 
     implementation("io.github.microutils:kotlin-logging:+")
     runtimeOnly("org.apache.logging.log4j:log4j-core:+")
     runtimeOnly("org.apache.logging.log4j:log4j-slf4j-impl:+")
 
+    // Junit
     testImplementation("org.junit.jupiter:junit-jupiter-api:+")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:+")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:+")
 
-    listOf("runner-junit5", "assertions-core", "runner-console", "property").forEach {
-        testImplementation("io.kotest:kotest-$it-jvm:latest.integration")
-    }
+    // Kotest
+    testImplementation("io.kotest:kotest-runner-junit5:+")
+    testImplementation("io.kotest:kotest-assertions-core:+")
+    implementation("io.kotest:kotest-runner-console-jvm:+")
 }
 
 java {
@@ -48,7 +48,6 @@ tasks.withType<JavaCompile> {
 tasks.withType<KotlinCompile> {
     kotlinOptions {
         jvmTarget = JavaVersion.VERSION_14.toString()
-        freeCompilerArgs = listOf("-Xjsr305=strict", "-Xjvm-default=enable")
     }
 }
 
