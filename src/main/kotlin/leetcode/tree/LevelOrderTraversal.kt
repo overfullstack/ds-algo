@@ -10,7 +10,7 @@ fun TreeNode.levelOrderTraversal(): List<List<TreeNode>> {
     val result = mutableListOf<List<TreeNode>>()
 
     while (currentLevel.isNotEmpty()) {
-        result.add(currentLevel)
+        result += currentLevel
         currentLevel = currentLevel.flatMap { listOfNotNull(it.left, it.right) }
     }
     return result
