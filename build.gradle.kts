@@ -2,8 +2,8 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
     kotlin("jvm")
-    id("com.adarshr.test-logger") version "2.1.0"
-    id("io.gitlab.arturbosch.detekt") version "1.12.0"
+    id("com.adarshr.test-logger") version "2.1.1"
+    id("io.gitlab.arturbosch.detekt") version "1.15.0-RC1"
     application
 }
 
@@ -34,11 +34,10 @@ dependencies {
     // Kotest
     testImplementation("io.kotest:kotest-runner-junit5:+")
     testImplementation("io.kotest:kotest-assertions-core:+")
-    implementation("io.kotest:kotest-runner-console-jvm:+")
 }
 
 java {
-    sourceCompatibility = JavaVersion.VERSION_14
+    sourceCompatibility = JavaVersion.VERSION_15
 }
 
 tasks.withType<JavaCompile> {
@@ -47,7 +46,7 @@ tasks.withType<JavaCompile> {
 
 tasks.withType<KotlinCompile> {
     kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_14.toString()
+        jvmTarget = JavaVersion.VERSION_15.toString()
     }
 }
 

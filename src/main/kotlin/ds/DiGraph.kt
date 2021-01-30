@@ -71,10 +71,10 @@ data class DiGraph(private val adjacencyMap: MutableMap<Int, Set<Int>> = mutable
         visited: MutableSet<Int>,
         visitedInBranch: Set<Int>
     ): Boolean =
-        adjacencyMap[this]?.asSequence()?.any { // If visited but not a part of this branch, no cycle
-            (it !in visited && it.hasCycle(visited.apply { add(it) }, visitedInBranch + it))
-            || visitedInBranch.contains(it) // The above is to avoid cycle while traversing, this is to detect cycle
-            // These conditions can be flipped without any difference, as if it's not in `visitied`, it cannot be in `visitedInBranch`
+        adjacencyMap[this]?.any { // If visited but not a part of this branch, no cycle
+            (it in visitedInBranch) || (it !in visited && it.hasCycle(visited.apply { add(it) }, visitedInBranch + it))
+            // First is to detect cycle, The second is to avoid cycle while traversing
+            // These conditions can be flipped without any difference, as if it's not in `visited`, it cannot be in `visitedInBranch`
         } ?: false
 
     /** DETECT CYCLE -> */
@@ -91,9 +91,9 @@ data class DiGraph(private val adjacencyMap: MutableMap<Int, Set<Int>> = mutable
         adjacencyMap[this]?.asSequence()?.flatMap {
             when {
                 // * `visited.apply { add(it) }` coz we need to retain it across recursions. `visitedInBranch + it` no need to retain.
-                it !in visited -> it.topologicalSortPerBranch(visited.apply { add(it) }, visitedInBranch + it) + it
                 it in visitedInBranch -> throw IllegalArgumentException("Graph has Cycle")
-                else -> emptySequence() // This node is visited so can't contribute to any sequence.
+                it in visited -> emptySequence() // This node is visited so can't contribute to any sequence.
+                else -> it.topologicalSortPerBranch(visited.apply { add(it) }, visitedInBranch + it) + it
             }
         } ?: emptySequence() // No connections.
 

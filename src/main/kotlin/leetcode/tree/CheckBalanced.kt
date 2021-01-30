@@ -5,7 +5,7 @@ import kotlin.math.abs
 
 fun TreeNode?.checkBalanced(): Pair<Int, Boolean> =
     if (this == null) {
-        Pair(0, true)
+        0 to true
     } else {
         val (leftHeight, isLeftSubTreeBalanced) = left.checkBalanced()
         if (!isLeftSubTreeBalanced) {
@@ -17,8 +17,8 @@ fun TreeNode?.checkBalanced(): Pair<Int, Boolean> =
         }
         val areBothSidesBalanced = isLeftSubTreeBalanced && isRightSubTreeBalanced && abs(leftHeight - rightHeight) <= 1
         if (areBothSidesBalanced) {
-            Pair(maxOf(leftHeight, rightHeight) + 1, true)
+            maxOf(leftHeight, rightHeight) + 1 to true
         } else {
-            Pair(Int.MIN_VALUE, false)
+            Int.MIN_VALUE to false
         }
     }
