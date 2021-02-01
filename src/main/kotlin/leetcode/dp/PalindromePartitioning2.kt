@@ -8,7 +8,7 @@ fun minCutsForPalindromePartition(s: String): Int {
     val cutsTable = Array(s.length) { IntArray(s.length) }
     val isPalTable = Array(s.length) { BooleanArray(s.length) }
 
-    // * For problems with `gap`, especially Palindrome related problems, always initiate table's diagonal.
+    // ! For problems with `gap`, especially Palindrome related problems, always initiate table's diagonal.
     for (index in cutsTable.indices) {
         cutsTable[index][index] = 0 // No cuts required for single letter
         isPalTable[index][index] = true // Every single letter is a palindrome
@@ -16,7 +16,7 @@ fun minCutsForPalindromePartition(s: String): Int {
 
     for (gap in 1..s.lastIndex) {
         for ((i, j) in (gap..s.lastIndex).withIndex()) {
-            isPalTable[i][j] = // ! This helps is not calculating cuts when it's already a palindrome
+            isPalTable[i][j] = // ! This helps in not calculating cuts when it's already a palindrome
                 if (gap == 1) s[i] == s[j]
                 else s[i] == s[j] && isPalTable[i + 1][j - 1]
             // This stores no.of cuts required for substring(i..j).

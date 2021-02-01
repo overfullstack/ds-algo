@@ -1,6 +1,9 @@
 package leetcode.backtracking
 
-fun permuteUnique(nums: IntArray): List<List<Int>> = permuteUniqueUtil(nums.sorted())
+/**
+ * https://leetcode.com/problems/permutations-ii/
+ */
+fun permuteUnique(nums: IntArray): List<List<Int>> = permuteUniqueUtil(nums.sorted()) // ! Sort to keep dups together
 
 private fun permuteUniqueUtil(
     numsSorted: List<Int>,
@@ -11,9 +14,10 @@ private fun permuteUniqueUtil(
         listOf(combination)
     } else {
         numsSorted.indices
-            // If all duplicates are unused, only one of them passes through the filter.
-            // Other duplicates get a chance only in next recursions.
-            .filter { !used[it] && (it == 0 || numsSorted[it] != numsSorted[it - 1]) || used[it - 1] }
+            // * Previous in an iteration would be unused, if its branch has finished.
+            // * It's useless to start a branch with duplicate as well
+            // * So skip if both previous and current are dups and both are unused.
+            .filter { (!used[it] && (it == 0 || numsSorted[it] != numsSorted[it - 1])) || used[it - 1] }
             .flatMap { unusedIndex ->
                 used[unusedIndex] = true
                 permuteUniqueUtil(numsSorted, used, combination + numsSorted[unusedIndex]).also {

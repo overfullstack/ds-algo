@@ -10,16 +10,14 @@ private fun subsetsWithDupUtil(
     nums: IntArray,
     startIndex: Int = 0,
     combination: List<Int> = emptyList()
-): List<List<Int>> {
+): List<List<Int>> =
     if (startIndex == nums.lastIndex) {
-        return listOf(combination + nums[startIndex])
+        listOf(combination + nums[startIndex])
+    } else {
+        (startIndex..nums.lastIndex)
+            .filter { it == startIndex || nums[it] != nums[it - 1] }
+            .flatMap {
+                val curCombination = combination + nums[it]
+                listOf(curCombination) + subsetsWithDupUtil(nums, it + 1, curCombination)
+            }
     }
-    return (startIndex..nums.lastIndex).fold(emptyList()) { results, index ->
-        results + if (index == startIndex || nums[index] != nums[index - 1]) {
-            val curCombination = combination + nums[index]
-            listOf(curCombination) + subsetsWithDupUtil(nums, index + 1, curCombination)
-        } else {
-            emptyList()
-        }
-    }
-}
