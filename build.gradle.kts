@@ -37,6 +37,7 @@ dependencies {
     // For Kotest intellij plugin
     testImplementation("io.kotest:kotest-assertions-core-jvm:+")
     testImplementation("io.kotest:kotest-runner-junit5-jvm:+")
+    testImplementation("io.kotest:kotest-runner-console-jvm:+")
 }
 
 java {

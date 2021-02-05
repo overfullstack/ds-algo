@@ -1,5 +1,8 @@
 package leetcode.arrays
 
+/**
+ * https://leetcode.com/problems/subdomain-visit-count/
+ */
 fun subdomainVisits(cpdomains: Array<String>): List<String> {
     val map = mutableMapOf<String, Int>()
     for(cpdomain in cpdomains) {

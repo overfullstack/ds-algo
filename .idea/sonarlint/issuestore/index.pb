@@ -19,3 +19,13 @@ e
 5src/test/kotlin/leetcode/tree/NodesAtDistanceKTest.kt,a\9\a938b27ace1b5455ec35c448fec7b4ad3a212ca4
 @
 build.gradle.kts,d\b\dbcff70658daf80b53ce624f6adcaa529df5ed8d
+[
++src/main/kotlin/leetcode/dp/RussianDolls.kt,f\c\fc7a4f58af661dd386a2f1fa3af6aafb83eb2228
+j
+:src/main/kotlin/leetcode/dp/burstballoons/BurstBalloons.kt,7\0\703f1876a2ed8a42d127a0e5c395ea59690410ac
+a
+1src/test/kotlin/leetcode/greedy/CarPoolingTest.kt,a\b\ab44c22f4807868a6bafc1f1e1537b81ea8cb68e
+`
+0src/test/kotlin/leetcode/greedy/JumpGame2Test.kt,7\a\7a64d73b54873c91b0b5f569c55baa3ca31840a2
+\
+,src/main/kotlin/leetcode/greedy/JumpGame2.kt,2\2\22d90b86b25f524711335cc5e0fe77971c06d81c

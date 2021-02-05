@@ -5,7 +5,6 @@ import io.kotest.data.forAll
 import io.kotest.data.row
 import io.kotest.matchers.shouldBe
 
-@ExperimentalStdlibApi
 class CarPoolingTest : StringSpec({
     "Car Pooling" {
         forAll(

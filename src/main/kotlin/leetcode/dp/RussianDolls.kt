@@ -14,8 +14,7 @@ fun maxEnvelops(envelopes: Array<IntArray>): Int {
         table.apply { // Just the regular DP in FP style.
             val lisUntilCur = (0 until i)
                 .filter { sortedByWidth[it] canFitInside sortedByWidth[i] }
-                .map { validIndex -> this[validIndex] }
-                .maxOrNull() ?: 0
+                .maxOf { validIndex -> this[validIndex] }
             this[i] = lisUntilCur + 1
         }
     }.maxOrNull() ?: 1
