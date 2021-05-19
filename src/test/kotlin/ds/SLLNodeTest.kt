@@ -72,7 +72,6 @@ class SLLNodeTest : StringSpec({
             SLLNode.of(arr)?.getNodeAt(pos) shouldBe resultNode
         }
     }
-
 }) {
     companion object : KLogging()
 }

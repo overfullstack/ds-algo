@@ -7,7 +7,8 @@ fun maxEnvelops(envelopes: Array<IntArray>): Int {
     if (envelopes.isEmpty()) {
         return 0
     }
-    val sortedByWidth = envelopes.map { it[0] to it[1] }.sortedWith(compareBy({ it.first }, { it.second }))
+    val sortedByWidth =
+        envelopes.map { it[0] to it[1] }.sortedWith(compareBy({ it.first }, { it.second }))
 
     // After above sorting, this turns into Longest Increasing subsequence problem.
     return sortedByWidth.indices.fold(IntArray(envelopes.size)) { table, i ->
@@ -20,4 +21,5 @@ fun maxEnvelops(envelopes: Array<IntArray>): Int {
     }.maxOrNull() ?: 1
 }
 
-private infix fun Pair<Int, Int>.canFitInside(pair: Pair<Int, Int>) = first < pair.first && second < pair.second
+private infix fun Pair<Int, Int>.canFitInside(pair: Pair<Int, Int>) =
+    first < pair.first && second < pair.second

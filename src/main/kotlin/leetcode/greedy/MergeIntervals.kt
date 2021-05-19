@@ -7,7 +7,10 @@ fun mergeIntervals(intervals: List<Pair<Int, Int>>): List<Pair<Int, Int>> {
 
     return mergedIntervals + sortedIntervals.reduce { mergedInterval, curInterval -> // aggregate (to previous) or replace (with current)
         if (curInterval.first <= mergedInterval.second) {
-            mergedInterval.first to maxOf(curInterval.second, mergedInterval.second) // aggregate an interval.
+            mergedInterval.first to maxOf(
+                curInterval.second,
+                mergedInterval.second
+            ) // aggregate an interval.
         } else {
             mergedIntervals += mergedInterval
             curInterval // repalce prev aggergate with current interval.

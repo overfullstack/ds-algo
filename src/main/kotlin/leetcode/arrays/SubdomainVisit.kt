@@ -5,7 +5,7 @@ package leetcode.arrays
  */
 fun subdomainVisits(cpdomains: Array<String>): List<String> {
     val map = mutableMapOf<String, Int>()
-    for(cpdomain in cpdomains) {
+    for (cpdomain in cpdomains) {
         val (freqStr, domain) = cpdomain.split(' ')
         val freq = freqStr.toInt()
         map.merge(domain, freq, Int::plus)

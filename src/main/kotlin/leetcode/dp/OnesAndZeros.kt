@@ -12,7 +12,8 @@ fun findMaxForm(strs: Array<String>, m: Int, n: Int): Int {
         val onesInStr = freq['1'] ?: 0
         for (zeroes in m downTo zeroesInStr) {
             for (ones in n downTo onesInStr) {
-                table[zeroes][ones] = maxOf(table[zeroes][ones], 1 + table[zeroes - zeroesInStr][ones - onesInStr])
+                table[zeroes][ones] =
+                    maxOf(table[zeroes][ones], 1 + table[zeroes - zeroesInStr][ones - onesInStr])
             }
         }
     }

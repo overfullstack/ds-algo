@@ -1,6 +1,6 @@
 package hackerrank.stack
 
-import java.util.*
+import java.util.Stack
 
 val stk1 = Stack<Int>()
 val stk2 = Stack<Int>()

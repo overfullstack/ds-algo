@@ -2,64 +2,52 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
     kotlin("jvm")
-    id("com.adarshr.test-logger") version "2.1.1"
-    id("io.gitlab.arturbosch.detekt") version "1.15.0-RC1"
+    id("com.adarshr.test-logger") version "3.0.0"
+    id("io.gitlab.arturbosch.detekt") version "1.16.0"
+    id("com.diffplug.spotless") version "5.12.5"
     application
 }
 
 group = "com.gakshintala.ds-algo"
 version = "1.0-SNAPSHOT"
 
-/*configurations.all {
-    resolutionStrategy.cacheChangingModulesFor(0, "seconds")
-}*/
-
 repositories {
-    jcenter()
-    maven("https://dl.bintray.com/kotlin/kotlin-eap")
-    maven("https://dl.bintray.com/kotlin/kotlin-dev")
+    mavenCentral()
 }
 
 dependencies {
-    implementation(kotlin("script-runtime"))
-
     implementation("io.github.microutils:kotlin-logging:+")
     runtimeOnly("org.apache.logging.log4j:log4j-core:+")
     runtimeOnly("org.apache.logging.log4j:log4j-slf4j-impl:+")
 
     // Junit
-    testImplementation("org.junit.jupiter:junit-jupiter-api:+")
-    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:+")
+    testImplementation(platform("org.junit:junit-bom:+"))
+    testImplementation("org.junit.jupiter:junit-jupiter-api")
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine")
 
     // Kotest
-    testImplementation("io.kotest:kotest-runner-junit5:+")
-    testImplementation("io.kotest:kotest-assertions-core:+")
-    // For Kotest intellij plugin
-    testImplementation("io.kotest:kotest-assertions-core-jvm:+")
-    testImplementation("io.kotest:kotest-runner-junit5-jvm:+")
-    testImplementation("io.kotest:kotest-runner-console-jvm:+")
+    val kotestVersion = "+"
+    testImplementation("io.kotest:kotest-runner-junit5:$kotestVersion")
+    testImplementation("io.kotest:kotest-assertions-core:$kotestVersion")
 }
 
-java {
-    sourceCompatibility = JavaVersion.VERSION_15
-}
+java.sourceCompatibility = JavaVersion.VERSION_16
 
-tasks.withType<JavaCompile> {
-    options.compilerArgs.addAll(arrayOf("--enable-preview"))
-}
-
-tasks.withType<KotlinCompile> {
-    kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_15.toString()
+tasks {
+    withType<JavaCompile> {
+        options.compilerArgs.addAll(arrayOf("--enable-preview"))
+        options.encoding = "UTF-8"
     }
-}
-
-tasks.withType<Test> {
-    ignoreFailures = true
-    useJUnitPlatform {
-        excludeEngines("junit-vintage")
+    withType<KotlinCompile> {
+        kotlinOptions {
+            jvmTarget = JavaVersion.VERSION_16.toString()
+        }
     }
-    jvmArgs("--enable-preview")
+    withType<Test> {
+        useJUnitPlatform()
+        ignoreFailures = true
+        jvmArgs("--enable-preview")
+    }
 }
 
 testlogger {
@@ -78,4 +66,20 @@ testlogger {
     showPassedStandardStreams = true
     showSkippedStandardStreams = true
     showFailedStandardStreams = true
+}
+
+spotless {
+    kotlin {
+        // by default the target is every '.kt' and '.kts` file in the java sourcesets
+        ktlint("0.41.0")
+    }
+    kotlinGradle {
+        target("*.gradle.kts")
+        ktlint("0.41.0")
+    }
+    java {
+        importOrder()
+        googleJavaFormat()
+        removeUnusedImports()
+    }
 }

@@ -3,13 +3,19 @@ package leetcode.sortandsearch
 /**
  * https://leetcode.com/problems/capacity-to-ship-packages-within-d-days/
  */
-fun shipWithinDays(weights: IntArray, D: Int, minCap: Int = weights.maxOrNull()!!, maxCap: Int = weights.sum()): Int {
+fun shipWithinDays(
+    weights: IntArray,
+    D: Int,
+    minCap: Int = weights.maxOrNull()!!,
+    maxCap: Int = weights.sum()
+): Int {
     // * Recursion doesn't stop when `daysRequired=D`. It stops when no more window left to search.
     if (minCap == maxCap) {
         return minCap
     }
     var curCap = (minCap + maxCap) / 2
-    var daysRequired = 1 // ! 1 instead of 0 to compensate last iteration where we can't do `daysRequred++`
+    var daysRequired =
+        1 // ! 1 instead of 0 to compensate last iteration where we can't do `daysRequred++`
     weights.reduce { curSum, weight -> // loading weights to fill the cap
         if (curSum + weight > curCap) {
             daysRequired++

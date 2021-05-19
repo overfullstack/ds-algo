@@ -1,7 +1,7 @@
 /* gakshintala created on 10/2/19 */
 package leetcode.dp
 
-import java.util.*
+import java.util.IntSummaryStatistics
 
 fun findAllConcatenatedWordsInADict(words: Array<String>): List<String> {
     val nonEmptyWords = words.filter { it.isNotEmpty() }
@@ -26,7 +26,6 @@ private fun isWordPresent(word: String, wordDictSet: Set<String>, minLength: Int
             }
         }
     }.last() == word.lastIndex
-
 
 fun main() {
     findAllConcatenatedWordsInADict(

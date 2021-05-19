@@ -16,7 +16,9 @@ fun maximumSwap(num: Int): Int {
             val greaterDigitIndex = buckets[bucketIndex]
             if (greaterDigitIndex > digitIndex) { // Both value and index are greater, we found a highest number after current digit.
                 numCharArray[greaterDigitIndex] =
-                    numCharArray[digitIndex].also { numCharArray[digitIndex] = numCharArray[greaterDigitIndex] }
+                    numCharArray[digitIndex].also {
+                        numCharArray[digitIndex] = numCharArray[greaterDigitIndex]
+                    }
                 return numCharArray.joinToString("").toInt()
             }
         }

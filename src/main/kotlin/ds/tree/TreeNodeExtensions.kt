@@ -44,7 +44,8 @@ fun TreeNode?.reverseInorderTraversalMorris(visitFn: (TreeNode?) -> Unit) {
             } else { // Right side is covered
                 inorderSuccessor.left = null // break the link
                 visitFn(cur) // For kth Largest, a larger node is recorded and move on to left
-                cur = cur.left // By this time all larger nodes including the root for cur.left are recorded.
+                cur =
+                    cur.left // By this time all larger nodes including the root for cur.left are recorded.
             }
         }
     }

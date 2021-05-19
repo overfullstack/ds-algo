@@ -14,7 +14,10 @@ fun minPathSumRecursive(
     val result = when {
         row < 0 || col < 0 -> Int.MAX_VALUE
         row == 0 && col == 0 -> grid[0][0]
-        else -> grid[row][col] + minOf(minPathSumRecursive(grid, row - 1, col), minPathSumRecursive(grid, row, col - 1))
+        else -> grid[row][col] + minOf(
+            minPathSumRecursive(grid, row - 1, col),
+            minPathSumRecursive(grid, row, col - 1)
+        )
     }
     return cache.merge(row to col, result, ::maxOf)!!
 }

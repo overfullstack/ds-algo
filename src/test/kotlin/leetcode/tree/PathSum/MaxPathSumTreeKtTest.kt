@@ -22,5 +22,4 @@ class MaxPathSumTreeKtTest : StringSpec() {
             }
         }
     }
-
 }

@@ -1,6 +1,6 @@
 package leetcode.stack
 
-import java.util.*
+import java.util.Stack
 
 /**
  * https://leetcode.com/problems/remove-k-digits/

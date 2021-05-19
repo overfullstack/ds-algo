@@ -12,14 +12,18 @@ fun findMedianSortedArrays(a: IntArray, b: IntArray): Double {
     }
 
     var low = 0
-    var high = a.lastIndex + 1 // same as a.size, to have an extra element on left of the partition if size is even
+    var high =
+        a.lastIndex + 1 // same as a.size, to have an extra element on left of the partition if size is even
     // Coz of +1, if (a.size + b.size) is odd, the left side will have an element more
-    val mergedMid = (a.size + b.size + 1) / 2 // say a.size + b.size = 9, we add 1 to push partition to 5 instead of 4
+    val mergedMid =
+        (a.size + b.size + 1) / 2 // say a.size + b.size = 9, we add 1 to push partition to 5 instead of 4
 
     while (low <= high) {
         // This is more like binary search on smaller array to find right partition elements.
-        val aPartition = (low + high) / 2 // Both aPartition and mergedMid has an extra element on left if size is even.
-        val bPartition = mergedMid - aPartition // (left on a + left on b) | (right on a + right on b)
+        val aPartition =
+            (low + high) / 2 // Both aPartition and mergedMid has an extra element on left if size is even.
+        val bPartition =
+            mergedMid - aPartition // (left on a + left on b) | (right on a + right on b)
 
         // Partition is not actually a line between two elements,
         // It shall be on an element which is treated as being on the right side of | and left is partition-1

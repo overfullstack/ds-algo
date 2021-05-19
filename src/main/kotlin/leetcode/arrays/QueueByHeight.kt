@@ -1,6 +1,6 @@
 package leetcode.arrays
 
-import java.util.*
+import java.util.LinkedList
 
 /**
  * https://leetcode.com/problems/queue-reconstruction-by-height/

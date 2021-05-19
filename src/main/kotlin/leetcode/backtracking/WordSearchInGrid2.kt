@@ -28,11 +28,13 @@ private fun TrieNode.findWords(
         .filter { it.isValid(board, visited) }
         .fold(if (isEnd) setOf(word) else emptySet()) { wordsFound, nextGridPoint ->
             // Not accumulating word, as trie takes care of it, we just need to ask for `word` at the end.
-            wordsFound + (children[board[nextGridPoint.first][nextGridPoint.second] - 'a']?.findWords(
-                board,
-                nextGridPoint,
-                visited.apply { this[nextGridPoint.first][nextGridPoint.second] = true }
-            ) ?: emptySet())
+            wordsFound + (
+                children[board[nextGridPoint.first][nextGridPoint.second] - 'a']?.findWords(
+                    board,
+                    nextGridPoint,
+                    visited.apply { this[nextGridPoint.first][nextGridPoint.second] = true }
+                ) ?: emptySet()
+                )
         }.also {
             visited[gridPoint.first][gridPoint.second] = false
         } // Backtracking visited in this branch as we unwind this DFT.
@@ -41,5 +43,5 @@ private fun Pair<Int, Int>.isValid(
     board: Array<CharArray>,
     visited: Array<BooleanArray>
 ) = first >= 0 && second >= 0 &&
-        first < board.size && second < board[0].size &&
-        !visited[first][second]
+    first < board.size && second < board[0].size &&
+    !visited[first][second]

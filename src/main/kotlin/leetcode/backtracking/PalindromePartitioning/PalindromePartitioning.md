@@ -9,6 +9,6 @@ Example:
 Input: "aab"
 Output:
 [
-  ["aa","b"],
-  ["a","a","b"]
+["aa","b"],
+["a","a","b"]
 ]

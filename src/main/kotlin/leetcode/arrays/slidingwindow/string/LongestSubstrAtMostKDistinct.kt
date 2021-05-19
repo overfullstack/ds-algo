@@ -34,7 +34,10 @@ fun lengthOfLongestSubstringAtmostKDistinct(s: String, k: Int): String {
         }
     }
 
-    return if (maxWindowLen == Int.MIN_VALUE) s else s.substring(maxWindowStart, maxWindowStart + maxWindowLen)
+    return if (maxWindowLen == Int.MIN_VALUE) s else s.substring(
+        maxWindowStart,
+        maxWindowStart + maxWindowLen
+    )
 }
 
 fun main() {

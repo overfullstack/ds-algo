@@ -3,7 +3,8 @@ package leetcode.backtracking
 /**
  * https://leetcode.com/problems/permutations-ii/
  */
-fun permuteUnique(nums: IntArray): List<List<Int>> = permuteUniqueUtil(nums.sorted()) // ! Sort to keep dups together
+fun permuteUnique(nums: IntArray): List<List<Int>> =
+    permuteUniqueUtil(nums.sorted()) // ! Sort to keep dups together
 
 private fun permuteUniqueUtil(
     numsSorted: List<Int>,

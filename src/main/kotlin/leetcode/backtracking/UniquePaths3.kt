@@ -28,7 +28,8 @@ private fun uniquePaths(grid: Array<IntArray>, zeroCount: Int, gridPoint: Pair<I
     }
     grid[gridPoint.first][gridPoint.second] = -1
     val pathCount = directions.fold(0) { pathCount, direction ->
-        val nextGridPoint = ((gridPoint.first + direction.first) to (gridPoint.second + direction.second))
+        val nextGridPoint =
+            ((gridPoint.first + direction.first) to (gridPoint.second + direction.second))
         pathCount + uniquePaths(grid, zeroCount - 1, nextGridPoint)
     }
     grid[gridPoint.first][gridPoint.second] = 0
@@ -39,7 +40,11 @@ private fun Pair<Int, Int>.isValid(grid: Array<IntArray>) =
     first >= 0 && second >= 0 && first < grid.size && second < grid[0].size && grid[first][second] != -1
 
 fun main() {
-    print(uniquePathsIII(readLine()!!.drop(2).dropLast(2).split("],[").map { row ->
-        row.split(",").map { it.trim().toInt() }.toIntArray()
-    }.toTypedArray()))
+    print(
+        uniquePathsIII(
+            readLine()!!.drop(2).dropLast(2).split("],[").map { row ->
+                row.split(",").map { it.trim().toInt() }.toIntArray()
+            }.toTypedArray()
+        )
+    )
 }

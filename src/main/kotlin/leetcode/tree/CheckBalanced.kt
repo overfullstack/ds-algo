@@ -15,7 +15,8 @@ fun TreeNode?.checkBalanced(): Pair<Int, Boolean> =
         if (!isRightSubTreeBalanced) {
             rightHeight to isRightSubTreeBalanced
         }
-        val areBothSidesBalanced = isLeftSubTreeBalanced && isRightSubTreeBalanced && abs(leftHeight - rightHeight) <= 1
+        val areBothSidesBalanced =
+            isLeftSubTreeBalanced && isRightSubTreeBalanced && abs(leftHeight - rightHeight) <= 1
         if (areBothSidesBalanced) {
             maxOf(leftHeight, rightHeight) + 1 to true
         } else {

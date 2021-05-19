@@ -1,7 +1,7 @@
 /* gakshintala created on 8/8/19 */
 package hackerrank
 
-import java.util.*
+import java.util.Scanner
 
 fun maxSubsetSum(arr: Array<Int>): Int {
     var exclPrev = 0

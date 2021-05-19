@@ -1,6 +1,6 @@
 package cci.stack
 
-import java.util.*
+import java.util.Stack
 
 fun Stack<Int>.sortWithStack(): Stack<Int> {
     val bufferStk = Stack<Int>()

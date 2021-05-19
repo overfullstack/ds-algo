@@ -23,7 +23,12 @@ private fun canPartitionKSubsets(
     when {
         k == 0 -> true
         curSum > targetSum -> false
-        curSum == targetSum -> canPartitionKSubsets(nums, k - 1, targetSum, used) // * Restart after targetSum is met.
+        curSum == targetSum -> canPartitionKSubsets(
+            nums,
+            k - 1,
+            targetSum,
+            used
+        ) // * Restart after targetSum is met.
         else -> (startIndex..nums.lastIndex).filter { !used[it] }.any { unusedIndex ->
             used[unusedIndex] = true
             canPartitionKSubsets(

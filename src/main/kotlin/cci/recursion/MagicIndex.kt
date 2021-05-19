@@ -1,6 +1,10 @@
 package cci.recursion
 
-tailrec fun searchMagicIndexNonRepeating(arr: IntArray, low: Int = 0, high: Int = arr.lastIndex): Int {
+tailrec fun searchMagicIndexNonRepeating(
+    arr: IntArray,
+    low: Int = 0,
+    high: Int = arr.lastIndex
+): Int {
     if (low > high) {
         return -1
     }
@@ -20,7 +24,10 @@ fun findMagicIndexRepeating(arr: IntArray, low: Int = 0, high: Int = arr.lastInd
     if (arr[mid] == mid) {
         return mid
     }
-    val leftBound = minOf(mid - 1, arr[mid]) // If `arr[mid] < mid`, you may skip all the indices till `index=arr[mid]`.
+    val leftBound = minOf(
+        mid - 1,
+        arr[mid]
+    ) // If `arr[mid] < mid`, you may skip all the indices till `index=arr[mid]`.
     val leftResult = findMagicIndexRepeating(arr, low, leftBound)
     if (leftResult >= 0) {
         return leftResult

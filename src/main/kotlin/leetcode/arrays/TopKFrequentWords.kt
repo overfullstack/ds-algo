@@ -1,7 +1,7 @@
 /* gakshintala created on 1/26/20 */
 package leetcode.arrays
 
-import java.util.*
+import java.util.PriorityQueue
 
 /**
  * https://leetcode.com/problems/top-k-frequent-words/

@@ -26,5 +26,3 @@ fun SLLNode?.partition(pivot: Int) {
 private fun SLLNode.swapValue(node: SLLNode) {
     value = node.value.also { node.value = value }
 }
-
-

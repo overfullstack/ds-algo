@@ -25,8 +25,12 @@ data class NArrayEulerTour(var value: Int) {
         return arrayOf(this) + children.fold(
             emptyArray<NArrayEulerTour>(),
             { tourResult, child ->
-                tourResult + (child?.eulersTour(counter + tourResult.size + 1) ?: emptyArray()) + this
-            })
+                tourResult + (
+                    child?.eulersTour(counter + tourResult.size + 1)
+                        ?: emptyArray()
+                    ) + this
+            }
+        )
     }
 }
 
@@ -36,12 +40,13 @@ fun lcaMultipleNodes(
     depthsSparseTableRMQ: SparseTableRMQ,
     eulersTourArr: Array<NArrayEulerTour>
 ) = nodes.reduce { first, second ->
-    eulersTourArr[depthsSparseTableRMQ.rmqIndex( // Find min depth in the range. DepthArr is in same sequence as eulerTourArr.
-        treeGraph[first]?.firstOccurrence!!,
-        treeGraph[second]?.firstOccurrence!!
-    )].value
+    eulersTourArr[
+        depthsSparseTableRMQ.rmqIndex( // Find min depth in the range. DepthArr is in same sequence as eulerTourArr.
+            treeGraph[first]?.firstOccurrence!!,
+            treeGraph[second]?.firstOccurrence!!
+        )
+    ].value
 }
-
 
 fun main() {
     val delimiters = " "

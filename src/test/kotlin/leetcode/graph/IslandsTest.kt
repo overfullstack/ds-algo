@@ -8,7 +8,15 @@ import io.kotest.matchers.shouldBe
 class IslandsTest : StringSpec({
     "Number of islands" {
         forAll(
-            row(arrayOf("11110".toCharArray(), "11010".toCharArray(), "11000".toCharArray(), "00000".toCharArray()), 1),
+            row(
+                arrayOf(
+                    "11110".toCharArray(),
+                    "11010".toCharArray(),
+                    "11000".toCharArray(),
+                    "00000".toCharArray()
+                ),
+                1
+            ),
         ) { grid, result ->
             numIslands(grid) shouldBe result
         }

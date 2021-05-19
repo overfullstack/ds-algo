@@ -18,7 +18,7 @@ class SegmentTreeSum(var arr: IntArray) {
             } else { // Going into mids of mids and ending up at individual arr elements. 
                 val mid = (startIndex + endIndex) / 2
                 construct(2 * segmentTreeIndex + 1, startIndex, mid) +
-                        construct(2 * segmentTreeIndex + 2, mid + 1, endIndex)
+                    construct(2 * segmentTreeIndex + 2, mid + 1, endIndex)
             }
         return segmentTree[segmentTreeIndex]
     }
@@ -58,7 +58,13 @@ class SegmentTreeSum(var arr: IntArray) {
         updateIndex(index, diff, 0, arr.lastIndex, 0)
     }
 
-    private fun updateIndex(index: Int, diff: Int, segmentStart: Int, segmentEnd: Int, segmentTreeIndex: Int) {
+    private fun updateIndex(
+        index: Int,
+        diff: Int,
+        segmentStart: Int,
+        segmentEnd: Int,
+        segmentTreeIndex: Int
+    ) {
         if (index < segmentStart || index > segmentEnd) {
             return
         }

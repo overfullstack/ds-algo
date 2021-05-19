@@ -24,7 +24,11 @@ fun jobScheduling(startTimeArr: IntArray, endTimeArr: IntArray, profitArr: IntAr
 /**
  * Find the index of the largest element < target in the given list.
  */
-private tailrec fun List<Int>.getClosestJobEndIndex(targetEndTime: Int, left: Int = 0, right: Int = size - 1): Int {
+private tailrec fun List<Int>.getClosestJobEndIndex(
+    targetEndTime: Int,
+    left: Int = 0,
+    right: Int = size - 1
+): Int {
     val mid = (left + right) / 2
     return when {
         left + 1 >= right -> if (this[right] < targetEndTime) right else left // This makes sure `left` never cross `targetEnd`

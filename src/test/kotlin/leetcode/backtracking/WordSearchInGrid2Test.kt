@@ -30,6 +30,12 @@ internal class WordSearchInGrid2Test {
     fun test3() {
         val board = arrayOf(charArrayOf('a', 'b'), charArrayOf('a', 'a'))
         val words = arrayOf("aba", "aaa", "aaab", "baa", "baa", "aaba", "aaba")
-        findWords(board, words) shouldContainExactlyInAnyOrder listOf("aaa", "aaab", "aaba", "aba", "baa")
+        findWords(board, words) shouldContainExactlyInAnyOrder listOf(
+            "aaa",
+            "aaab",
+            "aaba",
+            "aba",
+            "baa"
+        )
     }
 }

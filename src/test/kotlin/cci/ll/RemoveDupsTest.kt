@@ -20,6 +20,5 @@ class RemoveDupsTest : StringSpec({
             node?.removeDupsFromSLL()
             node?.toArray() shouldBe result
         }
-
     }
 })

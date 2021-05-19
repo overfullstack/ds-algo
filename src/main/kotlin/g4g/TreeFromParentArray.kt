@@ -14,10 +14,18 @@ fun main() {
     }
 }
 
-fun constructTree(index: Int, parentArr: List<Int>, constructedNodes: Array<TreeNode?> = emptyArray()) {
+fun constructTree(
+    index: Int,
+    parentArr: List<Int>,
+    constructedNodes: Array<TreeNode?> = emptyArray()
+) {
     when {
         constructedNodes[index] != null || parentArr[index] == -1 -> return
-        constructedNodes[parentArr[index]] == null -> constructTree(parentArr[index], parentArr, constructedNodes)
+        constructedNodes[parentArr[index]] == null -> constructTree(
+            parentArr[index],
+            parentArr,
+            constructedNodes
+        )
         else -> constructedNodes[parentArr[index]]?.run {
             if (left == null) {
                 left = TreeNode(index)

@@ -11,7 +11,8 @@ class TreeRightViewTest : StringSpec({
         forAll(
             row(listOf(1, 2, 3, 4), listOf(1, 3, 4))
         ) { levelOrder, result ->
-            TreeNode.levelOrderToCompleteTree(levelOrder)!!.rightSideView() shouldContainInOrder result
+            TreeNode.levelOrderToCompleteTree(levelOrder)!!
+                .rightSideView() shouldContainInOrder result
         }
     }
 })

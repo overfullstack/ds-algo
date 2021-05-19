@@ -16,7 +16,8 @@ fun minCutsForPalindromePartition(s: String): Int {
 
     for (gap in 1..s.lastIndex) {
         for ((i, j) in (gap..s.lastIndex).withIndex()) {
-            isPalTable[i][j] = // ! This helps in not calculating cuts when it's already a palindrome
+            isPalTable[i][j] =
+                // ! This helps in not calculating cuts when it's already a palindrome
                 if (gap == 1) s[i] == s[j]
                 else s[i] == s[j] && isPalTable[i + 1][j - 1]
             // This stores no.of cuts required for substring(i..j).
@@ -25,7 +26,8 @@ fun minCutsForPalindromePartition(s: String): Int {
                 if (isPalTable[i][j]) 0
                 // +1 is the extra cut required for partitioning two palindromes from `i-partition` and `partition-j`
                 // If no substring is a palindrome, this +1 makes the result = no.of chars in the string.
-                else (i until j).map { cutsTable[i][it] + 1 + cutsTable[it + 1][j] }.minOrNull() ?: 0
+                else (i until j).map { cutsTable[i][it] + 1 + cutsTable[it + 1][j] }.minOrNull()
+                    ?: 0
         }
     }
     return cutsTable[0][s.lastIndex] // For the entire string

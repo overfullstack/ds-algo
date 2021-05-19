@@ -17,5 +17,4 @@ class MedianForDifferentSizeKtTest : StringSpec() {
             }
         }
     }
-
 }

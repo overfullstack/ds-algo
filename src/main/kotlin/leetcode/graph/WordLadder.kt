@@ -21,7 +21,10 @@ fun ladderLength(beginWord: String, endWord: String, wordList: List<String>): In
             val word = start.removeFirst()
             for (i in word.indices) {
                 for (c in 'a'..'z') {
-                    when (val transform = word.slice(0 until i) + c + word.slice(i + 1..word.lastIndex)) {
+                    when (
+                        val transform =
+                            word.slice(0 until i) + c + word.slice(i + 1..word.lastIndex)
+                    ) {
                         in end -> return length + 1
                         in wordSet -> {
                             start.add(transform)

@@ -10,7 +10,11 @@ fun letterCombinations(digits: String): List<String> {
     return letterCombinationsUtil(digits)
 }
 
-private fun letterCombinationsUtil(digits: String, combination: String = "", digitIndex: Int = 0): List<String> =
+private fun letterCombinationsUtil(
+    digits: String,
+    combination: String = "",
+    digitIndex: Int = 0
+): List<String> =
     if (combination.length == digits.length) {
         listOf(combination)
     } else {

@@ -14,7 +14,13 @@ fun palindromePartition(
     } else {
         (startIndex..str.lastIndex)
             .filter { isPalindrome(str.substring(startIndex..it)) }
-            .flatMap { palindromePartition(str, palindromes + str.substring(startIndex..it), it + 1) }
+            .flatMap {
+                palindromePartition(
+                    str,
+                    palindromes + str.substring(startIndex..it),
+                    it + 1
+                )
+            }
     }
 
 fun isPalindrome(str: String): Boolean = str == str.reversed()

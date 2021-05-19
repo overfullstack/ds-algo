@@ -20,7 +20,12 @@ tailrec fun search(nums: IntArray, target: Int, left: Int = 0, right: Int = nums
         nums[left] == target -> left
         nums[right] == target -> right
         nums[left] < nums[mid] -> when { // If left sorted
-            target > nums[left] && target < nums[mid] -> search(nums, target, left, mid - 1) // Is target in left range.
+            target > nums[left] && target < nums[mid] -> search(
+                nums,
+                target,
+                left,
+                mid - 1
+            ) // Is target in left range.
             // If above condition is not true, then the target has slipped through rotation to the right side.
             else -> search(nums, target, mid + 1, right)
         }

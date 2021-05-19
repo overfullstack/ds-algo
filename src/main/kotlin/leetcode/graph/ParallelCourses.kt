@@ -22,7 +22,12 @@ private fun DiGraphNode.dft(
 ): Int =
     diGraph[this]?.asSequence()?.map {
         when (it) {
-            !in visited -> it.dft(diGraph, visited.apply { add(it) }, visitedInBranch + it, maxNodesInPath + 1)
+            !in visited -> it.dft(
+                diGraph,
+                visited.apply { add(it) },
+                visitedInBranch + it,
+                maxNodesInPath + 1
+            )
             in visitedInBranch -> throw IllegalArgumentException("Graph has Cycle")
             else -> maxNodesInPath
         }

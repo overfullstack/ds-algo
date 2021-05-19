@@ -13,7 +13,20 @@ class SubStringsWithKSizeKDistinctTest : StringSpec({
             row(
                 "awaglknagawunagwkwagl",
                 4,
-                listOf("wagl", "aglk", "glkn", "lkna", "knag", "gawu", "awun", "wuna", "unag", "nagw", "agwk", "kwag")
+                listOf(
+                    "wagl",
+                    "aglk",
+                    "glkn",
+                    "lkna",
+                    "knag",
+                    "gawu",
+                    "awun",
+                    "wuna",
+                    "unag",
+                    "nagw",
+                    "agwk",
+                    "kwag"
+                )
             )
         ) { s, k, result ->
             subStringsWithKSizeKDistinct(s, k) shouldContainExactlyInAnyOrder result

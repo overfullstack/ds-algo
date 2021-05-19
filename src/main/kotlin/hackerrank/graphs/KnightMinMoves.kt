@@ -1,7 +1,8 @@
 /* gakshintala created on 9/2/19 */
 package hackerrank.graphs
 
-import java.util.*
+import java.util.ArrayDeque
+import java.util.Scanner
 
 fun knightOnAChessboard(n: Int): Array<Array<Int>> {
     val startCoOrdinates = (1 until n).map { x -> (1 until n).map { y -> Pair(x, y) } }
@@ -37,7 +38,8 @@ fun findMinStepsToReachEnd(pairOffset: Pair<Int, Int>, n: Int): Int {
     return -1
 }
 
-fun isPairInBounds(pair: Pair<Int, Int>, n: Int) = pair.first in 0 until n && pair.second in 0 until n
+fun isPairInBounds(pair: Pair<Int, Int>, n: Int) =
+    pair.first in 0 until n && pair.second in 0 until n
 
 private fun offSetCombinations(pairOffset: Pair<Int, Int>): List<Pair<Int, Int>> {
     val swapPairOffSet = Pair(pairOffset.second, pairOffset.first)

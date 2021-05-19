@@ -9,7 +9,16 @@ class ConcatenatedWordsTest : StringSpec({
     "Concatenated words" {
         forAll(
             row(
-                arrayOf("cat", "cats", "catsdogcats", "dog", "dogcatsdog", "hippopotamuses", "rat", "ratcatdogcat"),
+                arrayOf(
+                    "cat",
+                    "cats",
+                    "catsdogcats",
+                    "dog",
+                    "dogcatsdog",
+                    "hippopotamuses",
+                    "rat",
+                    "ratcatdogcat"
+                ),
                 listOf("catsdogcats", "dogcatsdog", "ratcatdogcat")
             ),
         ) { words, result ->

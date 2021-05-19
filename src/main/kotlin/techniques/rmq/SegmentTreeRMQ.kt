@@ -44,8 +44,20 @@ class SegmentTreeRMQ(var arr: IntArray) {
         }
         val mid = (segmentStart + segmentEnd) / 2
         return minOf(
-            getMinForRange(segmentStart, mid, queryStartIndex, queryEndIndex, 2 * segmentTreeIndex + 1),
-            getMinForRange(mid + 1, segmentEnd, queryStartIndex, queryEndIndex, 2 * segmentTreeIndex + 2)
+            getMinForRange(
+                segmentStart,
+                mid,
+                queryStartIndex,
+                queryEndIndex,
+                2 * segmentTreeIndex + 1
+            ),
+            getMinForRange(
+                mid + 1,
+                segmentEnd,
+                queryStartIndex,
+                queryEndIndex,
+                2 * segmentTreeIndex + 2
+            )
         )
     }
 

@@ -1,7 +1,7 @@
 /* gakshintala created on 12/8/19 */
 package leetcode.stack
 
-import java.util.*
+import java.util.ArrayDeque
 
 fun smallestSubsequence(text: String): String {
     val charFrequency = text.groupingBy { it }.eachCount().toMutableMap()
@@ -12,7 +12,11 @@ fun smallestSubsequence(text: String): String {
         if (!visited.contains(ch)) {
             // `stk.peek() > ch` is for lexicographical reason. If a `stk.peek()` is greater than current char and has positive frequency,
             // we are gonna encounter it again later, so remove it for now and push the smaller ch.
-            while (stk.isNotEmpty() && stk.peek() > ch && charFrequency.getOrDefault(stk.peek(), 0) > 0) {
+            while (stk.isNotEmpty() && stk.peek() > ch && charFrequency.getOrDefault(
+                    stk.peek(),
+                    0
+                ) > 0
+            ) {
                 visited.remove(stk.pop())
             }
             stk.push(ch)

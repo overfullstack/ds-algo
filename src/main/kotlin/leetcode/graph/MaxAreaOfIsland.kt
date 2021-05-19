@@ -23,5 +23,5 @@ private fun Array<IntArray>.dft(nextGridPoint: Pair<Int, Int>): Int {
 
 private fun Pair<Int, Int>.isValid(grid: Array<IntArray>): Boolean =
     first >= 0 && first <= grid.lastIndex &&
-            second >= 0 && second <= grid[0].lastIndex &&
-            grid[first][second] == 1
+        second >= 0 && second <= grid[0].lastIndex &&
+        grid[first][second] == 1

@@ -4,7 +4,7 @@ package leetcode.tree.PathSum
 import ds.tree.TreeNode
 
 /**
- * https://leetcode.com/problems/binary-tree-maximum-path-sum/ 
+ * https://leetcode.com/problems/binary-tree-maximum-path-sum/
  */
 fun TreeNode.maxPathSum(): Pair<Int, Int> {
     val (leftSum, maxSumInLeft) = left?.maxPathSum() ?: 0 to Int.MIN_VALUE

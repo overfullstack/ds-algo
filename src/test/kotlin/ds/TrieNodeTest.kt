@@ -91,5 +91,4 @@ internal class TrieNodeTest {
 
         trieNode.recommendations("go") shouldContainExactlyInAnyOrder listOf("gopal", "gopals")
     }
-
 }

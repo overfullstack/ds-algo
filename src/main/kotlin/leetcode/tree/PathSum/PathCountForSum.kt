@@ -16,11 +16,18 @@ private fun TreeNode?.pathCountForSum(
         return 0
     }
     val curSum = runningSum + this.`val`
-    var totalPathCount = sumToPathCount.getOrDefault(curSum - targetSum, 0) + if (curSum == targetSum) 1 else 0
+    var totalPathCount =
+        sumToPathCount.getOrDefault(curSum - targetSum, 0) + if (curSum == targetSum) 1 else 0
 
     sumToPathCount.merge(curSum, 1, Int::plus)
-    totalPathCount += (left.pathCountForSum(targetSum, sumToPathCount, curSum)
-            + right.pathCountForSum(targetSum, sumToPathCount, curSum)) // This is like fold, for left n right
+    totalPathCount += (
+        left.pathCountForSum(targetSum, sumToPathCount, curSum) +
+            right.pathCountForSum(
+                targetSum,
+                sumToPathCount,
+                curSum
+            )
+        ) // This is like fold, for left n right
     // Backtracking, removing the path contributed by this node, by decrementing the pathCount for curSum.
     // This makes this hashmap reusable for other paths.
     // We still have our `totalPathCount` safe for this path, which shall be returned up for accumulation.

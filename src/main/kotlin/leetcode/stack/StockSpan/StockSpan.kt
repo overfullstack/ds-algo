@@ -1,7 +1,7 @@
 /* gakshintala created on 12/26/19 */
 package leetcode.stack.StockSpan
 
-import java.util.*
+import java.util.Stack
 
 class StockSpan {
     private val stk = Stack<Pair<Int, Int>>()

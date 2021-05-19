@@ -28,5 +28,4 @@ class RemoveAdjacentDuplicatesKtTest : StringSpec() {
             }
         }
     }
-
 }

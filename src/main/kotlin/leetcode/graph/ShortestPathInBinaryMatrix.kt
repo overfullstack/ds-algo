@@ -35,9 +35,10 @@ fun shortestPathBinaryMatrix(grid: Array<IntArray>): Int {
     return -1
 }
 
-private val directions = listOf(0 to 1, 0 to -1, 1 to 0, -1 to 0, 1 to -1, -1 to 1, -1 to -1, 1 to 1)
+private val directions =
+    listOf(0 to 1, 0 to -1, 1 to 0, -1 to 0, 1 to -1, -1 to 1, -1 to -1, 1 to 1)
 
 private fun Pair<Int, Int>.isValid(grid: Array<IntArray>) =
     first >= 0 && first <= grid.lastIndex &&
-            second >= 0 && second <= grid[0].lastIndex &&
-            grid[first][second] == 0
+        second >= 0 && second <= grid[0].lastIndex &&
+        grid[first][second] == 0

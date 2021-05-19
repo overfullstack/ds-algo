@@ -2,7 +2,8 @@
 package leetcode.dp.burstballoons
 
 fun maxCoins(nums: IntArray): Int {
-    val balloons = arrayOf(1) + nums.toTypedArray() + arrayOf(1) // this is leetcode problem specific
+    val balloons =
+        arrayOf(1) + nums.toTypedArray() + arrayOf(1) // this is leetcode problem specific
     val table = Array(balloons.size) { IntArray(balloons.size) }
     // We take 3 at a time. The reason we start table at index 1 (windowStart + 1) is, when window is 2, first 3 represent calculation of 2 matrices.
     // So table[1][2] indicates matrix multiplication of 0*1 and 1*2

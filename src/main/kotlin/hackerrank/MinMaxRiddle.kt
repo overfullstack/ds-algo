@@ -1,7 +1,8 @@
 /* gakshintala created on 8/28/19 */
 package hackerrank
 
-import java.util.*
+import java.util.ArrayDeque
+import java.util.Scanner
 
 fun riddle(arr: Array<Long>): Array<Long> {
     val minIndexOnRight = IntArray(arr.size) { arr.size }

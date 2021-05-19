@@ -1,7 +1,6 @@
 /* gakshintala created on 12/25/19 */
 package hackerrank.greedy
 
-
 fun maxMinOptimized(k: Int, arr: IntArray): Int {
     arr.sort()
     return arr.dropLast(k - 1).mapIndexed { i, value -> arr[i + k - 1] - value }.minOrNull() ?: 0
@@ -9,7 +8,8 @@ fun maxMinOptimized(k: Int, arr: IntArray): Int {
 
 fun maxMin(k: Int, arr: IntArray): Int {
     arr.sort()
-    return arr.asSequence().windowed(k).map { it.maxOrNull()?.minus((it.minOrNull() ?: 0)) ?: 0 }.minOrNull() ?: 0
+    return arr.asSequence().windowed(k).map { it.maxOrNull()?.minus((it.minOrNull() ?: 0)) ?: 0 }
+        .minOrNull() ?: 0
 }
 
 @ExperimentalStdlibApi
@@ -52,7 +52,12 @@ fun slidingWindow(nums: IntArray, k: Int): Pair<IntArray, IntArray> {
 }
 
 @ExperimentalStdlibApi
-private fun enqueueCur(maxDeque: ArrayDeque<Int>, nums: IntArray, i: Int, comparator: Int.(Int) -> Boolean) {
+private fun enqueueCur(
+    maxDeque: ArrayDeque<Int>,
+    nums: IntArray,
+    i: Int,
+    comparator: Int.(Int) -> Boolean
+) {
     while (!maxDeque.isEmpty() && nums[i].comparator(nums[maxDeque.last()])) {
         maxDeque.removeLast() // Imagine this element shattering out lesser/equal elements out from last to first
     }

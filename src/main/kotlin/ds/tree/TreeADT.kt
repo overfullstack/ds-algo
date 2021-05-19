@@ -13,5 +13,4 @@ sealed class TreeADT<T> {
             is Leaf -> listOf(`val`)
             else -> emptyList()
         }
-
 }

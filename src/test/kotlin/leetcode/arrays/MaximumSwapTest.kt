@@ -3,7 +3,6 @@ package leetcode.arrays
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.matchers.shouldBe
 
-
 class MaximumSwapTest : StringSpec({
     "maximumSwap1" {
         maximumSwap(2736) shouldBe 7236

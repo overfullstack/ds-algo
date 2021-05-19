@@ -1,7 +1,7 @@
 /* gakshintala created on 8/9/19 */
 package hackerrank
 
-import java.util.*
+import java.util.Scanner
 
 fun abbreviation(a: String, b: String): String {
     if (b.isEmpty()) {
@@ -42,5 +42,4 @@ fun main() {
 
         println(result)
     }
-
 }

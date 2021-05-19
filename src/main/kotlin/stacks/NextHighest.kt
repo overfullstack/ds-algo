@@ -1,7 +1,7 @@
 /* gakshintala created on 8/23/19 */
 package stacks
 
-import java.util.*
+import java.util.ArrayDeque
 
 fun nextHighest(h: IntArray) {
     val stk = ArrayDeque<Int>()

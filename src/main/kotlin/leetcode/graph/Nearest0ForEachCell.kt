@@ -31,11 +31,11 @@ private val directions = listOf(0 to 1, 0 to -1, 1 to 0, -1 to 0)
 
 private fun Pair<Int, Int>.isValid(matrix: Array<IntArray>, distance: Int) =
     first >= 0 && first <= matrix.lastIndex &&
-            second >= 0 && second <= matrix[0].lastIndex &&
-            // * 1. Cells with 0s never pass this as distance is always positive, so 0s are never overriden.
-            // * 2. For Storing min distance
-            // If a 0 is totally surround by 0s, it's useless as it can never be a nearst 0 for any 1, so skip it.
-            distance < matrix[first][second]
+        second >= 0 && second <= matrix[0].lastIndex &&
+        // * 1. Cells with 0s never pass this as distance is always positive, so 0s are never overriden.
+        // * 2. For Storing min distance
+        // If a 0 is totally surround by 0s, it's useless as it can never be a nearst 0 for any 1, so skip it.
+        distance < matrix[first][second]
 
 fun updateMatrix2(matrix: Array<IntArray>): Array<IntArray> { // BFS
     val queue = ArrayDeque<Pair<Int, Int>>()
@@ -69,5 +69,5 @@ fun updateMatrix2(matrix: Array<IntArray>): Array<IntArray> { // BFS
 
 private fun Pair<Int, Int>.isValid2(matrix: Array<IntArray>) =
     first >= 0 && first <= matrix.lastIndex &&
-            second >= 0 && second <= matrix[0].lastIndex &&
-            matrix[first][second] == -1
+        second >= 0 && second <= matrix[0].lastIndex &&
+        matrix[first][second] == -1

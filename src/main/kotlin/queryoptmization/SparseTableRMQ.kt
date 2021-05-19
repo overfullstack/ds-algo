@@ -28,7 +28,8 @@ class SparseTableRMQ(var arr: IntArray) {
     fun rmqIndex(startIndex: Int, endIndex: Int): Int {
         val sparseInterval = log2((abs(endIndex - startIndex) + 1).toFloat()).toInt()
         val firstHalfRange = sparseTable[startIndex][sparseInterval]
-        val secondHalfRange = sparseTable[endIndex - 2.0.pow(sparseInterval).toInt() + 1][sparseInterval]
+        val secondHalfRange =
+            sparseTable[endIndex - 2.0.pow(sparseInterval).toInt() + 1][sparseInterval]
         return if (arr[firstHalfRange] <= arr[secondHalfRange]) firstHalfRange else secondHalfRange
     }
 }
