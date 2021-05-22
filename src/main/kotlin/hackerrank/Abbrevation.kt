@@ -19,9 +19,9 @@ fun abbreviation(a: String, b: String): String {
         for (j in 1..b.length) {
             when {
                 a[i - 1] == b[j - 1] -> table[i][j] = table[i - 1][j - 1]
-                a[i - 1].toUpperCase() == (b[j - 1]) -> table[i][j] =
+                a[i - 1].uppercaseChar() == (b[j - 1]) -> table[i][j] =
                     table[i - 1][j - 1] || table[i - 1][j] // It can be upcased or deleted
-                else -> table[i][j] = if (a[i - 1].isLowerCase()) table[i - 1][j] else false
+                else -> table[i][j] = a[i - 1].isLowerCase() && table[i - 1][j]
             }
         }
     }

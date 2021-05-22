@@ -24,8 +24,8 @@ class SubdomainVisitTest : StringSpec({
                     "951 com"
                 )
             )
-        ) { cpdomains, result ->
-            subdomainVisits(cpdomains) shouldContainExactlyInAnyOrder result
+        ) { cpDomains, result ->
+            subdomainVisits(cpDomains) shouldContainExactlyInAnyOrder result
         }
     }
 })

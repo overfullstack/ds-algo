@@ -1,7 +1,7 @@
 package cci.recursion
 
 /**
- * This is same as UniquePaths DP problem.
+ * This is same as UniquePaths dp problem.
  */
 fun findRoboPath(
     grid: Array<BooleanArray>,

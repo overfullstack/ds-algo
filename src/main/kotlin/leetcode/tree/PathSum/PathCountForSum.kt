@@ -28,7 +28,7 @@ private fun TreeNode?.pathCountForSum(
                 curSum
             )
         ) // This is like fold, for left n right
-    // Backtracking, removing the path contributed by this node, by decrementing the pathCount for curSum.
+    // backtracking, removing the path contributed by this node, by decrementing the pathCount for curSum.
     // This makes this hashmap reusable for other paths.
     // We still have our `totalPathCount` safe for this path, which shall be returned up for accumulation.
     sumToPathCount.computeIfPresent(curSum) { _, pathCount -> if (pathCount > 1) pathCount.dec() else null }

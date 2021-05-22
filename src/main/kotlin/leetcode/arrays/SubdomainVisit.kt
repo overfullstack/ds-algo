@@ -3,10 +3,10 @@ package leetcode.arrays
 /**
  * https://leetcode.com/problems/subdomain-visit-count/
  */
-fun subdomainVisits(cpdomains: Array<String>): List<String> {
+fun subdomainVisits(cpDomains: Array<String>): List<String> {
     val map = mutableMapOf<String, Int>()
-    for (cpdomain in cpdomains) {
-        val (freqStr, domain) = cpdomain.split(' ')
+    for (cpDomain in cpDomains) {
+        val (freqStr, domain) = cpDomain.split(' ')
         val freq = freqStr.toInt()
         map.merge(domain, freq, Int::plus)
         for ((index, char) in domain.withIndex()) {

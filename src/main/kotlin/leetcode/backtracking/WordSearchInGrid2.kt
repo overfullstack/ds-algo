@@ -37,7 +37,7 @@ private fun TrieNode.findWords(
                 )
         }.also {
             visited[gridPoint.first][gridPoint.second] = false
-        } // Backtracking visited in this branch as we unwind this DFT.
+        } // backtracking visited in this branch as we unwind this DFT.
 
 private fun Pair<Int, Int>.isValid(
     board: Array<CharArray>,

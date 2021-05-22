@@ -12,7 +12,7 @@ fun maxEnvelops(envelopes: Array<IntArray>): Int {
 
     // After above sorting, this turns into Longest Increasing subsequence problem.
     return sortedByWidth.indices.fold(IntArray(envelopes.size)) { table, i ->
-        table.apply { // Just the regular DP in FP style.
+        table.apply { // Just the regular dp in FP style.
             val lisUntilCur = (0 until i)
                 .filter { sortedByWidth[it] canFitInside sortedByWidth[i] }
                 .maxOf { validIndex -> this[validIndex] }
