@@ -37,7 +37,5 @@ Y
 )src/main/java/challenges/LikesDislikes.kt,9/5/958bed97f3a683609191a1388ed6846104c12f16
 _
 /src/test/kotlin/cci/recursion/MagicIndexTest.kt,f/4/f4f0e0a4ad09f1b12c918b6ddef2551493de9aab
-C
-settings.gradle.kts,7/4/749edfcc96398253e5b3416184e95c46621da850
 `
 0src/main/kotlin/leetcode/graph/CourseSchedule.kt,8/3/83f38e3b970d1a4bdb60b39a102fc29acaac5386

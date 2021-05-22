@@ -29,4 +29,4 @@ hs_err_pid*
 /out/
 /build/
 /.gradle/
-.idea/sonarlint/**
+.idea/sonarlint/

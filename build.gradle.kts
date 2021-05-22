@@ -13,7 +13,6 @@ version = "1.0-SNAPSHOT"
 
 repositories {
     mavenCentral()
-    maven("https://dl.bintray.com/kotlin/kotlin-dev")
 }
 
 dependencies {
