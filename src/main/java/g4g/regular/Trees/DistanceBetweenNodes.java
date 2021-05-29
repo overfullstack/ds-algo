@@ -6,7 +6,7 @@ import g4g.ds.TreeNode;
 public class DistanceBetweenNodes {
 
   public static void main(String[] args) {
-    // Embedding levels of nodes in the DS itself
+    // Embedding levels of nodes in the ds itself
     TreeNode t1, t2, t3, t4, t5, t6, t7, t8;
     t8 = new TreeNode(8, null, null, 3);
     t7 = new TreeNode(7, null, null, 2);

@@ -1,6 +1,6 @@
 package icake.Trees;
 
-import cci.DS.TreeNode;
+import cci.ds.TreeNode;
 
 /** Created by gakshintala on 4/19/16. */
 public class SecondLargestElement {

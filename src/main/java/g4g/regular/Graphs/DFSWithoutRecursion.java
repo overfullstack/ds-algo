@@ -17,7 +17,7 @@ public class DFSWithoutRecursion {
 
     System.out.println();
     var visited = new boolean[vertexCount + 1];
-    System.out.println("g4g.regular.BackTracking DFS: ");
+    System.out.println("g4g.regular.backtracking DFS: ");
     dfsRecursive(g, 1, visited);
   }
 

@@ -19,5 +19,5 @@ This repo has practice problems well-commented to show how to approach a solutio
 For example
 
 ```shell
-./gradlew test --tests leetcode.arrays.TopKFrequentWordsTest
+./gradlew test --tests leetcode.array.TopKFrequentWordsTest
 ```

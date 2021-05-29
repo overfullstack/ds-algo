@@ -22,7 +22,7 @@ fun subArraysWithAtMostKDistinct(A: IntArray, K: Int): Int {
                 }
             }
         }
-        windowLenWithAtMostK += (index - start + 1) // * This cumulates all sub arrays length
+        windowLenWithAtMostK += (index - start + 1) // * This cumulates all sub array length
     }
     return windowLenWithAtMostK
 }

@@ -1,4 +1,8 @@
-/* gakshintala created on 10/2/19 */
+/*
+https://leetcode.com/problems/word-break/
+
+gakshintala created on 10/2/19
+*/
 package leetcode.dp
 
 private fun wordBreak(word: String, wordDict: List<String>): Boolean {

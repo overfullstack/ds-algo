@@ -6,7 +6,7 @@ import io.kotest.data.row
 import io.kotest.matchers.shouldBe
 
 class MaxNumberFromArraysTest : StringSpec({
-    "Max Number from arrays" {
+    "Max Number from array" {
         forAll(
             row(intArrayOf(3, 4, 6, 5), intArrayOf(9, 1, 2, 5, 8, 3), 5, intArrayOf(9, 8, 6, 5, 3)),
             row(intArrayOf(6, 7), intArrayOf(6, 0, 4), 5, intArrayOf(6, 7, 6, 0, 4)),

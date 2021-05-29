@@ -23,7 +23,7 @@ public class NQueen {
     for (var i = 0; i < 4; i++) { // For every row
       if (isSafe(board, i, col)) {
         board[i][col] = 1;
-        // g4g.regular.BackTracking
+        // g4g.regular.backtracking
         if (!solveNQueen(board, col + 1)) {
           board[i][col] = 0;
         } else {

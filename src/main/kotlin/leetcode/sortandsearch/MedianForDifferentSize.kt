@@ -2,7 +2,7 @@
 package leetcode.sortandsearch
 
 /**
- * https://leetcode.com/problems/median-of-two-sorted-arrays/
+ * https://leetcode.com/problems/median-of-two-sorted-array/
  */
 fun findMedianSortedArrays(a: IntArray, b: IntArray): Double {
     if (a.size > b.size) {

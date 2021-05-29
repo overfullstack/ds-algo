@@ -3,8 +3,8 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 plugins {
     kotlin("jvm")
     id("com.adarshr.test-logger") version "3.0.0"
-    id("io.gitlab.arturbosch.detekt") version "1.16.0"
-    id("com.diffplug.spotless") version "5.12.5"
+    id("io.gitlab.arturbosch.detekt") version "1.17.1"
+    id("com.diffplug.spotless") version "5.14.0"
     application
 }
 
@@ -53,9 +53,9 @@ tasks {
 testlogger {
     setTheme("mocha")
     showExceptions = true
-    showStackTraces = true
-    showFullStackTraces = true
-    showCauses = true
+    showStackTraces = false
+    showFullStackTraces = false
+    showCauses = false
     slowThreshold = 2000
     showSummary = true
     showSimpleNames = true
