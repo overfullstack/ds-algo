@@ -6,9 +6,9 @@ import io.kotest.matchers.shouldBe
 
 class LetterCombinationsTest : StringSpec({
 
-    "letterCombinations" {
-        letterCombinations("23") shouldContainExactlyInAnyOrder
-            listOf("ad", "ae", "af", "bd", "be", "bf", "cd", "ce", "cf")
-        letterCombinations("") shouldBe emptyList()
-    }
+  "letterCombinations" {
+    letterCombinations("23") shouldContainExactlyInAnyOrder
+      listOf("ad", "ae", "af", "bd", "be", "bf", "cd", "ce", "cf")
+    letterCombinations("") shouldBe emptyList()
+  }
 })

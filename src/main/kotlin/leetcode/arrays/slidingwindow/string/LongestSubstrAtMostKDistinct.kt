@@ -9,37 +9,37 @@ package leetcode.arrays.slidingwindow.string
  *
  */
 fun lengthOfLongestSubstringAtmostKDistinct(s: String, k: Int): String {
-    val freqInWindow = mutableMapOf<Char, Int>()
-    var start = 0
-    var maxWindowLen = Int.MIN_VALUE
-    var maxWindowStart = 0
-    for ((index, char) in s.withIndex()) {
-        freqInWindow.merge(char, 1) { freq, _ -> freq.inc() }
-        if (freqInWindow.size > k) {
-            val curWindowLen = index - start // ! No +1 as we exclude the char which increased size
-            if (curWindowLen > maxWindowLen) {
-                maxWindowStart = start
-                maxWindowLen = curWindowLen
-            }
+  val freqInWindow = mutableMapOf<Char, Int>()
+  var start = 0
+  var maxWindowLen = Int.MIN_VALUE
+  var maxWindowStart = 0
+  for ((index, char) in s.withIndex()) {
+    freqInWindow.merge(char, 1) { freq, _ -> freq.inc() }
+    if (freqInWindow.size > k) {
+      val curWindowLen = index - start // ! No +1 as we exclude the char which increased size
+      if (curWindowLen > maxWindowLen) {
+        maxWindowStart = start
+        maxWindowLen = curWindowLen
+      }
 
-            while (freqInWindow.size > k) {
-                freqInWindow.compute(s[start]) { _, freq ->
-                    when (freq) {
-                        1 -> null
-                        else -> freq!!.dec()
-                    }
-                }
-                start++
-            }
+      while (freqInWindow.size > k) {
+        freqInWindow.compute(s[start]) { _, freq ->
+          when (freq) {
+            1 -> null
+            else -> freq!!.dec()
+          }
         }
+        start++
+      }
     }
+  }
 
-    return if (maxWindowLen == Int.MIN_VALUE) s else s.substring(
-        maxWindowStart,
-        maxWindowStart + maxWindowLen
-    )
+  return if (maxWindowLen == Int.MIN_VALUE) s else s.substring(
+    maxWindowStart,
+    maxWindowStart + maxWindowLen
+  )
 }
 
 fun main() {
-    println(lengthOfLongestSubstringAtmostKDistinct("aabbcc", 3))
+  println(lengthOfLongestSubstringAtmostKDistinct("aabbcc", 3))
 }

@@ -7,13 +7,13 @@ import ds.tree.TreeNode
  * * This is for In-Complete tree
  */
 fun TreeNode.connect2(): TreeNode {
-    left?.next = right ?: findNext()
-    right?.next = findNext()
+  left?.next = right ?: findNext()
+  right?.next = findNext()
 
-    right?.connect2() // ! right is traversed before left
-    left?.connect2()
+  right?.connect2() // ! right is traversed before left
+  left?.connect2()
 
-    return this
+  return this
 }
 
 private tailrec fun TreeNode.findNext(): TreeNode? = next?.left ?: next?.right ?: next?.findNext()

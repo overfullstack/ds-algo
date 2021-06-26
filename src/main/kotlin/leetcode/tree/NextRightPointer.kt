@@ -7,11 +7,11 @@ import ds.tree.TreeNode
  * * This is for balanced tree.
  */
 fun TreeNode.connect(): TreeNode {
-    left?.next = right
-    right?.next = next?.left
+  left?.next = right
+  right?.next = next?.left
 
-    left?.connect()
-    right?.connect()
+  left?.connect()
+  right?.connect()
 
-    return this
+  return this
 }

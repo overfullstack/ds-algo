@@ -23,9 +23,9 @@ Output: "536479"
 Following are few observations about the next greater number.
 
 1) If all digits sorted in descending order, then output is always “Not Possible”. For example,
-   4321.
+    4321.
 2) If all digits are sorted in ascending order, then we need to swap last two digits. For example,
-   1234.
+    1234.
 3) For other cases, we need to process the number from rightmost side (why? because we need to find
    the smallest of all greater numbers)
 

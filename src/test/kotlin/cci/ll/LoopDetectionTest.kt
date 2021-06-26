@@ -19,5 +19,5 @@ class LoopDetectionTest : StringSpec({
         }
     } */
 }) {
-    companion object : KLogging()
+  companion object : KLogging()
 }

@@ -8,16 +8,16 @@ import io.kotest.matchers.shouldBe
 
 class SumRootToLeafKtTest : StringSpec() {
 
-    init {
-        "sumFromRootToLeaf" {
-            forAll(
-                row(listOf(1, 2, 3), 25),
-                row(listOf(4, 9, 0, 5, 1), 1026),
-                row(listOf(4), 4),
-                row(listOf(4, 2), 42)
-            ) { list, result ->
-                TreeNode.levelOrderToTree(list)!!.sumFromRootToLeaf() shouldBe result
-            }
-        }
+  init {
+    "sumFromRootToLeaf" {
+      forAll(
+        row(listOf(1, 2, 3), 25),
+        row(listOf(4, 9, 0, 5, 1), 1026),
+        row(listOf(4), 4),
+        row(listOf(4, 2), 42)
+      ) { list, result ->
+        TreeNode.levelOrderToTree(list)!!.sumFromRootToLeaf() shouldBe result
+      }
     }
+  }
 }

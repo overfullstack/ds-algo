@@ -6,11 +6,11 @@ import io.kotest.data.row
 import io.kotest.matchers.shouldBe
 
 class LongestRepeatingCharReplaceTest : StringSpec({
-    "Longest Repeating Char Replace" {
-        forAll(
-            row("AABABBA", 1, 4)
-        ) { s, k, result ->
-            characterReplacement(s, k) shouldBe result
-        }
+  "Longest Repeating Char Replace" {
+    forAll(
+      row("AABABBA", 1, 4)
+    ) { s, k, result ->
+      characterReplacement(s, k) shouldBe result
     }
+  }
 })

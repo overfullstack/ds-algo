@@ -8,8 +8,8 @@ import ds.tree.TreeNode
  * Sum from root-to-leaf
  */
 private fun TreeNode?.hasPathSum(sum: Int): Boolean =
-    when {
-        this == null -> false
-        left == null && right == null -> (sum - `val`) == 0
-        else -> left.hasPathSum(sum - `val`) || right.hasPathSum(sum - `val`)
-    }
+  when {
+    this == null -> false
+    left == null && right == null -> (sum - `val`) == 0
+    else -> left.hasPathSum(sum - `val`) || right.hasPathSum(sum - `val`)
+  }

@@ -7,14 +7,14 @@ import io.kotest.data.row
 import io.kotest.matchers.shouldBe
 
 class ValidateBSTTest : StringSpec({
-    "valid BST" {
-        forAll(
-            row(listOf(1, 2, 3), false),
-            row(listOf(2, 1, 3), true),
-            row(listOf(3, 2, 4, 1, null, null, 5), true),
-            row(listOf(3, 2, 4, 1, null, null, 3), false)
-        ) { levelOrder, result ->
-            levelOrderToTree(levelOrder).validateBST() shouldBe result
-        }
+  "valid BST" {
+    forAll(
+      row(listOf(1, 2, 3), false),
+      row(listOf(2, 1, 3), true),
+      row(listOf(3, 2, 4, 1, null, null, 5), true),
+      row(listOf(3, 2, 4, 1, null, null, 3), false)
+    ) { levelOrder, result ->
+      levelOrderToTree(levelOrder).validateBST() shouldBe result
     }
+  }
 })
