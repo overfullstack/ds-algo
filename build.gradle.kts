@@ -1,5 +1,3 @@
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-
 plugins {
   kotlin("jvm")
   id("com.adarshr.test-logger") version "3.0.0"
@@ -28,22 +26,22 @@ dependencies {
   // Kotest
   val kotestVersion = "+"
   testImplementation("io.kotest:kotest-runner-junit5:$kotestVersion")
-  testImplementation("io.kotest:kotest-assertions-core:$kotestVersion")
+  testImplementation("io.kotest:kotest-assertions-core-jvm:$kotestVersion")
 }
 
 java.sourceCompatibility = JavaVersion.VERSION_16
 
 tasks {
-  withType<JavaCompile> {
+  compileJava {
     options.compilerArgs.addAll(arrayOf("--enable-preview"))
     options.encoding = "UTF-8"
   }
-  withType<KotlinCompile> {
+  compileKotlin {
     kotlinOptions {
       jvmTarget = JavaVersion.VERSION_16.toString()
     }
   }
-  withType<Test> {
+  test {
     useJUnitPlatform()
     ignoreFailures = true
     jvmArgs("--enable-preview")
