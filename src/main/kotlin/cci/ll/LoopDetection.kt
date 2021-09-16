@@ -2,11 +2,8 @@ package cci.ll
 
 import ds.SLLNode
 
-private val logger = mu.KotlinLogging.logger {}
-
 fun SLLNode.detectLoop(): SLLNode? {
   val meetingPtr = getMeetingPtr(this) { it.next?.next }
-  logger.info { meetingPtr }
   return getMeetingPtr(meetingPtr)
 }
 

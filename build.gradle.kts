@@ -1,8 +1,8 @@
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+
 plugins {
   kotlin("jvm")
   id("com.adarshr.test-logger") version "3.0.0"
-  id("io.gitlab.arturbosch.detekt") version "1.17.1"
-  id("com.diffplug.spotless") version "5.14.0"
   application
 }
 
@@ -29,22 +29,21 @@ dependencies {
   testImplementation("io.kotest:kotest-assertions-core-jvm:$kotestVersion")
 }
 
-java.sourceCompatibility = JavaVersion.VERSION_16
+java.sourceCompatibility = JavaVersion.VERSION_17
 
 tasks {
   compileJava {
-    options.compilerArgs.addAll(arrayOf("--enable-preview"))
     options.encoding = "UTF-8"
   }
-  compileKotlin {
+  withType<KotlinCompile> {
     kotlinOptions {
       jvmTarget = JavaVersion.VERSION_16.toString()
+      freeCompilerArgs += "-Xopt-in=kotlin.RequiresOptIn"
     }
   }
   test {
     useJUnitPlatform()
     ignoreFailures = true
-    jvmArgs("--enable-preview")
   }
 }
 
@@ -64,23 +63,4 @@ testlogger {
   showPassedStandardStreams = true
   showSkippedStandardStreams = true
   showFailedStandardStreams = true
-}
-
-spotless {
-  kotlin {
-    // by default the target is every '.kt' and '.kts` file in the java sourcesets
-    ktlint("0.41.0").userData(mapOf("indent_size" to "2", "continuation_indent_size" to "2"))
-  }
-  kotlinGradle {
-    target("*.gradle.kts")
-    ktlint("0.41.0").userData(mapOf("indent_size" to "2", "continuation_indent_size" to "2"))
-  }
-  java {
-    importOrder()
-    removeUnusedImports()
-    googleJavaFormat("1.10.0")
-    trimTrailingWhitespace()
-    indentWithSpaces(2)
-    endWithNewline()
-  }
 }

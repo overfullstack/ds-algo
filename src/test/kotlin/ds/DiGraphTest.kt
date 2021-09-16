@@ -7,36 +7,50 @@ import io.kotest.matchers.shouldBe
 
 val diGraph = DiGraph(
   mutableMapOf(
-    0 to setOf(1, 2, 3, 4),
-    1 to setOf(4),
-    2 to setOf(5),
+    DiGraphNode(0) to setOf(DiGraphNode(1), DiGraphNode(2), DiGraphNode(3), DiGraphNode(4)),
+    DiGraphNode(1) to setOf(DiGraphNode(4)),
+    DiGraphNode(2) to setOf(DiGraphNode(5)),
   )
 )
 
 val diGraphWithCycle = DiGraph(
   mutableMapOf(
-    0 to setOf(1),
-    1 to setOf(2),
-    2 to setOf(0),
+    DiGraphNode(0) to setOf(DiGraphNode(1)),
+    DiGraphNode(1) to setOf(DiGraphNode(2)),
+    DiGraphNode(2) to setOf(DiGraphNode(0)),
   )
 )
 
 class DiGraphTest : StringSpec({
   "bfs" {
-    diGraph.bfs(5) shouldBe true
-    diGraph.bfs(2) shouldBe true
-    diGraph.bfs(6) shouldBe false
+    diGraph.bfs(DiGraphNode(5)) shouldBe true
+    diGraph.bfs(DiGraphNode(2)) shouldBe true
+    diGraph.bfs(DiGraphNode(6)) shouldBe false
   }
 
   "dfs" {
-    diGraph.bfs(5) shouldBe true
-    diGraph.bfs(2) shouldBe true
-    diGraph.bfs(6) shouldBe false
+    diGraph.bfs(DiGraphNode(5)) shouldBe true
+    diGraph.bfs(DiGraphNode(2)) shouldBe true
+    diGraph.bfs(DiGraphNode(6)) shouldBe false
   }
 
   "dft" {
-    diGraph.dft() shouldContainExactly listOf(0, 1, 4, 2, 5, 3)
-    diGraph.dft() shouldContainExactly listOf(0, 1, 4, 2, 5, 3)
+    diGraph.dft() shouldContainExactly listOf(
+      DiGraphNode(0),
+      DiGraphNode(1),
+      DiGraphNode(4),
+      DiGraphNode(2),
+      DiGraphNode(5),
+      DiGraphNode(3)
+    )
+    diGraph.dft() shouldContainExactly listOf(
+      DiGraphNode(0),
+      DiGraphNode(1),
+      DiGraphNode(4),
+      DiGraphNode(2),
+      DiGraphNode(5),
+      DiGraphNode(3)
+    )
   }
 
   "Digraph has Cycle" {
@@ -45,7 +59,37 @@ class DiGraphTest : StringSpec({
   }
 
   "Topological sort" {
-    diGraph.topologicalSort() shouldContainExactly listOf(4, 1, 5, 2, 3, 0)
+    diGraph.topologicalSort() shouldContainExactly listOf(
+      DiGraphNode(4),
+      DiGraphNode(1),
+      DiGraphNode(5),
+      DiGraphNode(2),
+      DiGraphNode(3),
+      DiGraphNode(0)
+    )
+    shouldThrow<IllegalArgumentException> {
+      diGraphWithCycle.topologicalSort()
+    }
+  }
+
+  "Topological sort 2" {
+    val diGraph2 = DiGraph(
+      mutableMapOf(
+        DiGraphNode(6) to setOf(DiGraphNode(2), DiGraphNode(4)),
+        DiGraphNode(4) to setOf(DiGraphNode(0)),
+        DiGraphNode(5) to setOf(DiGraphNode(1), DiGraphNode(2)),
+        DiGraphNode(3) to emptySet()
+      )
+    )
+    diGraph2.topologicalSort() shouldContainExactly listOf(
+      DiGraphNode(2),
+      DiGraphNode(0),
+      DiGraphNode(4),
+      DiGraphNode(6),
+      DiGraphNode(1),
+      DiGraphNode(5),
+      DiGraphNode(3)
+    )
     shouldThrow<IllegalArgumentException> {
       diGraphWithCycle.topologicalSort()
     }

@@ -1,4 +1,4 @@
-package cci.trees
+package leetcode.tree
 
 import ds.tree.TreeNode
 import kotlin.math.abs
