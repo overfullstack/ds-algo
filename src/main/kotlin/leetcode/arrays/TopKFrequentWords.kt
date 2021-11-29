@@ -11,7 +11,7 @@ private val COMPARATOR =
     .thenComparator { a, b -> b.key.compareTo(a.key) }
 // Observe `b` comes before `a`, if "a" and "b" are with same frequency,
 // As the requirement is to retain word with lower alphabetical order, in case of clash,
-// So we do descending sorting, i.e., push `b` towards head so it is more prone to `poll()`
+// So we do descend sorting, i.e., push `b` towards head, so it is more prone to `poll()`
 
 fun topKFrequent(words: Array<String>, k: Int): List<String> {
   val wordToFrequency = mutableMapOf<String, Int>()

@@ -2,14 +2,14 @@ package leetcode.greedy
 
 /**
  * https://leetcode.com/problems/car-pooling/
- * [No.of Passengers, Start, End]
+ * trips: arr[No.of Passengers, Start, End]
  * Is it possible to pick up and drop off all passengers for all the given trips
  */
 fun carPooling(trips: Array<IntArray>, capacity: Int): Boolean {
-  val sortedByStartTrips = trips.map { Triple(it[0], it[1], it[2]) }.sortedBy { it.second }
-  // * This stores the net onboarding at every point.
+  val tripsSortedByOrigin = trips.map { Triple(it[0], it[1], it[2]) }.sortedBy { it.second }
+  // * This stores the net on-boarding at every point.
   val map = sortedMapOf<Int, Int>() // ! This is a SortedMap
-  for ((passengersCount, start, end) in sortedByStartTrips) {
+  for ((passengersCount, start, end) in tripsSortedByOrigin) {
     map.merge(start, passengersCount) { old, _ -> old + passengersCount }
     map.merge(end, -passengersCount) { old, _ -> old - passengersCount }
   }
@@ -17,25 +17,26 @@ fun carPooling(trips: Array<IntArray>, capacity: Int): Boolean {
 }
 
 fun carPooling2(trips: Array<IntArray>, capacity: Int): Boolean {
-  val originAndDest = trips.map { Pair(it[0], it[1]) to Pair(it[0], it[2]) }.unzip()
-  val sortedByOrgin = originAndDest.first.sortedBy { it.second }
-  val sortedByDest = originAndDest.second.sortedBy { it.second }
+  val (originInfo, destInfo) = trips.map { Pair(it[0], it[1]) to Pair(it[0], it[2]) }.unzip()
+  val sortedByOrigin = originInfo.sortedBy { it.second }
+  val sortedByDest = destInfo.sortedBy { it.second }
 
-  var i = 0
-  var j = 0
+  var originIndex = 0
+  var destIndex = 0
   var pickUps = 0
   var maxPickUps = 0
-  while (i <= sortedByOrgin.lastIndex && j <= sortedByDest.lastIndex) {
-    if (sortedByOrgin[i].second < sortedByDest[j].second) {
-      pickUps += sortedByOrgin[i].first
+  // * Loop through both the array like merge sort
+  while (originIndex <= sortedByOrigin.lastIndex && destIndex <= sortedByDest.lastIndex) {
+    if (sortedByOrigin[originIndex].second < sortedByDest[destIndex].second) {
+      pickUps += sortedByOrigin[originIndex].first
       maxPickUps = maxOf(maxPickUps, pickUps)
       if (maxPickUps > capacity) {
         return false
       }
-      i++
+      originIndex++
     } else {
-      pickUps -= sortedByDest[j].first
-      j++
+      pickUps -= sortedByDest[destIndex].first
+      destIndex++
     }
   }
   return true

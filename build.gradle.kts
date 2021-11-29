@@ -2,7 +2,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
   kotlin("jvm")
-  id("com.adarshr.test-logger") version "3.0.0"
+  id("com.adarshr.test-logger") version "3.1.0"
   application
 }
 
@@ -19,7 +19,7 @@ dependencies {
   runtimeOnly("org.apache.logging.log4j:log4j-slf4j-impl:2.14.1")
 
   // Junit
-  testImplementation(platform("org.junit:junit-bom:5.8.0"))
+  testImplementation(platform("org.junit:junit-bom:5.8.1"))
   testImplementation("org.junit.jupiter:junit-jupiter-api")
   testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine")
 
@@ -49,18 +49,4 @@ tasks {
 
 testlogger {
   setTheme("mocha")
-  showExceptions = true
-  showStackTraces = false
-  showFullStackTraces = false
-  showCauses = false
-  slowThreshold = 2000
-  showSummary = true
-  showSimpleNames = true
-  showPassed = true
-  showSkipped = true
-  showFailed = true
-  showStandardStreams = true
-  showPassedStandardStreams = true
-  showSkippedStandardStreams = true
-  showFailedStandardStreams = true
 }
