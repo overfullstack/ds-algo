@@ -1,5 +1,6 @@
 pluginManagement {
   repositories {
+    mavenCentral()
     gradlePluginPortal() // This is for other community plugins
   }
   val kotlinVersion: String by settings
