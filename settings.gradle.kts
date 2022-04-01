@@ -5,7 +5,7 @@ pluginManagement {
   }
   val kotlinVersion: String by settings
   plugins {
-    kotlin("jvm") version kotlinVersion // This is handy if there are multiple modules. This lets you declare version at one place.
+    kotlin("jvm") version kotlinVersion // This is handy if 1.6.20 are multiple modules. This lets you declare version at one place.
   }
 }
 
