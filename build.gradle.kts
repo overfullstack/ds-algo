@@ -28,6 +28,7 @@ dependencies {
   val kotestVersion = "5.3.0"
   testImplementation("io.kotest:kotest-runner-junit5:$kotestVersion")
   testImplementation("io.kotest:kotest-assertions-core-jvm:$kotestVersion")
+  testImplementation("io.kotest:kotest-framework-datatest:$kotestVersion")
 }
 
 java.sourceCompatibility = JavaVersion.VERSION_17
@@ -36,7 +37,7 @@ tasks {
   withType<KotlinCompile> {
     kotlinOptions {
       jvmTarget = JavaVersion.VERSION_17.toString()
-      freeCompilerArgs += "-opt-in=kotlin.RequiresOptIn"
+      freeCompilerArgs = listOf("-opt-in=kotlin.RequiresOptIn")
     }
   }
   test {
