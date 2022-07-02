@@ -16,8 +16,8 @@ repositories {
 
 dependencies {
   implementation("io.github.microutils:kotlin-logging:2.1.23")
-  runtimeOnly("org.apache.logging.log4j:log4j-core:2.17.2")
-  runtimeOnly("org.apache.logging.log4j:log4j-slf4j-impl:2.17.2")
+  runtimeOnly("org.apache.logging.log4j:log4j-core:2.18.0")
+  runtimeOnly("org.apache.logging.log4j:log4j-slf4j-impl:2.18.0")
 
   // Junit
   testImplementation(platform("org.junit:junit-bom:5.8.2"))
