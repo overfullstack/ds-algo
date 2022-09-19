@@ -16,16 +16,16 @@ repositories {
 
 dependencies {
   implementation("io.github.microutils:kotlin-logging:2.1.23")
-  runtimeOnly("org.apache.logging.log4j:log4j-core:2.17.2")
-  runtimeOnly("org.apache.logging.log4j:log4j-slf4j-impl:2.17.2")
+  runtimeOnly("org.apache.logging.log4j:log4j-core:2.18.0")
+  runtimeOnly("org.apache.logging.log4j:log4j-slf4j-impl:2.18.0")
 
   // Junit
-  testImplementation(platform("org.junit:junit-bom:5.8.2"))
+  testImplementation(platform("org.junit:junit-bom:5.9.0"))
   testImplementation("org.junit.jupiter:junit-jupiter-api")
   testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine")
 
   // Kotest
-  val kotestVersion = "5.3.0"
+  val kotestVersion: String by project
   testImplementation("io.kotest:kotest-runner-junit5:$kotestVersion")
   testImplementation("io.kotest:kotest-assertions-core-jvm:$kotestVersion")
   testImplementation("io.kotest:kotest-framework-datatest:$kotestVersion")
