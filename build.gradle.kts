@@ -15,7 +15,7 @@ repositories {
 }
 
 dependencies {
-  implementation("io.github.microutils:kotlin-logging:2.1.23")
+  implementation("io.github.microutils:kotlin-logging:3.0.5")
   runtimeOnly("org.apache.logging.log4j:log4j-core:2.19.0")
   runtimeOnly("org.apache.logging.log4j:log4j-slf4j-impl:2.19.0")
 
