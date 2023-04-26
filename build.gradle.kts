@@ -20,7 +20,7 @@ dependencies {
   runtimeOnly("org.apache.logging.log4j:log4j-slf4j-impl:2.20.0")
 
   // Junit
-  testImplementation(platform("org.junit:junit-bom:5.9.2"))
+  testImplementation(platform("org.junit:junit-bom:5.9.3"))
   testImplementation("org.junit.jupiter:junit-jupiter-api")
   testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine")
 
