@@ -13,9 +13,14 @@ fun TreeNode.isPairWithSumPresent(targetSum: Int): Boolean {
   while (smallStk.first().`val` < bigStk.first().`val`) { // * Loop till they cross each other.
     val curSum = smallStk.first().`val` + bigStk.first().`val`
     when {
-      // * Next in inorder, or next smallest number. If no `right`, `pop()` takes care of exposing next smallest number.
+      // * Next in inorder, or next smallest number. If no `right`, `pop()` takes care of exposing
+      // next smallest number.
       curSum < targetSum -> smallStk.removeFirst().right?.addLeftMost(smallStk)
-      curSum > targetSum -> bigStk.removeLast().left?.addRightMost(bigStk) // Next in reverse inorder, or next greater number.
+      curSum > targetSum ->
+        bigStk
+          .removeLast()
+          .left
+          ?.addRightMost(bigStk) // Next in reverse inorder, or next greater number.
       else -> return true
     }
   }

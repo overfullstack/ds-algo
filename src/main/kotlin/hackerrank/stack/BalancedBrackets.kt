@@ -12,17 +12,22 @@ fun isBalanced(s: String): String {
   var result: Boolean
   for (c in s) {
     when (c) {
-      '[', '{', '(' -> stk.push(c)
-      ']', '}', ')' -> {
+      '[',
+      '{',
+      '(' -> stk.push(c)
+      ']',
+      '}',
+      ')' -> {
         if (stk.isEmpty()) {
           return "NO"
         }
-        result = when (stk.pop()) {
-          '[' -> c == ']'
-          '{' -> c == '}'
-          '(' -> c == ')'
-          else -> false
-        }
+        result =
+          when (stk.pop()) {
+            '[' -> c == ']'
+            '{' -> c == '}'
+            '(' -> c == ')'
+            else -> false
+          }
         if (!result) {
           return "NO"
         }

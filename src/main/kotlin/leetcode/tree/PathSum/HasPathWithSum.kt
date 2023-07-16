@@ -3,10 +3,7 @@ package leetcode.tree.PathSum
 
 import ds.tree.TreeNode
 
-/**
- * https://leetcode.com/problems/path-sum/
- * Sum from root-to-leaf
- */
+/** https://leetcode.com/problems/path-sum/ Sum from root-to-leaf */
 private fun TreeNode?.hasPathSum(sum: Int): Boolean =
   when {
     this == null -> false

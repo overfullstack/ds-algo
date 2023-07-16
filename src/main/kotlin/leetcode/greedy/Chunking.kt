@@ -37,11 +37,13 @@ fun chunking(records: MutableMap<Int, Pair<Int, Int?>>, batchSize: Int): Int {
 }
 
 fun Map<Int, Pair<Int, Int?>>.queryNextNonStamped(batchSize: Int): Pair<List<Int>, List<Int>> =
-  entries.asSequence()
+  entries
+    .asSequence()
     .filter { it.value.first > 200 && it.value.second == null }
     .take(batchSize)
     .map { it.key to it.value.first }
-    .sortedBy { it.second }.unzip()
+    .sortedBy { it.second }
+    .unzip()
 
 fun MutableMap<Int, Pair<Int, Int?>>.stampWithChunk(ids: List<Int>, chunkNumber: Int) =
   ids.forEach { stampWithChunk(it, chunkNumber) }

@@ -15,9 +15,11 @@ fun minSwapsToSort(arr: Array<Int>): Int {
   // * Sort array first and try to recreate the original one, noting down all the swaps in-between
   valueToIndex.sortBy { it.second }
   for (i in valueToIndex.indices) {
-    while (valueToIndex[i].first != i) { // Swapping until the original index matches with the current index.
+    while (
+      valueToIndex[i].first != i
+    ) { // Swapping until the original index matches with the current index.
       valueToIndex[i] = // Swapping in a cycle - to original index until it finds a match.
-        valueToIndex[valueToIndex[i].first].also {
+      valueToIndex[valueToIndex[i].first].also {
           valueToIndex[valueToIndex[i].first] = valueToIndex[i]
         }
       swaps++

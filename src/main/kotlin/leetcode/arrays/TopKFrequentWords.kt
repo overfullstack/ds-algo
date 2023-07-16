@@ -3,9 +3,7 @@ package leetcode.arrays
 
 import java.util.PriorityQueue
 
-/**
- * https://leetcode.com/problems/top-k-frequent-words/
- */
+/** https://leetcode.com/problems/top-k-frequent-words/ */
 private val COMPARATOR =
   Comparator.comparingInt<Map.Entry<String, Int>> { it.value }
     .thenComparator { a, b -> b.key.compareTo(a.key) }
@@ -21,7 +19,10 @@ fun topKFrequent(words: Array<String>, k: Int): List<String> {
   }
   val minHeap = PriorityQueue(COMPARATOR) // `PriorityQueue` is by default ascending order.
   for (entry in wordToFrequency.entries) {
-    minHeap.add(entry) // `add()` before `poll()`, as `poll()` doesn't necessarily remove the last added, but least frequent
+    minHeap.add(
+      entry
+    ) // `add()` before `poll()`, as `poll()` doesn't necessarily remove the last added, but least
+    // frequent
     if (minHeap.size > k) {
       minHeap.poll() // `poll()` removes the heap head.
     }

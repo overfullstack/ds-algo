@@ -8,9 +8,7 @@ fun main() {
   repeat(testCases) {
     readLine()!!.toInt() // size
     val parentArr = readLine()!!.split(" ").map { it.toInt() }
-    parentArr.indices.forEach {
-      constructTree(it, parentArr)
-    }
+    parentArr.indices.forEach { constructTree(it, parentArr) }
   }
 }
 
@@ -21,17 +19,15 @@ fun constructTree(
 ) {
   when {
     constructedNodes[index] != null || parentArr[index] == -1 -> return
-    constructedNodes[parentArr[index]] == null -> constructTree(
-      parentArr[index],
-      parentArr,
-      constructedNodes
-    )
-    else -> constructedNodes[parentArr[index]]?.run {
-      if (left == null) {
-        left = TreeNode(index)
-      } else {
-        right = TreeNode(index)
+    constructedNodes[parentArr[index]] == null ->
+      constructTree(parentArr[index], parentArr, constructedNodes)
+    else ->
+      constructedNodes[parentArr[index]]?.run {
+        if (left == null) {
+          left = TreeNode(index)
+        } else {
+          right = TreeNode(index)
+        }
       }
-    }
   }
 }

@@ -13,11 +13,14 @@ class SparseTableRMQ(var arr: IntArray) {
     sparseTable.forEachIndexed { index, row -> row[0] = index }
 
     for (sparseInterval in 1 until sparseTable[0].size) {
-      for (row in sparseTable.indices) { // row represent array indeces 
+      for (row in sparseTable.indices) { // row represent array indeces
         val halfIndex = row + 2.0.pow(sparseInterval - 1).toInt()
         if (halfIndex < arr.size) {
           sparseTable[row][sparseInterval] =
-            if (arr[sparseTable[row][sparseInterval - 1]] <= arr[sparseTable[halfIndex][sparseInterval - 1]])
+            if (
+              arr[sparseTable[row][sparseInterval - 1]] <=
+                arr[sparseTable[halfIndex][sparseInterval - 1]]
+            )
               sparseTable[row][sparseInterval - 1]
             else sparseTable[halfIndex][sparseInterval - 1]
         }

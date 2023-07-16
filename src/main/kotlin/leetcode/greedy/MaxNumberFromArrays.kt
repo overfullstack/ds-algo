@@ -6,7 +6,8 @@ import java.util.ArrayDeque
 fun maxNumber(nums1: IntArray, nums2: IntArray, k: Int): IntArray =
   (maxOf(0, k - nums1.size)..minOf(k, nums2.size))
     .map { mergeMaxNums(maxNumberWithArr(nums1, k - it), maxNumberWithArr(nums2, it)) }
-    .maxWithOrNull(Comparator { list1, list2 -> list1.compareTo(list2) })?.toIntArray()
+    .maxWithOrNull(Comparator { list1, list2 -> list1.compareTo(list2) })
+    ?.toIntArray()
     ?: IntArray(0)
 
 private tailrec operator fun List<Int>.compareTo(other: List<Int>): Int =
@@ -26,11 +27,8 @@ private tailrec fun mergeMaxNums(
   when {
     num1Digits.isEmpty() -> mergedDigits + num2Digits
     num2Digits.isEmpty() -> mergedDigits + num1Digits
-    num1Digits >= num2Digits -> mergeMaxNums(
-      num1Digits.drop(1),
-      num2Digits,
-      mergedDigits + num1Digits.first()
-    )
+    num1Digits >= num2Digits ->
+      mergeMaxNums(num1Digits.drop(1), num2Digits, mergedDigits + num1Digits.first())
     else -> mergeMaxNums(num1Digits, num2Digits.drop(1), mergedDigits + num2Digits.first())
   }
 

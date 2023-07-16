@@ -1,8 +1,8 @@
 package leetcode.graph
 
 /**
- * https://leetcode.com/problems/shortest-path-in-binary-matrix/
- * Top-left to Bottom-right. 0-Empty 1-Blocked
+ * https://leetcode.com/problems/shortest-path-in-binary-matrix/ Top-left to Bottom-right. 0-Empty
+ * 1-Blocked
  */
 fun shortestPathBinaryMatrix(grid: Array<IntArray>): Int {
   when {
@@ -20,7 +20,8 @@ fun shortestPathBinaryMatrix(grid: Array<IntArray>): Int {
     val size = queue.size
     repeat(size) { // This is to increment steps only for each batch/level.
       val gridPoint = queue.removeFirst()
-      directions.asSequence()
+      directions
+        .asSequence()
         .map { (gridPoint.first + it.first) to (gridPoint.second + it.second) }
         .filter { it.isValid(grid) }
         .forEach {
@@ -39,6 +40,8 @@ private val directions =
   listOf(0 to 1, 0 to -1, 1 to 0, -1 to 0, 1 to -1, -1 to 1, -1 to -1, 1 to 1)
 
 private fun Pair<Int, Int>.isValid(grid: Array<IntArray>) =
-  first >= 0 && first <= grid.lastIndex &&
-    second >= 0 && second <= grid[0].lastIndex &&
+  first >= 0 &&
+    first <= grid.lastIndex &&
+    second >= 0 &&
+    second <= grid[0].lastIndex &&
     grid[first][second] == 0

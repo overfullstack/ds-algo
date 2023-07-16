@@ -1,8 +1,7 @@
 package leetcode.greedy
 
 /**
- * https://leetcode.com/problems/jump-game-ii/
- * Min Jumps to reach End (Assume you can always reach)
+ * https://leetcode.com/problems/jump-game-ii/ Min Jumps to reach End (Assume you can always reach)
  */
 fun minJumps(nums: IntArray): Int {
   var curMaxReachIndex = 0

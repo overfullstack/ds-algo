@@ -1,8 +1,6 @@
 package leetcode.arrays.slidingwindow
 
-/**
- * https://leetcode.com/problems/subarrays-with-k-different-integers/
- */
+/** https://leetcode.com/problems/subarrays-with-k-different-integers/ */
 fun subarraysWithKDistinct(A: IntArray, K: Int): Int =
   subArraysWithAtMostKDistinct(A, K) - subArraysWithAtMostKDistinct(A, K - 1)
 

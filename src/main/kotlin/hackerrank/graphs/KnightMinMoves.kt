@@ -6,10 +6,9 @@ import java.util.Scanner
 
 fun knightOnAChessboard(n: Int): Array<Array<Int>> {
   val startCoOrdinates = (1 until n).map { x -> (1 until n).map { y -> Pair(x, y) } }
-  return startCoOrdinates.map { pairs ->
-    pairs.map { findMinStepsToReachEnd(it, n) }
-      .toTypedArray()
-  }.toTypedArray()
+  return startCoOrdinates
+    .map { pairs -> pairs.map { findMinStepsToReachEnd(it, n) }.toTypedArray() }
+    .toTypedArray()
 }
 
 fun findMinStepsToReachEnd(pairOffset: Pair<Int, Int>, n: Int): Int {

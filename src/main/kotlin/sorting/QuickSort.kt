@@ -23,11 +23,13 @@ fun IntArray.partition(left: Int, right: Int): Int {
   return i + 1
 }
 
-fun IntArray.quickSortFp(): IntArray = if (size < 2) this else {
-  val pivot = first()
-  val (smaller, greater) = drop(1).partition { it <= pivot }
-  smaller.toIntArray().quickSortFp() + pivot + greater.toIntArray().quickSortFp()
-}
+fun IntArray.quickSortFp(): IntArray =
+  if (size < 2) this
+  else {
+    val pivot = first()
+    val (smaller, greater) = drop(1).partition { it <= pivot }
+    smaller.toIntArray().quickSortFp() + pivot + greater.toIntArray().quickSortFp()
+  }
 
 fun IntArray.quickSort2(left: Int = 0, right: Int = size - 1): Unit {
   if (left < right) {
@@ -47,7 +49,7 @@ fun IntArray.partition2(left: Int, right: Int): Int {
       }
     }
   }
-  this[leftPtr + 1] = this[right].also { this[right] = this[leftPtr + 1]}
+  this[leftPtr + 1] = this[right].also { this[right] = this[leftPtr + 1] }
   return leftPtr + 1
 }
 

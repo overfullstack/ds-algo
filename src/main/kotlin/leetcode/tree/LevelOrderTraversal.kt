@@ -2,9 +2,7 @@ package leetcode.tree
 
 import ds.tree.TreeNode
 
-/**
- * https://leetcode.com/problems/binary-tree-level-order-traversal
- */
+/** https://leetcode.com/problems/binary-tree-level-order-traversal */
 tailrec fun TreeNode.levelOrderTraversal(
   currentLevel: List<TreeNode> = listOf(this),
   result: List<List<TreeNode>> = listOf(currentLevel)

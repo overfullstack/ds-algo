@@ -1,8 +1,8 @@
 package leetcode.arrays.slidingwindow
 
 /**
- * https://leetcode.com/problems/contiguous-array/
- * We need to find longest contiguous subarray with equal number of 0s and 1s
+ * https://leetcode.com/problems/contiguous-array/ We need to find longest contiguous subarray with
+ * equal number of 0s and 1s
  */
 fun longestContiguousSubArray(nums: IntArray): Int {
   var max = 0

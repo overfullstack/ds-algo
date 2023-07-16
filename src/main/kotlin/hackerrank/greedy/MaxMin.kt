@@ -8,8 +8,12 @@ fun maxMinOptimized(k: Int, arr: IntArray): Int {
 
 fun maxMin(k: Int, arr: IntArray): Int {
   arr.sort()
-  return arr.asSequence().windowed(k).map { it.maxOrNull()?.minus((it.minOrNull() ?: 0)) ?: 0 }
-    .minOrNull() ?: 0
+  return arr
+    .asSequence()
+    .windowed(k)
+    .map { it.maxOrNull()?.minus((it.minOrNull() ?: 0)) ?: 0 }
+    .minOrNull()
+    ?: 0
 }
 
 @ExperimentalStdlibApi
@@ -33,11 +37,14 @@ fun slidingWindow(nums: IntArray, k: Int): Pair<IntArray, IntArray> {
     enqueueCur(maxDeque, nums, i, fun Int.(b: Int) = this >= b)
     enqueueCur(minDeque, nums, i, fun Int.(b: Int) = this <= b)
   }
-  for (i in k until nums.size) { // The windows are overlapping, so we have a result for each iteration.
+  for (i in
+    k until nums.size) { // The windows are overlapping, so we have a result for each iteration.
     maxResult.add(nums[maxDeque.first()]) // peek holds max for that window.
     minResult.add(nums[minDeque.first()]) // peek holds max for that window.
 
-    while (!maxDeque.isEmpty() && maxDeque.first() <= i - k) { // eliminate the ones irrelevant for this window.
+    while (
+      !maxDeque.isEmpty() && maxDeque.first() <= i - k
+    ) { // eliminate the ones irrelevant for this window.
       maxDeque.removeFirst()
     }
 
@@ -59,7 +66,9 @@ private fun enqueueCur(
   comparator: Int.(Int) -> Boolean
 ) {
   while (!maxDeque.isEmpty() && nums[i].comparator(nums[maxDeque.last()])) {
-    maxDeque.removeLast() // Imagine this element shattering out lesser/equal elements out from last to first
+    maxDeque
+      .removeLast() // Imagine this element shattering out lesser/equal elements out from last to
+    // first
   }
   maxDeque.addLast(i)
 }

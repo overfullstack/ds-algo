@@ -1,9 +1,6 @@
 package leetcode.graph
 
-/**
- * https://leetcode.com/problems/rotting-oranges/
- * 0 -> empty cell  1 -> fresh  2 -> rotton
- */
+/** https://leetcode.com/problems/rotting-oranges/ 0 -> empty cell 1 -> fresh 2 -> rotton */
 fun orangesRotting(grid: Array<IntArray>): Int {
   if (grid.isEmpty()) {
     return 0
@@ -31,23 +28,30 @@ fun orangesRotting(grid: Array<IntArray>): Int {
     val size = queue.size
     repeat(size) {
       val rottonOrangeGridPoint = queue.removeFirst()
-      freshCount -= directions.asSequence()
-        .map { (rottonOrangeGridPoint.first + it.first) to (rottonOrangeGridPoint.second + it.second) }
-        .filter { it.isValid(grid) }
-        .onEach {
-          grid[it.first][it.second] = 2 // mark rotten
-          queue.add(it.first to it.second)
-        }
-        .count()
+      freshCount -=
+        directions
+          .asSequence()
+          .map {
+            (rottonOrangeGridPoint.first + it.first) to (rottonOrangeGridPoint.second + it.second)
+          }
+          .filter { it.isValid(grid) }
+          .onEach {
+            grid[it.first][it.second] = 2 // mark rotten
+            queue.add(it.first to it.second)
+          }
+          .count()
     }
   }
 
-  return if (freshCount == 0) count - 1 else -1 // count - 1 as you will hv an extra loop after all oranges are rotton.
+  return if (freshCount == 0) count - 1
+  else -1 // count - 1 as you will hv an extra loop after all oranges are rotton.
 }
 
 private val directions = listOf(0 to 1, 0 to -1, 1 to 0, -1 to 0)
 
 private fun Pair<Int, Int>.isValid(grid: Array<IntArray>) =
-  first >= 0 && first <= grid.lastIndex &&
-    second >= 0 && second <= grid[0].lastIndex &&
+  first >= 0 &&
+    first <= grid.lastIndex &&
+    second >= 0 &&
+    second <= grid[0].lastIndex &&
     grid[first][second] == 1 // only if fresh

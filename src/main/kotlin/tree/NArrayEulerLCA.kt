@@ -22,15 +22,13 @@ data class NArrayEulerTour(var value: Int) {
   private fun eulersTour(counter: Int): Array<NArrayEulerTour> {
     firstOccurrence = firstOccurrence ?: counter
     // this is both prepended and appended, counter is to check for firstOccurrence
-    return arrayOf(this) + children.fold(
-      emptyArray<NArrayEulerTour>(),
-      { tourResult, child ->
-        tourResult + (
-          child?.eulersTour(counter + tourResult.size + 1)
-            ?: emptyArray()
-          ) + this
-      }
-    )
+    return arrayOf(this) +
+      children.fold(
+        emptyArray<NArrayEulerTour>(),
+        { tourResult, child ->
+          tourResult + (child?.eulersTour(counter + tourResult.size + 1) ?: emptyArray()) + this
+        }
+      )
   }
 }
 
@@ -39,23 +37,28 @@ fun lcaMultipleNodes(
   treeGraph: Map<Int, NArrayEulerTour>,
   depthsSparseTableRMQ: SparseTableRMQ,
   eulersTourArr: Array<NArrayEulerTour>
-) = nodes.reduce { first, second ->
-  eulersTourArr[
-    depthsSparseTableRMQ.rmqIndex( // Find min depth in the range. DepthArr is in same sequence as eulerTourArr.
-      treeGraph[first]?.firstOccurrence!!,
-      treeGraph[second]?.firstOccurrence!!
-    )
-  ].value
-}
+) =
+  nodes.reduce { first, second ->
+    eulersTourArr[
+        depthsSparseTableRMQ
+          .rmqIndex( // Find min depth in the range. DepthArr is in same sequence as eulerTourArr.
+            treeGraph[first]?.firstOccurrence!!,
+            treeGraph[second]?.firstOccurrence!!
+          )]
+      .value
+  }
 
 fun main() {
   val delimiters = " "
   readLine()!!.toInt() // val noOfEdges
   val treeGraph = mutableMapOf<Int, NArrayEulerTour>()
-  readLine()!!.trim().split(delimiters)
+  readLine()!!
+    .trim()
+    .split(delimiters)
     .map { it.toInt() }
     .forEachIndexed { index, value ->
-      treeGraph.getOrPut(value, { NArrayEulerTour(value) })
+      treeGraph
+        .getOrPut(value, { NArrayEulerTour(value) })
         .addEdge(treeGraph.getOrPut(index + 1, { NArrayEulerTour(index + 1) }))
     }
   readLine()!!.trim().toInt() // val noOfNodes

@@ -1,8 +1,6 @@
 package leetcode.dp
 
-/**
- * https://leetcode.com/problems/maximal-square/
- */
+/** https://leetcode.com/problems/maximal-square/ */
 fun maximalSquare(matrix: Array<CharArray>): Int {
   if (matrix.isEmpty()) {
     return 0

@@ -3,10 +3,8 @@ package leetcode.arrays.slidingwindow.string
 /**
  * 🔒 https://leetcode.com/problems/longest-substring-with-at-most-k-distinct-characters/
  *
- * Given a string, find the length of the longest substring T that contains at most k distinct characters.
- * For example, Given s = “eceba” and k = 2,
- * T is "ece" which its length is 3.
- *
+ * Given a string, find the length of the longest substring T that contains at most k distinct
+ * characters. For example, Given s = “eceba” and k = 2, T is "ece" which its length is 3.
  */
 fun lengthOfLongestSubstringAtmostKDistinct(s: String, k: Int): String {
   val freqInWindow = mutableMapOf<Char, Int>()
@@ -34,10 +32,8 @@ fun lengthOfLongestSubstringAtmostKDistinct(s: String, k: Int): String {
     }
   }
 
-  return if (maxWindowLen == Int.MIN_VALUE) s else s.substring(
-    maxWindowStart,
-    maxWindowStart + maxWindowLen
-  )
+  return if (maxWindowLen == Int.MIN_VALUE) s
+  else s.substring(maxWindowStart, maxWindowStart + maxWindowLen)
 }
 
 fun main() {

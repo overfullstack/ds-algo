@@ -10,8 +10,7 @@ fun generateParenthesis(
   when {
     leftRemaining < 0 || rightRemaining < leftRemaining -> emptyList()
     leftRemaining == 0 && rightRemaining == 0 -> listOf(parentStr)
-    else -> (
-      generateParenthesis(n, leftRemaining - 1, rightRemaining, parentStr + "(") +
-        generateParenthesis(n, leftRemaining, rightRemaining - 1, parentStr + ")")
-      )
+    else ->
+      (generateParenthesis(n, leftRemaining - 1, rightRemaining, parentStr + "(") +
+        generateParenthesis(n, leftRemaining, rightRemaining - 1, parentStr + ")"))
   }

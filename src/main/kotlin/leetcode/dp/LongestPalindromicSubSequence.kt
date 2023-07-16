@@ -7,11 +7,12 @@ fun longestPalindromeSubseq(s: String): Int {
 
   for (gap in 1 until s.length) {
     for ((i, j) in (gap until s.length).withIndex()) { // window iteration
-      table[i][j] = if (s[i] == s[j]) {
-        table[i + 1][j - 1] + 2
-      } else {
-        maxOf(table[i + 1][j], table[i][j - 1]) // maxOf exclude char from left or right
-      }
+      table[i][j] =
+        if (s[i] == s[j]) {
+          table[i + 1][j - 1] + 2
+        } else {
+          maxOf(table[i + 1][j], table[i][j - 1]) // maxOf exclude char from left or right
+        }
     }
   }
   return table[0][s.lastIndex]

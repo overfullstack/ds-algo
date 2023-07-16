@@ -5,10 +5,7 @@ data class BuildingStrip(val pt: Int, val ht: Int, val isStart: Boolean)
 fun getSkyline(buildings: Array<IntArray>): List<List<Int>> {
   val buildingStrips =
     buildings.flatMap {
-      listOf(
-        BuildingStrip(it[0], it[2], true),
-        BuildingStrip(it[1], it[2], false)
-      )
+      listOf(BuildingStrip(it[0], it[2], true), BuildingStrip(it[1], it[2], false))
     }
   val sortedBuildingStrips =
     buildingStrips.sortedWith(compareBy({ it.pt }, { if (it.isStart) -it.ht else it.ht }))

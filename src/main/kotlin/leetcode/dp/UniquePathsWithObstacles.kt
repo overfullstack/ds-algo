@@ -23,9 +23,12 @@ fun uniquePathsWithObstacles(obstacleGrid: Array<IntArray>): Int {
 fun main() {
   print(
     uniquePathsWithObstacles(
-      readLine()!!.drop(2).dropLast(2).split("],[").map { row ->
-        row.split(",").map { it.trim().toInt() }.toIntArray()
-      }.toTypedArray()
+      readLine()!!
+        .drop(2)
+        .dropLast(2)
+        .split("],[")
+        .map { row -> row.split(",").map { it.trim().toInt() }.toIntArray() }
+        .toTypedArray()
     )
   )
 }

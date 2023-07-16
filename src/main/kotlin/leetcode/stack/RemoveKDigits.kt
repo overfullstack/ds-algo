@@ -2,9 +2,7 @@ package leetcode.stack
 
 import java.util.Stack
 
-/**
- * https://leetcode.com/problems/remove-k-digits/
- */
+/** https://leetcode.com/problems/remove-k-digits/ */
 fun removeKdigits(num: String, k: Int): String {
   if (k == num.length) {
     return "0"

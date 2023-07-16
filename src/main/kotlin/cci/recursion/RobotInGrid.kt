@@ -1,8 +1,6 @@
 package cci.recursion
 
-/**
- * This is same as UniquePaths dp problem.
- */
+/** This is same as UniquePaths dp problem. */
 fun findRoboPath(
   grid: Array<BooleanArray>,
   row: Int = 0,
@@ -10,9 +8,11 @@ fun findRoboPath(
   failedPoints: MutableSet<Pair<Int, Int>> = mutableSetOf(),
   path: List<Pair<Int, Int>> = emptyList()
 ): List<Pair<Int, Int>> {
-  if (row > grid.lastIndex || col > grid.lastIndex || !grid[row][col] || failedPoints.contains(
-      Pair(row, col)
-    )
+  if (
+    row > grid.lastIndex ||
+      col > grid.lastIndex ||
+      !grid[row][col] ||
+      failedPoints.contains(Pair(row, col))
   ) {
     return emptyList()
   }

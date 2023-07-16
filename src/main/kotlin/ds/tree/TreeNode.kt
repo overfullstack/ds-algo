@@ -13,7 +13,9 @@ data class TreeNode(
   private var leftSize: Int = 0
 
   fun traversalAnyOrder(
-    order: (Int, Array<Int>, Array<Int>) -> Array<Int> = { value, left, right -> arrayOf(value) + left + right }
+    order: (Int, Array<Int>, Array<Int>) -> Array<Int> = { value, left, right ->
+      arrayOf(value) + left + right
+    }
   ): Array<Int> {
     val left = left?.traversalAnyOrder(order) ?: emptyArray()
     val right = right?.traversalAnyOrder(order) ?: emptyArray()
@@ -21,10 +23,8 @@ data class TreeNode(
   }
 
   fun inorderTraversal(): List<Int> =
-    (left?.inorderTraversal() ?: emptyList()) + listOf(`val`) + (
-      right?.inorderTraversal()
-        ?: emptyList()
-      )
+    (left?.inorderTraversal()
+      ?: emptyList()) + listOf(`val`) + (right?.inorderTraversal() ?: emptyList())
 
   fun isValidBST(min: Int = Int.MIN_VALUE, max: Int = Int.MAX_VALUE): Boolean =
     when {
@@ -33,19 +33,21 @@ data class TreeNode(
     }
 
   fun insertForRank(valToInsert: Int): Int = // returns leftSize
-    if (valToInsert <= `val`) {
+  if (valToInsert <= `val`) {
       leftSize++
-      left?.insertForRank(valToInsert) ?: run {
-        left = TreeNode(valToInsert)
-        leftSize
-      }
-    } else { // 1 - for current node, leftSize for it's rank (all the nodes less than the cur node)
-      1 + leftSize + (
-        right?.insertForRank(valToInsert) ?: run {
-          right = TreeNode(valToInsert)
-          0
+      left?.insertForRank(valToInsert)
+        ?: run {
+          left = TreeNode(valToInsert)
+          leftSize
         }
-        )
+    } else { // 1 - for current node, leftSize for it's rank (all the nodes less than the cur node)
+      1 +
+        leftSize +
+        (right?.insertForRank(valToInsert)
+          ?: run {
+            right = TreeNode(valToInsert)
+            0
+          })
     }
 
   fun getNodeAtRank(rank: Int): TreeNode? =
@@ -118,10 +120,7 @@ data class TreeNode(
       return buildCompleteTreeFromPreOrder(levelOrder)
     }
 
-    private fun buildCompleteTreeFromPreOrder(
-      levelOrder: List<Int>,
-      index: Int = 0
-    ): TreeNode? {
+    private fun buildCompleteTreeFromPreOrder(levelOrder: List<Int>, index: Int = 0): TreeNode? {
       if (index > levelOrder.lastIndex) {
         return null
       }

@@ -8,13 +8,16 @@ fun maximumSwap(num: Int): Int {
     buckets[digitChar - '0'] = digitIndex
   }
 
-  for ((digitIndex, digitChar) in numCharArray.withIndex()) { // Highest valued digit should be swapped first.
+  for ((digitIndex, digitChar) in
+    numCharArray.withIndex()) { // Highest valued digit should be swapped first.
     val digitValue = digitChar - '0' + 1
     // Checking buckets from last to first until curDigit bucket,
     // As all buckets after curDigit bucket have numbers greater than curDigit char.
     for (bucketIndex in 9 downTo digitValue) {
       val greaterDigitIndex = buckets[bucketIndex]
-      if (greaterDigitIndex > digitIndex) { // Both value and index are greater, we found a highest number after current digit.
+      if (
+        greaterDigitIndex > digitIndex
+      ) { // Both value and index are greater, we found a highest number after current digit.
         numCharArray[greaterDigitIndex] =
           numCharArray[digitIndex].also {
             numCharArray[digitIndex] = numCharArray[greaterDigitIndex]

@@ -2,10 +2,7 @@ package leetcode.arrays
 
 import java.util.LinkedList
 
-/**
- * https://leetcode.com/problems/queue-reconstruction-by-height/
- * (height, no.of people in-front)
- */
+/** https://leetcode.com/problems/queue-reconstruction-by-height/ (height, no.of people in-front) */
 fun reconstructQueue(people: Array<IntArray>): Array<IntArray> {
   // Descending order of heights and ascending order of no.of people in-front.
   people.sortWith(compareByDescending<IntArray> { it[0] }.thenBy { it[1] })

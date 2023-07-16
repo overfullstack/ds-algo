@@ -1,8 +1,8 @@
 package leetcode.dp
 
 /**
- * https://leetcode.com/problems/ones-and-zeroes/
- * Maximum number of strings that you can form with given m 0s and n 1s
+ * https://leetcode.com/problems/ones-and-zeroes/ Maximum number of strings that you can form with
+ * given m 0s and n 1s
  */
 fun findMaxForm(strs: Array<String>, m: Int, n: Int): Int {
   val table = Array(m + 1) { IntArray(n + 1) }

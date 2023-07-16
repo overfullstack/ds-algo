@@ -44,20 +44,8 @@ class SegmentTreeRMQ(var arr: IntArray) {
     }
     val mid = (segmentStart + segmentEnd) / 2
     return minOf(
-      getMinForRange(
-        segmentStart,
-        mid,
-        queryStartIndex,
-        queryEndIndex,
-        2 * segmentTreeIndex + 1
-      ),
-      getMinForRange(
-        mid + 1,
-        segmentEnd,
-        queryStartIndex,
-        queryEndIndex,
-        2 * segmentTreeIndex + 2
-      )
+      getMinForRange(segmentStart, mid, queryStartIndex, queryEndIndex, 2 * segmentTreeIndex + 1),
+      getMinForRange(mid + 1, segmentEnd, queryStartIndex, queryEndIndex, 2 * segmentTreeIndex + 2)
     )
   }
 
@@ -106,9 +94,7 @@ private fun updates(segmentTreeRMQ: SegmentTreeRMQ) {
   updates.forEach { segmentTreeRMQ.update(it.first, it.second) }
 }
 
-private fun queries(
-  segmentTreeRMQ: SegmentTreeRMQ
-) {
+private fun queries(segmentTreeRMQ: SegmentTreeRMQ) {
   val noOfQueries = readLine()!!.trim().toInt()
   val queries = mutableListOf<Pair<Int, Int>>()
   repeat(noOfQueries) {

@@ -1,8 +1,6 @@
 package leetcode.arrays.slidingwindow
 
-/**
- * https://leetcode.com/problems/longest-repeating-character-replacement/
- */
+/** https://leetcode.com/problems/longest-repeating-character-replacement/ */
 fun characterReplacement(s: String, k: Int): Int {
   var start = 0
   var maxWindow = 0

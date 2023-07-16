@@ -11,18 +11,18 @@ private fun TreeNode.allPathsTopToBottomForSum(
     return if (sum - `val` == 0) listOf(result + `val`) else emptyList()
   }
   // emptyList() signifies, if you step on a null before reaching the sum,
-  // all that you have accumulated in this recursion path is useless, go to other direction or parent recursive call.
-  return (
-    (left?.allPathsTopToBottomForSum(sum - `val`, result + `val`) ?: emptyList()) +
-      (right?.allPathsTopToBottomForSum(sum - `val`, result + `val`) ?: emptyList())
-    )
+  // all that you have accumulated in this recursion path is useless, go to other direction or
+  // parent recursive call.
+  return ((left?.allPathsTopToBottomForSum(sum - `val`, result + `val`)
+    ?: emptyList()) +
+    (right?.allPathsTopToBottomForSum(sum - `val`, result + `val`) ?: emptyList()))
 }
 
 fun main() {
   val arrCsv = readLine()!!
   val arr =
-    if (arrCsv.trim().isEmpty()) emptyList() else arrCsv.split(",").map { it.trim() }
-      .map { if (it == "null") null else it.toInt() }
+    if (arrCsv.trim().isEmpty()) emptyList()
+    else arrCsv.split(",").map { it.trim() }.map { if (it == "null") null else it.toInt() }
   val targetSum = readLine()!!.toInt()
   TreeNode.levelOrderToTree(arr)?.allPathsTopToBottomForSum(targetSum)?.forEach(::println)
 }

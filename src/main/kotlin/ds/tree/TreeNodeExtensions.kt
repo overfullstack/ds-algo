@@ -9,14 +9,20 @@ fun TreeNode?.inorderTraversalMorris() {
       cur = cur.right // goto right or goto predecessor (if this is a leaf node)
     } else {
       var pre = cur.left
-      while (pre?.right != null && pre.right != cur) { // Find inorder predecessor (rightMost). `pre.right != cur` to avoid cycle if link already exists
+      while (
+        pre?.right != null && pre.right != cur
+      ) { // Find inorder predecessor (rightMost). `pre.right != cur` to avoid cycle if link already
+        // exists
         pre = pre.right
       }
       if (pre?.right == null) {
         pre?.right = cur // establishing link to predecessor.
         cur =
-          cur.left // we can safely go to the left after establishing link to predecessor, because as we finish traversing left side, we know where to return.
-      } else { // This happens when we revisit the node through predecessor link. This indicates we have finished traversing the left side.
+          cur
+            .left // we can safely go to the left after establishing link to predecessor, because as
+        // we finish traversing left side, we know where to return.
+      } else { // This happens when we revisit the node through predecessor link. This indicates we
+        // have finished traversing the left side.
         pre.right = null // reset the pointer
         print(cur.`val`) // We finish visiting a node
         cur = cur.right // Now left visit is complete, safely go to right side

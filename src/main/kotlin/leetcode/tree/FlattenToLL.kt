@@ -3,9 +3,7 @@ package leetcode.tree
 
 import ds.tree.TreeNode
 
-/**
- * https://leetcode.com/problems/flatten-binary-tree-to-linked-list/
- */
+/** https://leetcode.com/problems/flatten-binary-tree-to-linked-list/ */
 fun TreeNode.flatten(terminal: TreeNode? = null): TreeNode? {
   // * root -> left -> right
   // root coordinates linking left -> right, it passes terminal from right to left

@@ -15,7 +15,8 @@ class KthLargestInStream(private val kth: Int, nums: IntArray) {
     root?.reverseInorderTraversalMorris {
       k++
       if (k == kth) {
-        // Not returning right away, as in morris traversal - successor pointers needs to be reset, which needs complete traversing.
+        // Not returning right away, as in morris traversal - successor pointers needs to be reset,
+        // which needs complete traversing.
         kthLargest = it
       }
     }

@@ -9,12 +9,8 @@ class RemoveAdjacentDuplicatesKtTest : StringSpec() {
 
   init {
     "removeDuplicates" {
-      forAll(
-        row("abbaca", "ca"),
-        row("aaaaa", "a"),
-        row("a", "a"),
-        row("aabaa", "b")
-      ) { s, result ->
+      forAll(row("abbaca", "ca"), row("aaaaa", "a"), row("a", "a"), row("aabaa", "b")) { s, result
+        ->
         removeDuplicates(s) shouldBe result
       }
     }

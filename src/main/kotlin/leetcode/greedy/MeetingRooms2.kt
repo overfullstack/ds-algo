@@ -1,8 +1,6 @@
 package leetcode.greedy
 
-/**
- * 🔒 https://leetcode.com/problems/meeting-rooms-ii
- */
+/** 🔒 https://leetcode.com/problems/meeting-rooms-ii */
 fun minMeetingRoomsRequired(meetings: Array<Pair<Int, Int>>): Int {
   meetings.sortBy { it.first } // In-place sorting
   // * `sortedMap` to auto-sort entries as per keys. SortedMap is an interface and TreeMap is Impl

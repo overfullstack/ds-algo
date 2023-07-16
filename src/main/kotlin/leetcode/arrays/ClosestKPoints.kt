@@ -1,8 +1,7 @@
 package leetcode.arrays
 
 fun kClosest(points: Array<IntArray>, K: Int): Array<IntArray> =
-  kClosest(points.map { it[0] to it[1] }, K).map { intArrayOf(it.first, it.second) }
-    .toTypedArray()
+  kClosest(points.map { it[0] to it[1] }, K).map { intArrayOf(it.first, it.second) }.toTypedArray()
 
 private tailrec fun kClosest(
   points: List<Pair<Int, Int>>,

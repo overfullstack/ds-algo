@@ -1,8 +1,6 @@
 package leetcode.dp.HouseRobber
 
-/**
- * https://leetcode.com/problems/house-robber-ii/
- */
+/** https://leetcode.com/problems/house-robber-ii/ */
 fun rob2(nums: IntArray): Int {
   if (nums.size == 1) return nums[0]
   return maxOf(robUtil(nums.slice(0..nums.lastIndex - 1)), robUtil(nums.slice(1..nums.lastIndex)))

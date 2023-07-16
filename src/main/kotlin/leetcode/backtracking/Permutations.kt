@@ -1,8 +1,6 @@
 package leetcode.backtracking
 
-/**
- * https://leetcode.com/problems/permutations/
- */
+/** https://leetcode.com/problems/permutations/ */
 fun permute(nums: IntArray): List<List<Int>> = nums.permute()
 
 fun IntArray.permute(
@@ -12,7 +10,8 @@ fun IntArray.permute(
   if (permutation.size == size) {
     listOf(permutation)
   } else {
-    indices.filterNot { used[it] }
+    indices
+      .filterNot { used[it] }
       .flatMap { unusedIndex ->
         used[unusedIndex] = true
         permute(permutation + this[unusedIndex], used).also { used[unusedIndex] = false }

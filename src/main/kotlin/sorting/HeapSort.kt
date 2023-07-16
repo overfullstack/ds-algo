@@ -2,7 +2,8 @@ package sorting
 
 fun IntArray.heapSort() {
   // * To apply `heapify`, all the children must be heapified.
-  // * Starting from `(size/2)-1` coz imagine the array like a binary tree. Parent for first set of leaf nodes would be (size/2) - 1
+  // * Starting from `(size/2)-1` coz imagine the array like a binary tree. Parent for first set of
+  // leaf nodes would be (size/2) - 1
   val mid = (size / 2) - 1
   for (i in mid downTo 0) { // ! Traverse in reverse - mid to 0
     heapify(size, i)

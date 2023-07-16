@@ -32,6 +32,8 @@ fun minimumMoves(grid: Array<String>, startX: Int, startY: Int, goalX: Int, goal
 }
 
 private fun Pair<Int, Int>.isValid(grid: List<CharArray>) =
-  first >= 0 && first <= grid.lastIndex &&
-    second >= 0 && second <= grid[0].lastIndex &&
+  first >= 0 &&
+    first <= grid.lastIndex &&
+    second >= 0 &&
+    second <= grid[0].lastIndex &&
     grid[first][second] != 'X'

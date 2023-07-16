@@ -8,7 +8,9 @@ fun TreeNode?.lowestCommonAncestor(p: TreeNode, q: TreeNode): TreeNode? {
   }
 
   val left = left?.lowestCommonAncestor(p, q)
-  if (left != null && left != p && left != q) { // This is the result (common ancestor), just pass it up.
+  if (
+    left != null && left != p && left != q
+  ) { // This is the result (common ancestor), just pass it up.
     return left
   }
 

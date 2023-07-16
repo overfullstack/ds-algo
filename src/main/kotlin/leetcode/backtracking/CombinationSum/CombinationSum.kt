@@ -1,9 +1,7 @@
 /* gakshintala created on 12/7/19 */
 package leetcode.backtracking.CombinationSum
 
-/**
- * https://leetcode.com/problems/combination-sum/
- */
+/** https://leetcode.com/problems/combination-sum/ */
 fun IntArray.combinationSum(
   sumLeft: Int,
   startIndex: Int = 0,
@@ -12,13 +10,14 @@ fun IntArray.combinationSum(
   when {
     sumLeft < 0 -> emptyList()
     sumLeft == 0 -> listOf(combination)
-    else -> (startIndex..lastIndex).flatMap {
-      combinationSum(
-        sumLeft - this[it],
-        it, // passing same `index` instead of `index+1`, as problem allows repetition.
-        combination + this[it]
-      )
-    }
+    else ->
+      (startIndex..lastIndex).flatMap {
+        combinationSum(
+          sumLeft - this[it],
+          it, // passing same `index` instead of `index+1`, as problem allows repetition.
+          combination + this[it]
+        )
+      }
   }
 
 fun main() {

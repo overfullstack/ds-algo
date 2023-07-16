@@ -1,8 +1,6 @@
 package leetcode.arrays
 
-/**
- * https://leetcode.com/problems/best-time-to-buy-and-sell-stock
- */
+/** https://leetcode.com/problems/best-time-to-buy-and-sell-stock */
 fun maxProfit(prices: IntArray): Int {
   var min = Int.MAX_VALUE
   var maxProfit = 0

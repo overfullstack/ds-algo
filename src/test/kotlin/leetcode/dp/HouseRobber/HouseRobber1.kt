@@ -1,8 +1,6 @@
 package leetcode.dp.HouseRobber
 
-/**
- * https://leetcode.com/problems/house-robber
- */
+/** https://leetcode.com/problems/house-robber */
 fun rob1(nums: IntArray): Int {
   var prev = 0
   var prevPrev = 0

@@ -10,13 +10,10 @@ fun smallestSubsequence(text: String): String {
   for (ch in text) {
     charFrequency.computeIfPresent(ch) { _, freq -> freq.dec() }
     if (!visited.contains(ch)) {
-      // `stk.peek() > ch` is for lexicographical reason. If a `stk.peek()` is greater than current char and has positive frequency,
+      // `stk.peek() > ch` is for lexicographical reason. If a `stk.peek()` is greater than current
+      // char and has positive frequency,
       // we are gonna encounter it again later, so remove it for now and push the smaller ch.
-      while (stk.isNotEmpty() && stk.peek() > ch && charFrequency.getOrDefault(
-          stk.peek(),
-          0
-        ) > 0
-      ) {
+      while (stk.isNotEmpty() && stk.peek() > ch && charFrequency.getOrDefault(stk.peek(), 0) > 0) {
         visited.remove(stk.pop())
       }
       stk.push(ch)

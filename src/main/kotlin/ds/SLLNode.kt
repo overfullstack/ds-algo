@@ -17,10 +17,8 @@ data class SLLNode(var value: Int, var next: SLLNode? = null) {
       }
 
     fun of2(values: IntArray, index: Int = 0): SLLNode =
-      if (index == values.lastIndex) SLLNode(values[index]) else SLLNode(
-        values[index],
-        of2(values, index + 1)
-      )
+      if (index == values.lastIndex) SLLNode(values[index])
+      else SLLNode(values[index], of2(values, index + 1))
   }
 }
 

@@ -38,9 +38,12 @@ private fun mergeSortWithIndexes(
   var count = 0
 
   while (leftIndex <= mid && rightIndex <= end) {
-    if (nums[indexes[rightIndex]] < nums[indexes[leftIndex]]) { // No <= because if right = left, we don't count++ as smaller element for right side
+    if (
+      nums[indexes[rightIndex]] < nums[indexes[leftIndex]]
+    ) { // No <= because if right = left, we don't count++ as smaller element for right side
       mergedIndexes[mergeIndex] = indexes[rightIndex]
-      count++ // Doing count++ for only right side, because this problem is about finding smaller numbers on right side.
+      count++ // Doing count++ for only right side, because this problem is about finding smaller
+      // numbers on right side.
       rightIndex++
     } else {
       mergedIndexes[mergeIndex] = indexes[leftIndex]

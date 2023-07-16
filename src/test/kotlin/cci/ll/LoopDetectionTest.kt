@@ -3,8 +3,9 @@ package cci.ll
 import io.kotest.core.spec.style.StringSpec
 import mu.KLogging
 
-class LoopDetectionTest : StringSpec({
-/*     "Loop Detection" {
+class LoopDetectionTest :
+  StringSpec({
+    /*     "Loop Detection" {
         forAll(
             row(intArrayOf(1, 2, 3, 4, 5), 3)
         ) { arr, result ->
@@ -18,6 +19,6 @@ class LoopDetectionTest : StringSpec({
             node?.detectLoop()?.value shouldBe result
         }
     } */
-}) {
+  }) {
   companion object : KLogging()
 }

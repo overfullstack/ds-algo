@@ -1,8 +1,6 @@
 package leetcode.graph
 
-/**
- * https://leetcode.com/problems/01-matrix/
- */
+/** https://leetcode.com/problems/01-matrix/ */
 fun updateMatrix(matrix: Array<IntArray>): Array<IntArray> { // DFS
   val queue = ArrayDeque<Pair<Int, Int>>()
   for (row in matrix.indices) {
@@ -16,7 +14,8 @@ fun updateMatrix(matrix: Array<IntArray>): Array<IntArray> { // DFS
   while (queue.isNotEmpty()) { // * BFS from 0s to 1s
     val gridPoint = queue.removeFirst()
     val nextDistance = matrix[gridPoint.first][gridPoint.second] + 1
-    directions.asSequence()
+    directions
+      .asSequence()
       .map { (gridPoint.first + it.first) to (gridPoint.second + it.second) }
       .filter { it.isValid(matrix, nextDistance) }
       .forEach {
@@ -30,11 +29,14 @@ fun updateMatrix(matrix: Array<IntArray>): Array<IntArray> { // DFS
 private val directions = listOf(0 to 1, 0 to -1, 1 to 0, -1 to 0)
 
 private fun Pair<Int, Int>.isValid(matrix: Array<IntArray>, distance: Int) =
-  first >= 0 && first <= matrix.lastIndex &&
-    second >= 0 && second <= matrix[0].lastIndex &&
+  first >= 0 &&
+    first <= matrix.lastIndex &&
+    second >= 0 &&
+    second <= matrix[0].lastIndex &&
     // * 1. Cells with 0s never pass this as distance is always positive, so 0s are never overriden.
     // * 2. For Storing min distance
-    // If a 0 is totally surround by 0s, it's useless as it can never be a nearst 0 for any 1, so skip it.
+    // If a 0 is totally surround by 0s, it's useless as it can never be a nearst 0 for any 1, so
+    // skip it.
     distance < matrix[first][second]
 
 fun updateMatrix2(matrix: Array<IntArray>): Array<IntArray> { // BFS
@@ -53,13 +55,15 @@ fun updateMatrix2(matrix: Array<IntArray>): Array<IntArray> { // BFS
     val size = queue.size
     repeat(size) {
       val gridPoint = queue.removeFirst()
-      directions.asSequence()
+      directions
+        .asSequence()
         .map { (gridPoint.first + it.first) to (gridPoint.second + it.second) }
         .filter { it.isValid2(matrix) }
         .forEach {
           matrix[it.first][it.second] = steps
           // all 0s are already in the queue. Let's say a 1 might be totally covered with 1s,
-          // all those surrounding 1s need to be crossed to reach such. So adding all those 1s to queue
+          // all those surrounding 1s need to be crossed to reach such. So adding all those 1s to
+          // queue
           queue.add(it)
         }
     }
@@ -68,6 +72,8 @@ fun updateMatrix2(matrix: Array<IntArray>): Array<IntArray> { // BFS
 }
 
 private fun Pair<Int, Int>.isValid2(matrix: Array<IntArray>) =
-  first >= 0 && first <= matrix.lastIndex &&
-    second >= 0 && second <= matrix[0].lastIndex &&
+  first >= 0 &&
+    first <= matrix.lastIndex &&
+    second >= 0 &&
+    second <= matrix[0].lastIndex &&
     matrix[first][second] == -1

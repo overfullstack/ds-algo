@@ -15,10 +15,13 @@ fun main() {
   val (minFrequency, noOfQueries) = readLine()!!.split(" ").map { it.toInt() }
   val arr = readLine()!!.split(" ").map { it.toInt() }
   val frequencies = arr.groupingBy { it }.eachCount().values
-  val (removableFrequencies, nonRemovableFrequencies) = frequencies.partition { it % minFrequency == 0 }
+  val (removableFrequencies, nonRemovableFrequencies) =
+    frequencies.partition { it % minFrequency == 0 }
   val lookup = getLookup(minFrequency, removableFrequencies)
   repeat(noOfQueries) {
     val iterations = readLine()!!.toInt()
-    println(nonRemovableFrequencies.size + if (iterations > lookup.lastIndex) 0 else lookup[iterations])
+    println(
+      nonRemovableFrequencies.size + if (iterations > lookup.lastIndex) 0 else lookup[iterations]
+    )
   }
 }

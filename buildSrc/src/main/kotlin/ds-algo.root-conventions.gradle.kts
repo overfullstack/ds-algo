@@ -1,3 +1,4 @@
+import com.diffplug.spotless.LineEnding.PLATFORM_NATIVE
 import com.diffplug.spotless.extra.wtp.EclipseWtpFormatterStep.XML
 import io.gitlab.arturbosch.detekt.Detekt
 
@@ -21,6 +22,7 @@ repositories {
 }
 
 spotless {
+  lineEndings = PLATFORM_NATIVE
   kotlin {
     ktfmt().googleStyle()
     target("**/*.kt")

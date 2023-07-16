@@ -6,9 +6,12 @@ fun minimumSemesters(relations: Array<Pair<Int, Int>>): Int {
   val diGraph = relations.toDiGraph()
   val visited = mutableSetOf<Int>()
   return try {
-    diGraph.keys.asSequence()
+    diGraph.keys
+      .asSequence()
       .filter { it !in visited }
-      .map { it.dft(diGraph, visited.apply { add(it) }, setOf(it)) }.maxOrNull() ?: 0
+      .map { it.dft(diGraph, visited.apply { add(it) }, setOf(it)) }
+      .maxOrNull()
+      ?: 0
   } catch (e: IllegalArgumentException) {
     -1
   }
@@ -20,18 +23,18 @@ private fun DiGraphNode.dft(
   visitedInBranch: Set<Int>,
   maxNodesInPath: Int = 1
 ): Int =
-  diGraph[this]?.asSequence()?.map {
-    when (it) {
-      !in visited -> it.dft(
-        diGraph,
-        visited.apply { add(it) },
-        visitedInBranch + it,
-        maxNodesInPath + 1
-      )
-      in visitedInBranch -> throw IllegalArgumentException("Graph has Cycle")
-      else -> maxNodesInPath
+  diGraph[this]
+    ?.asSequence()
+    ?.map {
+      when (it) {
+        !in visited ->
+          it.dft(diGraph, visited.apply { add(it) }, visitedInBranch + it, maxNodesInPath + 1)
+        in visitedInBranch -> throw IllegalArgumentException("Graph has Cycle")
+        else -> maxNodesInPath
+      }
     }
-  }?.maxOrNull() ?: maxNodesInPath
+    ?.maxOrNull()
+    ?: maxNodesInPath
 
 private fun Array<Pair<Int, Int>>.toDiGraph(): Map<Int, Set<Int>> =
   groupBy({ it.first }, { it.second }).mapValues { it.value.toSet() }

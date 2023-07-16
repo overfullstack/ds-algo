@@ -7,6 +7,7 @@ import kotlin.math.pow
 
 class SegmentTreeSum(var arr: IntArray) {
   private var segmentTree = IntArray(2 * 2.0.pow(ceil(log2(arr.size.toDouble()))).toInt() - 1)
+
   fun process() {
     construct(0, 0, arr.lastIndex)
   }
@@ -15,7 +16,7 @@ class SegmentTreeSum(var arr: IntArray) {
     segmentTree[segmentTreeIndex] =
       if (startIndex == endIndex) {
         arr[startIndex]
-      } else { // Going into mids of mids and ending up at individual arr elements. 
+      } else { // Going into mids of mids and ending up at individual arr elements.
         val mid = (startIndex + endIndex) / 2
         construct(2 * segmentTreeIndex + 1, startIndex, mid) +
           construct(2 * segmentTreeIndex + 2, mid + 1, endIndex)
@@ -42,14 +43,13 @@ class SegmentTreeSum(var arr: IntArray) {
     }
     val mid = (segmentStart + segmentEnd) / 2
     return getSumForRange(
-      segmentStart, mid,
-      queryStartIndex, queryEndIndex,
+      segmentStart,
+      mid,
+      queryStartIndex,
+      queryEndIndex,
       2 * segmentTreeIndex + 1
-    ) + getSumForRange(
-      mid + 1, segmentEnd,
-      queryStartIndex, queryEndIndex,
-      2 * segmentTreeIndex + 2
-    )
+    ) +
+      getSumForRange(mid + 1, segmentEnd, queryStartIndex, queryEndIndex, 2 * segmentTreeIndex + 2)
   }
 
   fun update(index: Int, value: Int) {

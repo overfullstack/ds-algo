@@ -3,18 +3,19 @@ package ds
 class TrieNode(val value: Char = Char.MIN_VALUE) { // First node of a Trie is a dummy.
   var isEnd = false
     private set
+
   var children = arrayOfNulls<TrieNode>(26)
     private set
+
   lateinit var word: String
     private set
-  // set(value) = if (isEnd) field = value else throw AssertionError("Can't set word on non-end node")
+  // set(value) = if (isEnd) field = value else throw AssertionError("Can't set word on non-end
+  // node")
 
   fun insert(key: String) {
     var crawl = this
     for (char in key) {
-      crawl = crawl.children[char - 'a'] ?: TrieNode(char).also {
-        crawl.children[char - 'a'] = it
-      }
+      crawl = crawl.children[char - 'a'] ?: TrieNode(char).also { crawl.children[char - 'a'] = it }
     }
     crawl.isEnd = true
     crawl.word = key
@@ -25,10 +26,14 @@ class TrieNode(val value: Char = Char.MIN_VALUE) { // First node of a Trie is a 
       if (isEnd) {
         isEnd = false
       }
-      return if (isEmptyChildren()) null else this // This has no sub-branches, the only branch is being totally dedicated for this word.
+      return if (isEmptyChildren()) null
+      else
+        this // This has no sub-branches, the only branch is being totally dedicated for this word.
     }
     children[key[depth] - 'a'] = children[key[depth] - 'a']?.remove(key, depth + 1)
-    return if (!isEnd && isEmptyChildren()) null else this // If current child is the only non-null child which got removed, remove this node recursively.
+    return if (!isEnd && isEmptyChildren()) null
+    else this // If current child is the only non-null child which got removed, remove this node
+    // recursively.
   }
 
   private fun isEmptyChildren(): Boolean {
@@ -56,7 +61,7 @@ class TrieNode(val value: Char = Char.MIN_VALUE) { // First node of a Trie is a 
     for (char in key) {
       crawl =
         crawl?.let { if (it.isEnd) this.children[char - 'a'] else it.children[char - 'a'] }
-        ?: return false
+          ?: return false
     }
     return crawl?.isEnd ?: false
   }
@@ -70,12 +75,9 @@ class TrieNode(val value: Char = Char.MIN_VALUE) { // First node of a Trie is a 
   }
 
   private fun getRecommendations(prefix: String, curRecommendation: String = ""): List<String> =
-    (
-      (if (isEnd) listOf(prefix + curRecommendation) else emptyList()) +
-        children.asSequence().filterNotNull()
-          .flatMap { // It ends at leaf when all children are null
-            val recommendation = curRecommendation + it.value
-            it.getRecommendations(prefix, recommendation) // dfs
-          }
-      )
+    ((if (isEnd) listOf(prefix + curRecommendation) else emptyList()) +
+      children.asSequence().filterNotNull().flatMap { // It ends at leaf when all children are null
+        val recommendation = curRecommendation + it.value
+        it.getRecommendations(prefix, recommendation) // dfs
+      })
 }

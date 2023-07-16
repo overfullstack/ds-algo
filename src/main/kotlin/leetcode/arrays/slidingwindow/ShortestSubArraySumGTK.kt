@@ -1,9 +1,6 @@
 package leetcode.arrays.slidingwindow
 
-/**
- * https://leetcode.com/problems/minimum-size-subarray-sum/
- * NO negative numbers
- */
+/** https://leetcode.com/problems/minimum-size-subarray-sum/ NO negative numbers */
 fun shortestSubArrayLenWithSumGTK(s: Int, nums: IntArray): Int {
   var minWindow = Int.MAX_VALUE
   var start = 0

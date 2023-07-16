@@ -1,16 +1,14 @@
 package leetcode.dp
 
-/**
- * https://leetcode.com/problems/different-ways-to-add-parentheses/
- */
-
+/** https://leetcode.com/problems/different-ways-to-add-parentheses/ */
 val opSet = setOf('+', '-', '*')
 
 fun diffWaysToCompute(input: String): List<Int> =
   when {
     input.isEmpty() -> emptyList()
     else ->
-      input.indices.asSequence()
+      input.indices
+        .asSequence()
         .filter { input[it] in opSet }
         .flatMap {
           val leftList = diffWaysToCompute(input.substring(0 until it))
@@ -25,6 +23,7 @@ fun diffWaysToCompute(input: String): List<Int> =
               }
             }
           }
-        }.toList()
+        }
+        .toList()
         .ifEmpty { listOf(input.toInt()) } // ! Base case with only single/multi-digit number
   }

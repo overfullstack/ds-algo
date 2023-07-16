@@ -1,8 +1,8 @@
 package leetcode.arrays.slidingwindow.string
 
 /**
- * https://leetcode.com/problems/find-all-anagrams-in-a-string/
- * Find all the start indices of p's anagrams in s.
+ * https://leetcode.com/problems/find-all-anagrams-in-a-string/ Find all the start indices of p's
+ * anagrams in s.
  */
 fun findAnagrams(s: String, p: String): List<Int> {
   val pFreqMap = p.groupingBy { it }.eachCount().toMutableMap()

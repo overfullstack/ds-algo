@@ -23,7 +23,5 @@ private fun letterCombinationsUtil(
   } else {
     // * Every letter in current word starts a branch with next word letters.
     val lettersOnButton = DICTIONARY[digits[digitIndex] - '0']
-    lettersOnButton.flatMap {
-      letterCombinationsUtil(digits, combination + it, digitIndex + 1)
-    }
+    lettersOnButton.flatMap { letterCombinationsUtil(digits, combination + it, digitIndex + 1) }
   }

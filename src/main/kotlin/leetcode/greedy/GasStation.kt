@@ -1,9 +1,7 @@
 /* gakshintala created on 11/17/19 */
 package leetcode.arrays.GasStation
 
-/**
- * https://leetcode.com/problems/gas-station/
- */
+/** https://leetcode.com/problems/gas-station/ */
 fun canCompleteCircuit(gas: IntArray, cost: IntArray): Int {
   var start = 0
   var totalGas = 0
@@ -18,8 +16,10 @@ fun canCompleteCircuit(gas: IntArray, cost: IntArray): Int {
       curTank = 0
     }
   }
-  // *  Ultimately, if `totalGas > totalCost`, a solution exists and there is no way cost can beat gas.
-  // so to balance the equation `totalGas > totalCost`, the growth after `i` should compensate the deficit,
+  // *  Ultimately, if `totalGas > totalCost`, a solution exists and there is no way cost can beat
+  // gas.
+  // so to balance the equation `totalGas > totalCost`, the growth after `i` should compensate the
+  // deficit,
   // which can be carried over to complete loop from 0 to `i`
   return if (totalGas > totalCost) start else -1
 }
@@ -34,11 +34,17 @@ fun canCompleteCircuit2(gas: IntArray, cost: IntArray): Int {
   var curGas = gas[start] - cost[start]
 
   while (start != end || curGas < 0) { // while loops like this, act as continuous if conditions.
-    // We undo the tour with each position, instead of setting `start = end`, coz we need to identify if start is crossing over `0`.
-    while (start != end && curGas < 0) { // Finally, end should be able to meet start without letting this loop run by always having curGas > 0
-      // Undo the tour in this path, by removing gas and adding up the cost incurred. This is similar to sliding window.
+    // We undo the tour with each position, instead of setting `start = end`, coz we need to
+    // identify if start is crossing over `0`.
+    while (
+      start != end && curGas < 0
+    ) { // Finally, end should be able to meet start without letting this loop run by always having
+      // curGas > 0
+      // Undo the tour in this path, by removing gas and adding up the cost incurred. This is
+      // similar to sliding window.
       curGas -= (gas[start] - cost[start])
-      // `% n` is to get away with Cycle. Although start never crosses a cycle, if we use `start++`, it shall never be `0`
+      // `% n` is to get away with Cycle. Although start never crosses a cycle, if we use `start++`,
+      // it shall never be `0`
       start = (start + 1) % n
       if (start == 0) { // This indicates start has been chasing end, and they will never meet.
         return -1
