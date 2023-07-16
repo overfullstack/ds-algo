@@ -4,6 +4,10 @@
     <annotationProcessing>
       <profile default="true" name="Default" enabled="true" />
     </annotationProcessing>
-    <bytecodeTargetLevel target="17" />
+    <bytecodeTargetLevel target="20">
+      <module name="dsalgo-root.buildSrc" target="17" />
+      <module name="dsalgo-root.buildSrc.main" target="17" />
+      <module name="dsalgo-root.buildSrc.test" target="17" />
+    </bytecodeTargetLevel>
   </component>
 </project>

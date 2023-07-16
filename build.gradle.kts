@@ -1,51 +1,20 @@
-import com.adarshr.gradle.testlogger.theme.ThemeType.MOCHA_PARALLEL
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-
 plugins {
-  kotlin("jvm")
-  id("com.adarshr.test-logger") version "3.2.0"
-  application
-}
-
-group = "com.gakshintala.ds-algo"
-version = "1.0-SNAPSHOT"
-
-repositories {
-  mavenCentral()
+  id("ds-algo.root-conventions")
+  id("ds-algo.sub-conventions")
+  id("ds-algo.kt-conventions")
 }
 
 dependencies {
-  implementation("io.github.microutils:kotlin-logging:3.0.5")
-  runtimeOnly("org.apache.logging.log4j:log4j-core:2.20.0")
-  runtimeOnly("org.apache.logging.log4j:log4j-slf4j-impl:2.20.0")
+  compileOnly(libs.jetbrains.annotations)
+  implementation(libs.bundles.kotlin.logging)
 
-  // Junit
-  testImplementation(platform("org.junit:junit-bom:5.9.3"))
-  testImplementation("org.junit.jupiter:junit-jupiter-api")
-  testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine")
-
-  // Kotest
-  val kotestVersion: String by project
-  testImplementation("io.kotest:kotest-runner-junit5:$kotestVersion")
-  testImplementation("io.kotest:kotest-assertions-core-jvm:$kotestVersion")
-  testImplementation("io.kotest:kotest-framework-datatest:$kotestVersion")
+  testImplementation(libs.assertj.core)
 }
 
-java.sourceCompatibility = JavaVersion.VERSION_17
-
-tasks {
-  withType<KotlinCompile> {
-    kotlinOptions {
-      jvmTarget = JavaVersion.VERSION_17.toString()
-      freeCompilerArgs = listOf("-opt-in=kotlin.RequiresOptIn")
-    }
-  }
-  test {
-    useJUnitPlatform()
-    ignoreFailures = true
+testing {
+  suites {
+    val test by getting(JvmTestSuite::class) { useJUnitJupiter(libs.versions.junit.get()) }
   }
 }
 
-testlogger {
-  theme = MOCHA_PARALLEL
-}
+koverReport { defaults { xml { onCheck = true } } }
