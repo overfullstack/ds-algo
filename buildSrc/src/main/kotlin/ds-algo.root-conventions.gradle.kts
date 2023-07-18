@@ -1,13 +1,14 @@
+import com.adarshr.gradle.testlogger.theme.ThemeType.MOCHA
 import com.diffplug.spotless.LineEnding.PLATFORM_NATIVE
 import com.diffplug.spotless.extra.wtp.EclipseWtpFormatterStep.XML
 import io.gitlab.arturbosch.detekt.Detekt
 
 plugins {
   java
-  idea
   id("com.diffplug.spotless")
   id("io.gitlab.arturbosch.detekt")
   id("org.jetbrains.kotlinx.kover")
+  id("com.adarshr.test-logger")
 }
 
 version = VERSION
@@ -28,26 +29,25 @@ spotless {
     target("**/*.kt")
     trimTrailingWhitespace()
     endWithNewline()
-    targetExclude(
-      "**/build/**",
-    )
+    targetExclude("**/build/**", "**/.gradle/**", "**/generated/**")
   }
   kotlinGradle {
     ktfmt().googleStyle()
     target("**/*.gradle.kts")
     trimTrailingWhitespace()
     endWithNewline()
+    targetExclude("**/build/**", "**/.gradle/**", "**/generated/**")
   }
   java {
     toggleOffOn()
-    target("src/main/java/**/*.java", "src/test/java/**/*.java")
-    targetExclude("$buildDir/generated/**/*.*")
+    target("**/*.java")
     importOrder()
     removeUnusedImports()
     googleJavaFormat()
     trimTrailingWhitespace()
     indentWithSpaces(2)
     endWithNewline()
+    targetExclude("**/build/**", "**/.gradle/**", "**/generated/**")
   }
   format("xml") {
     targetExclude("pom.xml")
@@ -68,5 +68,7 @@ detekt {
   baseline = file("$rootDir/detekt/baseline.xml")
   config.setFrom(file("$rootDir/detekt/config.yml"))
 }
+
+testlogger.theme = MOCHA
 
 tasks.withType<Detekt>().configureEach { reports { xml.required.set(true) } }
