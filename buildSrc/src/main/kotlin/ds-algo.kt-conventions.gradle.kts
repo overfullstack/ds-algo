@@ -11,7 +11,7 @@ dependencies { testImplementation(libs.kotestBundle) }
 
 tasks {
   withType<KotlinCompile> {
-    kotlinOptions.freeCompilerArgs = listOf("-opt-in=kotlin.RequiresOptIn", "-Xcontext-receivers")
+    kotlinOptions.freeCompilerArgs = listOf("-opt-in=kotlin.RequiresOptIn", "-Xcontext-receivers", "-progressive")
   }
 }
 
