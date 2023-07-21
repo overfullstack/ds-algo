@@ -16,4 +16,4 @@ fun TreeNode.connect2(): TreeNode {
   return this
 }
 
-private tailrec fun TreeNode.findNext(): TreeNode? = next?.left ?: next?.right ?: next?.findNext()
+private fun TreeNode.findNext(): TreeNode? = next?.left ?: next?.right ?: next?.findNext()

@@ -1,11 +1,12 @@
 package ga.overfullstack.ds.tree
 
 import com.squareup.moshi.FromJson
+import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.adapter
 import ga.overfullstack.ds.tree.TreeNode.Utils.JTree.Tree.JNode
-import ga.overfullstack.utils.readFileFromTestResource
+import ga.overfullstack.utils.readFileToString
 import java.util.ArrayDeque
 import java.util.LinkedList
 
@@ -18,7 +19,8 @@ data class TreeNode(
   var next: TreeNode? = null,
   val id: String = ""
 ) {
-  private var leftSize: Int = 0
+
+  @Json(ignore = true) private var leftSize: Int = 0
 
   fun traversalAnyOrder(
     order: (Int, Array<Int>, Array<Int>) -> Array<Int> = { value, left, right ->
@@ -48,7 +50,8 @@ data class TreeNode(
           left = TreeNode(valToInsert)
           leftSize
         }
-    } else { // 1 - for current node, leftSize for it's rank (all the nodes less than the cur node)
+    } else { // 1 - for current node, leftSize for it's rank (all the nodes less than the cur
+      // node)
       1 +
         leftSize +
         (right?.insertForRank(valToInsert)
@@ -113,6 +116,9 @@ data class TreeNode(
       left?.getNodeWithValue(valToFind) ?: right?.getNodeWithValue(valToFind)
     }
 
+  override fun toString(): String =
+    "TreeNode(value=$value, left=${left?.value}, right=${right?.value}, parent=${parent?.value}, next=${next?.value}, id='$id', leftSize=$leftSize)"
+
   companion object Utils {
     fun arrToBST(arr: IntArray): TreeNode? {
       if (arr.isEmpty()) {
@@ -169,21 +175,25 @@ data class TreeNode(
     class NodeAdapter(val treeGraph: MutableMap<String, TreeNode> = mutableMapOf()) {
       @FromJson
       fun fromJson(jNode: JNode): TreeNode {
-        val leftNode = jNode.left?.let { treeGraph[it] }
-        val rightNode = jNode.right?.let { treeGraph[it] }
-        val node = TreeNode(value = jNode.value, left = leftNode, right = rightNode, id = jNode.id)
-        treeGraph[jNode.id] = node
-        return node
+        val node = treeGraph[jNode.id] ?: TreeNode(id = jNode.id, value = Int.MIN_VALUE)
+        node.value = jNode.value
+        node.left = getNode(jNode.left)
+        node.right = getNode(jNode.right)
+        return node.also { treeGraph[jNode.id] = node }
       }
+
+      private fun getNode(id: String?): TreeNode? =
+        id?.let { treeGraph.computeIfAbsent(it) { TreeNode(id = id, value = Int.MIN_VALUE) } }
     }
 
+    @SuppressWarnings("kotlin:S6611")
     @OptIn(ExperimentalStdlibApi::class)
-    fun parseJsonFileToTree(jsonFilePath: String): TreeNode? {
-      val treeJson = readFileFromTestResource(jsonFilePath)
+    fun parseJsonFileToTree(jsonFilePath: String): TreeNode {
+      val treeJson = readFileToString(jsonFilePath)
       val nodeAdapter = NodeAdapter()
       val treeAdapter = Moshi.Builder().add(nodeAdapter).build().adapter<JTree>()
       val tree = treeAdapter.fromJson(treeJson)!!
-      return nodeAdapter.treeGraph[tree.tree.root]
+      return nodeAdapter.treeGraph[tree.tree.root]!!
     }
   }
 }

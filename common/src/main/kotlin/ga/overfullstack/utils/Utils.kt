@@ -4,9 +4,11 @@ package ga.overfullstack.utils
 
 import java.io.File
 
-fun readFileToString(fileRelativePath: String): String {
-  return File(fileRelativePath).readText(Charsets.UTF_8)
-}
+fun readFileToString(fileRelativePath: String): String =
+  File(fileRelativePath).readText(Charsets.UTF_8)
+
+const val RESOURCES_PATH = "src/main/resources/"
+const val TEST_RESOURCES_PATH = "src/test/resources/"
 
 fun readFileFromTestResource(fileRelativePath: String): String =
-  File("src/test/resources/$fileRelativePath").readText()
+  File("$TEST_RESOURCES_PATH$fileRelativePath").readText(Charsets.UTF_8)

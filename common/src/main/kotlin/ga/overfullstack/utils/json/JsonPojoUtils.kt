@@ -63,10 +63,7 @@ private fun <PojoT : Any> initMoshiJsonAdapter(
 }
 
 @SuppressWarnings("kotlin:S3923")
-fun buildMoshi(
-  customAdapters: List<Any>,
-  typesToIgnore: Set<Type>?
-): Moshi.Builder {
+fun buildMoshi(customAdapters: List<Any>, typesToIgnore: Set<Type>?): Moshi.Builder {
   val moshiBuilder = Moshi.Builder()
   for (adapter in customAdapters) {
     if (adapter is JsonAdapter.Factory) {
