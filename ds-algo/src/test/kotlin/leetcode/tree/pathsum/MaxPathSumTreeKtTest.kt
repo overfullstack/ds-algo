@@ -1,4 +1,4 @@
-package leetcode.tree.PathSum
+package leetcode.tree.pathsum
 
 import ga.overfullstack.ds.tree.TreeNode
 import io.kotest.core.spec.style.StringSpec

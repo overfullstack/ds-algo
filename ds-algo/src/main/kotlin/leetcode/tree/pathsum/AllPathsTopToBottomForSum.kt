@@ -1,5 +1,5 @@
 /* gakshintala created on 12/13/19 */
-package leetcode.tree.PathSum
+package leetcode.tree.pathsum
 
 import ga.overfullstack.ds.tree.TreeNode
 
@@ -19,7 +19,7 @@ private fun TreeNode.allPathsTopToBottomForSum(
 }
 
 fun main() {
-  val arrCsv = readLine()!!
+  val arrCsv = readln()
   val arr =
     if (arrCsv.trim().isEmpty()) emptyList()
     else arrCsv.split(",").map { it.trim() }.map { if (it == "null") null else it.toInt() }

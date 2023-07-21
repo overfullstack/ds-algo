@@ -1,5 +1,5 @@
 /* gakshintala created on 12/13/19 */
-package leetcode.tree.PathSum
+package leetcode.tree.pathsum
 
 import ga.overfullstack.ds.tree.TreeNode
 
