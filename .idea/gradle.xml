@@ -23,6 +23,9 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/buildSrc" />
+            <option value="$PROJECT_DIR$/common" />
+            <option value="$PROJECT_DIR$/ds-algo" />
+            <option value="$PROJECT_DIR$/old" />
           </set>
         </option>
       </GradleProjectSettings>

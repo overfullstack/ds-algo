@@ -7,7 +7,8 @@ spotbugs = "5.0.14"
 testLogger = "3.2.0"
 assertj-core = "3.24.2"
 kotlin-logging = "3.0.5"
-mockito = "5.4.0"
+moshi = "1.15.0"
+moshix = "0.23.0"
 # Common dependencies
 junit = "5.9.3"
 detekt = "1.23.0"
@@ -15,10 +16,10 @@ spotless = "6.20.0"
 apache-log4j = "2.20.0"
 
 [libraries]
+moshi-kotlin = { module = "com.squareup.moshi:moshi-kotlin", version.ref = "moshi" }
 jetbrains-annotations = { module = "org.jetbrains:annotations", version.ref = "jetbrains-annotations" }
 testLogger-gradle = { module = "com.adarshr.test-logger:com.adarshr.test-logger.gradle.plugin", version.ref = "testLogger" }
 kotest-assertions-core = { module = "io.kotest:kotest-assertions-core", version.ref = "kotest" }
-kotest-frameworkEngine = { module = "io.kotest:kotest-framework-engine", version.ref = "kotest" }
 kotest-property = { module = "io.kotest:kotest-property", version.ref = "kotest" }
 kotest-runnerJUnit5 = { module = "io.kotest:kotest-runner-junit5", version.ref = "kotest" }
 assertj-core = { module = "org.assertj:assertj-core", version.ref = "assertj-core" }
@@ -29,7 +30,6 @@ log4j-slf4j2-impl = { module = "org.apache.logging.log4j:log4j-slf4j2-impl", ver
 junit-bom = { module = "org.junit:junit-bom", version.ref = "junit" }
 junit-jupiter = { module = "org.junit.jupiter:junit-jupiter-api", version.ref = "junit" }
 junit-engine = { module = "org.junit.jupiter:junit-jupiter-engine" }
-mockito-core = { module = "org.mockito:mockito-core", version.ref = "mockito" }
 
 # Gradle plugins
 kotlin-gradle = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
@@ -41,7 +41,6 @@ kover-gradle = { module = "org.jetbrains.kotlinx.kover:org.jetbrains.kotlinx.kov
 [bundles]
 kotest = [
     "kotest-assertions-core",
-    "kotest-frameworkEngine",
     "kotest-property",
     "kotest-runnerJUnit5",
 ]
@@ -55,3 +54,4 @@ detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
 spotless = { id = "com.diffplug.spotless", version.ref = "spotless" }
 spotbugs = { id = "com.github.spotbugs", version.ref = "spotbugs" }
 testLogger = { id = "com.adarshr.test-logger", version.ref = "testLogger" }
+moshix = { id = "dev.zacsweers.moshix", version.ref = "moshix" }

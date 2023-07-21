@@ -10,4 +10,10 @@ dependencyResolutionManagement {
   }
 }
 
-rootProject.name = "ds-algo"
+rootProject.name = "ds-algo-root"
+
+include("common")
+
+include("old")
+
+include("ds-algo")

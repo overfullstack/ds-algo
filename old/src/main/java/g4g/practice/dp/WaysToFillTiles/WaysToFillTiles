@@ -1,0 +1,60 @@
+http://www.geeksforgeeks.org/freq-number-of-ways-to-fill-a-n-x-4-grid-using-1-x-4-tiles/
+http://www.practice.geeksforgeeks.org/problem-page.php?pid=521
+
+Count number of ways to fill a “n x 4″ grid using “1 x 4″ tiles
+Given a number n, freq number of ways to fill a n x 4 grid using 1 x 4 tiles.
+
+Examples:
+
+Input : n = 1
+Output : 1
+
+Input : n = 2
+Output : 1
+We can only place both tiles horizontally
+
+Input : n = 3
+Output : 1
+We can only place all tiles horizontally.
+
+Input : n = 4
+Output : 2
+The two ways are : 
+  1) Place all tiles horizontally 
+  2) Place all tiles vertically.
+
+Input : n = 5
+Output : 3
+We can fill a 5 x 4 grid in following ways : 
+  1) Place all 5 tiles horizontally
+  2) Place first 4 vertically and 1 horizontally.
+  3) Place first 1 horizontally and 4 horizontally.
+  
+Given a tile of size 1 x 4, how many ways you can construct a grid of size N x 4.
+
+Input:
+
+The first line of input contains an integer T denoting the number of test cases.
+The first line of each test case is N.
+
+Output:
+
+Print number of possible ways.
+
+Constraints:
+
+1 ≤ T ≤ 50
+1 ≤ N ≤ 80
+
+Example:
+
+Input:
+3
+1
+4
+5
+
+Output:
+1
+2
+3

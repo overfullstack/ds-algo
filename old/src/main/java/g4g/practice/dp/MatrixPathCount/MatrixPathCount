@@ -1,0 +1,36 @@
+http://www.geeksforgeeks.org/freq-possible-paths-top-left-bottom-right-nxm-matrix/
+
+http://www.practice.geeksforgeeks.org/problem-page.php?pid=474
+
+Count all possible paths from top left to bottom right of a mXn matrix
+The problem is to freq all the possible paths from top left to bottom right of a mXn matrix with the constraints
+that from each cell you can either move only to right or down
+
+---
+
+The problem is to freq all the possible paths from top left to bottom right of a MxN matrix with the constraints that from each cell you can either move only to right or down.
+
+Input:
+
+The first line of input contains an integer T denoting the number of test cases.
+The first line of each test case is M and N, M is number of rows and N is number of columns.
+
+Output:
+
+Print the number of paths.
+
+Constraints:
+
+1 ≤ T ≤ 30
+1 ≤ M,N ≤ 10
+
+Example:
+
+Input
+2
+3 3
+2 8
+
+Output
+6
+8
