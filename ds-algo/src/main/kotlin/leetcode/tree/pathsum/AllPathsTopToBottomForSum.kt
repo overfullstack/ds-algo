@@ -23,6 +23,6 @@ fun main() {
   val arr =
     if (arrCsv.trim().isEmpty()) emptyList()
     else arrCsv.split(",").map { it.trim() }.map { if (it == "null") null else it.toInt() }
-  val targetSum = readLine()!!.toInt()
+  val targetSum = readln().toInt()
   TreeNode.levelOrderToTree(arr)?.allPathsTopToBottomForSum(targetSum)?.forEach(::println)
 }

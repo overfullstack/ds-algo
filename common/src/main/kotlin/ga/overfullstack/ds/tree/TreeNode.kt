@@ -21,6 +21,9 @@ data class TreeNode(
 ) {
 
   @Json(ignore = true) private var leftSize: Int = 0
+  
+  val isLeafNode
+    get() = left == null && right == null
 
   fun traversalAnyOrder(
     order: (Int, Array<Int>, Array<Int>) -> Array<Int> = { value, left, right ->

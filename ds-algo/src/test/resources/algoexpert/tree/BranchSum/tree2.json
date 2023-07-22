@@ -1,0 +1,13 @@
+{
+  "tree" : {
+    "nodes" : [
+      {
+        "id" : "1",
+        "left" : null,
+        "right" : null,
+        "value" : 1
+      }
+    ],
+    "root" : "1"
+  }
+}

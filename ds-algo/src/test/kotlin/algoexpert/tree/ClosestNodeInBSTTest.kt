@@ -1,6 +1,6 @@
 package algoexpert.tree
 
-import ga.overfullstack.ds.tree.TreeNode
+import ga.overfullstack.ds.tree.TreeNode.Utils.parseJsonFileToTree
 import ga.overfullstack.utils.TEST_RESOURCES_PATH
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.data.forAll
@@ -12,8 +12,8 @@ private const val PKG_PATH = "$TEST_RESOURCES_PATH/algoexpert/tree/ClosestNodeIn
 class ClosestNodeInBSTTest :
   StringSpec({
     "closest in BST" {
-      val root1 = TreeNode.parseJsonFileToTree("$PKG_PATH/tree1.json")
-      val root2 = TreeNode.parseJsonFileToTree("$PKG_PATH/tree2.json")
+      val root1 = parseJsonFileToTree("$PKG_PATH/tree1.json")
+      val root2 = parseJsonFileToTree("$PKG_PATH/tree2.json")
       forAll(
         row(root1, 12, 13),
         row(root2, 208, 208),
