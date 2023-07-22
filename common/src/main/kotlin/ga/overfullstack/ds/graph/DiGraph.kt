@@ -1,24 +1,25 @@
-package ga.overfullstack.ds
+package ga.overfullstack.ds.graph
 
+import com.squareup.moshi.JsonClass
 import java.util.ArrayDeque
 
-@JvmInline value class DiGraphNode(val value: Int)
+@JvmInline value class DiGraphNode<T>(val value: T)
 
 @JvmInline
 value class DiGraph(
-  private val adjacencyMap: MutableMap<DiGraphNode, Set<DiGraphNode>> = mutableMapOf()
+  private val adjacencyMap: MutableMap<DiGraphNode<Int>, Set<DiGraphNode<Int>>> = mutableMapOf()
 ) {
 
-  fun addEdge(source: DiGraphNode, destination: DiGraphNode) {
+  fun addEdge(source: DiGraphNode<Int>, destination: DiGraphNode<Int>) {
     adjacencyMap.merge(source, setOf(destination)) { oldSet, _ -> oldSet + destination }
   }
 
-  fun getNeighbours(node: DiGraphNode): Set<DiGraphNode>? = adjacencyMap[node]
+  fun getNeighbours(node: DiGraphNode<Int>): Set<DiGraphNode<Int>>? = adjacencyMap[node]
 
   tailrec fun bfs(
-    valToSearch: DiGraphNode,
-    visited: Set<DiGraphNode> = setOf(),
-    queue: ArrayDeque<DiGraphNode> = ArrayDeque(listOf(DiGraphNode(0)))
+    valToSearch: DiGraphNode<Int>,
+    visited: Set<DiGraphNode<Int>> = setOf(),
+    queue: ArrayDeque<DiGraphNode<Int>> = ArrayDeque(listOf(DiGraphNode<Int>(0)))
   ): Boolean =
     if (queue.isEmpty()) {
       false
@@ -34,9 +35,9 @@ value class DiGraph(
     }
 
   fun dfs(
-    currentNode: DiGraphNode,
-    valToSearch: DiGraphNode,
-    visited: Set<DiGraphNode> = setOf()
+    currentNode: DiGraphNode<Int>,
+    valToSearch: DiGraphNode<Int>,
+    visited: Set<DiGraphNode<Int>> = setOf()
   ): Boolean =
     if (currentNode == valToSearch) {
       true
@@ -49,8 +50,8 @@ value class DiGraph(
     }
 
   /** -> DFT */
-  fun dft(): List<DiGraphNode> {
-    val visited = mutableSetOf<DiGraphNode>() // * Global Visited, as no need to backtrack.
+  fun dft(): List<DiGraphNode<Int>> {
+    val visited = mutableSetOf<DiGraphNode<Int>>() // * Global Visited, as no need to backtrack.
     return adjacencyMap.keys
       .asSequence()
       .filter { it !in visited }
@@ -58,10 +59,10 @@ value class DiGraph(
       .toList()
   }
 
-  private fun DiGraphNode.dftPerBranch(
-    visited: MutableSet<DiGraphNode>,
-    path: Sequence<DiGraphNode> = emptySequence()
-  ): Sequence<DiGraphNode> =
+  private fun DiGraphNode<Int>.dftPerBranch(
+    visited: MutableSet<DiGraphNode<Int>>,
+    path: Sequence<DiGraphNode<Int>> = emptySequence()
+  ): Sequence<DiGraphNode<Int>> =
     adjacencyMap[this]
       ?.asSequence()
       ?.filter { it !in visited }
@@ -72,16 +73,16 @@ value class DiGraph(
 
   /** -> DETECT CYCLE */
   fun hasCycle(): Boolean {
-    val visited = mutableSetOf<DiGraphNode>()
+    val visited = mutableSetOf<DiGraphNode<Int>>()
     return adjacencyMap.keys
       .asSequence()
       .filter { it !in visited }
       .any { it.hasCycle(visited.apply { add(it) }, setOf(it)) }
   }
 
-  private fun DiGraphNode.hasCycle(
-    visited: MutableSet<DiGraphNode>,
-    visitedInBranch: Set<DiGraphNode>
+  private fun DiGraphNode<Int>.hasCycle(
+    visited: MutableSet<DiGraphNode<Int>>,
+    visitedInBranch: Set<DiGraphNode<Int>>
   ): Boolean =
     adjacencyMap[this]?.any { // If visited but not a part of this branch, no cycle
       (it in visitedInBranch) ||
@@ -95,8 +96,8 @@ value class DiGraph(
   /** DETECT CYCLE -> */
 
   /** -> TOPOLOGICAL SORT with Cycle Detection */
-  fun topologicalSort(): List<DiGraphNode> {
-    val visited = mutableSetOf<DiGraphNode>() // * Global visited
+  fun topologicalSort(): List<DiGraphNode<Int>> {
+    val visited = mutableSetOf<DiGraphNode<Int>>() // * Global visited
     return adjacencyMap.keys
       .asSequence()
       .filter { it !in visited }
@@ -104,10 +105,10 @@ value class DiGraph(
       .toList()
   }
 
-  private fun DiGraphNode.topologicalSortPerBranch(
-    visited: MutableSet<DiGraphNode>,
-    visitedInBranch: Set<DiGraphNode>
-  ): Sequence<DiGraphNode> =
+  private fun DiGraphNode<Int>.topologicalSortPerBranch(
+    visited: MutableSet<DiGraphNode<Int>>,
+    visitedInBranch: Set<DiGraphNode<Int>>
+  ): Sequence<DiGraphNode<Int>> =
     adjacencyMap[this]?.asSequence()?.flatMap {
       when (it) { // * `visited.apply { add(it) }` coz we need to retain it across recursions.
         // `visitedInBranch + it` no need to retain.
@@ -119,4 +120,24 @@ value class DiGraph(
       ?: emptySequence() // No connections.
 
   /** TOPOLOGICAL SORT with Cycle Detection -> */
+  
+  companion object {
+    @JsonClass(generateAdapter = true)
+    data class JDiGraph(
+      val graph: Graph
+    ) {
+      @JsonClass(generateAdapter = true)
+      data class Graph(
+        val nodes: List<Node>,
+        val startNode: String
+      ) {
+        @JsonClass(generateAdapter = true)
+        data class Node(
+          val children: List<String>,
+          val id: String,
+          val value: String
+        )
+      }
+    }
+  }
 }
