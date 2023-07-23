@@ -24,6 +24,6 @@ fun TreeNode.findMaxDiameter(): Pair<Int, Int> { // Pair of height and diameter
 }
 
 fun main() {
-  val arr = readLine()!!.split(",").map { it.trim().toInt() }
+  val arr = readln().split(",").map { it.trim().toInt() }
   println(diameterOfBinaryTree(levelOrderToCompleteTree(arr)))
 }

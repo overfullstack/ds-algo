@@ -20,9 +20,9 @@ fun nextHighest(h: IntArray) {
 }
 
 fun main() {
-  val noOfTests = readLine()!!.toInt()
+  val noOfTests = readln().toInt()
   repeat(noOfTests) {
-    val arr = readLine()!!.split(" ").map { it.toInt() }.toIntArray()
+    val arr = readln().split(" ").map { it.toInt() }.toIntArray()
     nextHighest(arr)
   }
 }

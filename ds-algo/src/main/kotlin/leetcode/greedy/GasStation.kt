@@ -57,7 +57,7 @@ fun canCompleteCircuit2(gas: IntArray, cost: IntArray): Int {
 }
 
 fun main() {
-  val gas = readLine()!!.split(",").map { it.trim().toInt() }.toIntArray()
-  val cost = readLine()!!.split(",").map { it.trim().toInt() }.toIntArray()
+  val gas = readln().split(",").map { it.trim().toInt() }.toIntArray()
+  val cost = readln().split(",").map { it.trim().toInt() }.toIntArray()
   println(canCompleteCircuit(gas, cost))
 }

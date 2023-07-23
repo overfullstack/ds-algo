@@ -8,13 +8,11 @@ fun luckBalance(k: Int, contests: Array<Pair<Int, Int>>): Int {
 
 fun main() {
   val (noOfContests, maxImportantContests) =
-    readLine()!!.split(" ").map { it.trim().toInt() }.zipWithNext().first()
+    readln().split(" ").map { it.trim().toInt() }.zipWithNext().first()
   print(
     luckBalance(
       maxImportantContests,
-      Array(noOfContests) {
-        readLine()!!.split(" ").map { it.trim().toInt() }.zipWithNext().first()
-      }
+      Array(noOfContests) { readln().split(" ").map { it.trim().toInt() }.zipWithNext().first() }
     )
   )
 }

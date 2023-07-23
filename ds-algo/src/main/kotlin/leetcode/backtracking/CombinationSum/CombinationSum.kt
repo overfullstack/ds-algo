@@ -21,7 +21,7 @@ fun IntArray.combinationSum(
   }
 
 fun main() {
-  val candidates = readLine()!!.split(",").map { it.trim().toInt() }
-  val target = readLine()!!.toInt()
+  val candidates = readln().split(",").map { it.trim().toInt() }
+  val target = readln().toInt()
   candidates.toIntArray().combinationSum(target).forEach(::println)
 }

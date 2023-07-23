@@ -12,14 +12,14 @@ fun getLookup(minFrequency: Int, sortedFrequencies: List<Int>): List<Int> {
 }
 
 fun main() {
-  val (minFrequency, noOfQueries) = readLine()!!.split(" ").map { it.toInt() }
-  val arr = readLine()!!.split(" ").map { it.toInt() }
+  val (minFrequency, noOfQueries) = readln().split(" ").map { it.toInt() }
+  val arr = readln().split(" ").map { it.toInt() }
   val frequencies = arr.groupingBy { it }.eachCount().values
   val (removableFrequencies, nonRemovableFrequencies) =
     frequencies.partition { it % minFrequency == 0 }
   val lookup = getLookup(minFrequency, removableFrequencies)
   repeat(noOfQueries) {
-    val iterations = readLine()!!.toInt()
+    val iterations = readln().toInt()
     println(
       nonRemovableFrequencies.size + if (iterations > lookup.lastIndex) 0 else lookup[iterations]
     )

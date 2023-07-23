@@ -170,20 +170,24 @@ data class TreeNode(
         data class JNode(val id: String, val left: String?, val right: String?, val value: Int)
       }
     }
-    
+
     @SuppressWarnings("kotlin:S6611")
     @OptIn(ExperimentalStdlibApi::class)
     fun parseJsonFileToTree(jsonFilePath: String): TreeNode {
       val treeJson = readFileToString(jsonFilePath)
       val treeAdapter = Moshi.Builder().build().adapter<JTree>()
       val jTree = treeAdapter.fromJson(treeJson)!!
-      val idToTreeNode = jTree.tree.nodes.associate { it.id to Triple(TreeNode(id = it.id, value = it.value), it.left, it.right)}
-      val treeGraph: Map<String, TreeNode> = idToTreeNode.mapValues { (_, value) ->
-        val (treeNode, leftId, rightId) = value
-        leftId?.let { treeNode.left = idToTreeNode[leftId]?.first }
-        rightId?.let { treeNode.right = idToTreeNode[rightId]?.first }
-        treeNode
-      }
+      val idToTreeNode =
+        jTree.tree.nodes.associate {
+          it.id to Triple(TreeNode(id = it.id, value = it.value), it.left, it.right)
+        }
+      val treeGraph: Map<String, TreeNode> =
+        idToTreeNode.mapValues { (_, value) ->
+          val (treeNode, leftId, rightId) = value
+          leftId?.let { treeNode.left = idToTreeNode[leftId]?.first }
+          rightId?.let { treeNode.right = idToTreeNode[rightId]?.first }
+          treeNode
+        }
       return treeGraph[jTree.tree.root]!!
     }
   }

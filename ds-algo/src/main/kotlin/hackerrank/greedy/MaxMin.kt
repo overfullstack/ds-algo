@@ -74,7 +74,7 @@ private fun enqueueCur(
 }
 
 fun main() {
-  val arrSize = readLine()!!.toInt()
-  val k = readLine()!!.toInt()
-  print(maxMinOptimized(k, IntArray(arrSize) { readLine()!!.trim().toInt() }))
+  val arrSize = readln().toInt()
+  val k = readln().toInt()
+  print(maxMinOptimized(k, IntArray(arrSize) { readln().trim().toInt() }))
 }

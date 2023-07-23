@@ -16,5 +16,5 @@ fun uniquePaths(m: Int, n: Int): Int {
 }
 
 fun main() {
-  print(uniquePaths(readLine()!!.toInt(), readLine()!!.toInt()))
+  print(uniquePaths(readln().toInt(), readln().toInt()))
 }

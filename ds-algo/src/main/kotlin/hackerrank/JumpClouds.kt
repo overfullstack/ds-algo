@@ -16,9 +16,9 @@ fun jumpingOnClouds(c: Array<Int>): Int {
 }
 
 fun main() {
-  val noOfTests = readLine()!!.toInt()
+  val noOfTests = readln().toInt()
   repeat(noOfTests) {
-    val arr = readLine()!!.split(" ").map { it.toInt() }.toTypedArray()
+    val arr = readln().split(" ").map { it.toInt() }.toTypedArray()
     println(jumpingOnClouds(arr))
   }
 }

@@ -6,9 +6,9 @@ val stk1 = Stack<Int>()
 val stk2 = Stack<Int>()
 
 fun main() {
-  val noOfQueries = readLine()!!.toInt()
+  val noOfQueries = readln().toInt()
   repeat(noOfQueries) {
-    val query = readLine()!!.split(" ").map { it.toInt() }.toIntArray()
+    val query = readln().split(" ").map { it.toInt() }.toIntArray()
     when (query[0]) {
       1 -> enqueue(query[1])
       2 -> dequeue()

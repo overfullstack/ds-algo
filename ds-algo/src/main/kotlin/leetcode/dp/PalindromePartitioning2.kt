@@ -32,5 +32,5 @@ fun minCutsForPalindromePartition(s: String): Int {
 }
 
 fun main() {
-  print(minCutsForPalindromePartition(readLine()!!))
+  print(minCutsForPalindromePartition(readln()))
 }

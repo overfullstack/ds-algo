@@ -37,5 +37,5 @@ private fun wordBreakSentences(
 }
 
 fun main() {
-  println(wordBreakSentences(readLine()!!, readLine()!!.split(",").map { it.trim() }))
+  println(wordBreakSentences(readln(), readln().split(",").map { it.trim() }))
 }

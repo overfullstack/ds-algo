@@ -32,6 +32,6 @@ fun trap(heights: IntArray): Int {
 }
 
 fun main() {
-  val arr = readLine()!!.split(",").map { it.toInt() }.toIntArray()
+  val arr = readln().split(",").map { it.toInt() }.toIntArray()
   println(trap(arr))
 }

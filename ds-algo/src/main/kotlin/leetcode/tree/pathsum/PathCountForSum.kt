@@ -38,10 +38,10 @@ private fun TreeNode?.pathCountForSum(
 }
 
 fun main() {
-  val arrCsv = readLine()!!
+  val arrCsv = readln()
   val arr =
     if (arrCsv.trim().isEmpty()) emptyList()
     else arrCsv.split(",").map { it.trim() }.map { if (it == "null") null else it.toInt() }
-  val targetSum = readLine()!!.toInt()
+  val targetSum = readln().toInt()
   println(TreeNode.levelOrderToTree(arr).pathCountForSum(targetSum))
 }

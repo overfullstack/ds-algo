@@ -25,5 +25,5 @@ fun smallestSubsequence(text: String): String {
 }
 
 fun main() {
-  println(smallestSubsequence(readLine()!!))
+  println(smallestSubsequence(readln()))
 }

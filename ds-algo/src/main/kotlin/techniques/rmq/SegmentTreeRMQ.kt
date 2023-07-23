@@ -73,7 +73,7 @@ class SegmentTreeRMQ(var arr: IntArray) {
 }
 
 fun main() {
-  val arr = readLine()!!.split(",").map { it.trim().toInt() }.toIntArray()
+  val arr = readln().split(",").map { it.trim().toInt() }.toIntArray()
   val segmentTree = SegmentTreeRMQ(arr)
   segmentTree.process()
 
@@ -85,20 +85,20 @@ fun main() {
 }
 
 private fun updates(segmentTreeRMQ: SegmentTreeRMQ) {
-  val noOfUpdates = readLine()!!.trim().toInt()
+  val noOfUpdates = readln().trim().toInt()
   val updates = mutableListOf<Pair<Int, Int>>()
   repeat(noOfUpdates) {
-    val (index, value) = readLine()!!.split(",").map { it.trim().toInt() }
+    val (index, value) = readln().split(",").map { it.trim().toInt() }
     updates += index to value
   }
   updates.forEach { segmentTreeRMQ.update(it.first, it.second) }
 }
 
 private fun queries(segmentTreeRMQ: SegmentTreeRMQ) {
-  val noOfQueries = readLine()!!.trim().toInt()
+  val noOfQueries = readln().trim().toInt()
   val queries = mutableListOf<Pair<Int, Int>>()
   repeat(noOfQueries) {
-    val (startIndex, endIndex) = readLine()!!.split(",").map { it.trim().toInt() }
+    val (startIndex, endIndex) = readln().split(",").map { it.trim().toInt() }
     queries += startIndex to endIndex
   }
   queries.forEach { println(segmentTreeRMQ.querySum(it.first, it.second)) }

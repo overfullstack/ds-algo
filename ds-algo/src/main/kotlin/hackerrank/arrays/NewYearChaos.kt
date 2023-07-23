@@ -12,10 +12,10 @@ fun newYearChaos(array: IntArray) =
     .toString()
 
 fun main() {
-  val noOfTests = readLine()!!.toInt()
+  val noOfTests = readln().toInt()
   repeat(noOfTests) {
     readLine()
-    val arr = readLine()!!.split(" ").map { it.toInt() }.toIntArray()
+    val arr = readln().split(" ").map { it.toInt() }.toIntArray()
     println(newYearChaos(arr))
   }
 }

@@ -4,10 +4,10 @@ package g4g
 import ga.overfullstack.ds.tree.TreeNode
 
 fun main() {
-  val testCases = readLine()!!.toInt()
+  val testCases = readln().toInt()
   repeat(testCases) {
-    readLine()!!.toInt() // size
-    val parentArr = readLine()!!.split(" ").map { it.toInt() }
+    readln().toInt() // size
+    val parentArr = readln().split(" ").map { it.toInt() }
     parentArr.indices.forEach { constructTree(it, parentArr) }
   }
 }

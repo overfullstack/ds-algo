@@ -24,16 +24,16 @@ data class NAryTreeNode(var value: Int) {
 fun main() {
   val delimiters = ","
   val treeGraph =
-    readLine()!!.split(delimiters).map { NAryTreeNode(it.toInt()) }.associateBy { it.value }
+    readln().split(delimiters).map { NAryTreeNode(it.toInt()) }.associateBy { it.value }
   blockSize = ceil(sqrt(treeGraph.size.toFloat())).toInt()
-  val noOfEdges = readLine()!!.toInt()
+  val noOfEdges = readln().toInt()
   repeat(noOfEdges) {
-    val (parent, child) = readLine()!!.split(delimiters).map { it.toInt() }
+    val (parent, child) = readln().split(delimiters).map { it.toInt() }
     treeGraph[parent]?.addEdge(treeGraph[child])
   }
-  val noOfTests = readLine()!!.toInt()
+  val noOfTests = readln().toInt()
   repeat(noOfTests) {
-    val (node1, node2) = readLine()!!.split(delimiters).map { treeGraph[it.toInt()] }
+    val (node1, node2) = readln().split(delimiters).map { treeGraph[it.toInt()] }
     print(lcaWithSqrtDecomposition(node1, node2))
   }
 }

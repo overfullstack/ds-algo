@@ -18,7 +18,7 @@ fun palindromePartition(
 fun isPalindrome(str: String): Boolean = str == str.reversed()
 
 fun main() {
-  palindromePartition(readLine()!!).forEach { result ->
+  palindromePartition(readln()).forEach { result ->
     result.forEach { print("$it ") }
     println()
   }

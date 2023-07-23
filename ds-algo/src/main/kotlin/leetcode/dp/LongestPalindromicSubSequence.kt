@@ -19,5 +19,5 @@ fun longestPalindromeSubseq(s: String): Int {
 }
 
 fun main() {
-  print(longestPalindromeSubseq(readLine()!!))
+  print(longestPalindromeSubseq(readln()))
 }

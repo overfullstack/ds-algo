@@ -42,9 +42,7 @@ class DiGraphTest :
       diGraph.bfs(6) shouldBe false
     }
 
-    "dft" {
-      diGraph.dft() shouldContainExactly listOf(0, 1, 4, 2, 5, 3)
-    }
+    "dft" { diGraph.dft() shouldContainExactly listOf(0, 1, 4, 2, 5, 3) }
 
     "Digraph has Cycle" {
       diGraph.hasCycle() shouldBe false

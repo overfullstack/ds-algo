@@ -9,6 +9,4 @@ dependencies {
   implementation(libs.bundles.kotlin.logging)
 }
 
-moshi {
-  enableSealed = true
-}
+moshi { enableSealed = true }

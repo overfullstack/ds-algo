@@ -6,7 +6,7 @@ import io.gitlab.arturbosch.detekt.Detekt
 plugins {
   java
   id("com.diffplug.spotless")
-  id("io.gitlab.arturbosch.detekt")
+  id("io.github.detekt.gradle.compiler-plugin")
   id("org.jetbrains.kotlinx.kover")
   id("com.adarshr.test-logger")
 }

@@ -38,13 +38,13 @@ class SparseTableRMQ(var arr: IntArray) {
 }
 
 fun main() {
-  val arr = readLine()!!.split(",").map { it.trim().toInt() }.toIntArray()
+  val arr = readln().split(",").map { it.trim().toInt() }.toIntArray()
   val sparseTableRMQ = SparseTableRMQ(arr)
   sparseTableRMQ.process()
-  val noOfQueries = readLine()!!.trim().toInt()
+  val noOfQueries = readln().trim().toInt()
   val queries = mutableListOf<Pair<Int, Int>>()
   repeat(noOfQueries) {
-    val (startIndex, endIndex) = readLine()!!.split(",").map { it.trim().toInt() }
+    val (startIndex, endIndex) = readln().split(",").map { it.trim().toInt() }
     queries.add(Pair(startIndex, endIndex))
   }
   queries.forEach { println(arr[sparseTableRMQ.rmqIndex(it.first, it.second)]) }

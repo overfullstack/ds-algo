@@ -1,0 +1,86 @@
+Index: libs.versions.toml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>[versions]\njetbrains-annotations = \"24.0.1\"\nkover = \"0.7.2\"\nkotlin = \"1.9.0\"\nksp = \"1.9.0-1.0.12\"\nmoshi = \"1.15.0\"\nmoshix = \"0.24.0\"\nkotest = \"5.6.2\"\ntestLogger = \"3.2.0\"\nassertj-core = \"3.24.2\"\nkotlin-logging = \"3.0.5\"\n# Common dependencies\njunit = \"5.9.3\"\ndetekt = \"1.23.0\"\nspotless = \"6.20.0\"\napache-log4j = \"2.20.0\"\n\n[libraries]\nmoshi-kotlin = { module = \"com.squareup.moshi:moshi-kotlin\", version.ref = \"moshi\" }\njetbrains-annotations = { module = \"org.jetbrains:annotations\", version.ref = \"jetbrains-annotations\" }\ntestLogger-gradle = { module = \"com.adarshr.test-logger:com.adarshr.test-logger.gradle.plugin\", version.ref = \"testLogger\" }\nkotest-assertions-core = { module = \"io.kotest:kotest-assertions-core\", version.ref = \"kotest\" }\nkotest-property = { module = \"io.kotest:kotest-property\", version.ref = \"kotest\" }\nkotest-runnerJUnit5 = { module = \"io.kotest:kotest-runner-junit5\", version.ref = \"kotest\" }\nassertj-core = { module = \"org.assertj:assertj-core\", version.ref = \"assertj-core\" }\nkotlin-logging-jvm = { module = \"io.github.microutils:kotlin-logging-jvm\", version.ref = \"kotlin-logging\" }\nlog4j-api = { module = \"org.apache.logging.log4j:log4j-api\", version.ref = \"apache-log4j\" }\nlog4j-core = { module = \"org.apache.logging.log4j:log4j-core\", version.ref = \"apache-log4j\" }\nlog4j-slf4j2-impl = { module = \"org.apache.logging.log4j:log4j-slf4j2-impl\", version.ref = \"apache-log4j\" }\njunit-bom = { module = \"org.junit:junit-bom\", version.ref = \"junit\" }\njunit-jupiter = { module = \"org.junit.jupiter:junit-jupiter-api\", version.ref = \"junit\" }\njunit-engine = { module = \"org.junit.jupiter:junit-jupiter-engine\" }\n\n# Gradle plugins\nkotlin-gradle = { module = \"org.jetbrains.kotlin:kotlin-gradle-plugin\", version.ref = \"kotlin\" }\ndetekt-gradle = { module = \"io.gitlab.arturbosch.detekt:detekt-gradle-plugin\", version.ref = \"detekt\" }\nspotless-gradle = { module = \"com.diffplug.spotless:spotless-plugin-gradle\", version.ref = \"spotless\" }\nkover-gradle = { module = \"org.jetbrains.kotlinx.kover:org.jetbrains.kotlinx.kover.gradle.plugin\", version.ref = \"kover\" }\n\n[bundles]\nkotest = [\n    \"kotest-assertions-core\",\n    \"kotest-property\",\n    \"kotest-runnerJUnit5\",\n]\njunit = [\"junit-jupiter\", \"junit-engine\"]\nkotlin-logging = [\"kotlin-logging-jvm\", \"log4j-api\", \"log4j-core\", \"log4j-slf4j2-impl\"]\n\n[plugins]\nkover = { id = \"org.jetbrains.kotlinx.kover\", version.ref = \"kover\" }\nkotlin-jvm = { id = \"org.jetbrains.kotlin.jvm\", version.ref = \"kotlin\" }\ndetekt = { id = \"io.gitlab.arturbosch.detekt\", version.ref = \"detekt\" }\nspotless = { id = \"com.diffplug.spotless\", version.ref = \"spotless\" }\ntestLogger = { id = \"com.adarshr.test-logger\", version.ref = \"testLogger\" }\nmoshix = { id = \"dev.zacsweers.moshix\", version.ref = \"moshix\" }\nksp = { id = \"com.google.devtools.ksp\", version.ref = \"ksp\" }\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/libs.versions.toml b/libs.versions.toml
+--- a/libs.versions.toml	(revision e0131c7045b4ce2b1d8126feb8cd5254b6c1f7e5)
++++ b/libs.versions.toml	(date 1690098897968)
+@@ -34,6 +34,7 @@
+ # Gradle plugins
+ kotlin-gradle = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
+ detekt-gradle = { module = "io.gitlab.arturbosch.detekt:detekt-gradle-plugin", version.ref = "detekt" }
++detekt-compiler-plugin-gradle = { module = "io.github.detekt:detekt-compiler-plugin", version.ref = "detekt" }
+ spotless-gradle = { module = "com.diffplug.spotless:spotless-plugin-gradle", version.ref = "spotless" }
+ kover-gradle = { module = "org.jetbrains.kotlinx.kover:org.jetbrains.kotlinx.kover.gradle.plugin", version.ref = "kover" }
+ 
+@@ -50,6 +51,7 @@
+ kover = { id = "org.jetbrains.kotlinx.kover", version.ref = "kover" }
+ kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
+ detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
++detekt-compiler-plugin = { id = "io.github.detekt.gradle.compiler-plugin", version.ref = "detekt" }
+ spotless = { id = "com.diffplug.spotless", version.ref = "spotless" }
+ testLogger = { id = "com.adarshr.test-logger", version.ref = "testLogger" }
+ moshix = { id = "dev.zacsweers.moshix", version.ref = "moshix" }
+Index: buildSrc/build.gradle.kts
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>plugins { `kotlin-dsl` }\n\nrepositories {\n  mavenCentral()\n  gradlePluginPortal()\n  maven(\"https://oss.sonatype.org/content/repositories/snapshots\")\n}\n\ndependencies {\n  implementation(libs.kotlin.gradle)\n  implementation(libs.spotless.gradle)\n  implementation(libs.detekt.gradle)\n  implementation(libs.kover.gradle)\n  implementation(libs.testLogger.gradle)\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/buildSrc/build.gradle.kts b/buildSrc/build.gradle.kts
+--- a/buildSrc/build.gradle.kts	(revision e0131c7045b4ce2b1d8126feb8cd5254b6c1f7e5)
++++ b/buildSrc/build.gradle.kts	(date 1690098942735)
+@@ -10,6 +10,7 @@
+   implementation(libs.kotlin.gradle)
+   implementation(libs.spotless.gradle)
+   implementation(libs.detekt.gradle)
++  implementation(libs.detekt.compiler.plugin.gradle)
+   implementation(libs.kover.gradle)
+   implementation(libs.testLogger.gradle)
+ }
+Index: build.gradle.kts
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import io.gitlab.arturbosch.detekt.Detekt\nimport io.gitlab.arturbosch.detekt.DetektPlugin\nimport io.gitlab.arturbosch.detekt.report.ReportMergeTask\n\nplugins {\n  id(libs.plugins.kover.pluginId)\n  id(libs.plugins.detekt.pluginId) apply false\n}\n\nallprojects { apply(plugin = \"ds-algo.root-conventions\") }\n\nkoverReport { defaults { html { onCheck = true } } }\n\nval detektReportMerge by\n  tasks.registering(ReportMergeTask::class) {\n    output.set(rootProject.buildDir.resolve(\"reports/detekt/merge.xml\"))\n  }\n\nsubprojects {\n  apply(plugin = \"ds-algo.sub-conventions\")\n  tasks.withType<Detekt>().configureEach {\n    reports {\n      xml.required = true\n      html.required = true\n    }\n  }\n  plugins.withType<DetektPlugin> {\n    tasks.withType<Detekt> detekt@{\n      finalizedBy(detektReportMerge)\n      detektReportMerge.configure { input.from(this@detekt.xmlReportFile) }\n    }\n  }\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/build.gradle.kts b/build.gradle.kts
+--- a/build.gradle.kts	(revision e0131c7045b4ce2b1d8126feb8cd5254b6c1f7e5)
++++ b/build.gradle.kts	(date 1690099229357)
+@@ -1,10 +1,11 @@
+ import io.gitlab.arturbosch.detekt.Detekt
+ import io.gitlab.arturbosch.detekt.DetektPlugin
+ import io.gitlab.arturbosch.detekt.report.ReportMergeTask
++import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+ 
+ plugins {
+   id(libs.plugins.kover.pluginId)
+-  id(libs.plugins.detekt.pluginId) apply false
++  id(libs.plugins.detekt.compiler.plugin.pluginId)
+ }
+ 
+ allprojects { apply(plugin = "ds-algo.root-conventions") }
+@@ -18,16 +19,11 @@
+ 
+ subprojects {
+   apply(plugin = "ds-algo.sub-conventions")
+-  tasks.withType<Detekt>().configureEach {
+-    reports {
+-      xml.required = true
+-      html.required = true
+-    }
+-  }
++  tasks.withType<KotlinCompile>().configureEach { detekt { reports { html.required = true } } }
+   plugins.withType<DetektPlugin> {
+     tasks.withType<Detekt> detekt@{
+       finalizedBy(detektReportMerge)
+-      detektReportMerge.configure { input.from(this@detekt.xmlReportFile) }
++      detektReportMerge.configure { input.from(this@detekt.htmlReportFile) }
+     }
+   }
+ }

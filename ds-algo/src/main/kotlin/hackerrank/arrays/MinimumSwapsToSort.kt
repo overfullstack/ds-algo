@@ -1,10 +1,10 @@
 package hackerrank.arrays
 
 fun main() {
-  val noOfTests = readLine()!!.toInt()
+  val noOfTests = readln().toInt()
   repeat(noOfTests) {
     readLine()
-    val arr = readLine()!!.split(" ").map { it.toInt() }.toTypedArray()
+    val arr = readln().split(" ").map { it.toInt() }.toTypedArray()
     println(minSwapsToSort(arr))
   }
 }

@@ -27,7 +27,7 @@ fun merge(intervals: Array<IntArray>): Array<IntArray> {
 
 fun main() {
   val intervals =
-    readLine()!!
+    readln()
       .drop(2)
       .dropLast(2)
       .split("],[")

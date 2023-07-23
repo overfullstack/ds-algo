@@ -78,7 +78,7 @@ class SegmentTreeSum(var arr: IntArray) {
 }
 
 fun main() {
-  val arr = readLine()!!.split(",").map { it.trim().toInt() }.toIntArray()
+  val arr = readln().split(",").map { it.trim().toInt() }.toIntArray()
   val segmentTree = SegmentTreeSum(arr)
   segmentTree.process()
 
@@ -90,20 +90,20 @@ fun main() {
 }
 
 private fun updates(segmentTreeSum: SegmentTreeSum) {
-  val noOfUpdates = readLine()!!.trim().toInt()
+  val noOfUpdates = readln().trim().toInt()
   val updates: ArrayList<Pair<Int, Int>> = arrayListOf()
   repeat(noOfUpdates) {
-    val (index, value) = readLine()!!.split(",").map { it.trim().toInt() }
+    val (index, value) = readln().split(",").map { it.trim().toInt() }
     updates.add(Pair(index, value))
   }
   updates.forEach { segmentTreeSum.update(it.first, it.second) }
 }
 
 private fun queries(segmentTreeSum: SegmentTreeSum) {
-  val noOfQueries = readLine()!!.trim().toInt()
+  val noOfQueries = readln().trim().toInt()
   val queries: ArrayList<Pair<Int, Int>> = arrayListOf()
   repeat(noOfQueries) {
-    val (startIndex, endIndex) = readLine()!!.split(",").map { it.trim().toInt() }
+    val (startIndex, endIndex) = readln().split(",").map { it.trim().toInt() }
     queries.add(Pair(startIndex, endIndex))
   }
   queries.forEach { println(segmentTreeSum.querySum(it.first, it.second)) }

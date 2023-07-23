@@ -23,7 +23,7 @@ fun uniquePathsWithObstacles(obstacleGrid: Array<IntArray>): Int {
 fun main() {
   print(
     uniquePathsWithObstacles(
-      readLine()!!
+      readln()
         .drop(2)
         .dropLast(2)
         .split("],[")

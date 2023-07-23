@@ -27,6 +27,6 @@ fun maxCoins(nums: IntArray): Int {
 }
 
 fun main() {
-  val arr = readLine()!!.split(",").map { it.trim().toInt() }.toIntArray()
+  val arr = readln().split(",").map { it.trim().toInt() }.toIntArray()
   println(maxCoins(arr))
 }

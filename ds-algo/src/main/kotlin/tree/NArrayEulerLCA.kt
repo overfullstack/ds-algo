@@ -50,9 +50,9 @@ fun lcaMultipleNodes(
 
 fun main() {
   val delimiters = " "
-  readLine()!!.toInt() // val noOfEdges
+  readln().toInt() // val noOfEdges
   val treeGraph = mutableMapOf<Int, NArrayEulerTour>()
-  readLine()!!
+  readln()
     .trim()
     .split(delimiters)
     .map { it.toInt() }
@@ -61,8 +61,8 @@ fun main() {
         .getOrPut(value, { NArrayEulerTour(value) })
         .addEdge(treeGraph.getOrPut(index + 1, { NArrayEulerTour(index + 1) }))
     }
-  readLine()!!.trim().toInt() // val noOfNodes
-  val nodes = readLine()!!.trim().split(delimiters).map { it.toInt() }
+  readln().trim().toInt() // val noOfNodes
+  val nodes = readln().trim().split(delimiters).map { it.toInt() }
 
   val eulersTourArr = treeGraph[0]?.eulersTour()
   val depthArr = eulersTourArr!!.map { it.depth }.toIntArray()

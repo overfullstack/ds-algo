@@ -39,12 +39,12 @@ class SquareRootDecompositionSum(var arr: MutableList<Int>) {
 }
 
 fun main() {
-  val arr = readLine()!!.split(",").map { it.trim().toInt() }
+  val arr = readln().split(",").map { it.trim().toInt() }
   val squareRootDecomposition = SquareRootDecompositionSum(arr as MutableList<Int>)
   squareRootDecomposition.preProcess()
-  val noOfQueries = readLine()!!.trim().toInt()
+  val noOfQueries = readln().trim().toInt()
   repeat(noOfQueries) {
-    val (startIndex, endIndex) = readLine()!!.split(",").map { it.trim().toInt() }
+    val (startIndex, endIndex) = readln().split(",").map { it.trim().toInt() }
     println(squareRootDecomposition.query(startIndex, endIndex))
   }
 }

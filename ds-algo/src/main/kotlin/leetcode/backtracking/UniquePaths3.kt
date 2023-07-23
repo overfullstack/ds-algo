@@ -47,7 +47,7 @@ private fun Pair<Int, Int>.isValid(grid: Array<IntArray>) =
 fun main() {
   print(
     uniquePathsIII(
-      readLine()!!
+      readln()
         .drop(2)
         .dropLast(2)
         .split("],[")

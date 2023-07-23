@@ -18,5 +18,5 @@ class StockSpan {
 
 fun main() {
   val stockSpan = StockSpan()
-  readLine()!!.split(",").map { it.trim().toInt() }.forEach { println(stockSpan.next(it)) }
+  readln().split(",").map { it.trim().toInt() }.forEach { println(stockSpan.next(it)) }
 }

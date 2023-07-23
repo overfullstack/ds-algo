@@ -21,6 +21,6 @@ fun findKthLargest(nums: MutableList<Int>, k: Int): Int {
 }
 
 fun main() {
-  val arr = readLine()!!.split(",").map { it.trim().toInt() }.toIntArray()
-  print(findKthLargest(arr, readLine()!!.toInt()))
+  val arr = readln().split(",").map { it.trim().toInt() }.toIntArray()
+  print(findKthLargest(arr, readln().toInt()))
 }
