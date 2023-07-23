@@ -1,6 +1,7 @@
 plugins {
   id("ds-algo.kt-conventions")
   alias(libs.plugins.moshix)
+  alias(libs.plugins.ksp)
 }
 
 dependencies {
@@ -9,6 +10,5 @@ dependencies {
 }
 
 moshi {
-  enableSealed by true
-  generateProguardRules by false
+  enableSealed = true
 }

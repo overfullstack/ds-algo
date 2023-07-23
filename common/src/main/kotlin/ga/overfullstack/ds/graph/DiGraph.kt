@@ -52,10 +52,28 @@ class DiGraph<T>(
     return adjacencyMap.keys
         .asSequence()
         .filter { it !in visited }
-        .flatMap { it.dftForAllNeighbours(visited.apply { add(it) }) }
+        .flatMap { it.dftPerBranch(visited.apply { add(it) }) }
         .toList()
   }
 
+  private fun T.dftPerBranch(
+    visited: MutableSet<T>,
+    path: Sequence<T> = sequenceOf(this)
+  ): Sequence<T> {
+    val neighbors = adjacencyMap[this]
+    if (neighbors.isNullOrEmpty()) {
+      return path
+    }
+    return neighbors
+      .asSequence()
+      .filter { it !in visited }
+      .flatMap { it.dftPerBranch(visited.apply { add(it) }, path + it) }
+      .distinct()
+  }
+
+  /**
+   * DFT Mutable approach
+   */
   private fun T.dftForAllNeighbours(
       visited: MutableSet<T>,
       path: MutableList<T> = mutableListOf()
