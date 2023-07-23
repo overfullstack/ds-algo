@@ -24,7 +24,7 @@ data class TreeNode(
   fun traversalAnyOrder(
     order: (Int, Array<Int>, Array<Int>) -> Array<Int> = { value, left, right ->
       arrayOf(value) + left + right
-    }
+    } // Default is pre-order
   ): Array<Int> {
     val left = left?.traversalAnyOrder(order) ?: emptyArray()
     val right = right?.traversalAnyOrder(order) ?: emptyArray()
