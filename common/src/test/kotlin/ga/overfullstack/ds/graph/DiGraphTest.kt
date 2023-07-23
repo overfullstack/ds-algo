@@ -4,6 +4,8 @@ import ga.overfullstack.ds.graph.DiGraph.Companion.parseJsonFileToDiGraph
 import ga.overfullstack.utils.TEST_RESOURCES_PATH
 import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.core.spec.style.StringSpec
+import io.kotest.data.forAll
+import io.kotest.data.row
 import io.kotest.matchers.collections.shouldContainExactly
 import io.kotest.matchers.shouldBe
 
@@ -61,9 +63,46 @@ class DiGraphTest :
       shouldThrow<IllegalArgumentException> { diGraphWithCycle.topologicalSort() }
     }
 
-    "parse JSON file to DiGraph" {
-      val diGraph = parseJsonFileToDiGraph("$PKG_PATH/graph1.json")
-      val dft = diGraph.dft()
-      println(dft)
+    "dft with DiGraph JSON" {
+      forAll(
+        row(
+          parseJsonFileToDiGraph("$PKG_PATH/graph1.json"),
+          listOf("A", "B", "E", "F", "I", "J", "C", "D", "G", "K", "H")
+        ),
+        row(parseJsonFileToDiGraph("$PKG_PATH/graph2.json"), listOf("A", "B", "D", "C")),
+        row(
+          parseJsonFileToDiGraph("$PKG_PATH/graph3.json"),
+          listOf(
+            "A",
+            "B",
+            "G",
+            "H",
+            "O",
+            "P",
+            "T",
+            "U",
+            "Q",
+            "R",
+            "V",
+            "W",
+            "X",
+            "Z",
+            "Y",
+            "I",
+            "C",
+            "J",
+            "D",
+            "K",
+            "S",
+            "L",
+            "E",
+            "F",
+            "M",
+            "N"
+          )
+        ),
+      ) { graph, result ->
+        graph.dft() shouldContainExactly result
+      }
     }
   })

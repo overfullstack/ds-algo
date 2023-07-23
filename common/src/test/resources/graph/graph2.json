@@ -1,0 +1,32 @@
+{
+  "graph" : {
+    "nodes" : [
+      {
+        "children" : [
+          "B",
+          "C"
+        ],
+        "id" : "A",
+        "value" : "A"
+      },
+      {
+        "children" : [
+          "D"
+        ],
+        "id" : "B",
+        "value" : "B"
+      },
+      {
+        "children" : [],
+        "id" : "C",
+        "value" : "C"
+      },
+      {
+        "children" : [],
+        "id" : "D",
+        "value" : "D"
+      }
+    ],
+    "startNode" : "A"
+  }
+}
