@@ -3,7 +3,10 @@ plugins {
   alias(libs.plugins.moshix)
 }
 
-dependencies { implementation(libs.moshi.kotlin) }
+dependencies {
+  implementation(libs.moshi.kotlin)
+  implementation(libs.bundles.kotlin.logging)
+}
 
 moshi {
   enableSealed by true

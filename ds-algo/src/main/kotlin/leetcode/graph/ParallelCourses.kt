@@ -1,10 +1,8 @@
 package leetcode.graph
 
-import ga.overfullstack.ds.graph.DiGraphNode
-
 fun minimumSemesters(relations: Array<Pair<Int, Int>>): Int {
   val diGraph = relations.toDiGraph()
-  val visited = mutableSetOf<DiGraphNode<Int>>()
+  val visited = mutableSetOf<Int>()
   return try {
     diGraph.keys
       .asSequence()
@@ -17,10 +15,10 @@ fun minimumSemesters(relations: Array<Pair<Int, Int>>): Int {
   }
 }
 
-private fun DiGraphNode<Int>.dft(
-  diGraph: Map<DiGraphNode<Int>, Set<DiGraphNode<Int>>>,
-  visited: MutableSet<DiGraphNode<Int>>,
-  visitedInBranch: Set<DiGraphNode<Int>>,
+private fun Int.dft(
+  diGraph: Map<Int, Set<Int>>,
+  visited: MutableSet<Int>,
+  visitedInBranch: Set<Int>,
   maxNodesInPath: Int = 1
 ): Int =
   diGraph[this]
@@ -36,8 +34,8 @@ private fun DiGraphNode<Int>.dft(
     ?.maxOrNull()
     ?: maxNodesInPath
 
-private fun Array<Pair<Int, Int>>.toDiGraph(): Map<DiGraphNode<Int>, Set<DiGraphNode<Int>>> =
-  groupBy({ DiGraphNode(it.first) }, { DiGraphNode(it.second) }).mapValues { it.value.toSet() }
+private fun Array<Pair<Int, Int>>.toDiGraph(): Map<Int, Set<Int>> =
+  groupBy({ it.first }, { it.second }).mapValues { it.value.toSet() }
 
 fun main() {
   println(minimumSemesters(arrayOf(1 to 3, 2 to 3)))

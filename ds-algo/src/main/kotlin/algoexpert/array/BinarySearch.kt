@@ -15,9 +15,9 @@ fun IntArray.binarySearch(valueToSearch: Int): Int {
 }
 
 tailrec fun IntArray.binarySearchRecursive(
-    valueToSearch: Int,
-    left: Int = 0,
-    right: Int = lastIndex
+  valueToSearch: Int,
+  left: Int = 0,
+  right: Int = lastIndex
 ): Int {
   if (left > right) {
     return -1

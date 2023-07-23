@@ -1,6 +1,5 @@
-package ds
+package ga.overfullstack.ds
 
-import ga.overfullstack.ds.TrieNode
 import io.kotest.assertions.throwables.shouldNotThrowAny
 import io.kotest.matchers.collections.shouldContainExactlyInAnyOrder
 import io.kotest.matchers.shouldBe

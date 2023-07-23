@@ -1,6 +1,5 @@
-package ds.tree
+package ga.overfullstack.ds.tree
 
-import ga.overfullstack.ds.tree.TreeNode
 import ga.overfullstack.ds.tree.TreeNode.Utils.levelOrderToCompleteTree
 import ga.overfullstack.ds.tree.TreeNode.Utils.levelOrderToTree
 import io.kotest.core.spec.style.StringSpec

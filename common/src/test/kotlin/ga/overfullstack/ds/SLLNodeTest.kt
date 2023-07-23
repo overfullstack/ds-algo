@@ -1,6 +1,5 @@
-package ds
+package ga.overfullstack.ds
 
-import ga.overfullstack.ds.*
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.data.forAll
 import io.kotest.data.row

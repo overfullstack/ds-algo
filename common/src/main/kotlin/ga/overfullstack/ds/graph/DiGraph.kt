@@ -1,143 +1,145 @@
 package ga.overfullstack.ds.graph
 
 import com.squareup.moshi.JsonClass
+import com.squareup.moshi.Moshi
+import com.squareup.moshi.adapter
+import ga.overfullstack.utils.readFileToString
 import java.util.ArrayDeque
 
-@JvmInline value class DiGraphNode<T>(val value: T)
+class DiGraph<T>(
+    private val adjacencyMap: MutableMap<T, Set<T>> = mutableMapOf(),
+    private var startNode: T? = null
+) : MutableMap<T, Set<T>> by adjacencyMap {
 
-@JvmInline
-value class DiGraph(
-  private val adjacencyMap: MutableMap<DiGraphNode<Int>, Set<DiGraphNode<Int>>> = mutableMapOf()
-) {
-
-  fun addEdge(source: DiGraphNode<Int>, destination: DiGraphNode<Int>) {
+  fun addEdge(source: T, destination: T) {
     adjacencyMap.merge(source, setOf(destination)) { oldSet, _ -> oldSet + destination }
   }
 
-  fun getNeighbours(node: DiGraphNode<Int>): Set<DiGraphNode<Int>>? = adjacencyMap[node]
+  fun getNeighbours(node: T): Set<T>? = adjacencyMap[node]
 
   tailrec fun bfs(
-    valToSearch: DiGraphNode<Int>,
-    visited: Set<DiGraphNode<Int>> = setOf(),
-    queue: ArrayDeque<DiGraphNode<Int>> = ArrayDeque(listOf(DiGraphNode<Int>(0)))
+      valToSearch: T,
+      visited: Set<T> = setOf(),
+      queue: ArrayDeque<T> = ArrayDeque(listOf(startNode))
   ): Boolean =
-    if (queue.isEmpty()) {
-      false
-    } else {
-      val node = queue.removeLast()
-      if (node == valToSearch) {
+      if (queue.isEmpty()) {
+        false
+      } else {
+        val node = queue.removeLast()
+        if (node == valToSearch) {
+          true
+        } else {
+          val neighbours = adjacencyMap[node]?.filter { it !in visited } ?: emptySet()
+          queue.addAll(neighbours)
+          bfs(valToSearch, visited + node, queue)
+        }
+      }
+
+  fun dfs(currentNode: T, valToSearch: T, visited: Set<T> = setOf()): Boolean =
+      if (currentNode == valToSearch) {
         true
       } else {
-        val neighbours = adjacencyMap[node]?.filter { it !in visited } ?: emptySet()
-        queue.addAll(neighbours)
-        bfs(valToSearch, visited + node, queue)
+        adjacencyMap[currentNode]
+            ?.asSequence()
+            ?.filter { it !in visited }
+            ?.any { dfs(it, valToSearch, visited + it) }
+            ?: false
       }
-    }
-
-  fun dfs(
-    currentNode: DiGraphNode<Int>,
-    valToSearch: DiGraphNode<Int>,
-    visited: Set<DiGraphNode<Int>> = setOf()
-  ): Boolean =
-    if (currentNode == valToSearch) {
-      true
-    } else {
-      adjacencyMap[currentNode]
-        ?.asSequence()
-        ?.filter { it !in visited }
-        ?.any { dfs(it, valToSearch, visited + it) }
-        ?: false
-    }
 
   /** -> DFT */
-  fun dft(): List<DiGraphNode<Int>> {
-    val visited = mutableSetOf<DiGraphNode<Int>>() // * Global Visited, as no need to backtrack.
+  fun dft(): List<T> {
+    val visited = mutableSetOf<T>() // * Global Visited, as no need to backtrack.
     return adjacencyMap.keys
-      .asSequence()
-      .filter { it !in visited }
-      .flatMap { sequenceOf(it) + it.dftPerBranch(visited.apply { add(it) }) }
-      .toList()
+        .asSequence()
+        .filter { it !in visited }
+        .flatMap { it.dftForAllNeighbours(visited.apply { add(it) }) }
+        .toList()
   }
 
-  private fun DiGraphNode<Int>.dftPerBranch(
-    visited: MutableSet<DiGraphNode<Int>>,
-    path: Sequence<DiGraphNode<Int>> = emptySequence()
-  ): Sequence<DiGraphNode<Int>> =
-    adjacencyMap[this]
-      ?.asSequence()
-      ?.filter { it !in visited }
-      ?.flatMap { it.dftPerBranch(visited.apply { add(it) }, path + it) }
-      ?: path
+  private fun T.dftForAllNeighbours(
+      visited: MutableSet<T>,
+      path: MutableList<T> = mutableListOf()
+  ): List<T> {
+    path.add(this)
+    visited.add(this)
+    
+    val neighbors = adjacencyMap[this]
+    if (neighbors.isNullOrEmpty()) {
+      return path
+    }
+    for (neighbor in neighbors) {
+      if (neighbor !in visited) {
+        neighbor.dftForAllNeighbours(visited, path)
+      }
+    }
+    return path
+  }
 
   /** DFT <- */
 
   /** -> DETECT CYCLE */
   fun hasCycle(): Boolean {
-    val visited = mutableSetOf<DiGraphNode<Int>>()
+    val visited = mutableSetOf<T>()
     return adjacencyMap.keys
-      .asSequence()
-      .filter { it !in visited }
-      .any { it.hasCycle(visited.apply { add(it) }, setOf(it)) }
+        .asSequence()
+        .filter { it !in visited }
+        .any { it.hasCycle(visited.apply { add(it) }, setOf(it)) }
   }
 
-  private fun DiGraphNode<Int>.hasCycle(
-    visited: MutableSet<DiGraphNode<Int>>,
-    visitedInBranch: Set<DiGraphNode<Int>>
-  ): Boolean =
-    adjacencyMap[this]?.any { // If visited but not a part of this branch, no cycle
-      (it in visitedInBranch) ||
-        (it !in visited && it.hasCycle(visited.apply { add(it) }, visitedInBranch + it))
-      // First is to detect cycle, The second is to avoid cycle while traversing
-      // These conditions can be flipped without any difference, as if it's not in `visited`, it
-      // cannot be in `visitedInBranch`
-    }
-      ?: false
+  private fun T.hasCycle(visited: MutableSet<T>, visitedInBranch: Set<T>): Boolean =
+      adjacencyMap[this]?.any { // If visited but not a part of this branch, no cycle
+        (it in visitedInBranch) ||
+            (it !in visited && it.hasCycle(visited.apply { add(it) }, visitedInBranch + it))
+        // The First is to detect cycle; The second is to avoid cycle while traversing
+        // These conditions can be flipped without any difference, as if it's not in `visited`, it
+        // cannot be in `visitedInBranch`
+      }
+          ?: false
 
   /** DETECT CYCLE -> */
 
   /** -> TOPOLOGICAL SORT with Cycle Detection */
-  fun topologicalSort(): List<DiGraphNode<Int>> {
-    val visited = mutableSetOf<DiGraphNode<Int>>() // * Global visited
+  fun topologicalSort(): List<T> {
+    val visited = mutableSetOf<T>() // * Global visited
     return adjacencyMap.keys
-      .asSequence()
-      .filter { it !in visited }
-      .flatMap { it.topologicalSortPerBranch(visited.apply { add(it) }, setOf(it)) + it }
-      .toList()
+        .asSequence()
+        .filter { it !in visited }
+        .flatMap { it.topologicalSortPerBranch(visited.apply { add(it) }, setOf(it)) + it }
+        .toList()
   }
 
-  private fun DiGraphNode<Int>.topologicalSortPerBranch(
-    visited: MutableSet<DiGraphNode<Int>>,
-    visitedInBranch: Set<DiGraphNode<Int>>
-  ): Sequence<DiGraphNode<Int>> =
-    adjacencyMap[this]?.asSequence()?.flatMap {
-      when (it) { // * `visited.apply { add(it) }` coz we need to retain it across recursions.
-        // `visitedInBranch + it` no need to retain.
-        in visitedInBranch -> throw IllegalArgumentException("Graph has Cycle")
-        in visited -> emptySequence() // This node is visited so can't contribute to any sequence.
-        else -> it.topologicalSortPerBranch(visited.apply { add(it) }, visitedInBranch + it) + it
+  private fun T.topologicalSortPerBranch(
+      visited: MutableSet<T>,
+      visitedInBranch: Set<T>
+  ): Sequence<T> =
+      adjacencyMap[this]?.asSequence()?.flatMap {
+        when (it) { // * `visited.apply { add(it) }` coz we need to retain it across recursions.
+          // `visitedInBranch + it` no need to retain.
+          in visitedInBranch -> throw IllegalArgumentException("Graph has Cycle")
+          in visited -> emptySequence() // This node is visited so can't contribute to any sequence.
+          else -> it.topologicalSortPerBranch(visited.apply { add(it) }, visitedInBranch + it) + it
+        }
       }
-    }
-      ?: emptySequence() // No connections.
+          ?: emptySequence() // No connections.
 
   /** TOPOLOGICAL SORT with Cycle Detection -> */
   
   companion object {
     @JsonClass(generateAdapter = true)
-    data class JDiGraph(
-      val graph: Graph
-    ) {
+    data class JDiGraph(val graph: Graph) {
       @JsonClass(generateAdapter = true)
-      data class Graph(
-        val nodes: List<Node>,
-        val startNode: String
-      ) {
+      data class Graph(val nodes: List<JGraphNode>, val startNode: String) {
         @JsonClass(generateAdapter = true)
-        data class Node(
-          val children: List<String>,
-          val id: String,
-          val value: String
-        )
+        data class JGraphNode(val children: List<String>, val id: String, val value: String)
       }
+    }
+    
+    @OptIn(ExperimentalStdlibApi::class)
+    fun parseJsonFileToDiGraph(jsonFilePath: String): DiGraph<String> {
+      val graphJson = readFileToString(jsonFilePath)
+      val graphAdapter = Moshi.Builder().build().adapter<JDiGraph>()
+      val jGraph = graphAdapter.fromJson(graphJson)!!
+      return DiGraph(jGraph.graph.nodes.associate { it.value to it.children.toSet() }.toMutableMap(), jGraph.graph.startNode)
     }
   }
 }
