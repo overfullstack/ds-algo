@@ -14,11 +14,11 @@ This repo has practice problems well-commented to show how to approach a solutio
 - Run tests using `gradle`
 
 ```shell
-./gradlew test --tests [full-name-of-test]
+./gradlew ds-algo:test --tests [full-name-of-test]
 ```
 
 For example
 
 ```shell
-./gradlew test --tests leetcode.array.TopKFrequentWordsTest
+./gradlew ds-algo:test --tests leetcode.array.TopKFrequentWordsTest
 ```
