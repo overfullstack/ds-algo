@@ -1,6 +1,6 @@
 package cci.ll
 
-import ga.overfullstack.ds.SLLNode
+import ga.overfullstack.ds.ll.SLLNode
 
 fun SLLNode?.removeDupsFromSLL() {
   var current = this

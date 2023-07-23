@@ -1,7 +1,6 @@
 package cci.ll
 
-import ga.overfullstack.ds.SLLNode
-import ga.overfullstack.ds.getNodeAt
+import ga.overfullstack.ds.ll.SLLNode
 
 fun SLLNode.getKthToLast(k: Int): SLLNode? {
   val kthNodeFromStart = getNodeAt(k)

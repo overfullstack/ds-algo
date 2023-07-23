@@ -1,6 +1,6 @@
 package cci.ll
 
-import ga.overfullstack.ds.SLLNode
+import ga.overfullstack.ds.ll.SLLNode
 
 fun SLLNode?.sumListWith(node: SLLNode?, carry: Int = 0): SLLNode? =
   when {

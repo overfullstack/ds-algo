@@ -1,10 +1,14 @@
 package ga.overfullstack.ds
 
+import ga.overfullstack.ds.ll.SLLNode
+import ga.overfullstack.ds.ll.SLLNode.Companion.parseJsonFileToSLL
+import ga.overfullstack.utils.TEST_RESOURCES_PATH
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.data.forAll
 import io.kotest.data.row
 import io.kotest.matchers.shouldBe
-import mu.KLogging
+
+private const val PKG_PATH = "$TEST_RESOURCES_PATH/ll/"
 
 class SLLNodeTest :
   StringSpec({
@@ -65,6 +69,13 @@ class SLLNodeTest :
         SLLNode.of(arr)?.getNodeAt(pos) shouldBe resultNode
       }
     }
-  }) {
-  companion object : KLogging()
-}
+    
+    "SLL from JSON file" {
+      forAll(
+        row(parseJsonFileToSLL("$PKG_PATH/sll1.json"), intArrayOf(1, 2, 3)),
+        row(parseJsonFileToSLL("$PKG_PATH/sll2.json"), intArrayOf(1, 1, 1, 3, 4, 5, 5, 5, 5, 10)),
+      ) { headSLLNode, result ->
+        headSLLNode.toArray() shouldBe result  
+      }
+    }
+  })

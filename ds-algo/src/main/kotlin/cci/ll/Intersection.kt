@@ -1,8 +1,6 @@
 package cci.ll
 
-import ga.overfullstack.ds.SLLNode
-import ga.overfullstack.ds.getNodeAt
-import ga.overfullstack.ds.length
+import ga.overfullstack.ds.ll.SLLNode
 
 fun SLLNode.getIntersectionNode(that: SLLNode?): SLLNode? {
   val thisLen = length()

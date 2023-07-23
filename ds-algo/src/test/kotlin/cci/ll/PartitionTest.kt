@@ -1,7 +1,6 @@
 package cci.ll
 
-import ga.overfullstack.ds.SLLNode
-import ga.overfullstack.ds.toArray
+import ga.overfullstack.ds.ll.SLLNode
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.data.forAll
 import io.kotest.data.row
