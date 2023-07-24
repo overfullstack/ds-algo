@@ -27,7 +27,7 @@ data class SLLNode(var value: Int, var next: SLLNode? = null) {
     }
 
   fun toArray(): IntArray = intArrayOf(value, *(next?.toArray() ?: intArrayOf()))
-  
+
   companion object {
     fun of(values: IntArray): SLLNode? = if (values.isEmpty()) null else ofNonEmpty(values)
 
@@ -47,20 +47,11 @@ data class SLLNode(var value: Int, var next: SLLNode? = null) {
       else SLLNode(values[index], of2(values, index + 1))
 
     @JsonClass(generateAdapter = true)
-    data class JSLL(
-      val linkedList: LinkedList
-    ) {
+    data class JSLL(val linkedList: LinkedList) {
       @JsonClass(generateAdapter = true)
-      data class LinkedList(
-        val head: String,
-        val nodes: List<Node>
-      ) {
+      data class LinkedList(val head: String, val nodes: List<Node>) {
         @JsonClass(generateAdapter = true)
-        data class Node(
-          val id: String,
-          val next: String?,
-          val value: Int
-        )
+        data class Node(val id: String, val next: String?, val value: Int)
       }
     }
 
@@ -78,7 +69,3 @@ data class SLLNode(var value: Int, var next: SLLNode? = null) {
     }
   }
 }
-
-
-
-

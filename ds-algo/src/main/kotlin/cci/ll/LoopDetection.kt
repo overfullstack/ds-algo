@@ -8,8 +8,8 @@ fun SLLNode.detectLoop(): SLLNode? {
 }
 
 tailrec fun SLLNode.getMeetingPtr(
-    that: SLLNode?,
-    nextPtrFn: (SLLNode) -> SLLNode? = { it.next }
+  that: SLLNode?,
+  nextPtrFn: (SLLNode) -> SLLNode? = { it.next }
 ): SLLNode? =
   when {
     that == null -> null

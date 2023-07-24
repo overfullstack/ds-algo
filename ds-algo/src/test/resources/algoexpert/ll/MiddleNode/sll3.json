@@ -1,0 +1,10 @@
+{
+  "linkedList": {
+    "head": "5",
+    "nodes": [
+      { "id": "5", "next": "7", "value": 5 },
+      { "id": "7", "next": "9", "value": 7 },
+      { "id": "9", "next": null, "value": 9 }
+    ]
+  }
+}

@@ -69,13 +69,13 @@ class SLLNodeTest :
         SLLNode.of(arr)?.getNodeAt(pos) shouldBe resultNode
       }
     }
-    
+
     "SLL from JSON file" {
       forAll(
         row(parseJsonFileToSLL("$PKG_PATH/sll1.json"), intArrayOf(1, 2, 3)),
         row(parseJsonFileToSLL("$PKG_PATH/sll2.json"), intArrayOf(1, 1, 1, 3, 4, 5, 5, 5, 5, 10)),
       ) { headSLLNode, result ->
-        headSLLNode.toArray() shouldBe result  
+        headSLLNode.toArray() shouldBe result
       }
     }
   })
