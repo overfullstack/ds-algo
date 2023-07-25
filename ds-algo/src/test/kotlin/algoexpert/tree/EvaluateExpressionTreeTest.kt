@@ -1,6 +1,6 @@
 package algoexpert.tree
 
-import ga.overfullstack.ds.tree.TreeNode.Utils.parseJsonFileToTree
+import ga.overfullstack.ds.tree.TreeNode.Companion.parseJsonFileToTree
 import ga.overfullstack.utils.TEST_RESOURCES_PATH
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.data.forAll

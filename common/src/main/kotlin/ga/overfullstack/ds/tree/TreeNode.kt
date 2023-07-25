@@ -118,7 +118,7 @@ data class TreeNode(
   override fun toString(): String =
     "TreeNode(value=$value, left=${left?.value}, right=${right?.value}, parent=${parent?.value}, next=${next?.value}, id='$id', leftSize=$leftSize)"
 
-  companion object Utils {
+  companion object {
     fun arrToBST(arr: IntArray): TreeNode? {
       if (arr.isEmpty()) {
         return null

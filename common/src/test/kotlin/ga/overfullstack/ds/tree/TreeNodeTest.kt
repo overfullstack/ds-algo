@@ -1,7 +1,7 @@
 package ga.overfullstack.ds.tree
 
-import ga.overfullstack.ds.tree.TreeNode.Utils.levelOrderToCompleteTree
-import ga.overfullstack.ds.tree.TreeNode.Utils.levelOrderToTree
+import ga.overfullstack.ds.tree.TreeNode.Companion.levelOrderToCompleteTree
+import ga.overfullstack.ds.tree.TreeNode.Companion.levelOrderToTree
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.data.forAll
 import io.kotest.data.row

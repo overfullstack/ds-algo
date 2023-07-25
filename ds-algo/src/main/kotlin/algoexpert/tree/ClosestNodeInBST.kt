@@ -4,11 +4,8 @@ import ga.overfullstack.ds.tree.TreeNode
 import kotlin.math.abs
 
 fun TreeNode.closestNodeInBST(valueToSearch: Int, closest: Int = value): Int {
-  if (valueToSearch == value) {
-    return value
-  }
   var newClosest = closest
-  if (abs(value - valueToSearch) < abs(closest - valueToSearch)) {
+  if (abs(value - valueToSearch) < abs(closest - valueToSearch)) { // Is cur value closer
     newClosest = value
   }
   return when {

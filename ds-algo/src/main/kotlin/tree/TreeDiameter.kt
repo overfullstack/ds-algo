@@ -2,7 +2,7 @@
 package tree
 
 import ga.overfullstack.ds.tree.TreeNode
-import ga.overfullstack.ds.tree.TreeNode.Utils.levelOrderToCompleteTree
+import ga.overfullstack.ds.tree.TreeNode.Companion.levelOrderToCompleteTree
 
 fun diameterOfBinaryTree(root: TreeNode?): Int {
   return if (root == null) 0 else root.findMaxDiameter().second - 1 // n nodes shall have n-1 edges.

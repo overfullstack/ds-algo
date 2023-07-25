@@ -2,7 +2,7 @@
 package leetcode.tree
 
 import ga.overfullstack.ds.tree.TreeNode
-import ga.overfullstack.ds.tree.TreeNode.Utils.arrToBST
+import ga.overfullstack.ds.tree.TreeNode.Companion.arrToBST
 import ga.overfullstack.ds.tree.reverseInorderTraversalMorris
 
 class KthLargestInStream(private val kth: Int, nums: IntArray) {
