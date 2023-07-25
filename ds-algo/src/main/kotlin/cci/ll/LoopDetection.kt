@@ -7,7 +7,7 @@ fun SLLNode.detectLoop(): SLLNode? {
   return getMeetingPtr(meetingPtr)
 }
 
-tailrec fun SLLNode.getMeetingPtr(
+fun SLLNode.getMeetingPtr(
   that: SLLNode?,
   nextPtrFn: (SLLNode) -> SLLNode? = { it.next }
 ): SLLNode? =

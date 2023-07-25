@@ -27,12 +27,12 @@ fun TreeNode.isPairWithSumPresent(targetSum: Int): Boolean {
   return false
 }
 
-private tailrec fun TreeNode.addLeftMost(smallStk: ArrayDeque<TreeNode>) {
+private fun TreeNode.addLeftMost(smallStk: ArrayDeque<TreeNode>) {
   smallStk.add(this)
   left?.addLeftMost(smallStk)
 }
 
-private tailrec fun TreeNode.addRightMost(bigStk: ArrayDeque<TreeNode>) {
+private fun TreeNode.addRightMost(bigStk: ArrayDeque<TreeNode>) {
   bigStk.add(this)
   right?.addRightMost(bigStk)
 }
