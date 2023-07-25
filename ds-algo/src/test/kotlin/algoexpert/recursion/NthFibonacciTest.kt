@@ -7,7 +7,7 @@ import io.kotest.matchers.shouldBe
 
 class NthFibonacciTest :
   StringSpec({
-    "nth fibonacci"  {
+    "nth fibonacci" {
       forAll(
         row(8, 13),
         row(7, 8),
@@ -20,5 +20,5 @@ class NthFibonacciTest :
       ) { n, result ->
         nthFibonacci(n) shouldBe result
       }
-  }
-})
+    }
+  })

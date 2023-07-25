@@ -11,13 +11,13 @@ private const val PKG_PATH = "$TEST_RESOURCES_PATH/algoexpert/ll/RemoveDuplicate
 
 class RemoveDuplicatesInSLLTest :
   StringSpec({
-   "remove duplicates in SLL" {
-       forAll(
-         row(parseJsonFileToSLL("$PKG_PATH/sll1.json"), intArrayOf(1, 3, 4, 5, 6)),
-         row(parseJsonFileToSLL("$PKG_PATH/sll2.json"), intArrayOf(1, 4, 5, 6)),
-         row(parseJsonFileToSLL("$PKG_PATH/sll3.json"), intArrayOf(1)),
-       ) { head, result ->
-          head.removeDuplicates().toArray() shouldBe result
-       }
-  }
-})
+    "remove duplicates in SLL" {
+      forAll(
+        row(parseJsonFileToSLL("$PKG_PATH/sll1.json"), intArrayOf(1, 3, 4, 5, 6)),
+        row(parseJsonFileToSLL("$PKG_PATH/sll2.json"), intArrayOf(1, 4, 5, 6)),
+        row(parseJsonFileToSLL("$PKG_PATH/sll3.json"), intArrayOf(1)),
+      ) { head, result ->
+        head.removeDuplicates().toArray() shouldBe result
+      }
+    }
+  })
