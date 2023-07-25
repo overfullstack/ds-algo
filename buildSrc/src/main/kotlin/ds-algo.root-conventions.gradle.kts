@@ -1,4 +1,4 @@
-import com.adarshr.gradle.testlogger.theme.ThemeType.MOCHA
+import com.adarshr.gradle.testlogger.theme.ThemeType.MOCHA_PARALLEL
 import com.diffplug.spotless.LineEnding.PLATFORM_NATIVE
 import com.diffplug.spotless.extra.wtp.EclipseWtpFormatterStep.XML
 import io.gitlab.arturbosch.detekt.Detekt
@@ -70,6 +70,10 @@ detekt {
   config.setFrom(file("$rootDir/detekt/config.yml"))
 }
 
-testlogger.theme = MOCHA
+testlogger {
+  theme = MOCHA_PARALLEL
+  showCauses = false
+  showSimpleNames = true
+}
 
 tasks.withType<Detekt>().configureEach { reports { xml.required.set(true) } }
