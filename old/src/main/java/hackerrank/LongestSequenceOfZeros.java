@@ -8,7 +8,7 @@ public class LongestSequenceOfZeros {
 
   private static int longestSequenceOfZeros(int[] a) {
     var len = a.length;
-    int prev = 0, cur = 0;
+    int prev = 0;
     var maxZeros = 0;
     for (var i = 0; i < len; i++) {
       if (a[i] == 0) {
