@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module version="4">
-  <component name="AdditionalModuleElements">
-    <content url="file://$MODULE_DIR$/../../../common/src/test" dumb="true">
-      <sourceFolder url="file://$MODULE_DIR$/../../../common/src/test/kotlin" isTestSource="true" />
-      <sourceFolder url="file://$MODULE_DIR$/../../../common/src/test/resources" type="java-test-resource" />
-    </content>
+  <component name="SonarLintModuleSettings">
+    <option name="uniqueId" value="e8290c5d-c77d-49af-bf9a-943d615c05d0" />
   </component>
 </module>

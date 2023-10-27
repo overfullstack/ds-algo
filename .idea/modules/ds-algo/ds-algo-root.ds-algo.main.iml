@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module version="4">
-  <component name="AdditionalModuleElements">
-    <content url="file://$MODULE_DIR$/../../../ds-algo/src/main" dumb="true">
-      <sourceFolder url="file://$MODULE_DIR$/../../../ds-algo/src/main/resources" type="java-resource" />
-    </content>
+  <component name="SonarLintModuleSettings">
+    <option name="uniqueId" value="24ae4764-4cbe-4f55-9e43-779bc04cdcba" />
   </component>
 </module>
