@@ -1,5 +1,5 @@
 [versions]
-jetbrains-annotations = "24.0.1"
+jetbrains-annotations = "24.1.0"
 kover = "0.7.4"
 kotlin = "1.9.20"
 ksp = "1.9.20-1.0.14"
