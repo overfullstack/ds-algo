@@ -1,12 +1,10 @@
 import com.adarshr.gradle.testlogger.theme.ThemeType.MOCHA_PARALLEL
 import com.diffplug.spotless.LineEnding.PLATFORM_NATIVE
 import com.diffplug.spotless.extra.wtp.EclipseWtpFormatterStep.XML
-import io.gitlab.arturbosch.detekt.Detekt
 
 plugins {
   java
   id("com.diffplug.spotless")
-  id("io.github.detekt.gradle.compiler-plugin")
   id("org.jetbrains.kotlinx.kover")
   id("com.adarshr.test-logger")
 }
@@ -30,14 +28,14 @@ spotless {
     target("**/*.kt")
     trimTrailingWhitespace()
     endWithNewline()
-    targetExclude("**/build/**", "**/.gradle/**", "**/generated/**")
+    targetExclude("**/build/**", "**/.gradle/**", "**/generated/**", "**/bin/**", "**/out/**")
   }
   kotlinGradle {
     ktfmt().googleStyle()
     target("**/*.gradle.kts")
     trimTrailingWhitespace()
     endWithNewline()
-    targetExclude("**/build/**", "**/.gradle/**", "**/generated/**")
+    targetExclude("**/build/**", "**/.gradle/**", "**/generated/**", "**/bin/**", "**/out/**")
   }
   java {
     toggleOffOn()
@@ -48,7 +46,7 @@ spotless {
     trimTrailingWhitespace()
     indentWithSpaces(2)
     endWithNewline()
-    targetExclude("**/build/**", "**/.gradle/**", "**/generated/**")
+    targetExclude("**/build/**", "**/.gradle/**", "**/generated/**", "**/bin/**", "**/out/**")
   }
   format("xml") {
     targetExclude("pom.xml")
@@ -63,17 +61,8 @@ spotless {
   }
 }
 
-detekt {
-  parallel = true
-  buildUponDefaultConfig = true
-  baseline = file("$rootDir/detekt/baseline.xml")
-  config.setFrom(file("$rootDir/detekt/config.yml"))
-}
-
 testlogger {
   theme = MOCHA_PARALLEL
   showCauses = false
   showSimpleNames = true
 }
-
-tasks.withType<Detekt>().configureEach { reports { xml.required.set(true) } }

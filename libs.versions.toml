@@ -1,8 +1,8 @@
 [versions]
 jetbrains-annotations = "24.1.0"
 kover = "0.7.4"
-kotlin = "1.9.20"
-ksp = "1.9.20-1.0.14"
+kotlin = "2.0.0-Beta1"
+ksp = "2.0.0-Beta1-1.0.14"
 moshi = "1.15.0"
 moshix = "0.25.0"
 kotest = "5.8.0"
@@ -33,7 +33,6 @@ junit-engine = { module = "org.junit.jupiter:junit-jupiter-engine" }
 
 # Gradle plugins
 kotlin-gradle = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
-detekt-gradle = { module = "io.gitlab.arturbosch.detekt:detekt-gradle-plugin", version.ref = "detekt" }
 spotless-gradle = { module = "com.diffplug.spotless:spotless-plugin-gradle", version.ref = "spotless" }
 kover-gradle = { module = "org.jetbrains.kotlinx.kover:org.jetbrains.kotlinx.kover.gradle.plugin", version.ref = "kover" }
 
@@ -49,7 +48,6 @@ kotlin-logging = ["kotlin-logging-jvm", "log4j-api", "log4j-core", "log4j-slf4j2
 [plugins]
 kover = { id = "org.jetbrains.kotlinx.kover", version.ref = "kover" }
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
-detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
 spotless = { id = "com.diffplug.spotless", version.ref = "spotless" }
 testLogger = { id = "com.adarshr.test-logger", version.ref = "testLogger" }
 moshix = { id = "dev.zacsweers.moshix", version.ref = "moshix" }

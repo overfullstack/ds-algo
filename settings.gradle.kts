@@ -2,10 +2,10 @@ dependencyResolutionManagement {
   versionCatalogs { create("libs") { from(files("libs.versions.toml")) } }
   pluginManagement {
     repositories {
-      mavenCentral()
       gradlePluginPortal()
-      google()
+      mavenCentral()
       maven("https://oss.sonatype.org/content/repositories/snapshots")
+      google()
     }
   }
 }
