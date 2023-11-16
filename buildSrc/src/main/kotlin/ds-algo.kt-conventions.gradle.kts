@@ -12,5 +12,3 @@ tasks {
       listOf("-opt-in=kotlin.RequiresOptIn", "-Xcontext-receivers", "-progressive")
   }
 }
-
-kotlin { sourceSets.all { languageSettings { languageVersion = "2.0" } } }

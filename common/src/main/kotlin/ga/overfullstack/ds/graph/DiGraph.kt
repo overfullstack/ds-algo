@@ -52,7 +52,7 @@ class DiGraph<T>(
     return adjacencyMap.keys
       .asSequence()
       .filter { it !in visited }
-      .flatMap { it.dftPerBranch(visited.apply { add(it) }) }
+      .flatMap { it.dftPerBranch(visited) }
       .toList()
   }
 
@@ -60,6 +60,7 @@ class DiGraph<T>(
     visited: MutableSet<T>,
     path: Sequence<T> = sequenceOf(this)
   ): Sequence<T> {
+    visited.add(this)
     val neighbors = adjacencyMap[this]
     if (neighbors.isNullOrEmpty()) {
       return path
@@ -67,7 +68,7 @@ class DiGraph<T>(
     return neighbors
       .asSequence()
       .filter { it !in visited }
-      .flatMap { it.dftPerBranch(visited.apply { add(it) }, path + it) }
+      .flatMap { it.dftPerBranch(visited, path + it) }
       .distinct()
   }
 

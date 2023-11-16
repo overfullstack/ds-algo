@@ -12,7 +12,7 @@ class BestDigitsTest :
         row("462839", 2, "6839"),
         row("129847563", 4, "98763"),
       ) { str, numDigits, result ->
-         bestDigits(str, numDigits) shouldBe result
+        bestDigits(str, numDigits) shouldBe result
       }
     }
   })

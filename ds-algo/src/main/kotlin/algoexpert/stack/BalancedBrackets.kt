@@ -2,11 +2,7 @@ package algoexpert.stack
 
 import java.util.Stack
 
-private val bracketsPair = mapOf(
-  ')' to '(',
-  '}' to '{',
-  ']' to '['
-)
+private val bracketsPair = mapOf(')' to '(', '}' to '{', ']' to '[')
 
 private val validBrackets = setOf('(', ')', '{', '}', '[', ']')
 

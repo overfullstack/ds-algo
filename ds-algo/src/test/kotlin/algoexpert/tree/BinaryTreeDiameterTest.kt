@@ -12,10 +12,8 @@ private const val PKG_PATH = "$TEST_RESOURCES_PATH/algoexpert/tree/BinaryTreeDia
 class BinaryTreeDiameterTest :
   StringSpec({
     "binary tree diameter" {
-      forAll(
-        row(parseJsonFileToTree("$PKG_PATH/tree1.json"), 6)
-      ) { root, result ->
-         root.diameter().second shouldBe result
+      forAll(row(parseJsonFileToTree("$PKG_PATH/tree1.json"), 6)) { root, result ->
+        root.diameter().second shouldBe result
       }
     }
   })

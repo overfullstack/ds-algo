@@ -5,8 +5,8 @@ dependencyResolutionManagement {
     repositories {
       mavenCentral()
       gradlePluginPortal()
-      google()
       maven("https://oss.sonatype.org/content/repositories/snapshots")
+      google()
     }
   }
 }

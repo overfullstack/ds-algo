@@ -18,5 +18,5 @@ fun bestSeat(seatArr: IntArray): Int {
     }
     i++
   }
-  return if (zeroCountStartIndex == -1) -1 else (maxZeroCountStartIndex + (maxZeroCount - 1)/ 2)
+  return if (zeroCountStartIndex == -1) -1 else (maxZeroCountStartIndex + (maxZeroCount - 1) / 2)
 }

@@ -18,7 +18,7 @@ fun TreeNode.findMaxDiameter(): Pair<Int, Int> { // Pair of height and diameter
 
   val curMaxHeight = maxOf(leftHeight, rightHeight) + 1
   // * curMaxHeight is all we need to pass next, curMaxDiameter is just a max tracking variable.
-  return curMaxHeight to curMaxDiameter 
+  return curMaxHeight to curMaxDiameter
 }
 
 fun main() {
