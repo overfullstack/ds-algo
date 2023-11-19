@@ -8,10 +8,9 @@ moshix = "0.25.0"
 kotest = "5.8.0"
 testLogger = "4.0.0"
 assertj-core = "3.24.2"
-kotlin-logging = "3.0.5"
+kotlin-logging = "5.1.0"
 # Common dependencies
 junit = "5.10.1"
-detekt = "1.23.3"
 spotless = "6.22.0"
 apache-log4j = "2.21.1"
 
@@ -23,12 +22,12 @@ kotest-assertions-core = { module = "io.kotest:kotest-assertions-core", version.
 kotest-property = { module = "io.kotest:kotest-property", version.ref = "kotest" }
 kotest-runnerJUnit5 = { module = "io.kotest:kotest-runner-junit5", version.ref = "kotest" }
 assertj-core = { module = "org.assertj:assertj-core", version.ref = "assertj-core" }
-kotlin-logging-jvm = { module = "io.github.microutils:kotlin-logging-jvm", version.ref = "kotlin-logging" }
+kotlin-logging-jvm = { module = "io.github.oshai:kotlin-logging-jvm", version.ref = "kotlin-logging" }
 log4j-api = { module = "org.apache.logging.log4j:log4j-api", version.ref = "apache-log4j" }
 log4j-core = { module = "org.apache.logging.log4j:log4j-core", version.ref = "apache-log4j" }
 log4j-slf4j2-impl = { module = "org.apache.logging.log4j:log4j-slf4j2-impl", version.ref = "apache-log4j" }
 junit-bom = { module = "org.junit:junit-bom", version.ref = "junit" }
-junit-jupiter = { module = "org.junit.jupiter:junit-jupiter-api", version.ref = "junit" }
+junit-jupiter = { module = "org.junit.jupiter:junit-jupiter-api" }
 junit-engine = { module = "org.junit.jupiter:junit-jupiter-engine" }
 
 # Gradle plugins
