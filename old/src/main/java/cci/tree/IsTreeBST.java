@@ -1,6 +1,6 @@
 package cci.tree;
 
-import cci.ds.TreeNode;
+import ga.overfullstack.ds.tree.TreeNode;
 
 /** Created by gakshintala on 3/21/16. */
 public class IsTreeBST {
@@ -16,10 +16,10 @@ public class IsTreeBST {
       return true;
     }
 
-    if (root.data <= min || root.data > max) {
+    if (root.value <= min || root.value > max) {
       return false;
     }
 
-    return (isBST(root.left, min, root.data) && isBST(root.right, root.data, max));
+    return (isBST(root.left, min, root.value) && isBST(root.right, root.value, max));
   }
 }

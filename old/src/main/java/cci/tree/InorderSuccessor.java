@@ -1,6 +1,6 @@
 package cci.tree;
 
-import cci.ds.TreeNode;
+import ga.overfullstack.ds.tree.TreeNode;
 
 /** Created by gakshintala on 3/30/16. */
 public class InorderSuccessor {
@@ -59,11 +59,11 @@ public class InorderSuccessor {
     }
     TreeNode successor = null;
     while (root != null) { // Searching from the top, keeping reference to parent
-      if (nodeForSuccessor.data < root.data) {
+      if (nodeForSuccessor.value < root.value) {
         successor = root;
         root = root.left;
-      } else if (nodeForSuccessor.data
-          > root.data) { // Stop updating successor when taking right turn
+      } else if (nodeForSuccessor.value
+          > root.value) { // Stop updating successor when taking right turn
         root = root.right;
       } else { // Found
         break;

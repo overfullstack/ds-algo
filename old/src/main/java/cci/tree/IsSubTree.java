@@ -1,6 +1,6 @@
 package cci.tree;
 
-import cci.ds.TreeNode;
+import ga.overfullstack.ds.tree.TreeNode;
 
 /** Created by gakshintala on 3/29/16. */
 public class IsSubTree {
@@ -24,7 +24,7 @@ public class IsSubTree {
     if (pt == null)
       return false; // Since in this method we are navigating through pt if data doesn't match
 
-    if (pt.data == st.data) {
+    if (pt.value == st.value) {
       // it is kept in if rather than returning directly coz, even if one case fails to be a subtree
       // in the middle,
       // rest validation should continue.
@@ -43,7 +43,7 @@ public class IsSubTree {
     // if (st != null && pt == null) return false;
     // if (st == null) return true;
 
-    if (pt.data != st.data) {
+    if (pt.value != st.value) {
       return false;
     }
 

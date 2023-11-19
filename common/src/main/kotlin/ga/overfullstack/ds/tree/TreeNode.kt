@@ -7,13 +7,15 @@ import ga.overfullstack.utils.readFileToString
 import java.util.ArrayDeque
 import java.util.LinkedList
 
-data class TreeNode(
-  var value: Int,
-  var left: TreeNode? = null,
-  var right: TreeNode? = null,
-  var parent: TreeNode? = null,
-  var next: TreeNode? = null,
-  val id: String = ""
+data class TreeNode
+@JvmOverloads
+constructor(
+  @JvmField var value: Int,
+  @JvmField var left: TreeNode? = null,
+  @JvmField var right: TreeNode? = null,
+  @JvmField var parent: TreeNode? = null,
+  @JvmField var next: TreeNode? = null,
+  @JvmField val id: String = ""
 ) {
 
   private var leftSize: Int = 0

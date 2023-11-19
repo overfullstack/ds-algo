@@ -1,6 +1,6 @@
 package cci.tree;
 
-import cci.ds.TreeNode;
+import ga.overfullstack.ds.tree.TreeNode;
 
 /** Created by gakshintala on 3/30/16. */
 public class BSTFromSortedArray {

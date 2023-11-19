@@ -1,6 +1,6 @@
 package cci.tree;
 
-import cci.ds.TreeNode;
+import ga.overfullstack.ds.tree.TreeNode;
 
 /** Created by gakshintala on 3/29/16. */
 public class FindPathForSum {
@@ -27,7 +27,7 @@ public class FindPathForSum {
       return;
     }
 
-    path[level] = root.data; // Every node at a level is tested one at a time.
+    path[level] = root.value; // Every node at a level is tested one at a time.
 
     // Check if adding this node completes the sum
     var s = 0;
