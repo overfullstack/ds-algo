@@ -3,7 +3,7 @@ package icake.Arrays.AppleStocks;
 /** Created by gakshintala on 3/22/16. */
 public class AppleStocks {
   public static void main(String[] args) {
-    int[] stocks = {4, 3, 2, 1};
+    final var stocks = new int[] {4, 3, 2, 1};
     System.out.println(maxProfit2(stocks));
   }
 

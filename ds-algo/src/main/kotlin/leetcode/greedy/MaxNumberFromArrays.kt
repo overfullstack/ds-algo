@@ -43,5 +43,5 @@ private fun maxNumberWithArr(arr: IntArray, resultLen: Int): List<Int> {
       stk.push(digit)
     }
   }
-  return stk.reversed()
+  return stk.reversed().toList()
 }

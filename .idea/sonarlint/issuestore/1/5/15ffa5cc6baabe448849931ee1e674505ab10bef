@@ -1,9 +1,0 @@
-
-}kotlin:S100"aRename function "insert overlapping words" to match the regular expression ^[a-zA-Z][a-zA-Z0-9]*$(Í‹ƒˆÿÿÿÿÿ
-{kotlin:S100""dRename function "search multiple not present" to match the regular expression ^[a-zA-Z][a-zA-Z0-9]*$(‚‰Ãñ
-wkotlin:S100)"`Rename function "search multiple present" to match the regular expression ^[a-zA-Z][a-zA-Z0-9]*$(éÀÈ¿
-‚kotlin:S1000"kRename function "remove sub word that doesn't exist" to match the regular expression ^[a-zA-Z][a-zA-Z0-9]*$(ÉÆ˜¼
-~kotlin:S1007"gRename function "remove word that doesn't exist" to match the regular expression ^[a-zA-Z][a-zA-Z0-9]*$(¬´·Õ
-kotlin:S100>"sRename function "remove sub word should preserve super word" to match the regular expression ^[a-zA-Z][a-zA-Z0-9]*$(ûÖÊµûÿÿÿÿ
-–kotlin:S100J"zRename function "removing super word should preserve all sub words" to match the regular expression ^[a-zA-Z][a-zA-Z0-9]*$(è€ç¶ùÿÿÿÿ
-xkotlin:S100W"\Rename function "get recommendations" to match the regular expression ^[a-zA-Z][a-zA-Z0-9]*$(»Î¿ùÿÿÿÿ

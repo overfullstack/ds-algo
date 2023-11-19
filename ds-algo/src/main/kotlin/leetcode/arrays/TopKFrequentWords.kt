@@ -7,22 +7,18 @@ import java.util.PriorityQueue
 private val COMPARATOR =
   Comparator.comparingInt<Map.Entry<String, Int>> { it.value }
     .thenComparator { a, b -> b.key.compareTo(a.key) }
-// Observe `b` comes before `a`, if "a" and "b" are with same frequency,
+// Observe `b` comes before `a`, if "a" and "b" are with the same frequency,
 // As the requirement is to retain word with lower alphabetical order, in case of clash,
 // So we do descend sorting, i.e., push `b` towards head, so it is more prone to `poll()`
 
 fun topKFrequent(words: Array<String>, k: Int): List<String> {
-  val wordToFrequency = mutableMapOf<String, Int>()
+  val wordToFrequency = words.groupingBy { it }.eachCount()
   // Prepare frequency map.
-  for (word in words) {
-    wordToFrequency.merge(word, 1) { oldValue, _ -> oldValue.inc() }
-  }
   val minHeap = PriorityQueue(COMPARATOR) // `PriorityQueue` is by default ascending order.
   for (entry in wordToFrequency.entries) {
-    minHeap.add(
-      entry
-    ) // `add()` before `poll()`, as `poll()` doesn't necessarily remove the last added, but least
-    // frequent
+    // `add()` before `poll()`, as `poll()` doesn't necessarily remove the last added,
+    // but least frequent
+    minHeap.add(entry)
     if (minHeap.size > k) {
       minHeap.poll() // `poll()` removes the heap head.
     }
