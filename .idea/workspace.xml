@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0561d828-4319-4f85-8016-cfa56f720b74" name="Changes" comment="Migrated to Java 21, gradle 8.5&#10;&#10;Signed-off-by: Gopal S Akshintala &lt;gopala.akshintala@salesforce.com&gt;" />
+    <list default="true" id="0561d828-4319-4f85-8016-cfa56f720b74" name="Changes" comment="LargestPalindromicNumberTest&#10;&#10;Signed-off-by: Gopal S Akshintala &lt;gopala.akshintala@salesforce.com&gt;">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ds-algo/src/main/kotlin/leetcode/greedy/LargestPalindromicNumber.kt" beforeDir="false" afterPath="$PROJECT_DIR$/ds-algo/src/main/kotlin/leetcode/greedy/LargestPalindromicNumber.kt" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -15,6 +18,14 @@
       <ProjectState />
     </projectState>
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Kotlin File" />
+        <option value="Kotest Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="PREVIOUS_COMMIT_AUTHORS">
       <list>
@@ -22,10 +33,15 @@
       </list>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RESET_MODE" value="MIXED" />
     <option name="SIGN_OFF_COMMIT" value="true" />
+    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="GitToolBoxStore">
     <option name="projectConfigVersion" value="5" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib/2.0.0-Beta1/b7fa1b501ced1f4288936bf9d8c91768d9fd41a2/kotlin-stdlib-2.0.0-Beta1-sources.jar!/jvmMain/kotlin/collections/MapsJVM.kt" root0="SKIP_INSPECTION" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -45,38 +61,132 @@
     <option name="showLibraryContents" value="true" />
     <option name="sortKey" value="BY_TIME_DESCENDING" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Gradle.Build ds-algo-root.executor": "Run",
-    "Kotest.TopKFrequentWordsTest: topKFrequent.executor": "Run",
-    "RunOnceActivity.Enable generate summary features in internal mode": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SONARLINT_PRECOMMIT_ANALYSIS": "false",
-    "git-widget-placeholder": "master",
-    "kotlin-language-version-configured": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "vcs.Git",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Gradle.Build ds-algo-root.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.ds-algo-root [spotlessApply].executor&quot;: &quot;Run&quot;,
+    &quot;Kotest.LargestPalindromicNumberTest: largestPalindromicNumberTest (1).executor&quot;: &quot;Debug&quot;,
+    &quot;Kotest.LargestPalindromicNumberTest: largestPalindromicNumberTest (2).executor&quot;: &quot;Run&quot;,
+    &quot;Kotest.LargestPalindromicNumberTest: largestPalindromicNumberTest (3).executor&quot;: &quot;Debug&quot;,
+    &quot;Kotest.LargestPalindromicNumberTest: largestPalindromicNumberTest (4).executor&quot;: &quot;Run&quot;,
+    &quot;Kotest.LargestPalindromicNumberTest: largestPalindromicNumberTest (5).executor&quot;: &quot;Run&quot;,
+    &quot;Kotest.LargestPalindromicNumberTest: largestPalindromicNumberTest.executor&quot;: &quot;Run&quot;,
+    &quot;Kotest.TopKFrequentWordsTest: topKFrequent.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.Enable generate summary features in internal mode&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SONARLINT_PRECOMMIT_ANALYSIS&quot;: &quot;false&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;Kotest&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.Kotest&quot;: &quot;io.kotest.core.spec.style.FunSpec&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;editing.templates&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
-  <component name="RunManager">
-    <configuration name="TopKFrequentWordsTest: topKFrequent" type="ioKotest" factoryName="Kotest" temporary="true" defaultName="singleModule">
+}</component>
+  <component name="Push.Settings">
+    <force-push-targets>
+      <force-push-target remote-path="origin" branch="master" />
+    </force-push-targets>
+  </component>
+  <component name="RecentsManager">
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="io.kotest.core.spec.style.FunSpec" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="leetcode.greedy" />
+    </key>
+  </component>
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="gradle spotlessApply" />
+    </option>
+  </component>
+  <component name="RunManager" selected="Kotest.LargestPalindromicNumberTest: largestPalindromicNumberTest (1)">
+    <configuration name="ds-algo-root [spotlessApply]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="spotlessApply" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="LargestPalindromicNumberTest: largestPalindromicNumberTest (1)" type="ioKotest" factoryName="Kotest" temporary="true" defaultName="singleModule">
       <module name="ds-algo-root.ds-algo.test" />
       <option name="jrePath" value="" />
       <option name="jrePathEnabled" value="false" />
       <option name="passParentEnvs" value="true" />
       <option name="workingDirectory" value="$MODULE_WORKING_DIR$" />
       <option name="programParameters" value="" />
-      <option name="specName" value="leetcode.arrays.TopKFrequentWordsTest" />
-      <option name="testPath" value="topKFrequent" />
+      <option name="specName" value="leetcode.greedy.LargestPalindromicNumberTest" />
+      <option name="testPath" value="largestPalindromicNumberTest" />
+      <option name="packageName" value="" />
+      <option name="vmparams" value="" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="LargestPalindromicNumberTest: largestPalindromicNumberTest (4)" type="ioKotest" factoryName="Kotest" temporary="true" defaultName="singleModule">
+      <module name="ds-algo-root.ds-algo.test" />
+      <option name="jrePath" value="" />
+      <option name="jrePathEnabled" value="false" />
+      <option name="passParentEnvs" value="true" />
+      <option name="workingDirectory" value="$MODULE_WORKING_DIR$" />
+      <option name="programParameters" value="" />
+      <option name="specName" value="leetcode.greedy.LargestPalindromicNumberTest" />
+      <option name="testPath" value="largestPalindromicNumberTest" />
+      <option name="packageName" value="" />
+      <option name="vmparams" value="" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="LargestPalindromicNumberTest: largestPalindromicNumberTest (5)" type="ioKotest" factoryName="Kotest" temporary="true" defaultName="singleModule">
+      <module name="ds-algo-root.ds-algo.test" />
+      <option name="jrePath" value="" />
+      <option name="jrePathEnabled" value="false" />
+      <option name="passParentEnvs" value="true" />
+      <option name="workingDirectory" value="$MODULE_WORKING_DIR$" />
+      <option name="programParameters" value="" />
+      <option name="specName" value="leetcode.greedy.LargestPalindromicNumberTest" />
+      <option name="testPath" value="largestPalindromicNumberTest" />
+      <option name="packageName" value="" />
+      <option name="vmparams" value="" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="LargestPalindromicNumberTest: largestPalindromicNumberTest" type="ioKotest" factoryName="Kotest" temporary="true" defaultName="singleModule">
+      <module name="ds-algo-root.ds-algo.test" />
+      <option name="jrePath" value="" />
+      <option name="jrePathEnabled" value="false" />
+      <option name="passParentEnvs" value="true" />
+      <option name="workingDirectory" value="$MODULE_WORKING_DIR$" />
+      <option name="programParameters" value="" />
+      <option name="specName" value="leetcode.greedy.LargestPalindromicNumberTest" />
+      <option name="testPath" value="largestPalindromicNumberTest" />
       <option name="packageName" value="" />
       <option name="vmparams" value="" />
       <method v="2">
@@ -85,7 +195,9 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Kotest.TopKFrequentWordsTest: topKFrequent" />
+        <item itemvalue="Kotest.LargestPalindromicNumberTest: largestPalindromicNumberTest (1)" />
+        <item itemvalue="Kotest.LargestPalindromicNumberTest: largestPalindromicNumberTest" />
+        <item itemvalue="Gradle.ds-algo-root [spotlessApply]" />
       </list>
     </recent_temporary>
   </component>
@@ -100,7 +212,9 @@
       <workItem from="1700400873355" duration="52000" />
       <workItem from="1700400933018" duration="131000" />
       <workItem from="1700401110642" duration="633000" />
-      <workItem from="1700409621662" duration="399000" />
+      <workItem from="1700409621662" duration="8964000" />
+      <workItem from="1700481875531" duration="40000" />
+      <workItem from="1700481933995" duration="1009000" />
     </task>
     <task id="LOCAL-00001" summary="Migrated to Java 21, gradle 8.5">
       <option name="closed" value="true" />
@@ -118,17 +232,85 @@
       <option name="project" value="LOCAL" />
       <updated>1700410004184</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Migrated to Java 21, gradle 8.5&#10;&#10;Signed-off-by: Gopal S Akshintala &lt;gopala.akshintala@salesforce.com&gt;">
+      <option name="closed" value="true" />
+      <created>1700410034162</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1700410034162</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Migrated to Java 21, gradle 8.5&#10;&#10;Signed-off-by: Gopal S Akshintala &lt;gopala.akshintala@salesforce.com&gt;">
+      <option name="closed" value="true" />
+      <created>1700413713989</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1700413713989</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Migrated to Java 21, gradle 8.5&#10;&#10;Signed-off-by: Gopal S Akshintala &lt;gopala.akshintala@salesforce.com&gt;">
+      <option name="closed" value="true" />
+      <created>1700413733822</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1700413733822</updated>
+    </task>
+    <task id="LOCAL-00006" summary="LargestPalindromicNumberTest&#10;&#10;Signed-off-by: Gopal S Akshintala &lt;gopala.akshintala@salesforce.com&gt;">
+      <option name="closed" value="true" />
+      <created>1700449340136</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1700449340136</updated>
+    </task>
+    <task id="LOCAL-00007" summary="LargestPalindromicNumberTest&#10;&#10;Signed-off-by: Gopal S Akshintala &lt;gopala.akshintala@salesforce.com&gt;">
+      <option name="closed" value="true" />
+      <created>1700449462790</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1700449462790</updated>
+    </task>
+    <task id="LOCAL-00008" summary="LargestPalindromicNumberTest&#10;&#10;Signed-off-by: Gopal S Akshintala &lt;gopala.akshintala@salesforce.com&gt;">
+      <option name="closed" value="true" />
+      <created>1700449581505</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1700449581505</updated>
+    </task>
+    <task id="LOCAL-00009" summary="LargestPalindromicNumberTest&#10;&#10;Signed-off-by: Gopal S Akshintala &lt;gopala.akshintala@salesforce.com&gt;">
+      <option name="closed" value="true" />
+      <created>1700449683851</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1700449683851</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
     <MESSAGE value="Migrated to Java 21, gradle 8.5" />
     <MESSAGE value="Migrated to Java 21, gradle 8.5&#10;&#10;Signed-off-by: Gopal S Akshintala &lt;gopala.akshintala@salesforce.com&gt;" />
-    <option name="LAST_COMMIT_MESSAGE" value="Migrated to Java 21, gradle 8.5&#10;&#10;Signed-off-by: Gopal S Akshintala &lt;gopala.akshintala@salesforce.com&gt;" />
+    <MESSAGE value="LargestPalindromicNumberTest&#10;&#10;Signed-off-by: Gopal S Akshintala &lt;gopala.akshintala@salesforce.com&gt;" />
+    <option name="LAST_COMMIT_MESSAGE" value="LargestPalindromicNumberTest&#10;&#10;Signed-off-by: Gopal S Akshintala &lt;gopala.akshintala@salesforce.com&gt;" />
   </component>
 </project>
