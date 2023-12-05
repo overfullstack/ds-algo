@@ -6,7 +6,7 @@ fun largestPalindromicNumber(num: String): String {
   val halfOfPalindrome =
     digitFrequency.entries.fold("") { result, (digit, frequency) ->
       if (result.isEmpty() && digit == '0') {
-        // * NOTE 20/11/23 gopala.akshintala: We cannot return "0" here, as the result can be empty 
+        // * NOTE 20/11/23 gopala.akshintala: We cannot return "0" here, as the result can be empty
         // coz other digits may have frequency = 1
         result
       } else {
