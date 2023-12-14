@@ -1,5 +1,5 @@
 [versions]
-kotlin = "2.0.0-Beta1"
+kotlin = "2.0.0-Beta2"
 ksp = "2.0.0-Beta1-1.0.15"
 jetbrains-annotations = "24.1.0"
 kover = "0.7.5"
@@ -11,7 +11,7 @@ assertj-core = "3.24.2"
 kotlin-logging = "5.1.1"
 # Common dependencies
 junit = "5.10.1"
-spotless = "6.23.2"
+spotless = "6.23.3"
 apache-log4j = "2.22.0"
 
 [libraries]
