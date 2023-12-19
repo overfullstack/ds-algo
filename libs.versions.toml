@@ -8,7 +8,7 @@ moshix = "0.25.1"
 kotest = "5.8.0"
 testLogger = "4.0.0"
 assertj-core = "3.24.2"
-kotlin-logging = "5.1.4"
+kotlin-logging = "6.0.0"
 # Common dependencies
 junit = "5.10.1"
 spotless = "6.23.3"
