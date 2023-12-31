@@ -7,7 +7,7 @@ moshi = "1.15.0"
 moshix = "0.25.1"
 kotest = "5.8.0"
 testLogger = "4.0.0"
-assertj-core = "3.24.2"
+assertj-core = "3.25.0"
 kotlin-logging = "6.0.1"
 # Common dependencies
 junit = "5.10.1"
