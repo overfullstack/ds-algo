@@ -11,7 +11,7 @@ assertj-core = "3.25.1"
 kotlin-logging = "6.0.2"
 # Common dependencies
 junit = "5.10.1"
-spotless = "6.23.3"
+spotless = "6.24.0"
 apache-log4j = "2.22.1"
 
 [libraries]
