@@ -1,6 +1,6 @@
 [versions]
 kotlin = "2.0.0-Beta3"
-ksp = "2.0.0-Beta3-1.0.17-SNAPSHOT"
+ksp = "2.0.0-Beta3-1.0.17"
 jetbrains-annotations = "24.1.0"
 kover = "0.7.5"
 moshi = "1.15.0"
