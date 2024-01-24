@@ -1,13 +1,13 @@
 [versions]
 kotlin = "2.0.0-Beta3"
-ksp = "2.0.0-Beta3-1.0.17"
+ksp = "2.0.0-Beta3-1.0.18-SNAPSHOT"
 jetbrains-annotations = "24.1.0"
 kover = "0.7.5"
 moshi = "1.15.0"
 moshix = "0.25.1"
 kotest = "5.8.0"
 testLogger = "4.0.0"
-assertj-core = "3.25.1"
+assertj-core = "3.25.2"
 kotlin-logging = "6.0.3"
 # Common dependencies
 junit = "5.10.1"
