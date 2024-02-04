@@ -10,7 +10,7 @@ testLogger = "4.0.0"
 assertj-core = "3.25.2"
 kotlin-logging = "6.0.3"
 # Common dependencies
-junit = "5.10.1"
+junit = "5.10.2"
 spotless = "6.25.0"
 apache-log4j = "2.22.1"
 
