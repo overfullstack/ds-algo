@@ -1,5 +1,5 @@
 [versions]
-kotlin = "2.0.0-RC1"
+kotlin = "2.0.0-RC2"
 ksp = "2.0.0-RC1-1.0.21-SNAPSHOT"
 jetbrains-annotations = "24.1.0"
 kover = "0.7.6"
