@@ -1,10 +1,11 @@
 [versions]
 kotlin = "2.0.0-RC2"
 ksp = "2.0.0-RC2-1.0.20"
+revoman = "0.41.1"
 jetbrains-annotations = "24.1.0"
 kover = "0.7.6"
-moshi = "1.15.1"
-moshix = "0.25.1"
+moshi = "2.0.0-SNAPSHOT"
+moshix = "0.26.0-SNAPSHOT"
 kotest = "5.8.1"
 testLogger = "4.0.0"
 assertj-core = "3.25.3"
@@ -16,6 +17,7 @@ spotless = "6.25.0"
 apache-log4j = "2.23.1"
 
 [libraries]
+revoman = { module = "com.salesforce.revoman:revoman", version.ref = "revoman" }
 moshi-kotlin = { module = "com.squareup.moshi:moshi-kotlin", version.ref = "moshi" }
 jetbrains-annotations = { module = "org.jetbrains:annotations", version.ref = "jetbrains-annotations" }
 testLogger-gradle = { module = "com.adarshr.test-logger:com.adarshr.test-logger.gradle.plugin", version.ref = "testLogger" }

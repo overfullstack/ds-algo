@@ -19,7 +19,7 @@ fun minSwapsToSort(arr: Array<Int>): Int {
       valueToIndex[i].first != i
     ) { // Swapping until the original index matches with the current index.
       valueToIndex[i] = // Swapping in a cycle - to original index until it finds a match.
-      valueToIndex[valueToIndex[i].first].also {
+        valueToIndex[valueToIndex[i].first].also {
           valueToIndex[valueToIndex[i].first] = valueToIndex[i]
         }
       swaps++

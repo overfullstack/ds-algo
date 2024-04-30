@@ -34,8 +34,7 @@ private fun Int.topologicalSort(
       it in visitedInBranch -> throw IllegalArgumentException("Graph has Cycle")
       else -> emptySequence() // This node is visited so can't contribute to any sequence.
     }
-  }
-    ?: emptySequence() // No connections.
+  } ?: emptySequence() // No connections.
 
 private fun Array<IntArray>.toDiGraph(): Map<Int, Set<Int>> =
   groupBy({ it[0] }, { it[1] }).mapValues { it.value.toSet() }

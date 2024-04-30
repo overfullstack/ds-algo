@@ -1,10 +1,10 @@
 package ga.overfullstack.ds.graph
 
+import com.salesforce.revoman.input.readFileInResourcesToString
 import com.squareup.moshi.JsonClass
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.adapter
-import ga.overfullstack.utils.readFileToString
-import java.util.ArrayDeque
+import java.util.*
 
 class DiGraph<T>(
   private val adjacencyMap: MutableMap<T, Set<T>> = mutableMapOf(),
@@ -42,8 +42,7 @@ class DiGraph<T>(
       adjacencyMap[currentNode]
         ?.asSequence()
         ?.filter { it !in visited }
-        ?.any { dfs(it, valToSearch, visited + it) }
-        ?: false
+        ?.any { dfs(it, valToSearch, visited + it) } ?: false
     }
 
   /** -> DFT */
@@ -110,8 +109,7 @@ class DiGraph<T>(
       // The First is to detect cycle; The second is to avoid cycle while traversing
       // These conditions can be flipped without any difference, as if it's not in `visited`, it
       // cannot be in `visitedInBranch`
-    }
-      ?: false
+    } ?: false
 
   /** DETECT CYCLE -> */
 
@@ -136,8 +134,7 @@ class DiGraph<T>(
         in visited -> emptySequence() // This node is visited so can't contribute to any sequence.
         else -> it.topologicalSortPerBranch(visited.apply { add(it) }, visitedInBranch + it) + it
       }
-    }
-      ?: emptySequence() // No connections.
+    } ?: emptySequence() // No connections.
 
   /** TOPOLOGICAL SORT with Cycle Detection -> */
   companion object {
@@ -152,7 +149,7 @@ class DiGraph<T>(
 
     @OptIn(ExperimentalStdlibApi::class)
     fun parseJsonFileToDiGraph(jsonFilePath: String): DiGraph<String> {
-      val graphJson = readFileToString(jsonFilePath)
+      val graphJson = readFileInResourcesToString(jsonFilePath)
       val graphAdapter = Moshi.Builder().build().adapter<JDiGraph>()
       val jGraph = graphAdapter.fromJson(graphJson)!!
       return DiGraph(

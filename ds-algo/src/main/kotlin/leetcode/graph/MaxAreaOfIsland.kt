@@ -6,8 +6,7 @@ fun maxAreaOfIsland(grid: Array<IntArray>): Int =
     .flatMap { row -> grid[row].indices.asSequence().map { col -> row to col } }
     .filter { grid[it.first][it.second] == 1 }
     .map { grid.dft(it) }
-    .maxOrNull()
-    ?: 0
+    .maxOrNull() ?: 0
 
 private val directions = listOf(0 to 1, 0 to -1, 1 to 0, -1 to 0)
 

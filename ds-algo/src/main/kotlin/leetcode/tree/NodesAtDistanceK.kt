@@ -37,7 +37,7 @@ private fun TreeNode?.nodesAtDistanceK(target: Int, K: Int): Pair<NodeAtDistance
       } else { // At every ancestor, covering all the directions apart from the direction in which
         // the recursion rolled-up (left in this case)
         FoundAtDistance(leftStatus + 1) to // As coming from left, search Top and right
-        leftResult + right.bottomNodesAtDistanceK(K - (leftStatus + 2))
+          leftResult + right.bottomNodesAtDistanceK(K - (leftStatus + 2))
       }
     else -> {
       val (rightStatus, rightResult) = right.nodesAtDistanceK(target, K)
@@ -49,7 +49,7 @@ private fun TreeNode?.nodesAtDistanceK(target: Int, K: Int): Pair<NodeAtDistance
           } else { // At every ancestor, covering all the directions apart from the direction in
             // which the recursion rolled-up (right in this case)
             FoundAtDistance(rightStatus + 1) to // As coming from right, search Top and left
-            rightResult + left.bottomNodesAtDistanceK(K - (rightStatus + 2))
+              rightResult + left.bottomNodesAtDistanceK(K - (rightStatus + 2))
           }
         }
         else -> NotFound to emptyList()

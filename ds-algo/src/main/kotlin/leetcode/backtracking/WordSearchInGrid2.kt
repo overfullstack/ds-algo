@@ -25,7 +25,7 @@ private fun TrieNode.findWords(
         this[gridPoint.first][gridPoint.second] = true
       } // * This visited is specific to this DFT originated at this `gridPoint`. No global Visited,
   // as search from other `gridPoints` can overlap.
-  ): Set<String> =
+): Set<String> =
   // To avoid duplicates, trie.word can be erased after appending to results, but that doesn't save
   // any iterations, so went with set.
   directions
@@ -39,8 +39,7 @@ private fun TrieNode.findWords(
           board,
           nextGridPoint,
           visited.apply { this[nextGridPoint.first][nextGridPoint.second] = true }
-        )
-          ?: emptySet())
+        ) ?: emptySet())
     }
     .also {
       visited[gridPoint.first][gridPoint.second] = false

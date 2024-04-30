@@ -19,8 +19,7 @@ fun maxEnvelops(envelopes: Array<IntArray>): Int {
         this[i] = lisUntilCur + 1
       }
     }
-    .maxOrNull()
-    ?: 1
+    .maxOrNull() ?: 1
 }
 
 private infix fun Pair<Int, Int>.canFitInside(pair: Pair<Int, Int>) =

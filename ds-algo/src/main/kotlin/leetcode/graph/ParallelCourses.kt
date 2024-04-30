@@ -8,8 +8,7 @@ fun minimumSemesters(relations: Array<Pair<Int, Int>>): Int {
       .asSequence()
       .filter { it !in visited }
       .map { it.dft(diGraph, visited.apply { add(it) }, setOf(it)) }
-      .maxOrNull()
-      ?: 0
+      .maxOrNull() ?: 0
   } catch (e: IllegalArgumentException) {
     -1
   }
@@ -31,8 +30,7 @@ private fun Int.dft(
         else -> maxNodesInPath
       }
     }
-    ?.maxOrNull()
-    ?: maxNodesInPath
+    ?.maxOrNull() ?: maxNodesInPath
 
 private fun Array<Pair<Int, Int>>.toDiGraph(): Map<Int, Set<Int>> =
   groupBy({ it.first }, { it.second }).mapValues { it.value.toSet() }

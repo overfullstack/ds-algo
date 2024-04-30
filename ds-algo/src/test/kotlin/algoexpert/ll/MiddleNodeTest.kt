@@ -1,13 +1,12 @@
 package algoexpert.ll
 
 import ga.overfullstack.ds.ll.SLLNode.Companion.parseJsonFileToSLL
-import ga.overfullstack.utils.TEST_RESOURCES_PATH
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.data.forAll
 import io.kotest.data.row
 import io.kotest.matchers.shouldBe
 
-private const val PKG_PATH = "$TEST_RESOURCES_PATH/algoexpert/ll/MiddleNode"
+private const val PKG_PATH = "algoexpert/ll/MiddleNode"
 
 class MiddleNodeTest :
   StringSpec({

@@ -1,7 +1,6 @@
 package ga.overfullstack.ds.graph
 
 import ga.overfullstack.ds.graph.DiGraph.Companion.parseJsonFileToDiGraph
-import ga.overfullstack.utils.TEST_RESOURCES_PATH
 import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.data.forAll
@@ -9,7 +8,7 @@ import io.kotest.data.row
 import io.kotest.matchers.collections.shouldContainExactly
 import io.kotest.matchers.shouldBe
 
-private const val PKG_PATH = "$TEST_RESOURCES_PATH/graph"
+private const val PKG_PATH = "graph"
 
 val diGraph =
   DiGraph(

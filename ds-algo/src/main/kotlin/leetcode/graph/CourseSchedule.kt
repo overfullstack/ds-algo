@@ -30,8 +30,7 @@ private fun Int.dft(
         in visitedInBrach -> throw IllegalArgumentException("Graph has Cycle")
         else -> true // already visited
       }
-    }
-    ?: true
+    } ?: true
 
 private fun Array<IntArray>.toDiGraph(): Map<Int, Set<Int>> =
   groupBy({ it[0] }, { it[1] }).mapValues { it.value.toSet() }

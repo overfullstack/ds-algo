@@ -12,8 +12,7 @@ fun maxMin(k: Int, arr: IntArray): Int {
     .asSequence()
     .windowed(k)
     .map { it.maxOrNull()?.minus((it.minOrNull() ?: 0)) ?: 0 }
-    .minOrNull()
-    ?: 0
+    .minOrNull() ?: 0
 }
 
 @ExperimentalStdlibApi

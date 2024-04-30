@@ -1,9 +1,8 @@
 package ga.overfullstack.ds.ll
 
+import com.salesforce.revoman.input.readFileInResourcesToString
 import com.squareup.moshi.JsonClass
 import com.squareup.moshi.Moshi
-import com.squareup.moshi.adapter
-import ga.overfullstack.utils.readFileToString
 
 data class SLLNode(var value: Int, var next: SLLNode? = null) {
 
@@ -58,7 +57,7 @@ data class SLLNode(var value: Int, var next: SLLNode? = null) {
     @SuppressWarnings("kotlin:S6611")
     @OptIn(ExperimentalStdlibApi::class)
     fun parseJsonFileToSLL(jsonFilePath: String): SLLNode {
-      val sllJson = readFileToString(jsonFilePath)
+      val sllJson = readFileInResourcesToString(jsonFilePath)
       val sllAdapter = Moshi.Builder().build().adapter<JSLL>()
       val jSll = sllAdapter.fromJson(sllJson)!!
       val idToSLLNode = jSll.linkedList.nodes.associate { it.id to (SLLNode(it.value) to it.next) }

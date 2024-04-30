@@ -1,11 +1,9 @@
 package ga.overfullstack.ds.tree
 
+import com.salesforce.revoman.input.readFileInResourcesToString
 import com.squareup.moshi.JsonClass
 import com.squareup.moshi.Moshi
-import com.squareup.moshi.adapter
-import ga.overfullstack.utils.readFileToString
-import java.util.ArrayDeque
-import java.util.LinkedList
+import java.util.*
 
 data class TreeNode
 @JvmOverloads
@@ -34,8 +32,9 @@ constructor(
   }
 
   fun inorderTraversal(): List<Int> =
-    (left?.inorderTraversal()
-      ?: emptyList()) + listOf(value) + (right?.inorderTraversal() ?: emptyList())
+    (left?.inorderTraversal() ?: emptyList()) +
+      listOf(value) +
+      (right?.inorderTraversal() ?: emptyList())
 
   fun isValidBST(min: Int = Int.MIN_VALUE, max: Int = Int.MAX_VALUE): Boolean =
     when {
@@ -176,7 +175,7 @@ constructor(
     @SuppressWarnings("kotlin:S6611")
     @OptIn(ExperimentalStdlibApi::class)
     fun parseJsonFileToTree(jsonFilePath: String): TreeNode {
-      val treeJson = readFileToString(jsonFilePath)
+      val treeJson = readFileInResourcesToString(jsonFilePath)
       val treeAdapter = Moshi.Builder().build().adapter<JTree>()
       val jTree = treeAdapter.fromJson(treeJson)!!
       val idToTreeNode =

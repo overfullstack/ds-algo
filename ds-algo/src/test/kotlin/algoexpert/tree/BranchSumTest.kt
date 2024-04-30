@@ -1,13 +1,12 @@
 package algoexpert.tree
 
 import ga.overfullstack.ds.tree.TreeNode.Companion.parseJsonFileToTree
-import ga.overfullstack.utils.TEST_RESOURCES_PATH
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.data.forAll
 import io.kotest.data.row
 import io.kotest.matchers.collections.shouldContainExactlyInAnyOrder
 
-private const val PKG_PATH = "$TEST_RESOURCES_PATH/algoexpert/tree/BranchSum"
+private const val PKG_PATH = "algoexpert/tree/BranchSum"
 
 class BranchSumTest :
   StringSpec({
