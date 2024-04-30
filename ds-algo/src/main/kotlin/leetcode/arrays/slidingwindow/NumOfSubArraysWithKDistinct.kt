@@ -4,15 +4,15 @@ package leetcode.arrays.slidingwindow
 fun subarraysWithKDistinct(A: IntArray, K: Int): Int =
   subArraysWithAtMostKDistinct(A, K) - subArraysWithAtMostKDistinct(A, K - 1)
 
-fun subArraysWithAtMostKDistinct(A: IntArray, K: Int): Int {
+fun subArraysWithAtMostKDistinct(a: IntArray, k: Int): Int {
   var start = 0
   var windowLenWithAtMostK = 0
   val freqInWindow = mutableMapOf<Int, Int>()
 
-  for ((index, value) in A.withIndex()) {
+  for ((index, value) in a.withIndex()) {
     freqInWindow.merge(value, 1) { freq, _ -> freq.inc() }
-    while (freqInWindow.size > K) {
-      freqInWindow.computeIfPresent(A[start]) { _, freq ->
+    while (freqInWindow.size > k) {
+      freqInWindow.computeIfPresent(a[start]) { _, freq ->
         start++
         when (freq) {
           1 -> null

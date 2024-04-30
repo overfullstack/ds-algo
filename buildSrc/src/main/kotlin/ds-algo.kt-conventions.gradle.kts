@@ -6,9 +6,4 @@ val libs: VersionCatalog = extensions.getByType<VersionCatalogsExtension>().name
 
 dependencies { testImplementation(libs.kotestBundle) }
 
-tasks {
-  withType<KotlinCompile> {
-    kotlinOptions.freeCompilerArgs =
-      listOf("-opt-in=kotlin.RequiresOptIn", "-Xcontext-receivers", "-progressive")
-  }
-}
+kotlin { compilerOptions { freeCompilerArgs.addAll("-Xcontext-receivers", "-progressive") } }

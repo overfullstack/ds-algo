@@ -7,6 +7,7 @@ plugins {
 dependencies {
   implementation(libs.moshi.kotlin)
   implementation(libs.bundles.kotlin.logging)
+  implementation(libs.guava)
 }
 
 moshi { enableSealed = true }

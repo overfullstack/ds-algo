@@ -14,13 +14,12 @@ fun findAnagrams(s: String, p: String): List<Int> {
       if (freq > 0) matchCountInWindow++
       freq.dec()
     }
-
     if (matchCountInWindow == p.length) {
       result.add(start)
     }
-
     val windowSize = i - start + 1
-    if (windowSize == p.length) { // Shrinking window as soon as the `windowLength = anagramLength`
+    // Slide the window by a char and undo freq operation
+    if (windowSize == p.length) {
       pFreqMap.computeIfPresent(s[start]) { _, freq ->
         if (freq >= 0) matchCountInWindow--
         freq.inc()

@@ -2,13 +2,10 @@
 
 package ga.overfullstack.utils
 
-import java.io.File
+import com.google.common.io.Resources
 
-fun readFileToString(fileRelativePath: String): String =
-  File(fileRelativePath).readText(Charsets.UTF_8)
+internal fun readFileToString(fileRelativePath: String): String =
+  Resources.getResource(fileRelativePath).readText()
 
-const val RESOURCES_PATH = "src/main/resources/"
 const val TEST_RESOURCES_PATH = "src/test/resources/"
 
-fun readFileFromTestResource(fileRelativePath: String): String =
-  File("$TEST_RESOURCES_PATH$fileRelativePath").readText(Charsets.UTF_8)

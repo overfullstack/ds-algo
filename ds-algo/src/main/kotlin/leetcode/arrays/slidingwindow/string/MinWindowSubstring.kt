@@ -6,21 +6,20 @@ fun minWindowLen(str: String, pattern: String): String {
   var start = 0
   var minWindowStart = 0
   var minWindowLen = Int.MAX_VALUE
-  var matchInwindowCount = 0
+  var matchInWindowCount = 0
   for ((i, char) in str.withIndex()) {
     patterFreqMap.computeIfPresent(char) { _, freq ->
-      if (freq > 0) matchInwindowCount++
+      if (freq > 0) matchInWindowCount++
       freq.dec()
     }
-
-    while (matchInwindowCount == pattern.length) {
+    while (matchInWindowCount == pattern.length) {
       val curWindowLen = i - start + 1
       if (curWindowLen < minWindowLen) {
         minWindowStart = start
         minWindowLen = curWindowLen
       }
       patterFreqMap.computeIfPresent(str[start]) { _, freq ->
-        if (freq >= 0) matchInwindowCount--
+        if (freq >= 0) matchInWindowCount--
         freq.inc()
       }
       start++
