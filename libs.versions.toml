@@ -1,6 +1,6 @@
 [versions]
 kotlin = "2.0.0-RC3"
-ksp = "2.0.0-RC3-1.0.20"
+ksp = "2.0.0-RC3-1.0.21-SNAPSHOT"
 revoman = "0.41.4"
 jetbrains-annotations = "24.1.0"
 kover = "0.8.0"
