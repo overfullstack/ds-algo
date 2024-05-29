@@ -1,7 +1,7 @@
 [versions]
 kotlin = "2.0.0"
 ksp = "2.0.0-1.0.21"
-revoman = "0.41.5"
+revoman = "0.41.6"
 jetbrains-annotations = "24.1.0"
 kover = "0.8.0"
 moshi = "2.0.0-SNAPSHOT"
