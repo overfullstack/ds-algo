@@ -10,7 +10,7 @@ kotest = "5.9.0"
 testLogger = "4.0.0"
 assertj-core = "3.26.0"
 kotlin-logging = "6.0.9"
-guava = "33.2.0-jre"
+guava = "33.2.1-jre"
 # Common dependencies
 junit = "5.10.2"
 spotless = "6.25.0"
