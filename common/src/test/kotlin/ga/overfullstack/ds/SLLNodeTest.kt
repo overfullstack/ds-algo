@@ -69,8 +69,8 @@ class SLLNodeTest :
 
     "SLL from JSON file" {
       forAll(
-        row(parseJsonFileToSLL("sll1.json"), intArrayOf(1, 2, 3)),
-        row(parseJsonFileToSLL("sll2.json"), intArrayOf(1, 1, 1, 3, 4, 5, 5, 5, 5, 10)),
+        row(parseJsonFileToSLL("ll/sll1.json"), intArrayOf(1, 2, 3)),
+        row(parseJsonFileToSLL("ll/sll2.json"), intArrayOf(1, 1, 1, 3, 4, 5, 5, 5, 5, 10)),
       ) { headSLLNode, result ->
         headSLLNode.toArray() shouldBe result
       }
