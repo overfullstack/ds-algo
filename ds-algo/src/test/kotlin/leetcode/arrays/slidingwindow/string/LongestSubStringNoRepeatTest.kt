@@ -1,4 +1,4 @@
-package leetcode.arrays.slidingwindow
+package leetcode.arrays.slidingwindow.string
 
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.data.forAll

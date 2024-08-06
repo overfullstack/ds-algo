@@ -1,6 +1,6 @@
 # Ds Algo
 
-This repo has practice problems well-commented to show how to approach a solution.
+This repo has practice problems, well-commented to show how to approach a solution.
 
 ## Setup
 

@@ -1,5 +1,5 @@
 /* gakshintala created on 1/2/20 */
-package leetcode.arrays.slidingwindow
+package leetcode.arrays.slidingwindow.string
 
 fun lengthOfLongestSubstringWithoutCharRepeat(s: String): Int {
   val map = hashMapOf<Char, Int>()

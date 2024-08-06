@@ -1,6 +1,6 @@
 package leetcode.arrays.slidingwindow.string
 
-/** https://leetcode.com/problems/minimum-window-substring/ */
+/** [minimum-window-substring](https://leetcode.com/problems/minimum-window-substring/) */
 fun minWindowLen(str: String, pattern: String): String {
   val patterFreqMap = pattern.groupingBy { it }.eachCount().toMutableMap()
   var start = 0
