@@ -3,12 +3,11 @@ package ga.overfullstack.ds.graph
 import com.salesforce.revoman.input.readFileInResourcesToString
 import com.squareup.moshi.JsonClass
 import com.squareup.moshi.Moshi
-import com.squareup.moshi.adapter
 import java.util.*
 
 class DiGraph<T>(
   private val adjacencyMap: MutableMap<T, Set<T>> = mutableMapOf(),
-  private var startNode: T? = null
+  private var origin: T? = null
 ) : MutableMap<T, Set<T>> by adjacencyMap {
 
   fun addEdge(source: T, destination: T) {
@@ -17,33 +16,55 @@ class DiGraph<T>(
 
   fun getNeighbours(node: T): Set<T>? = adjacencyMap[node]
 
-  tailrec fun bfs(
+  fun bfs(valToSearch: T): Boolean {
+    val visited = mutableSetOf<T>()
+    return adjacencyMap.keys
+      .asSequence()
+      .filter { it !in visited }
+      .any { bfs(valToSearch, visited, ArrayDeque(listOf(it))) }
+  }
+
+  private tailrec fun bfs(
     valToSearch: T,
-    visited: Set<T> = setOf(),
-    queue: ArrayDeque<T> = ArrayDeque(listOf(startNode))
-  ): Boolean =
-    if (queue.isEmpty()) {
-      false
-    } else {
-      val node = queue.removeLast()
-      if (node == valToSearch) {
-        true
-      } else {
-        val neighbours = adjacencyMap[node]?.filter { it !in visited } ?: emptySet()
-        queue.addAll(neighbours)
-        bfs(valToSearch, visited + node, queue)
+    visited: MutableSet<T>,
+    queue: ArrayDeque<T>,
+  ): Boolean {
+    return when {
+      queue.isEmpty() -> false
+      else -> {
+        val node = queue.removeLast()
+        if (node == valToSearch) {
+          true
+        } else {
+          val neighbours = adjacencyMap[node]?.filter { it !in visited } ?: emptySet()
+          queue.addAll(neighbours)
+          visited.add(node)
+          bfs(valToSearch, visited, queue)
+        }
       }
     }
+  }
 
-  fun dfs(currentNode: T, valToSearch: T, visited: Set<T> = setOf()): Boolean =
-    if (currentNode == valToSearch) {
-      true
-    } else {
-      adjacencyMap[currentNode]
-        ?.asSequence()
-        ?.filter { it !in visited }
-        ?.any { dfs(it, valToSearch, visited + it) } ?: false
+  fun dfs(valToSearch: T): Boolean {
+    val visited = mutableSetOf<T>()
+    return adjacencyMap.keys
+      .asSequence()
+      .filter { it !in visited }
+      .any { dfs(it, valToSearch, visited) }
+  }
+
+  fun dfs(currentNode: T, valToSearch: T, visited: MutableSet<T>): Boolean {
+    visited.add(currentNode)
+    return when (currentNode) {
+      valToSearch -> true
+      else -> {
+        adjacencyMap[currentNode]
+          ?.asSequence()
+          ?.filter { it !in visited }
+          ?.any { dfs(it, valToSearch, visited) } == true
+      }
     }
+  }
 
   /** -> DFT */
   fun dft(): List<T> {

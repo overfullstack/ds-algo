@@ -1,5 +1,5 @@
 /* gakshintala created on 11/17/19 */
-package leetcode.arrays.GasStation
+package leetcode.array.GasStation
 
 /** https://leetcode.com/problems/gas-station/ */
 fun canCompleteCircuit(gas: IntArray, cost: IntArray): Int {

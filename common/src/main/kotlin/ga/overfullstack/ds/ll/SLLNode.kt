@@ -32,13 +32,13 @@ data class SLLNode(var value: Int, var next: SLLNode? = null) {
 
     private tailrec fun ofNonEmpty(
       values: IntArray,
-      prevNode: SLLNode = SLLNode(values[values.lastIndex]),
+      next: SLLNode = SLLNode(values.last()),
       index: Int = values.lastIndex - 1
     ): SLLNode =
       when {
-        index < 0 -> prevNode
-        index == 0 -> SLLNode(values[index], prevNode)
-        else -> ofNonEmpty(values, SLLNode(values[index], prevNode), index - 1)
+        index < 0 -> next
+        index == 0 -> SLLNode(values[index], next)
+        else -> ofNonEmpty(values, SLLNode(values[index], next), index - 1)
       }
 
     fun of2(values: IntArray, index: Int = 0): SLLNode =

@@ -12,11 +12,7 @@ private const val PKG_PATH = "graph"
 
 val diGraph =
   DiGraph(
-    mutableMapOf(
-      0 to setOf(1, 2, 3, 4),
-      1 to setOf(4),
-      2 to setOf(5),
-    ),
+    mutableMapOf(0 to setOf(1, 2, 3, 4), 1 to setOf(4), 2 to setOf(5), 6 to setOf(7, 8, 9)),
     0
   )
 
@@ -34,16 +30,18 @@ class DiGraphTest :
     "bfs" {
       diGraph.bfs(5) shouldBe true
       diGraph.bfs(2) shouldBe true
-      diGraph.bfs(6) shouldBe false
+      diGraph.bfs(6) shouldBe true
+      diGraph.bfs(10) shouldBe false
     }
 
     "dfs" {
-      diGraph.bfs(5) shouldBe true
-      diGraph.bfs(2) shouldBe true
-      diGraph.bfs(6) shouldBe false
+      diGraph.dfs(5) shouldBe true
+      diGraph.dfs(2) shouldBe true
+      diGraph.dfs(6) shouldBe true
+      diGraph.dfs(10) shouldBe false
     }
 
-    "dft" { diGraph.dft() shouldContainExactly listOf(0, 1, 4, 2, 5, 3) }
+    "dft" { diGraph.dft() shouldContainExactly listOf(0, 1, 4, 2, 5, 3, 6, 7, 8, 9) }
 
     "Digraph has Cycle" {
       diGraph.hasCycle() shouldBe false
@@ -51,7 +49,7 @@ class DiGraphTest :
     }
 
     "Topological sort" {
-      diGraph.topologicalSort() shouldContainExactly listOf(4, 1, 5, 2, 3, 0)
+      diGraph.topologicalSort() shouldContainExactly listOf(4, 1, 5, 2, 3, 0, 7, 8, 9, 6)
       shouldThrow<IllegalArgumentException> { diGraphWithCycle.topologicalSort() }
     }
 

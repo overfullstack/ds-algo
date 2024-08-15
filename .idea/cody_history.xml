@@ -5,6 +5,40 @@
       <list>
         <AccountData>
           <accountId value="VXNlcjoyOQ==" />
+          <chats>
+            <list>
+              <chat>
+                <internalId value="3df74e9f-ce5f-4b6b-9036-7246cd4db5ec" />
+              </chat>
+              <chat>
+                <internalId value="4f23166b-70a3-4b89-873b-92404391dbba" />
+              </chat>
+              <chat>
+                <internalId value="7c43d9f6-55f5-455b-afdc-83fabcbe7022" />
+              </chat>
+              <chat>
+                <internalId value="3c5bb0d5-c75e-4432-b443-2bf6c6a54cc6" />
+              </chat>
+              <chat>
+                <internalId value="08663db7-9b4d-475d-b9d9-d7cb1f9b83d8" />
+              </chat>
+              <chat>
+                <internalId value="c2265412-61d3-42b6-8b26-cda42ff8a450" />
+              </chat>
+              <chat>
+                <internalId value="bae3065b-8f90-4c3b-b96a-c7bc1315cb8b" />
+              </chat>
+              <chat>
+                <internalId value="4414e908-f4f7-45d9-ad70-69cdb1d91bdb" />
+              </chat>
+              <chat>
+                <internalId value="74483c9e-d71e-40d7-8274-85df5f5eaa88" />
+              </chat>
+              <chat>
+                <internalId value="4a1f9a5c-0090-47a0-b8c2-2549a96d2a69" />
+              </chat>
+            </list>
+          </chats>
         </AccountData>
       </list>
     </accountData>
