@@ -1,6 +1,6 @@
 package leetcode.tree
 
-import ga.overfullstack.ds.tree.TreeNode
+import ds.tree.TreeNode
 import kotlin.math.abs
 
 fun TreeNode?.checkBalanced(): Pair<Int, Boolean> =

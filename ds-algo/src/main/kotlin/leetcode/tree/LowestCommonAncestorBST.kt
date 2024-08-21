@@ -1,6 +1,6 @@
 package leetcode.tree
 
-import ga.overfullstack.ds.tree.TreeNode
+import ds.tree.TreeNode
 
 /** * This is for BST */
 fun TreeNode.lowestCommonAncestorBST(p: TreeNode, q: TreeNode): TreeNode? =

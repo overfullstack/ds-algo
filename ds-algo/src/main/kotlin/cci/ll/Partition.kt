@@ -1,6 +1,6 @@
 package cci.ll
 
-import ga.overfullstack.ds.ll.SLLNode
+import ds.ll.SLLNode
 
 fun SLLNode?.partition(pivot: Int) {
   var gPtr = this

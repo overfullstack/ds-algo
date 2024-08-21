@@ -1,6 +1,6 @@
 package leetcode.tree
 
-import ga.overfullstack.ds.tree.TreeNode
+import ds.tree.TreeNode
 
 /** https://leetcode.com/problems/binary-tree-level-order-traversal */
 tailrec fun TreeNode.levelOrderTraversal(

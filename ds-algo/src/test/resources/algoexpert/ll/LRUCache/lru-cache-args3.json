@@ -1,0 +1,94 @@
+{
+  "classMethodsToCall" : [
+    {
+      "arguments" : [
+        "a",
+        1
+      ],
+      "method" : "insertKeyValuePair"
+    },
+    {
+      "arguments" : [
+        "b",
+        2
+      ],
+      "method" : "insertKeyValuePair"
+    },
+    {
+      "arguments" : [
+        "c",
+        3
+      ],
+      "method" : "insertKeyValuePair"
+    },
+    {
+      "arguments" : [
+        "d",
+        4
+      ],
+      "method" : "insertKeyValuePair"
+    },
+    {
+      "arguments" : [
+        "a"
+      ],
+      "method" : "getValueFromKey"
+    },
+    {
+      "arguments" : [
+        "b"
+      ],
+      "method" : "getValueFromKey"
+    },
+    {
+      "arguments" : [
+        "c"
+      ],
+      "method" : "getValueFromKey"
+    },
+    {
+      "arguments" : [
+        "d"
+      ],
+      "method" : "getValueFromKey"
+    },
+    {
+      "arguments" : [
+        "e",
+        5
+      ],
+      "method" : "insertKeyValuePair"
+    },
+    {
+      "arguments" : [
+        "a"
+      ],
+      "method" : "getValueFromKey"
+    },
+    {
+      "arguments" : [
+        "b"
+      ],
+      "method" : "getValueFromKey"
+    },
+    {
+      "arguments" : [
+        "c"
+      ],
+      "method" : "getValueFromKey"
+    },
+    {
+      "arguments" : [
+        "d"
+      ],
+      "method" : "getValueFromKey"
+    },
+    {
+      "arguments" : [
+        "e"
+      ],
+      "method" : "getValueFromKey"
+    }
+  ],
+  "maxSize" : 4
+}

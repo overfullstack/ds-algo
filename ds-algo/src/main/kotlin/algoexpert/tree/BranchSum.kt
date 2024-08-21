@@ -1,6 +1,6 @@
 package algoexpert.tree
 
-import ga.overfullstack.ds.tree.TreeNode
+import ds.tree.TreeNode
 
 fun TreeNode.branchSum(curBranchSum: Int = 0): List<Int> {
   val newBranchSum = curBranchSum + value

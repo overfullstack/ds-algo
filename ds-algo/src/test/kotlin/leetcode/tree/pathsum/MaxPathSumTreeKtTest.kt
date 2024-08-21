@@ -1,6 +1,6 @@
 package leetcode.tree.pathsum
 
-import ga.overfullstack.ds.tree.TreeNode
+import ds.tree.TreeNode
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.data.forAll
 import io.kotest.data.row

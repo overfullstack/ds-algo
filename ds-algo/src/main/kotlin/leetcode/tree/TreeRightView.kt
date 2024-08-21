@@ -1,6 +1,6 @@
 package leetcode.tree
 
-import ga.overfullstack.ds.tree.TreeNode
+import ds.tree.TreeNode
 
 fun TreeNode.rightSideView(result: MutableList<Int> = mutableListOf(), depth: Int = 0): List<Int> {
   if (

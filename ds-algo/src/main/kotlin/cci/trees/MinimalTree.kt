@@ -1,6 +1,6 @@
 package cci.trees
 
-import ga.overfullstack.ds.tree.TreeNode
+import ds.tree.TreeNode
 
 fun arrToBST(arr: IntArray, low: Int = 0, high: Int = arr.lastIndex): TreeNode? =
   when {

@@ -1,6 +1,6 @@
 package leetcode.dp.HouseRobber
 
-import ga.overfullstack.ds.tree.TreeNode
+import ds.tree.TreeNode
 
 fun rob3(root: TreeNode?): Int {
   val result = root?.robUtil() ?: 0 to 0

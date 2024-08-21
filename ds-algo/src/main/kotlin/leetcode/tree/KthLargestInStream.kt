@@ -1,9 +1,9 @@
 /* gakshintala created on 12/21/19 */
 package leetcode.tree
 
-import ga.overfullstack.ds.tree.TreeNode
-import ga.overfullstack.ds.tree.TreeNode.Companion.arrToBST
-import ga.overfullstack.ds.tree.reverseInorderTraversalMorris
+import ds.tree.TreeNode
+import ds.tree.TreeNode.Companion.arrToBST
+import ds.tree.reverseInorderTraversalMorris
 
 class KthLargestInStream(private val kth: Int, nums: IntArray) {
   private var root = arrToBST(nums)

@@ -1,6 +1,6 @@
 package algoexpert.ll
 
-import ga.overfullstack.ds.ll.SLLNode.Companion.parseJsonFileToSLL
+import ds.ll.SLLNode.Companion.parseJsonFileToSLL
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.data.forAll
 import io.kotest.data.row

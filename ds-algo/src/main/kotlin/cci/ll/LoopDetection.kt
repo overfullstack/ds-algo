@@ -1,6 +1,6 @@
 package cci.ll
 
-import ga.overfullstack.ds.ll.SLLNode
+import ds.ll.SLLNode
 
 fun SLLNode.detectLoop(): SLLNode? {
   val meetingPtr = getMeetingPtr(this) { it.next?.next }

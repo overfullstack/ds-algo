@@ -1,6 +1,6 @@
 package leetcode.tree
 
-import ga.overfullstack.ds.tree.TreeNode
+import ds.tree.TreeNode
 
 /**
  * https://leetcode.com/problems/populating-next-right-pointers-in-each-node/

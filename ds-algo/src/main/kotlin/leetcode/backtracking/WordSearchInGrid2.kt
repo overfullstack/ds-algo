@@ -1,7 +1,7 @@
 /* gakshintala created on 12/27/19 */
 package leetcode.backtracking
 
-import ga.overfullstack.ds.TrieNode
+import ds.TrieNode
 
 fun findWords(board: Array<CharArray>, words: Array<String>): List<String> {
   val trie = TrieNode().apply { words.toSet().forEach { word -> insert(word) } }

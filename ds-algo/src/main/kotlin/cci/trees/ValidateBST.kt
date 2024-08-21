@@ -1,6 +1,6 @@
 package cci.trees
 
-import ga.overfullstack.ds.tree.TreeNode
+import ds.tree.TreeNode
 
 fun TreeNode?.validateBST(min: Int = Int.MIN_VALUE, max: Int = Int.MAX_VALUE): Boolean =
   if (this == null) {

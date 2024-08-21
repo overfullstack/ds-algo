@@ -1,6 +1,6 @@
 package cci.trees
 
-import ga.overfullstack.ds.tree.TreeNode
+import ds.tree.TreeNode
 
 fun TreeNode.successor(): TreeNode? =
   if (right != null) {

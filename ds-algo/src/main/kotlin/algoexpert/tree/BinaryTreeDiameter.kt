@@ -1,6 +1,6 @@
 package algoexpert.tree
 
-import ga.overfullstack.ds.tree.TreeNode
+import ds.tree.TreeNode
 
 fun TreeNode.diameter(): Pair<Int, Int> {
   val (leftDiameter, maxDiameterFromLeft) = left?.diameter() ?: (0 to 0)

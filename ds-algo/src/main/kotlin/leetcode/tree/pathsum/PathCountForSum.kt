@@ -1,7 +1,7 @@
 /* gakshintala created on 12/13/19 */
 package leetcode.tree.pathsum
 
-import ga.overfullstack.ds.tree.TreeNode
+import ds.tree.TreeNode
 
 /**
  * https://leetcode.com/problems/path-sum-iii/ Find the number of paths that sum to a given value.

@@ -1,6 +1,6 @@
 package algoexpert.tree
 
-import ga.overfullstack.ds.tree.TreeNode
+import ds.tree.TreeNode
 
 fun getOperator(symbol: Int): (Int, Int) -> Int =
   when (symbol) {

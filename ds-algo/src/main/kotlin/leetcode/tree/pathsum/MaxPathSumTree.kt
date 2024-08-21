@@ -1,7 +1,7 @@
 /* gakshintala created on 1/18/20 */
 package leetcode.tree.pathsum
 
-import ga.overfullstack.ds.tree.TreeNode
+import ds.tree.TreeNode
 
 /** https://leetcode.com/problems/binary-tree-maximum-path-sum/ */
 fun TreeNode.maxPathSum(): Pair<Int, Int> {

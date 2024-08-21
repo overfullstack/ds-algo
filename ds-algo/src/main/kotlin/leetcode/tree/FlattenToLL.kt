@@ -1,7 +1,7 @@
 /* gakshintala created on 5/26/20 */
 package leetcode.tree
 
-import ga.overfullstack.ds.tree.TreeNode
+import ds.tree.TreeNode
 
 /** https://leetcode.com/problems/flatten-binary-tree-to-linked-list/ */
 fun TreeNode.flatten(terminal: TreeNode? = null): TreeNode? {

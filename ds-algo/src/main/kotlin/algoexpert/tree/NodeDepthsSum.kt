@@ -1,6 +1,6 @@
 package algoexpert.tree
 
-import ga.overfullstack.ds.tree.TreeNode
+import ds.tree.TreeNode
 
 tailrec fun TreeNode.nodeDepthsSum(
   currentLevel: List<TreeNode> = listOf(this),

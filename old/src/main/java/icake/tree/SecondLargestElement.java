@@ -1,6 +1,6 @@
 package icake.tree;
 
-import ga.overfullstack.ds.tree.TreeNode;
+import ds.tree.TreeNode;
 
 /** Created by gakshintala on 4/19/16. */
 public class SecondLargestElement {

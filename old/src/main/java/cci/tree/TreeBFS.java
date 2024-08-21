@@ -1,6 +1,6 @@
 package cci.tree;
 
-import ga.overfullstack.ds.tree.TreeNode;
+import ds.tree.TreeNode;
 import java.util.LinkedList;
 import java.util.Queue;
 

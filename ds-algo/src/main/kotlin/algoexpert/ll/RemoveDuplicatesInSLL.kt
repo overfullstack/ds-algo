@@ -1,6 +1,6 @@
 package algoexpert.ll
 
-import ga.overfullstack.ds.ll.SLLNode
+import ds.ll.SLLNode
 
 fun SLLNode.removeDuplicates(): SLLNode {
   var curPtr = this

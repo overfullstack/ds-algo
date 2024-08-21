@@ -1,7 +1,7 @@
 /* gakshintala created on 12/13/19 */
 package leetcode.tree.pathsum
 
-import ga.overfullstack.ds.tree.TreeNode
+import ds.tree.TreeNode
 
 private fun TreeNode.allPathsTopToBottomForSum(
   sum: Int,

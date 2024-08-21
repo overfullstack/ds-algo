@@ -1,6 +1,6 @@
 package leetcode.dp
 
-import ga.overfullstack.ds.tree.TreeNode
+import ds.tree.TreeNode
 
 fun generateTrees(n: Int): List<TreeNode?> = if (n == 0) emptyList() else generateTreesUtil(n)
 

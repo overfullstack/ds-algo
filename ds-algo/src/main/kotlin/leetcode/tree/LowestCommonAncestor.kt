@@ -1,6 +1,6 @@
 package leetcode.tree
 
-import ga.overfullstack.ds.tree.TreeNode
+import ds.tree.TreeNode
 
 fun TreeNode?.lowestCommonAncestor(p: TreeNode, q: TreeNode): TreeNode? {
   if (this == null || this == p || this == q) {

@@ -1,7 +1,7 @@
 /* gakshintala created on 1/18/20 */
 package leetcode.tree
 
-import ga.overfullstack.ds.tree.TreeNode
+import ds.tree.TreeNode
 
 fun TreeNode.isPairWithSumPresent(targetSum: Int): Boolean {
   val smallStk = ArrayDeque<TreeNode>()

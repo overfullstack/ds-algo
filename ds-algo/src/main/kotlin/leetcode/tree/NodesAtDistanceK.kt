@@ -1,7 +1,7 @@
 /* gakshintala created on 1/26/20 */
 package leetcode.tree
 
-import ga.overfullstack.ds.tree.TreeNode
+import ds.tree.TreeNode
 import leetcode.tree.NodeAtDistanceK.AllNodesFound
 import leetcode.tree.NodeAtDistanceK.FoundAtDistance
 import leetcode.tree.NodeAtDistanceK.NotFound

@@ -1,6 +1,6 @@
 package cci.trees
 
-import ga.overfullstack.ds.tree.TreeNode.Companion.levelOrderToTree
+import ds.tree.TreeNode.Companion.levelOrderToTree
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.data.forAll
 import io.kotest.data.row

@@ -1,7 +1,7 @@
 /* gakshintala created on 1/19/20 */
 package leetcode.tree
 
-import ga.overfullstack.ds.tree.TreeNode
+import ds.tree.TreeNode
 
 private fun TreeNode.allPathsFromRootToLeaf(path: String = ""): List<String> =
   if (left == null && right == null) {

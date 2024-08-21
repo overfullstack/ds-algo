@@ -1,6 +1,6 @@
 package algoexpert.tree
 
-import ga.overfullstack.ds.tree.TreeNode
+import ds.tree.TreeNode
 import kotlin.math.abs
 
 fun TreeNode.closestNodeInBST(valueToSearch: Int, closest: Int = value): Int {

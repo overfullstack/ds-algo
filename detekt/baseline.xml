@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <SmellBaseline>
   <ManuallySuppressedIssues>
-    <ID>PackageNaming:TreeFromParentArray.kt$package g4g</ID>
+    <ID>PackageNaming:TreeFromParentArray.kt$package gfg</ID>
   </ManuallySuppressedIssues>
   <CurrentIssues/>
 </SmellBaseline>
