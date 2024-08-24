@@ -1,6 +1,8 @@
 package algoexpert.ll.lrucache
 
 import ds.ll.DLLNode
+import kotlinx.serialization.json.int
+import kotlinx.serialization.json.jsonPrimitive
 
 /* 18 Aug 2024 21:21 */
 fun lruCache(lruCacheArgs: LRUCacheArgs): Pair<List<String?>, List<Pair<String, Int>>> {
@@ -9,13 +11,13 @@ fun lruCache(lruCacheArgs: LRUCacheArgs): Pair<List<String?>, List<Pair<String, 
   for ((args, method) in lruCacheArgs.classMethodsToCall) {
     when (method) {
       "insertKeyValuePair" -> {
-        val key = args[0] as String
-        val value = (args[1] as Double).toInt()
+        val key = args[0].jsonPrimitive.content
+        val value = args[1].jsonPrimitive.int
         lruQueue.insertKeyValuePair(key, value)
       }
       "getMostRecentKey" -> queryResults.add(lruQueue.getMostRecentKey())
       "getValueFromKey" -> {
-        val key = args[0] as String
+        val key = args[0].jsonPrimitive.content
         queryResults.add(lruQueue.getValueFromKey(key)?.toString())
       }
     }

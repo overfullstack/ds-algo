@@ -1,14 +1,11 @@
 plugins {
   id("ds-algo.kt-conventions")
-  alias(libs.plugins.moshix)
-  alias(libs.plugins.ksp)
+  alias(libs.plugins.kotlinx.serialization)
 }
 
 dependencies {
   implementation(project(":common"))
-  implementation(libs.moshi.kotlin)
+  implementation(libs.kotlinx.serialization)
   implementation(libs.bundles.kotlin.logging)
   implementation(libs.revoman)
 }
-
-moshi { enableSealed = true }

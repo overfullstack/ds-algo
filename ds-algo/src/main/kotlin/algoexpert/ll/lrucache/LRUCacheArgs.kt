@@ -1,20 +1,17 @@
 package algoexpert.ll.lrucache
 
 import com.salesforce.revoman.input.readFileInResourcesToString
-import com.squareup.moshi.JsonClass
-import com.squareup.moshi.Moshi
+import kotlinx.serialization.Serializable
+import kotlinx.serialization.json.Json
+import kotlinx.serialization.json.JsonElement
 
-@JsonClass(generateAdapter = true)
+@Serializable
 data class LRUCacheArgs(val classMethodsToCall: List<ClassMethodsToCall>, val maxSize: Int) {
-  @JsonClass(generateAdapter = true)
-  data class ClassMethodsToCall(val arguments: List<Any>, val method: String)
+  @Serializable data class ClassMethodsToCall(val arguments: List<JsonElement>, val method: String)
 
   companion object {
     @OptIn(ExperimentalStdlibApi::class)
     fun parseJsonFileToLRUCacheArgs(jsonFilePath: String): LRUCacheArgs =
-      Moshi.Builder()
-        .build()
-        .adapter<LRUCacheArgs>()
-        .fromJson(readFileInResourcesToString(jsonFilePath))!!
+      Json.decodeFromString<LRUCacheArgs>(readFileInResourcesToString(jsonFilePath))
   }
 }

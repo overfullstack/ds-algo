@@ -4,7 +4,11 @@ import ds.ll.SLLNode.Companion.parseJsonFileToSLL
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.data.forAll
 import io.kotest.data.row
+import io.kotest.inspectors.forAll
 import io.kotest.matchers.shouldBe
+import testcase.TestCase.Companion.parseJsonFileToReorderListArgs
+
+private const val PKG_PATH = "ll/sll"
 
 class SLLNodeTest :
   StringSpec({
@@ -35,14 +39,15 @@ class SLLNodeTest :
       }
     }
 
-    "Reverse" {
-      forAll(
-        row(intArrayOf(1, 2, 3, 4), intArrayOf(4, 3, 2, 1)),
-        row(intArrayOf(1), intArrayOf(1)),
-        row(intArrayOf(), null),
-      ) { arr, result ->
-        SLLNode.of(arr)?.reverse()?.toArray() shouldBe result
-      }
+    "reverse" {
+      parseJsonFileToReorderListArgs(
+          "$PKG_PATH/sll-reverse-test-case-1.json",
+          "$PKG_PATH/sll-reverse-test-case-2.json"
+        )
+        .forAll { (inputs, output) ->
+          val head = SLLNode.of(inputs.toIntArray())!!
+          head.reverse().toArray() shouldBe output.toIntArray()
+        }
     }
 
     "length" {
@@ -68,8 +73,8 @@ class SLLNodeTest :
 
     "SLL from JSON file" {
       forAll(
-        row(parseJsonFileToSLL("ll/sll1.json"), intArrayOf(1, 2, 3)),
-        row(parseJsonFileToSLL("ll/sll2.json"), intArrayOf(1, 1, 1, 3, 4, 5, 5, 5, 5, 10)),
+        row(parseJsonFileToSLL("$PKG_PATH/sll1.json"), intArrayOf(1, 2, 3)),
+        row(parseJsonFileToSLL("$PKG_PATH/sll2.json"), intArrayOf(1, 1, 1, 3, 4, 5, 5, 5, 5, 10)),
       ) { headSLLNode, result ->
         headSLLNode.toArray() shouldBe result
       }

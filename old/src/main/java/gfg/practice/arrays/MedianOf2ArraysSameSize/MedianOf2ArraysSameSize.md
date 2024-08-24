@@ -9,7 +9,7 @@ Sum of Middle Elements of two sorted arrays array Amazon Given 2 sorted arrays A
 each. Print sum of middle elements of the array obtained after merging the given arrays.
 
 Input:
-The first line contains 'T' denoting the number of testcases. Then follows description of testcases.
+The first line contains 'T' denoting the number of testcase. Then follows description of testcase.
 Each case begins with a single positive integer N denoting the size of array. The second line
 contains the N space separated positive integers denoting the elements of array A. The third line
 contains N space separated positive integers denoting the elements of array B.

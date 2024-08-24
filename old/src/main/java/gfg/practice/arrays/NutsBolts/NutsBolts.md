@@ -41,8 +41,8 @@ be compared with bolt and bolt can only be compared with nut to see which one is
 
 Input:
 
-The first line contains 'T' denoting the number of testcases. Then follows description of T
-testcases:
+The first line contains 'T' denoting the number of testcase. Then follows description of T
+testcase:
 Each case begins with a single positive integer N denoting the number of nuts/bolts.
 
 Then follows the array of nuts, each element separated by a space.

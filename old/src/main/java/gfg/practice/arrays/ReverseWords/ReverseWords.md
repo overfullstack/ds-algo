@@ -17,7 +17,7 @@ Output : s = "practice of lot a needs coding at good getting"
 Given a String of length N reverse the words in it. Words are separated by dots.
 
 Input:
-The first line contains T denoting the number of testcases. Then follows description of testcases.
+The first line contains T denoting the number of testcase. Then follows description of testcase.
 Each case contains a string containing spaces and characters.
 
 Output:

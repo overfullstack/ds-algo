@@ -1,9 +1,9 @@
 package ds.tree
 
 import com.salesforce.revoman.input.readFileInResourcesToString
-import com.squareup.moshi.JsonClass
-import com.squareup.moshi.Moshi
 import java.util.*
+import kotlinx.serialization.Serializable
+import kotlinx.serialization.json.Json
 
 data class TreeNode
 @JvmOverloads
@@ -163,11 +163,11 @@ constructor(
       return root
     }
 
-    @JsonClass(generateAdapter = true)
+    @Serializable
     data class JTree(val tree: Tree) {
-      @JsonClass(generateAdapter = true)
+      @Serializable
       data class Tree(val nodes: List<JNode>, val root: String) {
-        @JsonClass(generateAdapter = true)
+        @Serializable
         data class JNode(val id: String, val left: String?, val right: String?, val value: Int)
       }
     }
@@ -176,8 +176,7 @@ constructor(
     @OptIn(ExperimentalStdlibApi::class)
     fun parseJsonFileToTree(jsonFilePath: String): TreeNode {
       val treeJson = readFileInResourcesToString(jsonFilePath)
-      val treeAdapter = Moshi.Builder().build().adapter<JTree>()
-      val jTree = treeAdapter.fromJson(treeJson)!!
+      val jTree = Json.decodeFromString<JTree>(treeJson)
       val idToTreeNode =
         jTree.tree.nodes.associate {
           it.id to Triple(TreeNode(id = it.id, value = it.value), it.left, it.right)

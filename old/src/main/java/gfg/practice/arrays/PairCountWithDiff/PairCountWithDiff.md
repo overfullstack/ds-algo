@@ -15,8 +15,8 @@ are {0, 4}, {4, 8}, {8, 12}, {12, 16} and {16, 20}
 Given an array of N positive integers a1, a2 ..... an. Find the number of pairs of integers whose
 difference is equal to a given number K.
 
-Input: The first line of the input contains 'T' denoting the total number of testcases.Then follows
-the description of testcases. The first line of each testcase contains two space separated positive
+Input: The first line of the input contains 'T' denoting the total number of testcase.Then follows
+the description of testcase. The first line of each testcase contains two space separated positive
 integers N and K denoting the size of array and the value of K. The second line contains N space
 separated positive integers denoting the elements of array.
 

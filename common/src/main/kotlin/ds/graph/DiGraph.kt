@@ -1,9 +1,9 @@
 package ds.graph
 
 import com.salesforce.revoman.input.readFileInResourcesToString
-import com.squareup.moshi.JsonClass
-import com.squareup.moshi.Moshi
 import java.util.*
+import kotlinx.serialization.Serializable
+import kotlinx.serialization.json.Json
 
 class DiGraph<T>(
   private val adjacencyMap: MutableMap<T, Set<T>> = mutableMapOf(),
@@ -159,11 +159,11 @@ class DiGraph<T>(
 
   /** TOPOLOGICAL SORT with Cycle Detection -> */
   companion object {
-    @JsonClass(generateAdapter = true)
+    @Serializable
     data class JDiGraph(val graph: Graph) {
-      @JsonClass(generateAdapter = true)
+      @Serializable
       data class Graph(val nodes: List<JGraphNode>, val startNode: String) {
-        @JsonClass(generateAdapter = true)
+        @Serializable
         data class JGraphNode(val children: List<String>, val id: String, val value: String)
       }
     }
@@ -171,8 +171,7 @@ class DiGraph<T>(
     @OptIn(ExperimentalStdlibApi::class)
     fun parseJsonFileToDiGraph(jsonFilePath: String): DiGraph<String> {
       val graphJson = readFileInResourcesToString(jsonFilePath)
-      val graphAdapter = Moshi.Builder().build().adapter<JDiGraph>()
-      val jGraph = graphAdapter.fromJson(graphJson)!!
+      val jGraph = Json.decodeFromString<JDiGraph>(graphJson)
       return DiGraph(
         jGraph.graph.nodes.associate { it.value to it.children.toSet() }.toMutableMap(),
         jGraph.graph.startNode

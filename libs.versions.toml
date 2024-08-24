@@ -1,11 +1,10 @@
 [versions]
 kotlin = "2.0.20"
 ksp = "2.0.20-1.0.24"
+kotlinx-serialization = "1.7.1"
 revoman = "0.41.6"
 jetbrains-annotations = "24.1.0"
 kover = "0.8.3"
-moshi = "2.0.0-SNAPSHOT"
-moshix = "0.28.0"
 kotest = "5.9.1"
 testLogger = "4.0.0"
 assertj-core = "3.26.3"
@@ -18,7 +17,7 @@ apache-log4j = "2.23.1"
 
 [libraries]
 revoman = { module = "com.salesforce.revoman:revoman", version.ref = "revoman" }
-moshi-kotlin = { module = "com.squareup.moshi:moshi-kotlin", version.ref = "moshi" }
+kotlinx-serialization = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinx-serialization" }
 jetbrains-annotations = { module = "org.jetbrains:annotations", version.ref = "jetbrains-annotations" }
 testLogger-gradle = { module = "com.adarshr.test-logger:com.adarshr.test-logger.gradle.plugin", version.ref = "testLogger" }
 kotest-assertions-core = { module = "io.kotest:kotest-assertions-core", version.ref = "kotest" }
@@ -51,7 +50,7 @@ kotlin-logging = ["kotlin-logging-jvm", "log4j-api", "log4j-core", "log4j-slf4j2
 [plugins]
 kover = { id = "org.jetbrains.kotlinx.kover", version.ref = "kover" }
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
+kotlinx-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 spotless = { id = "com.diffplug.spotless", version.ref = "spotless" }
 testLogger = { id = "com.adarshr.test-logger", version.ref = "testLogger" }
-moshix = { id = "dev.zacsweers.moshix", version.ref = "moshix" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }

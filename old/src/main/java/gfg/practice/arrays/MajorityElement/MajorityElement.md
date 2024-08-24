@@ -17,7 +17,7 @@ Write a program to find the majority element in the array. A majority element in
 size n is an element that appears more than n/2 times (and hence there is at most one such element).
 If input array doesn't contain a majority element, then output "NO Majority Element"
 
-Input:  The first line of the input contains T denoting the number of testcases. The first line of
+Input:  The first line of the input contains T denoting the number of testcase. The first line of
 the test case will be the size of array and second line will be the elements of the array. Output:
 For each test case the output will be the majority element of the array. Constraints:
 
