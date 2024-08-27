@@ -1,0 +1,69 @@
+{
+  "testcases": [
+    {
+      "name": "testcase 1",
+      "inputs": [
+        {
+          "1": "{}[]{}[{}])"
+        }
+      ],
+      "output": [
+        {
+          "1": false
+        }
+      ]
+    },
+    {
+      "name": "testcase 2",
+      "inputs": [
+        {
+          "1": "(){[{()}]}"
+        }
+      ],
+      "output": [
+        {
+          "1": true
+        }
+      ]
+    },
+    {
+      "name": "testcase 3",
+      "inputs": [
+        {
+          "1": "((((("
+        }
+      ],
+      "output": [
+        {
+          "1": false
+        }
+      ]
+    },
+    {
+      "name": "testcase 4",
+      "inputs": [
+        {
+          "1": "{{()}"
+        }
+      ],
+      "output": [
+        {
+          "1": false
+        }
+      ]
+    },
+    {
+      "name": "testcase 5",
+      "inputs": [
+        {
+          "1": "{()}}"
+        }
+      ],
+      "output": [
+        {
+          "1": false
+        }
+      ]
+    }
+  ]
+}

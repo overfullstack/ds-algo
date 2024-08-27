@@ -2,7 +2,7 @@
 
 #end
 #parse("File Header.java")
+/* ${DATE} ${TIME} */
 
-/* $DATE $TIME */
-
-$END
+class ${NAME} {
+}

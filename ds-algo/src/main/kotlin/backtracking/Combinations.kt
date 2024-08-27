@@ -10,5 +10,5 @@ fun combinations(str: String, combination: String = "", startIndex: Int = 0): Li
   }
 
 fun main() {
-  println(combinations("abc").joinToString(", "))
+  println(combinations("abc").joinToString())
 }

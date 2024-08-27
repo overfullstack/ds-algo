@@ -8,16 +8,15 @@ fun reverseInEvenGroups(head: SLLNode): SLLNode {
   var prevToGrp: SLLNode? = head
   var grpSize = 2
   while (prevToGrp?.next?.next != null) {
-    val (noOfNodes, nodeAfter) = prevToGrp.getNodeAfterOrLast(grpSize)
-    if (grpSize % 2 == 0 || (grpSize - noOfNodes) % 2 == 0) {
-      val nextToGrp = nodeAfter.next
+    val (stepCount, grpEndNode) = prevToGrp.getNodeAfterOrLast(grpSize)
+    if (grpSize % 2 == 0 || stepCount % 2 == 0) {
+      val nextToGrp = grpEndNode.next
       val rgTail = prevToGrp.next
-      val rgHead = rgTail?.reverseInGroup(grpSize)
+      val rgHead = rgTail?.reverseInGroup(grpSize, nextToGrp)
       prevToGrp.next = rgHead
-      rgTail?.next = nextToGrp
       prevToGrp = rgTail
     } else {
-      prevToGrp = nodeAfter
+      prevToGrp = grpEndNode
     }
     grpSize++
   }
@@ -37,8 +36,8 @@ fun SLLNode.reverseInGroup(groupSize: Int, prev: SLLNode? = null): SLLNode =
     }
   }
 
-fun SLLNode.getNodeAfterOrLast(stepCount: Int): Pair<Int, SLLNode> =
+fun SLLNode.getNodeAfterOrLast(stepCount: Int, curStepCount: Int = 0): Pair<Int, SLLNode> =
   when {
-    next == null || stepCount == 0 -> stepCount to this
-    else -> next!!.getNodeAfterOrLast(stepCount - 1)
+    next == null || stepCount == curStepCount -> curStepCount to this
+    else -> next!!.getNodeAfterOrLast(stepCount, curStepCount + 1)
   }

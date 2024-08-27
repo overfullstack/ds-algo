@@ -6,7 +6,7 @@ import io.kotest.data.forAll
 import io.kotest.data.row
 import io.kotest.inspectors.forAll
 import io.kotest.matchers.shouldBe
-import testcase.TestCase.Companion.parseJsonFileToReorderListArgs
+import testcase.TestCase1.Companion.parseJsonFileToTestCases
 
 private const val PKG_PATH = "ll/sll"
 
@@ -40,9 +40,9 @@ class SLLNodeTest :
     }
 
     "reverse" {
-      parseJsonFileToReorderListArgs(
-          "$PKG_PATH/sll-reverse-test-case-1.json",
-          "$PKG_PATH/sll-reverse-test-case-2.json"
+      parseJsonFileToTestCases(
+          "$PKG_PATH/sll-reverse-test-cases-1.json",
+          "$PKG_PATH/sll-reverse-test-cases-2.json"
         )
         .forAll { (inputs, output) ->
           val head = SLLNode.of(inputs.toIntArray())!!

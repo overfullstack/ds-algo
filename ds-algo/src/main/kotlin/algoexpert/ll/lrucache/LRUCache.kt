@@ -95,5 +95,5 @@ class LRUQueue(val maxSize: Int) {
   fun toList(): List<Pair<String, Int>> = head?.toList() ?: emptyList()
 
   override fun toString(): String =
-    "[${toList().map { "(${it.first}, ${it.second})" }.joinToString(", ")}]"
+    "[${toList().map { "(${it.first}, ${it.second})" }.joinToString()}]"
 }

@@ -32,5 +32,5 @@ fun main() {
       .map { it.trim().toInt() }
       .sorted() // * Sort the array before calling. Sorting is to keep all duplicates together *
   val target = readln().toInt()
-  combinationSum2(candidates, target).forEach { println(it.joinToString(",")) }
+  combinationSum2(candidates, target).forEach { println(it.joinToString()) }
 }
