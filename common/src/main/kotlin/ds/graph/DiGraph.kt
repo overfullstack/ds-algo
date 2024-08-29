@@ -5,10 +5,8 @@ import java.util.*
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
 
-class DiGraph<T>(
-  private val adjacencyMap: MutableMap<T, Set<T>> = mutableMapOf(),
-  private var origin: T? = null
-) : MutableMap<T, Set<T>> by adjacencyMap {
+class DiGraph<T>(private val adjacencyMap: MutableMap<T, Set<T>> = mutableMapOf()) :
+  MutableMap<T, Set<T>> by adjacencyMap {
 
   fun addEdge(source: T, destination: T) {
     adjacencyMap.merge(source, setOf(destination)) { oldSet, _ -> oldSet + destination }
@@ -33,13 +31,14 @@ class DiGraph<T>(
       queue.isEmpty() -> false
       else -> {
         val node = queue.removeLast()
-        if (node == valToSearch) {
-          true
-        } else {
-          val neighbours = adjacencyMap[node]?.filter { it !in visited } ?: emptySet()
-          queue.addAll(neighbours)
-          visited.add(node)
-          bfs(valToSearch, visited, queue)
+        when (node) {
+          valToSearch -> true
+          else -> {
+            val neighbours = adjacencyMap[node]?.filter { it !in visited } ?: emptySet()
+            queue.addAll(neighbours)
+            visited.add(node)
+            bfs(valToSearch, visited, queue)
+          }
         }
       }
     }
@@ -50,12 +49,11 @@ class DiGraph<T>(
     return adjacencyMap.keys
       .asSequence()
       .filter { it !in visited }
-      .any { dfs(it, valToSearch, visited) }
+      .any { dfs(it, valToSearch, visited.apply { add(it) }) }
   }
 
-  fun dfs(currentNode: T, valToSearch: T, visited: MutableSet<T>): Boolean {
-    visited.add(currentNode)
-    return when (currentNode) {
+  fun dfs(currentNode: T, valToSearch: T, visited: MutableSet<T>): Boolean =
+    when (currentNode) {
       valToSearch -> true
       else -> {
         adjacencyMap[currentNode]
@@ -64,53 +62,25 @@ class DiGraph<T>(
           ?.any { dfs(it, valToSearch, visited) } == true
       }
     }
-  }
 
   /** -> DFT */
   fun dft(): List<T> {
-    val visited = mutableSetOf<T>() // * Global Visited, as no need to backtrack.
+    val visited = mutableSetOf<T>()
     return adjacencyMap.keys
       .asSequence()
       .filter { it !in visited }
-      .flatMap { it.dftPerBranch(visited) }
+      .flatMap { listOf(it) + it.dftPerBranch(visited.apply { add(it) }) }
       .toList()
   }
 
   private fun T.dftPerBranch(
     visited: MutableSet<T>,
-    path: Sequence<T> = sequenceOf(this)
-  ): Sequence<T> {
-    visited.add(this)
-    val neighbors = adjacencyMap[this]
-    if (neighbors.isNullOrEmpty()) {
-      return path
-    }
-    return neighbors
-      .asSequence()
-      .filter { it !in visited }
-      .flatMap { it.dftPerBranch(visited, path + it) }
-      .distinct()
-  }
-
-  /** DFT Mutable approach */
-  private fun T.dftForAllNeighbours(
-    visited: MutableSet<T>,
-    path: MutableList<T> = mutableListOf()
-  ): List<T> {
-    path.add(this)
-    visited.add(this)
-
-    val neighbors = adjacencyMap[this]
-    if (neighbors.isNullOrEmpty()) {
-      return path
-    }
-    for (neighbor in neighbors) {
-      if (neighbor !in visited) {
-        neighbor.dftForAllNeighbours(visited, path)
-      }
-    }
-    return path
-  }
+  ): Sequence<T> =
+    adjacencyMap[this]
+      ?.asSequence()
+      ?.filter { it !in visited }
+      ?.flatMap { listOf(it) + it.dftPerBranch(visited.apply { add(it) }) }
+      ?.distinct() ?: emptySequence()
 
   /** DFT <- */
 
@@ -120,17 +90,17 @@ class DiGraph<T>(
     return adjacencyMap.keys
       .asSequence()
       .filter { it !in visited }
-      .any { it.hasCycle(visited.apply { add(it) }, setOf(it)) }
+      .any { it.hasCycle(visited.apply { add(it) }) }
   }
 
-  private fun T.hasCycle(visited: MutableSet<T>, visitedInBranch: Set<T>): Boolean =
-    adjacencyMap[this]?.any { // If visited but not a part of this branch, no cycle
-      (it in visitedInBranch) ||
-        (it !in visited && it.hasCycle(visited.apply { add(it) }, visitedInBranch + it))
-      // The First is to detect cycle; The second is to avoid cycle while traversing
-      // These conditions can be flipped without any difference, as if it's not in `visited`, it
-      // cannot be in `visitedInBranch`
-    } ?: false
+  private fun T.hasCycle(visited: MutableSet<T>, visitedInBranch: Set<T> = setOf(this)): Boolean =
+    adjacencyMap[this]?.any {
+      when (it) {
+        in visitedInBranch -> true
+        in visited -> false // * A node can have two inward connections
+        else -> it.hasCycle(visited.apply { add(it) }, visitedInBranch + it)
+      }
+    } == true
 
   /** DETECT CYCLE -> */
 
@@ -140,17 +110,16 @@ class DiGraph<T>(
     return adjacencyMap.keys
       .asSequence()
       .filter { it !in visited }
-      .flatMap { it.topologicalSortPerBranch(visited.apply { add(it) }, setOf(it)) + it }
+      .flatMap { it.topologicalSortPerBranch(visited.apply { add(it) }) + it }
       .toList()
   }
 
   private fun T.topologicalSortPerBranch(
     visited: MutableSet<T>,
-    visitedInBranch: Set<T>
+    visitedInBranch: Set<T> = setOf(this)
   ): Sequence<T> =
     adjacencyMap[this]?.asSequence()?.flatMap {
       when (it) { // * `visited.apply { add(it) }` coz we need to retain it across recursions.
-        // `visitedInBranch + it` no need to retain.
         in visitedInBranch -> throw IllegalArgumentException("Graph has Cycle")
         in visited -> emptySequence() // This node is visited so can't contribute to any sequence.
         else -> it.topologicalSortPerBranch(visited.apply { add(it) }, visitedInBranch + it) + it
@@ -173,8 +142,7 @@ class DiGraph<T>(
       val graphJson = readFileInResourcesToString(jsonFilePath)
       val jGraph = Json.decodeFromString<JDiGraph>(graphJson)
       return DiGraph(
-        jGraph.graph.nodes.associate { it.value to it.children.toSet() }.toMutableMap(),
-        jGraph.graph.startNode
+        jGraph.graph.nodes.associate { it.value to it.children.toSet() }.toMutableMap()
       )
     }
   }

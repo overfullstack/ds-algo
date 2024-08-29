@@ -1,0 +1,99 @@
+{
+  "testcases": [
+    {
+      "name": "testcase 1",
+      "inputs": [
+        {
+          "1": [
+            "h"
+          ]
+        },
+        {
+          "2": "hlabcdefgijkmnopqrstuvwxyz"
+        }
+      ],
+      "output": [
+        {
+          "1": true
+        }
+      ]
+    },
+    {
+      "name": "testcase 2",
+      "inputs": [
+        {
+          "1": [
+            "martian"
+          ]
+        },
+        {
+          "2": "mabcdefghijklnopqrstuvwxyz"
+        }
+      ],
+      "output": [
+        {
+          "1": true
+        }
+      ]
+    },
+    {
+      "name": "testcase 3",
+      "inputs": [
+        {
+          "1": [
+            "passengers",
+            "to",
+            "the",
+            "unknown"
+          ]
+        },
+        {
+          "2": "ptuabcdefghijklmnoqrsvwxyz"
+        }
+      ],
+      "output": [
+        {
+          "1": false
+        }
+      ]
+    },
+    {
+      "name": "testcase 4",
+      "inputs": [
+        {
+          "1": [
+            "jupyter",
+            "ascending"
+          ]
+        },
+        {
+          "2": "jabcdefghiklmnopqrstuvwxyz"
+        }
+      ],
+      "output": [
+        {
+          "1": true
+        }
+      ]
+    },
+    {
+      "name": "testcase 5",
+      "inputs": [
+        {
+          "1": [
+            "marvel",
+            "marvellous"
+          ]
+        },
+        {
+          "2": "marvelbcdfghijknopqstuwxyz"
+        }
+      ],
+      "output": [
+        {
+          "1": true
+        }
+      ]
+    }
+  ]
+}

@@ -5,4 +5,3 @@
 
 /* $DATE $TIME */
 
-$END
