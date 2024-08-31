@@ -12,7 +12,7 @@ fun lengthOfLongestSubstringAtmostKDistinct(s: String, k: Int): String {
   var maxWindowLen = Int.MIN_VALUE
   var maxWindowStart = 0
   for ((index, char) in s.withIndex()) {
-    freqInWindow.merge(char, 1) { freq, _ -> freq.inc() }
+    freqInWindow.merge(char, 1, Int::plus)
     if (freqInWindow.size > k) {
       val curWindowLen = index - start // ! No +1 as we exclude the char which increased size
       if (curWindowLen > maxWindowLen) {

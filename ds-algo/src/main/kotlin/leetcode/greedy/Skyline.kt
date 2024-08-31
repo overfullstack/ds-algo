@@ -15,7 +15,7 @@ fun getSkyline(buildings: Array<IntArray>): List<List<Int>> {
   val results = mutableListOf<List<Int>>()
   for (buildingStrip in sortedBuildingStrips) {
     when {
-      buildingStrip.isStart -> map.merge(buildingStrip.ht, 1) { old, _ -> old.inc() }
+      buildingStrip.isStart -> map.merge(buildingStrip.ht, 1, Int::plus)
       else -> map.merge(buildingStrip.ht, 1) { old, _ -> if (old == 1) null else old.dec() }
     }
     val curMaxHt = map.lastKey()

@@ -9,7 +9,7 @@ class DiGraph<T>(private val adjacencyMap: MutableMap<T, Set<T>> = mutableMapOf(
   MutableMap<T, Set<T>> by adjacencyMap {
 
   fun addEdge(source: T, destination: T) {
-    adjacencyMap.merge(source, setOf(destination)) { oldSet, _ -> oldSet + destination }
+    adjacencyMap.merge(source, setOf(destination), Set<T>::plus)
   }
 
   fun getNeighbours(node: T): Set<T>? = adjacencyMap[node]

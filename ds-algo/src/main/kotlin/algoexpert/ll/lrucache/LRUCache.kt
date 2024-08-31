@@ -3,6 +3,7 @@ package algoexpert.ll.lrucache
 import ds.ll.DLLNode
 import kotlinx.serialization.json.int
 import kotlinx.serialization.json.jsonPrimitive
+import sun.jvm.hotspot.debugger.windbg.DLL
 
 /* 18 Aug 2024 21:21 */
 fun lruCache(lruCacheArgs: LRUCacheArgs): Pair<List<String?>, List<Pair<String, Int>>> {
@@ -32,47 +33,47 @@ class LRUQueue(val maxSize: Int) {
   val map: MutableMap<String, DLLNode<Pair<String, Int>>> = mutableMapOf()
 
   fun insertKeyValuePair(key: String, value: Int) {
-    if (head == null || maxSize == 1) {
-      head = DLLNode(key to value)
-      tail = head
-      if (maxSize == 1) {
-        map.clear()
-      }
-      map[key] = head!!
-      size++
-    } else {
-      val node =
-        map[key]?.let {
-          it.value = key to value
-          unlink(it)
-          it.next = head
-          it.prev = null
-          it
+    when {
+      head == null || maxSize == 1 -> {
+        head = DLLNode(key to value)
+        tail = head
+        if (maxSize == 1) {
+          map.clear()
         }
-          ?: run {
-            if (size == maxSize) {
-              removeLRU()
+        map[key] = head!!
+        size++
+      }
+      else -> {
+        val node =
+          map.compute(key) { key, curNode ->
+            when (curNode) {
+              null -> {
+                if (size == maxSize) {
+                  removeLRU()
+                }
+                size++
+                val nodeToInsert = DLLNode(key to value, null, head)
+                map[key] = nodeToInsert
+                nodeToInsert
+              }
+              else -> {
+                curNode.value = key to value
+                unlink(curNode)
+                curNode.next = head
+                curNode.prev = null
+                curNode
+              }
             }
-            size++
-            val nodeToInsert = DLLNode(key to value, null, head)
-            map[key] = nodeToInsert
-            nodeToInsert
-          }
-      head?.prev = node
-      head = node
+          }!!
+        leftShiftHead(node)
+      }
     }
   }
 
   private fun removeLRU() {
     map.remove(tail!!.value.first)
-    tail = tail?.prev
-    tail?.next = null
+    leftShiftTail()
     size--
-  }
-
-  private fun unlink(node: DLLNode<Pair<String, Int>>) {
-    node.prev?.next = node.next
-    node.next?.prev = node.prev
   }
 
   fun getMostRecentKey(): String? = head?.value?.first
@@ -81,15 +82,28 @@ class LRUQueue(val maxSize: Int) {
     val node = map[key]
     if (node != null && node != head) {
       if (node == tail) {
-        tail = tail?.prev
-        tail?.next = null
+        leftShiftTail()
       }
       unlink(node)
-      head?.prev = node
       node.next = head
-      head = node
+      leftShiftHead(node)
     }
     return node?.value?.second
+  }
+
+  private fun unlink(node: DLLNode<Pair<String, Int>>) {
+    node.prev?.next = node.next
+    node.next?.prev = node.prev
+  }
+
+  private fun leftShiftHead(node: DLLNode<Pair<String, Int>>) {
+    head?.prev = node
+    head = node
+  }
+
+  private fun leftShiftTail() {
+    tail = tail?.prev
+    tail?.next = null
   }
 
   fun toList(): List<Pair<String, Int>> = head?.toList() ?: emptyList()

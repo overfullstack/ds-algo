@@ -7,8 +7,8 @@ fun minMeetingRoomsRequired(meetings: Array<Pair<Int, Int>>): Int {
   // * This stores net meetings started
   val map = sortedMapOf<Int, Int>() // ! This is a SortedMap
   for (meeting in meetings) {
-    map.merge(meeting.first, 1) { old, _ -> old.inc() }
-    map.merge(meeting.second, -1) { old, _ -> old.dec() }
+    map.merge(meeting.first, 1, Int::plus)
+    map.merge(meeting.second, -1, Int::plus)
   }
   return map.values.runningReduce(Int::plus).maxOrNull() ?: 0
 }

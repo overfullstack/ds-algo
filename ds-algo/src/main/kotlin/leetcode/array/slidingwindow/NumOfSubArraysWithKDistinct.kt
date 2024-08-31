@@ -10,7 +10,7 @@ fun subArraysWithAtMostKDistinct(a: IntArray, k: Int): Int {
   val freqInWindow = mutableMapOf<Int, Int>()
 
   for ((index, value) in a.withIndex()) {
-    freqInWindow.merge(value, 1) { freq, _ -> freq.inc() }
+    freqInWindow.merge(value, 1, Int::plus)
     while (freqInWindow.size > k) {
       freqInWindow.computeIfPresent(a[start]) { _, freq ->
         start++

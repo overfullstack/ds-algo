@@ -8,7 +8,7 @@ fun verifyAlienDictionary(words: Array<String>, order: String): Boolean {
     val word2 = words[index + 1]
     var i = 0
     while (i <= word1.lastIndex) {
-      if (i >= word2.length) {
+      if (i > word2.lastIndex) {
         return false
       }
       if (word1[i] != word2[i]) {

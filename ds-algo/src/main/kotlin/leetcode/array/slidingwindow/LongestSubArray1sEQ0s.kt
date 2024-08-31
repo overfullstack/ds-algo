@@ -11,9 +11,9 @@ fun longestContiguousSubArray(nums: IntArray): Int {
   for (i in nums.indices) {
     if (nums[i] == 1) count++ else count--
     // If you encountered equal no.of 0s or 1s, the count is brought back to a value in the past.
-    countMap.merge(count, i) { lastOccurance, curOccurance ->
-      max = maxOf(max, curOccurance - lastOccurance)
-      lastOccurance
+    countMap.merge(count, i) { lastOccurrence, curOccurrence ->
+      max = maxOf(max, curOccurrence - lastOccurrence)
+      lastOccurrence
     }
   }
   return max
