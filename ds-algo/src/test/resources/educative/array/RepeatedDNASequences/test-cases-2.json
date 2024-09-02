@@ -1,0 +1,124 @@
+{
+  "testcases": [
+    {
+      "name": "testcase 1",
+      "inputs": [
+        {
+          "1": "AAAAACCCCCAAAAACCCCCC"
+        },
+        {
+          "2": 8
+        }
+      ],
+      "output": [
+        {
+          "1": [
+            "AAACCCCC",
+            "AAAAACCC",
+            "AAAACCCC"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "testcase 2",
+      "inputs": [
+        {
+          "1": "GGGGGGGGGGGGGGGGGGGGGGGGG"
+        },
+        {
+          "2": 9
+        }
+      ],
+      "output": [
+        {
+          "1": [
+            "GGGGGGGGG"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "testcase 3",
+      "inputs": [
+        {
+          "1": "TTTTTCCCCCCCTTTTTTCCCCCCCTTTTTTT"
+        },
+        {
+          "2": 10
+        }
+      ],
+      "output": [
+        {
+          "1": [
+            "CCCCTTTTTT",
+            "TTTCCCCCCC",
+            "TTCCCCCCCT",
+            "CCCCCTTTTT",
+            "CCCCCCTTTT",
+            "TTTTCCCCCC",
+            "TCCCCCCCTT",
+            "CCCCCCCTTT",
+            "TTTTTCCCCC"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "testcase 4",
+      "inputs": [
+        {
+          "1": "AAAAAACCCCCCCAAAAAAAACCCCCCCTG"
+        },
+        {
+          "2": 10
+        }
+      ],
+      "output": [
+        {
+          "1": [
+            "AAAAAACCCC",
+            "AAAAACCCCC",
+            "AAACCCCCCC",
+            "AAAACCCCCC"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "testcase 5",
+      "inputs": [
+        {
+          "1": "ATATATATATATATAT"
+        },
+        {
+          "2": 6
+        }
+      ],
+      "output": [
+        {
+          "1": [
+            "ATATAT",
+            "TATATA"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "testcase 6",
+      "inputs": [
+        {
+          "1": "TTTTTGGGTTTTCCA"
+        },
+        {
+          "2": 10
+        }
+      ],
+      "output": [
+        {
+          "1": []
+        }
+      ]
+    }
+  ]
+}

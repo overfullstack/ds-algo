@@ -3,7 +3,6 @@ package algoexpert.ll.lrucache
 import ds.ll.DLLNode
 import kotlinx.serialization.json.int
 import kotlinx.serialization.json.jsonPrimitive
-import sun.jvm.hotspot.debugger.windbg.DLL
 
 /* 18 Aug 2024 21:21 */
 fun lruCache(lruCacheArgs: LRUCacheArgs): Pair<List<String?>, List<Pair<String, Int>>> {
