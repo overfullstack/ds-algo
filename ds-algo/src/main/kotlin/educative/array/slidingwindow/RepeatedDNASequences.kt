@@ -1,4 +1,4 @@
-package educative.array
+package educative.array.slidingwindow
 
 import kotlin.math.pow
 

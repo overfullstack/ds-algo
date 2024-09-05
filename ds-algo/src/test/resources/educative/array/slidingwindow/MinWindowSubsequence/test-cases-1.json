@@ -1,0 +1,84 @@
+{
+  "testcases": [
+    {
+      "name": "testcase 1",
+      "inputs": [
+        {
+          "1": "abcdebdde"
+        },
+        {
+          "2": "bde"
+        }
+      ],
+      "output": [
+        {
+          "1": "bcde"
+        }
+      ]
+    },
+    {
+      "name": "testcase 2",
+      "inputs": [
+        {
+          "1": "fgrqsqsnodwmxzkzxwqegkndaa"
+        },
+        {
+          "2": "kzed"
+        }
+      ],
+      "output": [
+        {
+          "1": "kzxwqegknd"
+        }
+      ]
+    },
+    {
+      "name": "testcase 3",
+      "inputs": [
+        {
+          "1": "michmznaitnjdnjkdsnmichmznait"
+        },
+        {
+          "2": "michmznait"
+        }
+      ],
+      "output": [
+        {
+          "1": "michmznait"
+        }
+      ]
+    },
+    {
+      "name": "testcase 4",
+      "inputs": [
+        {
+          "1": "afgegrwgwga"
+        },
+        {
+          "2": "aa"
+        }
+      ],
+      "output": [
+        {
+          "1": "afgegrwgwga"
+        }
+      ]
+    },
+    {
+      "name": "testcase 5",
+      "inputs": [
+        {
+          "1": "abcdbebe"
+        },
+        {
+          "2": "bbe"
+        }
+      ],
+      "output": [
+        {
+          "1": "bebe"
+        }
+      ]
+    }
+  ]
+}
