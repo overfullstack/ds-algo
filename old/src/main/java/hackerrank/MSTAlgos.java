@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Objects;
 import java.util.PriorityQueue;
 import java.util.Scanner;
 import java.util.Set;
@@ -24,11 +25,11 @@ public class MSTAlgos {
   }
 
   private static int primsLazyAlgo(
-      EdgeWeightedGraph_MST edgeWeightedGraph, int vertexCount, int edgeCount, int startVertex) {
-    var edgePQ = new PriorityQueue<Edge_MST>(edgeWeightedGraph.getAllConnectedEdges(startVertex));
+      EdgeWeightedGraphMST edgeWeightedGraph, int vertexCount, int edgeCount, int startVertex) {
+    var edgePQ = new PriorityQueue<EdgeMST>(edgeWeightedGraph.getAllConnectedEdges(startVertex));
     var visited = new boolean[vertexCount + 1];
     addEdgesWithUnvisitedVerticesToPQ(edgeWeightedGraph, edgePQ, startVertex, visited);
-    List<Edge_MST> mst = new ArrayList<>();
+    List<EdgeMST> mst = new ArrayList<>();
     while (!edgePQ.isEmpty()) {
       var e = edgePQ.poll();
       var v = e.either();
@@ -43,8 +44,8 @@ public class MSTAlgos {
   }
 
   private static void addEdgesWithUnvisitedVerticesToPQ(
-      EdgeWeightedGraph_MST edgeWeightedGraph,
-      PriorityQueue<Edge_MST> edgePQ,
+      EdgeWeightedGraphMST edgeWeightedGraph,
+      PriorityQueue<EdgeMST> edgePQ,
       int v,
       boolean[] visited) {
     visited[v] = true;
@@ -52,9 +53,9 @@ public class MSTAlgos {
   }
 
   private static int krusalsAlgo(
-      EdgeWeightedGraph_MST edgeWeightedGraph, int vertexCount, int edgeCount) {
-    var edgePQ = new PriorityQueue<Edge_MST>(edgeWeightedGraph.getAllEdges());
-    List<Edge_MST> mst = new ArrayList<>();
+      EdgeWeightedGraphMST edgeWeightedGraph, int vertexCount, int edgeCount) {
+    var edgePQ = new PriorityQueue<EdgeMST>(edgeWeightedGraph.getAllEdges());
+    List<EdgeMST> mst = new ArrayList<>();
     var union = new QuickUnion(vertexCount);
     // Pick the smallest edge from PQ
     while (!edgePQ.isEmpty() && mst.size() < vertexCount - 1) {
@@ -70,35 +71,35 @@ public class MSTAlgos {
     return sumOfEdgeWeights(mst);
   }
 
-  private static int sumOfEdgeWeights(List<Edge_MST> mst) {
+  private static int sumOfEdgeWeights(List<EdgeMST> mst) {
     var sum = 0;
     for (var e : mst) sum += e.weight();
     return sum;
   }
 
-  private static EdgeWeightedGraph_MST readGraph(int vertexCount, int edgeCount, Scanner scn) {
-    var edg = new EdgeWeightedGraph_MST(vertexCount);
-    while (edgeCount-- > 0) edg.addEdge(new Edge_MST(scn.nextInt(), scn.nextInt(), scn.nextInt()));
+  private static EdgeWeightedGraphMST readGraph(int vertexCount, int edgeCount, Scanner scn) {
+    var edg = new EdgeWeightedGraphMST(vertexCount);
+    while (edgeCount-- > 0) edg.addEdge(new EdgeMST(scn.nextInt(), scn.nextInt(), scn.nextInt()));
     return edg;
   }
 }
 
-class EdgeWeightedGraph_MST {
-  private int N;
-  private LinkedList<Edge_MST>[] adj;
-  private HashSet<Edge_MST> edges = new HashSet<>();
+class EdgeWeightedGraphMST {
+  private final int n;
+  private final LinkedList<EdgeMST>[] adj;
+  private final HashSet<EdgeMST> edges = new HashSet<>();
 
-  EdgeWeightedGraph_MST(int n) {
-    this.N = n;
+  EdgeWeightedGraphMST(int n) {
+    this.n = n;
     this.adj = new LinkedList[n + 1];
     for (var i = 1; i <= n; i++) adj[i] = new LinkedList<>();
   }
 
   public int getVertexCount() {
-    return this.N;
+    return this.n;
   }
 
-  public void addEdge(Edge_MST e) {
+  public void addEdge(EdgeMST e) {
     edges.add(e);
     var v = e.either();
     var w = e.other(v);
@@ -106,20 +107,20 @@ class EdgeWeightedGraph_MST {
     adj[w].add(e);
   }
 
-  public LinkedList<Edge_MST> getAllConnectedEdges(int v) {
+  public LinkedList<EdgeMST> getAllConnectedEdges(int v) {
     return adj[v];
   }
 
-  public Set<Edge_MST> getAllEdges() {
+  public Set<EdgeMST> getAllEdges() {
     return edges;
   }
 }
 
-class Edge_MST implements Comparable<Edge_MST> {
+class EdgeMST implements Comparable<EdgeMST> {
   private final int v, w;
   private final int weight;
 
-  Edge_MST(int v, int w, int weight) {
+  EdgeMST(int v, int w, int weight) {
     this.v = v;
     this.w = w;
     this.weight = weight;
@@ -139,7 +140,22 @@ class Edge_MST implements Comparable<Edge_MST> {
   }
 
   @Override
-  public int compareTo(Edge_MST that) {
+  public boolean equals(Object o) {
+    if (this == o)
+      return true;
+    if (o == null || getClass() != o.getClass())
+      return false;
+    EdgeMST edgeMst = (EdgeMST) o;
+    return v == edgeMst.v && w == edgeMst.w && weight == edgeMst.weight;
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(v, w, weight);
+  }
+
+  @Override
+  public int compareTo(EdgeMST that) {
     return Integer.compare(this.weight, that.weight);
   }
 }

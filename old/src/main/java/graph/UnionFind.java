@@ -2,7 +2,7 @@ package graph;
 
 /** Created by gakshintala on 12/16/15. */
 public class UnionFind {
-  private int[] id;
+  private final int[] id;
 
   UnionFind(int n) {
     id = new int[n];

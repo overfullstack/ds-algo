@@ -4,9 +4,9 @@ import java.util.PriorityQueue;
 
 /** Created by gakshintala on 1/6/16. */
 public class DijkstraSP {
-  private DirectedEdge[] edgeTo;
-  private double[] distTo;
-  private PriorityQueue<Integer> pq;
+  private final DirectedEdge[] edgeTo;
+  private final double[] distTo;
+  private final PriorityQueue<Integer> pq;
 
   public DijkstraSP(EdgeWeightedDigraph graph, int source) {
     var vertexCount = graph.vertexCount();
