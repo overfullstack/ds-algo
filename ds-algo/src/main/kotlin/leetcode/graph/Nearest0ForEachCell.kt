@@ -29,10 +29,7 @@ fun updateMatrix(matrix: Array<IntArray>): Array<IntArray> { // DFS
 private val directions = listOf(0 to 1, 0 to -1, 1 to 0, -1 to 0)
 
 private fun Pair<Int, Int>.isValid(matrix: Array<IntArray>, distance: Int) =
-  first >= 0 &&
-    first <= matrix.lastIndex &&
-    second >= 0 &&
-    second <= matrix[0].lastIndex &&
+  first in matrix.indices && second in matrix[0].indices &&
     // * 1. Cells with 0s never pass this as distance is always positive, so 0s are never overriden.
     // * 2. For Storing min distance
     // If a 0 is totally surround by 0s, it's useless as it can never be a nearst 0 for any 1, so
@@ -72,8 +69,4 @@ fun updateMatrix2(matrix: Array<IntArray>): Array<IntArray> { // BFS
 }
 
 private fun Pair<Int, Int>.isValid2(matrix: Array<IntArray>) =
-  first >= 0 &&
-    first <= matrix.lastIndex &&
-    second >= 0 &&
-    second <= matrix[0].lastIndex &&
-    matrix[first][second] == -1
+  first in matrix.indices && second in matrix[0].indices && matrix[first][second] == -1

@@ -1,4 +1,4 @@
-package hackerrank.arrays
+package hackerrank
 
 fun main() {
   val noOfTests = readln().toInt()

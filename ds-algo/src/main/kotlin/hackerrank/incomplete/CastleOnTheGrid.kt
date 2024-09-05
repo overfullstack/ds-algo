@@ -1,8 +1,7 @@
-package hackerrank.graphs
+package hackerrank.incomplete
 
 val directions = listOf(0 to 1, 0 to -1, 1 to 0, -1 to 0)
 
-@kotlin.ExperimentalStdlibApi
 fun minimumMoves(grid: Array<String>, startX: Int, startY: Int, goalX: Int, goalY: Int): Int {
   if (grid.isEmpty()) {
     return 0
@@ -32,8 +31,4 @@ fun minimumMoves(grid: Array<String>, startX: Int, startY: Int, goalX: Int, goal
 }
 
 private fun Pair<Int, Int>.isValid(grid: List<CharArray>) =
-  first >= 0 &&
-    first <= grid.lastIndex &&
-    second >= 0 &&
-    second <= grid[0].lastIndex &&
-    grid[first][second] != 'X'
+  first in grid.indices && second in grid[0].indices && grid[first][second] != 'X'

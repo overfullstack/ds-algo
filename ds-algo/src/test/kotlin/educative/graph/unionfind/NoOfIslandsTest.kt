@@ -9,11 +9,11 @@ import testcase.TestCase9.Companion.parseJsonFileToTestCases
 
 private const val PKG_PATH = "educative/graph/unionfind/NoOfIslands"
 
-class NoOfIslandsTest : StringSpec ({
-  "no.of islands" {
-    parseJsonFileToTestCases("$PKG_PATH/test-cases-1.json")
-      .forAll { (grid, result) ->
+class NoOfIslandsTest :
+  StringSpec({
+    "no.of islands" {
+      parseJsonFileToTestCases("$PKG_PATH/test-cases-1.json").forAll { (grid, result) ->
         noOfIslands(grid) shouldBe result
       }
-  }
-})
+    }
+  })

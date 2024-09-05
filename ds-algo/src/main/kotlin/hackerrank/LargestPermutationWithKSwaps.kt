@@ -1,4 +1,4 @@
-package hackerrank.arrays
+package hackerrank
 
 fun largestPermutation(k: Int, arr: Array<Int>): Array<Int> {
   var swaps = k

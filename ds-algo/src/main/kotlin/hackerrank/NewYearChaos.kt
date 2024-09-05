@@ -1,4 +1,4 @@
-package hackerrank.arrays
+package hackerrank
 
 fun newYearChaos(array: IntArray) =
   array

@@ -1,11 +1,12 @@
-package hackerrank.graphs
+package hackerrank.graph
 
+import hackerrank.incomplete.minimumMoves
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.data.forAll
 import io.kotest.data.row
 import io.kotest.matchers.shouldBe
 
-@kotlin.ExperimentalStdlibApi
+@ExperimentalStdlibApi
 class CastleOnTheGridTest :
   StringSpec({
     "Castle on the Grid" {

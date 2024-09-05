@@ -38,11 +38,7 @@ private fun uniquePaths(grid: Array<IntArray>, zeroCount: Int, gridPoint: Pair<I
 }
 
 private fun Pair<Int, Int>.isValid(grid: Array<IntArray>) =
-  first >= 0 &&
-    second >= 0 &&
-    first < grid.size &&
-    second < grid[0].size &&
-    grid[first][second] != -1
+  first in grid.indices && second in grid[0].indices && grid[first][second] != - 1
 
 fun main() {
   print(

@@ -50,8 +50,4 @@ fun orangesRotting(grid: Array<IntArray>): Int {
 private val directions = listOf(0 to 1, 0 to -1, 1 to 0, -1 to 0)
 
 private fun Pair<Int, Int>.isValid(grid: Array<IntArray>) =
-  first >= 0 &&
-    first <= grid.lastIndex &&
-    second >= 0 &&
-    second <= grid[0].lastIndex &&
-    grid[first][second] == 1 // only if fresh
+  first in grid.indices && second in grid[0].indices && grid[first][second] == 1 // only if fresh

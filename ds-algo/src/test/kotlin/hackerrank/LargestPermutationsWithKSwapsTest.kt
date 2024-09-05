@@ -1,4 +1,4 @@
-package hackerrank.arrays
+package hackerrank
 
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.data.forAll

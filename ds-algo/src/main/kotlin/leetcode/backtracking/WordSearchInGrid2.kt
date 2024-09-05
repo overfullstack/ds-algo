@@ -46,8 +46,4 @@ private fun TrieNode.findWords(
     } // backtracking visited in this branch as we unwind this DFT.
 
 private fun Pair<Int, Int>.isValid(board: Array<CharArray>, visited: Array<BooleanArray>) =
-  first >= 0 &&
-    second >= 0 &&
-    first < board.size &&
-    second < board[0].size &&
-    !visited[first][second]
+  first in board.indices && second in board[0].indices && !visited[first][second]
