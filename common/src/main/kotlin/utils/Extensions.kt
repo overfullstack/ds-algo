@@ -10,3 +10,5 @@ fun <T> List<T>.toPair(): Pair<T, T> =
       throw IllegalArgumentException("List with more than 2 elements cannot be converted to Pair")
     else -> first() to last()
   }
+
+fun Array<IntArray>.toString(): String = map { it.joinToString(" ") }.joinToString("\n")

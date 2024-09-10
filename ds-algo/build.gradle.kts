@@ -9,3 +9,5 @@ dependencies {
   implementation(libs.bundles.kotlin.logging)
   implementation(libs.revoman)
 }
+
+println("***** ds-algo-->" + findProperty("kotest.framework.classpath.scanning.autoscan.disable"))

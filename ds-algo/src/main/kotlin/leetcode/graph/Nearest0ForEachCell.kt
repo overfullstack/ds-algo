@@ -1,27 +1,26 @@
 package leetcode.graph
 
 /** https://leetcode.com/problems/01-matrix/ */
-fun updateMatrix(matrix: Array<IntArray>): Array<IntArray> { // DFS
+fun updateMatrix(matrix: Array<IntArray>): Array<IntArray> {
   val queue = ArrayDeque<Pair<Int, Int>>()
   for (row in matrix.indices) {
     for (col in matrix[0].indices) {
       when (matrix[row][col]) {
         0 -> queue.add(row to col)
-        1 -> matrix[row][col] = Int.MAX_VALUE // To let our path only flow through 1s.
+        1 -> matrix[row][col] = Int.MAX_VALUE // To let our path flow only through 1s.
       }
     }
   }
   while (queue.isNotEmpty()) { // * BFS from 0s to 1s
     val gridPoint = queue.removeFirst()
     val nextDistance = matrix[gridPoint.first][gridPoint.second] + 1
-    directions
-      .asSequence()
-      .map { (gridPoint.first + it.first) to (gridPoint.second + it.second) }
-      .filter { it.isValid(matrix, nextDistance) }
-      .forEach {
-        matrix[it.first][it.second] = nextDistance
-        queue.add(it)
-      }
+    queue.addAll(
+      directions
+        .asSequence()
+        .map { (gridPoint.first + it.first) to (gridPoint.second + it.second) }
+        .filter { it.isValid(matrix, nextDistance) }
+        .onEach { matrix[it.first][it.second] = nextDistance }
+    )
   }
   return matrix
 }
@@ -29,10 +28,11 @@ fun updateMatrix(matrix: Array<IntArray>): Array<IntArray> { // DFS
 private val directions = listOf(0 to 1, 0 to -1, 1 to 0, -1 to 0)
 
 private fun Pair<Int, Int>.isValid(matrix: Array<IntArray>, distance: Int) =
-  first in matrix.indices && second in matrix[0].indices &&
+  first in matrix.indices &&
+    second in matrix[0].indices &&
     // * 1. Cells with 0s never pass this as distance is always positive, so 0s are never overriden.
     // * 2. For Storing min distance
-    // If a 0 is totally surround by 0s, it's useless as it can never be a nearst 0 for any 1, so
+    // If a 0 is totally surrounded by 0s, it's useless as it can never be a nearest 0 for any 1, so
     // skip it.
     distance < matrix[first][second]
 
