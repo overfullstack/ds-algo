@@ -1,4 +1,5 @@
 [versions]
+jdk = "22"
 kotlin = "2.1.0"
 ksp = "2.1.0-1.0.29"
 kotlinx-serialization = "1.7.3"
@@ -7,9 +8,7 @@ jetbrains-annotations = "26.0.1"
 kover = "0.8.3"
 kotest = "5.9.1"
 testLogger = "4.0.0"
-assertj-core = "3.26.3"
 kotlin-logging = "7.0.0"
-guava = "33.3.1-jre"
 # Common dependencies
 junit = "5.11.3"
 spotless = "6.25.0"
@@ -18,18 +17,14 @@ apache-log4j = "2.24.2"
 [libraries]
 revoman = { module = "com.salesforce.revoman:revoman", version.ref = "revoman" }
 kotlinx-serialization = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinx-serialization" }
-jetbrains-annotations = { module = "org.jetbrains:annotations", version.ref = "jetbrains-annotations" }
 testLogger-gradle = { module = "com.adarshr.test-logger:com.adarshr.test-logger.gradle.plugin", version.ref = "testLogger" }
 kotest-assertions-core = { module = "io.kotest:kotest-assertions-core", version.ref = "kotest" }
 kotest-property = { module = "io.kotest:kotest-property", version.ref = "kotest" }
 kotest-runnerJUnit5 = { module = "io.kotest:kotest-runner-junit5", version.ref = "kotest" }
-assertj-core = { module = "org.assertj:assertj-core", version.ref = "assertj-core" }
 kotlin-logging-jvm = { module = "io.github.oshai:kotlin-logging-jvm", version.ref = "kotlin-logging" }
 log4j-api = { module = "org.apache.logging.log4j:log4j-api", version.ref = "apache-log4j" }
 log4j-core = { module = "org.apache.logging.log4j:log4j-core", version.ref = "apache-log4j" }
 log4j-slf4j2-impl = { module = "org.apache.logging.log4j:log4j-slf4j2-impl", version.ref = "apache-log4j" }
-guava = { module = "com.google.guava:guava", version.ref = "guava" }
-junit-bom = { module = "org.junit:junit-bom", version.ref = "junit" }
 junit-jupiter = { module = "org.junit.jupiter:junit-jupiter-api" }
 junit-engine = { module = "org.junit.jupiter:junit-jupiter-engine" }
 

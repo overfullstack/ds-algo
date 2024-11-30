@@ -11,6 +11,14 @@ infix fun <T> Property<T>.by(value: T) {
   set(value)
 }
 
+internal val VersionCatalog.jdk
+  get() = getVersion("jdk")
+
+internal val VersionCatalog.junitVersion
+  get() = getVersion("junit")
+
+private fun VersionCatalog.getVersion(plugin: String) = findVersion(plugin).get()
+
 internal val VersionCatalog.kotestBundle: Provider<ExternalModuleDependencyBundle>
   get() = getBundle("kotest")
 

@@ -11,4 +11,4 @@ fun <T> List<T>.toPair(): Pair<T, T> =
     else -> first() to last()
   }
 
-fun Array<IntArray>.toString(): String = map { it.joinToString(" ") }.joinToString("\n")
+fun Array<IntArray>.toString(): String = joinToString("\n") { it.joinToString(" ") }

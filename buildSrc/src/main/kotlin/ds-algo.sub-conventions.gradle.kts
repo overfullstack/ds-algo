@@ -5,13 +5,18 @@ plugins {
 
 repositories { mavenCentral() }
 
-java {
-  withSourcesJar()
-  toolchain { languageVersion.set(JavaLanguageVersion.of(21)) }
+val libs: VersionCatalog = extensions.getByType<VersionCatalogsExtension>().named("libs")
+
+java { 
+  toolchain { languageVersion.set(JavaLanguageVersion.of(libs.jdk.toString())) } 
+}
+
+tasks.withType<JavaCompile>().configureEach {
+  options.compilerArgs.add("--enable-preview")
 }
 
 testing {
   suites {
-    val test by getting(JvmTestSuite::class) { useJUnitJupiter("5.11.0") }
+    val test by getting(JvmTestSuite::class) { useJUnitJupiter(libs.junitVersion.toString()) }
   }
 }

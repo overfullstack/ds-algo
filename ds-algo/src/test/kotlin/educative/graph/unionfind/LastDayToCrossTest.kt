@@ -9,12 +9,12 @@ import testcase.TestCase11.Companion.parseJsonFileToTestCases
 
 private const val PKG_PATH = "educative/graph/unionfind/LastDayToCross"
 
-class LastDayToCrossTest: StringSpec ({
-  "last day to cross" {
-    parseJsonFileToTestCases("$PKG_PATH/test-cases-1.json")
-     .forAll { (input, result) ->
-       val (rows, cols, waterCells) = input
-       lastDayToCross(rows, cols, waterCells) shouldBe result
-     }
-  }
-})
+class LastDayToCrossTest :
+  StringSpec({
+    "last day to cross" {
+      parseJsonFileToTestCases("$PKG_PATH/test-cases-1.json").forAll { (input, result) ->
+        val (rows, cols, waterCells) = input
+        lastDayToCross(rows, cols, waterCells) shouldBe result
+      }
+    }
+  })
