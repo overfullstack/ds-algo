@@ -1,61 +1,63 @@
 package leetcode.greedy
 
-fun chunking(records: MutableMap<Int, Pair<Int, Int?>>, batchSize: Int): Int {
-  val sameChunkIds = mutableListOf<Int>()
-  var chunk = 0
-  var accumulationCount = 0
-  while (true) {
-    val (ids, pendingCounts) = records.queryNextNonStamped(batchSize)
+private const val MAX_CHUNK_WEIGHT_PER_JOB_ITEM = 500 // TBD after perf-testing
+private const val QUERY_GROUP_COUNT = 10 // TBD after perf-testing
 
-    if (ids.isEmpty() || pendingCounts.isEmpty()) {
-      if (sameChunkIds.isNotEmpty()) {
-        chunk++
-        records.stampWithChunk(sameChunkIds, chunk)
+data class ContextRecord(val weight: Int, val groupNumber: Int, val chunkNumber: Int?)
+
+@JvmInline value class Id(val id: Int)
+
+typealias Context = MutableMap<Id, ContextRecord>
+
+fun greedyChunking(ctx: Context): Int {
+  var chunkIndex = 0
+  var chunkWeight = 0
+  val idsInChunk = mutableListOf<Id>()
+  var queryStartGroupNumber = 0
+  while (true) { // Coz you don't know when the query drys-up
+    val ctxGroups = ctx.queryNext(queryStartGroupNumber..queryStartGroupNumber + QUERY_GROUP_COUNT)
+    // Query dried-up
+    if (ctxGroups.isEmpty()) {
+      // Stamp the final Chunk
+      if (idsInChunk.isNotEmpty()) {
+        chunkIndex++
+        ctx.stampChunkNumber(idsInChunk, chunkIndex)
       }
-      return chunk
+      return chunkIndex
     }
 
-    for (i in ids.indices) {
-      val currentCount = pendingCounts[i]
-      accumulationCount += currentCount
+    for (ctxGroup in ctxGroups) {
+      val groupWeight = ctxGroup.values.sumOf { it.weight }
+      chunkWeight += groupWeight
 
-      if (accumulationCount <= 500) {
-        sameChunkIds.add(ids[i])
-      } else {
-        if (sameChunkIds.isNotEmpty()) {
-          chunk++
-          records.stampWithChunk(sameChunkIds, chunk)
-          sameChunkIds.clear()
+      // We allow more than `MAX_CHUNK_WEIGHT_PER_JOB_ITEM` to accomodate large Bundles
+      if (chunkWeight > MAX_CHUNK_WEIGHT_PER_JOB_ITEM) {
+        // Full! Stamp the current Chunk
+        if (idsInChunk.isNotEmpty()) {
+          chunkIndex++
+          ctx.stampChunkNumber(idsInChunk, chunkIndex)
         }
-        // New accumulation
-        accumulationCount = currentCount
-        sameChunkIds.add(ids[i])
+        // And start a New Chunk
+        chunkWeight = groupWeight
       }
+      idsInChunk.addAll(ctxGroup.keys)
     }
-    records.stampWithChunk(sameChunkIds, -1)
+    // Stamping with a temp chunkNumber to not qualify for `queryNext()` in the next iteration
+    ctx.stampChunkNumber(idsInChunk, -1)
+    queryStartGroupNumber+= QUERY_GROUP_COUNT
   }
 }
 
-fun Map<Int, Pair<Int, Int?>>.queryNextNonStamped(batchSize: Int): Pair<List<Int>, List<Int>> =
-  entries
-    .asSequence()
-    .filter { it.value.first > 200 && it.value.second == null }
-    .take(batchSize)
-    .map { it.key to it.value.first }
-    .sortedBy { it.second }
-    .unzip()
+private fun Context.queryNext(groupRange: IntRange): List<Map<Id, ContextRecord>> =
+    entries
+        .asSequence()
+        .filter { (_, ctxRec) -> ctxRec.chunkNumber == null && ctxRec.groupNumber in groupRange }
+        .groupBy { (_, ctxRec) -> ctxRec.groupNumber }
+        .values
+        .map { it.associate { it.toPair() } }
+        .sortedByDescending { it.values.sumOf { it.weight } }
 
-fun MutableMap<Int, Pair<Int, Int?>>.stampWithChunk(ids: List<Int>, chunkNumber: Int) =
-  ids.forEach { stampWithChunk(it, chunkNumber) }
-
-fun MutableMap<Int, Pair<Int, Int?>>.stampWithChunk(id: Int, chunkNumber: Int) =
-  this.computeIfPresent(id) { _, value -> value.first to chunkNumber }
-
-fun List<Int>.toMutableMap(): MutableMap<Int, Pair<Int, Int?>> =
-  this.withIndex().associate { it.index to (it.value to null) }.toMutableMap()
-
-fun main() {
-  val records = listOf(250, 600, 400).toMutableMap()
-  println(chunking(records, 7))
-  println(records)
-}
+private fun Context.stampChunkNumber(ids: List<Id>, chunkNumber: Int) =
+    ids.forEach {
+      computeIfPresent(it) { _, contextRecord -> contextRecord.copy(chunkNumber = chunkNumber) }
+    }

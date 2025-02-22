@@ -8,8 +8,8 @@ fun jobScheduling(startTimeArr: IntArray, endTimeArr: IntArray, profitArr: IntAr
     .asSequence()
     .map { (profit, schedule) -> Triple(schedule.first, schedule.second, profit) }
     .sortedBy { it.second }
-    .fold(mutableListOf(0 to 0)) { endToMaxProfit, (startTime, endTime, curProfit)
-      -> // We can use a `TreeMap` here to make things simpler.
+    .fold(mutableListOf(0 to 0)) { endToMaxProfit, (startTime, endTime, curProfit) ->
+      // We can use a `TreeMap` here to simplify things.
       val prevJobEndIndex =
         endToMaxProfit
           .map { it.first }
@@ -22,7 +22,7 @@ fun jobScheduling(startTimeArr: IntArray, endTimeArr: IntArray, profitArr: IntAr
         if (profitIncludingCurJob > last().second) {
           add(
             endTime to profitIncludingCurJob
-          ) // Always appended at last, in this context same as overriding previous result.
+          ) // Always appended at last, in this context the same as overriding previous result.
         }
       }
     }

@@ -5,11 +5,10 @@ fun findMinArrowShots(points: Array<IntArray>): Int {
   if (points.isEmpty()) {
     return 0
   }
-  val sortedpoints = points.map { it[0] to it[1] }.sortedBy { it.second }
-
-  var end = sortedpoints[0].second
+  val sortedPoints = points.map { it[0] to it[1] }.sortedBy { it.second }
+  var end = sortedPoints[0].second
   val nonOverlapCount =
-    sortedpoints
+    sortedPoints
       .asSequence()
       .drop(1)
       .filter {
