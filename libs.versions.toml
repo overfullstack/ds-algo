@@ -11,7 +11,7 @@ testLogger = "4.0.0"
 kotlin-logging = "7.0.7"
 # Common dependencies
 junit = "5.11.3"
-spotless = "7.0.3"
+spotless = "7.0.4"
 apache-log4j = "2.24.3"
 
 [libraries]
