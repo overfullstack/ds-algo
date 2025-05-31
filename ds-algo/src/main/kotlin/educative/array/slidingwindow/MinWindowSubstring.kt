@@ -4,7 +4,7 @@ package educative.array.slidingwindow
 fun minWindowSubstring(s: String, t: String): String {
   val tFreq = t.groupingBy { it }.eachCount().toMutableMap()
   var start = 0
-  var end = 0
+  val end = 0
   var minWindowSize = Int.MAX_VALUE
   var minWinStart = 0
   var found = 0
