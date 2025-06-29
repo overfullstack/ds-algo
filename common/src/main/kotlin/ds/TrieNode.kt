@@ -26,13 +26,12 @@ class TrieNode(val value: Char = Char.MIN_VALUE) { // First node of a Trie is a 
       if (isEnd) {
         isEnd = false
       }
-      return if (isEmptyChildren()) null
-      else
-        this // This has no sub-branches, the only branch is being totally dedicated for this word.
+      // This has no subbranches, the only branch is being totally dedicated for this word.
+      return if (isEmptyChildren()) null else this 
     }
     children[key[depth] - 'a'] = children[key[depth] - 'a']?.remove(key, depth + 1)
     return if (!isEnd && isEmptyChildren()) null
-    else this // If current child is the only non-null child which got removed, remove this node
+    else this // If the current child is the only non-null child that got removed, remove this node
     // recursively.
   }
 

@@ -6,12 +6,12 @@ fun printPermutations(str: String, permutation: String, used: BooleanArray) {
     println(permutation)
     return
   }
-  for (i in 0 until strLength) {
-    if (!used[i]) {
-      used[i] = true
-      printPermutations(str, permutation + str[i], used)
-      used[i] = false
-    }
+  str.indices.asSequence()
+  .filter { !used[it] }
+  .onEach { used[it] = true }
+  .forEach { 
+    printPermutations(str, permutation + str[it], used)
+    used[it] = false 
   }
 }
 
