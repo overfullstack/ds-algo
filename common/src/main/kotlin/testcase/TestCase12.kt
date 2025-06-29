@@ -22,7 +22,7 @@ data class TestCase12(val testcases: List<Testcase>) {
     @OptIn(ExperimentalStdlibApi::class)
     fun parseJsonFileToTestCases(
       vararg jsonFilePaths: String
-    ): List<Triple<Array<IntArray>, Set<Int>, Int>> {
+    ): List<Triple<List<List<Int>>, Set<Int>, Int>> {
       val json = Json { explicitNulls = false }
       val testCases =
         jsonFilePaths.flatMap {
@@ -30,7 +30,7 @@ data class TestCase12(val testcases: List<Testcase>) {
         }
       return testCases.map {
         Triple(
-          it.inputs[0].x1!!.map { it.toIntArray() }.toTypedArray(),
+          it.inputs[0].x1!!,
           it.inputs[1].x2!!.toSet(),
           it.output[0].x1
         )
