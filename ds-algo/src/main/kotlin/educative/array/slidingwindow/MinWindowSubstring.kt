@@ -8,8 +8,8 @@ fun minWindowSubstring(s: String, t: String): String {
   var minWindowSize = Int.MAX_VALUE
   var minWinStart = 0
   var found = 0
-  for((i, char) in s.withIndex()) {
-    tFreq.computeIfPresent(char) { _, freq -> 
+  for ((i, char) in s.withIndex()) {
+    tFreq.computeIfPresent(char) { _, freq ->
       if (freq > 0) found++
       freq.dec()
     }
@@ -22,12 +22,13 @@ fun minWindowSubstring(s: String, t: String): String {
         minWindowSize = curWindowSize
         minWinStart = start
       }
-      tFreq.computeIfPresent(s[start]) { _, freq -> 
+      tFreq.computeIfPresent(s[start]) { _, freq ->
         if (freq >= 0) found--
         freq.inc()
       }
       start++
     }
   }
-  return if (minWindowSize == Int.MAX_VALUE) "" else s.substring(minWinStart..minWinStart + minWindowSize - 1)
+  return if (minWindowSize == Int.MAX_VALUE) ""
+  else s.substring(minWinStart..minWinStart + minWindowSize - 1)
 }

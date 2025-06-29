@@ -9,6 +9,7 @@ class TrieNode(val value: Char = Char.MIN_VALUE) { // First node of a Trie is a 
 
   lateinit var word: String
     private set
+
   // set(value) = if (isEnd) field = value else throw AssertionError("Can't set word on non-end
   // node")
 
@@ -27,7 +28,7 @@ class TrieNode(val value: Char = Char.MIN_VALUE) { // First node of a Trie is a 
         isEnd = false
       }
       // This has no subbranches, the only branch is being totally dedicated for this word.
-      return if (isEmptyChildren()) null else this 
+      return if (isEmptyChildren()) null else this
     }
     children[key[depth] - 'a'] = children[key[depth] - 'a']?.remove(key, depth + 1)
     return if (!isEnd && isEmptyChildren()) null

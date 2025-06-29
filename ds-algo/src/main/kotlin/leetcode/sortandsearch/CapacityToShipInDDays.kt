@@ -5,7 +5,7 @@ fun shipWithinDays(
   weights: IntArray,
   D: Int,
   minCap: Int = weights.maxOrNull()!!,
-  maxCap: Int = weights.sum()
+  maxCap: Int = weights.sum(),
 ): Int {
   // * Recursion doesn't stop when `daysRequired=D`. It stops when no more window left to search.
   if (minCap == maxCap) {

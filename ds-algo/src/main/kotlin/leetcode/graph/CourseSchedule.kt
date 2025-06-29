@@ -20,7 +20,7 @@ fun canFinish(numCourses: Int, prerequisites: Array<IntArray>): Boolean {
 private fun Int.dft(
   diGraph: Map<Int, Set<Int>>,
   visited: MutableSet<Int>,
-  visitedInBrach: Set<Int>
+  visitedInBrach: Set<Int>,
 ): Boolean =
   diGraph[this]
     ?.asSequence()

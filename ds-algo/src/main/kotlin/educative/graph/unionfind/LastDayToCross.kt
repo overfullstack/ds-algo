@@ -22,7 +22,7 @@ private fun union(
   rows: Int,
   cols: Int,
   waterDayByDay: Set<Pair<Int, Int>>,
-  unionFind: UnionFind3
+  unionFind: UnionFind3,
 ) {
   directions
     .asSequence()

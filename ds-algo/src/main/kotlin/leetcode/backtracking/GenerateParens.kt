@@ -5,7 +5,7 @@ fun generateParenthesis(
   n: Int,
   leftRemaining: Int = n,
   rightRemaining: Int = n,
-  parentStr: String = ""
+  parentStr: String = "",
 ): List<String> =
   when {
     leftRemaining < 0 || rightRemaining < leftRemaining -> emptyList()

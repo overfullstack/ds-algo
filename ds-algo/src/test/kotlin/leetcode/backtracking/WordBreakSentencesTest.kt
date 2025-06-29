@@ -12,13 +12,13 @@ class WordBreakSentencesTest :
         row(
           "catsanddog",
           listOf("cat", "cats", "and", "sand", "dog"),
-          listOf("cats and dog", "cat sand dog")
+          listOf("cats and dog", "cat sand dog"),
         ),
         row(
           "pineapplepenapple",
           listOf("apple", "pen", "applepen", "pine", "pineapple"),
-          listOf("pine apple pen apple", "pineapple pen apple", "pine applepen apple")
-        )
+          listOf("pine apple pen apple", "pineapple pen apple", "pine applepen apple"),
+        ),
       ) { word, wordDict, result ->
         wordBreakSentences(word, wordDict) shouldContainExactlyInAnyOrder result
       }

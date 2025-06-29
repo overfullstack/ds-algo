@@ -6,7 +6,7 @@ fun kClosest(points: Array<IntArray>, K: Int): Array<IntArray> =
 private tailrec fun kClosest(
   points: List<Pair<Int, Int>>,
   K: Int,
-  result: List<Pair<Int, Int>> = emptyList()
+  result: List<Pair<Int, Int>> = emptyList(),
 ): List<Pair<Int, Int>> {
   val (lower, higher) = points.partition { it <= points[points.lastIndex] }
 

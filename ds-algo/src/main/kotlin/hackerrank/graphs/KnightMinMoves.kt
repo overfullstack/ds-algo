@@ -47,7 +47,7 @@ private fun offSetCombinations(pairOffset: Pair<Int, Int>): List<Pair<Int, Int>>
       Pair(it.first, it.second),
       Pair(it.first, -it.second),
       Pair(-it.first, it.second),
-      Pair(-it.first, -it.second)
+      Pair(-it.first, -it.second),
     )
   }
 }

@@ -13,7 +13,7 @@ constructor(
   @JvmField var right: TreeNode? = null,
   @JvmField var parent: TreeNode? = null,
   @JvmField var next: TreeNode? = null,
-  @JvmField val id: String = ""
+  @JvmField val id: String = "",
 ) {
 
   private var leftSize: Int = 0
@@ -141,7 +141,7 @@ constructor(
       return TreeNode(
         levelOrder[index],
         buildCompleteTreeFromPreOrder(levelOrder, 2 * index + 1),
-        buildCompleteTreeFromPreOrder(levelOrder, 2 * index + 2)
+        buildCompleteTreeFromPreOrder(levelOrder, 2 * index + 2),
       )
     }
 

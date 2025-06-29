@@ -7,7 +7,7 @@ fun permuteUnique(nums: IntArray): List<List<Int>> =
 private fun permuteUniqueUtil(
   numsSorted: List<Int>,
   used: BooleanArray = BooleanArray(numsSorted.size),
-  combination: List<Int> = emptyList()
+  combination: List<Int> = emptyList(),
 ): List<List<Int>> =
   if (combination.size == numsSorted.size) {
     listOf(combination)

@@ -9,7 +9,7 @@ import ds.tree.TreeNode
 private fun TreeNode?.pathCountForSum(
   targetSum: Int,
   sumToPathCount: MutableMap<Int, Int> = mutableMapOf(),
-  runningSum: Int = 0
+  runningSum: Int = 0,
 ): Int {
   if (this == null) {
     return 0
@@ -24,7 +24,7 @@ private fun TreeNode?.pathCountForSum(
       right.pathCountForSum(
         targetSum,
         sumToPathCount,
-        curSum
+        curSum,
       )) // This is like fold, for left n right
   // backtracking, removing the path contributed by this node, by decrementing the pathCount for
   // curSum.

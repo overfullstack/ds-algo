@@ -6,13 +6,13 @@ fun longestRepeatingCharReplacement(s: String, k: Int): Int {
   var start = 0
   var maxFreq = Int.MIN_VALUE
   var freqMap = mutableMapOf<Char, Int>()
-  for((i, char) in s.withIndex()) {
-    freqMap.compute(char) { _, value ->  
+  for ((i, char) in s.withIndex()) {
+    freqMap.compute(char) { _, value ->
       val newValue = value?.inc() ?: 1
       maxFreq = maxOf(maxFreq, newValue)
       newValue
     }
-    if(i - start + 1 - maxFreq > k) {
+    if (i - start + 1 - maxFreq > k) {
       freqMap.computeIfPresent(s[start]) { _, value -> value.dec() }
       start++
     }

@@ -14,10 +14,10 @@ class IslandsTest :
             "11110".toCharArray(),
             "11010".toCharArray(),
             "11000".toCharArray(),
-            "00000".toCharArray()
+            "00000".toCharArray(),
           ),
-          1
-        ),
+          1,
+        )
       ) { grid, result ->
         numIslands(grid) shouldBe result
       }

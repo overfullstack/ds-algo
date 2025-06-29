@@ -13,7 +13,7 @@ class JumpGame2Test :
         row(intArrayOf(2, 3, 0, 1, 4, 2), 2),
         row(intArrayOf(0), 0),
         row(intArrayOf(1, 1, 1, 1, 1), 4),
-        row(intArrayOf(1, 5, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1), 12)
+        row(intArrayOf(1, 5, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1), 12),
       ) { nums, result ->
         minJumps(nums) shouldBe result
       }

@@ -5,7 +5,7 @@ fun searchInRotatedSorted2(
   nums: IntArray,
   target: Int,
   left: Int = 0,
-  right: Int = nums.lastIndex
+  right: Int = nums.lastIndex,
 ): Boolean {
   if (left > right) {
     return false

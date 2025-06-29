@@ -15,7 +15,7 @@ fun main() {
 fun constructTree(
   index: Int,
   parentArr: List<Int>,
-  constructedNodes: Array<TreeNode?> = emptyArray()
+  constructedNodes: Array<TreeNode?> = emptyArray(),
 ) {
   when {
     constructedNodes[index] != null || parentArr[index] == -1 -> return

@@ -5,7 +5,7 @@ import ds.tree.TreeNode
 
 private fun TreeNode.allPathsTopToBottomForSum(
   sum: Int,
-  result: List<Int> = emptyList()
+  result: List<Int> = emptyList(),
 ): List<List<Int>> {
   if (left == null && right == null) {
     return if (sum - value == 0) listOf(result + value) else emptyList()

@@ -66,7 +66,7 @@ data class SLLNode(var value: Int, var next: SLLNode? = null) {
     private tailrec fun ofNonEmpty(
       values: IntArray,
       index: Int = values.lastIndex,
-      next: SLLNode = SLLNode(values[index], null)
+      next: SLLNode = SLLNode(values[index], null),
     ): SLLNode =
       when (index) {
         0 -> next

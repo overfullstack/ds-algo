@@ -5,7 +5,7 @@ package leetcode.backtracking.PalindromePartitioning
 fun palindromePartition(
   str: String,
   palindromes: List<String> = emptyList(),
-  startIndex: Int = 0
+  startIndex: Int = 0,
 ): List<List<String>> =
   if (startIndex > str.lastIndex) {
     listOf(palindromes)

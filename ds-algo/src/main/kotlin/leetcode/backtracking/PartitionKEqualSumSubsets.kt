@@ -16,7 +16,7 @@ private fun canPartitionKSubsets(
   targetSum: Int,
   used: BooleanArray = BooleanArray(nums.size),
   curSum: Int = 0,
-  startIndex: Int = 0
+  startIndex: Int = 0,
 ): Boolean =
   when {
     k == 0 -> true
@@ -34,7 +34,7 @@ private fun canPartitionKSubsets(
               targetSum,
               used,
               curSum + nums[unusedIndex],
-              unusedIndex + 1
+              unusedIndex + 1,
             )
             .also { used[unusedIndex] = false }
         }

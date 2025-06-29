@@ -42,7 +42,7 @@ class SLLNodeTest :
     "reverse" {
       parseJsonFileToTestCases(
           "$PKG_PATH/sll-reverse-test-cases-1.json",
-          "$PKG_PATH/sll-reverse-test-cases-2.json"
+          "$PKG_PATH/sll-reverse-test-cases-2.json",
         )
         .forAll { (inputs, output) ->
           val head = SLLNode.of(inputs.toIntArray())!!
@@ -51,11 +51,9 @@ class SLLNodeTest :
     }
 
     "length" {
-      forAll(
-        row(intArrayOf(1), 1),
-        row(intArrayOf(1, 2), 2),
-        row(intArrayOf(1, 2, 3), 3),
-      ) { arr, result ->
+      forAll(row(intArrayOf(1), 1), row(intArrayOf(1, 2), 2), row(intArrayOf(1, 2, 3), 3)) {
+        arr,
+        result ->
         SLLNode.of(arr)?.length() shouldBe result
       }
     }

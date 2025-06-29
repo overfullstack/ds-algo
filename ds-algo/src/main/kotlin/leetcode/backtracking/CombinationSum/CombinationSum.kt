@@ -5,7 +5,7 @@ package leetcode.backtracking.CombinationSum
 fun IntArray.combinationSum(
   sumLeft: Int,
   startIndex: Int = 0,
-  combination: List<Int> = emptyList()
+  combination: List<Int> = emptyList(),
 ): List<List<Int>> =
   when {
     sumLeft < 0 -> emptyList()
@@ -15,7 +15,7 @@ fun IntArray.combinationSum(
         combinationSum(
           sumLeft - this[it],
           it, // passing same `index` instead of `index+1`, as problem allows repetition.
-          combination + this[it]
+          combination + this[it],
         )
       }
   }

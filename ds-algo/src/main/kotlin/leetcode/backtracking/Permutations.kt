@@ -5,7 +5,7 @@ fun permute(nums: IntArray): List<List<Int>> = nums.permute()
 
 fun IntArray.permute(
   permutation: List<Int> = emptyList(),
-  used: BooleanArray = BooleanArray(size)
+  used: BooleanArray = BooleanArray(size),
 ): List<List<Int>> =
   if (permutation.size == size) {
     listOf(permutation)

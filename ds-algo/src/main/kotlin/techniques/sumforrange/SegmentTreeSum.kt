@@ -33,7 +33,7 @@ class SegmentTreeSum(var arr: IntArray) {
     segmentEnd: Int,
     queryStartIndex: Int,
     queryEndIndex: Int,
-    segmentTreeIndex: Int
+    segmentTreeIndex: Int,
   ): Int {
     if (queryStartIndex <= segmentStart && queryEndIndex >= segmentEnd) {
       return segmentTree[segmentTreeIndex]
@@ -47,7 +47,7 @@ class SegmentTreeSum(var arr: IntArray) {
       mid,
       queryStartIndex,
       queryEndIndex,
-      2 * segmentTreeIndex + 1
+      2 * segmentTreeIndex + 1,
     ) +
       getSumForRange(mid + 1, segmentEnd, queryStartIndex, queryEndIndex, 2 * segmentTreeIndex + 2)
   }
@@ -63,7 +63,7 @@ class SegmentTreeSum(var arr: IntArray) {
     diff: Int,
     segmentStart: Int,
     segmentEnd: Int,
-    segmentTreeIndex: Int
+    segmentTreeIndex: Int,
   ) {
     if (index < segmentStart || index > segmentEnd) {
       return

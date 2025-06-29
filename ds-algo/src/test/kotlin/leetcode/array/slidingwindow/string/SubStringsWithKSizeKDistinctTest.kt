@@ -26,9 +26,9 @@ class SubStringsWithKSizeKDistinctTest :
             "unag",
             "nagw",
             "agwk",
-            "kwag"
-          )
-        )
+            "kwag",
+          ),
+        ),
       ) { s, k, result ->
         subStringsWithKSizeKDistinct(s, k) shouldContainExactlyInAnyOrder result
       }

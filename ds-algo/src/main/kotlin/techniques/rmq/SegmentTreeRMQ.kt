@@ -20,7 +20,7 @@ class SegmentTreeRMQ(var arr: IntArray) {
       val mid = (startIndex + endIndex) / 2
       minOf(
         construct(2 * segmentTreeIndex + 1, startIndex, mid),
-        construct(2 * segmentTreeIndex + 2, mid + 1, endIndex)
+        construct(2 * segmentTreeIndex + 2, mid + 1, endIndex),
       )
     }
   }
@@ -34,7 +34,7 @@ class SegmentTreeRMQ(var arr: IntArray) {
     segmentEnd: Int,
     queryStartIndex: Int,
     queryEndIndex: Int,
-    segmentTreeIndex: Int
+    segmentTreeIndex: Int,
   ): Int {
     if (queryStartIndex <= segmentStart && queryEndIndex >= segmentEnd) {
       return segmentTree[segmentTreeIndex]
@@ -45,7 +45,7 @@ class SegmentTreeRMQ(var arr: IntArray) {
     val mid = (segmentStart + segmentEnd) / 2
     return minOf(
       getMinForRange(segmentStart, mid, queryStartIndex, queryEndIndex, 2 * segmentTreeIndex + 1),
-      getMinForRange(mid + 1, segmentEnd, queryStartIndex, queryEndIndex, 2 * segmentTreeIndex + 2)
+      getMinForRange(mid + 1, segmentEnd, queryStartIndex, queryEndIndex, 2 * segmentTreeIndex + 2),
     )
   }
 

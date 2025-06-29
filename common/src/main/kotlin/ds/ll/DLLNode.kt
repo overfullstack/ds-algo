@@ -17,7 +17,7 @@ data class DLLNode<T>(var value: T, var prev: DLLNode<T>? = null, var next: DLLN
     private tailrec fun <T> ofNonEmptyList(
       values: List<T>,
       index: Int = values.lastIndex,
-      next: DLLNode<T> = DLLNode(values[index], null, null)
+      next: DLLNode<T> = DLLNode(values[index], null, null),
     ): DLLNode<T> =
       when (index) {
         0 -> next

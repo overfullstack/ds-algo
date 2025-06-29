@@ -44,20 +44,20 @@ fun greedyChunking(ctx: Context): Int {
     }
     // Stamping with a temp chunkNumber to not qualify for `queryNext()` in the next iteration
     ctx.stampChunkNumber(idsInChunk, -1)
-    queryStartGroupNumber+= QUERY_GROUP_COUNT
+    queryStartGroupNumber += QUERY_GROUP_COUNT
   }
 }
 
 private fun Context.queryNext(groupRange: IntRange): List<Map<Id, ContextRecord>> =
-    entries
-        .asSequence()
-        .filter { (_, ctxRec) -> ctxRec.chunkNumber == null && ctxRec.groupNumber in groupRange }
-        .groupBy { (_, ctxRec) -> ctxRec.groupNumber }
-        .values
-        .map { it.associate { it.toPair() } }
-        .sortedByDescending { it.values.sumOf { it.weight } }
+  entries
+    .asSequence()
+    .filter { (_, ctxRec) -> ctxRec.chunkNumber == null && ctxRec.groupNumber in groupRange }
+    .groupBy { (_, ctxRec) -> ctxRec.groupNumber }
+    .values
+    .map { it.associate { it.toPair() } }
+    .sortedByDescending { it.values.sumOf { it.weight } }
 
 private fun Context.stampChunkNumber(ids: List<Id>, chunkNumber: Int) =
-    ids.forEach {
-      computeIfPresent(it) { _, contextRecord -> contextRecord.copy(chunkNumber = chunkNumber) }
-    }
+  ids.forEach {
+    computeIfPresent(it) { _, contextRecord -> contextRecord.copy(chunkNumber = chunkNumber) }
+  }

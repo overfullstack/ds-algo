@@ -22,11 +22,7 @@ class DiGraph<T>(private val adjacencyMap: MutableMap<T, Set<T>> = mutableMapOf(
       .any { bfs(valToSearch, visited, ArrayDeque(listOf(it))) }
   }
 
-  private tailrec fun bfs(
-    valToSearch: T,
-    visited: MutableSet<T>,
-    queue: ArrayDeque<T>,
-  ): Boolean {
+  private tailrec fun bfs(valToSearch: T, visited: MutableSet<T>, queue: ArrayDeque<T>): Boolean {
     return when {
       queue.isEmpty() -> false
       else -> {
@@ -73,9 +69,7 @@ class DiGraph<T>(private val adjacencyMap: MutableMap<T, Set<T>> = mutableMapOf(
       .toList()
   }
 
-  private fun T.dftPerBranch(
-    visited: MutableSet<T>,
-  ): Sequence<T> =
+  private fun T.dftPerBranch(visited: MutableSet<T>): Sequence<T> =
     adjacencyMap[this]
       ?.asSequence()
       ?.filter { it !in visited }
@@ -116,7 +110,7 @@ class DiGraph<T>(private val adjacencyMap: MutableMap<T, Set<T>> = mutableMapOf(
 
   private fun T.topologicalSortPerBranch(
     visited: MutableSet<T>,
-    visitedInBranch: Set<T> = setOf(this)
+    visitedInBranch: Set<T> = setOf(this),
   ): Sequence<T> =
     adjacencyMap[this]?.asSequence()?.flatMap {
       when (it) { // * `visited.apply { add(it) }` coz we need to retain it across recursions.

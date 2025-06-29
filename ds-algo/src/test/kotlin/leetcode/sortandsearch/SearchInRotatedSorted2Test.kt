@@ -1006,7 +1006,7 @@ val bigArray =
     1,
     1,
     1,
-    1
+    1,
   )
 
 class SearchInRotatedSorted2Test :
@@ -1017,7 +1017,7 @@ class SearchInRotatedSorted2Test :
         row(intArrayOf(2, 5, 6, 0, 0, 1, 2), 3, false),
         row(intArrayOf(1, 1, 1, 1, 2, 1, 1, 1), 2, true),
         row(bigArray, 2, true),
-        row(intArrayOf(1, 1, 1, 1, 1, 2, 1, 1, 1, 1), 2, true)
+        row(intArrayOf(1, 1, 1, 1, 1, 2, 1, 1, 1, 1), 2, true),
       ) { arr, target, result ->
         searchInRotatedSorted2(arr, target) shouldBe result
       }

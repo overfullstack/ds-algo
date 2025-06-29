@@ -23,7 +23,7 @@ fun findOrder(numCourses: Int, prerequisites: Array<IntArray>): IntArray {
 private fun Int.topologicalSort(
   diGraph: Map<Int, Set<Int>>,
   visited: MutableSet<Int>,
-  visitedInBranch: Set<Int>
+  visitedInBranch: Set<Int>,
 ): Sequence<Int> =
   diGraph[this]?.asSequence()?.flatMap {
     when {

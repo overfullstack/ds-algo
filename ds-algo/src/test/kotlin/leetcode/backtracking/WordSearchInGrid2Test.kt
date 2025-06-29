@@ -14,7 +14,7 @@ internal class WordSearchInGrid2Test {
         charArrayOf('o', 'a', 'a', 'n'),
         charArrayOf('e', 't', 'a', 'e'),
         charArrayOf('i', 'h', 'k', 'r'),
-        charArrayOf('i', 'f', 'l', 'v')
+        charArrayOf('i', 'f', 'l', 'v'),
       )
     val words = arrayOf("oath", "pea", "eat", "rain")
     findWords(board, words) shouldContainExactlyInAnyOrder listOf("eat", "oath")

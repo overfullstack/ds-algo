@@ -12,7 +12,7 @@ class IntersectionTest :
       forAll(
         row(intArrayOf(1, 2, 3), intArrayOf(4), intArrayOf(5, 9, 10), 5),
         row(intArrayOf(1), intArrayOf(1), intArrayOf(), 1),
-        row(intArrayOf(), intArrayOf(1), intArrayOf(2), null)
+        row(intArrayOf(), intArrayOf(1), intArrayOf(2), null),
       ) { half1, half2, intersection, result ->
         val half1Node = SLLNode.of(half1)
         val half2Node = SLLNode.of(half2)

@@ -13,7 +13,7 @@ class EvaluateExpressionTreeTest :
     "evaluate expression tree" {
       forAll(
         row(parseJsonFileToTree("$PKG_PATH/tree1.json"), 5),
-        row(parseJsonFileToTree("$PKG_PATH/tree2.json"), 14)
+        row(parseJsonFileToTree("$PKG_PATH/tree2.json"), 14),
       ) { root, result ->
         root.evaluateExpressionTree() shouldBe result
       }

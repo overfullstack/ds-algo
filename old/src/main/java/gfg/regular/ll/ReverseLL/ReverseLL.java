@@ -6,32 +6,32 @@ import gfg.ds.SLLNode;
 
 /** Created by gakshintala on 6/10/16. */
 public class ReverseLL {
-  public static void main(String[] args) {
-    SLLNode l1, l2, l3, l4;
-    l1 = new SLLNode(1);
-    l2 = new SLLNode(2);
-    l3 = new SLLNode(3);
-    l4 = new SLLNode(4);
+	public static void main(String[] args) {
+		SLLNode l1, l2, l3, l4;
+		l1 = new SLLNode(1);
+		l2 = new SLLNode(2);
+		l3 = new SLLNode(3);
+		l4 = new SLLNode(4);
 
-    l1.next = l2;
-    l2.next = l3;
-    l3.next = l4;
+		l1.next = l2;
+		l2.next = l3;
+		l3.next = l4;
 
-    reverseLinkedList(l1);
-    printSLL(l4);
-  }
+		reverseLinkedList(l1);
+		printSLL(l4);
+	}
 
-  public static SLLNode reverseLinkedList(SLLNode head) {
-    SLLNode prev = null, cur = head, next = head;
+	public static SLLNode reverseLinkedList(SLLNode head) {
+		SLLNode prev = null, cur = head, next = head;
 
-    while (next != null) {
-      // next will be leading and cur and prev shall be reversing pointers
-      cur = next;
-      next = next.next;
+		while (next != null) {
+			// next will be leading and cur and prev shall be reversing pointers
+			cur = next;
+			next = next.next;
 
-      cur.next = prev;
-      prev = cur;
-    }
-    return cur;
-  }
+			cur.next = prev;
+			prev = cur;
+		}
+		return cur;
+	}
 }

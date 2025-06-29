@@ -17,7 +17,7 @@ class RemoveAdjacentDuplicatesTest :
       forAll(
         row("abcd", 2, "abcd"),
         row("deeedbbcccbdaa", 3, "aa"),
-        row("pbbcggttciiippooaais", 2, "ps")
+        row("pbbcggttciiippooaais", 2, "ps"),
       ) { s, k, result ->
         removeKDuplicates(s, k) shouldBe result
       }

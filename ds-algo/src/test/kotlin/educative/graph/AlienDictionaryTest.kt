@@ -25,18 +25,18 @@ class AlienDictionaryTest :
             "suax",
             "rom",
             "rwx",
-            "rwv"
+            "rwv",
           ),
-          "mzouqxwsvra"
+          "mzouqxwsvra",
         ),
         row(
           listOf("vanilla", "alpine", "algor", "port", "norm", "nylon", "ophellia", "hidden"),
-          "vilertmdapgnoyh"
+          "vilertmdapgnoyh",
         ),
         row(listOf("passengers", "to", "the", "unknown"), "pasengrokwthu"),
         row(listOf("alpha", "bravo", "charlie", "delta"), "alphrvoietbcd"),
         row(listOf("jupyter", "ascending"), "jupyterscndiga"),
-        row(listOf("ba", "ba", "ba"), "ba")
+        row(listOf("ba", "ba", "ba"), "ba"),
       ) { words, result ->
         orderAlienDictionary(words) shouldBe result
       }

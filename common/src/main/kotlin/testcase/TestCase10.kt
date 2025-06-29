@@ -21,9 +21,7 @@ data class TestCase10(val testcases: List<Testcase>) {
       vararg jsonFilePaths: String
     ): List<Pair<Set<Pair<Int, Int>>, Int>> {
       val testCases =
-        jsonFilePaths.flatMap {
-          Json.decodeFromString<TestCase10>(readFileToString(it)).testcases
-        }
+        jsonFilePaths.flatMap { Json.decodeFromString<TestCase10>(readFileToString(it)).testcases }
       return testCases.map { Pair(it.inputs[0].x1.map { it.toPair() }.toSet(), it.output[0].x1) }
     }
   }

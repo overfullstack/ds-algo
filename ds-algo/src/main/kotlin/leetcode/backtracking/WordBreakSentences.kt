@@ -10,7 +10,7 @@ private fun wordBreakSentences(
   str: String,
   wordDict: Set<String>,
   startIndex: Int = 0,
-  cache: MutableMap<Int, List<List<String>>> = mutableMapOf()
+  cache: MutableMap<Int, List<List<String>>> = mutableMapOf(),
 ): List<List<String>> {
   cache[startIndex]?.let {
     return it

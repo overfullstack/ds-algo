@@ -14,7 +14,7 @@ class PartitionTest :
         row(intArrayOf(1, 2, 3), 5, intArrayOf(1, 2, 3)),
         row(intArrayOf(5, 6, 7), 3, intArrayOf(5, 6, 7)),
         row(intArrayOf(1), 1, intArrayOf(1)),
-        row(intArrayOf(), 1, null)
+        row(intArrayOf(), 1, null),
       ) { arr, pivot, result ->
         val node = SLLNode.of(arr)
         node.partition(pivot)

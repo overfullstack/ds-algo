@@ -11,7 +11,7 @@ class SubdomainVisitTest :
       forAll(
         row(
           arrayOf("9001 discuss.leetcode.com"),
-          listOf("9001 discuss.leetcode.com", "9001 leetcode.com", "9001 com")
+          listOf("9001 discuss.leetcode.com", "9001 leetcode.com", "9001 com"),
         ),
         row(
           arrayOf("900 google.mail.com", "50 yahoo.com", "1 intel.mail.com", "5 wiki.org"),
@@ -22,9 +22,9 @@ class SubdomainVisitTest :
             "5 wiki.org",
             "5 org",
             "1 intel.mail.com",
-            "951 com"
-          )
-        )
+            "951 com",
+          ),
+        ),
       ) { cpDomains, result ->
         subdomainVisits(cpDomains) shouldContainExactlyInAnyOrder result
       }

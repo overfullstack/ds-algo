@@ -10,7 +10,7 @@ fun maxSubsetSum(arr: Array<Int>): Int {
     val exclCur =
       maxOf(
         inclPrev,
-        exclPrev
+        exclPrev,
       ) // If I don't include current character, it should be max of either inclusive of previous
     // character or exclusive of previous character
     // for next-iteration

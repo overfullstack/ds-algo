@@ -1,7 +1,9 @@
 package leetcode.greedy
 
 private const val MAX_CHUNK_WEIGHT_PER_JOB_ITEM = 500 // TBD after perf-testing
+
 typealias DB = MutableMap<Id, Pair<Int, Int?>>
+
 fun greedyChunking2(db: DB, queryCount: Int): Int {
   var chunkIndex = 0
   var chunkWeight = 0
@@ -17,20 +19,20 @@ fun greedyChunking2(db: DB, queryCount: Int): Int {
       }
       return chunkIndex
     }
-    
+
     for (i in ids.indices) {
       val currentWeight = weights[i]
       chunkWeight += currentWeight
 
       // We allow more than `MAX_CHUNK_WEIGHT_PER_JOB_ITEM` to accomodate large Bundles
-      if (chunkWeight > MAX_CHUNK_WEIGHT_PER_JOB_ITEM) { 
-          // Full! Stamp the current Chunk
-          if (idsInChunk.isNotEmpty()) {
-            chunkIndex++
-            db.stampChunkNumber(idsInChunk, chunkIndex)
-          }
-          // And start a New Chunk
-          chunkWeight = currentWeight
+      if (chunkWeight > MAX_CHUNK_WEIGHT_PER_JOB_ITEM) {
+        // Full! Stamp the current Chunk
+        if (idsInChunk.isNotEmpty()) {
+          chunkIndex++
+          db.stampChunkNumber(idsInChunk, chunkIndex)
+        }
+        // And start a New Chunk
+        chunkWeight = currentWeight
       }
       idsInChunk.add(ids[i])
     }

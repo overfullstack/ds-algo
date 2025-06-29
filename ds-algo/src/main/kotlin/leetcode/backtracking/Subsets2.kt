@@ -9,7 +9,7 @@ fun subsetsWithDup(nums: IntArray): List<List<Int>> {
 private fun subsetsWithDupUtil(
   nums: IntArray,
   startIndex: Int = 0,
-  combination: List<Int> = emptyList()
+  combination: List<Int> = emptyList(),
 ): List<List<Int>> =
   if (startIndex == nums.lastIndex) {
     listOf(combination + nums[startIndex])

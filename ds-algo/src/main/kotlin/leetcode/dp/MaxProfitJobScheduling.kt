@@ -33,7 +33,7 @@ fun jobScheduling(startTimeArr: IntArray, endTimeArr: IntArray, profitArr: IntAr
 private tailrec fun List<Int>.getClosestJobEndIndex(
   targetEndTime: Int,
   left: Int = 0,
-  right: Int = size - 1
+  right: Int = size - 1,
 ): Int {
   val mid = (left + right) / 2
   return when {

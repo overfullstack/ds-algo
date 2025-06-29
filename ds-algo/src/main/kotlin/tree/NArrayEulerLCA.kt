@@ -27,7 +27,7 @@ data class NArrayEulerTour(var value: Int) {
         emptyArray<NArrayEulerTour>(),
         { tourResult, child ->
           tourResult + (child?.eulersTour(counter + tourResult.size + 1) ?: emptyArray()) + this
-        }
+        },
       )
   }
 }
@@ -36,14 +36,14 @@ fun lcaMultipleNodes(
   nodes: List<Int>,
   treeGraph: Map<Int, NArrayEulerTour>,
   depthsSparseTableRMQ: SparseTableRMQ,
-  eulersTourArr: Array<NArrayEulerTour>
+  eulersTourArr: Array<NArrayEulerTour>,
 ) =
   nodes.reduce { first, second ->
     eulersTourArr[
         depthsSparseTableRMQ
           .rmqIndex( // Find min depth in the range. DepthArr is in same sequence as eulerTourArr.
             treeGraph[first]?.firstOccurrence!!,
-            treeGraph[second]?.firstOccurrence!!
+            treeGraph[second]?.firstOccurrence!!,
           )]
       .value
   }

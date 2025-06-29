@@ -13,7 +13,7 @@ class CheckBalancedTest :
       forAll(
         row(listOf(1, 2, 3, 4, 5, 6, 7), true),
         row(listOf(1, 2, 3, 4, null, null, null, 5), false),
-        row(listOf(1), true)
+        row(listOf(1), true),
       ) { levelOrder, result ->
         levelOrderToTree(levelOrder).checkBalanced().second shouldBe result
       }

@@ -12,7 +12,7 @@ class SuccessorTest :
       forAll(
         row(listOf(1, 2, 3, null, null, 4), 1, 4),
         row(listOf(1, 2, 3, null, null, 4), 2, 1),
-        row(listOf(1, 2, 3, null, null, 4), 3, null)
+        row(listOf(1, 2, 3, null, null, 4), 3, null),
       ) { levelOrder, nodeVal, result ->
         val root = TreeNode.levelOrderToTree(levelOrder)
         root!!.setParents()

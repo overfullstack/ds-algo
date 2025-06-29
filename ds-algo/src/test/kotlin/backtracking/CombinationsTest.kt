@@ -25,7 +25,7 @@ internal class CombinationsTest {
         "bd",
         "c",
         "cd",
-        "d"
+        "d",
       )
   }
 }

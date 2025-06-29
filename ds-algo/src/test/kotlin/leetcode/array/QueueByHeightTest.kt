@@ -16,7 +16,7 @@ class QueueByHeightTest :
             intArrayOf(7, 1),
             intArrayOf(5, 0),
             intArrayOf(6, 1),
-            intArrayOf(5, 2)
+            intArrayOf(5, 2),
           ),
           arrayOf(
             intArrayOf(5, 0),
@@ -24,8 +24,8 @@ class QueueByHeightTest :
             intArrayOf(5, 2),
             intArrayOf(6, 1),
             intArrayOf(4, 4),
-            intArrayOf(7, 1)
-          )
+            intArrayOf(7, 1),
+          ),
         )
       ) { people, result ->
         reconstructQueue(people).forEachIndexed { i, exp -> exp shouldBe result[i] }

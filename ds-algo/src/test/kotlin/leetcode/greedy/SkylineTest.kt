@@ -15,7 +15,7 @@ class SkylineTest :
             intArrayOf(3, 7, 15),
             intArrayOf(5, 12, 12),
             intArrayOf(15, 20, 10),
-            intArrayOf(19, 24, 8)
+            intArrayOf(19, 24, 8),
           ),
           listOf(
             listOf(2, 10),
@@ -24,8 +24,8 @@ class SkylineTest :
             listOf(12, 0),
             listOf(15, 10),
             listOf(20, 8),
-            listOf(24, 0)
-          )
+            listOf(24, 0),
+          ),
         )
       ) { buildings, results ->
         getSkyline(buildings).forEachIndexed { i, result -> result shouldContainExactly results[i] }

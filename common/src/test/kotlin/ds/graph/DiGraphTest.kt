@@ -13,14 +13,7 @@ private const val PKG_PATH = "graph"
 val diGraph =
   DiGraph(mutableMapOf(0 to setOf(1, 2, 3, 4), 1 to setOf(4), 2 to setOf(5), 6 to setOf(7, 8, 9)))
 
-val diGraphWithCycle =
-  DiGraph(
-    mutableMapOf(
-      0 to setOf(1),
-      1 to setOf(2),
-      2 to setOf(0),
-    )
-  )
+val diGraphWithCycle = DiGraph(mutableMapOf(0 to setOf(1), 1 to setOf(2), 2 to setOf(0)))
 
 class DiGraphTest :
   StringSpec({
@@ -62,7 +55,7 @@ class DiGraphTest :
         row(parseJsonFileToDiGraph("$PKG_PATH/graph2.json"), listOf("A", "B", "D", "C")),
         row(
           parseJsonFileToDiGraph("$PKG_PATH/graph1.json"),
-          listOf("A", "B", "E", "F", "I", "J", "C", "D", "G", "K", "H")
+          listOf("A", "B", "E", "F", "I", "J", "C", "D", "G", "K", "H"),
         ),
         row(
           parseJsonFileToDiGraph("$PKG_PATH/graph3.json"),
@@ -92,8 +85,8 @@ class DiGraphTest :
             "E",
             "F",
             "M",
-            "N"
-          )
+            "N",
+          ),
         ),
       ) { graph, result ->
         graph.dft() shouldContainExactly result

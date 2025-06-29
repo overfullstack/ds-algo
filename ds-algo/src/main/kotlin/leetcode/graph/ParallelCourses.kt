@@ -18,7 +18,7 @@ private fun Int.dft(
   diGraph: Map<Int, Set<Int>>,
   visited: MutableSet<Int>,
   visitedInBranch: Set<Int>,
-  maxNodesInPath: Int = 1
+  maxNodesInPath: Int = 1,
 ): Int =
   diGraph[this]
     ?.asSequence()

@@ -17,7 +17,7 @@ fun IntArray.heapSort() {
 tailrec fun IntArray.heapify(
   heapSize: Int,
   rootIndex: Int,
-  compare: Int.(Int) -> Boolean = fun Int.(b: Int) = this > b
+  compare: Int.(Int) -> Boolean = fun Int.(b: Int) = this > b,
 ) {
   var heapIndex = rootIndex
   val leftIndex = 2 * rootIndex + 1

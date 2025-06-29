@@ -12,7 +12,7 @@ fun main() {
   print(
     luckBalance(
       maxImportantContests,
-      Array(noOfContests) { readln().split(" ").map { it.trim().toInt() }.zipWithNext().first() }
+      Array(noOfContests) { readln().split(" ").map { it.trim().toInt() }.zipWithNext().first() },
     )
   )
 }

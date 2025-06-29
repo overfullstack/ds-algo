@@ -47,7 +47,7 @@ fun main() {
         "hippopotamuses",
         "rat",
         "ratcatdogcat",
-        ""
+        "",
       )
     )
     .forEach(::println)

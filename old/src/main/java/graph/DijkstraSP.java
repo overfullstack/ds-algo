@@ -4,40 +4,40 @@ import java.util.PriorityQueue;
 
 /** Created by gakshintala on 1/6/16. */
 public class DijkstraSP {
-  private final DirectedEdge[] edgeTo;
-  private final double[] distTo;
-  private final PriorityQueue<Integer> pq;
+	private final DirectedEdge[] edgeTo;
+	private final double[] distTo;
+	private final PriorityQueue<Integer> pq;
 
-  public DijkstraSP(EdgeWeightedDigraph graph, int source) {
-    var vertexCount = graph.vertexCount();
-    edgeTo = new DirectedEdge[vertexCount];
-    distTo = new double[vertexCount];
-    pq = new PriorityQueue<>();
+	public DijkstraSP(EdgeWeightedDigraph graph, int source) {
+		var vertexCount = graph.vertexCount();
+		edgeTo = new DirectedEdge[vertexCount];
+		distTo = new double[vertexCount];
+		pq = new PriorityQueue<>();
 
-    for (var i = 0; i < vertexCount; i++) distTo[i] = Double.POSITIVE_INFINITY;
+		for (var i = 0; i < vertexCount; i++) distTo[i] = Double.POSITIVE_INFINITY;
 
-    distTo[source] = 0;
-    pq.add(source);
+		distTo[source] = 0;
+		pq.add(source);
 
-    while (!pq.isEmpty()) {
-      int vertex = pq.poll();
-      for (var edge : graph.getAllReachableNodes(vertex)) {
-        relax(edge);
-      }
-    }
-  }
+		while (!pq.isEmpty()) {
+			int vertex = pq.poll();
+			for (var edge : graph.getAllReachableNodes(vertex)) {
+				relax(edge);
+			}
+		}
+	}
 
-  private void relax(DirectedEdge edge) {
-    var from = edge.from();
-    var to = edge.to();
+	private void relax(DirectedEdge edge) {
+		var from = edge.from();
+		var to = edge.to();
 
-    if (distTo[to] > distTo[from] + edge.weight()) {
-      distTo[to] = distTo[from] + edge.weight();
-      edgeTo[to] = edge;
-    }
+		if (distTo[to] > distTo[from] + edge.weight()) {
+			distTo[to] = distTo[from] + edge.weight();
+			edgeTo[to] = edge;
+		}
 
-    if (!pq.contains(to)) {
-      pq.add(to);
-    }
-  }
+		if (!pq.contains(to)) {
+			pq.add(to);
+		}
+	}
 }

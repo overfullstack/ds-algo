@@ -16,7 +16,7 @@ class OneAwayKtTest :
         row("abcde", "abc", false),
         row("abc", "ab", true),
         row("abc", "abcd", true),
-        row("pale", "bake", false)
+        row("pale", "bake", false),
       ) { str1, str2, result ->
         isOneAway(str1, str2) shouldBe result
       }

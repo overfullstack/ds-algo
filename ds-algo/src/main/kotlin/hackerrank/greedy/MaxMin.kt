@@ -62,7 +62,7 @@ private fun enqueueCur(
   maxDeque: ArrayDeque<Int>,
   nums: IntArray,
   i: Int,
-  comparator: Int.(Int) -> Boolean
+  comparator: Int.(Int) -> Boolean,
 ) {
   while (!maxDeque.isEmpty() && nums[i].comparator(nums[maxDeque.last()])) {
     maxDeque

@@ -15,7 +15,7 @@ class PalidromePermutationKtTest :
         row("abcd", false),
         row("abab", true),
         row("a", true),
-        row("", true)
+        row("", true),
       ) { str, result ->
         isPalidromePermutation(str) shouldBe result
       }

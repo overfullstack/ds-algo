@@ -11,7 +11,7 @@ class LongestContiguousSubArrayTest :
       forAll(
         row(intArrayOf(0, 1), 2),
         row(intArrayOf(0, 1, 0), 2),
-        row(intArrayOf(1, 0, 1, 1, 1, 0, 0), 6)
+        row(intArrayOf(1, 0, 1, 1, 1, 0, 0), 6),
       ) { nums, result ->
         longestContiguousSubArray(nums) shouldBe result
       }

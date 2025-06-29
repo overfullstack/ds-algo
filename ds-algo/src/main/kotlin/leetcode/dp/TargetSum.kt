@@ -5,7 +5,7 @@ fun findTargetSumWays(
   targetSum: Int,
   curSum: Int = 0,
   index: Int = 0,
-  cache: MutableMap<Pair<Int, Int>, Int> = mutableMapOf()
+  cache: MutableMap<Pair<Int, Int>, Int> = mutableMapOf(),
 ): Int =
   when {
     (index to curSum) in cache -> cache[index to curSum]!!

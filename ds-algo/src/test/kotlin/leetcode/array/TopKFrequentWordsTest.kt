@@ -13,8 +13,8 @@ class TopKFrequentWordsTest :
         row(
           arrayOf("the", "day", "is", "sunny", "the", "the", "the", "sunny", "is", "is"),
           4,
-          listOf("the", "is", "sunny", "day")
-        )
+          listOf("the", "is", "sunny", "day"),
+        ),
       ) { words, k, result ->
         topKFrequent(words, k) shouldBe result
       }

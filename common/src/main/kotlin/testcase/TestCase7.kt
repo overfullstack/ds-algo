@@ -21,9 +21,7 @@ data class TestCase7(val testcases: List<Testcase>) {
       vararg jsonFilePaths: String
     ): List<Triple<String, Int, List<String>>> {
       val testCases =
-        jsonFilePaths.flatMap {
-          Json.decodeFromString<TestCase7>(readFileToString(it)).testcases
-        }
+        jsonFilePaths.flatMap { Json.decodeFromString<TestCase7>(readFileToString(it)).testcases }
       return testCases.map { Triple(it.inputs[0].x1!!, it.inputs[1].x2!!, it.output[0].x1) }
     }
   }

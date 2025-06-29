@@ -12,7 +12,7 @@ private fun splitAndMerge(
   countForIndex: IntArray,
   start: Int = 0,
   end: Int = nums.lastIndex,
-  indexes: IntArray = IntArray(nums.size) { it }
+  indexes: IntArray = IntArray(nums.size) { it },
 ) {
   if (start >= end) {
     return
@@ -28,7 +28,7 @@ private fun mergeSortWithIndexes(
   end: Int,
   nums: IntArray,
   indexes: IntArray,
-  countForIndex: IntArray
+  countForIndex: IntArray,
 ) {
   val mid = (start + end) / 2
   var leftIndex = start

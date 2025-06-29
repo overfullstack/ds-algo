@@ -4,7 +4,7 @@ package leetcode.array
 tailrec fun twoSum(
   nums: IntArray,
   target: Int,
-  result: Pair<Int, Int> = 0 to nums.lastIndex
+  result: Pair<Int, Int> = 0 to nums.lastIndex,
 ): IntArray =
   when {
     result.first < 0 || result.second > nums.lastIndex -> intArrayOf()

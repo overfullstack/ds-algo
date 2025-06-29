@@ -21,7 +21,7 @@ private tailrec operator fun List<Int>.compareTo(other: List<Int>): Int =
 private tailrec fun mergeMaxNums(
   num1Digits: List<Int>,
   num2Digits: List<Int>,
-  mergedDigits: List<Int> = emptyList()
+  mergedDigits: List<Int> = emptyList(),
 ): List<Int> =
   when {
     num1Digits.isEmpty() -> mergedDigits + num2Digits

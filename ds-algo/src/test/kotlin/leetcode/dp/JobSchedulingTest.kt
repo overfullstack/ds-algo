@@ -14,9 +14,9 @@ class JobSchedulingTest :
           intArrayOf(1, 2, 3, 4, 6),
           intArrayOf(3, 5, 10, 6, 9),
           intArrayOf(20, 20, 100, 70, 60),
-          150
+          150,
         ),
-        row(intArrayOf(1, 1, 1), intArrayOf(2, 3, 4), intArrayOf(5, 6, 4), 6)
+        row(intArrayOf(1, 1, 1), intArrayOf(2, 3, 4), intArrayOf(5, 6, 4), 6),
       ) { startTimeArr, endTimeArr, profitArr, result ->
         jobScheduling(startTimeArr, endTimeArr, profitArr) shouldBe result
       }

@@ -18,7 +18,7 @@ fun orderAlienDictionary(words: List<String>): String {
       },
       {
         return ""
-      }
+      },
     )
   }
   val result = mutableListOf<Char>()

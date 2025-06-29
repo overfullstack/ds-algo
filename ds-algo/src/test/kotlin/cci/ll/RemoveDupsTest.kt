@@ -14,7 +14,7 @@ class RemoveDupsTest :
         row(intArrayOf(1, 2, 3, 4), intArrayOf(1, 2, 3, 4)),
         row(intArrayOf(1), intArrayOf(1)),
         row(intArrayOf(1, 1), intArrayOf(1)),
-        row(intArrayOf(), null)
+        row(intArrayOf(), null),
       ) { arrWithDups, result ->
         val node = SLLNode.of(arrWithDups)
         node?.removeDupsFromSLL()

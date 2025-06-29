@@ -18,10 +18,10 @@ class ConcatenatedWordsTest :
             "dogcatsdog",
             "hippopotamuses",
             "rat",
-            "ratcatdogcat"
+            "ratcatdogcat",
           ),
-          listOf("catsdogcats", "dogcatsdog", "ratcatdogcat")
-        ),
+          listOf("catsdogcats", "dogcatsdog", "ratcatdogcat"),
+        )
       ) { words, result ->
         findAllConcatenatedWordsInADict(words) shouldContainExactlyInAnyOrder result
       }

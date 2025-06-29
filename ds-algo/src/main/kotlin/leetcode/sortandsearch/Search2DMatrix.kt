@@ -4,7 +4,7 @@ tailrec fun searchIn2dMatrix(
   matrix: Array<IntArray>,
   target: Int,
   row: Int = matrix.lastIndex,
-  col: Int = 0
+  col: Int = 0,
 ): Boolean =
   when { // * Imagine a zig-zag ladder like search from left-bottom to right-top
     row < 0 || col > matrix[0].lastIndex -> false

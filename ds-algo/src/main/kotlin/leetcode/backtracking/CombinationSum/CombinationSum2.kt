@@ -10,7 +10,7 @@ fun combinationSum2(
   arrSorted: List<Int>,
   sumLeft: Int,
   startIndex: Int = 0,
-  combination: IntArray = IntArray(0)
+  combination: IntArray = IntArray(0),
 ): List<IntArray> =
   when {
     sumLeft < 0 -> emptyList()

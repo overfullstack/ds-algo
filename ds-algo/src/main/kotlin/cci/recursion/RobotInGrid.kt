@@ -6,7 +6,7 @@ fun findRoboPath(
   row: Int = 0,
   col: Int = 0,
   failedPoints: MutableSet<Pair<Int, Int>> = mutableSetOf(),
-  path: List<Pair<Int, Int>> = emptyList()
+  path: List<Pair<Int, Int>> = emptyList(),
 ): List<Pair<Int, Int>> {
   if (
     row > grid.lastIndex ||

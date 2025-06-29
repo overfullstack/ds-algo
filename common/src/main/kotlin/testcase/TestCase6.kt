@@ -12,7 +12,7 @@ data class TestCase6(val testcases: List<Testcase>) {
     @Serializable
     data class Input(
       @SerialName("1") val x1: List<String>? = null,
-      @SerialName("2") val x2: String? = null
+      @SerialName("2") val x2: String? = null,
     )
 
     @Serializable data class Output(@SerialName("1") val x1: Boolean)
@@ -24,9 +24,7 @@ data class TestCase6(val testcases: List<Testcase>) {
       vararg jsonFilePaths: String
     ): List<Triple<List<String>, String, Boolean>> {
       val testCases =
-        jsonFilePaths.flatMap {
-          Json.decodeFromString<TestCase6>(readFileToString(it)).testcases
-        }
+        jsonFilePaths.flatMap { Json.decodeFromString<TestCase6>(readFileToString(it)).testcases }
       return testCases.map { Triple(it.inputs[0].x1!!, it.inputs[1].x2!!, it.output[0].x1) }
     }
   }

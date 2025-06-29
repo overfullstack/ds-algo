@@ -13,7 +13,7 @@ class SmallerNumbersAfterSelfKtTest : StringSpec() {
         row(intArrayOf(5, 2, 6, 1), intArrayOf(2, 1, 1, 0)),
         row(intArrayOf(1, 2, 3, 4), intArrayOf(0, 0, 0, 0)),
         row(intArrayOf(4, 3, 2, 1), intArrayOf(3, 2, 1, 0)),
-        row(intArrayOf(), intArrayOf())
+        row(intArrayOf(), intArrayOf()),
       ) { inputArr, countArr ->
         countSmaller(inputArr) shouldBe countArr
       }

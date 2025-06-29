@@ -9,7 +9,7 @@ fun SLLNode.detectLoop(): SLLNode? {
 
 fun SLLNode.getMeetingPtr(
   that: SLLNode?,
-  nextPtrFn: (SLLNode) -> SLLNode? = { it.next }
+  nextPtrFn: (SLLNode) -> SLLNode? = { it.next },
 ): SLLNode? =
   when {
     that == null -> null

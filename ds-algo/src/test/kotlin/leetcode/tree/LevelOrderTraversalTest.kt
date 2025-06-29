@@ -12,7 +12,7 @@ class LevelOrderTraversalTest :
       forAll(
         row(listOf(1, 2, 3, 4, 5, 6, 7), listOf(listOf(1), listOf(2, 3), listOf(4, 5, 6, 7))),
         row(listOf(1), listOf(listOf(1))),
-        row(listOf(1, 2, 3, null, null, 4, null), listOf(listOf(1), listOf(2, 3), listOf(4)))
+        row(listOf(1, 2, 3, null, null, 4, null), listOf(listOf(1), listOf(2, 3), listOf(4))),
       ) { levelOrder, result ->
         val root = levelOrderToTree(levelOrder)
         val listOfDepths = root!!.levelOrderTraversal()
