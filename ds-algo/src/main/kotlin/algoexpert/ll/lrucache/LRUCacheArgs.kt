@@ -1,6 +1,6 @@
 package algoexpert.ll.lrucache
 
-import com.salesforce.revoman.input.readFileInResourcesToString
+import com.salesforce.revoman.input.readFileToString
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.JsonElement
@@ -12,6 +12,6 @@ data class LRUCacheArgs(val classMethodsToCall: List<ClassMethodsToCall>, val ma
   companion object {
     @OptIn(ExperimentalStdlibApi::class)
     fun parseJsonFileToLRUCacheArgs(jsonFilePath: String): LRUCacheArgs =
-      Json.decodeFromString<LRUCacheArgs>(readFileInResourcesToString(jsonFilePath))
+      Json.decodeFromString<LRUCacheArgs>(readFileToString(jsonFilePath))
   }
 }

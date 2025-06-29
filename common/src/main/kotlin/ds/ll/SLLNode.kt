@@ -1,6 +1,6 @@
 package ds.ll
 
-import com.salesforce.revoman.input.readFileInResourcesToString
+import com.salesforce.revoman.input.readFileToString
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
 
@@ -82,7 +82,7 @@ data class SLLNode(var value: Int, var next: SLLNode? = null) {
     }
 
     fun parseJsonFileToSLL(jsonFilePath: String): SLLNode {
-      val sllJson = readFileInResourcesToString(jsonFilePath)
+      val sllJson = readFileToString(jsonFilePath)
       val jSll = Json.decodeFromString<JSLL>(sllJson)
       val idToSLLNode = jSll.linkedList.nodes.associate { it.id to (SLLNode(it.value) to it.next) }
       for ((sllNode, nextId) in idToSLLNode.values) {

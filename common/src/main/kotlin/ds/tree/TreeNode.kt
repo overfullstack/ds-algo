@@ -1,6 +1,6 @@
 package ds.tree
 
-import com.salesforce.revoman.input.readFileInResourcesToString
+import com.salesforce.revoman.input.readFileToString
 import java.util.*
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
@@ -175,7 +175,7 @@ constructor(
     @SuppressWarnings("kotlin:S6611")
     @OptIn(ExperimentalStdlibApi::class)
     fun parseJsonFileToTree(jsonFilePath: String): TreeNode {
-      val treeJson = readFileInResourcesToString(jsonFilePath)
+      val treeJson = readFileToString(jsonFilePath)
       val jTree = Json.decodeFromString<JTree>(treeJson)
       val idToTreeNode =
         jTree.tree.nodes.associate {

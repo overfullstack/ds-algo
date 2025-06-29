@@ -1,6 +1,6 @@
 package ds.graph
 
-import com.salesforce.revoman.input.readFileInResourcesToString
+import com.salesforce.revoman.input.readFileToString
 import java.util.*
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
@@ -52,14 +52,14 @@ class DiGraph<T>(private val adjacencyMap: MutableMap<T, Set<T>> = mutableMapOf(
       .any { dfs(it, valToSearch, visited.apply { add(it) }) }
   }
 
-  fun dfs(currentNode: T, valToSearch: T, visited: MutableSet<T>): Boolean =
+  private fun dfs(currentNode: T, valToSearch: T, visited: MutableSet<T>): Boolean =
     when (currentNode) {
       valToSearch -> true
       else -> {
         adjacencyMap[currentNode]
           ?.asSequence()
           ?.filter { it !in visited }
-          ?.any { dfs(it, valToSearch, visited) } == true
+          ?.any { dfs(it, valToSearch, visited.apply { add(it) }) } == true
       }
     }
 
@@ -139,7 +139,7 @@ class DiGraph<T>(private val adjacencyMap: MutableMap<T, Set<T>> = mutableMapOf(
 
     @OptIn(ExperimentalStdlibApi::class)
     fun parseJsonFileToDiGraph(jsonFilePath: String): DiGraph<String> {
-      val graphJson = readFileInResourcesToString(jsonFilePath)
+      val graphJson = readFileToString(jsonFilePath)
       val jGraph = Json.decodeFromString<JDiGraph>(graphJson)
       return DiGraph(
         jGraph.graph.nodes.associate { it.value to it.children.toSet() }.toMutableMap()

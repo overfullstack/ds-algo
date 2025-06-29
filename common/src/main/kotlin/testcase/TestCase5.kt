@@ -1,6 +1,6 @@
 package testcase
 
-import com.salesforce.revoman.input.readFileInResourcesToString
+import com.salesforce.revoman.input.readFileToString
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
@@ -19,7 +19,7 @@ data class TestCase5(val testcases: List<Testcase>) {
     fun parseJsonFileToTestCases(vararg jsonFilePaths: String): List<Pair<List<Int>, Int>> {
       val testCases =
         jsonFilePaths.flatMap {
-          Json.decodeFromString<TestCase5>(readFileInResourcesToString(it)).testcases
+          Json.decodeFromString<TestCase5>(readFileToString(it)).testcases
         }
       return testCases.map { it.inputs[0].x1 to it.output[0].x1 }
     }
