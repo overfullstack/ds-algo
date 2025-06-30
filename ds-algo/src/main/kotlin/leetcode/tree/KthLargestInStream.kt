@@ -2,15 +2,15 @@
 package leetcode.tree
 
 import ds.tree.TreeNode
-import ds.tree.TreeNode.Companion.arrToBST
+import ds.tree.TreeNode.Companion.arrayToBST
 import ds.tree.reverseInorderTraversalMorris
 
 class KthLargestInStream(private val kth: Int, nums: IntArray) {
-  private var root = arrToBST(nums)
+  private var root = arrayToBST(nums)
   private var kthLargest: TreeNode? = null
 
   fun add(value: Int): Int {
-    root?.insert(value) ?: run { root = TreeNode(value) }
+    root?.insertForBST(value) ?: run { root = TreeNode(value) }
     var k = 0
     root?.reverseInorderTraversalMorris {
       k++

@@ -1,9 +1,9 @@
 package ds.tree
 
 import com.salesforce.revoman.input.readFileToString
-import java.util.*
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
+import java.util.*
 
 data class TreeNode
 @JvmOverloads
@@ -75,11 +75,11 @@ constructor(
       else -> right?.let { 1 + leftSize + it.getRank(valForRank) } ?: -1
     }
 
-  fun insert(valToInsert: Int): Unit =
+  fun insertForBST(valToInsert: Int): Unit =
     if (valToInsert <= value) {
-      left?.insert(valToInsert) ?: run { left = TreeNode(valToInsert) }
+      left?.insertForBST(valToInsert) ?: run { left = TreeNode(valToInsert) }
     } else {
-      right?.insert(valToInsert) ?: run { right = TreeNode(valToInsert) }
+      right?.insertForBST(valToInsert) ?: run { right = TreeNode(valToInsert) }
     }
 
   fun incompleteTreeToList(): List<Int?> {
@@ -120,11 +120,21 @@ constructor(
     "TreeNode(value=$value, left=${left?.value}, right=${right?.value}, parent=${parent?.value}, next=${next?.value}, id='$id', leftSize=$leftSize)"
 
   companion object {
-    fun arrToBST(arr: IntArray): TreeNode? {
+    
+    fun arrayToTree(arr: IntArray, index: Int = 0): TreeNode? =
+      when {
+          index >= arr.size -> null
+          else -> TreeNode(arr[index]).also {
+              it.left = arrayToTree(arr, index * 2 + 1)
+              it.right = arrayToTree(arr, index * 2 + 2)
+          }
+      }
+    
+    fun arrayToBST(arr: IntArray): TreeNode? {
       if (arr.isEmpty()) {
         return null
       }
-      return TreeNode(arr[0]).also { root -> arr.drop(1).forEach { root.insert(it) } }
+      return TreeNode(arr[0]).also { root -> arr.drop(1).forEach { root.insertForBST(it) } }
     }
 
     fun levelOrderToCompleteTree(levelOrder: List<Int>): TreeNode? {
@@ -162,6 +172,16 @@ constructor(
       }
       return root
     }
+    
+    fun levelOrderToTreeRecursive(levelOrder: List<Int?>, index: Int = 0): TreeNode? =
+      when {
+        index > levelOrder.lastIndex -> null
+        levelOrder[index] == null -> null
+        else -> TreeNode(levelOrder[index]!!).also {
+          it.left = levelOrderToTreeRecursive(levelOrder, 2 * index + 1)
+          it.right = levelOrderToTreeRecursive(levelOrder, 2 * index + 2)
+        }
+      }
 
     @Serializable
     data class JTree(val tree: Tree) {

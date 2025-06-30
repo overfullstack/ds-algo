@@ -15,7 +15,6 @@ data class TestCase9(val testcases: List<Testcase>) {
   }
 
   companion object {
-    @OptIn(ExperimentalStdlibApi::class)
     fun parseJsonFileToTestCases(vararg jsonFilePaths: String): List<Pair<Array<IntArray>, Int>> {
       val testCases =
         jsonFilePaths.flatMap { Json.decodeFromString<TestCase9>(readFileToString(it)).testcases }

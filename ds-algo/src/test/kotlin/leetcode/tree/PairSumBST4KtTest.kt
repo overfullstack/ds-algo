@@ -14,7 +14,7 @@ class PairSumBST4KtTest : StringSpec() {
         row(intArrayOf(5, 3, 6, 2, 4, 7), 9, true),
         row(intArrayOf(5, 3, 6, 2, 4, 7), 28, false),
       ) { arr, targetSum, result ->
-        TreeNode.arrToBST(arr)!!.isPairWithSumPresent(targetSum) shouldBe result
+        TreeNode.arrayToBST(arr)!!.isPairWithSumPresent(targetSum) shouldBe result
       }
     }
   }

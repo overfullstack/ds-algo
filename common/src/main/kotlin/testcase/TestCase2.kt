@@ -19,7 +19,6 @@ data class TestCase2(val testcases: List<Testcase>) {
   }
 
   companion object {
-    @OptIn(ExperimentalStdlibApi::class)
     fun parseJsonFileToTestCases(
       vararg jsonFilePaths: String
     ): List<Triple<List<Int>, Int, List<Int>>> {
