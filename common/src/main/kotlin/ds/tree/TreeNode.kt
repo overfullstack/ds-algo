@@ -1,9 +1,9 @@
 package ds.tree
 
 import com.salesforce.revoman.input.readFileToString
+import java.util.*
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
-import java.util.*
 
 data class TreeNode
 @JvmOverloads
@@ -120,16 +120,17 @@ constructor(
     "TreeNode(value=$value, left=${left?.value}, right=${right?.value}, parent=${parent?.value}, next=${next?.value}, id='$id', leftSize=$leftSize)"
 
   companion object {
-    
+
     fun arrayToTree(arr: IntArray, index: Int = 0): TreeNode? =
       when {
-          index >= arr.size -> null
-          else -> TreeNode(arr[index]).also {
-              it.left = arrayToTree(arr, index * 2 + 1)
-              it.right = arrayToTree(arr, index * 2 + 2)
+        index >= arr.size -> null
+        else ->
+          TreeNode(arr[index]).also {
+            it.left = arrayToTree(arr, index * 2 + 1)
+            it.right = arrayToTree(arr, index * 2 + 2)
           }
       }
-    
+
     fun arrayToBST(arr: IntArray): TreeNode? {
       if (arr.isEmpty()) {
         return null
@@ -172,15 +173,16 @@ constructor(
       }
       return root
     }
-    
+
     fun levelOrderToTreeRecursive(levelOrder: List<Int?>, index: Int = 0): TreeNode? =
       when {
         index > levelOrder.lastIndex -> null
         levelOrder[index] == null -> null
-        else -> TreeNode(levelOrder[index]!!).also {
-          it.left = levelOrderToTreeRecursive(levelOrder, 2 * index + 1)
-          it.right = levelOrderToTreeRecursive(levelOrder, 2 * index + 2)
-        }
+        else ->
+          TreeNode(levelOrder[index]!!).also {
+            it.left = levelOrderToTreeRecursive(levelOrder, 2 * index + 1)
+            it.right = levelOrderToTreeRecursive(levelOrder, 2 * index + 2)
+          }
       }
 
     @Serializable
