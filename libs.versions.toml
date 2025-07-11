@@ -1,16 +1,14 @@
 [versions]
-jdk = "24"
+jdk = "21"
 kotlin = "2.2.0"
 ksp = "2.2.0-2.0.2"
 kotlinx-serialization = "1.9.0"
 revoman = "0.42.5"
-jetbrains-annotations = "26.0.1"
 kover = "0.9.1"
 kotest = "5.9.1"
 testLogger = "4.0.0"
 kotlin-logging = "7.0.7"
 # Common dependencies
-junit = "5.11.3"
 spotless = "7.1.0"
 apache-log4j = "2.25.0"
 

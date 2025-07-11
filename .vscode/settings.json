@@ -1,5 +1,0 @@
-{
-  "cSpell.words": ["Inorder"],
-  "java.jdt.ls.vmargs": "-Djavax.net.ssl.trustStore=/opt/workspace/cacerts_sfdc_dev.jks -Xmx22G -XX:+UseG1GC -XX:+UseStringDeduplication --add-modules=ALL-SYSTEM -Djdt.codeCompleteSubstringMatch=false -Dorg.eclipse.jdt.core.index.disk.cache.categorylimit=500000 -Dorg.eclipse.jdt.core.javamodelcache.jartyperatio=10 -Dorg.eclipse.jdt.core.javamodelcache.ratio=1.5",
-  "java.compile.nullAnalysis.mode": "automatic"
-}

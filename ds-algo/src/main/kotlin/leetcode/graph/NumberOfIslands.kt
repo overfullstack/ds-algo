@@ -1,6 +1,6 @@
 package leetcode.graph
 
-fun numIslands(grid: Array<CharArray>): Int =
+fun numberOfIslands(grid: Array<CharArray>): Int =
   grid.indices
     .asSequence()
     .flatMap { row -> grid[row].indices.map { col -> row to col } }

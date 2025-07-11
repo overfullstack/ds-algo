@@ -10,9 +10,10 @@ fun TreeNode?.lowestCommonAncestor(p: TreeNode, q: TreeNode): TreeNode? {
 
   val left = left?.lowestCommonAncestor(p, q)
   // It bubbles-up for 3 scenarios
-  // * You found some unrelated node, so bubble-up from that area and search on the other-side of it's parent
+  // * You found some unrelated node, so bubble-up from that area and search on the other-side of
+  // it's parent
   // * You found the common ancestor, so quickly bubble-up in the route you came-in
-  if (left != null && left != p && left != q) { 
+  if (left != null && left != p && left != q) {
     return left
   }
 
@@ -24,7 +25,7 @@ fun TreeNode?.lowestCommonAncestor(p: TreeNode, q: TreeNode): TreeNode? {
   }
 
   return when {
-      left != null && right != null -> this
-      else -> left ?: right
+    left != null && right != null -> this
+    else -> left ?: right
   }
 }

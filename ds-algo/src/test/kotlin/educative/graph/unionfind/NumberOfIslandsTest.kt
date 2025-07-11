@@ -7,13 +7,13 @@ import testcase.TestCase9.Companion.parseJsonFileToTestCases
 
 /* 05 Sep 2024 21:31 */
 
-private const val PKG_PATH = "educative/graph/unionfind/NoOfIslands"
+private const val PKG_PATH = "educative/graph/unionfind/NumberOfIslands"
 
-class NoOfIslandsTest :
+class NumberOfIslandsTest :
   StringSpec({
     "no.of islands" {
       parseJsonFileToTestCases("$PKG_PATH/test-cases-1.json").forAll { (grid, result) ->
-        noOfIslands(grid) shouldBe result
+        numberOfIslands(grid) shouldBe result
       }
     }
   })

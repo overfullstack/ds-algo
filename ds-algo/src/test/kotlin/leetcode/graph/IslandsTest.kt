@@ -19,7 +19,7 @@ class IslandsTest :
           1,
         )
       ) { grid, result ->
-        numIslands(grid) shouldBe result
+        numberOfIslands(grid) shouldBe result
       }
     }
   })

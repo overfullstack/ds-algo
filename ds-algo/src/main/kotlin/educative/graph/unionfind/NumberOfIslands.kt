@@ -2,7 +2,7 @@ package educative.graph.unionfind
 
 /* 05 Sep 2024 16:22 */
 
-fun noOfIslands(grid: Array<IntArray>): Int {
+fun numberOfIslands(grid: Array<IntArray>): Int {
   val unionFind = UnionFind(grid)
   grid.indices
     .asSequence()
@@ -28,7 +28,7 @@ private fun isValid(nextCell: Pair<Int, Int>, grid: Array<IntArray>): Boolean =
     nextCell.second in grid[0].indices &&
     grid[nextCell.first][nextCell.second] == 1
 
-fun noOfIslands2(grid: Array<IntArray>): Int {
+fun numberOfIslands2(grid: Array<IntArray>): Int {
   val unionFind = UnionFind(grid)
   val cols = grid[0].lastIndex
   for (row in grid.indices) {
