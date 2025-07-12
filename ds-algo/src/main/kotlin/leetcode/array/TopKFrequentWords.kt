@@ -15,7 +15,7 @@ private val COMPARATOR =
 fun topKFrequent(words: Array<String>, k: Int): List<String> {
   val wordToFrequency = words.groupingBy { it }.eachCount()
   // Prepare frequency map.
-  val minHeap = PriorityQueue(COMPARATOR) // `PriorityQueue` is by default ascending order.
+  val minHeap = PriorityQueue(COMPARATOR) // `PriorityQueue` is by default ascending sorted.
   for (entry in wordToFrequency.entries) {
     // `add()` before `poll()`, as `poll()` doesn't necessarily remove the last added,
     // but least frequent
