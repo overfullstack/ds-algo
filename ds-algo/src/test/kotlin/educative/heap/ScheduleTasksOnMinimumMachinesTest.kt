@@ -9,10 +9,11 @@ import testcase.TestCase18.Companion.parseJsonFileToTestCases
 
 private const val PKG_PATH = "educative/heap/ScheduleTasksOnMinimumMachines"
 
-class ScheduleTasksOnMinimumMachinesTest: StringSpec({
-  "Schedule tasks on minimum machines" {
-    parseJsonFileToTestCases("$PKG_PATH/test-cases-1.json").forAll { (intervals, output) ->
-      minimumMachines(intervals) shouldBe output
+class ScheduleTasksOnMinimumMachinesTest :
+  StringSpec({
+    "Schedule tasks on minimum machines" {
+      parseJsonFileToTestCases("$PKG_PATH/test-cases-1.json").forAll { (intervals, output) ->
+        minimumMachines(intervals) shouldBe output
+      }
     }
-  }
-})
+  })
