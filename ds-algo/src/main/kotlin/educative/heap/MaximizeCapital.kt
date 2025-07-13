@@ -1,4 +1,5 @@
 package educative.heap
+
 import java.util.PriorityQueue
 
 fun maximizeCapital(initialCapital: Int, k: Int, capitalsToProfits: List<Pair<Int, Int>>): Int {
@@ -12,7 +13,7 @@ fun maximizeCapital(initialCapital: Int, k: Int, capitalsToProfits: List<Pair<In
       maxHeapForProfits.add(minHeapForCapitals.poll().second)
     }
     if (maxHeapForProfits.isEmpty()) {
-     break
+      break
     }
     totalCapital += maxHeapForProfits.poll()
     projectsPickedCount++
