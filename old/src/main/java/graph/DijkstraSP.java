@@ -1,5 +1,6 @@
 package graph;
 
+import graph.EdgeWeightedDigraph.DirectedEdge;
 import java.util.PriorityQueue;
 
 /** Created by gakshintala on 1/6/16. */

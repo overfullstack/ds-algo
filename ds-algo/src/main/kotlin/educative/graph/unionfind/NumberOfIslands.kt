@@ -7,7 +7,7 @@ fun numberOfIslands(grid: Array<IntArray>): Int {
   grid.indices
     .asSequence()
     .flatMap { row -> grid[row].indices.map { col -> row to col } }
-    .filter { grid[it.first][it.second] == 1 }
+    .filter { (row, col) -> grid[row][col] == 1 }
     .forEach { union(it, grid, unionFind) }
   return unionFind.countOf1s
 }

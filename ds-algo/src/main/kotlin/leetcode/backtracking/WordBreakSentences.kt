@@ -25,7 +25,7 @@ private fun wordBreakSentences(
           // If this is placed at the start of recursion, we need to update cache at two places.
           str.lastIndex -> listOf(listOf(wordInDict))
           else -> // Sentence append can't be made eager, as this result is directly put into cache.
-            wordBreakSentences(str, dict, index + 1, cache).map { sentence ->
+          wordBreakSentences(str, dict, index + 1, cache).map { sentence ->
               listOf(wordInDict) + sentence
             }
         }

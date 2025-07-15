@@ -7,14 +7,14 @@ fun minimumSemesters(relations: Array<Pair<Int, Int>>): Int {
     diGraph.keys
       .asSequence()
       .filter { it !in visited }
-      .map { it.dft(diGraph, visited.apply { add(it) }, setOf(it)) }
+      .map { it.dftPerBranch(diGraph, visited.apply { add(it) }, setOf(it)) }
       .maxOrNull() ?: 0
   } catch (e: IllegalArgumentException) {
     -1
   }
 }
 
-private fun Int.dft(
+private fun Int.dftPerBranch(
   diGraph: Map<Int, Set<Int>>,
   visited: MutableSet<Int>,
   visitedInBranch: Set<Int>,
@@ -25,7 +25,12 @@ private fun Int.dft(
     ?.map {
       when (it) {
         !in visited ->
-          it.dft(diGraph, visited.apply { add(it) }, visitedInBranch + it, maxNodesInPath + 1)
+          it.dftPerBranch(
+            diGraph,
+            visited.apply { add(it) },
+            visitedInBranch + it,
+            maxNodesInPath + 1,
+          )
         in visitedInBranch -> throw IllegalArgumentException("Graph has Cycle")
         else -> maxNodesInPath
       }

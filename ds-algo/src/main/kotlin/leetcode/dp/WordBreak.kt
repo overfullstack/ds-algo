@@ -9,7 +9,7 @@ private fun wordBreak(word: String, wordDict: List<String>): Boolean {
   val wordDictSet = wordDict.toSet()
   // Check with all end indices, including -1.
   return word.indices
-    .fold(listOf(-1)) { wordEndIndices, index -> 
+    .fold(listOf(-1)) { wordEndIndices, index ->
       if (
         wordEndIndices.any { prevWordEndIndex ->
           word.substring(prevWordEndIndex + 1..index) in wordDictSet

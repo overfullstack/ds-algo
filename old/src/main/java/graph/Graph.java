@@ -65,8 +65,8 @@ public class Graph {
 		}
 		if (visited[source]) return false;
 		visited[source] = true;
-		for (int adj : this.getConnectedNodes(source)) {
-			if (areTheyConnectedDfs(adj, vertexToFind, visited)) break;
+		for (int adjNode : this.getConnectedNodes(source)) {
+			if (areTheyConnectedDfs(adjNode, vertexToFind, visited)) break;
 		}
 		return false;
 	}

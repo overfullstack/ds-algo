@@ -1,6 +1,5 @@
 package educative.twopointers
 
-
 /* 14 Jul 2025 10:41 */
 
 fun sortColors(arr: IntArray): IntArray {

@@ -24,27 +24,6 @@ public class EdgeWeightedDigraph {
 	public int vertexCount() {
 		return this.N;
 	}
-}
 
-class DirectedEdge {
-	private final int from, to;
-	private final double weight;
-
-	public DirectedEdge(int from, int to, double weight) {
-		this.from = from;
-		this.to = to;
-		this.weight = weight;
-	}
-
-	public int from() {
-		return from;
-	}
-
-	public int to() {
-		return to;
-	}
-
-	public double weight() {
-		return weight;
-	}
+	public record DirectedEdge(int from, int to, double weight) {}
 }

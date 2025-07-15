@@ -8,7 +8,7 @@ fun countingBits(n: Int): IntArray {
   results[0] = 0
   results[1] = 1
   for (i in 2..n) {
-    results[i] = results[i/2] + i % 2
+    results[i] = results[i / 2] + i % 2
   }
   return results
 }
