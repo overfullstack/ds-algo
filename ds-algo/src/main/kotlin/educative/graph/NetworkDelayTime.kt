@@ -8,13 +8,16 @@ import java.util.PriorityQueue
 
 fun networkDelayTime(times: List<Triple<Int, Int, Int>>, n: Int, origin: Int): Int {
   val graph = EdgeWeightedDiGraph(times)
-  // ! This has to be sorted by weight, so we reach neighbours through shortest path
+  // ! We follow greedy approach here. This has to be sorted by weight, 
+  // so we reach neighbours through the shortest path
   val pq = PriorityQueue(Comparator.comparingInt<WeightedEdge<Int>> { it.weight })
   pq.add(WeightedEdge(origin, 0))
   val visited = mutableSetOf<Int>()
   var minDelay = Int.MIN_VALUE
   while (pq.isNotEmpty()) {
     val (to, time) = pq.poll()
+    // This if check deals with transitive duplicates that get added to the queue before they are
+    // visited
     if (to !in visited) {
       visited.add(to)
       minDelay = maxOf(minDelay, time)
