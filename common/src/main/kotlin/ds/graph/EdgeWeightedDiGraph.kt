@@ -8,14 +8,10 @@ class EdgeWeightedDiGraph<T>(
   private val adjacencyMap: MutableMap<T, Set<WeightedEdge<T>>> = mutableMapOf()
 ) : MutableMap<T, Set<WeightedEdge<T>>> by adjacencyMap {
 
-  data class WeightedEdge<T>(val source: T, val destination: T, val weight: Int)
+  data class WeightedEdge<T>(val destination: T, val weight: Int)
 
   fun addEdge(source: T, destination: T, weight: Int) {
-    adjacencyMap.merge(
-      source,
-      setOf(WeightedEdge(source, destination, weight)),
-      Set<WeightedEdge<T>>::plus,
-    )
+    adjacencyMap.merge(source, setOf(WeightedEdge(destination, weight)), Set<WeightedEdge<T>>::plus)
   }
 
   fun getNeighbours(node: T): Set<WeightedEdge<T>>? = adjacencyMap[node]

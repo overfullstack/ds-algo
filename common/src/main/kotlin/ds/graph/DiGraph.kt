@@ -12,7 +12,7 @@ class DiGraph<T>(private val adjacencyMap: MutableMap<T, Set<T>> = mutableMapOf(
     adjacencyMap.merge(source, setOf(destination), Set<T>::plus)
   }
 
-  fun getNeighbours(node: T): Set<T>? = adjacencyMap[node]
+  fun getNeighbours(node: T): Set<T> = adjacencyMap[node] ?: emptySet()
 
   fun bfs(valToSearch: T): Boolean {
     val visited = mutableSetOf<T>()
@@ -33,10 +33,11 @@ class DiGraph<T>(private val adjacencyMap: MutableMap<T, Set<T>> = mutableMapOf(
         val node = queue.poll()
         when (node) {
           valToSearch -> true
+          in visited -> bfsPerBranch(valToSearch, visited, queue) // Skip this node, NoOp recursion
           else -> {
-            val neighbours = adjacencyMap[node]?.filter { it !in visited } ?: emptySet()
+            visited.add(node) // Mark as visited before adding neighbors to avoid cycles
+            val neighbours = adjacencyMap[node]?.filter { it !in visited } ?: emptyList()
             queue.addAll(neighbours)
-            visited.add(node)
             bfsPerBranch(valToSearch, visited, queue)
           }
         }
