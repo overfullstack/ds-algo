@@ -1,94 +1,94 @@
 package ds
 
 import io.kotest.assertions.throwables.shouldNotThrowAny
+import io.kotest.core.spec.style.StringSpec
+import io.kotest.inspectors.forAll
 import io.kotest.matchers.collections.shouldContainExactlyInAnyOrder
 import io.kotest.matchers.shouldBe
-import org.junit.jupiter.api.BeforeEach
-import org.junit.jupiter.api.Test
+import testcase.TestCase23.Companion.parseJsonFileToTestCases
 
-internal class TrieNodeTest {
+private const val PKG_PATH = "trie"
 
-  lateinit var trieNode: TrieNode
+internal class TrieNodeTest :
+  StringSpec({
+    lateinit var trieNode: TrieNode
 
-  @BeforeEach
-  internal fun setUp() {
-    trieNode = TrieNode()
-  }
+    beforeEach { trieNode = TrieNode() }
 
-  @Test
-  fun insert() {
-    trieNode.insert("gopal")
-    trieNode.search("gopal") shouldBe true
-  }
+    "insert should add a word to the trie" {
+      trieNode.insert("gopal")
+      trieNode.search("gopal") shouldBe true
+    }
 
-  @Test
-  fun `insert overlapping words`() {
-    trieNode.insert("gopal")
-    trieNode.insert("go")
+    "insert should handle overlapping words correctly" {
+      trieNode.insert("gopal")
+      trieNode.insert("go")
 
-    trieNode.search("gopal") shouldBe true
-    trieNode.search("go") shouldBe true
-  }
+      trieNode.search("gopal") shouldBe true
+      trieNode.search("go") shouldBe true
+    }
 
-  @Test
-  fun `search multiple not present`() {
-    trieNode.insert("gopal")
-    trieNode.insert("sarma")
-    trieNode.searchMultipleWords("gopalasarma") shouldBe false
-  }
+    "searchWordCombination should return false for non-present word combinations" {
+      trieNode.insert("gopal")
+      trieNode.insert("sarma")
+      trieNode.searchWordCombination("gopalasarma") shouldBe false
+    }
 
-  @Test
-  fun `search multiple present`() {
-    trieNode.insert("gopal")
-    trieNode.insert("sarma")
-    trieNode.searchMultipleWords("gopalsarma") shouldBe true
-  }
+    "searchWordCombination should return true for present word combinations" {
+      trieNode.insert("gopal")
+      trieNode.insert("sarma")
+      trieNode.searchWordCombination("gopalsarma") shouldBe true
+    }
 
-  @Test
-  fun `remove sub word that doesn't exist`() {
-    trieNode.insert("gopal")
-    trieNode.remove("go")
-    trieNode.search("gopal") shouldBe true
-  }
+    "remove should not affect super words when removing non-existent sub words" {
+      trieNode.insert("gopal")
+      trieNode.remove("go")
+      trieNode.search("gopal") shouldBe true
+    }
 
-  @Test
-  fun `remove word that doesn't exist`() {
-    trieNode.insert("gopal")
-    shouldNotThrowAny { trieNode.remove("sarma") }
-    trieNode.search("gopal") shouldBe true
-  }
+    "remove should not throw exception when removing non-existent words" {
+      trieNode.insert("gopal")
+      shouldNotThrowAny { trieNode.remove("sarma") }
+      trieNode.search("gopal") shouldBe true
+    }
 
-  @Test
-  fun `remove sub word should preserve super word`() {
-    trieNode.insert("gopal")
-    trieNode.insert("gopals")
-    trieNode.insert("go")
+    "remove should preserve super words when removing sub words" {
+      trieNode.insert("gopal")
+      trieNode.insert("gopals")
+      trieNode.insert("go")
 
-    trieNode.remove("go")
+      trieNode.remove("go")
 
-    trieNode.search("go") shouldBe false
-    trieNode.search("gopal") shouldBe true
-  }
+      trieNode.search("go") shouldBe false
+      trieNode.search("gopal") shouldBe true
+    }
 
-  @Test
-  fun `removing super word should preserve all sub words`() {
-    trieNode.insert("gopal")
-    trieNode.insert("gopals")
-    trieNode.insert("go")
+    "remove should preserve all sub words when removing super words" {
+      trieNode.insert("gopal")
+      trieNode.insert("gopals")
+      trieNode.insert("go")
 
-    trieNode.remove("gopals")
+      trieNode.remove("gopals")
 
-    trieNode.search("gopals") shouldBe false
-    trieNode.search("go") shouldBe true
-    trieNode.search("gopal") shouldBe true
-  }
+      trieNode.search("gopals") shouldBe false
+      trieNode.search("go") shouldBe true
+      trieNode.search("gopal") shouldBe true
+    }
 
-  @Test
-  fun `get recommendations`() {
-    trieNode.insert("gopal")
-    trieNode.insert("gopals")
-    trieNode.insert("go")
+    "recommendations by typing one letter at a time" {
+      parseJsonFileToTestCases("${PKG_PATH}/test-cases-1.json").forAll { (input, output) ->
+        val (products, searchKey) = input
+        trieNode = TrieNode()
+        products.forEach { trieNode.insert(it) }
+        trieNode.recommendationsWhileTyping(searchKey, 3) shouldBe output
+      }
+    }
 
-    trieNode.recommendations("go") shouldContainExactlyInAnyOrder listOf("gopal", "gopals")
-  }
-}
+    "recommendations should return all words that start with the given prefix 2" {
+      trieNode.insert("gopal")
+      trieNode.insert("gopals")
+      trieNode.insert("go")
+
+      trieNode.recommendations("go") shouldContainExactlyInAnyOrder listOf("gopal", "gopals")
+    }
+  })

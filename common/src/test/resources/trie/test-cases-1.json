@@ -1,0 +1,259 @@
+{
+  "testcases": [
+    {
+      "name": "testcase 1",
+      "inputs": [
+        {
+          "1": [
+            "beautiful",
+            "beast",
+            "ban",
+            "beverages"
+          ]
+        },
+        {
+          "2": "bev"
+        }
+      ],
+      "output": [
+        {
+          "1": [
+            [
+              "ban",
+              "beast",
+              "beautiful"
+            ],
+            [
+              "beast",
+              "beautiful",
+              "beverages"
+            ],
+            [
+              "beverages"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "testcase 2",
+      "inputs": [
+        {
+          "1": [
+            "vaccine",
+            "vacuum",
+            "vector"
+          ]
+        },
+        {
+          "2": "vac"
+        }
+      ],
+      "output": [
+        {
+          "1": [
+            [
+              "vaccine",
+              "vacuum",
+              "vector"
+            ],
+            [
+              "vaccine",
+              "vacuum"
+            ],
+            [
+              "vaccine",
+              "vacuum"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "testcase 3",
+      "inputs": [
+        {
+          "1": [
+            "mobile",
+            "mouse",
+            "moneypot",
+            "monitor",
+            "mousepad"
+          ]
+        },
+        {
+          "2": "mouse"
+        }
+      ],
+      "output": [
+        {
+          "1": [
+            [
+              "mobile",
+              "moneypot",
+              "monitor"
+            ],
+            [
+              "mobile",
+              "moneypot",
+              "monitor"
+            ],
+            [
+              "mouse",
+              "mousepad"
+            ],
+            [
+              "mouse",
+              "mousepad"
+            ],
+            [
+              "mouse",
+              "mousepad"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "testcase 4",
+      "inputs": [
+        {
+          "1": [
+            "havana"
+          ]
+        },
+        {
+          "2": "havana"
+        }
+      ],
+      "output": [
+        {
+          "1": [
+            [
+              "havana"
+            ],
+            [
+              "havana"
+            ],
+            [
+              "havana"
+            ],
+            [
+              "havana"
+            ],
+            [
+              "havana"
+            ],
+            [
+              "havana"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "testcase 5",
+      "inputs": [
+        {
+          "1": [
+            "bags",
+            "baggage",
+            "banner",
+            "box",
+            "cloths"
+          ]
+        },
+        {
+          "2": "bags"
+        }
+      ],
+      "output": [
+        {
+          "1": [
+            [
+              "baggage",
+              "bags",
+              "banner"
+            ],
+            [
+              "baggage",
+              "bags",
+              "banner"
+            ],
+            [
+              "baggage",
+              "bags"
+            ],
+            [
+              "bags"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "testcase 6",
+      "inputs": [
+        {
+          "1": [
+            "havana"
+          ]
+        },
+        {
+          "2": "tatiana"
+        }
+      ],
+      "output": [
+        {
+          "1": [
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            []
+          ]
+        }
+      ]
+    },
+    {
+      "name": "testcase 7",
+      "inputs": [
+        {
+          "1": [
+            "razer",
+            "blade",
+            "knife",
+            "cutter",
+            "games"
+          ]
+        },
+        {
+          "2": "games"
+        }
+      ],
+      "output": [
+        {
+          "1": [
+            [
+              "games"
+            ],
+            [
+              "games"
+            ],
+            [
+              "games"
+            ],
+            [
+              "games"
+            ],
+            [
+              "games"
+            ]
+          ]
+        }
+      ]
+    }
+  ]
+}

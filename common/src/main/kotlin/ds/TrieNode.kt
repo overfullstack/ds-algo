@@ -1,6 +1,6 @@
 package ds
 
-class TrieNode(val value: Char = Char.MIN_VALUE) { // First node of a Trie is a dummy.
+class TrieNode(val value: Char = Char.MIN_VALUE) { // The First node of a Trie is a dummy.
   var isEnd = false
     private set
 
@@ -36,9 +36,7 @@ class TrieNode(val value: Char = Char.MIN_VALUE) { // First node of a Trie is a 
     // recursively.
   }
 
-  private fun isEmptyChildren(): Boolean {
-    return children.all { it == null }
-  }
+  private fun isEmptyChildren(): Boolean = children.all { it == null }
 
   fun startsWith(prefix: String): Boolean {
     var crawl = this
@@ -56,9 +54,10 @@ class TrieNode(val value: Char = Char.MIN_VALUE) { // First node of a Trie is a 
     return crawl.isEnd
   }
 
-  fun searchMultipleWords(key: String): Boolean {
+  fun searchWordCombination(key: String): Boolean {
     var crawl = this as TrieNode?
     for (char in key) {
+      // If we find the end, start from the beginning
       crawl =
         crawl?.let { if (it.isEnd) this.children[char - 'a'] else it.children[char - 'a'] }
           ?: return false
@@ -66,18 +65,47 @@ class TrieNode(val value: Char = Char.MIN_VALUE) { // First node of a Trie is a 
     return crawl?.isEnd ?: false
   }
 
-  fun recommendations(key: String): List<String> {
+  fun recommendationsWhileTyping(key: String, limit: Int = Int.MAX_VALUE): List<List<String>> =
+    key.map { it.toString() }.runningReduce(String::plus).map { recommendations(it, limit) }
+
+  fun recommendations(key: String, limit: Int = Int.MAX_VALUE): List<String> {
     var crawl = this
     for (char in key) {
       crawl = crawl.children[char - 'a'] ?: return emptyList()
     }
-    return crawl.children.flatMap { it?.getRecommendations(key + it.value) ?: emptyList() }
+    return crawl.getRecommendations(key, limit)
   }
 
-  private fun getRecommendations(prefix: String, curRecommendation: String = ""): List<String> =
-    ((if (isEnd) listOf(prefix + curRecommendation) else emptyList()) +
-      children.asSequence().filterNotNull().flatMap { // It ends at leaf when all children are null
-        val recommendation = curRecommendation + it.value
-        it.getRecommendations(prefix, recommendation) // dfs
-      })
+  private fun getRecommendations(
+    prefix: String,
+    limit: Int,
+    curRecommendation: String = "",
+  ): List<String> {
+    val currentWord = if (isEnd) listOf(prefix + curRecommendation) else emptyList()
+      val remainingLimit = limit - currentWord.size
+      val childRecommendations =
+        children.asSequence().filterNotNull().fold(emptyList<String>()) { acc, child ->
+          when {
+            acc.size >= remainingLimit -> acc
+            else ->
+              acc +
+                child.getRecommendations(
+                  prefix,
+                  remainingLimit - acc.size,
+                  curRecommendation + child.value,
+                )
+          }
+        }
+      return currentWord + childRecommendations
+    }
+}
+
+fun main() {
+  val trie = TrieNode()
+  trie.insert("bags")
+  trie.insert("baggage")
+  trie.insert("banner")
+  trie.insert("box")
+  trie.insert("cloths")
+  println(trie.recommendationsWhileTyping("bags", 3))
 }

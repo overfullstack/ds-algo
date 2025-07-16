@@ -8,7 +8,7 @@ import java.util.PriorityQueue
 
 fun networkDelayTime(times: List<Triple<Int, Int, Int>>, n: Int, origin: Int): Int {
   val graph = EdgeWeightedDiGraph(times)
-  // ! We follow greedy approach here. This has to be sorted by weight, 
+  // ! We follow greedy approach here. This has to be sorted by weight,
   // so we reach neighbours through the shortest path
   val pq = PriorityQueue(Comparator.comparingInt<WeightedEdge<Int>> { it.weight })
   pq.add(WeightedEdge(origin, 0))
