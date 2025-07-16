@@ -15,7 +15,7 @@ class WordSearchTest :
       parseJsonFileToTestCases("$PKG_PATH/test-cases-1.json", "$PKG_PATH/test-cases-2.json")
         .forAll { (gridL, word, result) ->
           val grid = gridL.map { it.joinToString("").toCharArray() }.toTypedArray()
-          wordSearch(grid, word) shouldBe result
+          wordSearchInGrid(grid, word) shouldBe result
         }
     }
   })

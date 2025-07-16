@@ -9,7 +9,7 @@ open class TrieNode(val value: Char = Char.MIN_VALUE) { // The First node of a T
 
   lateinit var word: String
     private set
-  
+
   fun insert(key: String) {
     var crawl = this
     for (char in key) {

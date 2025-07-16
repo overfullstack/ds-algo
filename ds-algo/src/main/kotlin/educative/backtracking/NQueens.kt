@@ -1,6 +1,8 @@
 package educative.backtracking
 
 fun nQueens(n: Int, curRow: Int = 0, queenCells: Map<Int, Int> = emptyMap()): Int =
+  // * Find a column for each row. After a combination is found, backtrack and
+  // place it in the next column and try a new combination
   when (curRow) {
     n -> 1
     else ->
@@ -11,10 +13,8 @@ fun nQueens(n: Int, curRow: Int = 0, queenCells: Map<Int, Int> = emptyMap()): In
         .sum()
   }
 
-private fun isValid(proposedRow: Int, proposedCol: Int, queenCells: Map<Int, Int>): Boolean =
+private fun isValid(row: Int, col: Int, queenCells: Map<Int, Int>): Boolean =
   queenCells.all { (queenRow, queenCol) ->
-    val diagonalOffset = proposedRow - queenRow
-    proposedCol != queenCol &&
-      proposedCol != queenCol - diagonalOffset &&
-      proposedCol != queenCol + diagonalOffset
+    val diagonalOffset = row - queenRow
+    col != queenCol && col != queenCol - diagonalOffset && col != queenCol + diagonalOffset
   }

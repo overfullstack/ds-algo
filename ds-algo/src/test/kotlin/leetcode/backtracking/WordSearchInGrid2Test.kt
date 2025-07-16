@@ -1,6 +1,7 @@
 package leetcode.backtracking
 
 import io.kotest.matchers.collections.shouldContainExactlyInAnyOrder
+import io.kotest.matchers.shouldBe
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
 
@@ -18,6 +19,13 @@ internal class WordSearchInGrid2Test {
       )
     val words = arrayOf("oath", "pea", "eat", "rain")
     findWords(board, words) shouldContainExactlyInAnyOrder listOf("eat", "oath")
+  }
+
+  @Test
+  fun test4() {
+    val board = arrayOf(charArrayOf('a', 'a'))
+    val words = arrayOf("aaa")
+    findWords(board, words) shouldBe emptyList()
   }
 
   @Test

@@ -8,7 +8,6 @@ import io.kotest.matchers.shouldBe
 import testcase.TestCase23
 import testcase.TestCase24
 
-
 internal class TrieNodeTest :
   StringSpec({
     lateinit var trieNode: TrieNode
@@ -76,7 +75,8 @@ internal class TrieNodeTest :
     }
 
     "recommendations by typing one letter at a time" {
-      TestCase23.parseJsonFileToTestCases("trie/Recommendations/test-cases-1.json").forAll { (input, output) ->
+      TestCase23.parseJsonFileToTestCases("trie/Recommendations/test-cases-1.json").forAll {
+        (input, output) ->
         val (products, searchKey) = input
         trieNode = TrieNode()
         products.forEach { trieNode.insert(it) }
@@ -91,21 +91,27 @@ internal class TrieNodeTest :
 
       trieNode.recommendations("go") shouldContainExactlyInAnyOrder listOf("gopal", "gopals")
     }
-    
+
     "operate" {
-      TestCase24.parseJsonFileToTestCases("trie/Operations/test-cases-1.json").forAll { (inputs, output) ->
+      TestCase24.parseJsonFileToTestCases("trie/Operations/test-cases-1.json").forAll {
+        (inputs, output) ->
         trieNode = TrieNode()
-        inputs.map { (operation, arg) -> trieNode.operate(operation, arg) }.map { when (it) {
-          is Unit -> "null"
-          else -> it.toString()
-        } } shouldBe output
+        inputs
+          .map { (operation, arg) -> trieNode.operate(operation, arg) }
+          .map {
+            when (it) {
+              is Unit -> "null"
+              else -> it.toString()
+            }
+          } shouldBe output
       }
     }
   })
 
-fun TrieNode.operate(operation: String, arg: String): Any? = when(operation) {
-  "addWord" -> insert(arg)
-  "getWords" -> getAllWords()
-  "searchWord" -> isDotRegexPresent(arg)
-  else -> null
-}
+fun TrieNode.operate(operation: String, arg: String): Any? =
+  when (operation) {
+    "addWord" -> insert(arg)
+    "getWords" -> getAllWords()
+    "searchWord" -> isDotRegexPresent(arg)
+    else -> null
+  }
