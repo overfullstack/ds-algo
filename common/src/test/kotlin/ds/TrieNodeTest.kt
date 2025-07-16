@@ -5,9 +5,9 @@ import io.kotest.core.spec.style.StringSpec
 import io.kotest.inspectors.forAll
 import io.kotest.matchers.collections.shouldContainExactlyInAnyOrder
 import io.kotest.matchers.shouldBe
-import testcase.TestCase23.Companion.parseJsonFileToTestCases
+import testcase.TestCase23
+import testcase.TestCase24
 
-private const val PKG_PATH = "trie"
 
 internal class TrieNodeTest :
   StringSpec({
@@ -17,39 +17,39 @@ internal class TrieNodeTest :
 
     "insert should add a word to the trie" {
       trieNode.insert("gopal")
-      trieNode.search("gopal") shouldBe true
+      trieNode.isPresent("gopal") shouldBe true
     }
 
     "insert should handle overlapping words correctly" {
       trieNode.insert("gopal")
       trieNode.insert("go")
 
-      trieNode.search("gopal") shouldBe true
-      trieNode.search("go") shouldBe true
+      trieNode.isPresent("gopal") shouldBe true
+      trieNode.isPresent("go") shouldBe true
     }
 
     "searchWordCombination should return false for non-present word combinations" {
       trieNode.insert("gopal")
       trieNode.insert("sarma")
-      trieNode.searchWordCombination("gopalasarma") shouldBe false
+      trieNode.isCombinationPresent("gopalasarma") shouldBe false
     }
 
     "searchWordCombination should return true for present word combinations" {
       trieNode.insert("gopal")
       trieNode.insert("sarma")
-      trieNode.searchWordCombination("gopalsarma") shouldBe true
+      trieNode.isCombinationPresent("gopalsarma") shouldBe true
     }
 
     "remove should not affect super words when removing non-existent sub words" {
       trieNode.insert("gopal")
       trieNode.remove("go")
-      trieNode.search("gopal") shouldBe true
+      trieNode.isPresent("gopal") shouldBe true
     }
 
     "remove should not throw exception when removing non-existent words" {
       trieNode.insert("gopal")
       shouldNotThrowAny { trieNode.remove("sarma") }
-      trieNode.search("gopal") shouldBe true
+      trieNode.isPresent("gopal") shouldBe true
     }
 
     "remove should preserve super words when removing sub words" {
@@ -59,8 +59,8 @@ internal class TrieNodeTest :
 
       trieNode.remove("go")
 
-      trieNode.search("go") shouldBe false
-      trieNode.search("gopal") shouldBe true
+      trieNode.isPresent("go") shouldBe false
+      trieNode.isPresent("gopal") shouldBe true
     }
 
     "remove should preserve all sub words when removing super words" {
@@ -70,13 +70,13 @@ internal class TrieNodeTest :
 
       trieNode.remove("gopals")
 
-      trieNode.search("gopals") shouldBe false
-      trieNode.search("go") shouldBe true
-      trieNode.search("gopal") shouldBe true
+      trieNode.isPresent("gopals") shouldBe false
+      trieNode.isPresent("go") shouldBe true
+      trieNode.isPresent("gopal") shouldBe true
     }
 
     "recommendations by typing one letter at a time" {
-      parseJsonFileToTestCases("${PKG_PATH}/test-cases-1.json").forAll { (input, output) ->
+      TestCase23.parseJsonFileToTestCases("trie/Recommendations/test-cases-1.json").forAll { (input, output) ->
         val (products, searchKey) = input
         trieNode = TrieNode()
         products.forEach { trieNode.insert(it) }
@@ -91,4 +91,21 @@ internal class TrieNodeTest :
 
       trieNode.recommendations("go") shouldContainExactlyInAnyOrder listOf("gopal", "gopals")
     }
+    
+    "operate" {
+      TestCase24.parseJsonFileToTestCases("trie/Operations/test-cases-1.json").forAll { (inputs, output) ->
+        trieNode = TrieNode()
+        inputs.map { (operation, arg) -> trieNode.operate(operation, arg) }.map { when (it) {
+          is Unit -> "null"
+          else -> it.toString()
+        } } shouldBe output
+      }
+    }
   })
+
+fun TrieNode.operate(operation: String, arg: String): Any? = when(operation) {
+  "addWord" -> insert(arg)
+  "getWords" -> getAllWords()
+  "searchWord" -> isDotRegexPresent(arg)
+  else -> null
+}

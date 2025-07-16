@@ -30,8 +30,8 @@ private fun wordBreakSentences(
             }
         }
       }
-  // If the word can't be broken, the last recursion would return empty list, which shall be
-  // passed-on, so end results in empty list
+  // If the word can't be broken, the last recursion would return an empty list, which shall be
+  // passed-on, so end results in an empty list
   return cache.merge(startIndex, sentences, Collection<List<String>>::plus)!!
 }
 

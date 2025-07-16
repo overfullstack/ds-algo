@@ -1,6 +1,6 @@
 package ds
 
-class TrieNode(val value: Char = Char.MIN_VALUE) { // The First node of a Trie is a dummy.
+open class TrieNode(val value: Char = Char.MIN_VALUE) { // The First node of a Trie is a stub.
   var isEnd = false
     private set
 
@@ -9,10 +9,7 @@ class TrieNode(val value: Char = Char.MIN_VALUE) { // The First node of a Trie i
 
   lateinit var word: String
     private set
-
-  // set(value) = if (isEnd) field = value else throw AssertionError("Can't set word on non-end
-  // node")
-
+  
   fun insert(key: String) {
     var crawl = this
     for (char in key) {
@@ -46,7 +43,7 @@ class TrieNode(val value: Char = Char.MIN_VALUE) { // The First node of a Trie i
     return true
   }
 
-  fun search(key: String): Boolean {
+  fun isPresent(key: String): Boolean {
     var crawl = this
     for (char in key) {
       crawl = crawl.children[char - 'a'] ?: return false
@@ -54,7 +51,7 @@ class TrieNode(val value: Char = Char.MIN_VALUE) { // The First node of a Trie i
     return crawl.isEnd
   }
 
-  fun searchWordCombination(key: String): Boolean {
+  fun isCombinationPresent(key: String): Boolean {
     var crawl = this as TrieNode?
     for (char in key) {
       // If we find the end, start from the beginning
@@ -65,6 +62,35 @@ class TrieNode(val value: Char = Char.MIN_VALUE) { // The First node of a Trie i
     return crawl?.isEnd ?: false
   }
 
+  // * We can also use `dfsWords("", Int.MAX_VALUE)`
+  fun getAllWords(word: String = ""): List<String> =
+    (if (isEnd) listOf(word) else emptyList()) +
+      children.asSequence().filterNotNull().flatMap { it.getAllWords(word + it.value) }
+
+  fun getAllWordsWithDotRegex(
+    dotRegex: String,
+    dotRegexIndex: Int = 0,
+    word: String = "",
+  ): List<String> =
+    (if (isEnd) listOf(word) else emptyList()) +
+      children
+        .asSequence()
+        .filterNotNull()
+        .filter { dotRegex[dotRegexIndex] == '.' || dotRegex[dotRegexIndex] == it.value }
+        .flatMap { it.getAllWordsWithDotRegex(dotRegex, dotRegexIndex + 1, word + it.value) }
+
+  fun isDotRegexPresent(dotRegex: String, dotRegexIndex: Int = 0): Boolean =
+    when {
+      // + 1 coz the first level is stub
+      dotRegexIndex == dotRegex.lastIndex + 1 -> isEnd
+      else ->
+        children
+          .asSequence()
+          .filterNotNull()
+          .filter { dotRegex[dotRegexIndex] == '.' || dotRegex[dotRegexIndex] == it.value }
+          .any { it.isDotRegexPresent(dotRegex, dotRegexIndex + 1) }
+    }
+
   fun recommendationsWhileTyping(key: String, limit: Int = Int.MAX_VALUE): List<List<String>> =
     key.map { it.toString() }.runningReduce(String::plus).map { recommendations(it, limit) }
 
@@ -73,31 +99,21 @@ class TrieNode(val value: Char = Char.MIN_VALUE) { // The First node of a Trie i
     for (char in key) {
       crawl = crawl.children[char - 'a'] ?: return emptyList()
     }
-    return crawl.getRecommendations(key, limit)
+    return crawl.dfsWords(key, limit)
   }
 
-  private fun getRecommendations(
-    prefix: String,
-    limit: Int,
-    curRecommendation: String = "",
-  ): List<String> {
-    val currentWord = if (isEnd) listOf(prefix + curRecommendation) else emptyList()
-      val remainingLimit = limit - currentWord.size
-      val childRecommendations =
-        children.asSequence().filterNotNull().fold(emptyList<String>()) { acc, child ->
-          when {
-            acc.size >= remainingLimit -> acc
-            else ->
-              acc +
-                child.getRecommendations(
-                  prefix,
-                  remainingLimit - acc.size,
-                  curRecommendation + child.value,
-                )
-          }
+  private fun dfsWords(prefix: String, limit: Int, curWord: String = ""): List<String> {
+    val currentWord = if (isEnd) listOf(prefix + curWord) else emptyList()
+    val remainingLimit = limit - currentWord.size
+    val wordsFromChildren =
+      children.asSequence().filterNotNull().fold(emptyList<String>()) { words, child ->
+        when {
+          words.size >= remainingLimit -> words
+          else -> words + child.dfsWords(prefix, remainingLimit - words.size, curWord + child.value)
         }
-      return currentWord + childRecommendations
-    }
+      }
+    return currentWord + wordsFromChildren
+  }
 }
 
 fun main() {

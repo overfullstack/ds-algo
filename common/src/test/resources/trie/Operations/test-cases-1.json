@@ -1,0 +1,286 @@
+{
+  "testcases": [
+    {
+      "name": "testcase 1",
+      "inputs": [
+        {
+          "1": [
+            "WordDictionary",
+            "addWord",
+            "addWord",
+            "addWord",
+            "getWords",
+            "searchWord",
+            "searchWord",
+            "searchWord",
+            "searchWord",
+            "getWords"
+          ]
+        },
+        {
+          "2": [
+            [],
+            [
+              "bad"
+            ],
+            [
+              "dad"
+            ],
+            [
+              "mad"
+            ],
+            [],
+            [
+              "pad"
+            ],
+            [
+              "bad"
+            ],
+            [
+              ".ad"
+            ],
+            [
+              "b.."
+            ],
+            []
+          ]
+        }
+      ],
+      "output": [
+        {
+          "1": [
+            "null",
+            "null",
+            "null",
+            "null",
+            "[bad, dad, mad]",
+            "false",
+            "true",
+            "true",
+            "true",
+            "[bad, dad, mad]"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "testcase 2",
+      "inputs": [
+        {
+          "1": [
+            "WordDictionary",
+            "addWord",
+            "addWord",
+            "addWord",
+            "getWords",
+            "searchWord"
+          ]
+        },
+        {
+          "2": [
+            [],
+            [
+              "hello"
+            ],
+            [
+              "help"
+            ],
+            [
+              "hi"
+            ],
+            [],
+            [
+              "h."
+            ]
+          ]
+        }
+      ],
+      "output": [
+        {
+          "1": [
+            "null",
+            "null",
+            "null",
+            "null",
+            "[hello, help, hi]",
+            "true"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "testcase 3",
+      "inputs": [
+        {
+          "1": [
+            "WordDictionary",
+            "getWords",
+            "addWord",
+            "addWord",
+            "getWords",
+            "searchWord",
+            "addWord",
+            "addWord",
+            "searchWord",
+            "searchWord",
+            "getWords"
+          ]
+        },
+        {
+          "2": [
+            [],
+            [],
+            [
+              "apple"
+            ],
+            [
+              "grape"
+            ],
+            [],
+            [
+              "strawberry"
+            ],
+            [
+              "banana"
+            ],
+            [
+              "banan"
+            ],
+            [
+              "bana.."
+            ],
+            [
+              "ba...a"
+            ],
+            []
+          ]
+        }
+      ],
+      "output": [
+        {
+          "1": [
+            "null",
+            "[]",
+            "null",
+            "null",
+            "[apple, grape]",
+            "false",
+            "null",
+            "null",
+            "true",
+            "true",
+            "[apple, banan, banana, grape]"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "testcase 4",
+      "inputs": [
+        {
+          "1": [
+            "WordDictionary",
+            "addWord",
+            "addWord",
+            "addWord",
+            "getWords",
+            "searchWord",
+            "searchWord",
+            "searchWord",
+            "searchWord",
+            "getWords"
+          ]
+        },
+        {
+          "2": [
+            [],
+            [
+              "ox"
+            ],
+            [
+              "box"
+            ],
+            [
+              "pox"
+            ],
+            [],
+            [
+              "x"
+            ],
+            [
+              "b."
+            ],
+            [
+              "..x"
+            ],
+            [
+              "b.."
+            ],
+            []
+          ]
+        }
+      ],
+      "output": [
+        {
+          "1": [
+            "null",
+            "null",
+            "null",
+            "null",
+            "[box, ox, pox]",
+            "false",
+            "false",
+            "true",
+            "true",
+            "[box, ox, pox]"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "testcase 5",
+      "inputs": [
+        {
+          "1": [
+            "WordDictionary",
+            "searchWord",
+            "addWord",
+            "addWord",
+            "getWords",
+            "searchWord"
+          ]
+        },
+        {
+          "2": [
+            [],
+            [
+              "bad"
+            ],
+            [
+              "dgwrgwrgrehehr"
+            ],
+            [
+              "erthqethethetqth"
+            ],
+            [],
+            [
+              "...hqethethetqth"
+            ]
+          ]
+        }
+      ],
+      "output": [
+        {
+          "1": [
+            "null",
+            "false",
+            "null",
+            "null",
+            "[dgwrgwrgrehehr, erthqethethetqth]",
+            "true"
+          ]
+        }
+      ]
+    }
+  ]
+}
