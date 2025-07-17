@@ -29,7 +29,7 @@ data class SLLNode(var value: Int, var next: SLLNode? = null) {
   fun middle(): SLLNode {
     var ptr: SLLNode? = this
     var fPtr: SLLNode? = this
-    while (fPtr != null || fPtr?.next != null) {
+    while (fPtr?.next != null) {
       ptr = ptr?.next
       fPtr = fPtr.next?.next
     }

@@ -13,7 +13,7 @@ class ReverseNodesInEvenGroupsTest :
     "reverse nodes in even groups" {
       parseJsonFileToTestCases("$PKG_PATH/test-cases-1.json").forAll { (inputs, output) ->
         val head = SLLNode.of(inputs.toIntArray())
-        reverseInEvenGroups(head!!).toArray() shouldBe output.toIntArray()
+        reverseNodesInEvenGroups(head!!).toArray() shouldBe output.toIntArray()
       }
     }
   })

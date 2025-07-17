@@ -10,7 +10,7 @@ fun validParentheses(str: String): Boolean {
   val stk = Stack<Char>()
   for (ch in str) {
     when {
-      OPEN_PAREN.contains(ch) -> stk.push(ch)
+      ch in OPEN_PAREN -> stk.push(ch)
       stk.isEmpty() || stk.pop() != PAREN_MATCH[ch] -> return false
     }
   }

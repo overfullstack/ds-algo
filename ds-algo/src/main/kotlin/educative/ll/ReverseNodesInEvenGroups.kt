@@ -4,35 +4,35 @@ import ds.ll.SLLNode
 
 /* 23 Aug 2024 11:55 */
 
-fun reverseInEvenGroups(head: SLLNode): SLLNode {
-  var prevToGrp: SLLNode? = head
-  var grpSize = 2
-  while (prevToGrp?.next?.next != null) {
-    val (stepCount, grpEndNode) = prevToGrp.getNodeAfterOrLast(grpSize)
-    if (grpSize % 2 == 0 || stepCount % 2 == 0) {
-      val nextToGrp = grpEndNode.next
-      val rgTail = prevToGrp.next
-      val rgHead = rgTail?.reverseInGroup(grpSize, nextToGrp)
-      prevToGrp.next = rgHead
-      prevToGrp = rgTail
+fun reverseNodesInEvenGroups(head: SLLNode): SLLNode {
+  var prevGrpTail: SLLNode? = head
+  var grpSizeToReverse = 2
+  while (prevGrpTail?.next?.next != null) { // Break if only one or none left
+    val (actualGrpSize, grpEndNode) = prevGrpTail.getNodeAfterOrLast(grpSizeToReverse)
+    if (grpSizeToReverse % 2 == 0 || actualGrpSize % 2 == 0) {
+      val nextGrpHead = grpEndNode.next
+      val revGrpTail = prevGrpTail.next
+      revGrpTail?.reverseInGroup(nextGrpHead, actualGrpSize) // revGrpHead
+      prevGrpTail.next = grpEndNode // grpEndNode points to revGrpHead
+      prevGrpTail = revGrpTail
     } else {
-      prevToGrp = grpEndNode
+      prevGrpTail = grpEndNode
     }
-    grpSize++
+    grpSizeToReverse++
   }
   return head
 }
 
-fun SLLNode.reverseInGroup(groupSize: Int, prev: SLLNode? = null): SLLNode =
+fun SLLNode.reverseInGroup(prev: SLLNode?, actualGrpSize: Int): SLLNode =
   when {
-    next == null || groupSize == 1 -> {
+    actualGrpSize == 1 -> {
       next = prev
       this
     }
     else -> {
       val curNext = next
       next = prev
-      curNext!!.reverseInGroup(groupSize - 1, this)
+      curNext!!.reverseInGroup(this, actualGrpSize - 1)
     }
   }
 
