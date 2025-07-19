@@ -43,22 +43,25 @@ constructor(
     }
 
   fun insertForRank(valToInsert: Int): Int = // returns leftSize
-  if (valToInsert <= value) {
-      leftSize++
-      left?.insertForRank(valToInsert)
-        ?: run {
-          left = TreeNode(valToInsert)
-          leftSize
-        }
-    } else { // 1 - for current node, leftSize for it's rank (all the nodes less than the cur
-      // node)
-      1 +
-        leftSize +
-        (right?.insertForRank(valToInsert)
+  when {
+      valToInsert <= value -> {
+        leftSize++
+        left?.insertForRank(valToInsert)
           ?: run {
-            right = TreeNode(valToInsert)
-            0
-          })
+            left = TreeNode(valToInsert)
+            leftSize
+          }
+      }
+      // 1 - for current node, leftSize for it's rank (all the nodes less than the cur node)
+      else -> {
+        1 +
+          leftSize +
+          (right?.insertForRank(valToInsert)
+            ?: run {
+              right = TreeNode(valToInsert)
+              0
+            })
+      }
     }
 
   fun getNodeAtRank(rank: Int): TreeNode? =
@@ -117,16 +120,6 @@ constructor(
   }
 
   companion object {
-    fun arrayToTree(arr: IntArray, index: Int = 0): TreeNode? =
-      when {
-        index >= arr.size -> null
-        else ->
-          TreeNode(arr[index]).also {
-            it.left = arrayToTree(arr, index * 2 + 1)
-            it.right = arrayToTree(arr, index * 2 + 2)
-          }
-      }
-
     fun arrayToBST(arr: IntArray): TreeNode? {
       if (arr.isEmpty()) {
         return null
@@ -134,6 +127,7 @@ constructor(
       return TreeNode(arr[0]).also { root -> arr.drop(1).forEach { root.insertForBST(it) } }
     }
 
+    /** level order is the same as pre-order */
     fun levelOrderToCompleteTree(levelOrder: List<Int>): TreeNode? {
       if (levelOrder.isEmpty()) {
         return null

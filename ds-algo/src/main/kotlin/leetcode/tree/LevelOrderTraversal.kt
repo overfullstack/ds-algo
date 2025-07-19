@@ -8,10 +8,10 @@ tailrec fun TreeNode.levelOrderTraversal(
   result: List<List<TreeNode>> = listOf(currentLevel),
 ): List<List<TreeNode>> {
   val nextLevel = currentLevel.flatMap { listOfNotNull(it.left, it.right) }
-  return if (nextLevel.isNotEmpty()) {
-    levelOrderTraversal(nextLevel, result.plusElement(nextLevel))
-  } else {
-    result
+  return when {
+    nextLevel.isEmpty() -> result
+    // Next level passed as current level for next iteration
+    else -> levelOrderTraversal(nextLevel, result.plusElement(nextLevel))
   }
 }
 
