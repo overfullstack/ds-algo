@@ -1,6 +1,6 @@
 package cci.trees
 
-import ds.tree.TreeNode.Companion.levelOrderToTree
+import ds.tree.TreeNode.Companion.levelOrderToIncompleteTree
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.data.forAll
 import io.kotest.data.row
@@ -15,7 +15,7 @@ class CheckBalancedTest :
         row(listOf(1, 2, 3, 4, null, null, null, 5), false),
         row(listOf(1), true),
       ) { levelOrder, result ->
-        levelOrderToTree(levelOrder).checkBalanced().second shouldBe result
+        levelOrderToIncompleteTree(levelOrder).checkBalanced().second shouldBe result
       }
     }
   })

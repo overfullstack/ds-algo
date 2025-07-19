@@ -1,6 +1,6 @@
 package cci.trees
 
-import ds.tree.TreeNode.Companion.levelOrderToTree
+import ds.tree.TreeNode.Companion.levelOrderToIncompleteTree
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.data.forAll
 import io.kotest.data.row
@@ -15,7 +15,7 @@ class ValidateBSTTest :
         row(listOf(3, 2, 4, 1, null, null, 5), true),
         row(listOf(3, 2, 4, 1, null, null, 3), false),
       ) { levelOrder, result ->
-        levelOrderToTree(levelOrder).validateBST() shouldBe result
+        levelOrderToIncompleteTree(levelOrder).validateBST() shouldBe result
       }
     }
   })

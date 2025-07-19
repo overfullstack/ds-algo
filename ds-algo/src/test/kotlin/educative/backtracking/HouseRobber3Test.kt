@@ -1,6 +1,6 @@
 package educative.backtracking
 
-import ds.tree.TreeNode.Companion.levelOrderToTree
+import ds.tree.TreeNode.Companion.levelOrderToIncompleteTree
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.inspectors.forAll
 import io.kotest.matchers.shouldBe
@@ -15,7 +15,7 @@ class HouseRobber3Test :
     "house robber 3" {
       parseJsonFileToTestCases("$PKG_PATH/test-cases-1.json", "$PKG_PATH/test-cases-2.json")
         .forAll { (inputs, output) ->
-          val treeNode = levelOrderToTree(inputs)
+          val treeNode = levelOrderToIncompleteTree(inputs)
           treeNode!!.houseRobber3() shouldBe output
         }
     }

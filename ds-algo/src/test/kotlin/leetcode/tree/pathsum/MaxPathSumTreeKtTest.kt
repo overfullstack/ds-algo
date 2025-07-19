@@ -18,7 +18,7 @@ class MaxPathSumTreeKtTest : StringSpec() {
         row(listOf(1, -2, 3), 4),
         row(listOf(5, 4, 8, 11, null, 13, 4, 7, 2, null, null, null, 1), 48),
       ) { list, maxPathSum ->
-        TreeNode.levelOrderToTree(list)!!.maxPathSum().second shouldBe maxPathSum
+        TreeNode.levelOrderToIncompleteTree(list)!!.maxPathSum().second shouldBe maxPathSum
       }
     }
   }

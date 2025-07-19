@@ -76,30 +76,12 @@ constructor(
     }
 
   fun insertForBST(valToInsert: Int): Unit =
-    if (valToInsert <= value) {
-      left?.insertForBST(valToInsert) ?: run { left = TreeNode(valToInsert) }
-    } else {
-      right?.insertForBST(valToInsert) ?: run { right = TreeNode(valToInsert) }
+    when {
+      valToInsert <= value ->
+        left?.insertForBST(valToInsert) ?: run { left = TreeNode(valToInsert) }
+
+      else -> right?.insertForBST(valToInsert) ?: run { right = TreeNode(valToInsert) }
     }
-
-  fun incompleteTreeToList(): List<Int?> {
-    val valQueue = LinkedList<Int?>()
-    val treeNodeQueue = ArrayDeque<TreeNode>()
-    treeNodeQueue.add(this)
-    valQueue.add(this.value)
-    while (treeNodeQueue.isNotEmpty()) {
-      if (left != null || right != null) {
-        val curTreeNode = treeNodeQueue.poll()
-
-        curTreeNode.left?.let { treeNodeQueue.addLast(it) }
-        curTreeNode.right?.let { treeNodeQueue.addLast(it) }
-
-        valQueue.addLast(curTreeNode.left?.value)
-        valQueue.addLast(curTreeNode.right?.value)
-      }
-    }
-    return valQueue
-  }
 
   fun height(): Int = 1 + maxOf((left?.height() ?: 0), (right?.height() ?: 0))
 
@@ -119,8 +101,22 @@ constructor(
   override fun toString(): String =
     "TreeNode(value=$value, left=${left?.value}, right=${right?.value}, parent=${parent?.value}, next=${next?.value}, id='$id', leftSize=$leftSize)"
 
-  companion object {
+  fun incompleteTreeToList(): List<Int?> {
+    val valQueue = LinkedList<Int?>()
+    val treeNodeQueue = ArrayDeque<TreeNode>()
+    treeNodeQueue.add(this)
+    valQueue.add(this.value)
+    while (treeNodeQueue.isNotEmpty()) {
+      val curTreeNode = treeNodeQueue.poll()
+      curTreeNode.left?.let { treeNodeQueue.addLast(it) }
+      curTreeNode.right?.let { treeNodeQueue.addLast(it) }
+      valQueue.addLast(curTreeNode.left?.value)
+      valQueue.addLast(curTreeNode.right?.value)
+    }
+    return valQueue
+  }
 
+  companion object {
     fun arrayToTree(arr: IntArray, index: Int = 0): TreeNode? =
       when {
         index >= arr.size -> null
@@ -156,7 +152,7 @@ constructor(
       )
     }
 
-    fun levelOrderToTree(levelOrder: List<Int?>): TreeNode? {
+    fun levelOrderToIncompleteTree(levelOrder: List<Int?>): TreeNode? {
       val valQueue = LinkedList(levelOrder) // Can't use ArrayDeque as it won't allow nulls.
       val rootVal = valQueue.poll() ?: return null
       val treeNodeQueue = ArrayDeque<TreeNode>()
@@ -164,26 +160,11 @@ constructor(
       treeNodeQueue.push(root)
       while (valQueue.isNotEmpty()) {
         val curRoot = treeNodeQueue.poll()
-        valQueue.poll()?.let { leftValue ->
-          curRoot.left = TreeNode(leftValue).also { treeNodeQueue.addLast(it) }
-        }
-        valQueue.poll()?.let { rightValue ->
-          curRoot.right = TreeNode(rightValue).also { treeNodeQueue.addLast(it) }
-        }
+        curRoot.left = valQueue.poll()?.let { TreeNode(it).also { treeNodeQueue.addLast(it) } }
+        curRoot.right = valQueue.poll()?.let { TreeNode(it).also { treeNodeQueue.addLast(it) } }
       }
       return root
     }
-
-    fun levelOrderToTreeRecursive(levelOrder: List<Int?>, index: Int = 0): TreeNode? =
-      when {
-        index > levelOrder.lastIndex -> null
-        levelOrder[index] == null -> null
-        else ->
-          TreeNode(levelOrder[index]!!).also {
-            it.left = levelOrderToTreeRecursive(levelOrder, 2 * index + 1)
-            it.right = levelOrderToTreeRecursive(levelOrder, 2 * index + 2)
-          }
-      }
 
     @Serializable
     data class JTree(val tree: Tree) {

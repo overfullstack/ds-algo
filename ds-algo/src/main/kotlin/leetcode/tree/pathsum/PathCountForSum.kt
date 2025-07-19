@@ -43,5 +43,5 @@ fun main() {
     if (arrCsv.trim().isEmpty()) emptyList()
     else arrCsv.split(",").map { it.trim() }.map { if (it == "null") null else it.toInt() }
   val targetSum = readln().toInt()
-  println(TreeNode.levelOrderToTree(arr).pathCountForSum(targetSum))
+  println(TreeNode.levelOrderToIncompleteTree(arr).pathCountForSum(targetSum))
 }

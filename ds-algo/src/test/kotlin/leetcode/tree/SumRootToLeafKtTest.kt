@@ -16,7 +16,7 @@ class SumRootToLeafKtTest : StringSpec() {
         row(listOf(4), 4),
         row(listOf(4, 2), 42),
       ) { list, result ->
-        TreeNode.levelOrderToTree(list)!!.sumFromRootToLeaf() shouldBe result
+        TreeNode.levelOrderToIncompleteTree(list)!!.sumFromRootToLeaf() shouldBe result
       }
     }
   }

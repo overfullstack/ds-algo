@@ -25,8 +25,6 @@ fun sortColors(arr: IntArray): IntArray {
 
 private fun IntArray.swap(index1: Int, index2: Int) {
   if (index1 != index2 && this[index1] != this[index2]) {
-    var temp = this[index1]
-    this[index1] = this[index2]
-    this[index2] = temp
+    this[index1] = this[index2].also { this[index2] = this[index1] }
   }
 }

@@ -15,7 +15,7 @@ class NodesAtDistanceKTest :
         row(listOf(0, 5, 1, null, null, 2, 6, null, 3, null, null, 4, null, 7), 7, 3, listOf(2)),
       ) { treeList: List<Int?>, targetValue: Int, K: Int, result: List<Int> ->
         distanceK(
-          TreeNode.levelOrderToTree(treeList),
+          TreeNode.levelOrderToIncompleteTree(treeList),
           TreeNode(targetValue),
           K,
         ) shouldContainExactlyInAnyOrder result

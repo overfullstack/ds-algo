@@ -23,5 +23,7 @@ private fun TreeNode.kthSmallest(result: Pair<Boolean, Int>): Pair<Boolean, Int>
 }
 
 fun main() {
-  println(TreeNode.levelOrderToTree(listOf(5, 3, 6, 2, 4, null, null, 1))!!.kthSmallest(3))
+  println(
+    TreeNode.levelOrderToIncompleteTree(listOf(5, 3, 6, 2, 4, null, null, 1))!!.kthSmallest(3)
+  )
 }
