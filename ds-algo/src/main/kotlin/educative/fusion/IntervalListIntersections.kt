@@ -6,7 +6,7 @@ fun intervalListIntersections(
   a: List<Pair<Int, Int>>,
   b: List<Pair<Int, Int>>,
 ): List<Pair<Int, Int>> {
-  tailrec fun findIntersections(
+  tailrec fun intervalListIntersections(
     aIndex: Int,
     bIndex: Int,
     result: List<Pair<Int, Int>>,
@@ -24,12 +24,12 @@ fun intervalListIntersections(
 
     return when {
       a[aIndex].second == b[bIndex].second ->
-        findIntersections(aIndex + 1, bIndex + 1, intervalIntersections)
+        intervalListIntersections(aIndex + 1, bIndex + 1, intervalIntersections)
       a[aIndex].second < b[bIndex].second ->
-        findIntersections(aIndex + 1, bIndex, intervalIntersections)
-      else -> findIntersections(aIndex, bIndex + 1, intervalIntersections)
+        intervalListIntersections(aIndex + 1, bIndex, intervalIntersections)
+      else -> intervalListIntersections(aIndex, bIndex + 1, intervalIntersections)
     }
   }
 
-  return findIntersections(0, 0, emptyList())
+  return intervalListIntersections(0, 0, emptyList())
 }
