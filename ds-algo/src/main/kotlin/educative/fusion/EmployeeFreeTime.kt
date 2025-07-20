@@ -5,18 +5,24 @@ import java.util.PriorityQueue
 /* 20 Jul 2025 18:16 */
 
 fun employeeFreeTime(allEmployeeMeetings: List<List<Pair<Int, Int>>>): List<Pair<Int, Int>> {
-  val minHeap = PriorityQueue(Comparator.comparingInt<Pair<Int, Int>> { it.first })
-  // ! TODO 20 Jul 2025 gopala.akshintala: Memory optimize by loading only first element in each
-  // list into Heap
-  minHeap.addAll(allEmployeeMeetings.flatten())
-  val nonOverlappingIntervals = mutableListOf<Pair<Int, Int>>()
-  var prevIntervalEndTime = minHeap.peek().second
-  while (minHeap.isNotEmpty()) {
-    val curInterval = minHeap.poll()
-    if (prevIntervalEndTime < curInterval.first) {
-      nonOverlappingIntervals += (prevIntervalEndTime to curInterval.first)
+  val minHeap = PriorityQueue(Comparator.comparingInt<Triple<Int, Int, Int>> { it.first })
+  // * Loading only first column instead of all intervals for Memory optimization
+  minHeap.addAll(
+    allEmployeeMeetings.withIndex().map { (row, empMeetings) ->
+      Triple(empMeetings.first().first, row, 0)
     }
-    prevIntervalEndTime = maxOf(prevIntervalEndTime, curInterval.second)
+  )
+  val nonOverlappingIntervals = mutableListOf<Pair<Int, Int>>()
+  var prevIntervalEndTime = minHeap.peek().first
+  while (minHeap.isNotEmpty()) {
+    val (curIntervalStartTime, row, col) = minHeap.poll()
+    if (prevIntervalEndTime < curIntervalStartTime) {
+      nonOverlappingIntervals += (prevIntervalEndTime to curIntervalStartTime)
+    }
+    prevIntervalEndTime = maxOf(prevIntervalEndTime, allEmployeeMeetings[row][col].second)
+    if (col + 1 <= allEmployeeMeetings[row].lastIndex) {
+      minHeap.add(Triple(allEmployeeMeetings[row][col + 1].first, row, col + 1))
+    }
   }
   return nonOverlappingIntervals
 }
