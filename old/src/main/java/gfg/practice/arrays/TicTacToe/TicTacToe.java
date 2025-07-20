@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class TicTacToe {
 	// This matrix is used to find indexes to check all
 	// possible wining triplets in board[0..8]
-	private static int WIN[][] = {
+	private static final int[][] WIN = {
 		{0, 1, 2}, // Check first row.
 		{3, 4, 5}, // Check second Row
 		{6, 7, 8}, // Check third Row
@@ -15,7 +15,7 @@ public class TicTacToe {
 		{2, 5, 8}, // Check third Column
 		{0, 4, 8}, // Check first Diagonal
 		{2, 4, 6}
-	}; // Check second Diagonal
+	}; // Check the second Diagonal
 
 	public static void main(String[] args) {
 		var scn = new Scanner(System.in);
@@ -47,10 +47,7 @@ public class TicTacToe {
 				return (xCount == oCount);
 			}
 			// If X is winning, it should be 1 ahead
-			if (isWinning(board, 'X') && (xCount != oCount + 1)) {
-				return false;
-			}
-			return true;
+			return !isWinning(board, 'X') || (xCount == oCount + 1);
 		}
 		return false;
 	}

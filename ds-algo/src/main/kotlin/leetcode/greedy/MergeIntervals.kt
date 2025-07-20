@@ -2,20 +2,18 @@
 package leetcode.greedy
 
 fun mergeIntervals(intervals: List<Pair<Int, Int>>): List<Pair<Int, Int>> {
-  val sortedIntervals = intervals.sortedBy { it.first }
-  val mergedIntervals = mutableListOf<Pair<Int, Int>>()
-
-  return mergedIntervals +
-    sortedIntervals.reduce { mergedInterval, curInterval
-      -> // aggregate (to previous) or replace (with current)
-      if (curInterval.first <= mergedInterval.second) {
-        mergedInterval.first to
-          maxOf(curInterval.second, mergedInterval.second) // aggregate an interval.
-      } else {
-        mergedIntervals += mergedInterval
-        curInterval // repalce prev aggergate with current interval.
-      }
+  val sortedByStartIntervals = intervals.sortedBy { it.first }
+  return sortedByStartIntervals.drop(1).fold(listOf(sortedByStartIntervals.first())) {
+    mergedIntervals,
+    curInterval ->
+    val prevInterval = mergedIntervals.last()
+    when {
+      prevInterval.second >= curInterval.first ->
+        mergedIntervals.dropLast(1) +
+          (prevInterval.first to maxOf(prevInterval.second, curInterval.second))
+      else -> mergedIntervals + curInterval
     }
+  }
 }
 
 fun merge(intervals: Array<IntArray>): Array<IntArray> {
@@ -27,7 +25,7 @@ fun merge(intervals: Array<IntArray>): Array<IntArray> {
 
 fun main() {
   val intervals =
-    readln()
+    "[[1,3],[2,6],[8,10],[15,18]]" // readln()
       .drop(2)
       .dropLast(2)
       .split("],[")

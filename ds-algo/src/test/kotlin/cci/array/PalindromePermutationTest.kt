@@ -5,7 +5,7 @@ import io.kotest.data.forAll
 import io.kotest.data.row
 import io.kotest.matchers.shouldBe
 
-class PalidromePermutationKtTest :
+class PalindromePermutationTest :
   StringSpec({
     "isPalindromePermutation" {
       forAll(
@@ -17,7 +17,7 @@ class PalidromePermutationKtTest :
         row("a", true),
         row("", true),
       ) { str, result ->
-        isPalidromePermutation(str) shouldBe result
+        isPalindromePermutation(str) shouldBe result
       }
     }
   })
