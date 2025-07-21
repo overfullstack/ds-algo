@@ -69,14 +69,6 @@ class LRUQueue(val maxSize: Int) {
     }
   }
 
-  private fun removeLRU() {
-    map.remove(tail!!.value.first)
-    leftShiftTail()
-    size--
-  }
-
-  fun getMostRecentKey(): String? = head?.value?.first
-
   fun getValueFromKey(key: String): Int? {
     val node = map[key]
     if (node != null && node != head) {
@@ -89,6 +81,14 @@ class LRUQueue(val maxSize: Int) {
     }
     return node?.value?.second
   }
+
+  private fun removeLRU() {
+    map.remove(tail!!.value.first)
+    leftShiftTail()
+    size--
+  }
+
+  fun getMostRecentKey(): String? = head?.value?.first
 
   private fun unlink(node: DLLNode<Pair<String, Int>>) {
     node.prev?.next = node.next
@@ -107,6 +107,5 @@ class LRUQueue(val maxSize: Int) {
 
   fun toList(): List<Pair<String, Int>> = head?.toList() ?: emptyList()
 
-  override fun toString(): String =
-    "[${toList().map { "(${it.first}, ${it.second})" }.joinToString()}]"
+  override fun toString(): String = "[${toList().joinToString { "(${it.first}, ${it.second})" }}]"
 }

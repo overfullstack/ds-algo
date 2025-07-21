@@ -6,7 +6,7 @@ import gfg.ds.SLLNode;
 
 /** Created by Gopala Akshintala on 2/26/17. */
 public class MergeSortLL {
-	public static void main(String[] args) {
+	public static void main() {
 		var head = new SLLNode(4);
 		head.next = new SLLNode(3);
 		head.next.next = new SLLNode(5);
@@ -24,7 +24,7 @@ public class MergeSortLL {
 		if (head == null || head.next == null) {
 			return head;
 		}
-		// Split the LL into two list to the middle
+		// Split the LL into two lists to the middle
 		var middle = frontBackSplit(head);
 
 		// Split each list further by the recursion, in return we receive merged lists

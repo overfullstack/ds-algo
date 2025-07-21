@@ -105,7 +105,6 @@ class DiGraph<T>(private val adjacencyMap: MutableMap<T, Set<T>> = mutableMapOf(
 
   /** DETECT CYCLE -> */
 
-  /** -> TOPOLOGICAL SORT with Cycle Detection */
   fun topologicalSort(): List<T> {
     val visited = mutableSetOf<T>() // * Global visited
     return adjacencyMap.keys
@@ -123,11 +122,11 @@ class DiGraph<T>(private val adjacencyMap: MutableMap<T, Set<T>> = mutableMapOf(
       when (it) {
         in visitedInBranch -> throw IllegalArgumentException("Graph has Cycle")
         in visited -> emptySequence() // This node was visited so can't contribute to any sequence.
+        // Key depends on the list of values
         else -> it.topologicalSortPerBranch(visited.apply { add(it) }, visitedInBranch + it) + it
       }
     } ?: emptySequence() // No connections.
 
-  /** TOPOLOGICAL SORT with Cycle Detection -> */
   companion object {
     @Serializable
     data class JDiGraph(val graph: Graph) {

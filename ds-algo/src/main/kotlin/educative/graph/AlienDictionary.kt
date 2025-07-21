@@ -6,14 +6,14 @@ import ds.graph.DiGraph
 
 fun orderAlienDictionary(words: List<String>): String {
   val diGraph = DiGraph<Char>()
-  val charToInConnection = words.flatMap { it.toList() }.associateWith { 0 }.toMutableMap()
+  val charToInConnectionCount = words.flatMap { it.toList() }.associateWith { 0 }.toMutableMap()
   for (i in (0..words.lastIndex - 1)) {
     val unmatchedResult = firstUnmatchedLetterPair(words[i], words[i + 1])
     unmatchedResult?.fold(
       { (char1, char2) ->
         if (diGraph[char1]?.contains(char2) != true) {
           diGraph.addEdge(char1, char2)
-          charToInConnection.computeIfPresent(char2) { _, value -> value.inc() }
+          charToInConnectionCount.computeIfPresent(char2) { _, value -> value.inc() }
         }
       },
       {
@@ -22,26 +22,26 @@ fun orderAlienDictionary(words: List<String>): String {
     )
   }
   val result = mutableListOf<Char>()
-  val queue =
-    ArrayDeque<Char>(
-      charToInConnection.mapNotNull { (key, value) -> if (value == 0) key else null }
-    )
+  val queue = ArrayDeque(charToInConnectionCount.filterValues { it == 0 }.map { it.key })
   while (queue.isNotEmpty()) {
     val nextChar = queue.removeFirst()
-    result.add(nextChar)
+    result += nextChar
     diGraph[nextChar]?.forEach {
-      charToInConnection.computeIfPresent(it) { _, value ->
-        val newValue = value.dec()
-        if (newValue == 0) {
-          queue.add(it)
+      charToInConnectionCount.computeIfPresent(it) { _, inConnectionCount ->
+        val newValue = inConnectionCount.dec()
+        when (newValue) {
+            0 -> {
+              queue.add(it)
+              null
+            }
+          else -> newValue
         }
-        newValue
       }
     }
   }
 
   return when {
-    result.size < charToInConnection.size -> ""
+    result.size < charToInConnectionCount.size -> ""
     else -> result.joinToString("")
   }
 }
