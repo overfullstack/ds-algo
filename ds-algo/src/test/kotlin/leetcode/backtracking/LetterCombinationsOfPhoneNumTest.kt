@@ -4,7 +4,7 @@ import io.kotest.core.spec.style.StringSpec
 import io.kotest.matchers.collections.shouldContainExactlyInAnyOrder
 import io.kotest.matchers.shouldBe
 
-class LetterCombinationsTest :
+class LetterCombinationsOfPhoneNumTest :
   StringSpec({
     "letterCombinations" {
       letterCombinations("23") shouldContainExactlyInAnyOrder

@@ -18,10 +18,11 @@ private fun letterCombinationsUtil(
   combination: String = "",
   digitIndex: Int = 0,
 ): List<String> =
-  if (combination.length == digits.length) {
-    listOf(combination)
-  } else {
-    // * Every letter in current word starts a branch with next word letters.
-    val lettersOnButton = DICTIONARY[digits[digitIndex] - '0']
-    lettersOnButton.flatMap { letterCombinationsUtil(digits, combination + it, digitIndex + 1) }
+  when (combination.length) {
+    digits.length -> listOf(combination)
+    // * Every letter in the current word starts a branch with next word letters.
+    else ->
+      DICTIONARY[digits[digitIndex] - '0'].flatMap {
+        letterCombinationsUtil(digits, combination + it, digitIndex + 1)
+      }
   }

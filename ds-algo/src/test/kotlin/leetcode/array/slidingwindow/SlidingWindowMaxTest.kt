@@ -1,4 +1,4 @@
-package educative.array.slidingwindow
+package leetcode.array.slidingwindow
 
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.inspectors.forAll
@@ -9,12 +9,10 @@ import testcase.TestCase2.Companion.parseJsonFileToTestCases
 
 private const val PKG_PATH = "educative/array/slidingWindow/MaxInSlidingWindow"
 
-class MaxInSlidingWindowTest :
+class SlidingWindowMaxTest :
   StringSpec({
     "min window subsequence" {
       parseJsonFileToTestCases("$PKG_PATH/test-cases-1.json", "$PKG_PATH/test-cases-2.json")
-        .forAll { (inputs, k, output) ->
-          maxInSlidingWindow(inputs.toIntArray(), k) shouldBe output
-        }
+        .forAll { (inputs, k, output) -> slidingWindowMax(inputs.toIntArray(), k) shouldBe output }
     }
   })

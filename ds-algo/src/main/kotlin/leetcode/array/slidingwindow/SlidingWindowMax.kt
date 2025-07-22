@@ -1,6 +1,7 @@
 /* gakshintala created on 8/25/19 */
-package leetcode.queue.SlidingWindowMax
+package leetcode.array.slidingwindow
 
+/** [Sliding Window Maximum](https://leetcode.com/problems/sliding-window-maximum/) * */
 fun slidingWindowMax(nums: IntArray, k: Int): IntArray {
   if (nums.isEmpty() || k == 0) {
     return IntArray(0)
@@ -10,8 +11,8 @@ fun slidingWindowMax(nums: IntArray, k: Int): IntArray {
   // Deal with the Init window separately outside of loop.
   for (i in 0 until k) {
     while (deque.isNotEmpty() && nums[i] >= nums[deque.last()]) {
-      // Imagine this element shattering out lesser/equal elements out from last to first (right to
-      // left direction)
+      // Imagine this element shattering out lesser/equal elements out from last to first
+      // (right to the left direction)
       deque.removeLast()
     }
     deque.add(i) // deque only indexes.
@@ -30,7 +31,7 @@ fun slidingWindowMax(nums: IntArray, k: Int): IntArray {
     deque.add(i)
   }
 
-  // Just add the peek of remaining dequeue.
+  // Add the peek of the remaining dequeue.
   result.add(nums[deque.first()])
   return result.toIntArray()
 }

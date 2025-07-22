@@ -29,7 +29,7 @@ fun minWindowSubString(str: String, pattern: String): String {
     }
   }
   return when (minWindowLen) {
-      Int.MAX_VALUE -> ""
-      else -> str.substring(minWindowStart..(minWindowStart + minWindowLen))
+    Int.MAX_VALUE -> ""
+    else -> str.substring(minWindowStart..(minWindowStart + minWindowLen))
   }
 }

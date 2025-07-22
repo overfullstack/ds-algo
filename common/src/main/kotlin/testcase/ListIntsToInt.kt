@@ -6,7 +6,7 @@ import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
 
 @Serializable
-data class TestCase5(val testcases: List<Testcase>) {
+data class ListIntsToInt(val testcases: List<Testcase>) {
   @Serializable
   data class Testcase(val inputs: List<Input>, val name: String, val output: List<Output>) {
     @Serializable data class Input(@SerialName("1") val x1: List<Int>)
@@ -17,7 +17,9 @@ data class TestCase5(val testcases: List<Testcase>) {
   companion object {
     fun parseJsonFileToTestCases(vararg jsonFilePaths: String): List<Pair<List<Int>, Int>> {
       val testCases =
-        jsonFilePaths.flatMap { Json.decodeFromString<TestCase5>(readFileToString(it)).testcases }
+        jsonFilePaths.flatMap {
+          Json.decodeFromString<ListIntsToInt>(readFileToString(it)).testcases
+        }
       return testCases.map { it.inputs[0].x1 to it.output[0].x1 }
     }
   }

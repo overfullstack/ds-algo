@@ -5,20 +5,24 @@ fun lastDayToCross(rows: Int, cols: Int, waterCells: Set<Pair<Int, Int>>): Int {
   val unionFind = UnionFind3(rows, cols)
   return waterCells
     .fold(emptySet<Pair<Int, Int>>()) { waterDayByDay, waterToday ->
-      union(waterToday, rows, cols, waterDayByDay, unionFind)
-      if (unionFind.find(0) == unionFind.find(rows * cols + 1)) {
-        return waterDayByDay.size
+      connectWaterCells(waterToday, rows, cols, waterDayByDay, unionFind)
+      when {
+        // `0` and `rows * cols + 1` are virtual nodes on either end horizontally
+        // If an e2e water cell connection exists horizontally, we are blocked to cross vertically
+        unionFind.find(0) == unionFind.find(rows * cols + 1) -> return waterDayByDay.size
+        else -> waterDayByDay + waterToday
       }
-      waterDayByDay + waterToday
     }
     .size
 }
 
+// We can move in only 4 directions, but waterCells can be connected diagonally also
+// to block the path horizontally
 private val directions =
   listOf(0 to 1, 0 to -1, 1 to 0, -1 to 0, 1 to 1, -1 to 1, 1 to -1, -1 to -1)
 
-private fun union(
-  n: Pair<Int, Int>,
+private fun connectWaterCells(
+  waterToday: Pair<Int, Int>,
   rows: Int,
   cols: Int,
   waterDayByDay: Set<Pair<Int, Int>>,
@@ -26,21 +30,27 @@ private fun union(
 ) {
   directions
     .asSequence()
-    .map { n.first + it.first to n.second + it.second }
+    .map { waterToday.first + it.first to waterToday.second + it.second }
     .filter { isValid(it, rows, cols, waterDayByDay) }
-    .forEach { unionFind.union(n, it) }
-  when (n.second) {
-    1 -> unionFind.union(0, n)
-    cols -> unionFind.union(rows * cols + 1, n)
+    .forEach { unionFind.union(waterToday, it) }
+  // For edges, connect with virtual nodes
+  when (waterToday.second) {
+    1 -> unionFind.union(0, waterToday)
+    cols -> unionFind.union(rows * cols + 1, waterToday)
   }
 }
 
-fun isValid(n: Pair<Int, Int>, rows: Int, cols: Int, waterDayByDay: Set<Pair<Int, Int>>): Boolean =
-  n.first in (1..rows) && n.second in (1..cols) && n in waterDayByDay
+fun isValid(
+  cell: Pair<Int, Int>,
+  rows: Int,
+  cols: Int,
+  waterDayByDay: Set<Pair<Int, Int>>,
+): Boolean = cell.first in (1..rows) && cell.second in (1..cols) && cell in waterDayByDay
 
 private class UnionFind3(rows: Int, val cols: Int) {
-  val roots = Array<Int>(rows * cols + 2) { it }
-  val ranks = Array<Int>(rows * cols + 2) { 0 }
+  // +2 for virtual nodes
+  val roots = Array(rows * cols + 2) { it }
+  val ranks = Array(rows * cols + 2) { 0 }
 
   tailrec fun find(n: Int): Int =
     when {

@@ -1,36 +1,39 @@
 package educative.graph.unionfind
 
 /* 26 Sep 2024 16:34 */
-fun longestConsecutiveSequenceKt(nums: IntArray): Int {
+fun longestConsecutiveSequence(nums: IntArray): Int {
   val unionFind = UnionFind6(nums)
+  // * We are directly using the num values, no indexes being used
   nums.asSequence().filter { (it + 1) in unionFind.roots }.forEach { unionFind.union(it, it + 1) }
-  return unionFind.ranks.max()
+  return unionFind.ranks.values.maxOrNull() ?: 0
 }
 
 private class UnionFind6(val nums: IntArray) {
-  val roots = nums.withIndex().associate { it.value to it.index }.toMutableMap()
-  val ranks = Array<Int>(nums.size) { 1 }
+  val roots = nums.associateWith { it }.toMutableMap()
+  val ranks = nums.associateWith { 1 }.toMutableMap()
 
   tailrec fun find(n: Int): Int {
-    val rootIndex = roots[n]!!
+    val root = roots[n]!!
     return when {
-      n == nums[rootIndex] -> rootIndex
-      else -> find(nums[rootIndex])
+      n == root -> root
+      else -> find(root)
     }
   }
 
   fun union(n1: Int, n2: Int) {
-    val root1Index = find(n1)
-    val root2Index = find(n2)
-    if (root1Index != root2Index) {
+    val root1 = find(n1)
+    val root2 = find(n2)
+    if (root1 != root2) {
+      // * Here rank is used to measure `size` of a set,
+      // so we are adding ranks instead of just incrementing by 1
       when {
-        ranks[root1Index] >= ranks[root2Index] -> {
-          roots[nums[root2Index]] = root1Index
-          ranks[root1Index] += ranks[root2Index]
+        ranks[root1]!! >= ranks[root2]!! -> {
+          roots[root2] = root1
+          ranks.computeIfPresent(root1) { _, value -> value.plus(ranks[root2]!!) }
         }
         else -> {
-          roots[nums[root1Index]] = root2Index
-          ranks[root2Index] += ranks[root1Index]
+          roots[root1] = root2
+          ranks.computeIfPresent(root2) { _, value -> value.plus(ranks[root1]!!) }
         }
       }
     }

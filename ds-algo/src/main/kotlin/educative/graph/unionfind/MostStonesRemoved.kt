@@ -16,8 +16,12 @@ private class UnionFind2(stones: Set<Pair<Int, Int>>) {
     stones.forEach { (x, y) -> union(x, y) }
   }
 
+  /**
+   * Group cell to another element in the same row or col, whichever has the highest rank Ranks are
+   * only used to optimize find
+   */
   fun union(x: Int, y: Int) {
-    val xx = x to 'x'
+    val xx = x to 'x' // E.g., 2x represents 2nd row; all stones in this row are grouped
     roots.putIfAbsent(xx, xx)
     ranks.putIfAbsent(xx, 0)
     val yy = y to 'y'
@@ -31,7 +35,7 @@ private class UnionFind2(stones: Set<Pair<Int, Int>>) {
       ranks[rootXX]!! < ranks[rootYY]!! -> roots[xx] = rootYY
       else -> {
         roots[rootXX] = rootYY
-        ranks.compute(rootXX) { _, value -> value?.plus(1) }
+        ranks.compute(rootYY) { _, value -> value?.plus(1) }
       }
     }
   }

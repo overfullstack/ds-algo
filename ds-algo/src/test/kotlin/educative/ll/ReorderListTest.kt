@@ -4,7 +4,7 @@ import ds.ll.SLLNode
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.inspectors.forAll
 import io.kotest.matchers.shouldBe
-import testcase.TestCase1.Companion.parseJsonFileToTestCases
+import testcase.ListIntsToListInts.Companion.parseJsonFileToTestCases
 
 private const val PKG_PATH = "educative/ll/ReorderList"
 
