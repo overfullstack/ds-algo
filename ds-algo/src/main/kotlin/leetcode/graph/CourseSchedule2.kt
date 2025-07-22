@@ -2,9 +2,7 @@ package leetcode.graph
 
 import ds.graph.DiGraph
 
-/**
- * https://leetcode.com/problems/course-schedule-ii/ Return the order of courses to be taken. 
- */
+/** https://leetcode.com/problems/course-schedule-ii/ Return the order of courses to be taken. */
 fun findOrder(numCourses: Int, prerequisites: Array<IntArray>): IntArray {
   val diGraph = prerequisites.toDiGraph()
   for (courseNum in 0 until numCourses) {

@@ -1,6 +1,6 @@
 package hackerrank.dp
 
-fun stockmax(prices: Array<Int>): Long {
+fun stockMax(prices: Array<Int>): Long {
   var profit = 0L
   var maxSoFar = Int.MIN_VALUE
   for (price in prices.reversed()) {

@@ -7,12 +7,12 @@ fun lengthOfLongestSubstringWithoutCharRepeat(s: String): Int {
   var windowStart = 0
   for ((index, char) in s.withIndex()) {
     map.merge(char, index) { lastOccurrence, curOccurrence ->
-      // The char `lastOccurance` may be before `windowStart` (harmless),
+      // The char `lastOccurrence` may be before `windowStart` (harmless),
       // as we retain the char entry in the hashMap even after `windowStart` surpassed it.
       // Or it can be after or on `windowStart`
       windowStart =
-        maxOf(windowStart, lastOccurrence + 1) // ! +1 to start from after the last occurance.
-      curOccurrence // Always update `curOccurance`
+        maxOf(windowStart, lastOccurrence + 1) // ! +1 to start from after the last occurrence.
+      curOccurrence // Always update `curOccurrence`
     }
     // This is outside of merge coz, if all chars are unique, merge might never be called.
     maxWindow = maxOf(maxWindow, index - windowStart + 1)

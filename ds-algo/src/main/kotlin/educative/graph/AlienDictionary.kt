@@ -30,10 +30,10 @@ fun orderAlienDictionary(words: List<String>): String {
       charToInConnectionCount.computeIfPresent(it) { _, inConnectionCount ->
         val newValue = inConnectionCount.dec()
         when (newValue) {
-            0 -> {
-              queue.add(it)
-              null
-            }
+          0 -> {
+            queue.add(it)
+            null
+          }
           else -> newValue
         }
       }

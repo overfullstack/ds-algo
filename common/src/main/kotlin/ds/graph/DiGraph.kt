@@ -104,7 +104,6 @@ class DiGraph<T>(private val adjacencyMap: MutableMap<T, Set<T>> = mutableMapOf(
     } == true
 
   /** DETECT CYCLE -> */
-
   fun topologicalSort(): List<T> {
     val visited = mutableSetOf<T>() // * Global visited
     return adjacencyMap.keys

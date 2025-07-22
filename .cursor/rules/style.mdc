@@ -3,3 +3,4 @@ alwaysApply: true
 ---
 
 - Always use pure functional programming style
+- Ignore formatting issues
