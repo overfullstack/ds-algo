@@ -1,26 +1,27 @@
 package leetcode.graph
 
-fun ladderLength(beginWord: String, endWord: String, wordList: List<String>): Int {
+fun ladderLength(beginWord: String, targetWord: String, wordList: List<String>): Int {
   val wordSet = wordList.toMutableSet()
-  if (endWord !in wordSet) return 0
+  if (targetWord !in wordSet) return 0
 
   var start = ArrayDeque<String>().apply { add(beginWord) }
-  var end = ArrayDeque<String>().apply { add(endWord) }
-  wordSet.removeAll(listOf(beginWord, endWord))
+  var end = ArrayDeque<String>().apply { add(targetWord) }
+  wordSet.removeAll(setOf(beginWord, targetWord))
 
-  var ladderLength = 0
+  var transformations = 0
+  // Transformations no more found in wordSet
   while (start.isNotEmpty()) {
-    ladderLength++
-    repeat(start.size) {
+    transformations++ // Each BFS level is counted as a transformation
+    repeat(start.size) { // Deal with each level. `start.size` is evaluated only once
       val word = start.removeFirst()
       for (i in word.indices) {
         for (ch in 'a'..'z') {
-          val transform = word.replaceRange(i, i + 1, ch.toString())
-          when (transform) {
-            in end -> return ladderLength + 1
+          when (val transform = word.replaceRange(i, i + 1, ch.toString())) {
+            // ! `+1` because the result needs no.of words = one more than the transformations
+            in end -> return transformations + 1
             in wordSet -> {
+              wordSet.remove(transform) // Marking it visited
               start.add(transform)
-              wordSet.remove(transform)
             }
           }
         }

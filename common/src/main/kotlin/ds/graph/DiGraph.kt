@@ -69,16 +69,23 @@ class DiGraph<T>(private val adjacencyMap: MutableMap<T, Set<T>> = mutableMapOf(
     return adjacencyMap.keys
       .asSequence()
       .filter { it !in visited }
-      .flatMap { listOf(it) + it.dftPerBranch(visited.apply { add(it) }) }
+      // ! Using a `list(it)` for Order, otherwise Global visited captures all reachable nodes
+      .flatMap { listOf(it) + it.dftPerBranch(visited) }
       .toList()
   }
 
   private fun T.dftPerBranch(visited: MutableSet<T>): Sequence<T> =
-    adjacencyMap[this]
-      ?.asSequence()
-      ?.filter { it !in visited }
-      ?.flatMap { listOf(it) + it.dftPerBranch(visited.apply { add(it) }) }
-      ?.distinct() ?: emptySequence()
+    when {
+      this in visited -> emptySequence()
+      else -> {
+        visited += this
+        adjacencyMap[this]
+          ?.asSequence()
+          ?.filter { it !in visited }
+          ?.flatMap { listOf(it) + it.dftPerBranch(visited) }
+          ?.distinct() ?: emptySequence()
+      }
+    }
 
   /** DFT <- */
 

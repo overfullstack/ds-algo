@@ -10,6 +10,7 @@ fun reorganizeString(str: String): String {
 
   var prev: Map.Entry<Char, Int>? = null
   var result = ""
+  // * Exhaust the top frequent characters next to each other
   while (maxHeap.isNotEmpty() || prev != null) {
     if (prev != null && maxHeap.isEmpty()) {
       return ""
@@ -20,6 +21,7 @@ fun reorganizeString(str: String): String {
       maxHeap.add(prev)
       prev = null
     }
+    // Add curTop as prev, with decremented frequency
     if (curTop.value - 1 != 0) {
       prev = SimpleEntry(curTop.key, curTop.value - 1)
     }

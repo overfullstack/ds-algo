@@ -17,19 +17,20 @@ fun shortestPathBinaryMatrix(grid: Array<IntArray>): Int {
   queue.add(0 to 0)
   while (queue.isNotEmpty()) {
     steps++
-    val size = queue.size
-    repeat(size) { // This is to increment steps only for each batch/level.
+    repeat(queue.size) { // This is to increment steps only for each batch/level.
       val gridPoint = queue.removeFirst()
       directions
         .asSequence()
         .map { (gridPoint.first + it.first) to (gridPoint.second + it.second) }
         .filter { it.isValid(grid) }
         .forEach {
-          if (it == target) {
-            return steps + 1 // +1 is problem specific
+          when (it) {
+            target -> return steps + 1 // +1 is problem specific
+            else -> {
+              grid[it.first][it.second] = 1 // marking visited
+              queue.add(it.first to it.second)
+            }
           }
-          grid[it.first][it.second] = 1 // marking visited
-          queue.add(it.first to it.second)
         }
     }
   }

@@ -12,8 +12,9 @@ private const val PKG_PATH = "educative/fusion/EmployeeFreeTime"
 class EmployeeFreeTimeTest :
   StringSpec({
     "employee free time" {
-      parseJsonFileToTestCases("$PKG_PATH/test-cases-1.json").forAll { (input, result) ->
-        employeeFreeTime(input) shouldBe result
+      parseJsonFileToTestCases("$PKG_PATH/test-cases-1.json").forAll { (allEmployeeMeetings, result)
+        ->
+        employeeFreeTime(allEmployeeMeetings) shouldBe result
       }
     }
   })

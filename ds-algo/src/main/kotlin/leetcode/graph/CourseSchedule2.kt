@@ -10,7 +10,7 @@ fun findOrder(numCourses: Int, prerequisites: Array<IntArray>): IntArray {
   }
   return try {
     diGraph.topologicalSort().toIntArray()
-  } catch (_: IllegalArgumentException) {
+  } catch (_: IllegalArgumentException) { // For Cycle
     intArrayOf()
   }
 }

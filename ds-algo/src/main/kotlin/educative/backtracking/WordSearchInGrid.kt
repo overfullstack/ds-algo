@@ -13,7 +13,8 @@ fun wordSearchInGrid(grid: Array<CharArray>, word: String): Boolean {
 }
 
 // * This visited is specific to this DFT originated at this `gridPoint`. No global Visited,
-// as search from other `gridPoints` can overlap.
+// as search path from other `gridPoints` can overlap depending on the originating cell,
+// like nap and snap
 private fun wordSearchPerBranch(
   grid: Array<CharArray>,
   word: String,
