@@ -9,7 +9,7 @@ import java.util.Map;
 
 /** Created by gakshintala on 6/21/16. */
 public class DiagonalTreeTraversal {
-	public static void main(String[] args) {
+	static void main() {
 		var root = new TreeNode(8);
 
 		root.setLeft(new TreeNode(3));

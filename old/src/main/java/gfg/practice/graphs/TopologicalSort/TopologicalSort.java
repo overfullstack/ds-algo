@@ -9,7 +9,7 @@ import java.util.Scanner;
 // NOT TESTED, refer the one in Hackerrank
 public class TopologicalSort {
 
-	public static void main(String[] args) {
+	static void main() {
 		var scn = new Scanner(System.in);
 		var testCases = scn.nextInt();
 		while (testCases-- > 0) {
@@ -50,8 +50,8 @@ public class TopologicalSort {
 }
 
 class Digraph_TS {
-	private int n;
-	private List<Integer>[] adj;
+	private final int n;
+	private final List<Integer>[] adj;
 
 	Digraph_TS(int n) {
 		this.n = n;

@@ -6,7 +6,7 @@ import gfg.ds.SLLNode;
 
 /** Created by gakshintala on 4/22/16. */
 public class OddEvenRearrange {
-	public static void main(String[] args) {
+	static void main() {
 		var head = new SLLNode(1);
 		head.next = new SLLNode(2);
 		head.next.next = new SLLNode(3);

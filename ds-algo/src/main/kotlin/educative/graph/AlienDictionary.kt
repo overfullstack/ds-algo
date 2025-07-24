@@ -28,8 +28,7 @@ fun orderAlienDictionary(words: List<String>): String {
     result += nextChar
     diGraph[nextChar]?.forEach {
       charToInConnectionCount.computeIfPresent(it) { _, inConnectionCount ->
-        val newValue = inConnectionCount.dec()
-        when (newValue) {
+        when (val newValue = inConnectionCount.dec()) {
           0 -> {
             queue.add(it)
             null

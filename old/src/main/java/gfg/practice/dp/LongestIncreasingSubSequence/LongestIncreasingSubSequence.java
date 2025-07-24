@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 /** Created by gakshintala on 6/11/16. */
 public class LongestIncreasingSubSequence {
-	public static void main(String[] args) {
+	static void main() {
 		var scn = new Scanner(System.in);
 		var testCases = scn.nextInt();
 		while (testCases-- > 0) {

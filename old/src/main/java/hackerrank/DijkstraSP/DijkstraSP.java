@@ -15,7 +15,7 @@ public class DijkstraSP {
 	private static DirectedEdge[] edgeTo; // Edge to TO from FROM
 	private static PriorityQueue<Vertex> pq;
 
-	public static void main(String[] args) {
+	static void main() {
 		var scn = new Scanner(System.in);
 		var testCases = scn.nextInt();
 		while (testCases-- > 0) {

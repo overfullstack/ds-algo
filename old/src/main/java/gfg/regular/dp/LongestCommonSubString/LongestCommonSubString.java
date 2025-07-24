@@ -2,7 +2,7 @@ package gfg.regular.dp.LongestCommonSubString;
 
 /** Created by gakshint on 17/04/18. */
 public class LongestCommonSubString {
-	public static void main(String[] args) {
+	static void main() {
 		var a = "OldSite:GeeksforGeeks.org";
 		var b = "NewSite:GeeksQuiz.com";
 

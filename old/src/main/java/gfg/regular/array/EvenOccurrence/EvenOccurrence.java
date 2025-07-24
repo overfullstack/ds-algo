@@ -5,8 +5,8 @@ import java.util.List;
 
 /** Created by gakshintala on 6/27/16. */
 public class EvenOccurrence {
-	public static void main(String[] args) {
-		int arr[] = {9, 12, 23, 10, 12, 12, 15, 23, 14, 12, 15};
+	static void main() {
+		int[] arr = {9, 12, 23, 10, 12, 12, 15, 23, 14, 12, 15};
 		System.out.println(evenOccurrence(arr));
 	}
 

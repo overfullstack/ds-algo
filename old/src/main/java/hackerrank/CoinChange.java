@@ -3,7 +3,7 @@ package hackerrank;
 /** Created by gakshintala on 2/23/16. */
 public class CoinChange {
 
-	public static void main(String[] args) {
+	static void main() {
 		int[] coins = {1, 2, 3};
 		var coinCount = 3;
 		var total = 5;

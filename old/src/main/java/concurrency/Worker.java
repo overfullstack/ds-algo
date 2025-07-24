@@ -8,10 +8,10 @@ import java.util.TimerTask;
 
 public class Worker extends Thread {
 
-	private Object lock = new Object();
+	private final Object lock = new Object();
 	private volatile boolean quittingTime = false;
 
-	public static void main(String... args) throws InterruptedException {
+	static void main(String... args) throws InterruptedException {
 
 		final var worker = new Worker();
 		worker.start();

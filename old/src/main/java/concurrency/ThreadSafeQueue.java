@@ -8,9 +8,9 @@ import java.util.Queue;
 
 /** Created by gakshintala on 6/16/16. */
 public class ThreadSafeQueue {
-	private Queue<Integer> queue = new LinkedList<>();
+	private final Queue<Integer> queue = new LinkedList<>();
 
-	public static void main(String[] args) {
+	static void main() {
 		var queue = new ThreadSafeQueue();
 		var producer = new Producer(queue);
 		var consumer = new Consumer(queue);
@@ -45,7 +45,7 @@ public class ThreadSafeQueue {
 }
 
 class Producer extends Thread {
-	private ThreadSafeQueue queue;
+	private final ThreadSafeQueue queue;
 
 	Producer(ThreadSafeQueue queue) {
 		this.queue = queue;
@@ -61,7 +61,7 @@ class Producer extends Thread {
 }
 
 class Consumer extends Thread {
-	private ThreadSafeQueue queue;
+	private final ThreadSafeQueue queue;
 
 	Consumer(ThreadSafeQueue queue) {
 		this.queue = queue;

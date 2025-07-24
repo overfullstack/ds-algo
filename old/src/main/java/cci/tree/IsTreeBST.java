@@ -4,7 +4,7 @@ import ds.tree.TreeNode;
 
 /** Created by gakshintala on 3/21/16. */
 public class IsTreeBST {
-	public static void main(String[] args) {
+	static void main() {
 		var treeNode1 = new TreeNode(1, null, null);
 		var treeNode3 = new TreeNode(3, null, null);
 		var treeNode2 = new TreeNode(2, treeNode1, treeNode3);

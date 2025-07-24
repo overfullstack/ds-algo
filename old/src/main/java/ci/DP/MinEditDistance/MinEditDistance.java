@@ -3,7 +3,7 @@ package ci.DP.MinEditDistance;
 /** Created by gakshintala on 3/22/16. */
 public class MinEditDistance {
 
-	public static void main(String[] args) {
+	static void main() {
 		var str1 = "sunday".toCharArray();
 		var str2 = "saturday".toCharArray();
 		System.out.println(findMinEditDistance(str1, str2));

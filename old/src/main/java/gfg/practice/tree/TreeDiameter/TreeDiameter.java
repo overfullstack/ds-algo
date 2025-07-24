@@ -4,7 +4,7 @@ import gfg.ds.TreeNode;
 
 /** Created by gakshintala on 6/10/16. */
 public class TreeDiameter {
-	public static void main(String[] args) {
+	static void main() {
 		var treeNode5 = new TreeNode(5, null, null);
 		var treeNode4 = new TreeNode(4, null, null);
 		var treeNode3 = new TreeNode(3, null, null);

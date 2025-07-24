@@ -6,7 +6,7 @@ import gfg.ds.SLLNode;
 
 /** Created by Gopala Akshintala on 2/26/17. */
 public class MergeSortLL {
-	public static void main() {
+	static void main() {
 		var head = new SLLNode(4);
 		head.next = new SLLNode(3);
 		head.next.next = new SLLNode(5);

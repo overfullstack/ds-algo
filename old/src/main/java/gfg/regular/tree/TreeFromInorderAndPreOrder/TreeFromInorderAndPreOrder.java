@@ -5,7 +5,7 @@ import gfg.ds.Utils;
 
 /** Created by gakshintala on 6/12/16. */
 public class TreeFromInorderAndPreOrder {
-	public static void main(String[] args) {
+	static void main() {
 		char[] pre = {'A', 'B', 'D', 'E', 'C', 'F'};
 		char[] in = {'D', 'B', 'E', 'A', 'F', 'C'};
 

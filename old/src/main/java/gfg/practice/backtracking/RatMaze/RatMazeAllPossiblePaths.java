@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 // This is incomplete
 public class RatMazeAllPossiblePaths {
-	public static void main(String[] args) {
+	static void main() {
 		var scn = new Scanner(System.in);
 		var testCases = scn.nextInt();
 		while (testCases-- > 0) {

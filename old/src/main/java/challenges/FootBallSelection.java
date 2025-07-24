@@ -11,6 +11,7 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -18,7 +19,7 @@ import java.util.stream.Stream;
 
 /** gakshintala created on 5/10/20. */
 public class FootBallSelection {
-	public static void main(String[] args) throws IOException {
+	static void main() throws IOException {
 		BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
 		BufferedWriter bufferedWriter =
 				new BufferedWriter(new FileWriter(System.getenv("OUTPUT_PATH")));
@@ -143,15 +144,13 @@ class Player {
 	@Override
 	public boolean equals(Object o) {
 		if (this == o) return true;
-		if (!(o instanceof Player)) return false;
-
-		Player player = (Player) o;
+		if (!(o instanceof Player player)) return false;
 
 		if (Float.compare(player.height, height) != 0) return false;
 		if (Float.compare(player.bmi, bmi) != 0) return false;
 		if (scores != player.scores) return false;
 		if (defends != player.defends) return false;
-		return name != null ? name.equals(player.name) : player.name == null;
+		return Objects.equals(name, player.name);
 	}
 
 	@Override

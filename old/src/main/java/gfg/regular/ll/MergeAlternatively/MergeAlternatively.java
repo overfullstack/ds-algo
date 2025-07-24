@@ -5,7 +5,7 @@ import gfg.ds.Utils;
 
 /** Created by gakshintala on 6/12/16. */
 public class MergeAlternatively {
-	public static void main(String[] args) {
+	static void main() {
 		SLLNode k1, k2, k3;
 		k3 = new SLLNode(5);
 		k2 = new SLLNode(3, k3);

@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 /** Created by Go on 9-4-16. */
 public class Sudoku {
-	public static void main(String[] args) {
+	static void main() {
 		var scn = new Scanner(System.in);
 		var testCases = scn.nextInt();
 		while (testCases-- > 0) {

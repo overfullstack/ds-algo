@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 /** Created by gakshintala on 4/7/16. */
 public class RatMazeOnePath {
-	public static void main(String[] args) {
+	static void main() {
 		int[][] maze = {{1, 0, 0, 0}, {1, 1, 0, 1}, {0, 1, 0, 0}, {1, 1, 1, 1}};
 		var visited = new boolean[4][4];
 		if (solveMaze(maze, 0, 0, visited)) {

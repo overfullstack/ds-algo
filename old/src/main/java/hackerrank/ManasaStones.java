@@ -6,7 +6,7 @@ import java.util.TreeSet;
 
 /** Created by gakshintala on 12/8/15. */
 public class ManasaStones {
-	public static void main(String[] args) {
+	static void main() {
 		var scn = new Scanner(System.in);
 		var c = scn.nextInt();
 		while (c-- != 0) {

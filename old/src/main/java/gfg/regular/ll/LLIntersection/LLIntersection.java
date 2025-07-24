@@ -6,7 +6,7 @@ import gfg.ds.SLLNode;
 
 /** Created by gakshintala on 6/10/16. */
 public class LLIntersection {
-	public static void main(String[] args) {
+	static void main() {
 		SLLNode l1, l2, l3, l4, l5;
 		l5 = new SLLNode(5);
 		l4 = new SLLNode(4, l5);

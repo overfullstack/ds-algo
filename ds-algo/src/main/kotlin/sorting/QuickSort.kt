@@ -31,7 +31,7 @@ fun IntArray.quickSortFp(): IntArray =
     smaller.toIntArray().quickSortFp() + pivot + greater.toIntArray().quickSortFp()
   }
 
-fun IntArray.quickSort2(left: Int = 0, right: Int = size - 1): Unit {
+fun IntArray.quickSort2(left: Int = 0, right: Int = size - 1) {
   if (left < right) {
     val partitionIndex = partition2(left, right)
     quickSort2(left, partitionIndex - 1)

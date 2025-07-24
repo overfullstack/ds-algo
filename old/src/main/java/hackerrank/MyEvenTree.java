@@ -9,7 +9,7 @@ import java.util.Scanner;
 /** Created by gakshintala on 12/7/15. */
 // Is it to delete minimum edges or to make maximum groups?
 public class MyEvenTree {
-	public static void main(String[] args) {
+	static void main() {
 		var scn = new Scanner(System.in);
 		var vertexCount = scn.nextInt();
 		var edgeCount = scn.nextInt();

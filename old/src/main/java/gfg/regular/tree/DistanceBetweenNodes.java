@@ -5,7 +5,7 @@ import gfg.ds.TreeNode;
 /** Created by gakshintala on 4/22/16. */
 public class DistanceBetweenNodes {
 
-	public static void main(String[] args) {
+	static void main() {
 		// Embedding levels of nodes in the ds itself
 		TreeNode t1, t2, t3, t4, t5, t6, t7, t8;
 		t8 = new TreeNode(8, null, null, 3);

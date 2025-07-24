@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 /** Created by Gopala Akshintala on 3/3/17. */
 public class TripletSumZero {
-	public static void main(String[] args) {
+	static void main() {
 		var scn = new Scanner(System.in);
 		var tests = scn.nextInt();
 		while (tests-- > 0) {

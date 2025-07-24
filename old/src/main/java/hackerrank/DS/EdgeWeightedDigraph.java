@@ -5,9 +5,9 @@ import java.util.LinkedList;
 /** Created by Gopala Akshintala on 11/5/16. */
 public class EdgeWeightedDigraph {
 	// Vertices and diNeighbours are parallel lists, one-to-one mapped
-	private Vertex[] vertices;
-	private DiNeighbour[] diNeighbours;
-	private int vertexCount;
+	private final Vertex[] vertices;
+	private final DiNeighbour[] diNeighbours;
+	private final int vertexCount;
 
 	public EdgeWeightedDigraph(int vertexCount) {
 		this.vertexCount = vertexCount;

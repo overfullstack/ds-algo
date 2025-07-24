@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class VeryBigSum {
 
-	public static void main(String[] args) {
+	static void main() {
 		var scn = new Scanner(System.in);
 		var n = scn.nextInt();
 		var sum = new ArrayList<Integer>();

@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 /** Created by Gopala Akshintala on 10/15/16. */
 public class ProductOfAllExceptAtIndex {
-	public static void main(String[] args) {
+	static void main() {
 		int[] arr = {1, 7, 3, 4};
 		System.out.println(Arrays.toString(getProductOfAllExceptAtIndex(arr)));
 	}

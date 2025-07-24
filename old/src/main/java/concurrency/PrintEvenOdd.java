@@ -2,7 +2,7 @@ package concurrency;
 
 /** Created by Gopala Akshintala on 5/20/17. */
 public class PrintEvenOdd {
-	public static void main(String[] args) {
+	static void main() {
 		var max = 10;
 		var printer = new SharedPrinter();
 		var evenThread = new MyThread(true, printer, max);

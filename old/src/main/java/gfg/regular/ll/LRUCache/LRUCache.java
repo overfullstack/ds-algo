@@ -9,7 +9,7 @@ import java.util.Map;
 public class LRUCache {
 	private static final LRUQueue lruQueue = new LRUQueue();
 
-	public static void main(String[] args) {
+	static void main() {
 		var lruCache = new LRUCache();
 		lruCache.referPage(1);
 		lruCache.referPage(2);

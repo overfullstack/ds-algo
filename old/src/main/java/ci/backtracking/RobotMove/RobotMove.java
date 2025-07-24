@@ -3,7 +3,7 @@ package ci.backtracking.RobotMove;
 /** Created by gakshintala on 4/7/16. */
 public class RobotMove {
 
-	public static void main(String[] args) {
+	static void main() {
 		int m = 3, n = 3;
 		var threshold = 3;
 		var visited = new boolean[m][n];

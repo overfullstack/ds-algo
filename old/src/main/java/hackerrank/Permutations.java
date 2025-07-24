@@ -7,9 +7,9 @@ import java.util.Set;
 /** Created by gakshintala on 3/5/16. */
 public class Permutations {
 	private final String in;
-	private boolean[] used;
-	private StringBuilder out = new StringBuilder();
-	private Set<Character> inSet;
+	private final boolean[] used;
+	private final StringBuilder out = new StringBuilder();
+	private final Set<Character> inSet;
 
 	public Permutations(final String str) {
 		in = str;
@@ -20,7 +20,7 @@ public class Permutations {
 		used = new boolean[inSet.size()];
 	}
 
-	public static void main(String[] args) {
+	static void main() {
 		var permutations = new Permutations("122");
 		permutations.permute();
 	}

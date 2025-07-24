@@ -4,7 +4,7 @@ import ds.tree.TreeNode;
 
 /** Created by gakshintala on 3/30/16. */
 public class BSTFromSortedArray {
-	public static void main(String[] args) {
+	static void main() {
 		int[] arr = {1, 2, 3, 4, 5, 6, 7, 8};
 		arrToBST(arr, 0, arr.length);
 	}

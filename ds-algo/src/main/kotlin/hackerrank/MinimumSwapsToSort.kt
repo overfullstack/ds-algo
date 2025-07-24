@@ -3,7 +3,7 @@ package hackerrank
 fun main() {
   val noOfTests = readln().toInt()
   repeat(noOfTests) {
-    readLine()
+    readlnOrNull()
     val arr = readln().split(" ").map { it.toInt() }.toTypedArray()
     println(minSwapsToSort(arr))
   }

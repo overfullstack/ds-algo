@@ -8,7 +8,7 @@ import java.util.Scanner;
 
 /** Created by gakshintala on 6/13/16. */
 public class NextGreaterForAll {
-	public static void main(String[] args) {
+	static void main() {
 		var scn = new Scanner(System.in);
 		var tests = scn.nextInt();
 		while (tests-- > 0) {

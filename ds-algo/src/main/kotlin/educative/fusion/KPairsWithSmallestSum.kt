@@ -14,7 +14,7 @@ fun kPairsWithSmallestSum(nums1: IntArray, nums2: IntArray, k: Int): List<Pair<I
   var counter = 0
   val result = mutableListOf<Pair<Int, Int>>()
   while (minHeap.isNotEmpty() && counter <= k) {
-    val (sum, nums1Index, nums2Index) = minHeap.poll()
+    val (_, nums1Index, nums2Index) = minHeap.poll()
     result += (nums1[nums1Index] to nums2[nums2Index])
     if (nums2Index + 1 <= nums2.lastIndex) {
       minHeap.add(Triple(nums1[nums1Index] + nums2[nums2Index + 1], nums1Index, nums2Index + 1))

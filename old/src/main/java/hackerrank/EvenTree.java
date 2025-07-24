@@ -9,11 +9,11 @@ import java.util.Scanner;
 public class EvenTree {
 	private int numVertices = 0;
 	private int edges = 0;
-	private Map<Integer, Integer> edgeListMap = new HashMap<>();
-	private Map<Integer, ArrayList<Integer>> adjListMap = new HashMap<>();
-	private Map<Integer, Integer> numChildren = new HashMap<>();
+	private final Map<Integer, Integer> edgeListMap = new HashMap<>();
+	private final Map<Integer, ArrayList<Integer>> adjListMap = new HashMap<>();
+	private final Map<Integer, Integer> numChildren = new HashMap<>();
 
-	public static void main(String[] args) {
+	static void main() {
 		var ob = new Scanner(System.in);
 		var eventree = new EvenTree();
 		eventree.numVertices = ob.nextInt();

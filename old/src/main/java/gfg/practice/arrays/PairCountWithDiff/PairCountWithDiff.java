@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 /** Created by gakshintala on 7/3/16. */
 public class PairCountWithDiff {
-	public static void main(String[] args) {
+	static void main() {
 		var scn = new Scanner(System.in);
 		var tests = scn.nextInt();
 		while (tests-- > 0) {

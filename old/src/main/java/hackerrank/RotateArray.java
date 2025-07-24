@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 /** Created by gakshintala on 3/14/16. */
 public class RotateArray {
-	public static void main(String[] args) {
+	static void main() {
 		int[] a = {1, 1, 2, 3, 5};
 		System.out.println(Arrays.toString(rotateArray(a, 42)));
 	}

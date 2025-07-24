@@ -34,7 +34,7 @@ public class PhoneNumberAutoComplete {
 		Set.of("tree", "trees", "used", "use", "apple", "ball", "cat").forEach(DICTIONARY::insert);
 	}
 
-	public static void main(String[] args) {
+	static void main() {
 		initDictionary();
 		var scn = new Scanner(System.in);
 		var inputNum = scn.nextLine();
@@ -49,7 +49,7 @@ public class PhoneNumberAutoComplete {
 	private static class Trie {
 		private char value;
 		private boolean isEnd;
-		private Trie[] children = new Trie[TRIE_CAPACITY];
+		private final Trie[] children = new Trie[TRIE_CAPACITY];
 
 		Trie(char value) {
 			this.value = value;

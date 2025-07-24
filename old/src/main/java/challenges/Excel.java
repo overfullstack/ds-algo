@@ -5,8 +5,8 @@ import java.util.Map;
 import java.util.Stack;
 
 class Excel {
-	private Cell[][] form;
-	private Stack<int[]> stack = new Stack<>();
+	private final Cell[][] form;
+	private final Stack<int[]> stack = new Stack<>();
 
 	public Excel(int H, char W) {
 		form = new Cell[H][W - 'A' + 1];

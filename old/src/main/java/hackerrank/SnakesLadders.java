@@ -8,7 +8,7 @@ import java.util.Scanner;
 
 /** Created by gakshintala on 12/3/15. */
 public class SnakesLadders {
-	public static void main(String[] args) {
+	static void main() {
 		var scn = new Scanner(System.in);
 		var testCases = scn.nextInt();
 		for (var i = 0; i < testCases; i++) {

@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 /** Created by gakshintala on 12/9/15. */
 public class Encryption {
-	public static void main(String[] args) {
+	static void main() {
 		var scn = new Scanner(System.in);
 		var str = scn.next();
 		var l = str.length();

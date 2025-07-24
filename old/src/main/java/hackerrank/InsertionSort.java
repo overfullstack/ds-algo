@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class InsertionSort {
 
-	public static void main(String[] args) {
+	static void main() {
 		var a = readIntoArray();
 		sort(a);
 		var n = a.length;

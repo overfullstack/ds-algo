@@ -55,7 +55,7 @@ class MinimumBuses {
 	}
 
 	// Driver code
-	public static void main(String[] args) {
+	static void main() {
 		int[][][] routes = {
 			{{2, 5, 7}, {4, 6, 7}},
 			{{1, 12}, {4, 5, 9}, {9, 19}, {10, 12, 13}},

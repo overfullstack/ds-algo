@@ -4,7 +4,7 @@ import gfg.ds.TreeNode;
 
 /** Created by gakshintala on 7/5/16. */
 public class PrintCousins {
-	public static void main(String[] args) {
+	static void main() {
 		TreeNode t1, t2, t3, t4, t5, t6, t7;
 		t7 = new TreeNode(7, null, null);
 		t6 = new TreeNode(6, null, null);

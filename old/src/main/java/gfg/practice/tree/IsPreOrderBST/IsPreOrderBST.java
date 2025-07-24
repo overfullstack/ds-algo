@@ -5,7 +5,7 @@ import java.util.Stack;
 
 /** Created by gakshintala on 6/12/16. */
 public class IsPreOrderBST {
-	public static void main(String[] args) {
+	static void main() {
 		var scn = new Scanner(System.in);
 		var tests = scn.nextInt();
 		while (tests-- > 0) {

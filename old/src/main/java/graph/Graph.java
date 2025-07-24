@@ -35,7 +35,7 @@ public class Graph {
 		return g;
 	}
 
-	public static void main(String[] args) {
+	static void main() {
 		var g = readGraph();
 		g.printGraph();
 		System.out.println("Enter Source and Vertex to Find:");

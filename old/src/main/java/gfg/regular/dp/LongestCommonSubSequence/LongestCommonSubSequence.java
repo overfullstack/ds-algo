@@ -2,7 +2,7 @@ package gfg.regular.dp.LongestCommonSubSequence;
 
 /** Created by gakshintala on 6/11/16. */
 public class LongestCommonSubSequence {
-	public static void main(String[] args) {
+	static void main() {
 		var a = "AGGTAB";
 		var b = "GXTXAYB";
 

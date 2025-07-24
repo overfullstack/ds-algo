@@ -12,7 +12,7 @@ import java.util.Set;
 /** Created by gakshintala on 12/16/15. */
 public class MSTAlgos {
 
-	public static void main(String[] args) {
+	static void main() {
 		var scn = new Scanner(System.in);
 		var vertexCount = scn.nextInt();
 		var edgeCount = scn.nextInt();

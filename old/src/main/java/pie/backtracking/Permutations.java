@@ -2,7 +2,7 @@ package pie.backtracking;
 
 /** Created by gakshintala on 6/10/16. */
 public class Permutations {
-	public static void main(String[] args) {
+	static void main() {
 		var str = "abc";
 		permute(str, new StringBuilder(), new boolean[str.length()]);
 	}

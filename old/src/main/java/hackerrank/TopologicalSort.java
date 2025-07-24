@@ -7,10 +7,10 @@ import java.util.Scanner;
 /** Created by gakshintala on 1/10/16. */
 public class TopologicalSort {
 
-	private static List<Integer> reversePostOrder = new ArrayList<>();
+	private static final List<Integer> reversePostOrder = new ArrayList<>();
 	private static boolean[] visited;
 
-	public static void main(String[] args) {
+	static void main() {
 		var scn = new Scanner(System.in);
 		var vertexCount = scn.nextInt();
 		var edgeCount = scn.nextInt();
@@ -38,8 +38,8 @@ public class TopologicalSort {
 }
 
 class Digraph {
-	private int n;
-	private List<Integer>[] adj;
+	private final int n;
+	private final List<Integer>[] adj;
 
 	Digraph(int n) {
 		this.n = n;

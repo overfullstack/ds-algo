@@ -4,8 +4,8 @@ import static gfg.ds.Utils.swap;
 
 /** Created by gakshintala on 6/11/16. */
 public class KthSmallest {
-	public static void main(String[] args) {
-		int arr[] = {7, 10, 4, 3, 20, 15};
+	static void main() {
+		int[] arr = {7, 10, 4, 3, 20, 15};
 		var k = 5;
 		System.out.println(quickSelect(arr, 0, arr.length - 1, k));
 	}

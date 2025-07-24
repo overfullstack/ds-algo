@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 /** Created by gakshintala on 6/20/16. */
 public class MinCostToConnectRopes {
-	public static void main(String[] args) {
+	static void main() {
 		var scn = new Scanner(System.in);
 		var tests = scn.nextInt();
 		while (tests-- > 0) {

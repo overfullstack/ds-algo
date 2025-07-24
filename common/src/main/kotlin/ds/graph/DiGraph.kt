@@ -30,8 +30,7 @@ class DiGraph<T>(private val adjacencyMap: MutableMap<T, Set<T>> = mutableMapOf(
     when {
       queue.isEmpty() -> false
       else -> {
-        val node = queue.poll()
-        when (node) {
+        when (val node = queue.poll()) {
           valToSearch -> true
           in visited -> bfsPerBranch(valToSearch, visited, queue) // Skip this node, NoOp recursion
           else -> {

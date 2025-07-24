@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class BottomViewTree {
-	public static void main(String[] args) {
+	static void main() {
 		var root = new TreeNode(20);
 		root.left = new TreeNode(8);
 		root.right = new TreeNode(22);

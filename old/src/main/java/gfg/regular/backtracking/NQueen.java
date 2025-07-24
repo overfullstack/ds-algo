@@ -4,8 +4,8 @@ import java.util.Arrays;
 
 /** Created by Go on 9-4-16. */
 public class NQueen {
-	public static void main(String[] args) {
-		int board[][] = {{0, 0, 0, 0}, {0, 0, 0, 0}, {0, 0, 0, 0}, {0, 0, 0, 0}};
+	static void main() {
+		int[][] board = {{0, 0, 0, 0}, {0, 0, 0, 0}, {0, 0, 0, 0}, {0, 0, 0, 0}};
 
 		if (solveNQueen(board, 0)) {
 			for (var arr : board) {

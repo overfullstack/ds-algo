@@ -2,8 +2,8 @@ package gfg.regular.dp.MinCostPath;
 
 /** Created by gakshintala on 7/2/16. */
 public class MinCostPath {
-	public static void main(String[] args) {
-		int mat[][] = {{1, 2, 3}, {4, 8, 2}, {1, 5, 3}};
+	static void main() {
+		int[][] mat = {{1, 2, 3}, {4, 8, 2}, {1, 5, 3}};
 		System.out.println(minCostPathFromTopToBottom(mat, 3, 3));
 	}
 

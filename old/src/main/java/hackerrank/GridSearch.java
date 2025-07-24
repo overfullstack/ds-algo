@@ -5,7 +5,7 @@ import java.util.Scanner;
 /** Created by gakshintala on 12/15/15. */
 public class GridSearch {
 
-	public static void main(String[] args) {
+	static void main() {
 		var scn = new Scanner(System.in);
 		var tc = scn.nextInt();
 

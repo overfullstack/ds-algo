@@ -2,8 +2,8 @@ package gfg.regular.array.BeforeSmallAfterGreat;
 
 /** Created by gakshintala on 6/13/16. */
 public class BeforeSmallAfterGreat {
-	public static void main(String[] args) {
-		int arr[] = {5, 1, 4, 3, 6, 8, 10, 7, 9};
+	static void main() {
+		int[] arr = {5, 1, 4, 3, 6, 8, 10, 7, 9};
 		System.out.println(findPos(arr));
 	}
 

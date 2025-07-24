@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class ActivitySelection {
-	public static void main(String[] args) {
+	static void main() {
 		var scn = new Scanner(System.in);
 		var testCases = scn.nextInt();
 		while (testCases-- > 0) {

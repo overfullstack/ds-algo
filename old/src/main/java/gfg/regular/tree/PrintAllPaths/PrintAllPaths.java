@@ -7,7 +7,7 @@ import java.util.Arrays;
 
 /** Created by gakshintala on 6/10/16. */
 public class PrintAllPaths {
-	public static void main(String[] args) {
+	static void main() {
 		var treeNode6 = new TreeNode(6, null, null);
 		var treeNode5 = new TreeNode(5, null, null);
 		var treeNode4 = new TreeNode(4, null, null);

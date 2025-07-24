@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 public class Flowers {
-	public static void main(String args[]) {
+	static void main() {
 
 		var in = new Scanner(System.in);
 
@@ -12,7 +12,7 @@ public class Flowers {
 		N = in.nextInt();
 		// K = in.nextInt();
 
-		long C[] = new long[N];
+		long[] C = new long[N];
 		for (var i = 0; i < N; i++) {
 			C[i] = in.nextInt();
 		}

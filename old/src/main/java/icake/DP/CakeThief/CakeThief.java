@@ -2,7 +2,7 @@ package icake.DP.CakeThief;
 
 /** Created by gakshintala on 3/22/16. */
 public class CakeThief {
-	public static void main(String[] args) {
+	static void main() {
 		var cakes =
 				new Cake[] {
 					new Cake(7, 160), new Cake(3, 90), new Cake(2, 15),

@@ -4,7 +4,7 @@ import gfg.ds.SLLNode;
 
 /** Created by gakshintala on 6/21/16. */
 public class CloneLL {
-	public static void main(String[] args) {
+	static void main() {
 		var head = new SLLNode(1);
 		head.add(2);
 		head.add(3);

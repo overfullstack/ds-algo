@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 /** Created by Gopala Akshintala on 30/01/17. */
 public class MinDiffBtPairs {
-	public static void main(String[] args) {
+	static void main() {
 		var scn = new Scanner(System.in);
 		var tests = scn.nextInt();
 		while (tests-- > 0) {

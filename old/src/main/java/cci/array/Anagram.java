@@ -2,7 +2,7 @@ package cci.array;
 
 /** Created by Gopala Akshintala on 11/2/16. */
 public class Anagram {
-	public static void main(String[] args) {
+	static void main() {
 		System.out.println(areStringAnagrams("abc", "cab"));
 		System.out.println(areStringAnagrams("abc", "acd"));
 	}

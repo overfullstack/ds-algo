@@ -2,7 +2,7 @@ package icake.array.HighestProductOf3;
 
 /** Created by gakshintala on 6/21/16. */
 public class HighestProductOf3 {
-	public static void main(String[] args) {
+	static void main() {
 		int[] arr = {1, -2, 3, 4};
 		System.out.println(highestProductOf3(arr));
 	}

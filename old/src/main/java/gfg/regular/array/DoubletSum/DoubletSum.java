@@ -4,8 +4,8 @@ import java.util.Arrays;
 
 /** Created by gakshintala on 6/16/16. */
 public class DoubletSum {
-	public static void main(String[] args) {
-		int A[] = {1, 4, 45, 6, 10, 8};
+	static void main() {
+		int[] A = {1, 4, 45, 6, 10, 8};
 		var n = 16;
 		printPairs(A, n);
 	}

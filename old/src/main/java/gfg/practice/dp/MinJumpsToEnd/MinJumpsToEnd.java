@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 /** Created by gakshintala on 4/22/16. */
 public class MinJumpsToEnd {
-	public static void main(String[] args) {
+	static void main() {
 		var scn = new Scanner(System.in);
 		var testCases = scn.nextInt();
 		while (testCases-- > 0) {

@@ -7,8 +7,8 @@ import java.util.Stack;
 
 /** Created by gakshintala on 6/12/16. */
 public class BSTFromPreOrder {
-	public static void main(String[] args) {
-		int pre[] = {10, 5, 1, 7, 40, 50};
+	static void main() {
+		int[] pre = {10, 5, 1, 7, 40, 50};
 		treeInorder(bstFromPreOrderRecursive(pre, Integer.MIN_VALUE, Integer.MAX_VALUE, new Index(0)));
 		System.out.println();
 		treeInorder(bstFromPreOrderIterative(pre));

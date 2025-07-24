@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 /** Created by gakshintala on 4/18/16. */
 public class Maze {
-	public static void main(String[] args) {
+	static void main() {
 		var scn = new Scanner(System.in);
 		var m = scn.nextInt();
 		var n = scn.nextInt();

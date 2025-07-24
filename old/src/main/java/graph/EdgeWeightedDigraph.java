@@ -5,7 +5,7 @@ import java.util.LinkedList;
 /** Created by gakshintala on 1/5/16. */
 public class EdgeWeightedDigraph {
 	LinkedList<DirectedEdge>[] adj;
-	private int N;
+	private final int N;
 
 	EdgeWeightedDigraph(int n) {
 		this.N = n;

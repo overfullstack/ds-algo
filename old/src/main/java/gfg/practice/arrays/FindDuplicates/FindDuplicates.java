@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 /** Created by Gopala Akshintala on 20/02/17. */
 public class FindDuplicates {
-	public static void main(String[] args) {
+	static void main() {
 		var scn = new Scanner(System.in);
 		var tests = scn.nextInt();
 		while (tests-- > 0) {

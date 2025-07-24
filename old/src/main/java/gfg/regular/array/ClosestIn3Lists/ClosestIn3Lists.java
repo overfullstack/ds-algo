@@ -2,10 +2,10 @@ package gfg.regular.array.ClosestIn3Lists;
 
 /** Created by gakshintala on 6/11/16. */
 public class ClosestIn3Lists {
-	public static void main(String[] args) {
-		int a[] = {1, 4, 10};
-		int b[] = {2, 15, 20};
-		int c[] = {10, 12};
+	static void main() {
+		int[] a = {1, 4, 10};
+		int[] b = {2, 15, 20};
+		int[] c = {10, 12};
 
 		printClosestElements(a, b, c);
 	}

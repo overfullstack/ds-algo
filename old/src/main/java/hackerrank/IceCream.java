@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class IceCream {
 
-	public static void main(String[] args) {
+	static void main() {
 		var scn = new Scanner(System.in);
 		var testCases = scn.nextInt();
 		for (var c = 0; c < testCases; c++) {

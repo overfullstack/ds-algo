@@ -3,7 +3,7 @@ package hackerrank;
 /* WRONG*/
 public class FindLeader {
 
-	public static void main(String[] args) {
+	static void main() {
 		int[] A = {2, 2, 2, 2, 2, 3, 4, 5, 6};
 		System.out.println(solution(A));
 	}

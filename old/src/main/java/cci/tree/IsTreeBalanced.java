@@ -4,7 +4,7 @@ import ds.tree.TreeNode;
 
 /** Created by gakshintala on 3/30/16. */
 public class IsTreeBalanced {
-	public static void main(String[] args) {
+	static void main() {
 		TreeNode t1, t2, t3, t4, t5;
 		t5 = new TreeNode(5, null, null);
 		t4 = new TreeNode(4, t5, null);

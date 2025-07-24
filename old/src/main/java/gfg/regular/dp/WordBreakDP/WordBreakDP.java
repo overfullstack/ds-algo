@@ -6,7 +6,7 @@ import java.util.Set;
 
 /** Created by Gopala Akshintala on 5/3/17. */
 public class WordBreakDP {
-	private static Set<String> dictionary =
+	private static final Set<String> dictionary =
 			new HashSet<>(
 					Arrays.asList(
 							"mobile",
@@ -23,7 +23,7 @@ public class WordBreakDP {
 							"ice",
 							"cream"));
 
-	public static void main(String[] args) {
+	static void main() {
 		System.out.println(wordBreak("ilikesamsung"));
 		System.out.println(wordBreak("samsungandmangok"));
 	}

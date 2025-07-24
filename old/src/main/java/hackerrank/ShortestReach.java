@@ -9,7 +9,7 @@ import java.util.TreeMap;
 
 /** Created by gakshintala on 12/4/15. */
 public class ShortestReach {
-	public static void main(String[] args) {
+	static void main() {
 		var scn = new Scanner(System.in);
 		var testCases = scn.nextInt();
 		for (var c = 0; c < testCases; c++) {
@@ -61,7 +61,7 @@ public class ShortestReach {
 }
 
 class Graph_SR {
-	private List<Integer>[] adj;
+	private final List<Integer>[] adj;
 
 	Graph_SR(int vertexCount) {
 		adj = new LinkedList[vertexCount + 1];

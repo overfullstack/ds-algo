@@ -5,7 +5,7 @@ public class CheckBST {
 
 	static int lastNode = Integer.MIN_VALUE;
 
-	public static void main(String[] args) {
+	static void main() {
 		var left = new TreeNode(1, null, null);
 		var right = new TreeNode(3, null, null);
 		var root = new TreeNode(2, left, right);
@@ -18,8 +18,7 @@ public class CheckBST {
 		if (!check(root.left)) return false;
 		if (root.value <= lastNode) return false;
 		lastNode = root.value;
-		if (!check(root.right)) return false;
-		return true;
+		return check(root.right);
 	}
 }
 

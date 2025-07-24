@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 /** Created by gakshintala on 4/12/16. */
 public class PathsWithKCoins {
-	public static void main(String[] args) {
+	static void main() {
 		var k = 12;
 		int[][] mat = {{1, 2, 3}, {4, 6, 5}, {3, 2, 1}};
 		var table = new int[3][3][k + 1];

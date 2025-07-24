@@ -2,7 +2,7 @@ package gfg.regular.dp.SubSetSum;
 
 /** Created by gakshintala on 3/21/16. */
 public class SubSetSum {
-	public static void main(String[] args) {
+	static void main() {
 		System.out.println(isSumPresent(new int[] {3, 34, 4, 12, 5, 2}, 9));
 		System.out.println(isSumPresent(new int[] {3, 34, 4, 12, 5, 2}, 30));
 	}

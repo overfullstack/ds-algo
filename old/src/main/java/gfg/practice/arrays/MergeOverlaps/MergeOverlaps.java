@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
 
 /** Created by Gopala Akshintala on 10/04/17. */
 public class MergeOverlaps {
-	public static void main(String[] args) {
+	static void main() {
 		var scn = new Scanner(System.in);
 		var tests = scn.nextInt();
 		List<List<Interval>> inputIntervals = new ArrayList<>();

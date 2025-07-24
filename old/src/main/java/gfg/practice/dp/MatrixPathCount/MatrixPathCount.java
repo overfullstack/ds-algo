@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 /** Created by gakshintala on 7/2/16. */
 public class MatrixPathCount {
-	public static void main(String[] args) {
+	static void main() {
 		var scn = new Scanner(System.in);
 		var tests = scn.nextInt();
 		while (tests-- > 0) {

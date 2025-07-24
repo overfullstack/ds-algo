@@ -2,8 +2,8 @@ package gfg.regular.dp.LinearEquation;
 
 /** Created by gakshintala on 6/10/16. */
 public class LinearEquation {
-	public static void main(String[] args) {
-		int coeffs[] = {2, 2, 5};
+	static void main() {
+		int[] coeffs = {2, 2, 5};
 		var rhs = 4;
 		System.out.println(solutionCount(coeffs, rhs));
 	}

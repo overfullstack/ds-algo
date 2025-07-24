@@ -4,7 +4,7 @@ import ds.tree.TreeNode;
 
 /** Created by gakshintala on 4/19/16. */
 public class SecondLargestElement {
-	public static void main(String[] args) {
+	static void main() {
 		var treeNode8 = new TreeNode(8, null, null);
 		var treeNode7 = new TreeNode(7, null, null);
 		var treeNode6 = new TreeNode(6, null, null);

@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 /** Created by gakshintala on 12/10/15. */
 public class MatrixRotation {
-	public static void main(String[] args) {
+	static void main() {
 		var scn = new Scanner(System.in);
 		var row = scn.nextInt();
 		var col = scn.nextInt();

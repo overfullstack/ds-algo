@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 /** Created by gakshintala on 4/14/16. */
 public class SortTwoElementsSwapped {
-	public static void main(String[] args) {
+	static void main() {
 		int[] arr = {10, 30, 20, 40, 50, 60, 70};
 		correctArray(arr);
 		System.out.println(Arrays.toString(arr));

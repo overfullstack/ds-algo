@@ -6,7 +6,7 @@ import java.util.Queue;
 
 /** Created by gakshintala on 3/30/16. */
 public class TreeBFS {
-	public static void main(String[] args) {
+	static void main() {
 		TreeNode t1, t2, t3, t4, t5, t6, t7, t8;
 		t8 = new TreeNode(8, null, null);
 		t7 = new TreeNode(7, null, null);

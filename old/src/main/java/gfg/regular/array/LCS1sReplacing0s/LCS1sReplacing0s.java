@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 /** Created by gakshintala on 4/12/16. */
 public class LCS1sReplacing0s {
-	public static void main(String[] args) {
+	static void main() {
 		int[] arr = {1, 1, 0, 0, 1, 0, 1, 1, 1, 0, 1, 1, 1};
 		System.out.println(Arrays.toString(findMax1s(arr)));
 	}

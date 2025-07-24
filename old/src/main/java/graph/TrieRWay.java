@@ -2,10 +2,10 @@ package graph;
 
 /** Created by gakshintala on 6/28/16. */
 public class TrieRWay {
-	private static int R = 256;
+	private static final int R = 256;
 	private TrieNode root = new TrieNode();
 
-	public static void main(String[] args) {
+	static void main() {
 		var trie = new TrieRWay();
 		trie.put("gopal", 7);
 		trie.put("gokul", 6);
@@ -77,6 +77,6 @@ public class TrieRWay {
 
 	private static class TrieNode {
 		private int weight;
-		private TrieNode[] next = new TrieNode[R];
+		private final TrieNode[] next = new TrieNode[R];
 	}
 }

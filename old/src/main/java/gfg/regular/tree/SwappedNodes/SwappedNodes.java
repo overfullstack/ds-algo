@@ -8,7 +8,7 @@ import gfg.ds.TreeNode;
  * <p>Not complete
  */
 public class SwappedNodes {
-	public static void main(String[] args) {
+	static void main() {
 		var bstNode7 = new TreeNode(7, null, null);
 		var bstNode6 = new TreeNode(5, null, null);
 		var bstNode5 = new TreeNode(3, null, null);

@@ -5,8 +5,8 @@ import java.util.List;
 
 /** Created by gakshintala on 4/19/16. */
 public class DiGraph {
-	private int vertexCount;
-	private List<Integer>[] adj;
+	private final int vertexCount;
+	private final List<Integer>[] adj;
 
 	public DiGraph(int vertexCount) {
 		this.vertexCount = vertexCount;

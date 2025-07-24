@@ -2,7 +2,7 @@ package gfg.regular.array.SmallerGreater;
 
 /** Created by gakshintala on 4/14/16. */
 public class SmallerGreater {
-	public static void main(String[] args) {
+	static void main() {
 		int[] arr = {5, 1, 4, 3, 6, 8, 10, 7, 9};
 		System.out.println(findIndex(arr));
 	}

@@ -7,7 +7,7 @@ import java.util.Set;
 
 /** Created by Gopala Akshintala on 2/4/17. */
 public class SumOfFour {
-	public static void main(String[] args) {
+	static void main() {
 		var scn = new Scanner(System.in);
 		var tests = scn.nextInt();
 		while (tests-- > 0) {

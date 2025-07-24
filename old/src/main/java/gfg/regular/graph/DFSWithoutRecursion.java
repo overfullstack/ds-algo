@@ -6,7 +6,7 @@ import java.util.Stack;
 
 /** Created by gakshintala on 4/19/16. */
 public class DFSWithoutRecursion {
-	public static void main(String[] args) {
+	static void main() {
 		var scn = new Scanner(System.in);
 		var vertexCount = scn.nextInt();
 		var edgeCount = scn.nextInt();

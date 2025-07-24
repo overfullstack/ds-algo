@@ -6,7 +6,7 @@ import java.util.Arrays;
 
 /** Created by gakshintala on 4/14/16. */
 public class SortPortionToSortAll {
-	public static void main(String[] args) {
+	static void main() {
 		int[] arr = {1, 2, 3, 4, 5, 6, 7, 8};
 		sortPortion(arr);
 		System.out.println(Arrays.toString(arr));

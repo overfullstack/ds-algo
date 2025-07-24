@@ -18,7 +18,7 @@ fun longestSubStr(nums: IntArray): Int {
 }
 
 fun main() {
-  readLine()
+  readlnOrNull()
   val nums = readln().split("").map { it.toInt() }.toIntArray()
   println(longestSubStr(nums))
 }

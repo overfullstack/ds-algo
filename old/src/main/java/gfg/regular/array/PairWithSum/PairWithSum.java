@@ -4,7 +4,7 @@ import static gfg.ds.Utils.quickSort;
 
 /** Created by gakshintala on 6/10/16. */
 public class PairWithSum {
-	public static void main(String[] args) {
+	static void main() {
 		var sum = 16;
 		int[] arr = {1, 4, 45, 6, 10, -8};
 		quickSort(arr);

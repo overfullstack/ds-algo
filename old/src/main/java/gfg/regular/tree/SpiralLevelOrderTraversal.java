@@ -5,7 +5,7 @@ import java.util.Stack;
 
 /** Created by Go on 9-4-16. */
 public class SpiralLevelOrderTraversal {
-	public static void main(String[] args) {
+	static void main() {
 		var treeNode8 = new TreeNode(8, null, null);
 		var treeNode7 = new TreeNode(7, null, null);
 		var treeNode6 = new TreeNode(6, null, null);

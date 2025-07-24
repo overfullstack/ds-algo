@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 /** Created by Gopala Akshintala on 5/21/17. */
 public class ReverseWords {
-	public static void main(String[] args) {
+	static void main() {
 		var scn = new Scanner(System.in);
 		var testCases = scn.nextInt();
 		while (testCases-- > 0) {

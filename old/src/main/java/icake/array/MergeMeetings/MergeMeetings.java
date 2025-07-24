@@ -5,7 +5,7 @@ import java.util.Comparator;
 
 /** Created by gakshintala on 6/22/16. */
 public class MergeMeetings {
-	public static void main(String[] args) {
+	static void main() {
 		var meetings = new Meeting[5];
 		meetings[0] = new Meeting(0, 1);
 		meetings[1] = new Meeting(3, 5);

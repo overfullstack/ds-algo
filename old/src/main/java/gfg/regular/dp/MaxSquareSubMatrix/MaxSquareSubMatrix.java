@@ -2,8 +2,8 @@ package gfg.regular.dp.MaxSquareSubMatrix;
 
 /** Created by gakshintala on 6/10/16. */
 public class MaxSquareSubMatrix {
-	public static void main(String[] args) {
-		int M[][] = {
+	static void main() {
+		int[][] M = {
 			{0, 1, 1, 0, 1},
 			{1, 1, 0, 1, 0},
 			{0, 1, 1, 1, 0},

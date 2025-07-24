@@ -9,7 +9,7 @@ import java.util.Map;
 
 /** Created by gakshintala on 6/11/16. */
 public class VerticalSum {
-	public static void main(String[] args) {
+	static void main() {
 		var root = new TreeNode(1);
 		root.setLeft(new TreeNode(2));
 		root.setRight(new TreeNode(3));

@@ -2,7 +2,7 @@ package gfg.regular.array.SortIfSubStringReversed;
 
 /** Created by Gopala Akshintala on 2/26/17. */
 public class SortIfSubStringReversed {
-	public static void main(String[] args) {
+	static void main() {
 		int[] arr = {1, 2, 5, 4, 3};
 		System.out.println(sortIfSubStringReversed(arr));
 	}

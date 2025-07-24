@@ -6,7 +6,7 @@ import gfg.ds.TreeNode;
 public class KthLargestElement {
 	private static int k = 3;
 
-	public static void main(String[] args) {
+	static void main() {
 		var bstNode7 = new TreeNode(7, null, null);
 		var bstNode5 = new TreeNode(5, null, null);
 		var bstNode3 = new TreeNode(3, null, null);

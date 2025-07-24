@@ -2,7 +2,7 @@ package hackerrank;
 
 /** Created by gakshintala on 3/13/16. */
 public class LongestSequenceOfZeros {
-	public static void main(String[] args) {
+	static void main() {
 		System.out.println(longestSequenceOfZeros(toBinary(100)));
 	}
 

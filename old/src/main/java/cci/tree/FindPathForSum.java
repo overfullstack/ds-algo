@@ -8,7 +8,7 @@ public class FindPathForSum {
 	private static int[]
 			path; // Path with level allows us to check sum with left and then right nodes.
 
-	public static void main(String[] args) {
+	static void main() {
 		var treeNode8 = new TreeNode(8, null, null);
 		var treeNode7 = new TreeNode(7, null, null);
 		var treeNode6 = new TreeNode(6, null, null);

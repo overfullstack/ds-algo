@@ -3,7 +3,7 @@ package gfg.practice.arrays.LowHighIndex;
 import java.util.Scanner;
 
 public class LowHighIndex {
-	public static void main(String[] args) {
+	static void main() {
 		var scn = new Scanner(System.in);
 		var testCases = scn.nextInt();
 		while (testCases-- > 0) {

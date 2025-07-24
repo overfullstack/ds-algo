@@ -4,8 +4,8 @@ import java.util.Arrays;
 
 /** Created by gakshintala on 6/12/16. */
 public class AlternatePositiveNegative {
-	public static void main(String[] args) {
-		int arr[] = {-5, -2, 5, 2, 4, 7, 1, 8, 0, -8};
+	static void main() {
+		int[] arr = {-5, -2, 5, 2, 4, 7, 1, 8, 0, -8};
 		alternatePositiveNegative(arr);
 		Arrays.stream(arr).forEach(s -> System.out.print(s + " "));
 	}

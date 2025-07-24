@@ -2,7 +2,7 @@ package gfg.regular.array.SquareRoot;
 
 /** Created by gakshintala on 7/2/16. */
 public class SquareRoot {
-	public static void main(String[] args) {
+	static void main() {
 		var x = 81;
 		System.out.println(squareRoot(x));
 	}

@@ -2,7 +2,7 @@ package gfg.regular.array.NonDivisibleSubset;
 
 /** Created by Gopala Akshintala on 3/13/17. */
 public class NonDivisibleSubset {
-	public static void main(String[] args) {
+	static void main() {
 		int[] arr = {3, 7, 2, 9, 1};
 		var k = 3;
 		System.out.println(maxLenOfNonDivisibleSubset(arr, k));

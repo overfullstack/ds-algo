@@ -17,7 +17,7 @@ public class TicTacToe {
 		{2, 4, 6}
 	}; // Check the second Diagonal
 
-	public static void main(String[] args) {
+	static void main() {
 		var scn = new Scanner(System.in);
 		var tests = scn.nextInt();
 		while (tests-- > 0) {

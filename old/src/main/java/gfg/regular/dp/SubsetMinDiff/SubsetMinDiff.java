@@ -4,8 +4,8 @@ import java.util.Arrays;
 
 /** Created by gakshintala on 6/13/16. */
 public class SubsetMinDiff {
-	public static void main(String[] args) {
-		int arr[] = {3, 1, 4, 2, 2, 1};
+	static void main() {
+		int[] arr = {3, 1, 4, 2, 2, 1};
 		System.out.println(minDiff(arr));
 	}
 

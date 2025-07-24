@@ -6,7 +6,7 @@ import gfg.ds.SLLNode;
 
 /** Created by Gopala Akshintala on 2/25/17. */
 public class SwapNodes {
-	public static void main(String[] args) {
+	static void main() {
 		var head = new SLLNode(7);
 		head.add(6);
 		head.add(5);

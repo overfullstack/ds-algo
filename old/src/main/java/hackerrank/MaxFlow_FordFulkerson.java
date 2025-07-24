@@ -103,7 +103,7 @@ class FlowEdge {
 /** Undirected graph */
 class FlowNetwork {
 	public int N;
-	private LinkedList<FlowEdge>[] adj;
+	private final LinkedList<FlowEdge>[] adj;
 
 	FlowNetwork(int n) {
 		this.N = n;

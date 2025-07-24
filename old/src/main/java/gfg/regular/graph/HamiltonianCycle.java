@@ -4,15 +4,15 @@ import java.util.Arrays;
 
 /** Created by gakshintala on 4/20/16. */
 public class HamiltonianCycle {
-	public static void main(String[] args) {
+	static void main() {
 
 		// Graph is represented as Adjacency Matrix
-		int graph1[][] = {
+		int[][] graph1 = {
 			{0, 1, 0, 1, 0}, {1, 0, 1, 1, 1}, {0, 1, 0, 0, 1}, {1, 1, 0, 0, 1}, {0, 1, 1, 1, 0},
 		};
 		hamCycle(graph1);
 
-		int graph2[][] = {
+		int[][] graph2 = {
 			{0, 1, 0, 1, 0}, {1, 0, 1, 1, 1}, {0, 1, 0, 0, 1}, {1, 1, 0, 0, 0}, {0, 1, 1, 0, 0},
 		};
 		hamCycle(graph2);

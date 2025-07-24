@@ -35,7 +35,7 @@ public class FlattenAndSortLL {
 		}
 	}
 
-	public static void main() {
+	static void main() {
 		var head = new SLLNode(5);
 		head.down = new SLLNode(7);
 		head.down.down = new SLLNode(8);

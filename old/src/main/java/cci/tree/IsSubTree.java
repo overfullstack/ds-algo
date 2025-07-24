@@ -4,7 +4,7 @@ import ds.tree.TreeNode;
 
 /** Created by gakshintala on 3/29/16. */
 public class IsSubTree {
-	public static void main(String[] args) {
+	static void main() {
 		var treeNode8 = new TreeNode(8, null, null);
 		var treeNode7 = new TreeNode(7, null, null);
 		var treeNode6 = new TreeNode(6, null, null);

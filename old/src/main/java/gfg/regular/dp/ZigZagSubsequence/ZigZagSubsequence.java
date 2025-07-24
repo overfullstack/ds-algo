@@ -4,8 +4,8 @@ import java.util.Arrays;
 
 /** Created by gakshintala on 6/13/16. */
 public class ZigZagSubsequence {
-	public static void main(String[] args) {
-		int arr[] = {10, 22, 9, 33, 49, 50, 31, 60};
+	static void main() {
+		int[] arr = {10, 22, 9, 33, 49, 50, 31, 60};
 		System.out.println(longestZigZagSubsequence(arr));
 	}
 

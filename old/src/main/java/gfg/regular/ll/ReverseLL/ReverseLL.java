@@ -6,7 +6,7 @@ import gfg.ds.SLLNode;
 
 /** Created by gakshintala on 6/10/16. */
 public class ReverseLL {
-	public static void main(String[] args) {
+	static void main() {
 		SLLNode l1, l2, l3, l4;
 		l1 = new SLLNode(1);
 		l2 = new SLLNode(2);

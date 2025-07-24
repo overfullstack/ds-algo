@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 /** Created by gakshintala on 3/22/16. */
 public class MinCoinChange {
-	public static void main(String[] args) {
+	static void main() {
 		var scn = new Scanner(System.in);
 		var testCases = scn.nextInt();
 		while (testCases-- > 0) {

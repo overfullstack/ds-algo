@@ -2,7 +2,7 @@ package gfg.regular.dp.StairCaseClimb;
 
 /** Created by Gopala Akshintala on 6/2/17. */
 public class StairCaseClimb {
-	public static void main(String[] args) {
+	static void main() {
 		int stairsCount = 4, numWaysToJump = 2;
 		System.out.println(numberOfWaysToJump(stairsCount, numWaysToJump));
 	}

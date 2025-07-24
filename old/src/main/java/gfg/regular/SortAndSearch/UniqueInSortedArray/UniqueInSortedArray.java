@@ -2,8 +2,8 @@ package gfg.regular.SortAndSearch.UniqueInSortedArray;
 
 /** Created by gakshintala on 6/22/16. */
 public class UniqueInSortedArray {
-	public static void main(String[] args) {
-		int arr[] = {1, 1, 2, 4, 4, 5, 5, 6, 6};
+	static void main() {
+		int[] arr = {1, 1, 2, 4, 4, 5, 5, 6, 6};
 		searchUnique(arr, 0, arr.length - 1);
 	}
 

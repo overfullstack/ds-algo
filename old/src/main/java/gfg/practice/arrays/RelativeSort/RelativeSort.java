@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 /** Created by gakshintala on 6/22/16. INCOMPLETE */
 public class RelativeSort {
-	public static void main(String[] args) {
+	static void main() {
 		var scn = new Scanner(System.in);
 		var tests = scn.nextInt();
 		while (tests-- > 0) {

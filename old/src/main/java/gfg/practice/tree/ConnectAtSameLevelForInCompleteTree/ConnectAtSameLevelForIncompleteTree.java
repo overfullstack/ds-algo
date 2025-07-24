@@ -2,7 +2,7 @@ package gfg.practice.tree.ConnectAtSameLevelForInCompleteTree;
 
 /** Created by gakshintala on 6/13/16. */
 public class ConnectAtSameLevelForIncompleteTree {
-	public static void main(String[] args) {
+	static void main() {
 
 		var node11 = new Node(11, null, null);
 		var node10 = new Node(10, null, null);

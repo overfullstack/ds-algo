@@ -7,7 +7,7 @@ import java.util.Scanner;
 /** Created by gakshintala on 2/25/16. */
 public class MaximumSubArray {
 
-	public static void main(String[] args) {
+	static void main() {
 		var scn = new Scanner(System.in);
 		var testCases = scn.nextInt();
 		while (testCases-- > 0) {

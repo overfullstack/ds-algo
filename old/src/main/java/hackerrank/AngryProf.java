@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class AngryProf {
 
-	public static void main(String[] args) {
+	static void main() {
 		var scn = new Scanner(System.in);
 		var c = scn.nextInt();
 		for (var i = 0; i < c; i++) {

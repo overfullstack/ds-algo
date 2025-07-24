@@ -14,7 +14,7 @@ public class DetectCycleInDirectedGraph {
 	// going away from this are check for hasCycle and is clear without cycle
 	private static DiGraph g;
 
-	public static void main(String[] args) {
+	static void main() {
 		var scn = new Scanner(System.in);
 		var vertexCount = scn.nextInt();
 		var edgeCount = scn.nextInt();
