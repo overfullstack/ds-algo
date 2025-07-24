@@ -3,7 +3,7 @@ package educative.graph.unionfind
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.inspectors.forAll
 import io.kotest.matchers.shouldBe
-import testcase.IntListPairIntInt.Companion.parseJsonFileToTestCases
+import testcase.IntListPairToInt.Companion.parseJsonFileToTestCases
 
 /* 22 Jul 2025 19:57 */
 
