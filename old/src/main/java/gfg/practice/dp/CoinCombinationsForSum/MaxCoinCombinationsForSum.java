@@ -3,7 +3,7 @@ package gfg.practice.dp.CoinCombinationsForSum;
 import java.util.Scanner;
 
 /** Created by gakshintala on 4/22/16. */
-public class CoinCombinationsForSum {
+public class MaxCoinCombinationsForSum {
 	static void main() {
 		var scn = new Scanner(System.in);
 		var testCases = scn.nextInt();
@@ -20,7 +20,7 @@ public class CoinCombinationsForSum {
 		table[0] = 1; // for 0 sum, 1 solution - Don't include any coin
 		// For every coin, loop through all the sums
 		for (var coin : coins) { // Because we have unlimited coins, we can use a coin for all the sum.
-			// If you include this coin, minimum sum you make starts from that coin
+			// If you include this coin, a minimum sum you make starts from that coin
 			for (var j = coin; j <= sum; j++) { // Only coins <= sum allowed
 				table[j] += table[j - coin]; // including the coin
 			}

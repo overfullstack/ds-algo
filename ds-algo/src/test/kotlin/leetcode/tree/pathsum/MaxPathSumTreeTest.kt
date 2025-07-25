@@ -6,7 +6,7 @@ import io.kotest.data.forAll
 import io.kotest.data.row
 import io.kotest.matchers.shouldBe
 
-class MaxPathSumTreeKtTest : StringSpec() {
+class MaxPathSumTreeTest : StringSpec() {
 
   init {
     "maxPathSum" {

@@ -1,14 +1,14 @@
-package educative.backtracking
+package educative.tree
 
 import ds.tree.TreeNode.Companion.levelOrderToIncompleteTree
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.inspectors.forAll
 import io.kotest.matchers.shouldBe
-import testcase.TestCase16.Companion.parseJsonFileToTestCases
+import testcase.ListToInt.Companion.parseJsonFileToTestCases
 
 /* 30 Jun 2025 14:35 */
 
-private const val PKG_PATH = "educative/backtracking/HouseRobber3"
+private const val PKG_PATH = "educative/tree/HouseRobber3"
 
 class HouseRobber3Test :
   StringSpec({

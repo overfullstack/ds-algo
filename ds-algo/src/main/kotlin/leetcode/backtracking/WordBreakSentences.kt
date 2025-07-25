@@ -22,7 +22,7 @@ private fun wordBreakSentences(
       .filter { (_, word) -> word in dict }
       .flatMap { (index, wordInDict) ->
         when (index) {
-          // If this is placed at the start of recursion, we need to update cache at two places.
+          // If this is placed at the start of recursion, we need to update the cache at two places.
           str.lastIndex -> listOf(listOf(wordInDict))
           else -> // Sentence append can't be made eager, as this result is directly put into cache.
           wordBreakSentences(str, dict, index + 1, cache).map { sentence ->
@@ -31,7 +31,7 @@ private fun wordBreakSentences(
         }
       }
   // If the word can't be broken, the last recursion would return an empty list, which shall be
-  // passed-on, so end results in an empty list
+  // passed-on, so the end results in an empty list
   return cache.merge(startIndex, sentences, Collection<List<String>>::plus)!!
 }
 
