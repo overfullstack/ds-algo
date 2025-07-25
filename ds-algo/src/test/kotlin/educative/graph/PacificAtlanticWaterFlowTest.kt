@@ -12,7 +12,7 @@ private const val PKG_PATH = "educative/graph/PacificAtlanticWaterFlow"
 class PacificAtlanticWaterFlowTest :
   StringSpec({
     "Pacific Atlantic Water Flow" {
-      parseJsonFileToTestCases("${PKG_PATH}/test-cases-1.json").forAll { (grid, output) ->
+      parseJsonFileToTestCases("$PKG_PATH/test-cases-1.json").forAll { (grid, output) ->
         estimateWaterFlow(grid.map { it.toIntArray() }.toTypedArray()) shouldBe output
       }
     }

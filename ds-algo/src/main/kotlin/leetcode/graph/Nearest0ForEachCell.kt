@@ -1,7 +1,29 @@
 package leetcode.graph
 
-/** https://leetcode.com/problems/01-matrix/ */
+/** [01-matrix](https://leetcode.com/problems/01-matrix/) */
 fun updateMatrix(matrix: Array<IntArray>): Array<IntArray> {
+  for (i in 0..matrix.lastIndex) {
+    for (j in 0..matrix[0].lastIndex) {
+      if (matrix[i][j] > 0) {
+        val fromUp = if (i > 0) matrix[i - 1][j] else Int.MAX_VALUE - 999
+        val fromLeft = if (j > 0) matrix[i][j - 1] else Int.MAX_VALUE - 999
+        matrix[i][j] = minOf(fromUp, fromLeft) + 1
+      }
+    }
+  }
+  for (i in matrix.lastIndex downTo 0) {
+    for (j in matrix[0].lastIndex downTo 0) {
+      if (matrix[i][j] > 0) {
+        val fromBottom = if (i < matrix.lastIndex) matrix[i + 1][j] else Int.MAX_VALUE - 999
+        val fromRight = if (j < matrix[0].lastIndex) matrix[i][j + 1] else Int.MAX_VALUE - 999
+        matrix[i][j] = minOf(matrix[i][j], fromBottom + 1, fromRight + 1)
+      }
+    }
+  }
+  return matrix
+}
+
+fun updateMatrix2(matrix: Array<IntArray>): Array<IntArray> {
   val queue = ArrayDeque<Pair<Int, Int>>()
   for (row in matrix.indices) {
     for (col in matrix[0].indices) {
@@ -30,13 +52,14 @@ private val directions = listOf(0 to 1, 0 to -1, 1 to 0, -1 to 0)
 private fun Pair<Int, Int>.isValid(matrix: Array<IntArray>, distance: Int) =
   first in matrix.indices &&
     second in matrix[0].indices &&
-    // * 1. Cells with 0s never pass this as distance is always positive, so 0s are never overriden.
-    // * 2. For Storing min distance
-    // If a 0 is totally surrounded by 0s, it's useless as it can never be a nearest 0 for any 1, so
-    // skip it.
+    // * 1. Cells with 0s never pass this as distance is always positive, so 0s are never
+    // overridden.
+    // * 2. For Storing min distance,
+    // If a 0 is totally surrounded by 0s, it's useless as it can never be the nearest 0 for any 1,
+    // so skip it.
     distance < matrix[first][second]
 
-fun updateMatrix2(matrix: Array<IntArray>): Array<IntArray> { // BFS
+fun updateMatrix3(matrix: Array<IntArray>): Array<IntArray> { // BFS
   val queue = ArrayDeque<Pair<Int, Int>>()
   for (row in matrix.indices) {
     for (col in matrix[0].indices) {

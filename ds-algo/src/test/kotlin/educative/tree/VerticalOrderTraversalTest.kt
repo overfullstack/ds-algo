@@ -13,7 +13,7 @@ private const val PKG_PATH = "educative/tree/VerticalOrderTraversal"
 class VerticalOrderTraversalTest :
   StringSpec({
     "Vertical Order Traversal" {
-      parseJsonFileToTestCases("${PKG_PATH}/test-cases-1.json").forAll { (input, output) ->
+      parseJsonFileToTestCases("$PKG_PATH/test-cases-1.json").forAll { (input, output) ->
         val treeNode = levelOrderToIncompleteTree(input)!!
         treeNode.verticalTraversal() shouldBe output
       }

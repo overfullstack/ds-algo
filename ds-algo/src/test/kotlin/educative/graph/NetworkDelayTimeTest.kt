@@ -12,7 +12,7 @@ private const val PKG_PATH = "educative/graph/NetworkDelayTime"
 class NetworkDelayTimeTest :
   StringSpec({
     "network delay time" {
-      parseJsonFileToTestCases("${PKG_PATH}/test-cases-1.json").forAll { (input, output) ->
+      parseJsonFileToTestCases("$PKG_PATH/test-cases-1.json").forAll { (input, output) ->
         val (times, n, origin) = input
         networkDelayTime(times, n, origin) shouldBe output
       }

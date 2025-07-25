@@ -12,7 +12,7 @@ private const val PKG_PATH = "educative/hashing/NextGreaterElement"
 class NextGreaterElementTest :
   StringSpec({
     "next greater element" {
-      parseJsonFileToTestCases("${PKG_PATH}/test-cases-1.json", "${PKG_PATH}/test-cases-2.json")
+      parseJsonFileToTestCases("$PKG_PATH/test-cases-1.json", "$PKG_PATH/test-cases-2.json")
         .forAll { (input, output) ->
           nextGreaterElement(input.first.toIntArray(), input.second.toIntArray()) shouldBe
             output.toIntArray()

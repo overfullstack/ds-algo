@@ -1,0 +1,182 @@
+{
+  "testcases": [
+    {
+      "name": "testcase 1",
+      "inputs": [
+        {
+          "1": "highwaycarcrash"
+        },
+        {
+          "2": [
+            "crash",
+            "cream",
+            "high",
+            "highway",
+            "low",
+            "way"
+          ]
+        }
+      ],
+      "output": [
+        {
+          "1": []
+        }
+      ]
+    },
+    {
+      "name": "testcase 2",
+      "inputs": [
+        {
+          "1": "bobcat"
+        },
+        {
+          "2": [
+            "rob",
+            "cat",
+            "robo",
+            "bo",
+            "b"
+          ]
+        }
+      ],
+      "output": [
+        {
+          "1": [
+            "bo b cat"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "testcase 3",
+      "inputs": [
+        {
+          "1": "magiclly"
+        },
+        {
+          "2": [
+            "ag",
+            "al",
+            "icl",
+            "mag",
+            "magic",
+            "ly",
+            "lly"
+          ]
+        }
+      ],
+      "output": [
+        {
+          "1": [
+            "magic lly",
+            "mag icl ly"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "testcase 4",
+      "inputs": [
+        {
+          "1": "raincoats"
+        },
+        {
+          "2": [
+            "rain",
+            "oats",
+            "coat",
+            "s",
+            "rains",
+            "oat",
+            "coats",
+            "c"
+          ]
+        }
+      ],
+      "output": [
+        {
+          "1": [
+            "rain c oats",
+            "rain c oat s",
+            "rain coats",
+            "rain coat s"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "testcase 5",
+      "inputs": [
+        {
+          "1": "highway"
+        },
+        {
+          "2": [
+            "crash",
+            "cream",
+            "high",
+            "highway",
+            "low",
+            "way"
+          ]
+        }
+      ],
+      "output": [
+        {
+          "1": [
+            "high way",
+            "highway"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "testcase 6",
+      "inputs": [
+        {
+          "1": "robocat"
+        },
+        {
+          "2": [
+            "rob",
+            "cat",
+            "robo",
+            "bo",
+            "b"
+          ]
+        }
+      ],
+      "output": [
+        {
+          "1": [
+            "robo cat"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "testcase 7",
+      "inputs": [
+        {
+          "1": "cocomo"
+        },
+        {
+          "2": [
+            "co",
+            "mo",
+            "coco",
+            "momo"
+          ]
+        }
+      ],
+      "output": [
+        {
+          "1": [
+            "co co mo",
+            "coco mo"
+          ]
+        }
+      ]
+    }
+  ]
+}

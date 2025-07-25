@@ -5,6 +5,7 @@ package leetcode.backtracking.CombinationSum
 fun combinationSumDP(coins: IntArray, target: Int): Set<List<Int>> {
   val dp = Array<Set<List<Int>>>(target + 1) { emptySet() }
   dp[0] = setOf(emptyList())
+  // * DP is being built from start to end
   for (coin in coins) {
     for (i in coin..target) {
       dp[i] = dp[i] + dp[i - coin].map { it + coin }.toSet()

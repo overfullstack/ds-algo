@@ -13,7 +13,7 @@ private const val PKG_PATH = "educative/greedy/JumpGame"
 class JumpGameTest :
   StringSpec({
     "Jump Game" {
-      parseJsonFileToTestCases("${PKG_PATH}/test-cases-1.json", "${PKG_PATH}/test-cases-2.json")
+      parseJsonFileToTestCases("$PKG_PATH/test-cases-1.json", "$PKG_PATH/test-cases-2.json")
         .forAll { (input, output) -> canJump(input) shouldBe output }
     }
   })

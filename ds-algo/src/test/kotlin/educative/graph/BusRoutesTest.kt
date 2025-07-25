@@ -12,7 +12,7 @@ private const val PKG_PATH = "educative/graph/BusRoutes"
 class BusRoutesTest :
   StringSpec({
     "minimum number of buses" {
-      parseJsonFileToTestCases("${PKG_PATH}/test-cases-1.json").forAll { (input, output) ->
+      parseJsonFileToTestCases("$PKG_PATH/test-cases-1.json").forAll { (input, output) ->
         val (routes, source, destination) = input
         minimumNumberOfBuses(routes, source, destination) shouldBe output
       }
