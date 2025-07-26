@@ -13,11 +13,11 @@ public class MaxProductSubarray {
 			for (var i = 0; i < arr.length; i++) {
 				arr[i] = scn.nextInt();
 			}
-			System.out.println(maxProductSubArray(arr));
+			System.out.println(maxProductSubarray(arr));
 		}
 	}
 
-	private static int maxProductSubArray(int[] arr) {
+	private static int maxProductSubarray(int[] arr) {
 		int curMax = 1, curMin = 1, maxSoFar = 1;
 		for (int value : arr) {
 			if (value > 0) {
@@ -36,11 +36,5 @@ public class MaxProductSubarray {
 			// as curMin and curMax keep shuffling as we encounter negative numbers
 		}
 		return maxSoFar;
-	}
-
-	private static void fillArray(int[] arr, Scanner scn) {
-		for (var i = 0; i < arr.length; i++) {
-			arr[i] = scn.nextInt();
-		}
 	}
 }

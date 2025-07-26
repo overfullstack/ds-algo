@@ -2,7 +2,7 @@ package educative.dp
 
 /* 24/7/25 17:38 */
 
-/** [Coin Change](https://leetcode.com/problems/coin-change/)**/
+/** [Coin Change](https://leetcode.com/problems/coin-change/)* */
 fun minCoinsForSum(coins: IntArray, sum: Int): Int {
   if (sum == 0) return 0
   if (sum < 0 || coins.isEmpty()) return -1
