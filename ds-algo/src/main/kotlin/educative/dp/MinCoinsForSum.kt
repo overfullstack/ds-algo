@@ -7,14 +7,16 @@ fun minCoinsForSum(coins: IntArray, sum: Int): Int {
   if (sum == 0) return 0
   if (sum < 0 || coins.isEmpty()) return -1
 
-  val table = IntArray(sum + 1) { Int.MAX_VALUE - 999 }
-  table[0] = 0
+  val dp = IntArray(sum + 1) { Int.MAX_VALUE - 999 }
+  dp[0] = 0
+  // * Building the entire sum introducing one coin type at a time
   for (coin in coins) {
+    // ! Forward iteration as we allow the same coin to be used multiple times
     for (i in coin..sum) {
-      table[i] = minOf(table[i], table[i - coin] + 1)
+      dp[i] = minOf(dp[i], dp[i - coin] + 1)
     }
   }
-  return if (table[sum] == Int.MAX_VALUE - 999) -1 else table[sum]
+  return if (dp[sum] == Int.MAX_VALUE - 999) -1 else dp[sum]
 }
 
 fun minCoinsForSum2(coins: IntArray, sum: Int): Int {
