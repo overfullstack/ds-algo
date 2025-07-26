@@ -1,0 +1,69 @@
+{
+  "testcases": [
+    {
+      "name": "testcase 1",
+      "inputs": [
+        {
+          "1": "baabaad"
+        }
+      ],
+      "output": [
+        {
+          "1": "aabaa"
+        }
+      ]
+    },
+    {
+      "name": "testcase 2",
+      "inputs": [
+        {
+          "1": "aabbccddccbbae"
+        }
+      ],
+      "output": [
+        {
+          "1": "abbccddccbba"
+        }
+      ]
+    },
+    {
+      "name": "testcase 3",
+      "inputs": [
+        {
+          "1": "madam"
+        }
+      ],
+      "output": [
+        {
+          "1": "madam"
+        }
+      ]
+    },
+    {
+      "name": "testcase 4",
+      "inputs": [
+        {
+          "1": "morning"
+        }
+      ],
+      "output": [
+        {
+          "1": "nin"
+        }
+      ]
+    },
+    {
+      "name": "testcase 5",
+      "inputs": [
+        {
+          "1": "book"
+        }
+      ],
+      "output": [
+        {
+          "1": "oo"
+        }
+      ]
+    }
+  ]
+}

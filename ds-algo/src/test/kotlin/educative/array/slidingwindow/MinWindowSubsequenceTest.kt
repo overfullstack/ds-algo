@@ -3,7 +3,7 @@ package educative.array.slidingwindow
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.inspectors.forAll
 import io.kotest.matchers.shouldBe
-import testcase.TestCase8.Companion.parseJsonFileToTestCases
+import testcase.StrStrToStr.Companion.parseJsonFileToTestCases
 
 private const val PKG_PATH = "educative/array/slidingWindow/MinWindowSubsequence"
 

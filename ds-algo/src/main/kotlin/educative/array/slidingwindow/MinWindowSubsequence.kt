@@ -2,7 +2,7 @@ package educative.array.slidingwindow
 
 /* 04 Sep 2024 17:51 */
 
-/** Finds the minimum window substring that contains str2 as a subsequence */
+/** Finds the minimum window substring in str1 that contains str2 as a subsequence */
 fun minWindowSubsequence(str1: String, str2: String): String =
   when {
     str2.isEmpty() -> ""
@@ -15,6 +15,7 @@ private fun findMinimumWindow(str1: String, str2: String): String =
   (0..str1.lastIndex)
     .asSequence()
     .mapNotNull { str1StartIndex ->
+      // * Find the end first, go in reverse to eliminate the redundancy at the beginning
       findWindowEnd(str1, str2, str1StartIndex)?.let { windowEnd ->
         val windowStart = findWindowStart(str1, str2, windowEnd)
         windowStart to windowEnd
@@ -37,6 +38,7 @@ private tailrec fun findWindowEnd(
     else -> findWindowEnd(str1, str2, str1StartIndex + 1, str2StartIndex)
   }
 
+/** Go reverse and find the window start */
 private tailrec fun findWindowStart(
   str1: String,
   str2: String,

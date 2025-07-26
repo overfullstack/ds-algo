@@ -3,7 +3,7 @@ package educative.stack
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.inspectors.forAll
 import io.kotest.matchers.shouldBe
-import testcase.TestCase4.Companion.parseJsonFileToTestCases
+import testcase.StrToStr.Companion.parseJsonFileToTestCases
 
 private const val PKG_PATH = "educative/stack/RemoveAdjacentDuplicates"
 

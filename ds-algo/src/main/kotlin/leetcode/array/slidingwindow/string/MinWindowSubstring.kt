@@ -21,7 +21,7 @@ fun minWindowSubString(str: String, pattern: String): String {
         minWindowLen = curWindowLen
       }
       patterFreqMap.computeIfPresent(str[start]) { _, freq ->
-        // This leads to loop breaking right after losing the first from the window
+        // This leads to loop-breaking right after losing the first from the window
         if (freq >= 0) matchInWindowCount--
         freq.inc()
       }
