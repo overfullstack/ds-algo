@@ -9,14 +9,20 @@ fun canPartition(nums: IntArray): Boolean {
   val halfSum = sum / 2
   val table = BooleanArray(halfSum + 1)
   table[0] = true
-  // * Can I make half-sum with some of the numbers. Rest of the numbers should obviously make the
-  // other half to equate total sum.
+  // * Can I make half-sum with some numbers? The rest of the numbers should obviously make the
+  // other half to equate to a total sum.
   for (num in nums) {
-    for (j in
-      halfSum downTo
-        num) { // * Fwd iteration won't work as table[0] will effect subsequent results in table.
+    // ! Backward iteration, as it's a `0/1 knapsack` problem,
+    // where each number can be used at most once
+    // when updating table[j], you only reference table[j - num] which hasn't been updated
+    // in the current iteration
+    for (j in halfSum downTo num) {
       table[j] = table[j] or table[j - num]
     }
   }
   return table[halfSum]
+}
+
+fun main() {
+  println(canPartition(intArrayOf(1, 2, 5))) // false
 }

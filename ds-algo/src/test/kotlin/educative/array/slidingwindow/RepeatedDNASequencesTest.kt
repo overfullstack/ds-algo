@@ -3,7 +3,7 @@ package educative.array.slidingwindow
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.inspectors.forAll
 import io.kotest.matchers.collections.shouldContainExactlyInAnyOrder
-import testcase.TestCase7.Companion.parseJsonFileToTestCases
+import testcase.StrIntToList.Companion.parseJsonFileToTestCases
 
 private const val PKG_PATH = "educative/array/slidingwindow/RepeatedDNASequences"
 

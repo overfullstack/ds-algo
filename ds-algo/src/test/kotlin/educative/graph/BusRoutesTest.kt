@@ -3,7 +3,7 @@ package educative.graph
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.inspectors.forAll
 import io.kotest.matchers.shouldBe
-import testcase.TestCase22.Companion.parseJsonFileToTestCases
+import testcase.LListIntIntToInt.Companion.parseJsonFileToTestCases
 
 /* 15 Jul 2025 16:37 */
 

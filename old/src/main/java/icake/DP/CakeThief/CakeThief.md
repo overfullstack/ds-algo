@@ -5,6 +5,7 @@ a limited number of types of cake, she has an unlimited supply of each type.
 
 Each type of cake has a weight and a value, stored in objects of a CakeType class:
 
+```Java
 class CakeType {
 
     int weight;
@@ -15,7 +16,10 @@ class CakeType {
         this.value  = value;
     }
 
-} Java For example:
+}
+```
+
+For example:
 
 // weighs 7 kilograms and has a value of 160 pounds new CakeType(7, 160);
 
