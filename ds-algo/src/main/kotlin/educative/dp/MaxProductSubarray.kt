@@ -7,6 +7,7 @@ fun maxProductSubarray(arr: IntArray): Int {
   var minSoFar = arr[0]
   var result = maxSoFar
 
+  // * Beware of `0`s and `-ve`s
   for (i in 1..arr.lastIndex) {
     val tempMaxSoFar = maxOf(arr[i], maxSoFar * arr[i], minSoFar * arr[i])
     minSoFar = minOf(arr[i], maxSoFar * arr[i], minSoFar * arr[i])
