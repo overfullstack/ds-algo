@@ -18,14 +18,13 @@ fun longestPalindromicSubstring(str: String): String {
     }
   }
 
-  for (subStrLen in 2..str.lastIndex) {
-    var i = 0
-    for (j in subStrLen..str.lastIndex) {
-      dp[i][j] = dp[i + 1][j - 1] && (str[i] == str[j])
-      if (dp[i][j]) {
-        result = i to j
+  // * Build substrings from smaller windows to larger windows
+  for (windowLen in 2..str.lastIndex) {
+    for ((wStart, wEnd) in (windowLen..str.lastIndex).withIndex()) {
+      dp[wStart][wEnd] = dp[wStart + 1][wEnd - 1] && (str[wStart] == str[wEnd])
+      if (dp[wStart][wEnd]) {
+        result = wStart to wEnd
       }
-      i++
     }
   }
   return str.substring(result.first..result.second)

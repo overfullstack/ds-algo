@@ -3,15 +3,16 @@ package leetcode.dp
 
 fun longestPalindromeSubseq(s: String): Int {
   val table = Array(s.length) { IntArray(s.length) }
-  table.indices.forEach { table[it][it] = 1 } // having same start char and end char
+  table.indices.forEach { table[it][it] = 1 } // having the same start char and end char
 
-  for (gap in 1 until s.length) {
-    for ((i, j) in (gap until s.length).withIndex()) { // window iteration
-      table[i][j] =
-        if (s[i] == s[j]) {
-          table[i + 1][j - 1] + 2
+  for (windowLen in 1 until s.length) {
+    for ((wStart, wEnd) in (windowLen until s.length).withIndex()) {
+      table[wStart][wEnd] =
+        if (s[wStart] == s[wEnd]) {
+          table[wStart + 1][wEnd - 1] + 2
         } else {
-          maxOf(table[i + 1][j], table[i][j - 1]) // maxOf exclude char from left or right
+          // maxOf exclude char from left or right
+          maxOf(table[wStart + 1][wEnd], table[wStart][wEnd - 1])
         }
     }
   }
