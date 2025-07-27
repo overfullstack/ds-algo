@@ -6,20 +6,6 @@ import kotlinx.serialization.json.Json
 
 data class SLLNode(var value: Int, var next: SLLNode? = null) {
 
-  fun getNodeAt(pos: Int): SLLNode? = if (pos == 0) this else next?.getNodeAt(pos - 1)
-
-  fun length(len: Int = 1): Int =
-    when (next) {
-      null -> len
-      else -> next!!.length(len + 1)
-    }
-
-  fun last(): SLLNode =
-    when (next) {
-      null -> this
-      else -> next!!.last()
-    }
-
   fun insertNext(nodeToInsert: SLLNode) {
     val next = next
     this.next = nodeToInsert
@@ -92,3 +78,18 @@ data class SLLNode(var value: Int, var next: SLLNode? = null) {
     }
   }
 }
+
+tailrec fun SLLNode?.getNodeAtOrNull(pos: Int): SLLNode? =
+  if (pos == 1) this else this?.next?.getNodeAtOrNull(pos - 1)
+
+tailrec fun SLLNode?.length(len: Int = 1): Int =
+  when (this?.next) {
+    null -> len
+    else -> next.length(len + 1)
+  } ?: 0
+
+tailrec fun SLLNode?.last(): SLLNode? =
+  when (this?.next) {
+    null -> this
+    else -> this.next.last()
+  }

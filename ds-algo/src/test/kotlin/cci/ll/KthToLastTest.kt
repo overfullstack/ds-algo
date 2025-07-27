@@ -8,13 +8,13 @@ import io.kotest.matchers.shouldBe
 
 class KthToLastTest :
   StringSpec({
-    "Kth to Last" {
+    "Kth to Last SLL" {
       forAll(
-        row(intArrayOf(1, 2, 3, 4), 2, 2),
-        row(intArrayOf(1, 2), 0, 2),
-        row(intArrayOf(1, 2), 1, 1),
-        row(intArrayOf(1), 0, 1),
-        row(intArrayOf(1), 1, null),
+        row(intArrayOf(1, 2, 3, 4), 3, 2),
+        row(intArrayOf(1, 2), 1, 2),
+        row(intArrayOf(1, 2), 2, 1),
+        row(intArrayOf(1), 1, 1),
+        row(intArrayOf(1), 2, null),
         row(intArrayOf(), 0, null),
         row(intArrayOf(), 1, null),
       ) { arr, k, result ->

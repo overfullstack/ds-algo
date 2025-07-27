@@ -65,7 +65,7 @@ class SLLNodeTest :
         row(intArrayOf(1), 0, SLLNode(1, null)),
         row(intArrayOf(), 1, null),
       ) { arr, pos, resultNode ->
-        SLLNode.of(arr)?.getNodeAt(pos) shouldBe resultNode
+        SLLNode.of(arr)?.getNodeAtOrNull(pos) shouldBe resultNode
       }
     }
 
