@@ -9,23 +9,24 @@ fun trap(heights: IntArray): Int {
   var left = 0
   var right = heights.lastIndex
   while (left < right) {
-    // * When right height is greater and current is backedup by a max, as local sub-container is
-    // formed,
-    // * which extends till next leftLocalPeak. Vice-versa on the right side as well
-    if (heights[left] < heights[right]) {
-      if (heights[left] > leftLocalPeak) {
-        leftLocalPeak = heights[left]
-      } else {
-        result += leftLocalPeak - heights[left]
+    // * When the right height is greater and current is backed up by a max, as local sub-container
+    // is formed, which extends till the next `leftLocalPeak`. Vice versa on the right side as well
+    when {
+      heights[left] < heights[right] -> {
+        when {
+          heights[left] > leftLocalPeak -> leftLocalPeak = heights[left]
+          else -> result += leftLocalPeak - heights[left]
+        }
+        left++
       }
-      left++
-    } else {
-      if (heights[right] > rightLocalPeak) {
-        rightLocalPeak = heights[right]
-      } else {
-        result += rightLocalPeak - heights[right]
+
+      else -> {
+        when {
+          heights[right] > rightLocalPeak -> rightLocalPeak = heights[right]
+          else -> result += rightLocalPeak - heights[right]
+        }
+        right--
       }
-      right--
     }
   }
   return result

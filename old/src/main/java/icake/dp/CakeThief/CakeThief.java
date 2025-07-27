@@ -1,4 +1,4 @@
-package icake.DP.CakeThief;
+package icake.dp.CakeThief;
 
 /** Created by gakshintala on 3/22/16. */
 public class CakeThief {

@@ -1,6 +1,10 @@
 /* gakshintala created on 1/1/20 */
 package leetcode.sortandsearch
 
+/**
+ * [Search in Rotated Sorted Array
+ * II](https://leetcode.com/problems/search-in-rotated-sorted-array-ii)
+ */
 fun searchInRotatedSorted2(
   nums: IntArray,
   target: Int,
@@ -17,8 +21,6 @@ fun searchInRotatedSorted2(
       when { // If sorted on the left side
         target > nums[left] && target < nums[mid] ->
           searchInRotatedSorted2(nums, target, left, mid - 1)
-        // if above condition is not true, the element would have slipped through rotation to the
-        // right side.
         else -> searchInRotatedSorted2(nums, target, mid + 1, right)
       }
     nums[left] > nums[mid] ->
@@ -31,8 +33,8 @@ fun searchInRotatedSorted2(
     // duplicates.
     nums[right] != nums[mid] -> searchInRotatedSorted2(nums, target, mid + 1, right)
 
-    // If mid equals both left and right (2 3 4 2 2 2),
-    // search both side, as duplicates may flow through mid, you don't have a way to say which side
+    // If mid-equals both left and right (2 3 4 2 2 2),
+    // search both sides, as duplicates may flow through mid, you don't have a way to say which side
     // is filled with duplicates.
     else ->
       searchInRotatedSorted2(nums, target, left, mid - 1) ||
