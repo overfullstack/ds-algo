@@ -15,6 +15,8 @@ fun trap(heights: IntArray): Int {
       heights[left] < heights[right] -> {
         when {
           heights[left] > leftLocalPeak -> leftLocalPeak = heights[left]
+          // This is possible because, both leftLocalPeak and curLeft
+          // are backed-up by the rightLocalPeak
           else -> result += leftLocalPeak - heights[left]
         }
         left++

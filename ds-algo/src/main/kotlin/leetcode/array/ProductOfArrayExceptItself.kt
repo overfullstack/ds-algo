@@ -13,8 +13,9 @@ fun productExceptSelf(nums: IntArray): IntArray {
     product[left] = product[left - 1] * nums[left - 1]
   }
 
-  var rightProduct = 1
-  for (right in nums.lastIndex - 1 downTo 0) {
+  var rightProduct = nums.last()
+  product[nums.lastIndex - 1] *= rightProduct
+  for (right in nums.lastIndex - 2 downTo 0) {
     rightProduct *= nums[right + 1]
     product[right] *= rightProduct
   }
