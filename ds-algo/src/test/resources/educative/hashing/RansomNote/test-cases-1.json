@@ -1,0 +1,180 @@
+{
+  "testcases": [
+    {
+      "name": "testcase 1",
+      "inputs": [
+        {
+          "1": "codinginterviewquestions"
+        },
+        {
+          "2": "aboincsdefoetingvqtniewonoregessnutins"
+        }
+      ],
+      "output": [
+        {
+          "1": true
+        }
+      ]
+    },
+    {
+      "name": "testcase 2",
+      "inputs": [
+        {
+          "1": "code"
+        },
+        {
+          "2": "coingd"
+        }
+      ],
+      "output": [
+        {
+          "1": false
+        }
+      ]
+    },
+    {
+      "name": "testcase 3",
+      "inputs": [
+        {
+          "1": "codinginterview"
+        },
+        {
+          "2": "vieewidingcodinter"
+        }
+      ],
+      "output": [
+        {
+          "1": true
+        }
+      ]
+    },
+    {
+      "name": "testcase 4",
+      "inputs": [
+        {
+          "1": "program"
+        },
+        {
+          "2": "programming"
+        }
+      ],
+      "output": [
+        {
+          "1": true
+        }
+      ]
+    },
+    {
+      "name": "testcase 5",
+      "inputs": [
+        {
+          "1": "me"
+        },
+        {
+          "2": "meme"
+        }
+      ],
+      "output": [
+        {
+          "1": true
+        }
+      ]
+    },
+    {
+      "name": "testcase 6",
+      "inputs": [
+        {
+          "1": "pppi"
+        },
+        {
+          "2": "pi"
+        }
+      ],
+      "output": [
+        {
+          "1": false
+        }
+      ]
+    },
+    {
+      "name": "testcase 7",
+      "inputs": [
+        {
+          "1": "a"
+        },
+        {
+          "2": "cda"
+        }
+      ],
+      "output": [
+        {
+          "1": true
+        }
+      ]
+    },
+    {
+      "name": "testcase 8",
+      "inputs": [
+        {
+          "1": "youhaveakindheart"
+        },
+        {
+          "2": "abecdefghiavjklmaonopqhrtuvweaxz"
+        }
+      ],
+      "output": [
+        {
+          "1": false
+        }
+      ]
+    },
+    {
+      "name": "testcase 9",
+      "inputs": [
+        {
+          "1": "problemsolving"
+        },
+        {
+          "2": "soproolemving"
+        }
+      ],
+      "output": [
+        {
+          "1": false
+        }
+      ]
+    },
+    {
+      "name": "testcase 10",
+      "inputs": [
+        {
+          "1": "jkqtuxmpelsmigknswpqothbfgehnclsencotplghfdsaqwzmlkvxwithgjldsebvnxs"
+        },
+        {
+          "2": "pelsmigksaqwzmlkvnswpqothbjkqxwhbfgehnclsithgjltuxmssencotpaqwzmlsebvnxs"
+        }
+      ],
+      "output": [
+        {
+          "1": false
+        }
+      ]
+    },
+    {
+      "name": "testcase 11",
+      "inputs": [
+        {
+          "1": "tryityourself"
+        },
+        {
+          "2": "tryityourself"
+        }
+      ],
+      "output": [
+        {
+          "1": true
+        }
+      ]
+    }
+  ]
+}

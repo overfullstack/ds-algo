@@ -31,5 +31,9 @@ private fun IntArray.findInIndex(value: Int, inLeft: Int, inRight: Int): Int =
   (inLeft..inRight).first { this[it] == value }
 
 fun main() {
-  println(buildTree(intArrayOf(3, 9, 20, 15, 7), intArrayOf(9, 3, 15, 20, 7)).second?.incompleteTreeToLevelOrderList())
+  println(
+    buildTree(intArrayOf(3, 9, 20, 15, 7), intArrayOf(9, 3, 15, 20, 7))
+      .second
+      ?.incompleteTreeToLevelOrderList()
+  )
 }

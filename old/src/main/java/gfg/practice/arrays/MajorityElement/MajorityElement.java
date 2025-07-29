@@ -16,21 +16,22 @@ public class MajorityElement {
 	}
 
 	private static void printMajorityElement(int[] arr) {
-		int count = 1, curEle = arr[0];
-		// Only Majority element can have non-zero count.
+		int vote = 1;
+		int curEle = arr[0];
+		// Only Majority element can have non-zero vote.
 		for (var i = 1; i < arr.length; i++) {
 			if (arr[i] == curEle) {
-				count++;
+				vote++;
 			} else {
-				count--;
+				vote--;
 			}
-			if (count == 0) {
+			if (vote == 0) {
 				curEle = arr[i];
-				count = 1;
+				vote = 1;
 			}
 		}
-		if (isElementMajority(
-				curEle, arr)) { // As there is a case where no majority element exits, we are verifying.
+		// As there is a case where no majority element exits, we are verifying.
+		if (isElementMajority(curEle, arr)) {
 			System.out.println(curEle);
 		} else {
 			System.out.println("NO Majority Element");

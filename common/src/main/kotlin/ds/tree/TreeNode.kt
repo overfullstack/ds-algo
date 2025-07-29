@@ -104,7 +104,10 @@ constructor(
   override fun toString(): String =
     "TreeNode(value=$value, left=${left?.value}, right=${right?.value}, parent=${parent?.value}, next=${next?.value}, id='$id', leftSize=$leftSize)"
 
-  fun incompleteTreeToLevelOrderList(curLevel: List<TreeNode?> = listOf(this), result: List<Int?> = listOf(value)): List<Int?> {
+  fun incompleteTreeToLevelOrderList(
+    curLevel: List<TreeNode?> = listOf(this),
+    result: List<Int?> = listOf(value),
+  ): List<Int?> {
     val nextLevel: List<TreeNode?> = curLevel.flatMap { listOf(it?.left, it?.right) }
     val nextLevelValues: List<Int?> = nextLevel.map { it?.value }
     return when {

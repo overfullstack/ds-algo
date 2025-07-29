@@ -1,0 +1,98 @@
+{
+  "testcases": [
+    {
+      "name": "testcase 1",
+      "inputs": [
+        {
+          "1": "abab"
+        },
+        {
+          "2": "ab"
+        }
+      ],
+      "output": [
+        {
+          "1": [
+            0,
+            1,
+            2
+          ]
+        }
+      ]
+    },
+    {
+      "name": "testcase 2",
+      "inputs": [
+        {
+          "1": "cbaebabacd"
+        },
+        {
+          "2": "abc"
+        }
+      ],
+      "output": [
+        {
+          "1": [
+            0,
+            6
+          ]
+        }
+      ]
+    },
+    {
+      "name": "testcase 3",
+      "inputs": [
+        {
+          "1": "efc"
+        },
+        {
+          "2": "ceffec"
+        }
+      ],
+      "output": [
+        {
+          "1": []
+        }
+      ]
+    },
+    {
+      "name": "testcase 4",
+      "inputs": [
+        {
+          "1": "acttacttca"
+        },
+        {
+          "2": "cat"
+        }
+      ],
+      "output": [
+        {
+          "1": [
+            0,
+            3,
+            4,
+            7
+          ]
+        }
+      ]
+    },
+    {
+      "name": "testcase 5",
+      "inputs": [
+        {
+          "1": "bro"
+        },
+        {
+          "2": "bro"
+        }
+      ],
+      "output": [
+        {
+          "1": [
+            0
+          ]
+        }
+      ]
+    }
+  ]
+}

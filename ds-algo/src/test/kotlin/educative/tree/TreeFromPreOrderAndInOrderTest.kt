@@ -9,11 +9,13 @@ import testcase.ListListToList.Companion.parseJsonFileToTestCases
 
 private const val PKG_PATH = "educative/tree/TreeFromPreOrderAndInOrder"
 
-class TreeFromPreOrderAndInOrderTest: StringSpec({
-  "Tree From Preorder and Inorder" {
-    parseJsonFileToTestCases("$PKG_PATH/test-cases-1.json")
-      .forAll { (input, output) ->
-        buildTree(input.first.toIntArray(), input.second.toIntArray()).second?.incompleteTreeToLevelOrderList() shouldBe output
+class TreeFromPreOrderAndInOrderTest :
+  StringSpec({
+    "Tree From Preorder and Inorder" {
+      parseJsonFileToTestCases("$PKG_PATH/test-cases-1.json").forAll { (input, output) ->
+        buildTree(input.first.toIntArray(), input.second.toIntArray())
+          .second
+          ?.incompleteTreeToLevelOrderList() shouldBe output
       }
-  }
-})
+    }
+  })

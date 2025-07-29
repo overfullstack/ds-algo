@@ -1,0 +1,84 @@
+{
+  "testcases": [
+    {
+      "name": "testcase 1",
+      "inputs": [
+        {
+          "1": "codinginterviewquestions"
+        },
+        {
+          "2": "aboincsdefoetingvqtniewonoregessnutins"
+        }
+      ],
+      "output": [
+        {
+          "1": true
+        }
+      ]
+    },
+    {
+      "name": "testcase 2",
+      "inputs": [
+        {
+          "1": "code"
+        },
+        {
+          "2": "coingd"
+        }
+      ],
+      "output": [
+        {
+          "1": false
+        }
+      ]
+    },
+    {
+      "name": "testcase 3",
+      "inputs": [
+        {
+          "1": "codinginterview"
+        },
+        {
+          "2": "vieewidingcodinter"
+        }
+      ],
+      "output": [
+        {
+          "1": true
+        }
+      ]
+    },
+    {
+      "name": "testcase 4",
+      "inputs": [
+        {
+          "1": "program"
+        },
+        {
+          "2": "programming"
+        }
+      ],
+      "output": [
+        {
+          "1": true
+        }
+      ]
+    },
+    {
+      "name": "testcase 5",
+      "inputs": [
+        {
+          "1": "me"
+        },
+        {
+          "2": "meme"
+        }
+      ],
+      "output": [
+        {
+          "1": true
+        }
+      ]
+    }
+  ]
+}
