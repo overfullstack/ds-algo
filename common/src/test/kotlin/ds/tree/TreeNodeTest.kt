@@ -19,7 +19,7 @@ class TreeNodeTest :
         )
         .forAll { levelOrder ->
           val root = levelOrderToIncompleteTree(levelOrder)
-          root!!.incompleteTreeToList() shouldContainInOrder levelOrder
+          root!!.incompleteTreeToLevelOrderList() shouldContainInOrder levelOrder
         }
     }
 

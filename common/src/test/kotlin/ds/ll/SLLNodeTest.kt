@@ -6,7 +6,7 @@ import io.kotest.data.forAll
 import io.kotest.data.row
 import io.kotest.inspectors.forAll
 import io.kotest.matchers.shouldBe
-import testcase.ListIntsToListInts.Companion.parseJsonFileToTestCases
+import testcase.ListToList.Companion.parseJsonFileToTestCases
 
 private const val PKG_PATH = "ll/sll"
 

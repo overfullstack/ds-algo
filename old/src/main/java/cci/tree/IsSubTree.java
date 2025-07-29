@@ -21,25 +21,25 @@ public class IsSubTree {
 	}
 
 	private static boolean isSubTree(TreeNode pt, TreeNode st) {
-		if (pt == null)
+		if (pt == null) {
 			return false; // Since in this method we are navigating through pt if data doesn't match
+		}
 
-		if (pt.value == st.value) {
-			// it is kept in if rather than returning directly coz, even if one case fails to be a subtree
-			// in the middle,
-			// rest validation should continue.
-			if (isAllChildrenSame(pt, st)) {
-				return true;
-			}
+		if (pt.value == st.value && isAllChildrenSame(pt, st)) {
+			return true;
 		}
 
 		return isSubTree(pt.left, st) || isSubTree(pt.right, st);
 	}
 
 	private static boolean isAllChildrenSame(TreeNode pt, TreeNode st) {
-		if (pt == null && st == null) return true;
+		if (pt == null && st == null) {
+			return true;
+		}
 
-		if (st == null || pt == null) return false; // This is same as below
+		if (st == null || pt == null) {
+			return false; // This is same as below
+		}
 		// if (st != null && pt == null) return false;
 		// if (st == null) return true;
 

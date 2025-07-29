@@ -4,15 +4,16 @@ package educative.twopointers
 
 fun containerWithMostWater(heights: IntArray): Int {
   var maxArea = 0
-  var start = 0
-  var end = heights.lastIndex
+  var left = 0
+  var right = heights.lastIndex
 
-  while (end > start) {
-    val width = end - start
-    maxArea = maxOf(maxArea, minOf(heights[start], heights[end]) * width)
+  while (right > left) {
+    val width = right - left
+    maxArea = maxOf(maxArea, minOf(heights[left], heights[right]) * width)
     when {
-      heights[start] < heights[end] -> start++
-      else -> end--
+      // * As we squeeze width, we gain vertical area only moving from shorter to longer lines
+      heights[left] < heights[right] -> left++
+      else -> right--
     }
   }
   return maxArea

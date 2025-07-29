@@ -3,7 +3,7 @@ package educative.fusion
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.inspectors.forAll
 import io.kotest.matchers.shouldBe
-import testcase.TestCase28.Companion.parseJsonFileToTestCases
+import testcase.LListLListToLList.Companion.parseJsonFileToTestCases
 
 /* 16 Sep 2024 17:43 */
 private const val PKG_PATH = "educative/fusion/IntervalListIntersections"

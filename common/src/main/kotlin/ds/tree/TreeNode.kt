@@ -104,19 +104,13 @@ constructor(
   override fun toString(): String =
     "TreeNode(value=$value, left=${left?.value}, right=${right?.value}, parent=${parent?.value}, next=${next?.value}, id='$id', leftSize=$leftSize)"
 
-  fun incompleteTreeToList(): List<Int?> {
-    val valQueue = LinkedList<Int?>()
-    val treeNodeQueue = ArrayDeque<TreeNode>()
-    treeNodeQueue.add(this)
-    valQueue.add(this.value)
-    while (treeNodeQueue.isNotEmpty()) {
-      val curTreeNode = treeNodeQueue.poll()
-      curTreeNode.left?.let { treeNodeQueue.addLast(it) }
-      curTreeNode.right?.let { treeNodeQueue.addLast(it) }
-      valQueue.addLast(curTreeNode.left?.value)
-      valQueue.addLast(curTreeNode.right?.value)
+  fun incompleteTreeToLevelOrderList(curLevel: List<TreeNode?> = listOf(this), result: List<Int?> = listOf(value)): List<Int?> {
+    val nextLevel: List<TreeNode?> = curLevel.flatMap { listOf(it?.left, it?.right) }
+    val nextLevelValues: List<Int?> = nextLevel.map { it?.value }
+    return when {
+      nextLevelValues.all { it == null } -> result.dropLastWhile { it == null }
+      else -> incompleteTreeToLevelOrderList(nextLevel, result + nextLevelValues)
     }
-    return valQueue
   }
 
   companion object {

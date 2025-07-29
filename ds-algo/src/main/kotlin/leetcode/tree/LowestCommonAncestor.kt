@@ -5,27 +5,28 @@ import ds.tree.TreeNode
 fun TreeNode?.lowestCommonAncestor(p: TreeNode, q: TreeNode): TreeNode? {
   when {
     this == null -> return null
-    this == p && this == q -> return this
+    this == p && p == q -> return this
   }
 
   val left = left?.lowestCommonAncestor(p, q)
-  // It bubbles-up for 3 scenarios
-  // * You found some unrelated node, so bubble-up from that area and search on the other-side of
-  // it's parent
-  // * You found the common ancestor, so quickly bubble-up in the route you came-in
-  if (left != null && left != p && left != q) {
+  // * Search on the other (right) side if:
+  //    * None of `p` or `q` found.
+  //    * Only `p` or `q` found.
+  // * If Ancestor found, bubble-up
+  val isAncestorFoundOnLeft = left != null && left != p && left != q
+  if (isAncestorFoundOnLeft) {
     return left
   }
 
-  // If you crossed above if, p/q is on `this` left, search on the right for the other one
-
   val right = right?.lowestCommonAncestor(p, q)
-  if (right != null && right != p && right != q) {
+  val isAncestorFoundOnRight = right != null && right != p && right != q
+  if (isAncestorFoundOnRight) {
     return right
   }
 
   return when {
-    left != null && right != null -> this
-    else -> left ?: right
+    this == p || this == q -> this // One of them found
+    left != null && right != null -> this // ! Ancestor found, as both are found in subtree
+    else -> left ?: right // One or none found in subtree
   }
 }

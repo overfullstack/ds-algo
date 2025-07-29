@@ -5,15 +5,15 @@ import ds.tree.TreeNode
 /* 19 Jul 2025 17:55 */
 
 fun TreeNode.verticalTraversal(): List<List<Int>> =
-  verticalTraversalInternal()
+  verticalTraversalInternal(listOf(0 to this))
     .flatten()
     .groupBy({ it.first }, { it.second.value })
     .toSortedMap()
     .values
     .toList()
 
-private tailrec fun TreeNode.verticalTraversalInternal(
-  currentLevel: List<Pair<Int, TreeNode>> = listOf(0 to this),
+private tailrec fun verticalTraversalInternal(
+  currentLevel: List<Pair<Int, TreeNode>>,
   result: List<List<Pair<Int, TreeNode>>> = listOf(currentLevel),
 ): List<List<Pair<Int, TreeNode>>> {
   val nextLevel =
