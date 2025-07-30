@@ -15,13 +15,11 @@ fun networkDelayTime(times: List<Triple<Int, Int, Int>>, n: Int, origin: Int): I
   val visited = mutableSetOf<Int>()
   var minDelay = Int.MIN_VALUE
   while (pq.isNotEmpty()) {
-    val (to, time) = pq.poll()
-    // This if check deals with transitive duplicates that get added to the queue before they are
-    // visited
-    if (to !in visited) {
-      visited.add(to)
+    val (node, time) = pq.poll()
+    if (node !in visited) {
+      visited.add(node)
       minDelay = maxOf(minDelay, time)
-      graph[to]
+      graph[node]
         ?.filter { (to, _) -> to !in visited }
         ?.forEach { (to, time) -> pq.add(WeightedEdge(to, time + minDelay)) }
     }

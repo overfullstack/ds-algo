@@ -54,12 +54,10 @@ public class DijkstraSP {
 		var from = graph.getVertices()[edge.from()];
 		var to = graph.getVertices()[edge.to()];
 		var distanceFromSourceViaFrom = from.distFromSource + edge.weight();
-		if (to.distFromSource == -1 || to.distFromSource > distanceFromSourceViaFrom) {
+		if (distanceFromSourceViaFrom < to.distFromSource) {
 			to.distFromSource = distanceFromSourceViaFrom;
 			edgeTo[to.index] = edge;
-			if (!pq.contains(to)) {
-				pq.add(to);
-			}
+			pq.add(to);
 		}
 	}
 
@@ -75,9 +73,12 @@ public class DijkstraSP {
 	private static void printShortestDistances(int source) {
 		var vertexCount = graph.vertexCount();
 		var result = new StringBuilder();
-		for (var i = 1; i <= vertexCount; i++)
-			if (i != source) result.append(graph.getVertices()[i].distFromSource).append(" ");
-		System.out.println(result);
+		for (var i = 1; i <= vertexCount; i++) {
+			if (i != source) {
+				result.append(graph.getVertices()[i].distFromSource).append(" ");
+			}
+			System.out.println(result);
+		}
 	}
 
 	private static void printShortestPaths(int source) {

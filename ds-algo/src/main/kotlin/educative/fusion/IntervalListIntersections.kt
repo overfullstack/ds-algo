@@ -25,8 +25,8 @@ fun intervalListIntersections(
     return when {
       a[aIndex].second == b[bIndex].second ->
         intervalListIntersections(aIndex + 1, bIndex + 1, intervalIntersections)
-      a[aIndex].second < b[bIndex].second ->
-        intervalListIntersections(aIndex + 1, bIndex, intervalIntersections)
+      a[aIndex].second < b[bIndex].second -> // Move past earliest ending Job
+      intervalListIntersections(aIndex + 1, bIndex, intervalIntersections)
       else -> intervalListIntersections(aIndex, bIndex + 1, intervalIntersections)
     }
   }

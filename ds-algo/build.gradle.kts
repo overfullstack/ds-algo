@@ -10,3 +10,7 @@ dependencies {
   implementation(libs.bundles.kotlin.logging)
   implementation(libs.revoman)
 }
+
+tasks.test {
+  systemProperty("kotest.framework.classpath.scanning.autoscan.disable", "true")
+}

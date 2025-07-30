@@ -51,8 +51,6 @@ Explanation
 
 The graph given in the test case is shown as :
 
-![Graph](../../images/dijkstra.png)
-
 The straight line is a weighted edge, denoting length of edge between the corresponding nodes. The
 nodes S,B,C and D denote the obvious node 1,2,3 and 4 in the test case. The shortest paths followed
 for the three nodes B,C and D are as follows :

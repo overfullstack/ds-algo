@@ -1,6 +1,7 @@
 /* gakshintala created on 9/25/19 */
 package leetcode.greedy
 
+/** [Merge Intervals](https://leetcode.com/problems/merge-intervals/) */
 fun mergeIntervals(intervals: List<Pair<Int, Int>>): List<Pair<Int, Int>> {
   val sortedByStartIntervals = intervals.sortedBy { it.first }
   return sortedByStartIntervals.drop(1).fold(listOf(sortedByStartIntervals.first())) {
