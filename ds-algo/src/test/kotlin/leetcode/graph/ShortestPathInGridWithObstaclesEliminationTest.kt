@@ -26,7 +26,8 @@ class ShortestPathInGridWithObstaclesEliminationTest :
             intArrayOf(0, 1, 1, 1, 1, 1, 1, 0, 1, 0),
             intArrayOf(0, 0, 0, 0, 0, 0, 0, 0, 1, 0),
           ),
-          1, 20
+          1,
+          20,
         ),
         row(
           arrayOf(
@@ -43,9 +44,10 @@ class ShortestPathInGridWithObstaclesEliminationTest :
             intArrayOf(0, 0),
             intArrayOf(1, 0),
             intArrayOf(1, 0),
-            intArrayOf(0, 0)
+            intArrayOf(0, 0),
           ),
-          4, 14
+          4,
+          14,
         ),
       ) { grid, k, result ->
         shortestPath(grid, k) shouldBe result

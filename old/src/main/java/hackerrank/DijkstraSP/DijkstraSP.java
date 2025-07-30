@@ -5,9 +5,11 @@ import hackerrank.DS.EdgeWeightedDigraph;
 import hackerrank.DS.Vertex;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
 import java.util.PriorityQueue;
 import java.util.Scanner;
+import java.util.Set;
 
 /** Created by gakshintala on 1/6/16. */
 public class DijkstraSP {
@@ -38,13 +40,22 @@ public class DijkstraSP {
 
 	private static EdgeWeightedDigraph findShortDistancesToAllNodes(int source) {
 		pq = new PriorityQueue<>();
+		Set<Integer> visited = new HashSet<>();
 		graph.getVertices()[source].distFromSource = 0;
 		edgeTo[source] = null;
 		pq.add(graph.getVertices()[source]);
 		while (!pq.isEmpty()) {
 			var fromVertex = pq.poll();
+			// Skip if already visited (handles duplicate entries in priority queue)
+			if (visited.contains(fromVertex.index)) {
+				continue;
+			}
+			visited.add(fromVertex.index);
 			for (var edge : graph.getConnectingEdges(fromVertex.index)) {
-				relax(edge);
+				// Only relax edges to unvisited vertices
+				if (!visited.contains(edge.to())) {
+					relax(edge);
+				}
 			}
 		}
 		return graph;

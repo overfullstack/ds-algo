@@ -45,7 +45,7 @@ class SLLNodeTest :
           "$PKG_PATH/sll-reverse-test-cases-2.json",
         )
         .forAll { (inputs, output) ->
-          val head = SLLNode.of(inputs.toIntArray())!!
+          val head = SLLNode.of(inputs.filterNotNull().toIntArray())!!
           head.reverse().toArray() shouldBe output.toIntArray()
         }
     }
