@@ -17,3 +17,10 @@ fun <T> List<T>.toTriple(): Triple<T, T, T> =
       throw IllegalArgumentException("List with more than 2 elements cannot be converted to Pair")
     else -> Triple(get(0), get(1), get(2))
   }
+
+fun IntArray.toTriple(): Triple<Int, Int, Int> =
+  when {
+    size > 3 ->
+      throw IllegalArgumentException("Array with more than 2 elements cannot be converted to Pair")
+    else -> Triple(get(0), get(1), get(2))
+  }
