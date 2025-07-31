@@ -8,8 +8,12 @@ fun wordBreakDP(s: String, wordDict: List<String>): Boolean {
   val dict = wordDict.toSet()
   dp[0] = true
   // * Building the word, one index at a time, expanding `endIndex` and checking if it can be broken
+  // * -
+  // * --
+  // * ---
   for (endIndex in 1..(s.lastIndex + 1)) {
     for (startIndex in 0..endIndex) {
+      // ! dp[startIndex] indicates a substring that ends at `startIndex` can be broken
       if (dp[startIndex] && dict.contains(s.substring(startIndex until endIndex))) {
         dp[endIndex] = true
         break
