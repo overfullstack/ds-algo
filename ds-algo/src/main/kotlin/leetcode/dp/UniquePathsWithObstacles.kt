@@ -5,7 +5,7 @@ fun uniquePathsWithObstacles(obstacleGrid: Array<IntArray>): Int {
   val rows = obstacleGrid.size
   val cols = obstacleGrid[0].size
   val table = Array(rows) { IntArray(cols) }
-  table[0][0] = if (obstacleGrid[0][0] == 1) 0 else 1
+  table[0][0] = if (obstacleGrid[0][0] != 1) 1 else return 0
   // This table[it - 1][0] is necessary, coz if the previous one is 0, current one should be 0 too.
   (1 until rows).forEach { table[it][0] = if (obstacleGrid[it][0] == 1) 0 else table[it - 1][0] }
   (1 until cols).forEach { table[0][it] = if (obstacleGrid[0][it] == 1) 0 else table[0][it - 1] }
@@ -18,6 +18,22 @@ fun uniquePathsWithObstacles(obstacleGrid: Array<IntArray>): Int {
     }
   }
   return table[rows - 1][cols - 1]
+}
+
+fun uniquePathsWithObstacles2(obstacleGrid: Array<IntArray>): Int {
+  val rows = obstacleGrid.size
+  val cols = obstacleGrid[0].size
+  val table = IntArray(rows) { 0 }
+  table[0] = if (obstacleGrid[0][0] != 1) 1 else return 0
+  for (row in 1..rows) {
+    for (col in 1..cols) {
+      when {
+        obstacleGrid[row][col] == 1 -> table[col] = 0 // We set to 0 for any obstacle found
+        else -> table[col] += table[col - 1]
+      }
+    }
+  }
+  return table.last()
 }
 
 fun main() {

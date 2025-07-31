@@ -19,10 +19,10 @@ class DiGraph<T>(private val adjacencyMap: MutableMap<T, Set<T>> = mutableMapOf(
     return adjacencyMap.keys
       .asSequence()
       .filter { it !in visited }
-      .any { bfsPerBranch(valToSearch, visited, ArrayDeque(listOf(it))) }
+      .any { bfsPerGroup(valToSearch, visited, ArrayDeque(listOf(it))) }
   }
 
-  private tailrec fun bfsPerBranch(
+  private tailrec fun bfsPerGroup(
     valToSearch: T,
     visited: MutableSet<T>,
     queue: ArrayDeque<T>,
@@ -32,12 +32,13 @@ class DiGraph<T>(private val adjacencyMap: MutableMap<T, Set<T>> = mutableMapOf(
       else -> {
         when (val node = queue.poll()) {
           valToSearch -> true
-          in visited -> bfsPerBranch(valToSearch, visited, queue) // Skip this node, NoOp recursion
+          // Skip this node, NoOp recursion with a polled queue
+          in visited -> bfsPerGroup(valToSearch, visited, queue)
           else -> {
-            visited.add(node) // Mark as visited before adding neighbors to avoid cycles
+            visited += node // Mark as visited before adding neighbors to avoid cycles
             val neighbours = adjacencyMap[node]?.filter { it !in visited } ?: emptyList()
             queue.addAll(neighbours)
-            bfsPerBranch(valToSearch, visited, queue)
+            bfsPerGroup(valToSearch, visited, queue)
           }
         }
       }
@@ -48,17 +49,18 @@ class DiGraph<T>(private val adjacencyMap: MutableMap<T, Set<T>> = mutableMapOf(
     return adjacencyMap.keys
       .asSequence()
       .filter { it !in visited }
-      .any { dfsPerBranch(it, valToSearch, visited.apply { add(it) }) }
+      .any { dfsPerGroup(it, valToSearch, visited) }
   }
 
-  private fun dfsPerBranch(currentNode: T, valToSearch: T, visited: MutableSet<T>): Boolean =
+  private fun dfsPerGroup(currentNode: T, valToSearch: T, visited: MutableSet<T>): Boolean =
     when (currentNode) {
       valToSearch -> true
       else -> {
+        visited += currentNode
         adjacencyMap[currentNode]
           ?.asSequence()
           ?.filter { it !in visited }
-          ?.any { dfsPerBranch(it, valToSearch, visited.apply { add(it) }) } == true
+          ?.any { dfsPerGroup(it, valToSearch, visited) } == true
       }
     }
 
@@ -69,11 +71,11 @@ class DiGraph<T>(private val adjacencyMap: MutableMap<T, Set<T>> = mutableMapOf(
       .asSequence()
       .filter { it !in visited }
       // ! Using a `list(it)` for Order, otherwise Global visited captures all reachable nodes
-      .flatMap { listOf(it) + it.dftPerBranch(visited) }
+      .flatMap { listOf(it) + it.dftPerGroup(visited) }
       .toList()
   }
 
-  private fun T.dftPerBranch(visited: MutableSet<T>): Sequence<T> =
+  private fun T.dftPerGroup(visited: MutableSet<T>): Sequence<T> =
     when {
       this in visited -> emptySequence()
       else -> {
@@ -81,8 +83,26 @@ class DiGraph<T>(private val adjacencyMap: MutableMap<T, Set<T>> = mutableMapOf(
         adjacencyMap[this]
           ?.asSequence()
           ?.filter { it !in visited }
-          ?.flatMap { listOf(it) + it.dftPerBranch(visited) }
+          ?.flatMap { listOf(it) + it.dftPerGroup(visited) }
           ?.distinct() ?: emptySequence()
+      }
+    }
+
+  fun dftGroupsSize(): List<Int> {
+    val visited = mutableSetOf<T>()
+    return adjacencyMap.keys
+      .asSequence()
+      .filter { it !in visited }
+      .map { 1 + it.dftGroupSize(visited) }
+      .toList()
+  }
+
+  private fun T.dftGroupSize(visited: MutableSet<T>): Int =
+    when {
+      this in visited -> 0
+      else -> {
+        visited += this
+        adjacencyMap[this]?.filter { it !in visited }?.sumOf { 1 + it.dftGroupSize(visited) } ?: 0
       }
     }
 
@@ -94,20 +114,22 @@ class DiGraph<T>(private val adjacencyMap: MutableMap<T, Set<T>> = mutableMapOf(
     return adjacencyMap.keys
       .asSequence()
       .filter { it !in visited }
-      .any { it.hasCyclePerBranch(visited.apply { add(it) }) }
+      .any { it.hasCyclePerGroup(visited) }
   }
 
-  private fun T.hasCyclePerBranch(
+  private fun T.hasCyclePerGroup(
     visited: MutableSet<T>,
     visitedInBranch: Set<T> = setOf(this), // ! Notice global visited and visitedInBranch
-  ): Boolean =
-    adjacencyMap[this]?.any {
+  ): Boolean {
+    visited += this
+    return adjacencyMap[this]?.any {
       when (it) {
         in visitedInBranch -> true
         in visited -> false // * A node can have two inward connections
-        else -> it.hasCyclePerBranch(visited.apply { add(it) }, visitedInBranch + it)
+        else -> it.hasCyclePerGroup(visited, visitedInBranch + it)
       }
     } == true
+  }
 
   /** DETECT CYCLE -> */
   fun topologicalSort(): List<T> {
@@ -115,22 +137,24 @@ class DiGraph<T>(private val adjacencyMap: MutableMap<T, Set<T>> = mutableMapOf(
     return adjacencyMap.keys
       .asSequence()
       .filter { it !in visited }
-      .flatMap { it.topologicalSortPerBranch(visited.apply { add(it) }) + it }
+      .flatMap { it.topologicalSortPerBranch(visited) + it }
       .toList()
   }
 
   private fun T.topologicalSortPerBranch(
     visited: MutableSet<T>,
     visitedInBranch: Set<T> = setOf(this),
-  ): Sequence<T> =
-    adjacencyMap[this]?.asSequence()?.flatMap {
+  ): Sequence<T> {
+    visited += this
+    return adjacencyMap[this]?.asSequence()?.flatMap {
       when (it) {
         in visitedInBranch -> throw IllegalArgumentException("Graph has Cycle")
         in visited -> emptySequence() // This node was visited so can't contribute to any sequence.
         // Key depends on the list of values
-        else -> it.topologicalSortPerBranch(visited.apply { add(it) }, visitedInBranch + it) + it
+        else -> it.topologicalSortPerBranch(visited, visitedInBranch + it) + it
       }
     } ?: emptySequence() // No connections.
+  }
 
   companion object {
     @Serializable

@@ -21,7 +21,7 @@ fun minMeetingRoomsRequired2(meetings: Array<Pair<Int, Int>>): Int {
   minEndTimeHeap.add(sortedMeetings.first().second)
   for (meeting in sortedMeetings.drop(1)) {
     if (meeting.first >= minEndTimeHeap.peek()) {
-      minEndTimeHeap.poll()
+      minEndTimeHeap.poll() // * Meeting room available, so pop it and add the new one
     }
     minEndTimeHeap.add(meeting.second)
   }

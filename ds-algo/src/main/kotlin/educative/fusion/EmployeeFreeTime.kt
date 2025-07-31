@@ -12,17 +12,17 @@ fun employeeFreeTime(allEmployeeMeetings: List<List<Pair<Int, Int>>>): List<Pair
       Triple(empMeetings.first().first, row, 0)
     }
   )
-  val nonOverlappingIntervals = mutableListOf<Pair<Int, Int>>()
+  val gaps = mutableListOf<Pair<Int, Int>>()
   var prevIntervalEndTime = minHeap.peek().first
   while (minHeap.isNotEmpty()) {
     val (curIntervalStartTime, row, col) = minHeap.poll()
     if (prevIntervalEndTime < curIntervalStartTime) {
-      nonOverlappingIntervals += (prevIntervalEndTime to curIntervalStartTime)
+      gaps += (prevIntervalEndTime to curIntervalStartTime)
     }
     prevIntervalEndTime = maxOf(prevIntervalEndTime, allEmployeeMeetings[row][col].second)
     if (col + 1 <= allEmployeeMeetings[row].lastIndex) {
       minHeap.add(Triple(allEmployeeMeetings[row][col + 1].first, row, col + 1))
     }
   }
-  return nonOverlappingIntervals
+  return gaps
 }

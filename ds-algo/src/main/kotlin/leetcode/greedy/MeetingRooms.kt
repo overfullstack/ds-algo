@@ -4,7 +4,5 @@ package leetcode.greedy
 fun canAttendAllMeetings(meetings: Array<Pair<Int, Int>>): Boolean =
   meetings
     .sortedBy { it.first }
-    .indices
-    .asSequence()
-    .drop(1)
-    .all { meetings[it].first >= meetings[it - 1].second }
+    .zipWithNext()
+    .all { (meeting1, meeting2) -> meeting1.second <= meeting2.first }

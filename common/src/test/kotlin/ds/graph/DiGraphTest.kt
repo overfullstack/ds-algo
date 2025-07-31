@@ -92,4 +92,48 @@ class DiGraphTest :
         graph.dft() shouldContainExactly result
       }
     }
+
+    "dft group size with DiGraph JSON" {
+      forAll(
+        row(parseJsonFileToDiGraph("$PKG_PATH/graph2.json"), listOf("A", "B", "D", "C").size),
+        row(
+          parseJsonFileToDiGraph("$PKG_PATH/graph1.json"),
+          listOf("A", "B", "E", "F", "I", "J", "C", "D", "G", "K", "H").size,
+        ),
+        row(
+          parseJsonFileToDiGraph("$PKG_PATH/graph3.json"),
+          listOf(
+              "A",
+              "B",
+              "G",
+              "H",
+              "O",
+              "P",
+              "T",
+              "U",
+              "Q",
+              "R",
+              "V",
+              "W",
+              "X",
+              "Z",
+              "Y",
+              "I",
+              "C",
+              "J",
+              "D",
+              "K",
+              "S",
+              "L",
+              "E",
+              "F",
+              "M",
+              "N",
+            )
+            .size,
+        ),
+      ) { graph, result ->
+        graph.dftGroupsSize() shouldContainExactly listOf(result)
+      }
+    }
   })

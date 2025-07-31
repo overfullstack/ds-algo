@@ -1,6 +1,5 @@
 package leetcode.array
 
-
 /* 31 Jul 2025 17:20 */
 
 fun shortestWay(source: String, target: String): Int {
