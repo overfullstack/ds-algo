@@ -6,7 +6,8 @@ import java.util.*
 /* 30 Jul 2025 18:42 */
 
 /**
- * [1928. Minimum Cost to Reach Destination in Time](https://leetcode.com/problems/minimum-cost-to-reach-destination-in-time)
+ * [1928. Minimum Cost to Reach Destination in
+ * Time](https://leetcode.com/problems/minimum-cost-to-reach-destination-in-time)
  */
 fun minCost(maxTime: Int, edges: Array<IntArray>, passingFees: IntArray): Int {
   // Create undirected graph by adding edges in both directions

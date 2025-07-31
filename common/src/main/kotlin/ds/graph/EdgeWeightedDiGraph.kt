@@ -38,6 +38,7 @@ class EdgeWeightedDiGraph<T>(
       // ! This is only for optimization, but it works without this
       if (node in nodeToDistanceFromSource) continue
       nodeToDistanceFromSource[node] = distanceFromSource
+      // * Loop through Neighbour edges
       adjacencyMap[node]?.forEach { (to, distanceFromNodeToTo) ->
         val newDistance = distanceFromSource + distanceFromNodeToTo
         // ! This takes care of cycle even without visited

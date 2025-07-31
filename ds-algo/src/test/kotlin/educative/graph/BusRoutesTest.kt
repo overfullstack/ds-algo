@@ -14,7 +14,11 @@ class BusRoutesTest :
     "minimum number of buses" {
       parseJsonFileToTestCases("$PKG_PATH/test-cases-1.json").forAll { (input, output) ->
         val (routes, source, destination) = input
-        minimumNumberOfBuses(routes, source, destination) shouldBe output
+        numBusesToDestination(
+          routes.map { it.toIntArray() }.toTypedArray(),
+          source,
+          destination,
+        ) shouldBe output
       }
     }
   })

@@ -1,9 +1,9 @@
 package leetcode.array
 
 fun countSubstrings(s: String): Int =
-  s.indices.map { strechWindow(s, it, it) + strechWindow(s, it, it + 1) }.sum()
+  s.indices.sumOf { stretchWindow(s, it, it) + stretchWindow(s, it, it + 1) }
 
-private fun strechWindow(s: String, start: Int, end: Int): Int {
+private fun stretchWindow(s: String, start: Int, end: Int): Int {
   var count = 0
   var startIndex = start
   var endIndex = end
