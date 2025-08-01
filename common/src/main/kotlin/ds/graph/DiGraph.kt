@@ -124,7 +124,7 @@ class DiGraph<T>(private val adjacencyMap: MutableMap<T, Set<T>> = mutableMapOf(
     visited += this
     return adjacencyMap[this]?.any {
       when (it) {
-        in visitedInBranch -> true
+        in visitedInBranch -> true // ! visitedInBranch check has to be before visited check
         in visited -> false // * A node can have two inward connections
         else -> it.hasCyclePerGroup(visited, visitedInBranch + it)
       }
@@ -148,6 +148,7 @@ class DiGraph<T>(private val adjacencyMap: MutableMap<T, Set<T>> = mutableMapOf(
     visited += this
     return adjacencyMap[this]?.asSequence()?.flatMap {
       when (it) {
+        // ! visitedInBranch check has to be before visited check
         in visitedInBranch -> throw IllegalArgumentException("Graph has Cycle")
         in visited -> emptySequence() // This node was visited so can't contribute to any sequence.
         // Key depends on the list of values

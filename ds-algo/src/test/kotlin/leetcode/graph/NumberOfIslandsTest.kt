@@ -5,7 +5,7 @@ import io.kotest.data.forAll
 import io.kotest.data.row
 import io.kotest.matchers.shouldBe
 
-class IslandsTest :
+class NumberOfIslandsTest :
   StringSpec({
     "Number of islands" {
       forAll(

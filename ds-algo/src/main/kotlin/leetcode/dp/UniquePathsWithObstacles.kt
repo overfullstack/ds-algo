@@ -7,13 +7,17 @@ fun uniquePathsWithObstacles(obstacleGrid: Array<IntArray>): Int {
   val table = Array(rows) { IntArray(cols) }
   table[0][0] = if (obstacleGrid[0][0] != 1) 1 else return 0
   // This table[it - 1][0] is necessary, coz if the previous one is 0, current one should be 0 too.
-  (1 until rows).forEach { table[it][0] = if (obstacleGrid[it][0] == 1) 0 else table[it - 1][0] }
-  (1 until cols).forEach { table[0][it] = if (obstacleGrid[0][it] == 1) 0 else table[0][it - 1] }
+  for (row in 1 until rows) {
+    table[row][0] = if (obstacleGrid[row][0] == 1) 0 else table[row - 1][0]
+  }
+  for (col in 1 until cols) {
+    table[0][col] = if (obstacleGrid[0][col] == 1) 0 else table[0][col - 1]
+  }
 
-  for (i in 1 until rows) {
-    for (j in 1 until cols) {
-      if (obstacleGrid[i][j] != 1) {
-        table[i][j] = table[i - 1][j] + table[i][j - 1]
+  for (row in 1 until rows) {
+    for (col in 1 until cols) {
+      if (obstacleGrid[row][col] != 1) {
+        table[row][col] = table[row - 1][col] + table[row][col - 1]
       }
     }
   }

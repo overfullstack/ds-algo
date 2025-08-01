@@ -4,4 +4,4 @@ alwaysApply: true
 
 - Always use pure functional programming style
 - Reduce state mutation as much as possible
-- Ignore formatting issues
+- Ignore linting errors and formatting issues

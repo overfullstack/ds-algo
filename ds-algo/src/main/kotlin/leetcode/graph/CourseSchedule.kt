@@ -11,13 +11,13 @@ fun canFinish(numCourses: Int, prerequisites: Array<IntArray>): Boolean {
     diGraph.keys
       .asSequence()
       .filter { it !in visited }
-      .all { it.dftPerBranch(diGraph, visited.apply { add(it) }, setOf(it)) }
+      .all { it.dftPerGroup(diGraph, visited.apply { add(it) }, setOf(it)) }
   } catch (e: IllegalArgumentException) {
     false
   }
 }
 
-private fun Int.dftPerBranch(
+private fun Int.dftPerGroup(
   diGraph: Map<Int, Set<Int>>,
   visited: MutableSet<Int>,
   visitedInBrach: Set<Int>,
@@ -26,7 +26,7 @@ private fun Int.dftPerBranch(
     ?.asSequence()
     ?.all { // ! You cannot filter visited here, as it skips `in vistedInBranch`
       when (it) {
-        !in visited -> it.dftPerBranch(diGraph, visited.apply { add(it) }, visitedInBrach + it)
+        !in visited -> it.dftPerGroup(diGraph, visited.apply { add(it) }, visitedInBrach + it)
         in visitedInBrach -> throw IllegalArgumentException("Graph has Cycle")
         else -> true // already visited
       }

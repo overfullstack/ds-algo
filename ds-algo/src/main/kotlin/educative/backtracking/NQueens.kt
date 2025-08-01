@@ -15,6 +15,8 @@ fun nQueens(n: Int, curRow: Int = 0, queenCells: Map<Int, Int> = emptyMap()): In
 
 private fun isValid(row: Int, col: Int, queenCells: Map<Int, Int>): Boolean =
   queenCells.all { (queenRow, queenCol) ->
+    // * If removing row equates cols, that means they both are seperated by same rows and cols
+    // * which proves they are in same diagonal
     val diagonalOffset = row - queenRow
     col != queenCol && col != queenCol - diagonalOffset && col != queenCol + diagonalOffset
   }
