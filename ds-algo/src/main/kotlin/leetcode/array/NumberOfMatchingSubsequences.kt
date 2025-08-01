@@ -2,6 +2,9 @@ package leetcode.array
 
 /* 01 Aug 2025 13:26 */
 
+/**
+ * [792. Number of Matching Subsequences](https://leetcode.com/problems/number-of-matching-subsequences)
+ */
 fun numMatchingSubseq(s: String, words: Array<String>): Int {
   val buckets: MutableMap<Char, ArrayDeque<Pair<Int, String>>> =
     words.groupBy({ it.first() }, { 0 to it }).mapValues { ArrayDeque(it.value) }.toMutableMap()
@@ -22,25 +25,6 @@ fun numMatchingSubseq(s: String, words: Array<String>): Int {
       }
     }
   }
-  return count
-}
-
-fun numMatchingSubseq2(s: String, words: Array<String>): Int {
-  val buckets = mutableMapOf<Char, ArrayDeque<Pair<String, Int>>>()
-  for (c in 'a'..'z') buckets[c] = ArrayDeque()
-
-  for (word in words) buckets[word[0]]!!.add(word to 0)
-
-  var count = 0
-  for (c in s) {
-    val queue = buckets[c]!!
-    repeat(queue.size) {
-      val (word, idx) = queue.removeFirst()
-      val next = idx + 1
-      if (next == word.length) count++ else buckets[word[next]]!!.add(word to next)
-    }
-  }
-
   return count
 }
 
