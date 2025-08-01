@@ -7,7 +7,7 @@ revoman = "0.80.4"
 kover = "0.9.1"
 kotest = "5.9.1"
 testLogger = "4.0.0"
-kotlin-logging = "7.0.7"
+kotlin-logging = "7.0.10"
 # Common dependencies
 junit = "5.11.3"
 spotless = "7.2.1"
