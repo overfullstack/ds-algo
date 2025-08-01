@@ -7,6 +7,6 @@ import ds.tree.TreeNode
 private fun TreeNode?.hasPathSum(sum: Int): Boolean =
   when {
     this == null -> false
-    left == null && right == null -> (sum - value) == 0
-    else -> left.hasPathSum(sum - value) || right.hasPathSum(sum - value)
+    left == null && right == null -> (sum - `val`) == 0
+    else -> left.hasPathSum(sum - `val`) || right.hasPathSum(sum - `val`)
   }

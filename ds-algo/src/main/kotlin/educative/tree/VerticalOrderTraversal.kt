@@ -7,7 +7,7 @@ import ds.tree.TreeNode
 fun TreeNode.verticalTraversal(): List<List<Int>> =
   verticalTraversalInternal(listOf(0 to this))
     .flatten()
-    .groupBy({ it.first }, { it.second.value })
+    .groupBy({ it.first }, { it.second.`val` })
     .toSortedMap()
     .values
     .toList()

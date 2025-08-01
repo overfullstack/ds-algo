@@ -14,7 +14,7 @@ private fun TreeNode?.pathCountForSum(
   if (this == null) {
     return 0
   }
-  val curSum = runningSum + this.value
+  val curSum = runningSum + this.`val`
   var totalPathCount =
     sumToPathCount.getOrDefault(curSum - targetSum, 0) + if (curSum == targetSum) 1 else 0
 

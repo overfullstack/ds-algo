@@ -10,8 +10,8 @@ fun TreeNode.maxPathSum(): Pair<Int, Int> {
   // * `coerceAtLeast(0)` is to avoid any negative number that lessens the sum
   // * We consider root, only if the path passes through left and right
   val sumWithRoot =
-    leftPassThroughSum.coerceAtLeast(0) + rightPassThroughSum.coerceAtLeast(0) + value
+    leftPassThroughSum.coerceAtLeast(0) + rightPassThroughSum.coerceAtLeast(0) + `val`
   val curMaxSum = maxOf(sumWithRoot, maxSumInLeft, maxSumInRight)
-  val maxPassThroughSum = maxOf(leftPassThroughSum, rightPassThroughSum).coerceAtLeast(0) + value
+  val maxPassThroughSum = maxOf(leftPassThroughSum, rightPassThroughSum).coerceAtLeast(0) + `val`
   return maxPassThroughSum to curMaxSum
 }

@@ -11,7 +11,7 @@ fun TreeNode.isSymmetric(): Boolean {
     val left = queue.poll()
     val right = queue.poll()
     when {
-      left?.value != right?.value -> return false
+      left?.`val` != right?.`val` -> return false
       else -> {
         queue.add(left?.left)
         queue.add(right?.right)

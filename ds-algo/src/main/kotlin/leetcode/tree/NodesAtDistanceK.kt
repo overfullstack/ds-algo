@@ -2,65 +2,67 @@
 package leetcode.tree
 
 import ds.tree.TreeNode
-import leetcode.tree.NodeAtDistanceK.AllNodesFound
-import leetcode.tree.NodeAtDistanceK.FoundAtDistance
-import leetcode.tree.NodeAtDistanceK.NotFound
+import leetcode.tree.Status.AllFoundAtK
+import leetcode.tree.Status.NotFound
+import leetcode.tree.Status.SearchAncestor
 
-sealed class NodeAtDistanceK {
-  object NotFound : NodeAtDistanceK()
+/**
+ * [863. All Nodes Distance K in Binary
+ * Tree](https://leetcode.com/problems/all-nodes-distance-k-in-binary-tree/)
+ */
+fun distanceK(root: TreeNode?, target: TreeNode?, k: Int) =
+  if (target == null) emptyList() else root.nodesAtDistanceK(target.`val`, k).second
 
-  object AllNodesFound : NodeAtDistanceK()
-
-  class FoundAtDistance(val distance: Int) : NodeAtDistanceK() {
-    operator fun plus(value: Int) = distance + value
-  }
-}
-
-fun distanceK(root: TreeNode?, target: TreeNode?, K: Int) =
-  if (target == null) emptyList() else root.nodesAtDistanceK(target.value, K).second
-
-private fun TreeNode?.nodesAtDistanceK(target: Int, K: Int): Pair<NodeAtDistanceK, List<Int>> {
-  if (this == null) {
-    return NotFound to emptyList()
-  }
-  if (this.value == target) {
-    // * When found, return along with all bottom-nodes, so bottom direction is covered.
-    return FoundAtDistance(0) to this.bottomNodesAtDistanceK(K)
-  }
-  val (leftStatus, leftResult) = left.nodesAtDistanceK(target, K)
-
-  return when (leftStatus) {
-    is AllNodesFound -> AllNodesFound to leftResult
-    is FoundAtDistance ->
-      if (leftStatus + 1 == K) {
-        AllNodesFound to leftResult + this.value
-      } else { // At every ancestor, covering all the directions apart from the direction in which
-        // the recursion rolled-up (left in this case)
-        FoundAtDistance(leftStatus + 1) to // As coming from left, search Top and right
-          leftResult + right.bottomNodesAtDistanceK(K - (leftStatus + 2))
-      }
+private fun TreeNode?.nodesAtDistanceK(target: Int, k: Int): Pair<Status, List<Int>> =
+  when {
+    this == null -> NotFound to emptyList()
+    // * If target found, finding bottom nodes is a simple recursion
+    this.`val` == target -> SearchAncestor(1) to this.bottomNodesAtDistanceK(k)
     else -> {
-      val (rightStatus, rightResult) = right.nodesAtDistanceK(target, K)
-      when (rightStatus) {
-        is AllNodesFound -> AllNodesFound to rightResult
-        is FoundAtDistance -> {
-          if (rightStatus + 1 == K) {
-            AllNodesFound to rightResult + this.value
-          } else { // At every ancestor, covering all the directions apart from the direction in
-            // which the recursion rolled-up (right in this case)
-            FoundAtDistance(rightStatus + 1) to // As coming from right, search Top and left
-              rightResult + left.bottomNodesAtDistanceK(K - (rightStatus + 2))
+      val (leftStatus, leftResult) = left.nodesAtDistanceK(target, k)
+      when (leftStatus) {
+        is AllFoundAtK -> AllFoundAtK to leftResult // Just bubble-up the result
+        is SearchAncestor ->
+          when (leftStatus.distance) {
+            // We found Kth node in ancestor, no need to search further
+            k -> AllFoundAtK to (leftResult + this.`val`)
+            // During the ancestor journey, search right subtree. `+1` as we go up and right
+            else ->
+              SearchAncestor(leftStatus + 1) to
+                (leftResult + right.bottomNodesAtDistanceK(k - (leftStatus + 1)))
+          }
+        else -> { // Target not found in left subtree, backtrack and search right subtree
+          val (rightStatus, rightResult) = right.nodesAtDistanceK(target, k)
+          when (rightStatus) {
+            is AllFoundAtK -> AllFoundAtK to rightResult
+            is SearchAncestor -> {
+              when (rightStatus.distance) {
+                k -> AllFoundAtK to (rightResult + this.`val`)
+                else ->
+                  SearchAncestor(rightStatus + 1) to
+                    (rightResult + left.bottomNodesAtDistanceK(k - (rightStatus + 1)))
+              }
+            }
+            else -> NotFound to emptyList()
           }
         }
-        else -> NotFound to emptyList()
       }
     }
   }
-}
 
-private fun TreeNode?.bottomNodesAtDistanceK(K: Int): List<Int> =
+private fun TreeNode?.bottomNodesAtDistanceK(k: Int): List<Int> =
   when {
     this == null -> emptyList()
-    K == 0 -> listOf(this.value)
-    else -> left.bottomNodesAtDistanceK(K - 1) + right.bottomNodesAtDistanceK(K - 1)
+    k == 0 -> listOf(this.`val`)
+    else -> left.bottomNodesAtDistanceK(k - 1) + right.bottomNodesAtDistanceK(k - 1)
   }
+
+sealed class Status {
+  object NotFound : Status()
+
+  object AllFoundAtK : Status()
+
+  class SearchAncestor(val distance: Int) : Status() {
+    operator fun plus(value: Int) = distance + value
+  }
+}

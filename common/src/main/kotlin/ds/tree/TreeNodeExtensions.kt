@@ -5,7 +5,7 @@ fun TreeNode?.inorderTraversalMorris() {
   var cur = this
   while (cur != null) {
     if (cur.left == null) { // No left side
-      print(cur.value) // We finish visiting a node
+      print(cur.`val`) // We finish visiting a node
       cur = cur.right // goto right or goto predecessor (if this is a leaf node)
     } else {
       var pre = cur.left
@@ -24,7 +24,7 @@ fun TreeNode?.inorderTraversalMorris() {
       } else { // This happens when we revisit the node through predecessor link. This indicates we
         // have finished traversing the left side.
         pre.right = null // reset the pointer
-        print(cur.value) // We finish visiting a node
+        print(cur.`val`) // We finish visiting a node
         cur = cur.right // Now left visit is complete, safely go to right side
       }
     }
@@ -66,7 +66,7 @@ fun TreeNode?.inorderTraversalWithStack() {
       cur = cur.left
     }
     cur = stk.removeLast()
-    print(cur.value)
+    print(cur.`val`)
     cur = cur.right
   }
 }

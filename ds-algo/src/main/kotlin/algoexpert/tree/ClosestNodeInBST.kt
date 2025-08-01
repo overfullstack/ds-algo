@@ -3,14 +3,14 @@ package algoexpert.tree
 import ds.tree.TreeNode
 import kotlin.math.abs
 
-fun TreeNode.closestNodeInBST(valueToSearch: Int, closest: Int = value): Int {
+fun TreeNode.closestNodeInBST(valueToSearch: Int, closest: Int = `val`): Int {
   var newClosest = closest
-  if (abs(value - valueToSearch) < abs(closest - valueToSearch)) { // Is cur value closer
-    newClosest = value
+  if (abs(`val` - valueToSearch) < abs(closest - valueToSearch)) { // Is cur value closer
+    newClosest = `val`
   }
   return when {
-    valueToSearch < value -> left?.closestNodeInBST(valueToSearch, newClosest) ?: newClosest
-    valueToSearch > value -> right?.closestNodeInBST(valueToSearch, newClosest) ?: newClosest
+    valueToSearch < `val` -> left?.closestNodeInBST(valueToSearch, newClosest) ?: newClosest
+    valueToSearch > `val` -> right?.closestNodeInBST(valueToSearch, newClosest) ?: newClosest
     else -> newClosest
   }
 }

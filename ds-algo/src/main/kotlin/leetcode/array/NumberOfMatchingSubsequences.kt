@@ -3,7 +3,8 @@ package leetcode.array
 /* 01 Aug 2025 13:26 */
 
 /**
- * [792. Number of Matching Subsequences](https://leetcode.com/problems/number-of-matching-subsequences)
+ * [792. Number of Matching
+ * Subsequences](https://leetcode.com/problems/number-of-matching-subsequences)
  */
 fun numMatchingSubseq(s: String, words: Array<String>): Int {
   val buckets: MutableMap<Char, ArrayDeque<Pair<Int, String>>> =

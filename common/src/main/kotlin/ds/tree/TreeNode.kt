@@ -8,7 +8,7 @@ import kotlinx.serialization.json.Json
 data class TreeNode
 @JvmOverloads
 constructor(
-  @JvmField var value: Int,
+  @JvmField var `val`: Int, // ! This field name is `val` as leetcode uses it
   @JvmField var left: TreeNode? = null,
   @JvmField var right: TreeNode? = null,
   @JvmField var parent: TreeNode? = null,
@@ -28,23 +28,23 @@ constructor(
   ): Array<Int> {
     val left = left?.traversalAnyOrder(order) ?: emptyArray()
     val right = right?.traversalAnyOrder(order) ?: emptyArray()
-    return order(value, left, right)
+    return order(`val`, left, right)
   }
 
   fun inorderTraversal(): List<Int> =
     (left?.inorderTraversal() ?: emptyList()) +
-      listOf(value) +
+      listOf(`val`) +
       (right?.inorderTraversal() ?: emptyList())
 
   fun isValidBST(min: Int = Int.MIN_VALUE, max: Int = Int.MAX_VALUE): Boolean =
     when {
-      value !in min + 1 until max -> false
-      else -> left?.isValidBST(min, value) ?: true && right?.isValidBST(value, max) ?: true
+      `val` !in min + 1 until max -> false
+      else -> left?.isValidBST(min, `val`) ?: true && right?.isValidBST(`val`, max) ?: true
     }
 
   fun insertForRank(valToInsert: Int): Int = // returns leftSize
   when {
-      valToInsert <= value -> {
+      valToInsert <= `val` -> {
         leftSize++
         left?.insertForRank(valToInsert)
           ?: run {
@@ -73,14 +73,14 @@ constructor(
 
   fun getRank(valForRank: Int): Int =
     when {
-      valForRank == this.value -> leftSize
-      valForRank < this.value -> left?.getRank(valForRank) ?: -1 // -1 for val not found
+      valForRank == this.`val` -> leftSize
+      valForRank < this.`val` -> left?.getRank(valForRank) ?: -1 // -1 for val not found
       else -> right?.let { 1 + leftSize + it.getRank(valForRank) } ?: -1
     }
 
   fun insertForBST(valToInsert: Int): Unit =
     when {
-      valToInsert <= value ->
+      valToInsert <= `val` ->
         left?.insertForBST(valToInsert) ?: run { left = TreeNode(valToInsert) }
 
       else -> right?.insertForBST(valToInsert) ?: run { right = TreeNode(valToInsert) }
@@ -95,21 +95,21 @@ constructor(
   }
 
   fun getNodeWithValue(valToFind: Int): TreeNode? =
-    if (value == valToFind) {
+    if (`val` == valToFind) {
       this
     } else {
       left?.getNodeWithValue(valToFind) ?: right?.getNodeWithValue(valToFind)
     }
 
   override fun toString(): String =
-    "TreeNode(value=$value, left=${left?.value}, right=${right?.value}, parent=${parent?.value}, next=${next?.value}, id='$id', leftSize=$leftSize)"
+    "TreeNode(value=$`val`, left=${left?.`val`}, right=${right?.`val`}, parent=${parent?.`val`}, next=${next?.`val`}, id='$id', leftSize=$leftSize)"
 
   fun incompleteTreeToLevelOrderList(
     curLevel: List<TreeNode?> = listOf(this),
-    result: List<Int?> = listOf(value),
+    result: List<Int?> = listOf(`val`),
   ): List<Int?> {
     val nextLevel: List<TreeNode?> = curLevel.flatMap { listOf(it?.left, it?.right) }
-    val nextLevelValues: List<Int?> = nextLevel.map { it?.value }
+    val nextLevelValues: List<Int?> = nextLevel.map { it?.`val` }
     return when {
       nextLevelValues.all { it == null } -> result.dropLastWhile { it == null }
       else -> incompleteTreeToLevelOrderList(nextLevel, result + nextLevelValues)
@@ -173,7 +173,7 @@ constructor(
       val jTree = Json.decodeFromString<JTree>(treeJson)
       val idToTreeNode =
         jTree.tree.nodes.associate {
-          it.id to Triple(TreeNode(id = it.id, value = it.value), it.left, it.right)
+          it.id to Triple(TreeNode(id = it.id, `val` = it.value), it.left, it.right)
         }
       val treeGraph: Map<String, TreeNode> =
         idToTreeNode.mapValues { (_, value) ->

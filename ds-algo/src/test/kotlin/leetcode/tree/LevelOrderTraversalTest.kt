@@ -16,7 +16,7 @@ class LevelOrderTraversalTest :
       ) { levelOrder, result ->
         val root = levelOrderToIncompleteTree(levelOrder)
         val listOfDepths = root!!.levelOrderTraversal()
-        listOfDepths.map { levelList -> levelList.map { it.value } } shouldBe result
+        listOfDepths.map { levelList -> levelList.map { it.`val` } } shouldBe result
       }
     }
   })

@@ -5,10 +5,10 @@ import ds.tree.TreeNode
 
 private fun TreeNode.allPathsFromRootToLeaf(path: String = ""): List<String> =
   if (left == null && right == null) {
-    listOf(path + value)
+    listOf(path + `val`)
   } else {
-    ((left?.allPathsFromRootToLeaf(path + value) ?: emptyList()) +
-      (right?.allPathsFromRootToLeaf(path + value) ?: emptyList()))
+    ((left?.allPathsFromRootToLeaf(path + `val`) ?: emptyList()) +
+      (right?.allPathsFromRootToLeaf(path + `val`) ?: emptyList()))
   }
 
 fun TreeNode.sumFromRootToLeaf() = allPathsFromRootToLeaf().sumOf { it.toInt() }

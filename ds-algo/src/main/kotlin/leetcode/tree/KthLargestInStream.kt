@@ -21,7 +21,7 @@ class KthLargestInStream(private val kth: Int, nums: IntArray) {
       }
     }
     k = 0
-    return kthLargest?.value ?: 0
+    return kthLargest?.`val` ?: 0
   }
 }
 

@@ -4,7 +4,7 @@ import ds.tree.TreeNode
 
 fun TreeNode.kthSmallest(k: Int): Int =
   when {
-    k == 0 -> value
+    k == 0 -> `val`
     else -> kthSmallest(false to k).second
   }
 
@@ -14,7 +14,7 @@ private fun TreeNode.kthSmallest(result: Pair<Boolean, Int>): Pair<Boolean, Int>
   return when {
     !foundOnLeft ->
       when {
-        curK == 1 -> true to value // ! reusing `curK` for bubbling back result
+        curK == 1 -> true to `val` // ! reusing `curK` for bubbling back result
         else -> {
           val next = false to curK - 1 // -1 for current node
           right?.kthSmallest(next) ?: next

@@ -17,7 +17,7 @@ class SuccessorTest :
         val root = TreeNode.levelOrderToIncompleteTree(levelOrder)
         root!!.setParents()
         val node = root.getNodeWithValue(nodeVal)
-        node?.successor()?.value shouldBe result
+        node?.successor()?.`val` shouldBe result
       }
     }
   })

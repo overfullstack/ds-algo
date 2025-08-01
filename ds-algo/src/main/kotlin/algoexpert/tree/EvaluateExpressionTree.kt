@@ -14,5 +14,5 @@ fun getOperator(symbol: Int): (Int, Int) -> Int =
 fun TreeNode.evaluateExpressionTree(): Int {
   val left = left?.evaluateExpressionTree() ?: 0
   val right = right?.evaluateExpressionTree() ?: 0
-  return getOperator(value)(left, right)
+  return getOperator(`val`)(left, right)
 }

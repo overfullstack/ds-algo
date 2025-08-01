@@ -6,7 +6,7 @@ fun TreeNode.rightSideView(result: MutableList<Int> = mutableListOf(), depth: In
   // * Adding the first value at every level of depth.
   // So if there is no right, left takes that place.
   if (result.size == depth) {
-    result.add(value)
+    result.add(`val`)
   }
   // ! Notice `right` before `left`
   right?.rightSideView(result, depth + 1)
@@ -17,11 +17,11 @@ fun TreeNode.rightSideView(result: MutableList<Int> = mutableListOf(), depth: In
 
 fun TreeNode.rightSideView2(
   currentLevel: List<TreeNode> = listOf(this),
-  result: List<Int> = listOf(value),
+  result: List<Int> = listOf(`val`),
 ): List<Int> {
   val nextLevel = currentLevel.flatMap { listOfNotNull(it.left, it.right) }
   return when {
     nextLevel.isEmpty() -> result
-    else -> rightSideView2(nextLevel, result.plusElement(nextLevel.last().value))
+    else -> rightSideView2(nextLevel, result.plusElement(nextLevel.last().`val`))
   }
 }
