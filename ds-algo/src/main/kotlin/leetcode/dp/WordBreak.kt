@@ -53,9 +53,10 @@ private fun wordBreakDP2(s: String, wordDict: List<String>): Boolean {
     for ((i, j) in (gap..s.lastIndex).withIndex()) {
       table[i][j] =
         when {
-            wordDictSet.contains(s.substring(i..j)) -> true
-            else -> (i until j).fold(false) { res, partition ->
-                res || (table[i][partition] && table[partition + 1][j])
+          wordDictSet.contains(s.substring(i..j)) -> true
+          else ->
+            (i until j).fold(false) { res, partition ->
+              res || (table[i][partition] && table[partition + 1][j])
             }
         }
     }

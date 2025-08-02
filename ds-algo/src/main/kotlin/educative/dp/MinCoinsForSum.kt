@@ -8,7 +8,6 @@ fun minCoinsForSum(coins: IntArray, sum: Int): Int {
   if (sum < 0 || coins.isEmpty()) return -1
 
   val dp = IntArray(sum + 1) { Int.MAX_VALUE - 999 }
-  dp[0] = 0
   // * Building the entire sum introducing one coin type at a time
   for (coin in coins) {
     // ! Forward iteration as we allow the same coin to be used multiple times

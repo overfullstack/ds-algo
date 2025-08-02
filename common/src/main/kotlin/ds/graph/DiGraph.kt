@@ -119,16 +119,17 @@ class DiGraph<T>(private val adjacencyMap: MutableMap<T, Set<T>> = mutableMapOf(
 
   private fun T.hasCyclePerGroup(
     visited: MutableSet<T>,
-    visitedInBranch: Set<T> = setOf(this), // ! Notice global visited and visitedInBranch
+    visitedInGroup: Set<T> = setOf(this), // ! Notice global visited and visitedInGroup
   ): Boolean {
     visited += this
     return adjacencyMap[this]?.any {
       when (it) {
-        in visitedInBranch -> true // ! visitedInBranch check has to be before visited check
-        in visited -> false // * A node can have two inward connections
-        else -> it.hasCyclePerGroup(visited, visitedInBranch + it)
+        in visitedInGroup -> true // ! visitedInGroup check has to be before visited check
+        // * A node can have two inward connections. If it's visited, it's already checked for cycle
+        in visited -> false
+        else -> it.hasCyclePerGroup(visited, visitedInGroup + it)
       }
-    } == true
+    } ?: false
   }
 
   /** DETECT CYCLE -> */
@@ -137,22 +138,22 @@ class DiGraph<T>(private val adjacencyMap: MutableMap<T, Set<T>> = mutableMapOf(
     return adjacencyMap.keys
       .asSequence()
       .filter { it !in visited }
-      .flatMap { it.topologicalSortPerBranch(visited) + it }
+      .flatMap { it.topologicalSortPerGroup(visited) + it }
       .toList()
   }
 
-  private fun T.topologicalSortPerBranch(
+  private fun T.topologicalSortPerGroup(
     visited: MutableSet<T>,
-    visitedInBranch: Set<T> = setOf(this),
+    visitedInGroup: Set<T> = setOf(this),
   ): Sequence<T> {
     visited += this
     return adjacencyMap[this]?.asSequence()?.flatMap {
       when (it) {
-        // ! visitedInBranch check has to be before visited check
-        in visitedInBranch -> throw IllegalArgumentException("Graph has Cycle")
+        // ! visitedInGroup check has to be before visited check
+        in visitedInGroup -> throw IllegalArgumentException("Graph has Cycle")
         in visited -> emptySequence() // This node was visited so can't contribute to any sequence.
         // Key depends on the list of values
-        else -> it.topologicalSortPerBranch(visited, visitedInBranch + it) + it
+        else -> it.topologicalSortPerGroup(visited, visitedInGroup + it) + it
       }
     } ?: emptySequence() // No connections.
   }
