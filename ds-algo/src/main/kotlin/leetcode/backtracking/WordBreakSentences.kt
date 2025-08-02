@@ -25,7 +25,7 @@ private fun wordBreakSentencesInternal(
       .filter { (_, word) -> word in dict }
       .flatMap { (index, wordInDict) ->
         when (index) {
-          str.lastIndex -> listOf(listOf(wordInDict))
+          str.lastIndex -> listOf(listOf(wordInDict)) // Recursion ends with one word
           else ->
             wordBreakSentencesInternal(str, dict, index + 1, cache).map { sentence ->
               listOf(wordInDict) + sentence

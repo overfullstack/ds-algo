@@ -18,6 +18,7 @@ public class CakeThief {
 		maxVal[0] = 0;
 
 		for (var cake : cakes) {
+      // ! Forward iteration as we have innumerable supply of each type
 			for (var cap = cake.weight; cap <= capacity; cap++) {
 				// Math.max(Excluding Cake, Including Cake)
 				// if excluded, that slot is filled by others

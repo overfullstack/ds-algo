@@ -1,10 +1,7 @@
-/*
-https://leetcode.com/problems/word-break/
-
-gakshintala created on 10/2/19
-*/
 package leetcode.dp
+/* gakshintala created on 10/2/19 */
 
+/** [Word Break](https://leetcode.com/problems/word-break/) */
 private fun wordBreak(word: String, wordDict: List<String>): Boolean {
   val wordDictSet = wordDict.toSet()
   // Check with all end indices, including -1.
@@ -23,7 +20,27 @@ private fun wordBreak(word: String, wordDict: List<String>): Boolean {
     .last() == word.lastIndex
 }
 
-private fun wordBreakDp(s: String, wordDict: List<String>): Boolean {
+fun wordBreakDP(s: String, wordDict: List<String>): Boolean {
+  val dp = BooleanArray(s.length + 1)
+  val dict = wordDict.toSet()
+  dp[0] = true
+  // * Building the word, one index at a time, expanding `endIndex` and checking if it can be broken
+  // * -
+  // * --
+  // * ---
+  for (endIndex in 1..(s.lastIndex + 1)) {
+    for (startIndex in 0..endIndex) {
+      // ! dp[startIndex] indicates a substring that ends at `startIndex` can be broken
+      if (dp[startIndex] && dict.contains(s.substring(startIndex until endIndex))) {
+        dp[endIndex] = true
+        break
+      }
+    }
+  }
+  return dp[s.lastIndex + 1]
+}
+
+private fun wordBreakDP2(s: String, wordDict: List<String>): Boolean {
   val table = Array(s.length) { BooleanArray(s.length) }
   val wordDictSet = wordDict.toSet()
   when {
@@ -35,11 +52,12 @@ private fun wordBreakDp(s: String, wordDict: List<String>): Boolean {
   for (gap in 1..s.length) {
     for ((i, j) in (gap..s.lastIndex).withIndex()) {
       table[i][j] =
-        if (wordDictSet.contains(s.substring(i..j))) true
-        else
-          (i until j).fold(false) { res, partition ->
-            res || (table[i][partition] && table[partition + 1][j])
-          }
+        when {
+            wordDictSet.contains(s.substring(i..j)) -> true
+            else -> (i until j).fold(false) { res, partition ->
+                res || (table[i][partition] && table[partition + 1][j])
+            }
+        }
     }
   }
   return table[0][s.lastIndex]
