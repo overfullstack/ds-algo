@@ -2,31 +2,41 @@ package leetcode.tree
 
 import ds.tree.TreeNode
 
-fun TreeNode?.lowestCommonAncestor(p: TreeNode, q: TreeNode): TreeNode? {
-  when {
-    this == null -> return null
-    this == p && p == q -> return this
+fun lowestCommonAncestor(root: TreeNode?, p: TreeNode?, q: TreeNode?): TreeNode? {
+  when (root) {
+      null -> return null
+      p if p == q -> return root
   }
 
-  val left = left?.lowestCommonAncestor(p, q)
+  val fromLeft = lowestCommonAncestor(root.left, p, q)
   // * Search on the other (right) side if:
   //    * None of `p` or `q` found.
   //    * Only `p` or `q` found.
   // * If Ancestor found, bubble-up
-  val isAncestorFoundOnLeft = left != null && left != p && left != q
+  val isAncestorFoundOnLeft = fromLeft != null && fromLeft != p && fromLeft != q
   if (isAncestorFoundOnLeft) {
-    return left
+    return fromLeft
   }
 
-  val right = right?.lowestCommonAncestor(p, q)
-  val isAncestorFoundOnRight = right != null && right != p && right != q
+  val fromRight = lowestCommonAncestor(root.right, p, q)
+  val isAncestorFoundOnRight = fromRight != null && fromRight != p && fromRight != q
   if (isAncestorFoundOnRight) {
-    return right
+    return fromRight
   }
 
   return when {
-    this == p || this == q -> this // One of them found
-    left != null && right != null -> this // ! Ancestor found, as both are found in subtree
-    else -> left ?: right // One or none found in subtree
+    fromLeft != null && fromRight != null -> root // ! Ancestor found, as both are found in subtree
+    root.`val` == p?.`val` || root.`val` == q?.`val` -> root // One of them found
+    else -> fromLeft ?: fromRight // One or none found in subtree
   }
+}
+
+fun main() {
+  println(
+    lowestCommonAncestor(
+      TreeNode.levelOrderToIncompleteTree(listOf(1, null, 2, null, 3))!!,
+      TreeNode(2),
+      TreeNode(3)
+    ),
+  )
 }

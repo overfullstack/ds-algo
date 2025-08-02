@@ -144,7 +144,7 @@ constructor(
     }
 
     fun levelOrderToIncompleteTree(levelOrder: List<Int?>): TreeNode? {
-      val valQueue = LinkedList(levelOrder) // Can't use ArrayDeque as it won't allow nulls.
+      val valQueue = LinkedList(levelOrder) // ! Can't use ArrayDeque as it doesn't allow nulls.
       val rootVal = valQueue.poll() ?: return null
       val treeNodeQueue = ArrayDeque<TreeNode>()
       val root = TreeNode(rootVal)
