@@ -48,19 +48,18 @@ fun String.canBePrepared(
       in preparable -> true // Already confirmed as preparable
       in visited -> false
       else -> {
-        if (
+        when {
           ingredient.canBePrepared(
             recipeToIngredients,
             visited,
             preparable,
             supplies,
             visitedInGroup + ingredient,
-          )
-        ) {
-          preparable += ingredient
-          true
-        } else {
-          false
+          ) -> {
+            preparable += ingredient
+            true
+          }
+          else -> false
         }
       }
     }

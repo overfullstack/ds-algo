@@ -2,6 +2,8 @@
 alwaysApply: true
 ---
 
-- Always use pure functional programming style
+- Learn coding style from the current repository when generating code
+- Use pure functional programming style wherever possible
 - Reduce state mutation as much as possible
 - Ignore linting errors and formatting issues
+- When in Kotlin, favor `when` statement over `if` statement
