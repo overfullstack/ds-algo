@@ -1,5 +1,7 @@
 ---
-alwaysApply: true
+trigger: always_on
+description: 
+globs: 
 ---
 
 - Learn coding style from the current repository when generating code
@@ -10,4 +12,3 @@ alwaysApply: true
 - When in Kotlin, favor `when` statement over `if` statement
 - Add diagrams in the explanation as much as possible
 - Use Kotest when generating tests. Refer existing test to learn about the testing framework and testing style
-- While generating code Follow `.editorconfig` in the repository for formatting. Use 2 tabs for indentation
