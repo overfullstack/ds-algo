@@ -45,12 +45,12 @@ class KClosestPointsToOriginTest :
         kClosestPointsToOrigin(coordinates, k) shouldBe result
       }
     }
-    
-    "k closest points to origin 2".config(enabled = false) {
-      parseJsonFileToTestCases("$PKG_PATH/test-cases-1.json", "$PKG_PATH/test-cases-2.json")
-        .forAll { (coordinates, k, result) ->
-          kClosestPointsToOrigin(coordinates, k) shouldBe result
-        }
-    }
 
+    "k closest points to origin 2"
+      .config(enabled = false) {
+        parseJsonFileToTestCases("$PKG_PATH/test-cases-1.json", "$PKG_PATH/test-cases-2.json")
+          .forAll { (coordinates, k, result) ->
+            kClosestPointsToOrigin(coordinates, k) shouldBe result
+          }
+      }
   })
