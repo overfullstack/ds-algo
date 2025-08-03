@@ -3,6 +3,7 @@ package educative.heap
 import java.util.PriorityQueue
 
 fun maximizeCapital(initialCapital: Int, k: Int, capitalsToProfits: List<Pair<Int, Int>>): Int {
+  // ! We need minHeap as the capitals is not guaranteed to be sorted
   val minHeapForCapitals = PriorityQueue(Comparator.comparingInt<Pair<Int, Int>> { it.first })
   minHeapForCapitals.addAll(capitalsToProfits)
   val maxHeapForProfits = PriorityQueue(Comparator.reverseOrder<Int>())
@@ -15,6 +16,7 @@ fun maximizeCapital(initialCapital: Int, k: Int, capitalsToProfits: List<Pair<In
     if (maxHeapForProfits.isEmpty()) {
       break
     }
+    // ! As per problem, pure profit from the project, along with the starting capital is returned
     totalCapital += maxHeapForProfits.poll()
     projectsPickedCount++
   }

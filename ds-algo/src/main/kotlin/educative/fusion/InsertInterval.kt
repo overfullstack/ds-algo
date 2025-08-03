@@ -6,13 +6,15 @@ fun insertInterval(
   sortedIntervals: List<Pair<Int, Int>>,
   newInterval: Pair<Int, Int>,
 ): List<Pair<Int, Int>> {
+  // ! We aren't looking for overlap here, as there may not be an overlap at all
+  // ! So just find an interval that starts before the new interval
   val intervalsThatStartEarly = sortedIntervals.filter { it.first < newInterval.first }
   val mergedIntervals =
     intervalsThatStartEarly.lastOrNull()?.let {
       when {
         it.second >= newInterval.first ->
           intervalsThatStartEarly.dropLast(1) + (it.first to maxOf(it.second, newInterval.second))
-        else -> intervalsThatStartEarly + newInterval
+        else -> intervalsThatStartEarly + newInterval // Non-overlapping
       }
     } ?: listOf(newInterval)
   // * Merge remaining intervals that intersect with the new appended interval
