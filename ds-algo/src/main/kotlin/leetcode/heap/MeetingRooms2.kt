@@ -1,4 +1,4 @@
-package leetcode.greedy
+package leetcode.heap
 
 import java.util.PriorityQueue
 

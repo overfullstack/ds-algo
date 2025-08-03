@@ -5,7 +5,7 @@ import io.kotest.data.forAll
 import io.kotest.data.row
 import io.kotest.inspectors.forAll
 import io.kotest.matchers.shouldBe
-import leetcode.greedy.minMeetingRoomsRequired
+import leetcode.heap.minMeetingRoomsRequired
 import testcase.ListPairToInt.Companion.parseJsonFileToTestCases
 
 /* 29 Jul 2025 23:14 */

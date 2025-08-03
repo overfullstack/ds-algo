@@ -1,4 +1,4 @@
-package leetcode.greedy
+package leetcode.heap
 
 import java.util.PriorityQueue
 
@@ -30,7 +30,7 @@ fun mostBooked(n: Int, meetings: Array<IntArray>): Int {
       }
     }
   }
-  return roomIdToMeetingCount.indices.maxBy { roomIdToMeetingCount[it] }
+  return roomIdToMeetingCount.withIndex().maxBy { it.value }.index
 }
 
 fun main() {
