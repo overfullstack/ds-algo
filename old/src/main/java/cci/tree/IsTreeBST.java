@@ -1,6 +1,6 @@
 package cci.tree;
 
-import ds.tree.TreeNode;
+import ds.TreeNode;
 
 /** Created by gakshintala on 3/21/16. */
 public class IsTreeBST {
@@ -16,10 +16,10 @@ public class IsTreeBST {
 			return true;
 		}
 
-		if (root.value <= min || root.value > max) {
+		if (root.val <= min || root.val > max) {
 			return false;
 		}
 
-		return (isBST(root.left, min, root.value) && isBST(root.right, root.value, max));
+		return (isBST(root.left, min, root.val) && isBST(root.right, root.val, max));
 	}
 }

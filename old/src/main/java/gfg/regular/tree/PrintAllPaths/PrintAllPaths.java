@@ -1,8 +1,8 @@
 package gfg.regular.tree.PrintAllPaths;
 
-import static gfg.ds.Utils.treeDepth;
+import static ds.Utils.treeDepth;
 
-import gfg.ds.TreeNode;
+import ds.TreeNode;
 import java.util.Arrays;
 
 /** Created by gakshintala on 6/10/16. */

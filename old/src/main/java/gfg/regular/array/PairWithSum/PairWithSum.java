@@ -1,6 +1,6 @@
 package gfg.regular.array.PairWithSum;
 
-import static gfg.ds.Utils.quickSort;
+import static ds.Utils.quickSort;
 
 /** Created by gakshintala on 6/10/16. */
 public class PairWithSum {

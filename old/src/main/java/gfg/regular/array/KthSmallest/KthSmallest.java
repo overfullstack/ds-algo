@@ -1,6 +1,6 @@
 package gfg.regular.array.KthSmallest;
 
-import static gfg.ds.Utils.swap;
+import static ds.Utils.swap;
 
 /** Created by gakshintala on 6/11/16. */
 public class KthSmallest {

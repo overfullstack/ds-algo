@@ -1,6 +1,6 @@
 package gfg.regular.tree.PrintCousins;
 
-import gfg.ds.TreeNode;
+import ds.TreeNode;
 
 /** Created by gakshintala on 7/5/16. */
 public class PrintCousins {

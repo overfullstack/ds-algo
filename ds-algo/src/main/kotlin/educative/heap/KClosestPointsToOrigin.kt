@@ -4,16 +4,16 @@ import java.util.PriorityQueue
 import kotlin.math.pow
 import kotlin.math.sqrt
 
-fun kClosestPointsToOrigin(points: List<Pair<Int, Int>>, k: Int): List<Pair<Int, Int>> {
-  val maxHeap = PriorityQueue(Comparator.comparingDouble(::distanceFromOrigin))
-  points.take(k).forEach { maxHeap.add(it) }
-  points.drop(k).map {
-    if (distanceFromOrigin(it) < distanceFromOrigin(maxHeap.peek())) {
+fun kClosestPointsToOrigin(points: List<Pair<Int, Int>>, k: Int): Set<Pair<Int, Int>> {
+  // ! Make Fathest points vulnerable to polling
+  val maxHeap = PriorityQueue(Comparator.comparingDouble(::distanceFromOrigin).reversed())
+  for (point in points) {
+    maxHeap.add(point)
+    if (maxHeap.size > k) {
       maxHeap.poll()
-      maxHeap.add(it)
     }
   }
-  return maxHeap.toList()
+  return maxHeap.toSet()
 }
 
 fun distanceFromOrigin(point: Pair<Int, Int>): Double =

@@ -1,6 +1,6 @@
 package gfg.practice.tree.TreeDiameter;
 
-import gfg.ds.TreeNode;
+import ds.TreeNode;
 
 /** Created by gakshintala on 6/10/16. */
 public class TreeDiameter {

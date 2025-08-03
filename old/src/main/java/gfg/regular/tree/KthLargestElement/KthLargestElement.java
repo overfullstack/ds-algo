@@ -1,6 +1,6 @@
 package gfg.regular.tree.KthLargestElement;
 
-import gfg.ds.TreeNode;
+import ds.TreeNode;
 
 /** Created by Gopala Akshintala on 2/25/17. */
 public class KthLargestElement {

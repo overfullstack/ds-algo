@@ -1,6 +1,6 @@
 package cci.tree;
 
-import ds.tree.TreeNode;
+import ds.TreeNode;
 
 /** Created by gakshintala on 3/30/16. */
 public class BalancedBinaryTree {

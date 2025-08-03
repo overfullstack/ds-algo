@@ -1,4 +1,4 @@
-package gfg.ds;
+package ds;
 
 import java.util.LinkedList;
 import java.util.List;

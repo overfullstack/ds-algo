@@ -4,7 +4,7 @@ import java.util.PriorityQueue
 
 /** https://leetcode.ca/2016-08-09-253-Meeting-Rooms-II/ */
 fun minMeetingRoomsRequired(meetings: Array<Pair<Int, Int>>): Int {
-  val minEndTimeHeap = PriorityQueue<Int>()
+  val minEndTimeHeap = PriorityQueue<Int>() // ! Need Earliest ending meeting
   val sortedMeetings = meetings.sortedBy { it.first }
   minEndTimeHeap.add(sortedMeetings.first().second)
   for (meeting in sortedMeetings.drop(1)) {

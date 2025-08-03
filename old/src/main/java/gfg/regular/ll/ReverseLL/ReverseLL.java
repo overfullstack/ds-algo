@@ -1,8 +1,8 @@
 package gfg.regular.ll.ReverseLL;
 
-import static gfg.ds.Utils.printSLL;
+import static ds.Utils.printSLL;
 
-import gfg.ds.SLLNode;
+import ds.SLLNode;
 
 /** Created by gakshintala on 6/10/16. */
 public class ReverseLL {

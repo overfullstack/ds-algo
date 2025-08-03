@@ -1,8 +1,8 @@
 package gfg.practice.tree.CountInRangeBST;
 
-import static gfg.ds.Utils.insertNodeIntoTree;
+import static ds.Utils.insertNodeIntoTree;
 
-import gfg.ds.TreeNode;
+import ds.TreeNode;
 import java.util.Scanner;
 
 public class CountInRangeBST {

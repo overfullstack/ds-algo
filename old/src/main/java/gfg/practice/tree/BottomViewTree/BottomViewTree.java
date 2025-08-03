@@ -1,6 +1,6 @@
 package gfg.practice.tree.BottomViewTree;
 
-import gfg.ds.TreeNode;
+import ds.TreeNode;
 import java.util.HashMap;
 import java.util.Map;
 

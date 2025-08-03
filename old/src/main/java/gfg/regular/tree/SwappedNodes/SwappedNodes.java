@@ -1,6 +1,6 @@
 package gfg.regular.tree.SwappedNodes;
 
-import gfg.ds.TreeNode;
+import ds.TreeNode;
 
 /**
  * Created by gakshintala on 4/13/16.

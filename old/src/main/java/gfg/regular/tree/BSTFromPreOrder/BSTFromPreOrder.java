@@ -1,8 +1,8 @@
 package gfg.regular.tree.BSTFromPreOrder;
 
-import static gfg.ds.Utils.treeInorder;
+import static ds.Utils.treeInorder;
 
-import gfg.ds.TreeNode;
+import ds.TreeNode;
 import java.util.Stack;
 
 /** Created by gakshintala on 6/12/16. */

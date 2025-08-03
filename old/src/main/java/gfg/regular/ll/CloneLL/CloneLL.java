@@ -1,6 +1,6 @@
 package gfg.regular.ll.CloneLL;
 
-import gfg.ds.SLLNode;
+import ds.SLLNode;
 
 /** Created by gakshintala on 6/21/16. */
 public class CloneLL {

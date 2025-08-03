@@ -1,8 +1,8 @@
 package gfg.regular.tree.MirrorTree;
 
-import static gfg.ds.Utils.printTreeInorder;
+import static ds.Utils.printTreeInorder;
 
-import gfg.ds.TreeNode;
+import ds.TreeNode;
 
 /** Created by gakshintala on 6/10/16. */
 public class MirrorTree {

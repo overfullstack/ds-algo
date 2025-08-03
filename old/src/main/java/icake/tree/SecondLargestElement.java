@@ -1,6 +1,6 @@
 package icake.tree;
 
-import ds.tree.TreeNode;
+import ds.TreeNode;
 
 /** Created by gakshintala on 4/19/16. */
 public class SecondLargestElement {
@@ -30,7 +30,7 @@ public class SecondLargestElement {
 
 			// If no children for right child, return right child's parent i.e current node
 			if (root.right != null && (root.right.right == null && root.right.left == null)) {
-				return root.value;
+				return root.val;
 			}
 
 			// If right child has children, Second largest can only occur on right side, so navigate right
@@ -42,6 +42,6 @@ public class SecondLargestElement {
 		while (root.right != null) {
 			root = root.right;
 		}
-		return root.value;
+		return root.val;
 	}
 }

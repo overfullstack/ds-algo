@@ -1,6 +1,6 @@
 package gfg.regular.tree;
 
-import gfg.ds.TreeNode;
+import ds.TreeNode;
 
 /** Created by gakshintala on 4/22/16. */
 public class DistanceBetweenNodes {

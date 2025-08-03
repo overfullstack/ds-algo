@@ -1,8 +1,8 @@
 package gfg.regular.ll.MergeSortLL;
 
-import static gfg.ds.Utils.printSLL;
+import static ds.Utils.printSLL;
 
-import gfg.ds.SLLNode;
+import ds.SLLNode;
 
 /** Created by Gopala Akshintala on 2/26/17. */
 public class MergeSortLL {

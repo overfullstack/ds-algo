@@ -1,6 +1,6 @@
 package gfg.regular.graph;
 
-import gfg.ds.DiGraph;
+import ds.DiGraph;
 import java.util.Scanner;
 
 /**

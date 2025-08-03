@@ -1,6 +1,6 @@
 package gfg.regular.tree;
 
-import gfg.ds.TreeNode;
+import ds.TreeNode;
 import java.util.Stack;
 
 /** Created by Go on 9-4-16. */

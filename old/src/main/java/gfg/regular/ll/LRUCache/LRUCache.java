@@ -1,7 +1,7 @@
 package gfg.regular.ll.LRUCache;
 
-import gfg.ds.DLLNode;
-import gfg.ds.Utils;
+import ds.DLLNode;
+import ds.Utils;
 import java.util.HashMap;
 import java.util.Map;
 

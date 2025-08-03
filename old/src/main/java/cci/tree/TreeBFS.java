@@ -1,6 +1,6 @@
 package cci.tree;
 
-import ds.tree.TreeNode;
+import ds.TreeNode;
 import java.util.LinkedList;
 import java.util.Queue;
 

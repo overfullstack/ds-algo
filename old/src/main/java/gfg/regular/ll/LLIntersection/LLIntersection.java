@@ -1,8 +1,8 @@
 package gfg.regular.ll.LLIntersection;
 
-import static gfg.ds.Utils.findLLLength;
+import static ds.Utils.findLLLength;
 
-import gfg.ds.SLLNode;
+import ds.SLLNode;
 
 /** Created by gakshintala on 6/10/16. */
 public class LLIntersection {

@@ -1,8 +1,8 @@
 package gfg.regular.ll.OddEvenRearrange;
 
-import static gfg.ds.Utils.printSLL;
+import static ds.Utils.printSLL;
 
-import gfg.ds.SLLNode;
+import ds.SLLNode;
 
 /** Created by gakshintala on 4/22/16. */
 public class OddEvenRearrange {

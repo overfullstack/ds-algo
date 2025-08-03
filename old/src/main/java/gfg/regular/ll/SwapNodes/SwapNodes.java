@@ -1,8 +1,8 @@
 package gfg.regular.ll.SwapNodes;
 
-import static gfg.ds.Utils.printSLL;
+import static ds.Utils.printSLL;
 
-import gfg.ds.SLLNode;
+import ds.SLLNode;
 
 /** Created by Gopala Akshintala on 2/25/17. */
 public class SwapNodes {

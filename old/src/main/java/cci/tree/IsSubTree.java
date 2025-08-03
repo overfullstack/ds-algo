@@ -1,6 +1,6 @@
 package cci.tree;
 
-import ds.tree.TreeNode;
+import ds.TreeNode;
 
 /** Created by gakshintala on 3/29/16. */
 public class IsSubTree {
@@ -25,7 +25,7 @@ public class IsSubTree {
 			return false; // Since in this method we are navigating through pt if data doesn't match
 		}
 
-		if (pt.value == st.value && isAllChildrenSame(pt, st)) {
+		if (pt.val == st.val && isAllChildrenSame(pt, st)) {
 			return true;
 		}
 
@@ -43,7 +43,7 @@ public class IsSubTree {
 		// if (st != null && pt == null) return false;
 		// if (st == null) return true;
 
-		if (pt.value != st.value) {
+		if (pt.val != st.val) {
 			return false;
 		}
 

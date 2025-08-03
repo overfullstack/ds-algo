@@ -1,7 +1,7 @@
 package gfg.regular.tree.TreeFromPreOrderAndInOrder;
 
-import gfg.ds.TreeNode;
-import gfg.ds.Utils;
+import ds.TreeNode;
+import ds.Utils;
 
 /** Created by gakshintala on 6/12/16. */
 public class TreeFromPreOrderAndInOrder {

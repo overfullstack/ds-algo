@@ -1,8 +1,8 @@
 package gfg.practice.ll.ReverseLLInGroups;
 
-import static gfg.ds.Utils.printSLL;
+import static ds.Utils.printSLL;
 
-import gfg.ds.SLLNode;
+import ds.SLLNode;
 import java.util.Scanner;
 
 /** Created by Gopala Akshintala on 6/2/17. */

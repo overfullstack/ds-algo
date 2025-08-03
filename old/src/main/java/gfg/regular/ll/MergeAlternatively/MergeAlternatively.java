@@ -1,7 +1,7 @@
 package gfg.regular.ll.MergeAlternatively;
 
-import gfg.ds.SLLNode;
-import gfg.ds.Utils;
+import ds.SLLNode;
+import ds.Utils;
 
 /** Created by gakshintala on 6/12/16. */
 public class MergeAlternatively {

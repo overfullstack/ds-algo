@@ -1,4 +1,4 @@
-package gfg.ds;
+package ds;
 
 /** Created by gakshintala on 4/22/16. */
 public class SLLNode {

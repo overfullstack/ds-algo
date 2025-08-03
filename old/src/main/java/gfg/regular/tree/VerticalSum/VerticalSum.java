@@ -1,9 +1,9 @@
 package gfg.regular.tree.VerticalSum;
 
-import static gfg.ds.Utils.printDLL;
+import static ds.Utils.printDLL;
 
-import gfg.ds.DLLNode;
-import gfg.ds.TreeNode;
+import ds.DLLNode;
+import ds.TreeNode;
 import java.util.HashMap;
 import java.util.Map;
 

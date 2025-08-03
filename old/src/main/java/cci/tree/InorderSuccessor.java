@@ -1,6 +1,6 @@
 package cci.tree;
 
-import ds.tree.TreeNode;
+import ds.TreeNode;
 
 /** Created by gakshintala on 3/30/16. */
 public class InorderSuccessor {
@@ -13,7 +13,7 @@ public class InorderSuccessor {
 		t4 = new TreeNode(4, t8, null);
 		t3 = new TreeNode(3, t6, t7);
 		t2 = new TreeNode(2, t4, t5);
-		t1 = new TreeNode(1, t2, t3, null);
+		t1 = new TreeNode(1, t2, t3, 0, null);
 
 		t2.parent = t3.parent = t1;
 		t4.parent = t5.parent = t2;
@@ -59,11 +59,11 @@ public class InorderSuccessor {
 		}
 		TreeNode successor = null;
 		while (root != null) { // Searching from the top, keeping reference to parent
-			if (nodeForSuccessor.value < root.value) {
+			if (nodeForSuccessor.val < root.val) {
 				successor = root;
 				root = root.left;
-			} else if (nodeForSuccessor.value
-					> root.value) { // Stop updating successor when taking right turn
+			} else if (nodeForSuccessor.val
+					> root.val) { // Stop updating successor when taking right turn
 				root = root.right;
 			} else { // Found
 				break;

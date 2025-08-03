@@ -1,6 +1,6 @@
 package gfg.practice.tree.DiagonalTreeTraversal;
 
-import gfg.ds.TreeNode;
+import ds.TreeNode;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;

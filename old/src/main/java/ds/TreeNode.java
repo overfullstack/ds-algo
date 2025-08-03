@@ -1,4 +1,4 @@
-package gfg.ds;
+package ds;
 
 /** Created by gakshintala on 3/22/16. */
 public class TreeNode {
@@ -6,6 +6,7 @@ public class TreeNode {
 	public TreeNode left;
 	public TreeNode right;
 	public int level;
+	public TreeNode parent;
 
 	public TreeNode(int val, TreeNode left, TreeNode right) {
 		this.val = val;
@@ -16,6 +17,11 @@ public class TreeNode {
 	public TreeNode(int val, TreeNode left, TreeNode right, int level) {
 		this(val, left, right);
 		this.level = level;
+	}
+
+	public TreeNode(int val, TreeNode left, TreeNode right, int level, TreeNode parent) {
+		this(val, left, right, level);
+		this.parent = parent;
 	}
 
 	public TreeNode(int val) {
