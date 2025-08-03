@@ -8,11 +8,25 @@ import kotlinx.serialization.json.Json
 class DiGraph<T>(private val adjacencyMap: MutableMap<T, Set<T>> = mutableMapOf()) :
   MutableMap<T, Set<T>> by adjacencyMap {
 
+  constructor(edges: List<Pair<T, T>>) : this() {
+    edges.forEach { (source, destination) -> addEdge(source, destination) }
+  }
+
   fun addEdge(source: T, destination: T) {
     adjacencyMap.merge(source, setOf(destination), Set<T>::plus)
   }
 
   fun getNeighbours(node: T): Set<T> = adjacencyMap[node] ?: emptySet()
+
+  /** Gets all nodes in the graph (both sources and destinations). */
+  private fun getAllNodes(): Set<T> {
+    val allNodes = mutableSetOf<T>()
+    allNodes.addAll(adjacencyMap.keys) // Add all source nodes
+    adjacencyMap.values.forEach { destinations ->
+      allNodes.addAll(destinations) // Add all destination nodes
+    }
+    return allNodes
+  }
 
   fun bfs(valToSearch: T): Boolean {
     val visited = mutableSetOf<T>()
@@ -60,7 +74,7 @@ class DiGraph<T>(private val adjacencyMap: MutableMap<T, Set<T>> = mutableMapOf(
         adjacencyMap[currentNode]
           ?.asSequence()
           ?.filter { it !in visited }
-          ?.any { dfsPerGroup(it, valToSearch, visited) } == true
+          ?.any { dfsPerGroup(it, valToSearch, visited) } ?: false
       }
     }
 
@@ -130,6 +144,115 @@ class DiGraph<T>(private val adjacencyMap: MutableMap<T, Set<T>> = mutableMapOf(
         else -> it.hasCyclePerGroup(visited, visitedInGroup + it)
       }
     } ?: false
+  }
+
+  /** CONNECTIVITY CHECKS */
+
+  /**
+   * Checks if the graph is weakly connected. A directed graph is weakly connected if replacing all
+   * directed edges with undirected edges produces a connected undirected graph.
+   */
+  fun isWeaklyConnected(): Boolean {
+    val allNodes = getAllNodes()
+    if (allNodes.isEmpty()) return true
+
+    // Create undirected adjacency representation
+    val undirectedAdjacency = mutableMapOf<T, MutableSet<T>>()
+
+    // Add all nodes
+    allNodes.forEach { node -> undirectedAdjacency[node] = mutableSetOf() }
+
+    // Add edges in both directions
+    adjacencyMap.forEach { (source, destinations) ->
+      destinations.forEach { dest ->
+        undirectedAdjacency[source]!!.add(dest)
+        undirectedAdjacency[dest]!!.add(source)
+      }
+    }
+
+    // Check if all nodes are reachable from any starting node using BFS
+    val startNode = allNodes.first()
+    val visited = mutableSetOf<T>()
+    val queue = ArrayDeque<T>()
+
+    queue.add(startNode)
+    visited.add(startNode)
+
+    while (queue.isNotEmpty()) {
+      val current = queue.removeFirst()
+      undirectedAdjacency[current]?.forEach { neighbor ->
+        if (neighbor !in visited) {
+          visited.add(neighbor)
+          queue.add(neighbor)
+        }
+      }
+    }
+
+    return visited.size == allNodes.size
+  }
+
+  /**
+   * Checks if the graph is strongly connected. A directed graph is strongly connected if there is a
+   * directed path from every node to every other node.
+   */
+  fun isStronglyConnected(): Boolean {
+    val allNodes = getAllNodes()
+    if (allNodes.isEmpty()) return true
+    if (allNodes.size == 1) return true
+
+    // Step 1: Check if all nodes are reachable from the first node
+    val startNode = allNodes.first()
+    val reachableFromStart = getReachableNodes(startNode)
+
+    if (reachableFromStart.size != allNodes.size) {
+      return false
+    }
+
+    // Step 2: Create transpose graph and check if all nodes are reachable from start node
+    val transposeGraph = createTransposeGraph()
+    val reachableInTranspose = transposeGraph.getReachableNodes(startNode)
+
+    return reachableInTranspose.size == allNodes.size
+  }
+
+  /** Gets all nodes reachable from the given start node using DFS. */
+  private fun getReachableNodes(startNode: T): Set<T> {
+    val visited = mutableSetOf<T>()
+    val stack = ArrayDeque<T>()
+
+    stack.add(startNode)
+
+    while (stack.isNotEmpty()) {
+      val current = stack.removeLast()
+      if (current !in visited) {
+        visited.add(current)
+        adjacencyMap[current]?.forEach { neighbor ->
+          if (neighbor !in visited) {
+            stack.add(neighbor)
+          }
+        }
+      }
+    }
+
+    return visited
+  }
+
+  /** Creates a transpose graph (all edges reversed). */
+  private fun createTransposeGraph(): DiGraph<T> {
+    val transposeAdjacency = mutableMapOf<T, Set<T>>()
+    val allNodes = getAllNodes()
+
+    // Initialize all nodes with empty sets
+    allNodes.forEach { node -> transposeAdjacency[node] = emptySet() }
+
+    // Reverse all edges
+    adjacencyMap.forEach { (source, destinations) ->
+      destinations.forEach { dest ->
+        transposeAdjacency[dest] = transposeAdjacency[dest]!! + source
+      }
+    }
+
+    return DiGraph(transposeAdjacency)
   }
 
   /** DETECT CYCLE -> */
