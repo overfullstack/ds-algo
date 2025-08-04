@@ -30,8 +30,7 @@ private class TrieNodeWithCount(value: Char = Char.MIN_VALUE) {
       crawl?.children[ch - 'a']?.visitedCount?.also {
         @Suppress("AssignedValueIsNeverRead")
         crawl = crawl?.children[ch - 'a']
-      }
-        ?: return 0
+      } ?: return 0
     }
   }
 }
