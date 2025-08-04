@@ -26,7 +26,7 @@ private fun wordBreakSentencesInternal(
       .flatMap { (index, wordInDict) ->
         when (index) {
           str.lastIndex -> listOf(listOf(wordInDict)) // Recursion ends with one word
-          else ->
+          else -> // ! We cannot have tailrec with memoization, so we prepend after getting results
             wordBreakSentencesInternal(str, dict, index + 1, cache).map { sentence ->
               listOf(wordInDict) + sentence
             }
@@ -39,5 +39,6 @@ private fun wordBreakSentencesInternal(
 }
 
 fun main() {
-  println(wordBreakSentences(readln(), readln().split(",").map { it.trim() }))
+  // println(wordBreakSentences(readln(), readln().split(",").map { it.trim() }))
+  println(wordBreakSentences("sando", listOf("sand", "do")))
 }
