@@ -1,5 +1,6 @@
 package leetcode.graph
 
+/** [127. Word Ladder](https://leetcode.com/problems/word-ladder/) */
 fun ladderLength(beginWord: String, targetWord: String, wordList: List<String>): Int {
   val wordSet = wordList.toMutableSet()
   if (targetWord !in wordSet) return 0
@@ -32,4 +33,9 @@ fun ladderLength(beginWord: String, targetWord: String, wordList: List<String>):
     }
   }
   return 0
+}
+
+fun main() {
+  println(ladderLength("hit", "cog", listOf("hot", "dot", "dog", "lot", "log", "cog"))) // 5
+  println(ladderLength("hit", "cog", listOf("hot", "dot", "dog", "lot", "log"))) // 0
 }

@@ -4,6 +4,7 @@ import java.util.TreeMap
 
 /* 03 Aug 2025 18:02 */
 
+/** [729. My Calendar I](https://leetcode.com/problems/my-calendar-i) */
 class MyCalendar {
   val calendar = TreeMap<Int, Int>()
 

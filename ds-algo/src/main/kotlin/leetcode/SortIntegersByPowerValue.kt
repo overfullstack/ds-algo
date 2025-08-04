@@ -15,9 +15,7 @@ fun getKth(lo: Int, hi: Int, k: Int): Int {
     )
   val cache = mutableMapOf<Int, Int>()
   (lo..hi).map { x -> x to powerValue(x, cache) }.forEach { pq.add(it) }
-  repeat(k - 1) {
-    pq.poll()
-  }
+  repeat(k - 1) { pq.poll() }
   val result = pq.poll()
   return result.first
 }

@@ -19,6 +19,14 @@ data class TrieNode(val value: Char = Char.MIN_VALUE) { // The First node of a T
     crawl.word = word
   }
 
+  fun isPresent(word: String): Boolean {
+    var crawl = this
+    for (char in word) {
+      crawl = crawl.children[char - 'a'] ?: return false
+    }
+    return crawl.isEnd
+  }
+
   fun remove(word: String, depth: Int = 0): TrieNode? {
     when (depth) {
       word.length -> if (isEnd) isEnd = false
@@ -36,14 +44,6 @@ data class TrieNode(val value: Char = Char.MIN_VALUE) { // The First node of a T
       crawl = crawl.children[char - 'a'] ?: return false
     }
     return true
-  }
-
-  fun isPresent(key: String): Boolean {
-    var crawl = this
-    for (char in key) {
-      crawl = crawl.children[char - 'a'] ?: return false
-    }
-    return crawl.isEnd
   }
 
   fun isWordSequencePresent(key: String): Boolean {
