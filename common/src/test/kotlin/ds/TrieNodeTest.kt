@@ -30,13 +30,13 @@ internal class TrieNodeTest :
     "searchWordCombination should return false for non-present word combinations" {
       trieNode.insert("gopal")
       trieNode.insert("sarma")
-      trieNode.isCombinationPresent("gopalasarma") shouldBe false
+      trieNode.isWordSequencePresent("gopalasarma") shouldBe false
     }
 
     "searchWordCombination should return true for present word combinations" {
       trieNode.insert("gopal")
       trieNode.insert("sarma")
-      trieNode.isCombinationPresent("gopalsarma") shouldBe true
+      trieNode.isWordSequencePresent("gopalsarma") shouldBe true
     }
 
     "remove should not affect super words when removing non-existent sub words" {

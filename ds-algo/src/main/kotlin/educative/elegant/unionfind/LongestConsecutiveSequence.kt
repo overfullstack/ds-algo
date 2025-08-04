@@ -1,4 +1,4 @@
-package educative.graph.unionfind
+package educative.elegant.unionfind
 
 /* 26 Sep 2024 16:34 */
 fun longestConsecutiveSequence(nums: IntArray): Int {
@@ -9,7 +9,9 @@ fun longestConsecutiveSequence(nums: IntArray): Int {
 }
 
 private class UnionFind6(val nums: IntArray) {
+  // ! Using `map` instead of `IntArray`, to use nums directly without indices
   val roots = nums.associateWith { it }.toMutableMap()
+  // ! `1` as we use ranks to store sequence length and each element is its own sequence
   val ranks = nums.associateWith { 1 }.toMutableMap()
 
   tailrec fun find(n: Int): Int {
@@ -24,8 +26,8 @@ private class UnionFind6(val nums: IntArray) {
     val root1 = find(n1)
     val root2 = find(n2)
     if (root1 != root2) {
-      // * Here rank is used to measure `size` of a set,
-      // so we are adding ranks instead of just incrementing by 1
+      // * Here rank is used to measure `size` of a set.
+      // * So we are adding ranks instead of just incrementing by 1
       when {
         ranks[root1]!! >= ranks[root2]!! -> {
           roots[root2] = root1

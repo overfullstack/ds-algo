@@ -1,6 +1,6 @@
 package ds
 
-open class TrieNode(val value: Char = Char.MIN_VALUE) { // The First node of a Trie is a stub.
+data class TrieNode(val value: Char = Char.MIN_VALUE) { // The First node of a Trie is a stub.
   var isEnd = false
     private set
 
@@ -10,27 +10,22 @@ open class TrieNode(val value: Char = Char.MIN_VALUE) { // The First node of a T
   lateinit var word: String
     private set
 
-  fun insert(key: String) {
+  fun insert(word: String) {
     var crawl = this
-    for (char in key) {
+    for (char in word) {
       crawl = crawl.children[char - 'a'] ?: TrieNode(char).also { crawl.children[char - 'a'] = it }
     }
     crawl.isEnd = true
-    crawl.word = key
+    crawl.word = word
   }
 
-  fun remove(key: String, depth: Int = 0): TrieNode? {
-    if (depth == key.length) {
-      if (isEnd) {
-        isEnd = false
-      }
-      // This has no subbranches, the only branch is being totally dedicated for this word.
-      return if (isEmptyChildren()) null else this
+  fun remove(word: String, depth: Int = 0): TrieNode? {
+    when (depth) {
+      word.length -> if (isEnd) isEnd = false
+      else -> children[word[depth] - 'a'] = children[word[depth] - 'a']?.remove(word, depth + 1)
     }
-    children[key[depth] - 'a'] = children[key[depth] - 'a']?.remove(key, depth + 1)
-    return if (!isEnd && isEmptyChildren()) null
-    else this // If the current child is the only non-null child that got removed, remove this node
-    // recursively.
+    // remove node if it has no words ending here and no children
+    return if (!isEnd && isEmptyChildren()) null else this
   }
 
   private fun isEmptyChildren(): Boolean = children.all { it == null }
@@ -51,7 +46,7 @@ open class TrieNode(val value: Char = Char.MIN_VALUE) { // The First node of a T
     return crawl.isEnd
   }
 
-  fun isCombinationPresent(key: String): Boolean {
+  fun isWordSequencePresent(key: String): Boolean {
     var crawl = this as TrieNode?
     for (char in key) {
       // If we find the end, start from the beginning
@@ -81,7 +76,7 @@ open class TrieNode(val value: Char = Char.MIN_VALUE) { // The First node of a T
 
   fun isDotRegexPresent(dotRegex: String, dotRegexIndex: Int = 0): Boolean =
     when {
-      // + 1 coz the first level is stub
+      // ! + 1 coz the first level is a stub
       dotRegexIndex == dotRegex.lastIndex + 1 -> isEnd
       else ->
         children
@@ -102,17 +97,39 @@ open class TrieNode(val value: Char = Char.MIN_VALUE) { // The First node of a T
     return crawl.dfsWords(key, limit)
   }
 
-  private fun dfsWords(prefix: String, limit: Int, curWord: String = ""): List<String> {
-    val currentWord = if (isEnd) listOf(prefix + curWord) else emptyList()
-    val remainingLimit = limit - currentWord.size
+  private fun dfsWords(prefix: String, limit: Int, suffix: String = ""): List<String> {
+    val currentWords = if (isEnd) listOf(prefix + suffix) else emptyList()
+    val remainingLimit = limit - currentWords.size // ! `currentWords.size` is 0 or 1
     val wordsFromChildren =
       children.asSequence().filterNotNull().fold(emptyList<String>()) { words, child ->
         when {
-          words.size >= remainingLimit -> return currentWord + words.take(remainingLimit)
-          else -> words + child.dfsWords(prefix, remainingLimit - words.size, curWord + child.value)
+          words.size >= remainingLimit -> return currentWords + words.take(remainingLimit)
+          else -> words + child.dfsWords(prefix, remainingLimit - words.size, suffix + child.value)
         }
       }
-    return currentWord + wordsFromChildren
+    return currentWords + wordsFromChildren
+  }
+
+  override fun equals(other: Any?): Boolean {
+    if (this === other) return true
+    if (javaClass != other?.javaClass) return false
+
+    other as TrieNode
+
+    if (value != other.value) return false
+    if (isEnd != other.isEnd) return false
+    if (!children.contentEquals(other.children)) return false
+    if (word != other.word) return false
+
+    return true
+  }
+
+  override fun hashCode(): Int {
+    var result = value.hashCode()
+    result = 31 * result + isEnd.hashCode()
+    result = 31 * result + children.contentHashCode()
+    result = 31 * result + word.hashCode()
+    return result
   }
 }
 

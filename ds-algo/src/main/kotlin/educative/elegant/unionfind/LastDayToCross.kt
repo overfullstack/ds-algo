@@ -1,4 +1,4 @@
-package educative.graph.unionfind
+package educative.elegant.unionfind
 
 /* 09 Sep 2024 18:23 */
 fun lastDayToCross(rows: Int, cols: Int, waterCells: Set<Pair<Int, Int>>): Int {
@@ -16,8 +16,8 @@ fun lastDayToCross(rows: Int, cols: Int, waterCells: Set<Pair<Int, Int>>): Int {
     .size
 }
 
-// We can move in only 4 directions, but waterCells can be connected diagonally also
-// to block the path horizontally
+// ! We can move in only 4 directions, but waterCells can be connected diagonally also
+// ! to block the path horizontally, so 8 directions
 private val directions =
   listOf(0 to 1, 0 to -1, 1 to 0, -1 to 0, 1 to 1, -1 to 1, 1 to -1, -1 to -1)
 
@@ -48,9 +48,9 @@ fun isValid(
 ): Boolean = cell.first in (1..rows) && cell.second in (1..cols) && cell in waterDayByDay
 
 private class UnionFind3(rows: Int, val cols: Int) {
-  // +2 for virtual nodes
-  val roots = Array(rows * cols + 2) { it }
-  val ranks = Array(rows * cols + 2) { 0 }
+  // ! +2 for virtual nodes
+  val roots = IntArray(rows * cols + 2) { it }
+  val ranks = IntArray(rows * cols + 2)
 
   tailrec fun find(n: Int): Int =
     when {

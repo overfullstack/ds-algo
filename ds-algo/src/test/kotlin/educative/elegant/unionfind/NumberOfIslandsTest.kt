@@ -1,4 +1,4 @@
-package educative.graph.unionfind
+package educative.elegant.unionfind
 
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.inspectors.forAll

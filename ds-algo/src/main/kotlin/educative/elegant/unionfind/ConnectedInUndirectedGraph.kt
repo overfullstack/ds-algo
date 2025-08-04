@@ -1,4 +1,4 @@
-package educative.graph.unionfind
+package educative.elegant.unionfind
 
 /* 22 Jul 2025 19:38 */
 
@@ -8,8 +8,8 @@ fun countComponents(n: Int, edges: List<Pair<Int, Int>>): Int {
 }
 
 private class UnionFind7(n: Int) {
-  val roots = Array(n) { it }
-  val ranks = Array(n) { 1 }
+  val roots = IntArray(n) { it }
+  val ranks = IntArray(n)
 
   tailrec fun find(n: Int): Int {
     val root = roots[n]

@@ -16,6 +16,7 @@ fun numMatchingSubseq(s: String, words: Array<String>): Int {
         val (index, word) = queue.removeFirst()
         val next = index + 1
         when {
+          // * The ch in s, has to hunt down a word in every bucket it gets placed, to finish it
           next == word.length -> count++
           else ->
             buckets.merge(word[next], ArrayDeque(listOf(next to word))) { old, _ ->
@@ -30,7 +31,7 @@ fun numMatchingSubseq(s: String, words: Array<String>): Int {
 }
 
 fun main() {
-  // println(numMatchingSubseq("abcde", arrayOf("a", "bb", "acd", "ace")))
+  println(numMatchingSubseq("abcde", arrayOf("a", "bb", "acd", "ace"))) // 3 ("a", "acd", "ace")
   println(
     numMatchingSubseq(
       "rwpddkvbnnuglnagtvamxkqtwhqgwbqgfbvgkwyuqkdwhzudsxvjubjgloeofnpjqlkdsqvruvabjrikfwronbrdyyjnakstqjac",
@@ -47,5 +48,5 @@ fun main() {
         "qatithxifaaiwyszlkgoljzkkweqkjjzvymedvclfxwcezqebx",
       ),
     )
-  )
+  ) // 5 ("lnagtva", "vbgeinupkvgmg", "gloeofnpjqlkds", "mspuhbykmmumt", "rgmliajkiknong")
 }

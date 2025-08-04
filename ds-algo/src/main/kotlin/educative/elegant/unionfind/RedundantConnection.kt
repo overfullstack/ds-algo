@@ -1,15 +1,15 @@
-package educative.graph.unionfind
+package educative.elegant.unionfind
 
 /* 16 Sep 2024 15:47 */
 fun redundantConnection(edges: List<Pair<Int, Int>>): Pair<Int, Int> {
   val max = edges.flatMap { it.toList() }.max()
-  val unionFind = UnionFind5(max)
+  val unionFind = UnionFind5(max + 1) // ! `+1` as it's 1-indexed
   return edges.first { !unionFind.union(it) }
 }
 
 private class UnionFind5(size: Int) {
-  val roots = Array<Int>(size + 1) { it }
-  val ranks = Array<Int>(size + 1) { 0 }
+  val roots = IntArray(size) { it }
+  val ranks = IntArray(size)
 
   tailrec fun find(n: Int): Int =
     when {

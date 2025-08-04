@@ -1,4 +1,4 @@
-package educative.graph.unionfind
+package educative.elegant.unionfind
 
 /* 05 Sep 2024 16:22 */
 
@@ -28,30 +28,11 @@ private fun isValid(nextCell: Pair<Int, Int>, grid: Array<IntArray>): Boolean =
     nextCell.second in grid[0].indices &&
     grid[nextCell.first][nextCell.second] == 1
 
-fun numberOfIslands2(grid: Array<IntArray>): Int {
-  val unionFind = UnionFind(grid)
-  val cols = grid[0].lastIndex
-  for (row in grid.indices) {
-    for (col in grid[0].indices) {
-      if (grid[row][col] == 1) {
-        grid[row][col] = 0
-        val curIndex = row * cols + col
-        if (row - 1 >= 0 && grid[row - 1][col] == 1) unionFind.union(curIndex, curIndex - cols)
-        if (col - 1 >= 0 && grid[row][col - 1] == 1) unionFind.union(curIndex, curIndex - 1)
-        if (row + 1 <= grid.lastIndex && grid[row + 1][col] == 1)
-          unionFind.union(curIndex, curIndex + cols)
-        if (col + 1 <= grid[0].lastIndex && grid[row][col + 1] == 1)
-          unionFind.union(curIndex, curIndex + 1)
-      }
-    }
-  }
-  return unionFind.countOf1s
-}
-
 private class UnionFind(grid: Array<IntArray>) {
   val cols = grid[0].size
-  var ranks = Array(grid.size * cols) { 1 }
-  var roots = Array(grid.size * cols) { -1 }
+  // ! `-1` to indicate no connection for `0`
+  var roots = IntArray(grid.size * cols) { -1 }
+  var ranks = IntArray(grid.size * cols)
   var countOf1s =
     grid.indices
       .asSequence()
@@ -87,4 +68,24 @@ private class UnionFind(grid: Array<IntArray>) {
       countOf1s--
     }
   }
+}
+
+fun numberOfIslands2(grid: Array<IntArray>): Int {
+  val unionFind = UnionFind(grid)
+  val cols = grid[0].lastIndex
+  for (row in grid.indices) {
+    for (col in grid[0].indices) {
+      if (grid[row][col] == 1) {
+        grid[row][col] = 0
+        val curIndex = row * cols + col
+        if (row - 1 >= 0 && grid[row - 1][col] == 1) unionFind.union(curIndex, curIndex - cols)
+        if (col - 1 >= 0 && grid[row][col - 1] == 1) unionFind.union(curIndex, curIndex - 1)
+        if (row + 1 <= grid.lastIndex && grid[row + 1][col] == 1)
+          unionFind.union(curIndex, curIndex + cols)
+        if (col + 1 <= grid[0].lastIndex && grid[row][col + 1] == 1)
+          unionFind.union(curIndex, curIndex + 1)
+      }
+    }
+  }
+  return unionFind.countOf1s
 }
