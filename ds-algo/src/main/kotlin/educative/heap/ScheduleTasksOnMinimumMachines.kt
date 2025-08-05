@@ -3,8 +3,7 @@ package educative.heap
 import java.util.PriorityQueue
 
 fun minimumMachines(intervals: List<Pair<Int, Int>>): Int {
-  val minHeapForNextStartingJob =
-    PriorityQueue(Comparator.comparingInt<Pair<Int, Int>> { it.first })
+  val minHeapForNextStartingJob = PriorityQueue(compareBy<Pair<Int, Int>> { it.first })
   val minHeapForNextFreeMachine = PriorityQueue<Int>()
 
   minHeapForNextStartingJob.addAll(intervals)

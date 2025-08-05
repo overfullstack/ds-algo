@@ -18,9 +18,7 @@ fun topKFrequent(words: Array<String>, k: Int): List<String> {
   // So we do descend sorting, i.e., out of `a` `b`, we push `b` towards head, so it is more prone
   // to `poll()`
   val minHeap =
-    PriorityQueue(
-      Comparator.comparingInt<Map.Entry<String, Int>> { it.value }.thenByDescending { it.key }
-    )
+    PriorityQueue(compareBy<Map.Entry<String, Int>> { it.value }.thenByDescending { it.key })
   for (entry in wordToFrequency.entries) {
     // `add()` before `poll()`, as `poll()` doesn't necessarily remove the last added,
     // but least frequent

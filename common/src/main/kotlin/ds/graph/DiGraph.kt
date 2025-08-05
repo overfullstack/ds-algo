@@ -26,16 +26,6 @@ class DiGraph<T>(
 
   fun getNeighbours(node: T): Set<T> = adjacencyMap[node] ?: emptySet()
 
-  /** Gets all nodes in the graph (both sources and destinations). */
-  private fun getAllNodes(): Set<T> {
-    val allNodes = mutableSetOf<T>()
-    allNodes.addAll(adjacencyMap.keys) // Add all source nodes
-    adjacencyMap.values.forEach { destinations ->
-      allNodes.addAll(destinations) // Add all destination nodes
-    }
-    return allNodes
-  }
-
   fun bfs(valToSearch: T): Boolean {
     val visited = mutableSetOf<T>()
     return adjacencyMap.keys
@@ -161,7 +151,6 @@ class DiGraph<T>(
    * directed edges with undirected edges produces a connected undirected graph.
    */
   fun isWeaklyConnected(): Boolean {
-    val allNodes = getAllNodes()
     if (allNodes.isEmpty()) return true
 
     // Create undirected adjacency representation
@@ -204,7 +193,7 @@ class DiGraph<T>(
    * directed path from every node to every other node.
    */
   fun isStronglyConnected(): Boolean {
-    val allNodes = getAllNodes()
+    val allNodes = allNodes
     if (allNodes.isEmpty()) return true
     if (allNodes.size == 1) return true
 
@@ -248,7 +237,7 @@ class DiGraph<T>(
   /** Creates a transpose graph (all edges reversed). */
   private fun createTransposeGraph(): DiGraph<T> {
     val transposeAdjacency = mutableMapOf<T, Set<T>>()
-    val allNodes = getAllNodes()
+    val allNodes = allNodes
 
     // Initialize all nodes with empty sets
     allNodes.forEach { node -> transposeAdjacency[node] = emptySet() }

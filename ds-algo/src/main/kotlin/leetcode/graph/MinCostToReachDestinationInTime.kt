@@ -16,7 +16,7 @@ fun minCost(maxTime: Int, edges: Array<IntArray>, passingFees: IntArray): Int {
     EdgeWeightedDiGraph(
       edges.flatMap { (from, to, time) -> listOf(Triple(from, to, time), Triple(to, from, time)) }
     )
-  val pq = PriorityQueue(Comparator.comparingInt<Triple<Int, Int, Int>> { it.third })
+  val pq = PriorityQueue(compareBy<Triple<Int, Int, Int>> { it.third })
   val nodeToTimeFromSource = mutableMapOf<Int, Int>()
   pq.add(Triple(0, 0, passingFees.first()))
 

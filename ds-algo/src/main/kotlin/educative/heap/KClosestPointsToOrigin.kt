@@ -6,7 +6,7 @@ import kotlin.math.sqrt
 
 fun kClosestPointsToOrigin(points: List<Pair<Int, Int>>, k: Int): Set<Pair<Int, Int>> {
   // ! Make Fathest points vulnerable to polling
-  val maxHeap = PriorityQueue(Comparator.comparingDouble(::distanceFromOrigin).reversed())
+  val maxHeap = PriorityQueue(compareByDescending(::distanceFromOrigin))
   for (point in points) {
     maxHeap.add(point)
     if (maxHeap.size > k) {

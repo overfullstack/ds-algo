@@ -5,7 +5,7 @@ import java.util.PriorityQueue
 /* 21 Jul 2025 10:24 */
 
 fun kPairsWithSmallestSum(nums1: IntArray, nums2: IntArray, k: Int): List<Pair<Int, Int>> {
-  val minHeap = PriorityQueue(Comparator.comparingInt<Triple<Int, Int, Int>> { it.first })
+  val minHeap = PriorityQueue(compareBy<Triple<Int, Int, Int>> { it.first })
   minHeap.addAll(
     nums1.take(maxOf(k, nums1.size)).withIndex().map { (index, num) ->
       Triple(num + nums2[0], index, 0)

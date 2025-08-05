@@ -4,7 +4,7 @@ package leetcode.array
 
 fun numberOfWeakCharacters(properties: Array<IntArray>): Int {
   val sortedProperties =
-    properties.sortedWith(Comparator.comparingInt<IntArray> { it[0] }.thenByDescending { it[1] })
+    properties.sortedWith(compareBy<IntArray> { it[0] }.thenByDescending { it[1] })
   return sortedProperties
     .dropLast(1)
     .foldRight(sortedProperties.last()[1] to 0) { property, (max, count) ->

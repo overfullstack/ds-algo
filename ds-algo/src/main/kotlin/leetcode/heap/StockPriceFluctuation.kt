@@ -5,8 +5,8 @@ import java.util.PriorityQueue
 /* 04 Aug 2025 21:02 */
 
 class StockPriceFluctuation {
-  val minHeap = PriorityQueue(Comparator.comparingInt<Pair<Int, Int>> { it.second })
-  val maxHeap = PriorityQueue(Comparator.comparingInt<Pair<Int, Int>> { it.second }.reversed())
+  val minHeap = PriorityQueue(compareBy<Pair<Int, Int>> { it.second })
+  val maxHeap = PriorityQueue(compareByDescending<Pair<Int, Int>> { it.second })
   val ledger = mutableMapOf<Int, Int>()
   var currentTimeStamp = 0
 

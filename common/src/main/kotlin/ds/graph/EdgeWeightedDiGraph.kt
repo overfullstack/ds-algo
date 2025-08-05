@@ -6,32 +6,43 @@ import java.util.*
 /* 15 Jul 2025 15:36 */
 
 class EdgeWeightedDiGraph<T>(
-  private val adjacencyMap: MutableMap<T, Set<WeightedEdge<T>>> = mutableMapOf()
+  private val adjacencyMap: MutableMap<T, Set<WeightedEdge<T>>> = mutableMapOf(),
+  val isPrimitiveType: Boolean = false,
 ) : MutableMap<T, Set<WeightedEdge<T>>> by adjacencyMap {
+
+  data class WeightedEdge<T>(val destination: T, val weight: Int)
 
   constructor(data: List<Triple<T, T, Int>>) : this() {
     data.forEach { (source, destination, weight) -> addEdge(source, destination, weight) }
   }
 
+  val allNodes: Set<T>
+    get() = adjacencyMap.keys + adjacencyMap.values.flatten().map { it.destination }
+
   fun addEdge(source: T, destination: T, weight: Int) {
-    adjacencyMap.merge(source, setOf(WeightedEdge(destination, weight)), Set<WeightedEdge<T>>::plus)
+    val actualDestination =
+      if (isPrimitiveType) destination
+      else allNodes.firstOrNull { it == destination } ?: destination
+    adjacencyMap.merge(
+      source,
+      setOf(WeightedEdge(actualDestination, weight)),
+      Set<WeightedEdge<T>>::plus,
+    )
   }
 
-  fun removeVertex(vertex: T) {
-    adjacencyMap.remove(vertex)
+  fun removeNode(node: T) {
+    adjacencyMap.remove(node)
   }
 
-  fun addVertex(vertex: T) {
+  fun addNode(vertex: T) {
     adjacencyMap[vertex] = emptySet()
   }
 
   fun getNeighbours(node: T): Set<WeightedEdge<T>>? = adjacencyMap[node]
 
-  data class WeightedEdge<T>(val destination: T, val weight: Int)
-
   fun dijkstraShortestPath(source: T): Map<T, Int> {
     val nodeToDistanceFromSource = mutableMapOf<T, Int>()
-    val pq = PriorityQueue(Comparator.comparingInt<Pair<T, Int>> { it.second })
+    val pq = PriorityQueue(compareBy<Pair<T, Int>> { it.second })
     pq.add(source to 0)
     while (pq.isNotEmpty()) {
       val (node, distanceFromSource) = pq.poll()

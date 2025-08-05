@@ -7,7 +7,7 @@ import java.util.PriorityQueue
 fun swimInWater(grid: Array<IntArray>): Int {
   // ! Greedily choose the minimum next cell in the possible paths
   // ! Possible path can stem from any cell in the current path
-  val pq = PriorityQueue(Comparator.comparingInt<Triple<Int, Int, Int>> { it.third })
+  val pq = PriorityQueue(compareBy<Triple<Int, Int, Int>> { it.third })
   pq.add(Triple(0, 0, grid[0][0]))
   var maxInPath = Int.MIN_VALUE
   val visited = mutableSetOf<Pair<Int, Int>>()

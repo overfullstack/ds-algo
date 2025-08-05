@@ -8,7 +8,7 @@ import java.util.PriorityQueue
 
 fun networkDelayTime(times: List<Triple<Int, Int, Int>>, n: Int, origin: Int): Int {
   val graph = EdgeWeightedDiGraph(times)
-  val pq = PriorityQueue(Comparator.comparingInt<WeightedEdge<Int>> { it.weight })
+  val pq = PriorityQueue(compareBy<WeightedEdge<Int>> { it.weight })
   pq.add(WeightedEdge(origin, 0))
   val visited = mutableSetOf<Int>()
   var minDelay = Int.MIN_VALUE

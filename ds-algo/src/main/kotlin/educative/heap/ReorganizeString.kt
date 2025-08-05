@@ -5,7 +5,7 @@ import java.util.PriorityQueue
 
 fun reorganizeString(str: String): String {
   val charFreq = str.groupingBy { it }.eachCount()
-  val maxHeap = PriorityQueue(Comparator.comparingInt<Map.Entry<Char, Int>> { it.value })
+  val maxHeap = PriorityQueue(compareBy<Map.Entry<Char, Int>> { it.value })
   maxHeap.addAll(charFreq.entries)
 
   var prev: Map.Entry<Char, Int>? = null

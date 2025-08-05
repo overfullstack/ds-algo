@@ -13,6 +13,17 @@ class ShortestPathInGridWithObstaclesEliminationTest :
       forAll(
         row(
           arrayOf(
+            intArrayOf(0, 0, 0),
+            intArrayOf(1, 1, 0),
+            intArrayOf(0, 0, 0),
+            intArrayOf(0, 1, 1),
+            intArrayOf(0, 0, 0),
+          ),
+          1,
+          6,
+        ),
+        row(
+          arrayOf(
             intArrayOf(0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
             intArrayOf(0, 1, 1, 1, 1, 1, 1, 1, 1, 0),
             intArrayOf(0, 1, 0, 0, 0, 0, 0, 0, 0, 0),
@@ -51,6 +62,7 @@ class ShortestPathInGridWithObstaclesEliminationTest :
         ),
       ) { grid, k, result ->
         shortestPath(grid, k) shouldBe result
+        shortestPath2(grid, k) shouldBe result
       }
     }
   })

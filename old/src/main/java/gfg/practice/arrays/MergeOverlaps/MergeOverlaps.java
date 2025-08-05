@@ -1,7 +1,6 @@
 package gfg.practice.arrays.MergeOverlaps;
 
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
@@ -28,9 +27,7 @@ public class MergeOverlaps {
 	private static List<Interval> mergeIntervals(List<Interval> intervals) {
 		List<Interval> mergedIntervals = new ArrayList<>();
 		var sortedIntervals =
-				intervals.stream()
-						.sorted(Comparator.comparingInt(i -> i.startTime))
-						.collect(Collectors.toList());
+				intervals.stream().sorted(compareBy(i -> i.startTime)).collect(Collectors.toList());
 		var prev = sortedIntervals.get(0);
 		for (var cur : sortedIntervals) {
 			if (prev.endTime >= cur.startTime) {

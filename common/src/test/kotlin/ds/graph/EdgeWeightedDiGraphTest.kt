@@ -40,8 +40,8 @@ class EdgeWeightedDiGraphTest :
       val graph = EdgeWeightedDiGraph<Int>()
       // Just add a node to the adjacency map by calling addEdge and then removing it
       graph.addEdge(1, 2, 1)
-      graph.removeVertex(1)
-      graph.addVertex(5)
+      graph.removeNode(1)
+      graph.addNode(5)
 
       val distances = graph.dijkstraShortestPath(5)
 

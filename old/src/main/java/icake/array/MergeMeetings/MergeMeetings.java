@@ -1,7 +1,6 @@
 package icake.array.MergeMeetings;
 
 import java.util.Arrays;
-import java.util.Comparator;
 
 /** Created by gakshintala on 6/22/16. */
 public class MergeMeetings {
@@ -19,7 +18,7 @@ public class MergeMeetings {
 
 	private static Meeting[] mergeMeetings(Meeting[] meetings) {
 		var mergedMeetings = new Meeting[meetings.length];
-		Arrays.sort(meetings, Comparator.comparingInt(m -> m.startTime));
+		Arrays.sort(meetings, compareBy(m -> m.startTime));
 		mergedMeetings[0] = meetings[0];
 		var mergedMeetingsIndex = 0;
 		for (var i = 1; i < meetings.length; i++) {
