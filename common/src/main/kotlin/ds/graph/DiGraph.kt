@@ -5,15 +5,23 @@ import java.util.*
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
 
-class DiGraph<T>(private val adjacencyMap: MutableMap<T, Set<T>> = mutableMapOf()) :
-  MutableMap<T, Set<T>> by adjacencyMap {
+class DiGraph<T>(
+  private val adjacencyMap: MutableMap<T, Set<T>> = mutableMapOf(),
+  val isPrimitiveType: Boolean = false,
+) : MutableMap<T, Set<T>> by adjacencyMap {
+
+  val allNodes: Set<T>
+    get() = adjacencyMap.keys + adjacencyMap.values.flatten()
 
   constructor(edges: List<Pair<T, T>>) : this() {
     edges.forEach { (source, destination) -> addEdge(source, destination) }
   }
 
   fun addEdge(source: T, destination: T) {
-    adjacencyMap.merge(source, setOf(destination), Set<T>::plus)
+    val actualDestination =
+      if (isPrimitiveType) destination
+      else allNodes.firstOrNull { it == destination } ?: destination
+    adjacencyMap.merge(source, setOf(actualDestination), Set<T>::plus)
   }
 
   fun getNeighbours(node: T): Set<T> = adjacencyMap[node] ?: emptySet()
