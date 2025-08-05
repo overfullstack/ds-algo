@@ -8,8 +8,7 @@ import utils.toTriple
 
 /**
  * [787. Cheapest Flights Within K
- * Stops](https://leetcode.com/problems/cheapest-flights-within-k-stops/)
- * ⏱️ TLE
+ * Stops](https://leetcode.com/problems/cheapest-flights-within-k-stops/) ⏱️ TLE
  */
 fun findCheapestPrice(n: Int, flights: Array<IntArray>, src: Int, dst: Int, k: Int): Int {
   val edgeWeightedDiGraph: EdgeWeightedDiGraph<Int> =
@@ -26,7 +25,7 @@ fun findCheapestPrice(n: Int, flights: Array<IntArray>, src: Int, dst: Int, k: I
     if (k >= 0) {
       edgeWeightedDiGraph[from]?.forEach { (to, priceFromToTo) ->
         val nextPrice = priceFromSource + priceFromToTo
-        // * We just need to prune the destination reaching edges. 
+        // * We just need to prune the destination reaching edges.
         // * Others stay towards the end of pq harmless
         if (nextPrice < minDistance) {
           pq.add(Triple(to, nextPrice, k - 1))

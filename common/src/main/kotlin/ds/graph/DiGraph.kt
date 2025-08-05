@@ -77,17 +77,17 @@ class DiGraph<T>(
     }
 
   /** -> DFT */
-  fun dft(): List<T> {
+  fun dftPreOrder(): List<T> {
     val visited = mutableSetOf<T>()
     return adjacencyMap.keys
       .asSequence()
       .filter { it !in visited }
       // ! Using a `list(it)` for Order, otherwise Global visited captures all reachable nodes
-      .flatMap { listOf(it) + it.dftPerGroup(visited) }
+      .flatMap { listOf(it) + it.dftPreOrderPerGroup(visited) }
       .toList()
   }
 
-  private fun T.dftPerGroup(visited: MutableSet<T>): Sequence<T> =
+  private fun T.dftPreOrderPerGroup(visited: MutableSet<T>): Sequence<T> =
     when {
       this in visited -> emptySequence()
       else -> {
@@ -95,7 +95,7 @@ class DiGraph<T>(
         adjacencyMap[this]
           ?.asSequence()
           ?.filter { it !in visited }
-          ?.flatMap { listOf(it) + it.dftPerGroup(visited) }
+          ?.flatMap { listOf(it) + it.dftPreOrderPerGroup(visited) }
           ?.distinct() ?: emptySequence()
       }
     }

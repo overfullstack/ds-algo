@@ -48,7 +48,7 @@ class DiGraphTest :
       shouldThrow<IllegalArgumentException> { diGraphWithCycle.topologicalSort() }
     }
 
-    "dft" { diGraph.dft() shouldContainExactly listOf(0, 1, 4, 2, 5, 3, 6, 7, 8, 9) }
+    "dft" { diGraph.dftPreOrder() shouldContainExactly listOf(0, 1, 4, 2, 5, 3, 6, 7, 8, 9) }
 
     "dft with DiGraph JSON" {
       forAll(
@@ -89,7 +89,7 @@ class DiGraphTest :
           ),
         ),
       ) { graph, result ->
-        graph.dft() shouldContainExactly result
+        graph.dftPreOrder() shouldContainExactly result
       }
     }
 
