@@ -31,3 +31,6 @@ fun IntArray.toTriple(): Triple<Int, Int, Int> =
       throw IllegalArgumentException("Array with more than 2 elements cannot be converted to Pair")
     else -> Triple(get(0), get(1), get(2))
   }
+
+operator fun Pair<Int, Int>.plus(other: Pair<Int, Int>): Pair<Int, Int> =
+  first + other.first to second + other.second
