@@ -28,7 +28,9 @@ public class MergeOverlaps {
 	private static List<Interval> mergeIntervals(List<Interval> intervals) {
 		List<Interval> mergedIntervals = new ArrayList<>();
 		var sortedIntervals =
-				intervals.stream().sorted(Comparator.comparingInt(i -> i.startTime)).collect(Collectors.toList());
+				intervals.stream()
+						.sorted(Comparator.comparingInt(i -> i.startTime))
+						.collect(Collectors.toList());
 		var prev = sortedIntervals.get(0);
 		for (var cur : sortedIntervals) {
 			if (prev.endTime >= cur.startTime) {

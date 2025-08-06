@@ -5,8 +5,8 @@ import io.kotest.core.spec.style.StringSpec
 import io.kotest.inspectors.forAll
 import io.kotest.matchers.collections.shouldContainExactlyInAnyOrder
 import io.kotest.matchers.shouldBe
+import testcase.ListLListToList
 import testcase.TestCase23
-import testcase.TestCase24
 
 internal class TrieNodeTest :
   StringSpec({
@@ -93,7 +93,7 @@ internal class TrieNodeTest :
     }
 
     "operate" {
-      TestCase24.parseJsonFileToTestCases("trie/Operations/test-cases-1.json").forAll {
+      ListLListToList.parseJsonFileToTestCases("trie/Operations/test-cases-1.json").forAll {
         (inputs, output) ->
         trieNode = TrieNode()
         inputs

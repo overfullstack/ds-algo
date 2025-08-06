@@ -15,6 +15,7 @@ fun TreeNode.houseRobber3Internal(): Pair<Int, Int> {
   val (rightSumWithRoot, rightSumWithoutRoot) =
     right?.houseRobber3Internal() ?: (0 to Int.MIN_VALUE)
 
+  // ! With root is easy, without root, you need to sum up the max of next two levels
   val sumWithRoot = `val` + leftSumWithoutRoot + rightSumWithoutRoot
   val sumWithoutRoot =
     maxOf(leftSumWithRoot, leftSumWithoutRoot) + maxOf(rightSumWithRoot, rightSumWithoutRoot)

@@ -4,7 +4,7 @@ import ds.tree.TreeNode.Companion.levelOrderToIncompleteTree
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.inspectors.forAll
 import io.kotest.matchers.shouldBe
-import testcase.TestCase25.Companion.parseJsonFileToTestCases
+import testcase.ListToLList.Companion.parseJsonFileToTestCases
 
 /* 19 Jul 2025 18:28 */
 
