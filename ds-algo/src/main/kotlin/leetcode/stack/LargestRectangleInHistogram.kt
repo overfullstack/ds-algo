@@ -12,7 +12,7 @@ fun largestRectangle(histogram: IntArray): Long {
   for (i in histogram.indices) {
     // * A bar can make rectangle till it's next lowest on the right.
     // * When a lower bar than `peek()` is encountered, `pop()` bars from right to left,
-    // * calculating area made by EACH bar left till right most.
+    // * calculating area made by each bar left till right most.
     while (indexStk.isNotEmpty() && histogram[i] < histogram[indexStk.peek()]) {
       val top = indexStk.pop()
       // `leftIndex` can be immediate previous or few higher rectangles away
@@ -44,34 +44,4 @@ fun largestRectangle(histogram: IntArray): Long {
 
 fun main() {
   largestRectangle(intArrayOf(2, 4, 5, 6, 3))
-}
-
-fun largestRectangle_g4g(histogram: Array<Int>): Long {
-  val indexStk = ArrayDeque<Int>()
-  var maxArea = Long.MIN_VALUE
-  var histToInsertIndex = 0
-  while (histToInsertIndex <= histogram.lastIndex) {
-    if (
-      indexStk.isEmpty() || histogram[histToInsertIndex] >= histogram[indexStk.last()]
-    ) { // accumulate as bigger hists are encountered.
-      indexStk.add(histToInsertIndex)
-      histToInsertIndex++
-    } else {
-      val top = indexStk.removeLast()
-      // This is equivalent to getting area with every hist or all hists higher than this.
-      // Observe we are operating on indexes, so even the previously popped hists come into count.
-      val areaWithTop =
-        histogram[top] *
-          if (indexStk.isEmpty()) histToInsertIndex else histToInsertIndex - indexStk.last() - 1
-      maxArea = maxOf(maxArea, areaWithTop.toLong())
-    }
-  }
-  while (indexStk.isNotEmpty()) { // This area calculation is in reverse order.
-    val top = indexStk.removeLast()
-    val areaWithTop =
-      histogram[top] *
-        if (indexStk.isEmpty()) histogram.size else histogram.size - indexStk.removeLast() - 1
-    maxArea = maxOf(maxArea, areaWithTop.toLong())
-  }
-  return maxArea
 }

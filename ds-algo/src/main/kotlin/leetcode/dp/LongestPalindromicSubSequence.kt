@@ -5,6 +5,7 @@ fun longestPalindromeSubseq(s: String): Int {
   val table = Array(s.length) { IntArray(s.length) }
   table.indices.forEach { table[it][it] = 1 } // having the same start char and end char
 
+  // * table[i][j] is the longest palindromic subsequence of `s[i..j]`
   for (windowLen in 1 until s.length) {
     for ((wStart, wEnd) in (windowLen until s.length).withIndex()) {
       table[wStart][wEnd] =
@@ -20,5 +21,6 @@ fun longestPalindromeSubseq(s: String): Int {
 }
 
 fun main() {
-  print(longestPalindromeSubseq(readln()))
+  val input = "bbbab"
+  println("2D version: ${longestPalindromeSubseq(input)}")
 }

@@ -1,7 +1,23 @@
 /* gakshintala created on 12/26/19 */
 package leetcode.dp
 
-fun uniquePathsWithObstacles(obstacleGrid: Array<IntArray>): Int {
+fun uniquePathsWithObstacles1d(obstacleGrid: Array<IntArray>): Int {
+  val dp = IntArray(obstacleGrid.first().size)
+  dp[0] = 1
+  for (row in obstacleGrid.indices) {
+    for (col in obstacleGrid.first().indices) {
+      // ! `table[row - 1][col]` is just borrowing from same col data from previous row.
+      // ! Instead, we layer on the top of same 1D, one col at a time
+      when {
+        obstacleGrid[row][col] == 1 -> dp[col] = 0
+        else -> dp[col] += dp[col - 1]
+      }
+    }
+  }
+  return dp.last()
+}
+
+fun uniquePathsWithObstacles2d(obstacleGrid: Array<IntArray>): Int {
   val rows = obstacleGrid.size
   val cols = obstacleGrid[0].size
   val table = Array(rows) { IntArray(cols) }
@@ -27,7 +43,7 @@ fun uniquePathsWithObstacles(obstacleGrid: Array<IntArray>): Int {
 fun uniquePathsWithObstacles2(obstacleGrid: Array<IntArray>): Int {
   val rows = obstacleGrid.size
   val cols = obstacleGrid[0].size
-  val table = IntArray(rows) { 0 }
+  val table = IntArray(rows)
   table[0] = if (obstacleGrid[0][0] != 1) 1 else return 0
   for (row in 1..rows) {
     for (col in 1..cols) {
@@ -42,7 +58,7 @@ fun uniquePathsWithObstacles2(obstacleGrid: Array<IntArray>): Int {
 
 fun main() {
   print(
-    uniquePathsWithObstacles(
+    uniquePathsWithObstacles1d(
       readln()
         .drop(2)
         .dropLast(2)

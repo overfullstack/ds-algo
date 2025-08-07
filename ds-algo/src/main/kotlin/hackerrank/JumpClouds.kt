@@ -2,7 +2,7 @@
 package hackerrank
 
 fun jumpingOnClouds(c: Array<Int>): Int {
-  val jumpTable = IntArray(c.size) { 0 }
+  val jumpTable = IntArray(c.size)
   if (c[0] == 1 || c.last() == 1) {
     return -1
   }

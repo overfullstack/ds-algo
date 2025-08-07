@@ -21,7 +21,9 @@ fun slidingWindowMax(nums: IntArray, k: Int): IntArray {
   for (i in k..nums.lastIndex) {
     result.add(nums[deque.first()]) // peek holds max for that window.
     // eliminate the ones irrelevant for this window.
-    while (deque.isNotEmpty() && deque.first() <= i - k) {
+    // ! enqueued Indexes instead of values for this reason
+    val window = i - k
+    while (deque.isNotEmpty() && deque.first() <= window) {
       deque.removeFirst()
     }
     // shatter the smaller ones.

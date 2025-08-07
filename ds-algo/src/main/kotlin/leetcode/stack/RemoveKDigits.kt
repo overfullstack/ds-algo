@@ -16,7 +16,7 @@ fun removeKdigits(num: String, k: Int): String {
 
   stk.push(numWithoutLeadingZeros[0])
   for (digit in numWithoutLeadingZeros.drop(1)) {
-    // For Higher places, Digits are replaced by subsequent lower digits.
+    // * For Higher places, Digits are replaced by subsequent lower digits.
     while (removals < k && stk.isNotEmpty() && stk.peek() > digit) {
       stk.pop()
       removals++
