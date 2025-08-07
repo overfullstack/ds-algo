@@ -3,7 +3,8 @@ package leetcode.backtracking
 /* 06 Aug 2025 13:33 */
 
 /**
- * [2018. Check if Word Can Be Placed In Crossword](https://leetcode.com/problems/check-if-word-can-be-placed-in-crossword)
+ * [2018. Check if Word Can Be Placed In
+ * Crossword](https://leetcode.com/problems/check-if-word-can-be-placed-in-crossword)
  */
 fun placeWordInCrossword(board: Array<CharArray>, word: String): Boolean =
   board.indices
@@ -26,7 +27,8 @@ fun place(
   wordIndex: Int = 0,
 ): Boolean =
   when {
-    wordIndex == word.lastIndex + 1 -> !isValid(cell, board) || board[cell.first][cell.second] == '#'
+    wordIndex == word.lastIndex + 1 ->
+      !isValid(cell, board) || board[cell.first][cell.second] == '#'
     !isValid(cell, board) || board[cell.first][cell.second] == '#' -> false
     board[cell.first][cell.second] != ' ' && board[cell.first][cell.second] != word[wordIndex] ->
       false
@@ -49,6 +51,12 @@ fun isValid(cell: Pair<Int, Int>, board: Array<CharArray>): Boolean =
 private val directions = listOf(-1 to 0, 1 to 0, 0 to -1, 0 to 1)
 
 fun main() {
-  println(placeWordInCrossword(arrayOf(charArrayOf('#', ' ', '#'), charArrayOf(' ', ' ', '#'), charArrayOf('#', 'c', ' ')), "abc"))
-  //println(placeWordInCrossword(arrayOf(charArrayOf(' ', '#', 'a'), charArrayOf(' ', '#', 'c'), charArrayOf(' ', '#', 'a')), "ac"))
+  println(
+    placeWordInCrossword(
+      arrayOf(charArrayOf('#', ' ', '#'), charArrayOf(' ', ' ', '#'), charArrayOf('#', 'c', ' ')),
+      "abc",
+    )
+  )
+  // println(placeWordInCrossword(arrayOf(charArrayOf(' ', '#', 'a'), charArrayOf(' ', '#', 'c'),
+  // charArrayOf(' ', '#', 'a')), "ac"))
 }

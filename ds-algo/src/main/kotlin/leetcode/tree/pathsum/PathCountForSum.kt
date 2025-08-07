@@ -21,11 +21,8 @@ private fun TreeNode?.pathCountForSum(
   sumToPathCount.merge(curSum, 1, Int::plus)
   totalPathCount +=
     (left.pathCountForSum(targetSum, sumToPathCount, curSum) +
-      right.pathCountForSum(
-        targetSum,
-        sumToPathCount,
-        curSum,
-      )) // This is like fold, for left n right
+      right.pathCountForSum(targetSum, sumToPathCount, curSum))
+  // This is like fold, for left n right
   // backtracking, removing the path contributed by this node, by decrementing the pathCount for
   // curSum.
   // This makes this hashmap reusable for other paths.

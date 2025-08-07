@@ -2,11 +2,11 @@ package leetcode.tree
 
 import ds.tree.TreeNode
 
-
 /* 06 Aug 2025 18:12 */
 
 /**
- * [1372. Longest ZigZag Path in a Binary Tree](https://leetcode.com/problems/longest-zigzag-path-in-a-binary-tree/)
+ * [1372. Longest ZigZag Path in a Binary
+ * Tree](https://leetcode.com/problems/longest-zigzag-path-in-a-binary-tree/)
  */
 fun longestZigZag(root: TreeNode?): Int = root?.dfs()?.third ?: 0
 
@@ -20,7 +20,7 @@ fun TreeNode.dfs(): Triple<Int, Int, Int> {
   val maxZigZag = maxOf(zigzagWithRoot, leftMax, rightMax)
   // * We send path coming from both left and right and let the parent decide
   // ! In `MaxPathSum`, we are sure parent needs `maxOf(leftSum, rightSum)` despite the direction
-  // ! Unlike `MaxPathSum`, we are unsure what parent wants, as it can be on any side. 
+  // ! Unlike `MaxPathSum`, we are unsure what parent wants, as it can be on any side.
   // ! So we send both
   return Triple(leftRightPath + 1, rightLeftPath + 1, maxZigZag)
 }

@@ -1,6 +1,5 @@
 package leetcode.array.slidingwindow
 
-
 /* 07 Aug 2025 10:29 */
 
 fun maxScore(cardPoints: IntArray, k: Int): Int {

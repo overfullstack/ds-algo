@@ -7,8 +7,7 @@ import java.util.PriorityQueue
 /* 15 Jul 2025 15:41 */
 
 /**
- * [743. Network Delay Time](https://leetcode.com/problems/network-delay-time)
- * ⏱️Time limit exceeded
+ * [743. Network Delay Time](https://leetcode.com/problems/network-delay-time) ⏱️Time limit exceeded
  */
 fun networkDelayTime(times: List<Triple<Int, Int, Int>>, n: Int, origin: Int): Int {
   val graph = EdgeWeightedDiGraph(times)

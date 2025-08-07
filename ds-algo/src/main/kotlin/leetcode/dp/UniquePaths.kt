@@ -1,7 +1,18 @@
 /* gakshintala created on 12/26/19 */
 package leetcode.dp
 
-fun uniquePaths(m: Int, n: Int): Int {
+fun uniquePaths1d(m: Int, n: Int): Int {
+  val table = IntArray(n) { 1 }
+
+  repeat(m) {
+    for (col in 1 until n) {
+      table[col] += table[col - 1]
+    }
+  }
+  return table[n - 1]
+}
+
+fun uniquePaths2d(m: Int, n: Int): Int {
   val table = Array(m) { IntArray(n) }
 
   (0 until m).forEach { table[it][0] = 1 }
@@ -16,5 +27,5 @@ fun uniquePaths(m: Int, n: Int): Int {
 }
 
 fun main() {
-  print(uniquePaths(readln().toInt(), readln().toInt()))
+  print(uniquePaths1d(readln().toInt(), readln().toInt()))
 }

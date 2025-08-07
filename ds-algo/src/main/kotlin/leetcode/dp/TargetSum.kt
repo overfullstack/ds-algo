@@ -1,5 +1,6 @@
 package leetcode.dp
 
+/** [494. Target Sum](https://leetcode.com/problems/target-sum/) */
 fun findTargetSumWays(
   nums: IntArray,
   targetSum: Int,
