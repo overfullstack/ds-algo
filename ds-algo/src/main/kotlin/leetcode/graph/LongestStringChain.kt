@@ -9,7 +9,7 @@ fun longestStrChainDP(words: Array<String>): Int {
   return words
     .sortedBy { it.length }
     .maxOfOrNull { word ->
-      (word.indices.maxOf { dp[word.removeRange(it..it)] ?: 1 }).also { dp[word] = it + 1 }
+      (word.indices.maxOf { dp[word.removeRange(it..it)]?.plus(1) ?: 1 }).also { dp[word] = it }
     } ?: 0
 }
 

@@ -7,6 +7,7 @@ package leetcode.unionfind
  * Friends](https://leetcode.ca/2018-12-05-1101-The-Earliest-Moment-When-Everyone-Become-Friends/)
  */
 fun earliestAcq(logs: Array<IntArray>, n: Int): Int {
+  // ! Sorted by timestamp
   val sortedLogs = logs.sortedBy { it[0] }
   val unionFind = UnionFind(n)
   return sortedLogs

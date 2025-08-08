@@ -23,7 +23,7 @@ fun checkValidString(s: String): Boolean {
     when {
       maxOpen < 0 -> return false // ! Even with all '*' we couldn't match all closed ')'
       // ! As the above condition passes, convert a few '*' to open '(' to match closed ')'
-      minOpen < 0 -> minOpen = 0 
+      minOpen < 0 -> minOpen = 0
     }
   }
   return minOpen == 0

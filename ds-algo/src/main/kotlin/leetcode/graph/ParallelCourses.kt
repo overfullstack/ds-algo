@@ -1,6 +1,6 @@
 package leetcode.graph
 
-/** https://leetcode.ca/2019-01-09-1136-Parallel-Courses/ */
+/** [1136 - Parallel Courses](https://leetcode.ca/2019-01-09-1136-Parallel-Courses/) */
 fun minimumSemesters(relations: Array<Pair<Int, Int>>): Int {
   val diGraph = relations.toDiGraph()
   val visited = mutableSetOf<Int>()
@@ -30,7 +30,7 @@ private fun Int.dftPerGroup(
         else -> 1 + it.dftPerGroup(diGraph, visited, visitedInBranch + it)
       }
     }
-    ?.maxOrNull() ?: 0
+    ?.maxOrNull() ?: 0 // ! Max branch length per neighbour
 
 private fun Array<Pair<Int, Int>>.toDiGraph(): Map<Int, Set<Int>> =
   groupBy({ it.first }, { it.second }).mapValues { it.value.toSet() }

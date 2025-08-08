@@ -6,29 +6,29 @@ import java.util.PriorityQueue
 
 /** [2402. Meeting Rooms III](https://leetcode.com/problems/meeting-rooms-iii) */
 fun mostBooked(n: Int, meetings: Array<IntArray>): Int {
-  val occupiedRooms = // ! end to roomId
-    PriorityQueue(
-      Comparator.comparingLong<Pair<Long, Int>> { it.first }.thenComparingInt { it.second }
-    )
-  val availableRooms = PriorityQueue((0 until n).toList())
+  // ! end to roomId
+  val occupiedRooms = PriorityQueue<Pair<Long, Int>>(compareBy({ it.first }, { it.second }))
+  val availableRoomIds = PriorityQueue((0 until n).toList())
   val roomIdToMeetingCount = IntArray(n)
   val sortedMeetings = meetings.map { it[0].toLong() to it[1].toLong() }.sortedBy { it.first }
   for ((start, end) in sortedMeetings) {
     while (occupiedRooms.isNotEmpty() && occupiedRooms.peek().first <= start) {
-      availableRooms.add(occupiedRooms.poll().second)
+      availableRoomIds.add(occupiedRooms.poll().second)
     }
-    when {
-      availableRooms.isNotEmpty() -> {
-        val availableRoomId = availableRooms.poll()
-        occupiedRooms.add(end to availableRoomId)
-        roomIdToMeetingCount[availableRoomId]++
+    val roomId =
+      when {
+        availableRoomIds.isNotEmpty() -> {
+          val availableRoomId = availableRoomIds.poll()
+          occupiedRooms.add(end to availableRoomId)
+          availableRoomId
+        }
+        else -> {
+          val (earliestEnd, earliestAvailableRoomId) = occupiedRooms.poll()
+          occupiedRooms.add(earliestEnd + (end - start) to earliestAvailableRoomId)
+          earliestAvailableRoomId
+        }
       }
-      else -> {
-        val (earliestEnd, roomId) = occupiedRooms.poll()
-        occupiedRooms.add(earliestEnd + (end - start) to roomId)
-        roomIdToMeetingCount[roomId]++
-      }
-    }
+    roomIdToMeetingCount[roomId]++
   }
   return roomIdToMeetingCount.withIndex().maxBy { it.value }.index
 }

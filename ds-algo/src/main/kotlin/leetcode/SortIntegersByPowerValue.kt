@@ -9,7 +9,7 @@ import java.util.PriorityQueue
  * Value](https://leetcode.com/problems/sort-integers-by-the-power-value)
  */
 fun getKth(lo: Int, hi: Int, k: Int): Int {
-  val pq = PriorityQueue(compareBy<Pair<Int, Int>> { it.second }.thenComparingInt { it.first })
+  val pq = PriorityQueue<Pair<Int, Int>>(compareBy({ it.second }, { it.first }))
   val cache = mutableMapOf<Int, Int>()
   (lo..hi).map { x -> x to powerValue(x, cache) }.forEach { pq.add(it) }
   repeat(k - 1) { pq.poll() }

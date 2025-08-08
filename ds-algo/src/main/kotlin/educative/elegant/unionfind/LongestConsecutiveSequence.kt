@@ -8,8 +8,9 @@ fun longestConsecutiveSequence(nums: IntArray): Int {
   return unionFind.ranks.values.maxOrNull() ?: 0
 }
 
-private class UnionFind6(val nums: IntArray) {
+private class UnionFind6(nums: IntArray) {
   // ! Using `map` instead of `IntArray`, to use nums directly without indices
+  // ! Also helps to search for `num + 1`
   val roots = nums.associateWith { it }.toMutableMap()
   // ! `1` as we use ranks to store sequence length and each element is its own sequence
   val ranks = nums.associateWith { 1 }.toMutableMap()
