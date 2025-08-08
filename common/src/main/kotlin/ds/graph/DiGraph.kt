@@ -13,7 +13,11 @@ class DiGraph<T>(
   val allNodes: Set<T>
     get() = adjacencyMap.keys + adjacencyMap.values.flatten()
 
-  constructor(edges: List<Pair<T, T>>) : this() {
+  constructor(edges: Iterable<Pair<T, T>>) : this() {
+    edges.forEach { (source, destination) -> addEdge(source, destination) }
+  }
+
+  constructor(edges: Array<Pair<T, T>>) : this() {
     edges.forEach { (source, destination) -> addEdge(source, destination) }
   }
 
@@ -253,7 +257,7 @@ class DiGraph<T>(
   }
 
   /** DETECT CYCLE -> */
-  fun topologicalSort(): List<T> {
+  fun topologicalSort(): List<T> { // ! Also PostOrder DFT
     val visited = mutableSetOf<T>() // * Global visited
     return adjacencyMap.keys
       .asSequence()

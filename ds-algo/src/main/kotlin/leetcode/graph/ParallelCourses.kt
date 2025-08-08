@@ -1,39 +1,36 @@
 package leetcode.graph
 
+import ds.graph.DiGraph
+
 /** [1136 - Parallel Courses](https://leetcode.ca/2019-01-09-1136-Parallel-Courses/) */
 fun minimumSemesters(relations: Array<Pair<Int, Int>>): Int {
-  val diGraph = relations.toDiGraph()
+  val diGraph = DiGraph(relations)
+  val cache = mutableMapOf<Int, Int>()
   val visited = mutableSetOf<Int>()
   return try {
-    diGraph.keys
-      .asSequence()
-      .filter { it !in visited }
-      .map { 1 + it.dftPerGroup(diGraph, visited, setOf(it)) }
-      .maxOrNull() ?: 0
-  } catch (e: IllegalArgumentException) {
+    diGraph.keys.maxOfOrNull { 1 + it.dftPerGroup(diGraph, cache, visited) } ?: 0
+  } catch (_: IllegalArgumentException) {
     -1
   }
 }
 
 private fun Int.dftPerGroup(
-  diGraph: Map<Int, Set<Int>>,
+  diGraph: DiGraph<Int>,
+  cache: MutableMap<Int, Int>,
   visited: MutableSet<Int>,
-  visitedInBranch: Set<Int>,
-): Int =
-  diGraph[this]
-    ?.asSequence()
-    ?.map {
-      visited += this
+  visitedInGroup: Set<Int> = setOf(this),
+): Int {
+  visited += this
+  return diGraph[this]
+    ?.maxOfOrNull {
       when (it) {
-        in visitedInBranch -> throw IllegalArgumentException("Graph has Cycle")
+        in visitedInGroup -> throw IllegalArgumentException("Graph has Cycle")
         in visited -> 0
-        else -> 1 + it.dftPerGroup(diGraph, visited, visitedInBranch + it)
+        else -> 1 + it.dftPerGroup(diGraph, cache, visited, visitedInGroup + it)
       }
     }
-    ?.maxOrNull() ?: 0 // ! Max branch length per neighbour
-
-private fun Array<Pair<Int, Int>>.toDiGraph(): Map<Int, Set<Int>> =
-  groupBy({ it.first }, { it.second }).mapValues { it.value.toSet() }
+    ?.also { cache[this] = it } ?: 0
+}
 
 fun main() {
   println(minimumSemesters(arrayOf(1 to 3, 2 to 3))) // 2
