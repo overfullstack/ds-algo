@@ -12,7 +12,7 @@ fun minJumps(nums: IntArray): Int {
     if (nextMaxReachIndex >= nums.lastIndex) {
       return jumps + 1
     }
-    curIndex = curMaxReachIndex
+    curIndex = curMaxReachIndex // ! Jump to curMaxReachIndex
     curMaxReachIndex = nextMaxReachIndex
     jumps++
   }

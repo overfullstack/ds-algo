@@ -10,5 +10,4 @@ globs:
 - While generating Kotlin code, specify all variable types explicitly
 - Always Ignore linting errors and formatting issues
 - When in Kotlin, favor `when` statement over `if` statement
-- Add diagrams in the explanation as much as possible
 - Use Kotest when generating tests. Refer existing test to learn about the testing framework and testing style

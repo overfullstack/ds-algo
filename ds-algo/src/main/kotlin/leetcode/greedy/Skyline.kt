@@ -1,7 +1,6 @@
 package leetcode.greedy
 
-data class BuildingStrip(val pt: Int, val ht: Int, val isStart: Boolean)
-
+/** [218. The Skyline Problem](https://leetcode.com/problems/the-skyline-problem) */
 fun getSkyline(buildings: Array<IntArray>): List<List<Int>> {
   val buildingStrips =
     buildings.flatMap {
@@ -9,20 +8,26 @@ fun getSkyline(buildings: Array<IntArray>): List<List<Int>> {
     }
   val sortedBuildingStrips =
     buildingStrips.sortedWith(compareBy({ it.pt }, { if (it.isStart) -it.ht else it.ht }))
-  val map = sortedMapOf(0 to 1)
 
   var prevMaxHt = 0
-  val results = mutableListOf<List<Int>>()
-  for (buildingStrip in sortedBuildingStrips) {
+  // ! Sorted map, groups buildings of similar height together.
+  // ! We increment count for start and decrement for end
+  val heightToCount = sortedMapOf(0 to 1)
+  return sortedBuildingStrips.fold(emptyList()) { skyline, buildingStrip ->
     when {
-      buildingStrip.isStart -> map.merge(buildingStrip.ht, 1, Int::plus)
-      else -> map.merge(buildingStrip.ht, 1) { old, _ -> if (old == 1) null else old.dec() }
+      buildingStrip.isStart -> heightToCount.merge(buildingStrip.ht, 1, Int::plus)
+      else ->
+        heightToCount.merge(buildingStrip.ht, 1) { old, _ -> if (old == 1) null else old.dec() }
     }
-    val curMaxHt = map.lastKey()
-    if (prevMaxHt != curMaxHt) {
-      results.add(listOf(buildingStrip.pt, buildingStrip.ht))
-      prevMaxHt = curMaxHt
+    val curMaxHt = heightToCount.lastKey() // ! `lastKey()` returns the largest key in `sortedMap`
+    when {
+      prevMaxHt != curMaxHt -> {
+        prevMaxHt = curMaxHt
+        skyline.plusElement(listOf(buildingStrip.pt, buildingStrip.ht))
+      }
+      else -> skyline
     }
   }
-  return results
 }
+
+data class BuildingStrip(val pt: Int, val ht: Int, val isStart: Boolean)
