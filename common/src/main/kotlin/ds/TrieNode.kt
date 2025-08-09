@@ -103,7 +103,7 @@ data class TrieNode(val value: Char = Char.MIN_VALUE) { // The First node of a T
     val wordsFromChildren =
       children.asSequence().filterNotNull().fold(emptyList<String>()) { words, child ->
         when {
-          words.size >= remainingLimit -> return currentWords + words.take(remainingLimit)
+          words.size == remainingLimit -> return currentWords + words.take(remainingLimit)
           else -> words + child.dfsWords(prefix, remainingLimit - words.size, suffix + child.value)
         }
       }

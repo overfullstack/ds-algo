@@ -3,7 +3,7 @@ package educative.backtracking
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.inspectors.forAll
 import io.kotest.matchers.shouldBe
-import testcase.TestCase15.Companion.parseJsonFileToTestCases
+import testcase.LListStrToBool.Companion.parseJsonFileToTestCases
 
 /* 29 Jun 2025 11:13 */
 

@@ -28,19 +28,19 @@ private fun flowDFS(
   curRow: Int,
   curCol: Int,
   grid: Array<IntArray>,
-  reachableCells: MutableSet<Pair<Int, Int>>,
+  visited: MutableSet<Pair<Int, Int>>,
 ) {
   when {
-    (curRow to curCol) in reachableCells -> return
+    (curRow to curCol) in visited -> return // ! As we are not filtering at the `flowDFS` call site
     else -> {
-      reachableCells += (curRow to curCol)
+      visited += (curRow to curCol)
       directions
         .asSequence()
         .map { it.first + curRow to it.second + curCol }
         .filter { (row, col) ->
-          isValid(row, col, grid[curRow][curCol], grid) && (row to col) !in reachableCells
+          isValid(row, col, grid[curRow][curCol], grid) && (row to col) !in visited
         }
-        .forEach { flowDFS(it.first, it.second, grid, reachableCells) }
+        .forEach { flowDFS(it.first, it.second, grid, visited) }
     }
   }
 }

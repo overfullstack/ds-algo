@@ -8,7 +8,8 @@ fun isNStraightHand(hand: IntArray, groupSize: Int): Boolean {
   val digitToCount = hand.groupBy { it }.mapValues { it.value.size }.toSortedMap()
   return digitToCount
     .asSequence()
-    .filter { it.value > 0 } // ! We reduce freq upfront from smaller digit entry
+    // ! Some larger digits may never pass this filter, as a smaller digit has decremented its freq
+    .filter { it.value > 0 }
     .all { (digit, freq) ->
       (1 until groupSize).all { offset ->
         digitToCount[digit + offset]

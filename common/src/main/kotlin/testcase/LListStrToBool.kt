@@ -6,25 +6,27 @@ import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
 
 @Serializable
-data class TestCase6(val testcases: List<Testcase>) {
+data class LListStrToBool(val testcases: List<Testcase>) {
   @Serializable
   data class Testcase(val inputs: List<Input>, val name: String, val output: List<Output>) {
     @Serializable
     data class Input(
-      @SerialName("1") val x1: List<String>? = null,
-      @SerialName("2") val x2: String? = null,
+      @SerialName("1") val x1: List<List<String>>?,
+      @SerialName("2") val x2: String?,
     )
 
     @Serializable data class Output(@SerialName("1") val x1: Boolean)
   }
 
   companion object {
-    @OptIn(ExperimentalStdlibApi::class)
     fun parseJsonFileToTestCases(
       vararg jsonFilePaths: String
-    ): List<Triple<List<String>, String, Boolean>> {
+    ): List<Triple<List<List<String>>, String, Boolean>> {
+      val json = Json { explicitNulls = false }
       val testCases =
-        jsonFilePaths.flatMap { Json.decodeFromString<TestCase6>(readFileToString(it)).testcases }
+        jsonFilePaths.flatMap {
+          json.decodeFromString<LListStrToBool>(readFileToString(it)).testcases
+        }
       return testCases.map { Triple(it.inputs[0].x1!!, it.inputs[1].x2!!, it.output[0].x1) }
     }
   }

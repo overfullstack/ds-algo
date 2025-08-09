@@ -8,7 +8,7 @@ fun combinationSumDP(coins: IntArray, target: Int): Set<List<Int>> {
   // * DP is being built from start to end
   for (coin in coins) {
     for (i in coin..target) {
-      dp[i] = dp[i] + dp[i - coin].map { it + coin }.toSet()
+      dp[i] += dp[i - coin].map { it + coin }.toSet()
     }
   }
   return dp[target]

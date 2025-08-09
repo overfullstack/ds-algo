@@ -4,30 +4,29 @@ import ds.tree.TreeNode
 
 /* 05 Aug 2025 22:49 */
 
+/**
+ * [366 - Find Leaves of Binary Tree](https://leetcode.ca/2016-11-30-366-Find-Leaves-of-Binary-Tree/)
+ */
 fun findLeaves(root: TreeNode): List<List<Int>> {
-  val result = mutableListOf<List<Int>>()
-  val prev = TreeNode(0, root)
-  while (prev.left != null) {
-    val t = mutableListOf<Int>()
-    findLeaves(root, prev, t)
-    result.add(t)
-  }
-  return result
+  val dummyRootParent = TreeNode(0, root)
+  return generateSequence {
+    if (dummyRootParent.left != null) findLeaves(root, dummyRootParent) else null
+  }.toList()
 }
 
-fun findLeaves(root: TreeNode, prev: TreeNode, t: MutableList<Int>) {
-  if (root.left == null && root.right == null) {
-    when {
-      prev.left == root -> prev.left = null
-      else -> prev.right = null
-    }
-    t.add(root.`val`)
+fun findLeaves(root: TreeNode, parent: TreeNode): List<Int> =
+  when (root.left) {
+      null if root.right == null -> {
+        when {
+          parent.left == root -> parent.left = null
+          else -> parent.right = null
+        }
+        listOf(root.`val`)
+      }
+      else -> listOfNotNull(root.left, root.right).flatMap { findLeaves(it, root) }
   }
-  root.left?.let { findLeaves(it, root, t) }
-  root.right?.let { findLeaves(it, root, t) }
-}
 
 fun main() {
   val root = TreeNode.levelOrderToIncompleteTree(listOf(1, 2, 3, 4, 5))!!
-  println(findLeaves(root))
+  println(findLeaves(root)) // [[4, 5, 3], [2], [1]]
 }

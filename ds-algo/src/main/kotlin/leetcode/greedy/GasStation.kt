@@ -20,9 +20,8 @@ fun canCompleteCircuit(gas: IntArray, cost: IntArray): Int {
     // If tank becomes negative, we can't reach the next station
     // from our current starting point
     if (curTank < 0) {
-      // Greedy insight: If we can't reach station i+1 from current start,
-      // then we can't reach station i+1 from ANY station between
-      // current start and station i
+      // Greedy insight: If we can't reach station `i+1` from current start,
+      // then we can't reach station `i+1` from ANY station between current start and station i
       start = i + 1 // Try starting from the next station
       curTank = 0 // Reset tank to empty (we're starting fresh)
     }

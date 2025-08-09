@@ -16,12 +16,12 @@ fun checkValidString(s: String): Boolean {
         minOpen--
       }
       '*' -> {
-        maxOpen++
-        minOpen--
+        maxOpen++ // ! Treat '*' as '('
+        minOpen-- // ! Treat '*' as ')'
       }
     }
     when {
-      maxOpen < 0 -> return false // ! Even with all '*' we couldn't match all closed ')'
+      maxOpen < 0 -> return false // ! Even with all '*', `(` couldn't match all closed ')'
       // ! As the above condition passes, convert a few '*' to open '(' to match closed ')'
       minOpen < 0 -> minOpen = 0
     }

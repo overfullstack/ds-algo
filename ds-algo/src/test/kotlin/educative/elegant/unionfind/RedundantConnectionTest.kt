@@ -3,7 +3,7 @@ package educative.elegant.unionfind
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.inspectors.forAll
 import io.kotest.matchers.shouldBe
-import testcase.TestCase13.Companion.parseJsonFileToTestCases
+import testcase.LListToList.Companion.parseJsonFileToTestCases
 
 /* 16 Sep 2024 17:43 */
 private const val PKG_PATH = "educative/graph/unionfind/RedundantConnection"

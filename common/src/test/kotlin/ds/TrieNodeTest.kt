@@ -5,8 +5,8 @@ import io.kotest.core.spec.style.StringSpec
 import io.kotest.inspectors.forAll
 import io.kotest.matchers.collections.shouldContainExactlyInAnyOrder
 import io.kotest.matchers.shouldBe
-import testcase.ListLListToList
-import testcase.TestCase23
+import testcase.ListLListToList.Companion.parseJsonFileToTestCases
+import testcase.ListStrToLList
 
 internal class TrieNodeTest :
   StringSpec({
@@ -75,7 +75,7 @@ internal class TrieNodeTest :
     }
 
     "recommendations by typing one letter at a time" {
-      TestCase23.parseJsonFileToTestCases("trie/Recommendations/test-cases-1.json").forAll {
+      ListStrToLList.parseJsonFileToTestCases("trie/Recommendations/test-cases-1.json").forAll {
         (input, output) ->
         val (products, searchKey) = input
         trieNode = TrieNode()
@@ -93,8 +93,7 @@ internal class TrieNodeTest :
     }
 
     "operate" {
-      ListLListToList.parseJsonFileToTestCases("trie/Operations/test-cases-1.json").forAll {
-        (inputs, output) ->
+      parseJsonFileToTestCases("trie/Operations/test-cases-1.json").forAll { (inputs, output) ->
         trieNode = TrieNode()
         inputs
           .map { (operation, arg) -> trieNode.operate(operation, arg) }
