@@ -2,9 +2,7 @@ package leetcode.graph
 
 /* 10 Aug 2025 15:39 */
 
-/**
- * [The Maze](https://leetcode.ca/2017-04-03-490-The-Maze/)
- */
+/** [The Maze](https://leetcode.ca/2017-04-03-490-The-Maze/) */
 fun hasPath(maze: Array<IntArray>, start: IntArray, destination: IntArray): Boolean {
   val nextCells =
     directions
