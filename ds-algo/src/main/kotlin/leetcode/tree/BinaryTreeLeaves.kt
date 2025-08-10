@@ -10,20 +10,23 @@ import ds.tree.TreeNode
 fun findLeaves(root: TreeNode): List<List<Int>> {
   val dummyRootParent = TreeNode(0, root)
   return generateSequence {
-    if (dummyRootParent.left != null) findLeaves(root, dummyRootParent) else null
+    if (dummyRootParent.left != null) root.findLeaves(dummyRootParent) else null
   }.toList()
 }
 
-fun findLeaves(root: TreeNode, parent: TreeNode): List<Int> =
-  when (root.left) {
-      null if root.right == null -> {
-        when {
-          parent.left == root -> parent.left = null
+fun TreeNode.findLeaves(parent: TreeNode, isLeft : Boolean = true): List<Int> =
+  when (left) {
+      null if right == null -> {
+        when (isLeft) {
+          true -> parent.left = null
           else -> parent.right = null
         }
-        listOf(root.`val`)
+        listOf(`val`)
       }
-      else -> listOfNotNull(root.left, root.right).flatMap { findLeaves(it, root) }
+      else -> listOfNotNull(
+        left?.findLeaves(this),
+        right?.findLeaves(this, false)
+      ).flatten()
   }
 
 fun main() {
