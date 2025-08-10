@@ -14,7 +14,7 @@ fun placeWordInCrossword(board: Array<CharArray>, word: String): Boolean =
       directions
         .filter {
           val nextCellOppDir = cell.first - it.first to cell.second - it.second
-          !isValid(nextCellOppDir, board) || isValidAndOccupied(nextCellOppDir, board)
+          isInvalidOrOccupied(nextCellOppDir, board)
         }
         .any { direction -> place(cell, direction, board, word) }
     }
@@ -27,9 +27,8 @@ fun place(
   wordIndex: Int = 0,
 ): Boolean =
   when {
-    wordIndex == word.lastIndex + 1 ->
-      !isValid(cell, board) || board[cell.first][cell.second] == '#'
-    !isValid(cell, board) || board[cell.first][cell.second] == '#' -> false
+    wordIndex == word.lastIndex + 1 -> isInvalidOrOccupied(cell, board)
+    isInvalidOrOccupied(cell, board) -> false
     board[cell.first][cell.second] != ' ' && board[cell.first][cell.second] != word[wordIndex] ->
       false
     else ->
@@ -42,8 +41,8 @@ fun place(
       )
   }
 
-fun isValidAndOccupied(cell: Pair<Int, Int>, board: Array<CharArray>): Boolean =
-  isValid(cell, board) && board[cell.first][cell.second] == '#'
+private fun isInvalidOrOccupied(cell: Pair<Int, Int>, board: Array<CharArray>): Boolean =
+  !isValid(cell, board) || board[cell.first][cell.second] == '#'
 
 fun isValid(cell: Pair<Int, Int>, board: Array<CharArray>): Boolean =
   cell.first in board.indices && cell.second in board[0].indices
@@ -57,6 +56,10 @@ fun main() {
       "abc",
     )
   )
-  // println(placeWordInCrossword(arrayOf(charArrayOf(' ', '#', 'a'), charArrayOf(' ', '#', 'c'),
-  // charArrayOf(' ', '#', 'a')), "ac"))
+  println(
+    placeWordInCrossword(
+      arrayOf(charArrayOf(' ', '#', 'a'), charArrayOf(' ', '#', 'c'), charArrayOf(' ', '#', 'a')),
+      "ac",
+    )
+  )
 }
