@@ -13,11 +13,11 @@ fun minimumMachines(intervals: List<Pair<Int, Int>>): Int {
     if (
       minHeapForNextFreeMachine.isNotEmpty() && minHeapForNextFreeMachine.peek() <= nextJobStart
     ) {
-      minHeapForNextFreeMachine.poll()
+      minHeapForNextFreeMachine.poll() // Machine free to take up next tasks
     }
     minHeapForNextFreeMachine.add(nextJobEnd)
   }
-  return minHeapForNextFreeMachine.size
+  return minHeapForNextFreeMachine.size // All occupied machines
 }
 
 fun main() {

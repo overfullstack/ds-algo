@@ -48,7 +48,7 @@ fun isValid(
 ): Boolean = cell.first in (1..rows) && cell.second in (1..cols) && cell in waterDayByDay
 
 private class UnionFind3(rows: Int, val cols: Int) {
-  // ! +2 for virtual nodes
+  // ! +2 for virtual nodes added on either ends horizontally
   val roots = IntArray(rows * cols + 2) { it }
   val ranks = IntArray(rows * cols + 2)
 
