@@ -2,21 +2,21 @@ package leetcode.graph
 
 /** [01-matrix](https://leetcode.com/problems/01-matrix/) */
 fun updateMatrix(matrix: Array<IntArray>): Array<IntArray> {
-  for (i in 0..matrix.lastIndex) {
-    for (j in 0..matrix[0].lastIndex) {
-      if (matrix[i][j] > 0) {
-        val fromUp = if (i > 0) matrix[i - 1][j] else Int.MAX_VALUE - 999
-        val fromLeft = if (j > 0) matrix[i][j - 1] else Int.MAX_VALUE - 999
-        matrix[i][j] = minOf(fromUp, fromLeft) + 1
+  for (row in 0..matrix.lastIndex) {
+    for (col in 0..matrix[0].lastIndex) {
+      if (matrix[row][col] > 0) {
+        val fromUp = if (row > 0) matrix[row - 1][col] else Int.MAX_VALUE - 999
+        val fromLeft = if (col > 0) matrix[row][col - 1] else Int.MAX_VALUE - 999
+        matrix[row][col] = minOf(fromUp, fromLeft) + 1
       }
     }
   }
-  for (i in matrix.lastIndex downTo 0) {
-    for (j in matrix[0].lastIndex downTo 0) {
-      if (matrix[i][j] > 0) {
-        val fromBottom = if (i < matrix.lastIndex) matrix[i + 1][j] else Int.MAX_VALUE - 999
-        val fromRight = if (j < matrix[0].lastIndex) matrix[i][j + 1] else Int.MAX_VALUE - 999
-        matrix[i][j] = minOf(matrix[i][j], fromBottom + 1, fromRight + 1)
+  for (row in matrix.lastIndex downTo 0) {
+    for (col in matrix[0].lastIndex downTo 0) {
+      if (matrix[row][col] > 0) {
+        val fromBottom = if (row < matrix.lastIndex) matrix[row + 1][col] else Int.MAX_VALUE - 999
+        val fromRight = if (col < matrix[0].lastIndex) matrix[row][col + 1] else Int.MAX_VALUE - 999
+        matrix[row][col] = minOf(matrix[row][col], fromBottom + 1, fromRight + 1)
       }
     }
   }

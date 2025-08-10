@@ -12,9 +12,9 @@ private val directions = listOf(0 to 1, 0 to -1, 1 to 0, -1 to 0)
 
 private fun Array<IntArray>.dftPerGroup(nextGridPoint: Pair<Int, Int>): Int {
   this[nextGridPoint.first][nextGridPoint.second] = 0 // marking visited.
-  return 1 +
+  return 1 + // * +1 for current node
     directions
-      .asSequence() // * +1 for current node
+      .asSequence()
       .map { (nextGridPoint.first + it.first) to (nextGridPoint.second + it.second) }
       .filter { it.isValid(this) }
       .map { dftPerGroup(it) }

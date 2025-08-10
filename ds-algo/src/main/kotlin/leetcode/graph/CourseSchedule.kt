@@ -22,15 +22,13 @@ private fun Int.dftPerGroup(
   visited: MutableSet<Int>,
   visitedInBrach: Set<Int>,
 ): Boolean =
-  diGraph[this]
-    ?.asSequence()
-    ?.all { // ! You cannot filter visited here, as it skips `in vistedInBranch`
-      when (it) {
-        !in visited -> it.dftPerGroup(diGraph, visited.apply { add(it) }, visitedInBrach + it)
-        in visitedInBrach -> throw IllegalArgumentException("Graph has Cycle")
-        else -> true // already visited
-      }
-    } ?: true
+  diGraph[this]?.all { // ! You cannot filter visited here, as it skips `in vistedInBranch`
+    when (it) {
+      !in visited -> it.dftPerGroup(diGraph, visited.apply { add(it) }, visitedInBrach + it)
+      in visitedInBrach -> throw IllegalArgumentException("Graph has Cycle")
+      else -> true // already visited
+    }
+  } ?: true
 
 private fun Array<IntArray>.toDiGraph(): Map<Int, Set<Int>> =
   groupBy({ it[0] }, { it[1] }).mapValues { it.value.toSet() }

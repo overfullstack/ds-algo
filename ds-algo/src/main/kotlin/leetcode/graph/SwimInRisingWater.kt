@@ -4,8 +4,9 @@ import java.util.PriorityQueue
 
 /* 31 Jul 2025 14:28 */
 
+/** [778. Swim in Rising Water](https://leetcode.com/problems/swim-in-rising-water/) */
 fun swimInWater(grid: Array<IntArray>): Int {
-  // ! Greedily choose the minimum next cell in the possible paths
+  // ! Greedily choose the path where max in that path is the minimum among all possible paths
   // ! Possible path can stem from any cell in the current path
   val pq = PriorityQueue(compareBy<Triple<Int, Int, Int>> { it.third })
   pq.add(Triple(0, 0, grid[0][0]))
@@ -13,6 +14,9 @@ fun swimInWater(grid: Array<IntArray>): Int {
   val visited = mutableSetOf<Pair<Int, Int>>()
   while (pq.isNotEmpty()) {
     val (row, col, elevation) = pq.poll()
+    if (row == grid.lastIndex && col == grid[0].lastIndex) {
+      return elevation
+    }
     visited.add(row to col)
     maxInPath = maxOf(maxInPath, elevation)
     directions
@@ -20,10 +24,7 @@ fun swimInWater(grid: Array<IntArray>): Int {
       .filter { isValid(it, grid) && it !in visited }
       .forEach { (row, col) ->
         val newMaxInPath = maxOf(maxInPath, grid[row][col])
-        when {
-          row == grid.lastIndex && col == grid[0].lastIndex -> return newMaxInPath
-          else -> pq.add(Triple(row, col, newMaxInPath))
-        }
+        pq.add(Triple(row, col, newMaxInPath))
       }
   }
   return 0

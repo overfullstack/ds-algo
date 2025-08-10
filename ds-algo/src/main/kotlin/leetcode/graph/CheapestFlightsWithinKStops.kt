@@ -26,7 +26,7 @@ fun findCheapestPrice(n: Int, flights: Array<IntArray>, src: Int, dst: Int, k: I
       edgeWeightedDiGraph[from]?.forEach { (to, priceFromToTo) ->
         val nextPrice = priceFromSource + priceFromToTo
         // * We just need to prune the destination reaching edges.
-        // * Others stay towards the end of pq harmless
+        // * Others stay towards the end of pq, harmless
         if (nextPrice < minDistance) {
           pq.add(Triple(to, nextPrice, k - 1))
         }

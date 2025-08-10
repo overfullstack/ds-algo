@@ -1,10 +1,11 @@
 package leetcode.graph
 
 import ds.graph.DiGraph
+import utils.toPair
 
 /** https://leetcode.com/problems/course-schedule-ii/ Return the order of courses to be taken. */
 fun findOrder(numCourses: Int, prerequisites: Array<IntArray>): IntArray {
-  val diGraph = prerequisites.toDiGraph()
+  val diGraph = DiGraph(prerequisites.map { it.toPair() })
   for (courseNum in 0 until numCourses) {
     diGraph.putIfAbsent(courseNum, emptySet())
   }
@@ -14,6 +15,3 @@ fun findOrder(numCourses: Int, prerequisites: Array<IntArray>): IntArray {
     intArrayOf()
   }
 }
-
-private fun Array<IntArray>.toDiGraph(): DiGraph<Int> =
-  DiGraph(groupBy({ it[0] }, { it[1] }).mapValues { it.value.toSet() }.toMutableMap())

@@ -9,8 +9,7 @@ fun nQueens(n: Int, curRow: Int = 0, queenCells: Map<Int, Int> = emptyMap()): In
       (0 until n)
         .asSequence()
         .filter { col -> isValid(curRow, col, queenCells) }
-        .map { col -> nQueens(n, curRow + 1, queenCells + (curRow to col)) }
-        .sum()
+        .sumOf { col -> nQueens(n, curRow + 1, queenCells + (curRow to col)) }
   }
 
 private fun isValid(row: Int, col: Int, queenCells: Map<Int, Int>): Boolean =
@@ -20,3 +19,7 @@ private fun isValid(row: Int, col: Int, queenCells: Map<Int, Int>): Boolean =
     val diagonalOffset = row - queenRow
     col != queenCol && col != queenCol - diagonalOffset && col != queenCol + diagonalOffset
   }
+
+fun main() {
+  println(nQueens(4))
+}

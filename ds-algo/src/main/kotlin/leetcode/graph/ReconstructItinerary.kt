@@ -11,6 +11,7 @@ fun findItinerary(tickets: List<List<String>>): List<String> {
   return dfsPostOrder("JFK", graph).reversed()
 }
 
+// ! Post order for Eulerian path
 fun dfsPostOrder(airport: String, graph: MutableMap<String, PriorityQueue<String>>): List<String> =
   generateSequence { graph[airport]?.poll() }
     .flatMap { nextAirport -> dfsPostOrder(nextAirport, graph) }
