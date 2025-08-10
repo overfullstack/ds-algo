@@ -3,7 +3,8 @@ package leetcode.sortandsearch
 /* 10 Aug 2025 09:02 */
 
 /**
- * [1170. Compare Strings by Frequency of the Smallest Character](https://leetcode.com/problems/compare-strings-by-frequency-of-the-smallest-character)
+ * [1170. Compare Strings by Frequency of the Smallest
+ * Character](https://leetcode.com/problems/compare-strings-by-frequency-of-the-smallest-character)
  */
 fun numSmallerByFrequency(queries: Array<String>, words: Array<String>): IntArray {
   val queriesFreq = queries.map { smallCharFreq(it) }
@@ -35,41 +36,39 @@ tailrec fun firstLargerNumIndex(
 fun main() {
   println(
     numSmallerByFrequency(
-      arrayOf(
-        "aabbabbb",
-        "abbbabaa",
-        "aabbbabaa",
-        "aabba",
-        "abb",
-        "a",
-        "ba",
-        "aa",
-        "ba",
-        "baabbbaaaa",
-        "babaa",
-        "bbbbabaa",
-      ),
-      arrayOf(
-        "b",
-        "aaaba",
-        "aaaabba",
-        "aa",
-        "aabaabab",
-        "aabbaaabbb",
-        "ababb",
-        "bbb",
-        "aabbbabb",
-        "aab",
-        "bbaaababba",
-        "baaaaa",
-      ),
-    ).joinToString(),
+        arrayOf(
+          "aabbabbb",
+          "abbbabaa",
+          "aabbbabaa",
+          "aabba",
+          "abb",
+          "a",
+          "ba",
+          "aa",
+          "ba",
+          "baabbbaaaa",
+          "babaa",
+          "bbbbabaa",
+        ),
+        arrayOf(
+          "b",
+          "aaaba",
+          "aaaabba",
+          "aa",
+          "aabaabab",
+          "aabbaaabbb",
+          "ababb",
+          "bbb",
+          "aabbbabb",
+          "aab",
+          "bbaaababba",
+          "baaaaa",
+        ),
+      )
+      .joinToString()
   )
   println(numSmallerByFrequency(arrayOf("cbd"), arrayOf("zaaaz")).joinToString())
   println(
-    numSmallerByFrequency(
-      arrayOf("bbb", "cc"),
-      arrayOf("a", "aa", "aaa", "aaaa"),
-    ).joinToString(),
+    numSmallerByFrequency(arrayOf("bbb", "cc"), arrayOf("a", "aa", "aaa", "aaaa")).joinToString()
   )
 }
