@@ -10,7 +10,7 @@ fun findTargetSumWays(
 ): Int =
   when {
     (index to curSum) in cache -> cache[index to curSum]!!
-    index == nums.size -> if (curSum == targetSum) 1 else 0
+    index == nums.lastIndex + 1 -> if (curSum == targetSum) 1 else 0
     else ->
       (findTargetSumWays(nums, targetSum, curSum + nums[index], index + 1, cache) +
           findTargetSumWays(nums, targetSum, curSum - nums[index], index + 1, cache))

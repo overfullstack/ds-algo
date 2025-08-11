@@ -1,4 +1,4 @@
-package leetcode.dp
+package leetcode.dp.statemachine
 
 fun wiggleMaxLength(nums: IntArray): Int {
   if (nums.isEmpty()) {
@@ -11,7 +11,7 @@ fun wiggleMaxLength(nums: IntArray): Int {
   for (i in 1..nums.lastIndex) {
     // up or down remain the same if their counterpart don't contribute to a wiggle.
     // So for a constantly increasing sequence, the result would only be 2, as down won't increase.
-    // * State Transition - `up` transists from `down` and `down` transists from `up`
+    // * State Transition - `up` transits from `down` and `down` transits from `up`
     // * `up` happens if prev is `down` and `down` happens if prev is `up`
     when {
       nums[i] > nums[i - 1] -> up = down + 1

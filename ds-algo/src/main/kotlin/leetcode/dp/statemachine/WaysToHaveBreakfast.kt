@@ -2,7 +2,7 @@ package leetcode.dp
 
 /**
  * https://leetcode.com/discuss/interview-question/726978/number-of-ways-to-have-breakfast-microsoft/610618
- * Bread - dialy, Pizza - alternate, Burger - Every 2 days
+ * Bread - daily, Pizza - alternate, Burger - Every 2 days
  */
 fun waysToHaveBreakfast(n: Int): Int {
   val table = Array(n + 1) { IntArray(3) }

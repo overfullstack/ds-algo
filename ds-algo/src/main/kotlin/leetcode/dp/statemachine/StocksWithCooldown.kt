@@ -1,5 +1,9 @@
-package leetcode.dp
+package leetcode.dp.statemachine
 
+/**
+ * [309. Best Time to Buy and Sell Stock with
+ * Cooldown](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-cooldown/)
+ */
 fun maxProfit(prices: IntArray): Int {
   var hold = Int.MIN_VALUE
   var sold = 0

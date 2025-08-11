@@ -9,14 +9,17 @@ fun maxCoins(nums: IntArray): Int {
   // * Build from individual balloons to larger windows
   // * table[start][end] holds a non-zero value only if nums present are >= 3
   // * (end - start + 1 >= 3) or windowLen >= 2
+
   for (windowLen in 2..balloonCoins.lastIndex) {
     for ((wStart, wEnd) in (windowLen..balloonCoins.lastIndex).withIndex()) {
       table[wStart][wEnd] = // Max coins from this interval (wStart, wEnd)
-        // Bursting which balloon last in this window give the max result
+        // ! Bursting which balloon last in this window gives the max result
         (wStart + 1 until wEnd).maxOf { partition ->
           table[wStart][partition] + // Max coins from the left of the partition
-            // Bursting this balloon after the
-            // left (wStart, partition) and right (partition, wEnd) are optimally burst
+            // ! Bursting this balloon after the
+            // ! `left (wStart..partition)` and `right (partition..wEnd)` are optimally burst
+            // ! The first iteration with windowLen = 2 would be bursting each balloon individually
+            // ! and only this part has a non-zero value
             balloonCoins[wStart] * balloonCoins[partition] * balloonCoins[wEnd] +
             table[partition][wEnd] // Max coins from the right of the partition
         }

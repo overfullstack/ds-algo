@@ -1,4 +1,4 @@
-package leetcode.dp
+package leetcode.dp.statemachine
 
 fun maxProfit(prices: IntArray, fee: Int): Int {
   var hold = Int.MIN_VALUE

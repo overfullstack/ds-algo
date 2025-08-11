@@ -7,14 +7,11 @@ private fun wordBreak(word: String, wordDict: List<String>): Boolean {
   // Check with all end indices, including -1.
   return word.indices
     .fold(listOf(-1)) { wordEndIndices, index ->
-      if (
+      when {
         wordEndIndices.any { prevWordEndIndex ->
           word.substring(prevWordEndIndex + 1..index) in wordDictSet
-        }
-      ) {
-        wordEndIndices + index
-      } else {
-        wordEndIndices
+        } -> wordEndIndices + index
+        else -> wordEndIndices
       }
     }
     .last() == word.lastIndex
@@ -37,7 +34,7 @@ fun wordBreakDP(s: String, wordDict: List<String>): Boolean {
       }
     }
   }
-  return dp[s.lastIndex + 1]
+  return dp.last()
 }
 
 private fun wordBreakDP2(s: String, wordDict: List<String>): Boolean {
