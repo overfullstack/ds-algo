@@ -23,17 +23,16 @@ public class MinEditDistance {
 			table[0][i] = i;
 		}
 
-		for (var i = 1;
-				i <= len1;
-				i++) { // Note how we start from 1, and compare i-1, this is done to rely on the base cases
+		// Note how we start from 1, and compare i-1, this is done to rely on the base cases
+		for (var i = 1; i <= len1; i++) {
 			// table[i][0], table[0][i]
 			for (var j = 1; j <= len2; j++) {
 				if (str1[i - 1] == str2[j - 1]) {
 					table[i][j] = table[i - 1][j - 1]; // This is same as replace.
 				} else {
-					// Math.min(Insert, Delete, Replace)
+					// Math.min(Insert, Delete, Replace) + 1
 					table[i][j] =
-							Math.min(Math.min(table[i - 1][j], table[i][j - 1]), table[i - 1][j - 1]) + 1;
+							1 + Math.min(Math.min(table[i - 1][j], table[i][j - 1]), table[i - 1][j - 1]);
 				}
 			}
 		}
