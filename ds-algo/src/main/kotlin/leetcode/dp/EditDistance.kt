@@ -19,10 +19,10 @@ fun minDistance(word1: String, word2: String): Int {
           else ->
             1 + // ! We aren't actually deleting or inserting, but recording the extra operations
               minOf(
-                // Delete from word1, so it should take from a shorter word1 value, 
+                // Delete from word1, so it should take from a shorter word1 value,
                 // until which both words match
                 table[word1Idx - 1][word2Idx],
-                // Insert into word1, so it should take from a shorter word2 value, 
+                // Insert into word1, so it should take from a shorter word2 value,
                 // until which both words match
                 table[word1Idx][word2Idx - 1],
                 table[word1Idx - 1][word2Idx - 1], // Replace in word1

@@ -1,11 +1,8 @@
 package leetcode.sortandsearch
 
-
 /* 11 Aug 2025 11:47 */
 
-/**
- * [162. Find Peak Element](https://leetcode.com/problems/find-peak-element/)
- */
+/** [162. Find Peak Element](https://leetcode.com/problems/find-peak-element/) */
 tailrec fun findPeakElement(nums: IntArray, left: Int = 1, right: Int = nums.lastIndex - 1): Int {
   when {
     nums.size == 1 -> return 0
@@ -15,7 +12,8 @@ tailrec fun findPeakElement(nums: IntArray, left: Int = 1, right: Int = nums.las
   }
   val mid = left + (right - left) / 2
   return when {
-    (mid > 0 && nums[mid] > nums[mid - 1]) && (mid < nums.lastIndex && nums[mid] > nums[mid + 1]) -> mid
+    (mid > 0 && nums[mid] > nums[mid - 1]) && (mid < nums.lastIndex && nums[mid] > nums[mid + 1]) ->
+      mid
     (mid > 0 && nums[mid] < nums[mid - 1]) -> findPeakElement(nums, left, mid - 1)
     else -> findPeakElement(nums, mid + 1, right) // ! No duplicates as per problem
   }
