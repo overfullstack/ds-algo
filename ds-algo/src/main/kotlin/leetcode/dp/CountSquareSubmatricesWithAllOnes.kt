@@ -3,7 +3,8 @@ package leetcode.dp
 /* 11 Aug 2025 12:33 */
 
 /**
- * [1277. Count Square Submatrices with All Ones](https://leetcode.com/problems/count-square-submatrices-with-all-ones/)
+ * [1277. Count Square Submatrices with All
+ * Ones](https://leetcode.com/problems/count-square-submatrices-with-all-ones/)
  */
 fun countSquares(matrix: Array<IntArray>): Int {
   var count = 0

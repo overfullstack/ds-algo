@@ -1,6 +1,6 @@
 package educative.graph
 
-import ds.graph.Graph
+import ds.graph.BiDiGraph
 import ds.graph.TarjanNode
 import utils.toPair
 
@@ -11,7 +11,7 @@ import utils.toPair
  * Network](https://leetcode.com/problems/critical-connections-in-a-network/) ⏱️Time limit exceeded
  */
 fun criticalConnections(n: Int, connections: List<List<Int>>): List<List<Int>> {
-  val graph = Graph(connections.map { it.map { TarjanNode(it) }.toPair() })
+  val graph = BiDiGraph(connections.map { it.map { TarjanNode(it) }.toPair() })
 
   val visited = mutableSetOf<TarjanNode>()
   val bridges = mutableListOf<Pair<Int, Int>>()
@@ -24,26 +24,31 @@ fun criticalConnections(n: Int, connections: List<List<Int>>): List<List<Int>> {
 
 fun dfsPerGroup(
   node: TarjanNode,
-  graph: Graph<TarjanNode>,
+  graph: BiDiGraph<TarjanNode>,
   visited: MutableSet<TarjanNode>,
   bridges: MutableList<Pair<Int, Int>>,
   parent: TarjanNode? = null,
 ): Int {
   visited += node
-  var nextDisc = node.disc + 1
+  var nextDisc = node.discovery + 1
   val neighbors =
     graph[node]
       ?.asSequence()
-      ?.filter { it != parent } // ! Critical
+      // ! Critical to exclude parent from neighbors, but retain other visited neighbors for `low`
+      ?.filter { it != parent }
       ?.onEach { neighbor ->
+        // ! Don't add this `if` check to filter, as we need visited neighbors also to calculate low
         if (neighbor !in visited) {
-          neighbor.disc = nextDisc
+          neighbor.discovery = nextDisc
           neighbor.low = nextDisc
           nextDisc = dfsPerGroup(neighbor, graph, visited, bridges, node)
         }
       } ?: return nextDisc
   neighbors.minOfOrNull { it.low }?.let { node.low = it }
-  bridges.addAll(neighbors.filter { it.low > node.disc }.map { node.value to it.value })
+  // ! neighbor.low > node.disc signifies, this neighbor can only be visited via this node,
+  // because no other connection/neighbor for that neighbor has an earlier discovery rank,
+  // which means there is no other route to this neighbor node except via node
+  bridges.addAll(neighbors.filter { it.low > node.discovery }.map { node.value to it.value })
   return nextDisc
 }
 

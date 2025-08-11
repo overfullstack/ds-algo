@@ -3,7 +3,7 @@ package ds.graph
 /* 03 Aug 2025 22:40 */
 
 /** Undirected Graph */
-class Graph<T>(
+class BiDiGraph<T>(
   private val adjacencyMap: MutableMap<T, Set<T>> = mutableMapOf(),
   val isPrimitiveType: Boolean = false,
 ) : MutableMap<T, Set<T>> by adjacencyMap {
@@ -24,6 +24,6 @@ class Graph<T>(
 }
 
 data class TarjanNode(val value: Int) {
-  var disc = 0
-  var low = 0
+  var discovery = 0 // rank in order of discovery
+  var low = 0 // lowest rank reachable from this node
 }

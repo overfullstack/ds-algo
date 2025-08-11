@@ -1,6 +1,6 @@
 package leetcode.graph
 
-import ds.graph.Graph
+import ds.graph.BiDiGraph
 import utils.toPair
 
 /**
@@ -9,7 +9,7 @@ import utils.toPair
  * time limit. `maximumScore2` doesn't
  */
 fun maximumScore(scores: IntArray, edges: Array<IntArray>): Int {
-  val graph = Graph(edges.map { it.toPair() })
+  val graph = BiDiGraph(edges.map { it.toPair() })
   val graphWithTop3Neighbors =
     graph.mapValues { it.value.sortedByDescending { scores[it] }.take(3).toSet() }
   return edges

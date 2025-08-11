@@ -21,8 +21,50 @@ fun merge(nums: MutableList<Pair<Int, Int>>, startIdx: Int, endIdx: Int, result:
   mergeSort(nums, startIdx, endIdx, mid, result)
 }
 
-// ! Descending sort
 fun mergeSort(
+  nums: MutableList<Pair<Int, Int>>,
+  startIdx: Int,
+  endIdx: Int,
+  mid: Int,
+  result: IntArray,
+) {
+  var leftIdx = 0
+  val left = nums.subList(startIdx, mid + 1).toMutableList()
+  var rightIdx = 0
+  val right = nums.subList(mid + 1, endIdx + 1).toMutableList()
+  var currentIdx = startIdx
+  var smallerOnRightCount = 0
+  while (leftIdx <= left.lastIndex && rightIdx <= right.lastIndex) {
+    when {
+      left[leftIdx].second <= right[rightIdx].second -> {
+        result[left[leftIdx].first] += smallerOnRightCount
+        nums[currentIdx] = left[leftIdx]
+        leftIdx++
+      }
+      else -> {
+        smallerOnRightCount++
+        nums[currentIdx] = right[rightIdx]
+        rightIdx++
+      }
+    }
+    currentIdx++
+  }
+
+  while (leftIdx <= left.lastIndex) {
+    result[left[leftIdx].first] += smallerOnRightCount
+    nums[currentIdx] = left[leftIdx]
+    leftIdx++
+    currentIdx++
+  }
+  while (rightIdx <= right.lastIndex) {
+    nums[currentIdx] = right[rightIdx]
+    rightIdx++
+    currentIdx++
+  }
+}
+
+// ! Descending sort
+fun mergeSortDescending(
   nums: MutableList<Pair<Int, Int>>,
   startIdx: Int,
   endIdx: Int,
@@ -55,7 +97,6 @@ fun mergeSort(
     currentIdx++
   }
 
-  // Copy remaining elements
   while (leftIdx < left.size) {
     nums[currentIdx] = left[leftIdx]
     leftIdx++

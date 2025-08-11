@@ -7,7 +7,7 @@ import ds.graph.DiGraph
 fun orderAlienDictionary(words: List<String>): String {
   val diGraph = DiGraph<Char>()
   val charToInConnectionCount = words.flatMap { it.toList() }.associateWith { 0 }.toMutableMap()
-  for (i in (0..words.lastIndex - 1)) {
+  for (i in (0 until words.lastIndex)) {
     val unmatchedResult = firstUnmatchedLetterPair(words[i], words[i + 1])
     unmatchedResult?.fold(
       { (char1, char2) ->

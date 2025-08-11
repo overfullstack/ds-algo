@@ -18,6 +18,8 @@ fun IntArray.toPair(): Pair<Int, Int> =
     else -> first() to last()
   }
 
+fun Pair<Int, Int>.toIntArray(): IntArray = intArrayOf(first, second)
+
 fun <T> List<T>.toTriple(): Triple<T, T, T> =
   when {
     size > 3 ->
