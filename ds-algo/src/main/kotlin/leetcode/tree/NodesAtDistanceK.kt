@@ -28,8 +28,8 @@ private fun TreeNode?.nodesAtDistanceK(target: Int, k: Int): Pair<Status, List<I
             k -> AllFoundAtK to (leftResult + this.`val`)
             // During the ancestor journey, search right subtree. `+1` as we go up and right
             else ->
-              SearchAncestor(leftStatus + 1) to
-                (leftResult + right.bottomNodesAtDistanceK(k - (leftStatus + 1)))
+              SearchAncestor(leftStatus.distance + 1) to
+                (leftResult + right.bottomNodesAtDistanceK(k - (leftStatus.distance + 1)))
           }
         else -> { // Target not found in left subtree, backtrack and search right subtree
           val (rightStatus, rightResult) = right.nodesAtDistanceK(target, k)
@@ -39,8 +39,8 @@ private fun TreeNode?.nodesAtDistanceK(target: Int, k: Int): Pair<Status, List<I
               when (rightStatus.distance) {
                 k -> AllFoundAtK to (rightResult + this.`val`)
                 else ->
-                  SearchAncestor(rightStatus + 1) to
-                    (rightResult + left.bottomNodesAtDistanceK(k - (rightStatus + 1)))
+                  SearchAncestor(rightStatus.distance + 1) to
+                    (rightResult + left.bottomNodesAtDistanceK(k - (rightStatus.distance + 1)))
               }
             }
             else -> NotFound to emptyList()
@@ -62,7 +62,5 @@ sealed class Status {
 
   object AllFoundAtK : Status()
 
-  class SearchAncestor(val distance: Int) : Status() {
-    operator fun plus(value: Int) = distance + value
-  }
+  class SearchAncestor(val distance: Int) : Status()
 }

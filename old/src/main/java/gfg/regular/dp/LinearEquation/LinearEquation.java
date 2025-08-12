@@ -9,7 +9,6 @@ public class LinearEquation {
 	}
 
 	private static int solutionCount(int[] coefficients, int rhs) {
-		var len = coefficients.length;
 		var table = new int[rhs + 1];
 		table[0] = 1; // if rhs=0, 1 solution i.e., all vals are 0s
 		// Same as Coin Change problem, where we innumerable supply of coins,

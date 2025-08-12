@@ -11,7 +11,7 @@ fun containerWithMostWater(heights: IntArray): Int {
     val width = right - left
     maxArea = maxOf(maxArea, minOf(heights[left], heights[right]) * width)
     when {
-      // * As we squeeze width, we gain vertical area only moving from shorter to longer lines
+      // * As we squeeze width, we can gain vertical area only moving from shorter to longer lines
       heights[left] < heights[right] -> left++
       else -> right--
     }

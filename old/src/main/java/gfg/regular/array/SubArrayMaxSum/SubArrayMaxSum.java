@@ -28,9 +28,8 @@ public class SubArrayMaxSum {
 		int curSum = 0, startIndex = 0, maxSum = 0;
 		for (var i = 0; i < arr.size(); i++) {
 			curSum += arr.get(i);
-			if (curSum
-					< 0) { // Nullifying the Negative portion of curSum by making it 0, and starting a fresh
-				// subarray
+			// Nullifying the Negative portion of curSum by making it 0, and starting a fresh subarray
+			if (curSum < 0) {
 				curSum = 0;
 				startIndex = i + 1;
 			} else if (curSum > maxSum) {
@@ -60,7 +59,7 @@ public class SubArrayMaxSum {
 	}
 
 	private static int getMaxInArray(List<Integer> arr) {
-		int max = arr.get(0);
+		int max = arr.getFirst();
 		for (var i = 1; i < arr.size(); i++) {
 			int val = arr.get(i);
 			if (val > max) max = val;

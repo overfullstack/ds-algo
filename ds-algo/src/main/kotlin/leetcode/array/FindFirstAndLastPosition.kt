@@ -33,7 +33,7 @@ tailrec fun findLast(nums: IntArray, target: Int, left: Int = 0, right: Int = nu
 
   val mid = left + (right - left) / 2
   return when {
-    nums[mid] == target &&  (mid == nums.lastIndex || nums[mid + 1] != target)-> mid
+    nums[mid] == target && (mid == nums.lastIndex || nums[mid + 1] != target) -> mid
     nums[mid] <= target -> findLast(nums, target, mid + 1, right)
     else -> findLast(nums, target, left, mid - 1)
   }

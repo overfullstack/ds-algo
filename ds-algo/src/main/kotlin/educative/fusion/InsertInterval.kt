@@ -1,6 +1,14 @@
 package educative.fusion
 
+import utils.toIntArray
+import utils.toPair
+
 /* 20 Jul 2025 12:28 */
+
+fun insert(intervals: Array<IntArray>, newInterval: IntArray): Array<IntArray> =
+  insertInterval(intervals.map { it.toPair() }, newInterval.toPair())
+    .map { it.toIntArray() }
+    .toTypedArray()
 
 fun insertInterval(
   sortedIntervals: List<Pair<Int, Int>>,

@@ -6,14 +6,15 @@ fun minHeightShelves(books: Array<IntArray>, shelfWidth: Int): Int {
   val dp = IntArray(books.size + 1)
   for (i in 1..(books.lastIndex + 1)) {
     val (newBookWidth, newBookHeight) = books[i - 1]
-    dp[i] = dp[i - 1] + newBookHeight // Add new book to new row
+    dp[i] = dp[i - 1] + newBookHeight // Add new book to new Shelve row
 
     // * Move as many as previous books as possible to new row, check if they can reduce the `dp[i]`
     // * `dp[i]` is the minHeight formed with `i-1` books
     // ! `dp[i]` doesn't influence values of below it as
     // ! `dp[i-1]` holds minHeight formed and ith book is not in the picture
     // If you have enough capacity, all previous books can move to new shelve,
-    // and `dp[j]` shall hit `dp[0]`, making `dp[i] = maxHeightForNewRow`
+    // and `dp[j]` shall hit `dp[0]`, making `dp[i] = maxHeightForNewRow`,
+    // which is max height of `i` books
     var j = i - 2 // Remaining books
     var widthForNewRow = newBookWidth
     var maxHeightForNewRow = newBookHeight
