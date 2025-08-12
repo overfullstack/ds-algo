@@ -1,5 +1,5 @@
 /* gakshintala created on 12/26/19 */
-package leetcode.stack.StockSpan
+package leetcode.stack
 
 import java.util.Stack
 

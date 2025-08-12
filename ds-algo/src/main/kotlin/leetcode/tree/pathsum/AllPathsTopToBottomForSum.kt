@@ -7,7 +7,7 @@ private fun TreeNode.allPathsTopToBottomForSum(
   sum: Int,
   result: List<Int> = emptyList(),
 ): List<List<Int>> {
-  if (left == null && right == null) {
+  if (left == null && right == null) { // ! Path has to end at leaf as per problem
     return if (sum - `val` == 0) listOf(result + `val`) else emptyList()
   }
   // ! `emptyList()` signifies, if you step on a null before reaching the sum,

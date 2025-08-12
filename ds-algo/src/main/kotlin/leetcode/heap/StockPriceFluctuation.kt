@@ -21,8 +21,8 @@ class StockPriceFluctuation {
 
   fun maximum(): Int {
     while (true) { // * Prune wrong timestamps, comparing with the ledger
-      val (maxTimestamp, maxPrice) = maxHeap.peek()
-      if (ledger[maxTimestamp] == maxPrice) {
+      val (timestamp, maxPrice) = maxHeap.peek()
+      if (ledger[timestamp] == maxPrice) {
         return maxPrice
       }
       maxHeap.poll()
@@ -31,8 +31,8 @@ class StockPriceFluctuation {
 
   fun minimum(): Int {
     while (true) {
-      val (minTimestamp, minPrice) = minHeap.peek()
-      if (ledger[minTimestamp] == minPrice) {
+      val (timestamp, minPrice) = minHeap.peek()
+      if (ledger[timestamp] == minPrice) {
         return minPrice
       }
       minHeap.poll()

@@ -1,5 +1,5 @@
 /* gakshintala created on 8/28/19 */
-package leetcode.array
+package leetcode.array.twopointers
 
 /** https://leetcode.com/problems/trapping-rain-water/ */
 fun trap(heights: IntArray): Int {
@@ -9,8 +9,9 @@ fun trap(heights: IntArray): Int {
   var left = 0
   var right = heights.lastIndex
   while (left < right) {
-    // * When the right height is greater and current is backed up by a max, as local sub-container
-    // is formed, which extends till the next `leftLocalPeak`. Vice versa on the right side as well
+    // * When the right height is greater and current is backed up by a `leftLocalPeak`,
+    // a local sub-container is formed, which extends till the next `leftLocalPeak`.
+    // Vice versa on the right side as well
     when {
       heights[left] < heights[right] -> {
         when {

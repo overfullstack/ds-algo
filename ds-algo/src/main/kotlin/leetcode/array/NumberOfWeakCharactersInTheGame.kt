@@ -7,7 +7,7 @@ fun numberOfWeakCharacters(properties: Array<IntArray>): Int {
     properties.sortedWith(compareBy<IntArray> { it[0] }.thenByDescending { it[1] })
   return sortedProperties
     .dropLast(1)
-    .foldRight(sortedProperties.last()[1] to 0) { property, (max, count) ->
+    .foldRight(sortedProperties.last()[1] to 0) { property, (max, count) -> // ! `foldRight`
       when {
         property[1] < max -> max to (count + 1)
         else -> property[1] to count
