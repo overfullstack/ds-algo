@@ -9,7 +9,7 @@ fun subStringsWithKSizeKDistinct(s: String, k: Int): List<String> {
   val result = mutableListOf<String>()
   for ((index, char) in s.withIndex()) {
     // We should strictly have unique character, no place for duplicates anywhere in the window.
-    // Shrink window from start till lastOccurance of char.
+    // Shrink window from start till lastOccurrence of char.
     while (window.contains(char)) {
       window.remove(s[start])
       start++

@@ -1,9 +1,12 @@
 /* gakshintala created on 10/16/19 */
-package tree
+package leetcode.tree
 
 import ds.tree.TreeNode
 import ds.tree.TreeNode.Companion.levelOrderToCompleteTree
 
+/**
+ * [1245 - Tree Diameter](https://leetcode.ca/2019-04-28-1245-Tree-Diameter/)
+ */
 fun diameterOfBinaryTree(root: TreeNode?): Int {
   return if (root == null) 0 else root.findMaxDiameter().second - 1 // n nodes shall have n-1 edges.
 }

@@ -45,13 +45,13 @@ class EdgeWeightedDiGraph<T>(
     val pq = PriorityQueue(compareBy<Pair<T, Int>> { it.second })
     pq.add(source to 0)
     while (pq.isNotEmpty()) {
-      val (node, distanceFromSource) = pq.poll()
-      nodeToDistanceFromSource[node] = distanceFromSource
+      val (from, distanceFromSource) = pq.poll()
+      nodeToDistanceFromSource[from] = distanceFromSource
       // * Loop through Neighbour edges
-      adjacencyMap[node]?.forEach { (to, distanceFromNodeToTo) ->
+      adjacencyMap[from]?.forEach { (to, distanceFromNodeToTo) ->
         val newDistance = distanceFromSource + distanceFromNodeToTo
-        // ! Priority Queue greedy approach make sure a node gets best distance in the first visit.
-        // ! This check prevents the same node being added to queue again for processing
+        // ! Priority Queue make sure a from node gets best distance in the first visit.
+        // ! This check prevents the same from being added to queue again for processing
         if (nodeToDistanceFromSource[to]?.let { newDistance < it } ?: true) {
           pq.add(to to newDistance)
         }

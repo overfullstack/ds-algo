@@ -14,7 +14,7 @@ fun earliestAcq(logs: Array<IntArray>, n: Int): Int {
     .asSequence()
     .takeWhile { unionFind.groupCount != 1 }
     .onEach { (_, u, v) -> unionFind.union(u, v) }
-    .last()[0]
+    .last()[0] // ! last after takeWhile returns false
 }
 
 private class UnionFind(size: Int) {

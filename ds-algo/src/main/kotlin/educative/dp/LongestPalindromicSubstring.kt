@@ -17,11 +17,12 @@ fun longestPalindromicSubstring(str: String): String {
   }
 
   // * Build substrings from smaller windows to larger windows
+  // ! Note we are building the window, not the String
   for (windowLen in 2..str.lastIndex) {
     for ((wStart, wEnd) in (windowLen..str.lastIndex).withIndex()) {
       dp[wStart][wEnd] = dp[wStart + 1][wEnd - 1] && (str[wStart] == str[wEnd])
       if (dp[wStart][wEnd]) {
-        result = wStart to wEnd
+        result = wStart to wEnd // ! Increasing window, so always the max
       }
     }
   }

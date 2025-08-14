@@ -4,7 +4,7 @@ package leetcode.dp
 /** [Word Break](https://leetcode.com/problems/word-break/) */
 private fun wordBreak(word: String, wordDict: List<String>): Boolean {
   val wordDictSet = wordDict.toSet()
-  // Check with all end indices, including -1.
+  // * One pass. For each index, compare with previously recorded end indices
   return word.indices
     .fold(listOf(-1)) { wordEndIndices, index ->
       when {

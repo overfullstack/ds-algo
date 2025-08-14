@@ -7,7 +7,7 @@ fun tribonacci(n: Int): Int {
   var first = 0
   var second = 1
   var third = 1
-  var next = 0
+  var next: Int
   for (i in 3..n) {
     next = first + second + third
     first = second

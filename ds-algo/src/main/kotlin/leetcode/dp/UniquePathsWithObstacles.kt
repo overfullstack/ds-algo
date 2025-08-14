@@ -1,13 +1,16 @@
 /* gakshintala created on 12/26/19 */
 package leetcode.dp
 
+/**
+ * [63. Unique Paths II](https://leetcode.com/problems/unique-paths-ii/)
+ */
 fun uniquePathsWithObstacles1d(obstacleGrid: Array<IntArray>): Int {
   val dp = IntArray(obstacleGrid.first().size)
   dp[0] = 1
   for (row in obstacleGrid.indices) {
     for (col in obstacleGrid.first().indices) {
       // ! `table[row - 1][col]` is just borrowing from same col data from previous row.
-      // ! Instead, we layer on the top of same 1D, one col at a time
+      // ! Instead, we layer on the top of same 1D, one row at a time
       when {
         obstacleGrid[row][col] == 1 -> dp[col] = 0
         else -> dp[col] += dp[col - 1]

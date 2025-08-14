@@ -11,8 +11,8 @@ fun canFinish(numCourses: Int, prerequisites: Array<IntArray>): Boolean {
     diGraph.keys
       .asSequence()
       .filter { it !in visited }
-      .all { it.dftPerGroup(diGraph, visited.apply { add(it) }, setOf(it)) }
-  } catch (e: IllegalArgumentException) {
+      .all { it.dftPerGroup(diGraph, visited) }
+  } catch (_: IllegalArgumentException) {
     false
   }
 }
@@ -20,15 +20,17 @@ fun canFinish(numCourses: Int, prerequisites: Array<IntArray>): Boolean {
 private fun Int.dftPerGroup(
   diGraph: Map<Int, Set<Int>>,
   visited: MutableSet<Int>,
-  visitedInBrach: Set<Int>,
-): Boolean =
-  diGraph[this]?.all { // ! You cannot filter visited here, as it skips `in vistedInBranch`
+  visitedInBranch: Set<Int> = setOf(this),
+): Boolean {
+  visited += this
+  return diGraph[this]?.all {
     when (it) {
-      !in visited -> it.dftPerGroup(diGraph, visited.apply { add(it) }, visitedInBrach + it)
-      in visitedInBrach -> throw IllegalArgumentException("Graph has Cycle")
-      else -> true // already visited
+      in visitedInBranch -> throw IllegalArgumentException("Graph has Cycle")
+      in visited -> true // already visited
+      else -> it.dftPerGroup(diGraph, visited, visitedInBranch + it) 
     }
   } ?: true
+}
 
 private fun Array<IntArray>.toDiGraph(): Map<Int, Set<Int>> =
   groupBy({ it[0] }, { it[1] }).mapValues { it.value.toSet() }

@@ -16,7 +16,8 @@ private fun cloneGraphInternal(
   clonedNode.neighbors =
     node.neighbors
       .asSequence()
-      .mapNotNull { valToClonedNode[it!!.`val`] ?: cloneGraphInternal(it, valToClonedNode) }
+      .filterNotNull()
+      .map { valToClonedNode[it.`val`] ?: cloneGraphInternal(it, valToClonedNode) }
       .toList()
   return clonedNode
 }

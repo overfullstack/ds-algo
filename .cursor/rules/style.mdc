@@ -7,34 +7,37 @@ alwaysApply: true
 - While generating Kotlin code, specify all variable types and functional return types explicitly
 
 # Functional Programming Patterns
-
 - Keep functional code simple: avoid nested functions, unnecessary data classes, and over-engineered chains
-- Follow the functional style from these files:
-  - 
+- Follow the functional style from code in these directories from this code repository:
+  - ds-algo/src/main/kotlin/leetcode/graph
+  - ds-algo/src/main/kotlin/leetcode/backtracking
+  - ds-algo/src/main/kotlin/educative/graph
+  - ds-algo/src/main/kotlin/educative/backtracking
 - Chain operations using sequences: prefer `.asSequence()` for multiple transformations
 - Build immutable data flow: pass state through parameters, return new state instead of mutating
 - Use functional combinators: map, filter, flatMap, fold, firstOrNull over loops
 - Default parameters for recursive accumulators: use `= emptySet()`, `= emptyList()`
 - Prefer single-expression functions that return directly from when/if expressions
 - Prefer direct recursion with parameters over complex state objects
+- Functional programming style may not apply to some problems that are mutation-heavy. For example, table-based Dynamic programming solutions in these directories:
+  - ds-algo/src/main/kotlin/leetcode/dp
+  - ds-algo/src/main/kotlin/educative/dp
 
 # Kotlin-Specific Patterns
 - Always use `when` expressions over if-else chains
 - Use ranges: `downTo`, `until`, `in`, `indices` for iterations
 - String operations: use `substring(range)` with IntRange, not separate indices
-- Choose `firstOrNull` over complex sequence chains when finding first valid element
+- Choose `firstOrNull` over complex sequence chains when finding the first valid element
 - Collection operations: use `+` operator for adding to immutable collections
 - Use `?.let { }` with elvis `?:` for clean null handling
 - Use `firstOrNull()` with elvis `?:` for fallback values
+- Use Extension functions only if they improve readability. Don't overuse
 
 # Recursion Patterns
+- Follow the recursive style from code in these directories from this code repository:
+  - ds-algo/src/main/kotlin/leetcode/tree
+  - ds-algo/src/main/kotlin/educative/tree
 - For recursive functions with state, pass immutable state as parameters
 - Return complete result from base case, not accumulate via side effects
 - Use `tailrec` only when the recursive call is truly in tail position
-- Cache/memoization: use MutableMap parameter with default empty map
-
-# Code Structure
-- Group related functions using nested functions when they share context
-- Use data classes for grouping related immutable state
-- Extension functions for domain-specific operations
-- Inline functions for higher-order functions that are called frequently
+- Cache/memoization: use MutableMap parameter with a default empty map
