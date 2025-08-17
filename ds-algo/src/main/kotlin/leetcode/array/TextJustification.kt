@@ -81,10 +81,11 @@ private fun List<String>.fullyJustify(maxWidth: Int): String {
   return asSequence()
     .mapIndexed { index, word ->
       when {
-        index == 0 -> word  // First word: no leading spaces
-        index <= extraSpaces -> " ".repeat(baseSpaces + 1) + word  // First 'extraSpaces' gaps get +1 space
-        else -> " ".repeat(baseSpaces) + word  // Remaining gaps get base spaces
+        index == 0 -> word // First word: no leading spaces
+        index <= extraSpaces ->
+          " ".repeat(baseSpaces + 1) + word // First 'extraSpaces' gaps get +1 space
+        else -> " ".repeat(baseSpaces) + word // Remaining gaps get base spaces
       }
     }
-    .joinToString("")  // No separator since we're manually adding spaces
+    .joinToString("") // No separator since we're manually adding spaces
 }

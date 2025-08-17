@@ -1,9 +1,7 @@
 /* gakshintala created on 12/26/19 */
 package leetcode.dp
 
-/**
- * [63. Unique Paths II](https://leetcode.com/problems/unique-paths-ii/)
- */
+/** [63. Unique Paths II](https://leetcode.com/problems/unique-paths-ii/) */
 fun uniquePathsWithObstacles1d(obstacleGrid: Array<IntArray>): Int {
   val dp = IntArray(obstacleGrid.first().size)
   dp[0] = 1

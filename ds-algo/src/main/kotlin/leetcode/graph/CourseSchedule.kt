@@ -8,10 +8,7 @@ fun canFinish(numCourses: Int, prerequisites: Array<IntArray>): Boolean {
   val diGraph = prerequisites.toDiGraph()
   val visited = mutableSetOf<Int>()
   return try {
-    diGraph.keys
-      .asSequence()
-      .filter { it !in visited }
-      .all { it.dftPerGroup(diGraph, visited) }
+    diGraph.keys.asSequence().filter { it !in visited }.all { it.dftPerGroup(diGraph, visited) }
   } catch (_: IllegalArgumentException) {
     false
   }
@@ -27,7 +24,7 @@ private fun Int.dftPerGroup(
     when (it) {
       in visitedInBranch -> throw IllegalArgumentException("Graph has Cycle")
       in visited -> true // already visited
-      else -> it.dftPerGroup(diGraph, visited, visitedInBranch + it) 
+      else -> it.dftPerGroup(diGraph, visited, visitedInBranch + it)
     }
   } ?: true
 }
