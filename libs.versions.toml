@@ -5,7 +5,7 @@ ksp = "2.2.10-2.0.2"
 kotlinx-serialization = "1.9.0"
 revoman = "0.80.4"
 kover = "0.9.1"
-kotest = "5.9.1"
+kotest = "6.0.0"
 testLogger = "4.0.0"
 kotlin-logging = "7.0.13"
 # Common dependencies
