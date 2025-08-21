@@ -96,11 +96,12 @@ class DiGraph<T>(
       this in visited -> emptySequence()
       else -> {
         visited += this
-        sequenceOf(this) + (adjacencyMap[this]
-          ?.asSequence()
-          ?.filter { it !in visited }
-          ?.flatMap { it.dftPreOrderPerGroup(visited) }
-          ?.distinct() ?: emptySequence())
+        sequenceOf(this) +
+          (adjacencyMap[this]
+            ?.asSequence()
+            ?.filter { it !in visited }
+            ?.flatMap { it.dftPreOrderPerGroup(visited) }
+            ?.distinct() ?: emptySequence())
       }
     }
 
@@ -109,7 +110,7 @@ class DiGraph<T>(
     return adjacencyMap.keys
       .asSequence()
       .filter { it !in visited }
-      .map { 1 + it.dftGroupSize(visited) }
+      .map { it.dftGroupSize(visited) }
       .toList()
   }
 
@@ -118,7 +119,7 @@ class DiGraph<T>(
       this in visited -> 0
       else -> {
         visited += this
-        adjacencyMap[this]?.filter { it !in visited }?.sumOf { 1 + it.dftGroupSize(visited) } ?: 0
+        1 + (adjacencyMap[this]?.filter { it !in visited }?.sumOf { it.dftGroupSize(visited) } ?: 0)
       }
     }
 

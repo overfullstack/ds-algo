@@ -6,7 +6,7 @@ globs:
 
 - Use this codebase's functional Kotlin style: pure functions, sequences, immutable state, when expressions
 - Reduce state mutation as much as possible. Prefer state transformation
-- While generating Kotlin code, specify all variable types and functional return types explicitly
+- While generating Kotlin code, specify all variable types and functional return types explicitly, unless redundant.
 
 # Functional Programming Patterns
 - Keep functional code simple: avoid nested functions, unnecessary data classes, and over-engineered chains

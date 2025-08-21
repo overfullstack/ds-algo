@@ -1,10 +1,11 @@
 package algoexpert.ll.lrucache
 
-import algoexpert.ll.lrucache.LRUCacheArgs.Companion.parseJsonFileToLRUCacheArgs
+import algoexpert.ll.lruCache
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.data.forAll
 import io.kotest.data.row
 import io.kotest.matchers.shouldBe
+import testcase.LRUCacheArgs.Companion.parseJsonFileToLRUCacheArgs
 
 private const val PKG_PATH = "algoexpert/ll/LRUCache"
 

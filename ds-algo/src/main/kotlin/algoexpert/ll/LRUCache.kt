@@ -1,10 +1,12 @@
-package algoexpert.ll.lrucache
+package algoexpert.ll
 
 import ds.ll.DLLNode
 import kotlinx.serialization.json.int
 import kotlinx.serialization.json.jsonPrimitive
+import testcase.LRUCacheArgs
 
 /* 18 Aug 2024 21:21 */
+
 fun lruCache(lruCacheArgs: LRUCacheArgs): Pair<List<String?>, List<Pair<String, Int>>> {
   val lruQueue = LRUQueue(lruCacheArgs.maxSize)
   val queryResults = mutableListOf<String?>()

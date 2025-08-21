@@ -1,4 +1,4 @@
-package algoexpert.ll.lrucache
+package testcase
 
 import com.salesforce.revoman.input.readFileToString
 import kotlinx.serialization.Serializable
