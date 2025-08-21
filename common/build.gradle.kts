@@ -6,6 +6,5 @@ plugins {
 
 dependencies {
   implementation(libs.kotlinx.serialization)
-  implementation(libs.bundles.kotlin.logging)
   implementation(libs.revoman)
 }

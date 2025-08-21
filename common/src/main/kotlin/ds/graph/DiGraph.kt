@@ -87,7 +87,7 @@ class DiGraph<T>(
       .asSequence()
       .filter { it !in visited }
       // ! Using a `list(it)` for Order, otherwise Global visited captures all reachable nodes
-      .flatMap { listOf(it) + it.dftPreOrderPerGroup(visited) }
+      .flatMap { it.dftPreOrderPerGroup(visited) }
       .toList()
   }
 
@@ -96,11 +96,11 @@ class DiGraph<T>(
       this in visited -> emptySequence()
       else -> {
         visited += this
-        adjacencyMap[this]
+        sequenceOf(this) + (adjacencyMap[this]
           ?.asSequence()
           ?.filter { it !in visited }
-          ?.flatMap { listOf(it) + it.dftPreOrderPerGroup(visited) }
-          ?.distinct() ?: emptySequence()
+          ?.flatMap { it.dftPreOrderPerGroup(visited) }
+          ?.distinct() ?: emptySequence())
       }
     }
 
