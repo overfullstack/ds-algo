@@ -7,7 +7,7 @@ revoman = "0.80.4"
 
 # Common dependencies
 junit = "5.11.3"
-kotest = "5.9.1"
+kotest = "6.0.0"
 power-assert = "2.2.0"
 kover = "0.9.1"
 testLogger = "4.0.0"
@@ -18,7 +18,7 @@ revoman = { module = "com.salesforce.revoman:revoman", version.ref = "revoman" }
 kotlinx-serialization = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinx-serialization" }
 testLogger-gradle = { module = "com.adarshr.test-logger:com.adarshr.test-logger.gradle.plugin", version.ref = "testLogger" }
 kotest-assertions-core = { module = "io.kotest:kotest-assertions-core", version.ref = "kotest" }
-kotest-framework-datatest = { module = "io.kotest:kotest-framework-datatest", version.ref = "kotest" }
+kotest-assertions-table = { module = "io.kotest:kotest-assertions-table", version.ref = "kotest" }
 kotest-property = { module = "io.kotest:kotest-property", version.ref = "kotest" }
 kotest-runnerJUnit5 = { module = "io.kotest:kotest-runner-junit5", version.ref = "kotest" }
 junit-jupiter = { module = "org.junit.jupiter:junit-jupiter-api" }
@@ -33,7 +33,7 @@ power-assert-gradle = { module = "org.jetbrains.kotlin.plugin.power-assert:org.j
 [bundles]
 kotest = [
     "kotest-assertions-core",
-    "kotest-framework-datatest",
+    "kotest-assertions-table",
     "kotest-property",
     "kotest-runnerJUnit5",
 ]

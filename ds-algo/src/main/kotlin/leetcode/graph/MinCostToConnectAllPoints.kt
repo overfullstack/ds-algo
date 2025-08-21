@@ -5,6 +5,10 @@ import kotlin.math.abs
 
 /* 21 Aug 2025 15:50 */
 
+/**
+ * [1584. Min Cost to Connect All
+ * Points](https://leetcode.com/problems/min-cost-to-connect-all-points/)
+ */
 fun minCostConnectPoints(points: Array<IntArray>): Int {
   if (points.size <= 1) return 0
   val pq = PriorityQueue(compareBy<Pair<Int, Int>> { it.second })

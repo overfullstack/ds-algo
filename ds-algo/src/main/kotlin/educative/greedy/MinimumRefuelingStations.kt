@@ -8,7 +8,7 @@ fun minimumRefuelingStations(
   stations: List<Pair<Int, Int>>,
 ): Int {
   // ! We don't need minHeap as the distance is sorted
-  val maxHeapForFuel = PriorityQueue(Comparator.reverseOrder<Int>())
+  val maxHeapForFuel = PriorityQueue(reverseOrder<Int>())
   var reachableDistance = startFuel
   var i = 0
   var stops = 0

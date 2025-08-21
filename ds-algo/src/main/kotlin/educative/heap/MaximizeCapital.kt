@@ -6,7 +6,7 @@ fun maximizeCapital(initialCapital: Int, k: Int, capitalsToProfits: List<Pair<In
   // ! We need minHeap as the capitals is not guaranteed to be sorted
   val minHeapForCapitals = PriorityQueue(compareBy<Pair<Int, Int>> { it.first })
   minHeapForCapitals.addAll(capitalsToProfits)
-  val maxHeapForProfits = PriorityQueue(Comparator.reverseOrder<Int>())
+  val maxHeapForProfits = PriorityQueue(reverseOrder<Int>())
   var projectsPickedCount = 0
   var totalCapital = initialCapital
   while (projectsPickedCount < k) {
