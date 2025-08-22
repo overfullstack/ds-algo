@@ -9,6 +9,7 @@ fun longestPalindromicSubstring(str: String): String {
   }
 
   lateinit var result: Pair<Int, Int>
+  // ! For windowLen 2
   for (i in 0 until str.lastIndex) {
     dp[i][i + 1] = (str[i] == str[i + 1])
     if (dp[i][i + 1]) {

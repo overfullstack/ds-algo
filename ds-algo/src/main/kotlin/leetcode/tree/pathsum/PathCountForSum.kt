@@ -3,29 +3,25 @@ package leetcode.tree.pathsum
 
 import ds.tree.TreeNode
 
-/**
- * https://leetcode.com/problems/path-sum-iii/ Find the number of paths that sum to a given value.
- */
+/** [437. Path Sum III](https://leetcode.com/problems/path-sum-iii/) */
 fun pathSum(
   root: TreeNode?,
   targetSum: Int,
-  sumToPathCount: MutableMap<Long, Int> = mutableMapOf(),
+  sumToPathCount: MutableMap<Long, Int> = mutableMapOf(0L to 1), // ! For first sum occurrence
   runningSum: Long = 0,
 ): Int {
   if (root == null) {
     return 0
   }
   val curSum = runningSum + root.`val`
-  // * PathCount from parent
-  var totalPathCount =
-    (sumToPathCount[curSum - targetSum] ?: 0) + if (curSum == targetSum.toLong()) 1 else 0
+  val pathCountFromParent = sumToPathCount[curSum - targetSum] ?: 0
   // ! Increment the no.of times this sum has occurred
   sumToPathCount.merge(curSum, 1, Int::plus)
-  // * PathCount from left and right
-  totalPathCount +=
-    (pathSum(root.left, targetSum, sumToPathCount, curSum) +
-      pathSum(root.right, targetSum, sumToPathCount, curSum))
-  // ! As we backtrack, remove current node contribution to sum
+  val totalPathCount =
+    pathCountFromParent +
+      (pathSum(root.left, targetSum, sumToPathCount, curSum) +
+        pathSum(root.right, targetSum, sumToPathCount, curSum))
+  // ! As we backtrack, remove current node contribution to sum, as this is a shared global map
   sumToPathCount.computeIfPresent(curSum) { _, pathCount ->
     if (pathCount == 1) null else pathCount.dec()
   }

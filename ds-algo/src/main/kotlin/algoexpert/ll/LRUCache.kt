@@ -48,7 +48,7 @@ class LRUQueue(val maxSize: Int) {
         val node =
           map.compute(key) { key, curNode ->
             when (curNode) {
-              null -> {
+              null -> { // ! New Node
                 if (size == maxSize) {
                   removeLRU()
                 }
@@ -57,7 +57,7 @@ class LRUQueue(val maxSize: Int) {
                 map[key] = nodeToInsert
                 nodeToInsert
               }
-              else -> {
+              else -> { // ! Existing Node
                 curNode.value = key to value
                 unlink(curNode)
                 curNode.next = head

@@ -1,7 +1,7 @@
 /* gakshintala created on 9/24/19 */
 package leetcode.dp
 
-/** https://leetcode.com/problems/palindrome-partitioning-ii/ */
+/** [132. Palindrome Partitioning II](https://leetcode.com/problems/palindrome-partitioning-ii/) */
 fun minCutsForPalindromePartition(s: String): Int {
   val cutsTable = Array(s.length) { IntArray(s.length) }
   val isPalTable = Array(s.length) { BooleanArray(s.length) }
@@ -25,7 +25,7 @@ fun minCutsForPalindromePartition(s: String): Int {
         // +1 is the extra cut required for partitioning two palindromes from `i-partition` and
         // `partition-j`
         // If no substring is a palindrome, this +1 makes the result = no.of chars in the string.
-        else (i until j).map { cutsTable[i][it] + 1 + cutsTable[it + 1][j] }.minOrNull() ?: 0
+        else (i until j).minOfOrNull { cutsTable[i][it] + 1 + cutsTable[it + 1][j] } ?: 0
     }
   }
   return cutsTable[0][s.lastIndex] // For the entire string

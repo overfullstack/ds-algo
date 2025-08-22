@@ -7,10 +7,10 @@ public class CoinChange {
 		int[] coins = {1, 2, 3};
 		var coinCount = 3;
 		var total = 5;
-		System.out.println(CountCoinCombinations(coins, coinCount, total));
+		System.out.println(countCoinCombinations(coins, coinCount, total));
 	}
 
-	private static int CountCoinCombinations(int[] coins, int coinCount, int total) {
+	private static int countCoinCombinations(int[] coins, int coinCount, int total) {
 		var table = new int[total + 1];
 		table[0] = 1;
 		/*

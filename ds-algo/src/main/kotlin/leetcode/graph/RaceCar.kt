@@ -4,9 +4,7 @@ import kotlin.math.abs
 
 /* 22 Aug 2025 08:19 */
 
-/**
- * [818. Race Car](https://leetcode.com/problems/race-car/)
- */
+/** [818. Race Car](https://leetcode.com/problems/race-car/) */
 fun racecar(target: Int): Int {
   val queue = ArrayDeque<Triple<Int, Int, Int>>()
   val visited = mutableSetOf<Pair<Int, Int>>()
