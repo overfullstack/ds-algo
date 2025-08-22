@@ -18,11 +18,11 @@ fun numBusesToDestination(routes: Array<IntArray>, source: Int, destination: Int
     stations.map { graph.addEdge(it, routeId) }
   }
   // * Find minimum route transfers to reach destination
-  val pq = ArrayDeque<Pair<Int, Int>>()
-  pq.add(source to 0)
+  val queue = ArrayDeque<Pair<Int, Int>>()
+  queue.add(source to 0)
   val visitedRouteIds = mutableSetOf<Int>()
-  while (pq.isNotEmpty()) {
-    val (station, busCount) = pq.removeLast()
+  while (queue.isNotEmpty()) {
+    val (station, busCount) = queue.removeLast()
     if (station == destination) {
       return busCount
     }
@@ -30,7 +30,7 @@ fun numBusesToDestination(routes: Array<IntArray>, source: Int, destination: Int
       ?.filter { routeId -> routeId !in visitedRouteIds }
       ?.onEach { visitedRouteIds.add(it) }
       ?.flatMap { routeId -> routes[routeId].toList() } // Neighbours connected by a bus route
-      ?.forEach { station -> pq.add((station to busCount + 1)) }
+      ?.forEach { station -> queue.add((station to busCount + 1)) }
   }
   return -1
 }
