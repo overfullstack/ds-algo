@@ -2,16 +2,16 @@ package gfg.regular.ll.ReverseLL;
 
 import static ds.Utils.printSLL;
 
-import ds.SLLNode;
+import ds.ListNode;
 
 /** Created by gakshintala on 6/10/16. */
 public class ReverseLL {
 	static void main() {
-		SLLNode l1, l2, l3, l4;
-		l1 = new SLLNode(1);
-		l2 = new SLLNode(2);
-		l3 = new SLLNode(3);
-		l4 = new SLLNode(4);
+		ListNode l1, l2, l3, l4;
+		l1 = new ListNode(1);
+		l2 = new ListNode(2);
+		l3 = new ListNode(3);
+		l4 = new ListNode(4);
 
 		l1.next = l2;
 		l2.next = l3;
@@ -21,8 +21,8 @@ public class ReverseLL {
 		printSLL(l4);
 	}
 
-	public static SLLNode reverseLinkedList(SLLNode head) {
-		SLLNode prev = null, cur = head, next = head;
+	public static ListNode reverseLinkedList(ListNode head) {
+		ListNode prev = null, cur = head, next = head;
 
 		while (next != null) {
 			// next will be leading and cur and prev shall be reversing pointers

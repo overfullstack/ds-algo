@@ -2,27 +2,27 @@ package gfg.regular.ll.LLIntersection;
 
 import static ds.Utils.findLLLength;
 
-import ds.SLLNode;
+import ds.ListNode;
 
 /** Created by gakshintala on 6/10/16. */
 public class LLIntersection {
 	static void main() {
-		SLLNode l1, l2, l3, l4, l5;
-		l5 = new SLLNode(5);
-		l4 = new SLLNode(4, l5);
-		l3 = new SLLNode(3, l4);
-		l2 = new SLLNode(2, l3);
-		l1 = new SLLNode(1, l2);
+		ListNode l1, l2, l3, l4, l5;
+		l5 = new ListNode(5);
+		l4 = new ListNode(4, l5);
+		l3 = new ListNode(3, l4);
+		l2 = new ListNode(2, l3);
+		l1 = new ListNode(1, l2);
 
-		SLLNode k1, k2, k3;
-		k3 = new SLLNode(9, l3);
-		k2 = new SLLNode(8, k3);
-		k1 = new SLLNode(7, k2);
+		ListNode k1, k2, k3;
+		k3 = new ListNode(9, l3);
+		k2 = new ListNode(8, k3);
+		k1 = new ListNode(7, k2);
 
 		System.out.println(mergePoint(l1, k1));
 	}
 
-	private static SLLNode mergePoint(SLLNode l1, SLLNode k1) {
+	private static ListNode mergePoint(ListNode l1, ListNode k1) {
 		var lLength = findLLLength(l1);
 		var kLength = findLLLength(k1);
 

@@ -2,12 +2,12 @@ package gfg.regular.ll.SwapNodes;
 
 import static ds.Utils.printSLL;
 
-import ds.SLLNode;
+import ds.ListNode;
 
 /** Created by Gopala Akshintala on 2/25/17. */
 public class SwapNodes {
 	static void main() {
-		var head = new SLLNode(7);
+		var head = new ListNode(7);
 		head.add(6);
 		head.add(5);
 		head.add(4);
@@ -19,8 +19,8 @@ public class SwapNodes {
 		swapNodes(head, 7, 1);
 	}
 
-	private static void swapNodes(SLLNode head, int x, int y) {
-		SLLNode curX, curY, prevX, prevY;
+	private static void swapNodes(ListNode head, int x, int y) {
+		ListNode curX, curY, prevX, prevY;
 		prevX = prevY = null;
 		curX = curY = head;
 		// get the previous pointers

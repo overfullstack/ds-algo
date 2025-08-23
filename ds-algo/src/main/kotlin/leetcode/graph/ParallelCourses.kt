@@ -21,16 +21,19 @@ private fun dftPerGroup(
   visited: MutableSet<Int>,
   visitedInGroup: Set<Int> = setOf(course),
 ): Int {
-  cache[course]?.let { return it }
+  cache[course]?.let {
+    return it
+  }
   visited += course
-  val minSemesters = 1 + (diGraph[course]
-    ?.maxOfOrNull {
-      when (it) {
-        in visitedInGroup -> throw IllegalArgumentException("Graph has Cycle")
-        in visited -> 0
-        else -> dftPerGroup(it, diGraph, cache, visited, visitedInGroup + it)
-      }
-    } ?: 0)
+  val minSemesters =
+    1 +
+      (diGraph[course]?.maxOfOrNull {
+        when (it) {
+          in visitedInGroup -> throw IllegalArgumentException("Graph has Cycle")
+          in visited -> 0
+          else -> dftPerGroup(it, diGraph, cache, visited, visitedInGroup + it)
+        }
+      } ?: 0)
   cache[course] = minSemesters
   return minSemesters
 }

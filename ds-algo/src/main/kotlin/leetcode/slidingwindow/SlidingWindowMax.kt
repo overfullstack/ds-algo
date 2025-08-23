@@ -8,7 +8,7 @@ fun slidingWindowMax(nums: IntArray, k: Int): IntArray {
   }
   val result = mutableListOf<Int>()
   val deque = ArrayDeque<Int>()
-  // Deal with the Init window separately outside of loop.
+  // ! Deal with the Init window separately outside of loop.
   for (i in 0 until k) {
     while (deque.isNotEmpty() && nums[i] >= nums[deque.last()]) {
       // Imagine this element shattering out lesser/equal elements out from last to first
@@ -21,9 +21,8 @@ fun slidingWindowMax(nums: IntArray, k: Int): IntArray {
   for (i in k..nums.lastIndex) {
     result.add(nums[deque.first()]) // peek holds max for that window.
     // eliminate the ones irrelevant for this window.
-    // ! enqueued Indexes instead of values for this reason
-    val window = i - k
-    while (deque.isNotEmpty() && deque.first() <= window) {
+    // ! Enqueued Indexes instead of values for this reason
+    while (deque.isNotEmpty() && deque.first() <= (i - k)) {
       deque.removeFirst()
     }
     // shatter the smaller ones.

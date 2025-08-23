@@ -2,7 +2,7 @@ package gfg.practice.ll.ReverseLLInGroups;
 
 import static ds.Utils.printSLL;
 
-import ds.SLLNode;
+import ds.ListNode;
 import java.util.Scanner;
 
 /** Created by Gopala Akshintala on 6/2/17. */
@@ -12,10 +12,10 @@ public class ReverseLLInGroups {
 		var tests = scn.nextInt();
 		while (tests-- > 0) {
 			var len = scn.nextInt();
-			var sllNode = new SLLNode(scn.nextInt());
+			var sllNode = new ListNode(scn.nextInt());
 			var head = sllNode;
 			while (len-- > 1) {
-				sllNode.next = new SLLNode(scn.nextInt());
+				sllNode.next = new ListNode(scn.nextInt());
 				sllNode = sllNode.next;
 			}
 			var group = scn.nextInt();
@@ -23,8 +23,8 @@ public class ReverseLLInGroups {
 		}
 	}
 
-	private static SLLNode reverseLLInBlocks(SLLNode head, int group) {
-		SLLNode prev = null, next = head, cur;
+	private static ListNode reverseLLInBlocks(ListNode head, int group) {
+		ListNode prev = null, next = head, cur;
 		var count = 0;
 		while (count < group && next != null) { // reverse current group.
 			cur = next;

@@ -51,13 +51,14 @@ private fun findPath(
 
     // Recursive case: try all unvisited neighbors
     // Using any() for short-circuit evaluation - stops at first successful path
-    else -> graph[current]
-      ?.asSequence()
-      ?.filterNot { it in visited }
-      ?.any { neighbor ->
-        // Immutable state update: add current to visited for this branch
-        findPath(neighbor, destination, graph, visited + current)
-      } ?: false // No neighbors mean dead end
+    else ->
+      graph[current]
+        ?.asSequence()
+        ?.filterNot { it in visited }
+        ?.any { neighbor ->
+          // Immutable state update: add current to visited for this branch
+          findPath(neighbor, destination, graph, visited + current)
+        } ?: false // No neighbors mean dead end
   }
 
 // Check if two routers are within wireless communication range

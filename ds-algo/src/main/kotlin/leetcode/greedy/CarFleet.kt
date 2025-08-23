@@ -4,15 +4,17 @@ package leetcode.greedy
 
 /** [853. Car Fleet](https://leetcode.com/problems/car-fleet/) */
 fun carFleet(target: Int, position: IntArray, speed: IntArray): Int {
-  val map =
+  val carsSortedByPosCloserToTarget =
     position
       .zip(speed)
       .associate { it.first to (target - it.first).toDouble() / it.second }
       .toSortedMap(reverseOrder())
   var curTime = 0.0
   var fleetCount = 0
-  for (time in map.values) {
-    if (time > curTime) {
+  for (time in carsSortedByPosCloserToTarget.values) {
+    // ! If a car behind takes more time to reach target 
+    // ! it can never catch up with the car in front of it. So, it forms a new fleet.
+    if (time > curTime) {  
       curTime = time
       fleetCount++
     }

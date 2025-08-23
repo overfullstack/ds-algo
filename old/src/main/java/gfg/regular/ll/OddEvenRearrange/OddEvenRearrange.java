@@ -2,22 +2,22 @@ package gfg.regular.ll.OddEvenRearrange;
 
 import static ds.Utils.printSLL;
 
-import ds.SLLNode;
+import ds.ListNode;
 
 /** Created by gakshintala on 4/22/16. */
 public class OddEvenRearrange {
 	static void main() {
-		var head = new SLLNode(1);
-		head.next = new SLLNode(2);
-		head.next.next = new SLLNode(3);
-		head.next.next.next = new SLLNode(4);
-		head.next.next.next.next = new SLLNode(5);
+		var head = new ListNode(1);
+		head.next = new ListNode(2);
+		head.next.next = new ListNode(3);
+		head.next.next.next = new ListNode(4);
+		head.next.next.next.next = new ListNode(5);
 
 		rearrangeEvenOdd(head);
 		printSLL(head);
 	}
 
-	private static void rearrangeEvenOdd(SLLNode head) {
+	private static void rearrangeEvenOdd(ListNode head) {
 		var odd = head;
 		var even = head.next;
 

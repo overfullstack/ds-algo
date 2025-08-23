@@ -1,11 +1,11 @@
 package gfg.regular.ll.CloneLL;
 
-import ds.SLLNode;
+import ds.ListNode;
 
 /** Created by gakshintala on 6/21/16. */
 public class CloneLL {
 	static void main() {
-		var head = new SLLNode(1);
+		var head = new ListNode(1);
 		head.add(2);
 		head.add(3);
 		head.add(4);
@@ -25,7 +25,7 @@ public class CloneLL {
 		print(clonedHead);
 	}
 
-	private static SLLNode cloneLL(SLLNode head) {
+	private static ListNode cloneLL(ListNode head) {
 		insertClonesAlternatively(head);
 		assignRandomNodesToClones(head);
 
@@ -35,7 +35,7 @@ public class CloneLL {
 		return cloneHead;
 	}
 
-	private static void separateOriginalAndClone(SLLNode head, SLLNode cloneHead) {
+	private static void separateOriginalAndClone(ListNode head, ListNode cloneHead) {
 		while (true) {
 			head.next = head.next.next;
 			head = head.next;
@@ -49,7 +49,7 @@ public class CloneLL {
 		}
 	}
 
-	private static void assignRandomNodesToClones(SLLNode head) {
+	private static void assignRandomNodesToClones(ListNode head) {
 		while (head != null) {
 			// head.nextRight points to current clone and head.random.nextRight will point to clone of
 			// original head.random
@@ -58,16 +58,16 @@ public class CloneLL {
 		}
 	}
 
-	private static void insertClonesAlternatively(SLLNode head) {
+	private static void insertClonesAlternatively(ListNode head) {
 		while (head != null) {
-			var cloneNode = new SLLNode(head.val);
+			var cloneNode = new ListNode(head.val);
 			cloneNode.next = head.next;
 			head.next = cloneNode;
 			head = cloneNode.next;
 		}
 	}
 
-	public static void print(SLLNode node) {
+	public static void print(ListNode node) {
 		while (node != null) {
 			System.out.println("(" + node.val + "," + node.random + ")");
 			node = node.next;

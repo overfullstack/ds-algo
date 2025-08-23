@@ -10,7 +10,7 @@ fun getSkyline(buildings: Array<IntArray>): List<List<Int>> {
     buildingStrips.sortedWith(compareBy({ it.pt }, { if (it.isStart) -it.ht else it.ht }))
 
   var prevMaxHt = 0
-  // ! Sorted map, groups buildings of similar height together.
+  // ! sortedMap groups buildings of similar height together.
   // ! We increment count for start and decrement for end
   val heightToCount = sortedMapOf(0 to 1)
   return sortedBuildingStrips.fold(emptyList()) { skyline, buildingStrip ->

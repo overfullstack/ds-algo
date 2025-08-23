@@ -8,7 +8,7 @@ fun numberOfGoodPaths(vals: IntArray, edges: Array<IntArray>): Int {
     graph[v].add(u)
   }
 
-  // Group nodes by their values, sorted in ascending order
+  // Group nodesIdxWithSameValue by their values, sorted in ascending order
   // This allows us to process smaller values first and build up to larger ones
   val valueToNodes = vals.indices.groupBy { vals[it] }.toSortedMap()
 
@@ -39,29 +39,29 @@ fun numberOfGoodPaths(vals: IntArray, edges: Array<IntArray>): Int {
     }
   }
 
-  // Process nodes in order of increasing values
-  for ((value, nodes) in valueToNodes) {
+  // Process nodesIdxWithSameValue in order of increasing values
+  for ((value, nodesIdxWithSameValue) in valueToNodes) {
     // For each node with current value, connect it to its neighbors
     // that have values <= current value
-    for (node in nodes) {
-      for (neighbor in graph[node]) {
-        if (vals[neighbor] <= value) {
-          union(node, neighbor)
+    for (nodeIdx in nodesIdxWithSameValue) {
+      for (neighborIdx in graph[nodeIdx]) {
+        if (vals[neighborIdx] <= value) {
+          union(nodeIdx, neighborIdx)
         }
       }
     }
 
     // Count good paths for current value
-    // A good path exists between any two nodes in the same component
+    // A good path exists between any two nodesIdxWithSameValue in the same component
     // that both have the current value
     val componentCounts = mutableMapOf<Int, Int>()
-    for (node in nodes) {
-      val component = find(node)
-      componentCounts[component] = componentCounts.getOrDefault(component, 0) + 1
+    for (nodeIdx in nodesIdxWithSameValue) {
+      val root = find(nodeIdx)
+      componentCounts[root] = componentCounts.getOrDefault(root, 0) + 1
     }
 
-    // Calculate paths: for each component, if it has k nodes with current value,
-    // we can form k*(k+1)/2 paths (including single nodes)
+    // Calculate paths: for each component, if it has k nodesIdxWithSameValue with current value,
+    // we can form k*(k+1)/2 paths (including single nodesIdxWithSameValue)
     for (count in componentCounts.values) {
       goodPaths += count * (count + 1) / 2
     }

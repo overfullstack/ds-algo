@@ -58,7 +58,7 @@ public class Utils {
 		printTreeInorder(root.right);
 	}
 
-	public static void printSLL(SLLNode head) {
+	public static void printSLL(ListNode head) {
 		while (head != null) {
 			System.out.print(head + " ");
 			head = head.next;
@@ -73,7 +73,7 @@ public class Utils {
 		System.out.println();
 	}
 
-	public static int findLLLength(SLLNode head) {
+	public static int findLLLength(ListNode head) {
 		var count = 0;
 		while (head != null) {
 			head = head.next;
@@ -94,14 +94,14 @@ public class Utils {
 		treeInorder(root.right);
 	}
 
-	public static SLLNode constructLL(int... vals) {
+	public static ListNode constructLL(int... vals) {
 		var len = vals.length;
 		if (len == 0) {
 			return null;
 		}
-		var sllNode = new SLLNode(vals[0]);
+		var sllNode = new ListNode(vals[0]);
 		for (var i = 1; i < len; i++) {
-			sllNode.next = new SLLNode(vals[i]);
+			sllNode.next = new ListNode(vals[i]);
 			sllNode = sllNode.next;
 		}
 		return sllNode;

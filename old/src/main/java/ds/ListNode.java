@@ -1,22 +1,22 @@
 package ds;
 
 /** Created by gakshintala on 4/22/16. */
-public class SLLNode {
+public class ListNode {
 	public int val;
-	public SLLNode next;
-	public SLLNode down;
-	public SLLNode random;
+	public ListNode next;
+	public ListNode down;
+	public ListNode random;
 
-	public SLLNode(int val) {
+	public ListNode(int val) {
 		this.val = val;
 	}
 
-	public SLLNode(int val, SLLNode next) {
+	public ListNode(int val, ListNode next) {
 		this.val = val;
 		this.next = next;
 	}
 
-	public SLLNode(int val, SLLNode next, SLLNode down) {
+	public ListNode(int val, ListNode next, ListNode down) {
 		this.val = val;
 		this.next = next;
 		this.down = down;
@@ -32,6 +32,6 @@ public class SLLNode {
 		while (head.next != null) {
 			head = head.next;
 		}
-		head.next = new SLLNode(val);
+		head.next = new ListNode(val);
 	}
 }
