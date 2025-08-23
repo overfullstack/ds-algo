@@ -42,24 +42,22 @@ private fun findPath(
   graph: Map<Int, Set<Int>>,
   visited: Set<Int>,
 ): Boolean =
-  when {
-    // Base case: we've reached the destination
-    current == destination -> true
+  when (current) {
+    destination -> true
 
     // Pruning: already visited this router in current path
     // Prevents infinite cycles in the graph
-    current in visited -> false
+    in visited -> false
 
     // Recursive case: try all unvisited neighbors
     // Using any() for short-circuit evaluation - stops at first successful path
-    else ->
-      graph[current]
-        ?.asSequence()
-        ?.filterNot { it in visited }
-        ?.any { neighbor ->
-          // Immutable state update: add current to visited for this branch
-          findPath(neighbor, destination, graph, visited + current)
-        } ?: false // No neighbors means dead end
+    else -> graph[current]
+      ?.asSequence()
+      ?.filterNot { it in visited }
+      ?.any { neighbor ->
+        // Immutable state update: add current to visited for this branch
+        findPath(neighbor, destination, graph, visited + current)
+      } ?: false // No neighbors mean dead end
   }
 
 // Check if two routers are within wireless communication range

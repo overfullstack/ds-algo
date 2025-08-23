@@ -12,8 +12,8 @@ fun shiftingLetters(s: String, shifts: Array<IntArray>): String {
         result
           .substring(start..end)
           .map {
-            val shift: Int = if (direction == 1) 1 else -1
-            val newCharCode: Int = (it - 'a' + shift + 26) % 26
+            val shift = if (direction == 1) 1 else -1
+            val newCharCode = (it - 'a' + shift + 26) % 26
             ('a' + newCharCode)
           }
           .joinToString(""),

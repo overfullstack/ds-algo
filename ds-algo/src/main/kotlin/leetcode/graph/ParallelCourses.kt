@@ -8,28 +8,31 @@ fun minimumSemesters(relations: Array<Pair<Int, Int>>): Int {
   val cache = mutableMapOf<Int, Int>()
   val visited = mutableSetOf<Int>()
   return try {
-    diGraph.keys.maxOfOrNull { 1 + it.dftPerGroup(diGraph, cache, visited) } ?: 0
+    diGraph.keys.maxOfOrNull { dftPerGroup(it, diGraph, cache, visited) } ?: 0
   } catch (_: IllegalArgumentException) {
     -1
   }
 }
 
-private fun Int.dftPerGroup(
+private fun dftPerGroup(
+  course: Int,
   diGraph: DiGraph<Int>,
   cache: MutableMap<Int, Int>,
   visited: MutableSet<Int>,
-  visitedInGroup: Set<Int> = setOf(this),
+  visitedInGroup: Set<Int> = setOf(course),
 ): Int {
-  visited += this
-  return diGraph[this]
+  cache[course]?.let { return it }
+  visited += course
+  val minSemesters = 1 + (diGraph[course]
     ?.maxOfOrNull {
       when (it) {
         in visitedInGroup -> throw IllegalArgumentException("Graph has Cycle")
         in visited -> 0
-        else -> 1 + it.dftPerGroup(diGraph, cache, visited, visitedInGroup + it)
+        else -> dftPerGroup(it, diGraph, cache, visited, visitedInGroup + it)
       }
-    }
-    ?.also { cache[this] = it } ?: 0
+    } ?: 0)
+  cache[course] = minSemesters
+  return minSemesters
 }
 
 fun main() {

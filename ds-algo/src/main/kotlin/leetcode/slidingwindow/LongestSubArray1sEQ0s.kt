@@ -1,4 +1,4 @@
-package leetcode.array.slidingwindow
+package leetcode.slidingwindow
 
 /**
  * https://leetcode.com/problems/contiguous-array/ We need to find longest contiguous subarray with

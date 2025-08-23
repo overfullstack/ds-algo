@@ -1,4 +1,4 @@
-package leetcode.array.slidingwindow
+package leetcode.slidingwindow
 
 /**
  * [209. Minimum Size Subarray Sum](https://leetcode.com/problems/minimum-size-subarray-sum/) NO

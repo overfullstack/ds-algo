@@ -27,7 +27,7 @@ fun wordBreakDP(s: String, wordDict: List<String>): Boolean {
   // * ---
   for (endIndex in 1..(s.lastIndex + 1)) {
     for (startIndex in 0..endIndex) {
-      // ! dp[startIndex] indicates a substring that ends at `startIndex` can be broken
+      // ! dp[i] indicates a substring that ends at `i - 1` present in `dict`
       if (dp[startIndex] && dict.contains(s.substring(startIndex until endIndex))) {
         dp[endIndex] = true
         break

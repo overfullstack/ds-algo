@@ -1,4 +1,4 @@
-package leetcode.array.slidingwindow
+package leetcode.slidingwindow
 
 /* 07 Aug 2025 10:29 */
 

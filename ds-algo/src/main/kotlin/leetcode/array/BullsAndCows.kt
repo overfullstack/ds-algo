@@ -3,7 +3,6 @@ package leetcode.array
 /* 09 Aug 2025 18:58 */
 
 /** [299. Bulls and Cows](https://leetcode.com/problems/bulls-and-cows/) */
-// Approach 1: Two-pass with frequency counting (most readable)
 fun getHint(secret: String, guess: String): String {
   val bulls: Int = secret.zip(guess).count { (s, g) -> s == g }
   val secretFreq: Map<Char, Int> = secret.groupingBy { it }.eachCount()

@@ -1,4 +1,4 @@
-package leetcode.array.slidingwindow
+package leetcode.slidingwindow
 
 fun maxSumInSubArray(nums: IntArray): Int {
   var sum = 0

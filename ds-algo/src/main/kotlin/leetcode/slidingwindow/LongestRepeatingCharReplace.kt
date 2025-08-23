@@ -1,4 +1,4 @@
-package leetcode.array.slidingwindow
+package leetcode.slidingwindow
 
 /** https://leetcode.com/problems/longest-repeating-character-replacement/ */
 fun characterReplacement(s: String, k: Int): Int {

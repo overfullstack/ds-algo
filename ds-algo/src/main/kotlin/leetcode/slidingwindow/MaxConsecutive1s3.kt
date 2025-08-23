@@ -1,4 +1,4 @@
-package leetcode.array.slidingwindow
+package leetcode.slidingwindow
 
 /**
  * [1004. Max Consecutive Ones III](https://leetcode.com/problems/max-consecutive-ones-iii/) We may

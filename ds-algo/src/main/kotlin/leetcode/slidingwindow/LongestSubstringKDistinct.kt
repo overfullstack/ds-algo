@@ -1,5 +1,5 @@
 /* gakshintala created on 1/2/20 */
-package leetcode.array.slidingwindow
+package leetcode.slidingwindow
 
 fun lengthOfLongestSubstringKDistinct(s: String, k: Int): Int {
   var start = 0

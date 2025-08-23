@@ -1,5 +1,5 @@
 /* gakshintala created on 8/25/19 */
-package leetcode.array.slidingwindow
+package leetcode.slidingwindow
 
 /** [Sliding Window Maximum](https://leetcode.com/problems/sliding-window-maximum/) * */
 fun slidingWindowMax(nums: IntArray, k: Int): IntArray {

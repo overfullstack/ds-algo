@@ -1,4 +1,4 @@
-package leetcode.array.slidingwindow.string
+package leetcode.slidingwindow.string
 
 /** [minimum-window-substring](https://leetcode.com/problems/minimum-window-substring/) */
 fun minWindowSubString(str: String, pattern: String): String {

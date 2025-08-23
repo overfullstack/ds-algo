@@ -1,4 +1,4 @@
-package leetcode.array.slidingwindow.string
+package leetcode.slidingwindow.string
 
 /**
  * https://leetcode.com/problems/find-all-anagrams-in-a-string/ Find all the start indices of p's

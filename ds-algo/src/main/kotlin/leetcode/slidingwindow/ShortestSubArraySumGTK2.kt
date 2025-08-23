@@ -1,4 +1,4 @@
-package leetcode.array.slidingwindow
+package leetcode.slidingwindow
 
 /**
  * [862. Shortest Subarray with Sum at Least

@@ -1,4 +1,4 @@
-package leetcode.array.slidingwindow
+package leetcode.slidingwindow
 
 /** https://leetcode.com/problems/subarray-sum-equals-k/ We may have negative numbers. */
 fun longestSubArraySumK(nums: IntArray, k: Int): Int {

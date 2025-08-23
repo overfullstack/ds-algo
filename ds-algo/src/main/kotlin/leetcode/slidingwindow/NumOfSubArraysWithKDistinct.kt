@@ -1,4 +1,4 @@
-package leetcode.array.slidingwindow
+package leetcode.slidingwindow
 
 /** https://leetcode.com/problems/subarrays-with-k-different-integers/ */
 fun subarraysWithKDistinct(A: IntArray, K: Int): Int =

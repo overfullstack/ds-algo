@@ -6,7 +6,7 @@ fun minCut(s: String): Int {
   val cutsTable = Array(s.length) { IntArray(s.length) }
   val isPalTable = Array(s.length) { BooleanArray(s.length) }
 
-  // ! For problems with `windowLen`, especially Palindrome related problems, 
+  // ! For problems with `windowLen`, especially Palindrome related problems,
   // always initiate table's diagonal.
   for (index in cutsTable.indices) {
     cutsTable[index][index] = 0 // No cuts required for single letter

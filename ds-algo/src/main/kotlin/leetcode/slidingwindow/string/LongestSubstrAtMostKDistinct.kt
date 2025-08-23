@@ -1,4 +1,4 @@
-package leetcode.array.slidingwindow.string
+package leetcode.slidingwindow.string
 
 /**
  * 🔒 https://leetcode.com/problems/longest-substring-with-at-most-k-distinct-characters/

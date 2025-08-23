@@ -1,4 +1,4 @@
-package leetcode.array.slidingwindow.string
+package leetcode.slidingwindow.string
 
 /**
  * https://leetcode.com/discuss/interview-question/370112/Amazon-or-OA-2019-or-Substrings-of-size-K-with-K-distinct-chars/334007

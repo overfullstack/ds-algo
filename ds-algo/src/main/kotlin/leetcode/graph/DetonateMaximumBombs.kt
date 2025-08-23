@@ -4,7 +4,7 @@ import utils.toTriple
 
 /* 21 Aug 2025 08:24 */
 
-/**  */
+/** [2101. Detonate the Maximum Bombs](https://leetcode.com/problems/detonate-the-maximum-bombs/) */
 fun maximumDetonation(bombs: Array<IntArray>): Int {
   val bombs1 = bombs.map { it.toTriple() }
   return bombs1.indices.maxOf { dfsInRange(it, bombs1) }

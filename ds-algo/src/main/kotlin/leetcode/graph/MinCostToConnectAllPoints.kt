@@ -17,7 +17,7 @@ fun minCostConnectPoints(points: Array<IntArray>): Int {
   var totalCost = 0
   while (pq.isNotEmpty() && visitedIdx.size < points.size) {
     val (idx, cost) = pq.poll()
-    if (idx !in visitedIdx) { // pq makes sure a point is always visited with minCost
+    if (idx !in visitedIdx) { // ! pq makes sure a point is always visited with minCost
       totalCost += cost
       visitedIdx += idx
       points.indices
