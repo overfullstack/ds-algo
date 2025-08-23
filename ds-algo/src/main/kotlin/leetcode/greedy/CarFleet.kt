@@ -12,9 +12,9 @@ fun carFleet(target: Int, position: IntArray, speed: IntArray): Int {
   var curTime = 0.0
   var fleetCount = 0
   for (time in carsSortedByPosCloserToTarget.values) {
-    // ! If a car behind takes more time to reach target 
+    // ! If a car behind takes more time to reach target
     // ! it can never catch up with the car in front of it. So, it forms a new fleet.
-    if (time > curTime) {  
+    if (time > curTime) {
       curTime = time
       fleetCount++
     }
