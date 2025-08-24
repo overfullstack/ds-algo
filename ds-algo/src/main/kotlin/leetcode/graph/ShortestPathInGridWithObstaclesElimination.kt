@@ -9,7 +9,7 @@ import java.util.*
  * Elimination](https://leetcode.com/problems/shortest-path-in-a-grid-with-obstacles-elimination/)
  */
 fun shortestPath(grid: Array<IntArray>, k: Int): Int {
-  // ! Notice, descending by `k`, favoring cells with more remainingK
+  // ! Notice, descending by `remainingK`, favoring cells with more `remainingK`
   val pq = PriorityQueue(compareByDescending<Pair<Triple<Int, Int, Int>, Int>> { it.second })
   pq.add(Triple(0, 0, 0) to k)
   val minDistanceFromSource = Array(grid.size) { IntArray(grid[0].size) { Int.MAX_VALUE } }
@@ -32,8 +32,7 @@ fun shortestPath(grid: Array<IntArray>, k: Int): Int {
       // ! In this problem, the state is 3-dimensional: (row, col, remainingK)
       // Same physical cell `(row, col)`
       // can be visited multiple times with different k values
-      // Each visit with different k represents a legitimate different state
-      // A traditional visited set would incorrectly block these valid revisits
+      // Each visit with different `remainingK` represents a legitimate different state
       .forEach { (nextRow, nextCol) ->
         when {
           remainingK > 0 && grid[nextRow][nextCol] == 1 -> {
@@ -49,7 +48,7 @@ fun shortestPath(grid: Array<IntArray>, k: Int): Int {
       }
   }
   return if (minDistanceFromSource[grid.lastIndex][grid[0].lastIndex] == Int.MAX_VALUE) -1
-  else minDistanceFromSource[grid.lastIndex][grid[0].lastIndex]
+  else minDistanceFromSource.last().last()
 }
 
 /** This TLEs as `pq` gets bloated, as all cells are equidistant, we end-up processing all cells */

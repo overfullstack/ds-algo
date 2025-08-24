@@ -15,7 +15,7 @@ fun swimInWater(grid: Array<IntArray>): Int {
   while (pq.isNotEmpty()) {
     val (row, col, elevation) = pq.poll()
     if (row == grid.lastIndex && col == grid[0].lastIndex) {
-      return elevation
+      return elevation // ! elevation in this problem represents time
     }
     visited.add(row to col)
     maxInPath = maxOf(maxInPath, elevation)

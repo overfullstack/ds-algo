@@ -1,7 +1,11 @@
-package leetcode.graph
+package leetcode.graph.bfs
 
 /* 30 Jul 2025 11:27 */
 
+/**
+ * [1730 - Shortest Path to Get
+ * Food](https://leetcode.ca/2021-03-13-1730-Shortest-Path-to-Get-Food/)
+ */
 fun getFood(grid: Array<CharArray>): Int {
   val myLocation =
     grid.withIndex().firstNotNullOf { (rowIndex, row) ->
@@ -13,19 +17,17 @@ fun getFood(grid: Array<CharArray>): Int {
   while (queue.isNotEmpty()) {
     distance++
     repeat(queue.size) {
-      val nextCell = queue.removeFirst()
+      val cell = queue.removeFirst()
+      if (grid[cell.first][cell.second] == '#') {
+        return distance
+      }
       directions
         .asSequence()
-        .map { nextCell.first + it.first to nextCell.second + it.second }
-        .filter { isValid(it, grid) }
+        .map { cell.first + it.first to cell.second + it.second }
+        .filter { isValid(it, grid) && grid[it.first][it.second] != 'X' }
         .forEach {
-          when {
-            grid[it.first][it.second] == '#' -> return distance
-            else -> {
-              grid[it.first][it.second] = 'X'
-              queue.add(it)
-            }
-          }
+          grid[it.first][it.second] = 'X' // ! Mark visited
+          queue.add(it)
         }
     }
   }
@@ -35,6 +37,4 @@ fun getFood(grid: Array<CharArray>): Int {
 private val directions = listOf(-1 to 0, 1 to 0, 0 to -1, 0 to 1)
 
 fun isValid(cell: Pair<Int, Int>, grid: Array<CharArray>) =
-  cell.first in grid.indices &&
-    cell.second in grid[0].indices &&
-    grid[cell.first][cell.second] in setOf('O', '#')
+  cell.first in grid.indices && cell.second in grid[0].indices

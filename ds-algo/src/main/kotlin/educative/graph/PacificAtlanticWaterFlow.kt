@@ -45,7 +45,7 @@ private fun flowDFS(
   }
 }
 
-private val directions = listOf((0 to -1), (0 to 1), (-1 to 0), (1 to 0))
+private val directions = listOf(0 to -1, 0 to 1, -1 to 0, 1 to 0)
 
 private fun isValid(row: Int, col: Int, height: Int, grid: Array<IntArray>) =
   row in grid.indices && col in grid[0].indices && grid[row][col] >= height

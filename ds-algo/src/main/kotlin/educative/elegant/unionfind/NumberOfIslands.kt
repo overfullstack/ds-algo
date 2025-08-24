@@ -19,14 +19,12 @@ private fun groupAdjacent1s(cell: Pair<Int, Int>, grid: Array<IntArray>, unionFi
   directions
     .asSequence()
     .map { cell.first + it.first to cell.second + it.second }
-    .filter { isValid(it, grid) }
+    .filter { isValid(it, grid) && grid[it.first][it.second] == 1 }
     .forEach { unionFind.union(cell, it) }
 }
 
 private fun isValid(nextCell: Pair<Int, Int>, grid: Array<IntArray>): Boolean =
-  nextCell.first in grid.indices &&
-    nextCell.second in grid[0].indices &&
-    grid[nextCell.first][nextCell.second] == 1
+  nextCell.first in grid.indices && nextCell.second in grid[0].indices
 
 private class UnionFind(grid: Array<IntArray>) {
   val cols = grid[0].size
@@ -68,24 +66,4 @@ private class UnionFind(grid: Array<IntArray>) {
       countOf1s--
     }
   }
-}
-
-fun numberOfIslands2(grid: Array<IntArray>): Int {
-  val unionFind = UnionFind(grid)
-  val cols = grid[0].lastIndex
-  for (row in grid.indices) {
-    for (col in grid[0].indices) {
-      if (grid[row][col] == 1) {
-        grid[row][col] = 0
-        val curIndex = row * cols + col
-        if (row - 1 >= 0 && grid[row - 1][col] == 1) unionFind.union(curIndex, curIndex - cols)
-        if (col - 1 >= 0 && grid[row][col - 1] == 1) unionFind.union(curIndex, curIndex - 1)
-        if (row + 1 <= grid.lastIndex && grid[row + 1][col] == 1)
-          unionFind.union(curIndex, curIndex + cols)
-        if (col + 1 <= grid[0].lastIndex && grid[row][col + 1] == 1)
-          unionFind.union(curIndex, curIndex + 1)
-      }
-    }
-  }
-  return unionFind.countOf1s
 }

@@ -31,9 +31,9 @@ public class FoodSet {
 				while (!minHeap.isEmpty() && minHeap.peek() < lIdx) {
 					minHeap.poll();
 				}
-        if (!minHeap.isEmpty()) {
-          minCalories = Math.min(minCalories, dinner[dIdx][0] + lunch[minHeap.peek()][0]);
-        }
+				if (!minHeap.isEmpty()) {
+					minCalories = Math.min(minCalories, dinner[dIdx][0] + lunch[minHeap.peek()][0]);
+				}
 				dIdx--;
 			} else {
 				lIdx++;

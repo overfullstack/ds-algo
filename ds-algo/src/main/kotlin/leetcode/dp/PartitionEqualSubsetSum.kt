@@ -1,6 +1,6 @@
 package leetcode.dp
 
-/** https://leetcode.com/problems/partition-equal-subset-sum/ */
+/** [416. Partition Equal Subset Sum](https://leetcode.com/problems/partition-equal-subset-sum/) */
 fun canPartition(nums: IntArray): Boolean {
   val sum = nums.sum()
   if (sum % 2 == 1) {

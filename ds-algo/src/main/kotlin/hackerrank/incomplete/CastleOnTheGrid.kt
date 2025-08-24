@@ -1,34 +1,63 @@
 package hackerrank.incomplete
 
-val directions = listOf(0 to 1, 0 to -1, 1 to 0, -1 to 0)
-
+/** [Castle on the Grid](https://www.hackerrank.com/challenges/castle-on-the-grid/) */
 fun minimumMoves(grid: Array<String>, startX: Int, startY: Int, goalX: Int, goalY: Int): Int {
   if (grid.isEmpty()) {
     return 0
   }
-  val charGrid = grid.map { it.toCharArray() }
-  var steps = 0
-  val queue = ArrayDeque<Pair<Int, Int>>()
-  queue.add(startX to startY)
+  val visited = mutableSetOf<Pair<Int, Int>>()
+  val queue = ArrayDeque<Triple<Int, Int, Int>>()
+  queue.add(Triple(startX, startY, 0))
+  visited.add(startX to startY)
   while (queue.isNotEmpty()) {
-    steps++
-    val size = queue.size
-    repeat(size) {
-      val gridPoint = queue.removeFirst()
-      directions
-        .map { (gridPoint.first + it.first) to (gridPoint.second + it.second) }
-        .filter { it.isValid(charGrid) }
-        .forEach {
-          if (it == (goalX to goalY)) {
-            return steps
-          }
-          charGrid[it.first][it.second] = 'X'
-          queue.add(it.first to it.second)
+    val (x, y, distance) = queue.removeFirst()
+    for ((dx, dy) in directions) {
+      var nextX = x + dx
+      var nextY = y + dy
+      // ! Not marking cells with `X` for visited, as it creates artificial blocks
+      while (isValid(nextX, nextY, grid) && grid[nextX][nextY] != 'X') {
+        val nextCell = nextX to nextY
+        if (nextX == goalX && nextY == goalY) { // ! Catch goal ahead for optimization
+          return distance + 1
         }
+        if (nextCell !in visited) {
+          // ! Optimization to avoid duplicates in queue to avoid Cross-Direction Interference 
+          visited += nextCell  
+          queue.add(Triple(nextX, nextY, distance + 1))
+        }
+        nextX += dx
+        nextY += dy
+      }
     }
   }
   return -1
 }
 
-private fun Pair<Int, Int>.isValid(grid: List<CharArray>) =
-  first in grid.indices && second in grid[0].indices && grid[first][second] != 'X'
+private fun isValid(x: Int, y: Int, grid: Array<String>) =
+  x in grid.indices && y in grid[0].indices
+
+val directions = listOf(0 to 1, 0 to -1, 1 to 0, -1 to 0)
+
+fun main() {
+  println(minimumMoves(arrayOf(".X.", ".X.", "..."), 0, 0, 0, 2)) // 3
+  println(
+    minimumMoves(
+      arrayOf(
+        ".X..XX...X",
+        "X.........",
+        ".X.......X",
+        "..........",
+        "........X.",
+        ".X...XXX..",
+        ".....X..XX",
+        ".....X.X..",
+        "..........",
+        ".....X..XX",
+      ),
+      9,
+      1,
+      9,
+      6,
+    )
+  ) // 3
+}

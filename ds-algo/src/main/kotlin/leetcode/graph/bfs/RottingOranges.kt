@@ -1,4 +1,4 @@
-package leetcode.graph
+package leetcode.graph.bfs
 
 /**
  * [Rotting Oranges](https://leetcode.com/problems/rotting-oranges/) 0 -> empty cell 1 -> fresh 2 ->
@@ -35,7 +35,7 @@ fun orangesRotting(grid: Array<IntArray>): Int {
         directions
           .asSequence()
           .map { (rottenCell.first + it.first) to (rottenCell.second + it.second) }
-          .filter { it.isValid(grid) }
+          .filter { isValid(it, grid) && grid[it.first][it.second] == 1 }
           .onEach {
             grid[it.first][it.second] = 2 // ! mark rotten, serves as visited
             queue.add(it.first to it.second)
@@ -50,5 +50,5 @@ fun orangesRotting(grid: Array<IntArray>): Int {
 
 private val directions = listOf(0 to 1, 0 to -1, 1 to 0, -1 to 0)
 
-private fun Pair<Int, Int>.isValid(grid: Array<IntArray>) =
-  first in grid.indices && second in grid[0].indices && grid[first][second] == 1 // only if fresh
+private fun isValid(cell: Pair<Int, Int>, grid: Array<IntArray>) =
+  cell.first in grid.indices && cell.second in grid[0].indices
