@@ -8,7 +8,7 @@ fun minimumMoves(grid: Array<String>, startX: Int, startY: Int, goalX: Int, goal
   val visited = mutableSetOf<Pair<Int, Int>>()
   val queue = ArrayDeque<Triple<Int, Int, Int>>()
   queue.add(Triple(startX, startY, 0))
-  visited.add(startX to startY)
+  visited += (startX to startY)
   while (queue.isNotEmpty()) {
     val (x, y, distance) = queue.removeFirst()
     for ((dx, dy) in directions) {
@@ -17,14 +17,16 @@ fun minimumMoves(grid: Array<String>, startX: Int, startY: Int, goalX: Int, goal
       // ! Not marking cells with `X` for visited, as it creates artificial blocks
       while (isValid(nextX, nextY, grid) && grid[nextX][nextY] != 'X') {
         val nextCell = nextX to nextY
-        if (nextX == goalX && nextY == goalY) { // ! Catch goal ahead for optimization
+        // ! Catch goal ahead for optimization. This allows on-the-way goal
+        if (nextX == goalX && nextY == goalY) {
           return distance + 1
         }
         if (nextCell !in visited) {
-          // ! Optimization to avoid duplicates in queue to avoid Cross-Direction Interference 
-          visited += nextCell  
+          // ! Optimization to avoid duplicates in queue to avoid Cross-Direction Interference
+          visited += nextCell
           queue.add(Triple(nextX, nextY, distance + 1))
         }
+        // ! Move ahead in the same direction until valid
         nextX += dx
         nextY += dy
       }
@@ -33,8 +35,7 @@ fun minimumMoves(grid: Array<String>, startX: Int, startY: Int, goalX: Int, goal
   return -1
 }
 
-private fun isValid(x: Int, y: Int, grid: Array<String>) =
-  x in grid.indices && y in grid[0].indices
+private fun isValid(x: Int, y: Int, grid: Array<String>) = x in grid.indices && y in grid[0].indices
 
 val directions = listOf(0 to 1, 0 to -1, 1 to 0, -1 to 0)
 
