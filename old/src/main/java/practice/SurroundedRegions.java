@@ -1,7 +1,6 @@
 package practice;
 
-import ds.util.Pair;
-import java.util.List;
+import java.util.Arrays;
 
 /** [130. Surrounded Regions](https://leetcode.com/problems/surrounded-regions) */
 public class SurroundedRegions {
@@ -9,18 +8,19 @@ public class SurroundedRegions {
 		// left, right
 		for (var row = 0; row < board.length; row++) {
 			if (board[row][0] == 'O') {
-				dfs(Pair.of(row, 0), board);
+				dfs(new int[] {row, 0}, board);
 			}
 			if (board[row][board[0].length - 1] == 'O') {
-				dfs(Pair.of(row, board[0].length - 1), board);
+				dfs(new int[] {row, board[0].length - 1}, board);
 			}
 		}
+    // top, bottom
 		for (var col = 0; col < board[0].length; col++) {
 			if (board[0][col] == 'O') {
-				dfs(Pair.of(0, col), board);
+				dfs(new int[] {0, col}, board);
 			}
 			if (board[board.length - 1][col] == 'O') {
-				dfs(Pair.of(board.length - 1, col), board);
+				dfs(new int[] {board.length - 1, col}, board);
 			}
 		}
 		for (var row = 0; row < board.length; row++) {
@@ -34,21 +34,19 @@ public class SurroundedRegions {
 		}
 	}
 
-	private void dfs(Pair<Integer, Integer> cell, char[][] board) {
-		board[cell.first()][cell.second()] = '*';
-		DIRECTIONS.stream()
-				.map(d -> Pair.of(d.first() + cell.first(), d.second() + cell.second()))
+	private static void dfs(int[] cell, char[][] board) {
+		board[cell[0]][cell[1]] = '*';
+    Arrays.stream(directions)
+				.map(d -> new int[] {d[0] + cell[0], d[1] + cell[1]})
 				.filter(
-						nextCell ->
-								isValid(nextCell, board) && board[nextCell.first()][nextCell.second()] == 'O')
+						nextCell -> isValid(nextCell, board) && board[nextCell[0]][nextCell[1]] == 'O')
 				.forEach(nextCell -> dfs(nextCell, board));
 	}
 
-	private boolean isValid(Pair<Integer, Integer> cell, char[][] board) {
-		return (cell.first() >= 0 && cell.first() < board.length)
-				&& (cell.second() >= 0 && cell.second() < board[0].length);
+	private static boolean isValid(int[] cell, char[][] board) {
+		return (cell[0] >= 0 && cell[0] < board.length)
+				&& (cell[1] >= 0 && cell[1] < board[0].length);
 	}
 
-	private static final List<Pair<Integer, Integer>> DIRECTIONS =
-			List.of(Pair.of(-1, 0), Pair.of(1, 0), Pair.of(0, -1), Pair.of(0, 1));
+  static int[][] directions = {{1, 0}, {0, 1}, {-1, 0}, {0, -1}};
 }

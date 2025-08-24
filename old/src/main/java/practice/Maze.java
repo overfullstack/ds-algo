@@ -10,11 +10,9 @@ public class Maze {
 		visited[start[0]][start[1]] = true;
 		while (!queue.isEmpty()) {
 			var cell = queue.poll();
-			var x = cell[0];
-			var y = cell[1];
 			for (var direction : directions) {
-				var nextX = x;
-				var nextY = y;
+				var nextX = cell[0];
+				var nextY = cell[1];
 				while (isValid(nextX + direction[0], nextY + direction[1], maze)
 						&& maze[nextX + direction[0]][nextY + direction[1]] != 1) {
 					nextX += direction[0];
