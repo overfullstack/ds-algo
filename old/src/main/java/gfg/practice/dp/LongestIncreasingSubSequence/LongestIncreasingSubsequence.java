@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 /** Created by gakshintala on 6/11/16. */
-public class LongestIncreasingSubSequence {
+public class LongestIncreasingSubsequence {
 	static void main() {
 		var scn = new Scanner(System.in);
 		var testCases = scn.nextInt();

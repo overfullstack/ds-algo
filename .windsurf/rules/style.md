@@ -29,6 +29,7 @@ globs:
 - Cache/memoization: use MutableMap parameter with a default empty map   
 
 # Java-Specific Patterns
+- Use latest Java syntax
 - Chain operations using stream: prefer `.stream()` for multiple transformations
 - If applicable, use functional combinators: stream, map, filter, flatMap, reduce, max, min, findFirst, findAny, anyMatch, allMatch, sum, etc, over imperative loops
 

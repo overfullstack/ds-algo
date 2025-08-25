@@ -1,5 +1,6 @@
 package practice;
 
+import java.util.Arrays;
 import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.PriorityQueue;
@@ -12,10 +13,8 @@ public class Maze2 {
     var queue = new PriorityQueue<int[]>(Comparator.comparingInt(c -> c[2]));
     queue.add(new int[] { start[0], start[1], 0 });
     var minDistances = new int[maze.length][maze[0].length];
-    for (var i = 0; i < minDistances.length; i++) {
-      for (var j = 0; j < minDistances[0].length; j++) {
-        minDistances[i][j] = Integer.MAX_VALUE;
-      }
+    for (int[] minDistance : minDistances) {
+      Arrays.fill(minDistance, Integer.MAX_VALUE);
     }
     minDistances[start[0]][start[1]] = 0;
     while (!queue.isEmpty()) {

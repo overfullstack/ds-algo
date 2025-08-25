@@ -1,15 +1,15 @@
 package gfg.regular.dp.LongestCommonSubSequence;
 
 /** Created by gakshintala on 6/11/16. */
-public class LongestCommonSubSequence {
+public class LongestCommonSubsequence {
 	static void main() {
 		var a = "AGGTAB";
 		var b = "GXTXAYB";
 
-		System.out.println(longestCommonSubSequence(a, b));
+		System.out.println(longestCommonSubsequence(a, b));
 	}
 
-	private static int longestCommonSubSequence(String a, String b) {
+	private static int longestCommonSubsequence(String a, String b) {
 		var aLen = a.length();
 		var bLen = b.length();
 		var table = new int[aLen + 1][bLen + 1];
