@@ -14,7 +14,7 @@ public class SurroundedRegions {
 				dfs(new int[] {row, board[0].length - 1}, board);
 			}
 		}
-    // top, bottom
+		// top, bottom
 		for (var col = 0; col < board[0].length; col++) {
 			if (board[0][col] == 'O') {
 				dfs(new int[] {0, col}, board);
@@ -36,17 +36,15 @@ public class SurroundedRegions {
 
 	private static void dfs(int[] cell, char[][] board) {
 		board[cell[0]][cell[1]] = '*';
-    Arrays.stream(directions)
+		Arrays.stream(directions)
 				.map(d -> new int[] {d[0] + cell[0], d[1] + cell[1]})
-				.filter(
-						nextCell -> isValid(nextCell, board) && board[nextCell[0]][nextCell[1]] == 'O')
+				.filter(nextCell -> isValid(nextCell, board) && board[nextCell[0]][nextCell[1]] == 'O')
 				.forEach(nextCell -> dfs(nextCell, board));
 	}
 
 	private static boolean isValid(int[] cell, char[][] board) {
-		return (cell[0] >= 0 && cell[0] < board.length)
-				&& (cell[1] >= 0 && cell[1] < board[0].length);
+		return (cell[0] >= 0 && cell[0] < board.length) && (cell[1] >= 0 && cell[1] < board[0].length);
 	}
 
-  static int[][] directions = {{1, 0}, {0, 1}, {-1, 0}, {0, -1}};
+	static int[][] directions = {{1, 0}, {0, 1}, {-1, 0}, {0, -1}};
 }

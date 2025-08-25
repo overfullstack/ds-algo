@@ -2,6 +2,40 @@ package leetcode.graph.bfs
 
 /** [01-matrix](https://leetcode.com/problems/01-matrix/) */
 fun updateMatrix(matrix: Array<IntArray>): Array<IntArray> { // BFS
+  val queue = ArrayDeque<Triple<Int, Int, Int>>()
+  for (row in matrix.indices) {
+    for (col in matrix[0].indices) {
+      when (matrix[row][col]) {
+        0 -> queue.add(Triple(row, col, 0))
+        1 -> matrix[row][col] = -1 // ! To differentiate between distance=1 and value 1
+      }
+    }
+  }
+
+  while (queue.isNotEmpty()) {
+    val (row, col, distance) = queue.removeFirst()
+    directions
+      .asSequence()
+      .map { row + it.first to col + it.second }
+      .filter { (nextRow, nextCol) ->
+        isValid(nextRow to nextCol, matrix) && matrix[nextRow][nextCol] == -1
+      }
+      .forEach { (nextRow, nextCol) ->
+        val nextDistance = distance + 1
+        matrix[nextRow][nextCol] = nextDistance // ! This also serves as visited
+        // all 0s are already in the queue. Let's say a 1 might be totally covered with 1s,
+        // all those surrounding 1s need to be crossed to reach such.
+        // ! So adding all those 1s to queue
+        queue.add(Triple(nextRow, nextCol, nextDistance))
+      }
+  }
+  return matrix
+}
+
+private fun isValid(cell: Pair<Int, Int>, matrix: Array<IntArray>) =
+  cell.first in matrix.indices && cell.second in matrix[0].indices
+
+fun updateMatrixLevelTracking(matrix: Array<IntArray>): Array<IntArray> { // BFS
   val queue = ArrayDeque<Pair<Int, Int>>()
   for (row in matrix.indices) {
     for (col in matrix[0].indices) {
@@ -32,9 +66,6 @@ fun updateMatrix(matrix: Array<IntArray>): Array<IntArray> { // BFS
   }
   return matrix
 }
-
-private fun isValid(cell: Pair<Int, Int>, matrix: Array<IntArray>) =
-  cell.first in matrix.indices && cell.second in matrix[0].indices
 
 fun updateMatrix2(matrix: Array<IntArray>): Array<IntArray> {
   for (row in 0..matrix.lastIndex) {

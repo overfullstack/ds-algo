@@ -8,6 +8,54 @@ fun orangesRotting(grid: Array<IntArray>): Int {
   if (grid.isEmpty()) {
     return 0
   }
+  val queue = ArrayDeque<Triple<Int, Int, Int>>() // ! Store (row, col, time)
+  var freshCount = 0
+
+  for (row in grid.indices) {
+    for (col in grid[0].indices) {
+      when (grid[row][col]) {
+        2 -> queue.add(Triple(row, col, 0)) // ! Start with time 0
+        1 -> freshCount++
+      }
+    }
+  }
+
+  when {
+    freshCount == 0 -> return 0
+    queue.isEmpty() -> return -1
+  }
+
+  var maxTime = 0
+  while (queue.isNotEmpty()) {
+    val (row, col, time) = queue.removeFirst()
+    maxTime = maxOf(maxTime, time)
+
+    freshCount -=
+      directions
+        .asSequence()
+        .map { Triple(row + it.first, col + it.second, time + 1) }
+        .filter { (newRow, newCol, _) ->
+          isValid(newRow to newCol, grid) && grid[newRow][newCol] == 1
+        }
+        .onEach { (newRow, newCol, newTime) ->
+          grid[newRow][newCol] = 2 // ! mark rotten, also serves as visited
+          queue.add(Triple(newRow, newCol, newTime))
+        }
+        .count()
+  }
+
+  return if (freshCount == 0) maxTime else -1
+}
+
+private val directions = listOf(0 to 1, 0 to -1, 1 to 0, -1 to 0)
+
+private fun isValid(cell: Pair<Int, Int>, grid: Array<IntArray>) =
+  cell.first in grid.indices && cell.second in grid[0].indices
+
+fun orangesRottingLevelTracking(grid: Array<IntArray>): Int {
+  if (grid.isEmpty()) {
+    return 0
+  }
   val queue = ArrayDeque<Pair<Int, Int>>()
   var freshCount = 0
 
@@ -47,8 +95,3 @@ fun orangesRotting(grid: Array<IntArray>): Int {
   // ! count - 1 as you will hv an extra loop after all oranges are rotten.
   return if (freshCount == 0) count - 1 else -1
 }
-
-private val directions = listOf(0 to 1, 0 to -1, 1 to 0, -1 to 0)
-
-private fun isValid(cell: Pair<Int, Int>, grid: Array<IntArray>) =
-  cell.first in grid.indices && cell.second in grid[0].indices

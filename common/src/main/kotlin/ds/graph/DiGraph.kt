@@ -80,6 +80,64 @@ class DiGraph<T>(
       }
     }
 
+  fun shortestPath(valToSearch: T): List<T>? {
+    val visited = mutableSetOf<T>()
+    val queue = ArrayDeque<Pair<T, List<T>>>()
+
+    // Initialize queue with all starting nodes
+    adjacencyMap.keys
+      .filter { it !in visited }
+      .forEach { startNode ->
+        queue.add(startNode to listOf(startNode))
+        visited.add(startNode)
+      }
+
+    while (queue.isNotEmpty()) {
+      val (currentNode, currentPath) = queue.removeFirst()
+
+      if (currentNode == valToSearch) {
+        return currentPath
+      }
+
+      adjacencyMap[currentNode]
+        ?.filter { it !in visited }
+        ?.forEach { neighbor ->
+          visited.add(neighbor)
+          queue.add(neighbor to (currentPath + neighbor))
+        }
+    }
+
+    return null
+  }
+
+  fun dfsWithPath(valToSearch: T): List<T>? {
+    val visited = mutableSetOf<T>()
+    return adjacencyMap.keys
+      .asSequence()
+      .filter { it !in visited }
+      .mapNotNull { dfsWithPathPerGroup(it, valToSearch, visited, emptyList()) }
+      .firstOrNull()
+  }
+
+  private fun dfsWithPathPerGroup(
+    currentNode: T,
+    valToSearch: T,
+    visited: MutableSet<T>,
+    currentPath: List<T>,
+  ): List<T>? =
+    when (currentNode) {
+      valToSearch -> currentPath + currentNode
+      else -> {
+        visited += currentNode
+        val newPath = currentPath + currentNode
+        adjacencyMap[currentNode] // ! leaf nodes return null
+          ?.asSequence()
+          ?.filter { it !in visited }
+          ?.mapNotNull { dfsWithPathPerGroup(it, valToSearch, visited, newPath) }
+          ?.firstOrNull()
+      }
+    }
+
   /** -> DFT */
   fun dftPreOrder(): List<T> {
     val visited = mutableSetOf<T>()

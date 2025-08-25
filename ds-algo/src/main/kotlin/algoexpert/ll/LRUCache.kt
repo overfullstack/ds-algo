@@ -27,7 +27,7 @@ fun lruCache(lruCacheArgs: LRUCacheArgs): Pair<List<String?>, List<Pair<String, 
   return queryResults to lruQueue.toList()
 }
 
-class LRUQueue(val maxSize: Int) {
+class LRUQueue(val capacity: Int) {
   var head: DLLNode<Pair<String, Int>>? = null
   var tail: DLLNode<Pair<String, Int>>? = null
   var size: Int = 0
@@ -35,10 +35,10 @@ class LRUQueue(val maxSize: Int) {
 
   fun insertKeyValuePair(key: String, value: Int) {
     when {
-      head == null || maxSize == 1 -> {
+      head == null || capacity == 1 -> {
         head = DLLNode(key to value)
         tail = head
-        if (maxSize == 1) {
+        if (capacity == 1) {
           map.clear()
         }
         map[key] = head!!
@@ -49,7 +49,7 @@ class LRUQueue(val maxSize: Int) {
           map.compute(key) { key, curNode ->
             when (curNode) {
               null -> { // ! New Node
-                if (size == maxSize) {
+                if (size == capacity) {
                   removeLRU()
                 }
                 size++

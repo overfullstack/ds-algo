@@ -11,12 +11,40 @@ fun getFood(grid: Array<CharArray>): Int {
     grid.withIndex().firstNotNullOf { (rowIndex, row) ->
       row.withIndex().find { it.value == '*' }?.let { rowIndex to it.index }
     }
+  // ! Using normal queue instead of pq, as we don't have weights
+  val queue = ArrayDeque<Triple<Int, Int, Int>>()
+  queue.add(Triple(myLocation.first, myLocation.second, 0))
+
+  while (queue.isNotEmpty()) {
+    val (row, col, distance) = queue.removeFirst()
+    if (grid[row][col] == '#') {
+      return distance
+    }
+    directions
+      .asSequence()
+      .map { row + it.first to col + it.second }
+      .filter { (nextRow, nextCol) ->
+        isValid(nextRow to nextCol, grid) && grid[nextRow][nextCol] != 'X'
+      }
+      .forEach { (nextRow, nextCol) ->
+        grid[nextRow][nextCol] = 'X' // ! Mark visited
+        queue.add(Triple(nextRow, nextCol, distance + 1)) // ! Distance added to queue itself
+      }
+  }
+  return -1
+}
+
+fun getFoodWithLevelTracking(grid: Array<CharArray>): Int {
+  val myLocation =
+    grid.withIndex().firstNotNullOf { (rowIndex, row) ->
+      row.withIndex().find { it.value == '*' }?.let { rowIndex to it.index }
+    }
   val queue = ArrayDeque<Pair<Int, Int>>()
   queue.add(myLocation)
   var distance = 0
   while (queue.isNotEmpty()) {
-    distance++
-    repeat(queue.size) {
+    distance++ // ! Constant weight, so BFS is optimal and Dijkstra is overkill
+    repeat(queue.size) { // ! Needed for level tracking, like `distance`
       val cell = queue.removeFirst()
       if (grid[cell.first][cell.second] == '#') {
         return distance

@@ -2,9 +2,7 @@ package leetcode.dp
 
 /* 11 Aug 2025 10:55 */
 
-/**
- * [72. Edit Distance](https://leetcode.com/problems/edit-distance)
- */
+/** [72. Edit Distance](https://leetcode.com/problems/edit-distance) */
 fun minDistance(word1: String, word2: String): Int {
   if (word1.isEmpty() and word2.isEmpty()) return 0
   // ! `+1` for comparing empty string
@@ -22,11 +20,11 @@ fun minDistance(word1: String, word2: String): Int {
         when {
           word1[word1Idx - 1] == word2[word2Idx - 1] -> table[word1Idx - 1][word2Idx - 1]
           else ->
-            // * Convert word1 -> word 2. 
+            // * Convert word1 -> word 2.
             // ! We aren't actually deleting or inserting, but recording the extra operations
             // * In an iteration while we keep word1 constant and increment word2, we have 3 stages:
-            // ! 1. word1 longer than word2, delete from word1 to make word2 
-            // ! 2. word2 longer than word1, insert into word1 to make word2 
+            // ! 1. word1 longer than word2, delete from word1 to make word2
+            // ! 2. word2 longer than word1, insert into word1 to make word2
             // ! 3. word1 and word2 of same length, replace in word1
             1 +
               minOf(
