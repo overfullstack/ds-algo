@@ -3,7 +3,7 @@ package educative.elegant.unionfind
 /* 07 Sep 2024 13:53 */
 fun mostStonesRemoved(stones: Set<Pair<Int, Int>>): Int {
   val unionFind = UnionFind2(stones)
-  return stones.size - unionFind.groups // By leaving only 1 per group
+  return stones.size - unionFind.groups // By leaving 1 per group
 }
 
 private class UnionFind2(stones: Set<Pair<Int, Int>>) {

@@ -9,10 +9,13 @@ package leetcode.dp
 fun maxPoints(points: Array<IntArray>): Long {
   val noOfCols = points.first().size
   var prev = LongArray(noOfCols)
+  // ! All cols in First row
   for (col in points.first().indices) {
     prev[col] = points[0][col].toLong()
   }
-  for (row in 0 until points.lastIndex) {
+  // ! Dealing one row at a time
+  for (row in 1..points.lastIndex) {
+    // A cell can pick from left or right, storing max points from left or right for each col
     val left = LongArray(noOfCols)
     left[0] = prev[0]
     for (col in 1..points.first().lastIndex) {
@@ -25,11 +28,11 @@ fun maxPoints(points: Array<IntArray>): Long {
     }
     val cur = LongArray(noOfCols)
     for (col in points.first().indices) {
-      cur[col] = points[row + 1][col] + maxOf(left[col], right[col])
+      cur[col] = points[row][col] + maxOf(left[col], right[col])
     }
     prev = cur
   }
-  return prev.max() // ! using prev to handle points with only one row
+  return prev.max() // ! using prev instead of cur to handle points with only one row
 }
 
 fun main() {

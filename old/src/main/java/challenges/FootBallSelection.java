@@ -20,12 +20,11 @@ import java.util.stream.Stream;
 /** gakshintala created on 5/10/20. */
 public class FootBallSelection {
 	static void main() throws IOException {
-		BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
-		BufferedWriter bufferedWriter =
-				new BufferedWriter(new FileWriter(System.getenv("OUTPUT_PATH")));
+		var bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+		var bufferedWriter = new BufferedWriter(new FileWriter(System.getenv("OUTPUT_PATH")));
 
-		int applicationsRows = Integer.parseInt(bufferedReader.readLine().trim());
-		int applicationsColumns = Integer.parseInt(bufferedReader.readLine().trim());
+		var applicationsRows = Integer.parseInt(bufferedReader.readLine().trim());
+		var applicationsColumns = Integer.parseInt(bufferedReader.readLine().trim());
 
 		List<List<String>> applications = new ArrayList<>();
 
@@ -41,7 +40,7 @@ public class FootBallSelection {
 							}
 						});
 
-		List<List<String>> result = getSelectionStatus(applications);
+		var result = getSelectionStatus(applications);
 
 		result.stream()
 				.map(r -> r.stream().collect(joining(" ")))
@@ -61,34 +60,34 @@ public class FootBallSelection {
 	}
 
 	public static List<List<String>> getSelectionStatus(List<List<String>> applications) {
-		final List<Player> allPlayers =
+		final var allPlayers =
 				applications.stream().map(FootBallSelection::toPlayer).collect(Collectors.toList());
-		final List<Player> fitPlayers =
+		final var fitPlayers =
 				allPlayers.stream()
 						.filter(player -> player.height >= 5.8 && player.bmi <= 23)
 						.collect(toList());
 
-		final List<Player> strikersOnly =
+		final var strikersOnly =
 				fitPlayers.stream()
 						.filter(player -> player.scores >= 50 && player.defends < 30)
 						.collect(toList());
-		final List<Player> defendersOnly =
+		final var defendersOnly =
 				fitPlayers.stream()
 						.filter(player -> player.scores < 50 && player.defends >= 30)
 						.collect(toList());
-		final List<Player> both =
+		final var both =
 				fitPlayers.stream()
 						.filter(player -> player.scores >= 50 && player.defends >= 30)
 						.collect(toList());
 
 		if (both.size() % 2 == 1) {
 			if (strikersOnly.size() > defendersOnly.size()) {
-				both.add(strikersOnly.remove(0));
+				both.add(strikersOnly.removeFirst());
 			} else {
-				both.add(defendersOnly.remove(0));
+				both.add(defendersOnly.removeFirst());
 			}
 		}
-		int minOfBoth = Math.min(strikersOnly.size(), defendersOnly.size());
+		var minOfBoth = Math.min(strikersOnly.size(), defendersOnly.size());
 		final Set<Player> strikersOnlySelected = new HashSet<>(strikersOnly.subList(0, minOfBoth));
 		strikersOnlySelected.addAll(both.subList(0, both.size() / 2 + 1));
 		final Set<Player> defendersOnlySelected = new HashSet<>(defendersOnly.subList(0, minOfBoth));
@@ -105,11 +104,11 @@ public class FootBallSelection {
 								return player.toRejectedList();
 							}
 						})
-				.collect(Collectors.toList());
+				.toList();
 	}
 
 	private static Player toPlayer(List<String> attributes) {
-		Player player = new Player();
+		var player = new Player();
 		player.name = attributes.get(0);
 		player.height = Float.parseFloat(attributes.get(1));
 		player.bmi = Float.parseFloat(attributes.get(2));
@@ -127,7 +126,7 @@ class Player {
 	int defends;
 
 	public List<String> toSelectedList(String role) {
-		ArrayList<String> list = new ArrayList<String>();
+		var list = new ArrayList<String>();
 		list.add(name);
 		list.add("SELECT");
 		list.add(role);
@@ -135,7 +134,7 @@ class Player {
 	}
 
 	public List<String> toRejectedList() {
-		ArrayList<String> list = new ArrayList<String>();
+		var list = new ArrayList<String>();
 		list.add(name);
 		list.add("REJECT NA");
 		return list;
@@ -155,7 +154,7 @@ class Player {
 
 	@Override
 	public int hashCode() {
-		int result = name != null ? name.hashCode() : 0;
+		var result = name != null ? name.hashCode() : 0;
 		result = 31 * result + (height != +0.0f ? Float.floatToIntBits(height) : 0);
 		result = 31 * result + (bmi != +0.0f ? Float.floatToIntBits(bmi) : 0);
 		result = 31 * result + scores;

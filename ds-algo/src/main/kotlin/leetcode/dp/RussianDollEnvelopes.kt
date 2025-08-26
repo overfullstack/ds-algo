@@ -1,6 +1,6 @@
 package leetcode.dp
 
-/** https://leetcode.com/problems/russian-doll-envelopes/ */
+/** [354. Russian Doll Envelopes](https://leetcode.com/problems/russian-doll-envelopes/) */
 fun maxEnvelops(envelopes: Array<IntArray>): Int {
   if (envelopes.isEmpty()) {
     return 0
@@ -9,17 +9,16 @@ fun maxEnvelops(envelopes: Array<IntArray>): Int {
     envelopes.map { it[0] to it[1] }.sortedWith(compareBy({ it.first }, { it.second }))
 
   // After above sorting, this turns into Longest Increasing subsequence problem.
-  return sortedByWidth.indices
-    .fold(IntArray(envelopes.size)) { table, i ->
-      table.apply { // Just the regular dp in FP style.
-        val lisUntilCur =
-          (0 until i)
-            .filter { sortedByWidth[it] canFitInside sortedByWidth[i] }
-            .maxOf { validIndex -> this[validIndex] }
-        this[i] = lisUntilCur + 1
+  val table = IntArray(envelopes.size)
+  table[0] = 1
+  for (i in 1..sortedByWidth.lastIndex) {
+    for (j in 0 until i) {
+      if (sortedByWidth[j] canFitInside sortedByWidth[i]) {
+        table[i] = maxOf(table[i], table[j] + 1)
       }
     }
-    .maxOrNull() ?: 1
+  }
+  return table.max()
 }
 
 private infix fun Pair<Int, Int>.canFitInside(pair: Pair<Int, Int>) =
