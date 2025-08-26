@@ -81,13 +81,14 @@ public class Maze2 {
 	}
 
 	static void main() {
-    var maze = new int[][]{
-        {0, 0, 1, 0, 0},
-        {0, 0, 0, 0, 0},
-        {0, 0, 0, 1, 0},
-        {1, 1, 0, 1, 1},
-        {0, 0, 0, 0, 0}
-    };
+		var maze =
+				new int[][] {
+					{0, 0, 1, 0, 0},
+					{0, 0, 0, 0, 0},
+					{0, 0, 0, 1, 0},
+					{1, 1, 0, 1, 1},
+					{0, 0, 0, 0, 0}
+				};
 		int[] start = {0, 4};
 		int[] destination = {4, 4};
 		System.out.println(new Maze2().shortestDistance(maze, start, destination)); // 12
