@@ -2,6 +2,9 @@ package educative.greedy
 
 import java.util.PriorityQueue
 
+/**
+ * [871. Minimum Number of Refueling Stops](https://leetcode.com/problems/minimum-number-of-refueling-stops)
+ */
 fun minimumRefuelingStations(
   targetDistance: Int,
   startFuel: Int,
@@ -17,13 +20,11 @@ fun minimumRefuelingStations(
       maxHeapForFuel.add(stations[i].second)
       i++
     }
-    when {
-      maxHeapForFuel.isNotEmpty() -> {
-        reachableDistance += maxHeapForFuel.poll()
-        stops++
-      }
-      else -> return -1
-    }
+    if (maxHeapForFuel.isEmpty()) {
+      return -1
+    } 
+    reachableDistance += maxHeapForFuel.poll()
+    stops++
   }
   return stops
 }
