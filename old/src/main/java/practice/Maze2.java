@@ -80,14 +80,14 @@ public class Maze2 {
 				: minDistances[destination[0]][destination[1]];
 	}
 
-	public static void main(String[] args) {
-		int[][] maze = {
-			{0, 0, 1, 0, 0},
-			{0, 0, 0, 0, 0},
-			{0, 0, 0, 1, 0},
-			{1, 1, 0, 1, 1},
-			{0, 0, 0, 0, 0}
-		};
+	static void main() {
+    var maze = new int[][]{
+        {0, 0, 1, 0, 0},
+        {0, 0, 0, 0, 0},
+        {0, 0, 0, 1, 0},
+        {1, 1, 0, 1, 1},
+        {0, 0, 0, 0, 0}
+    };
 		int[] start = {0, 4};
 		int[] destination = {4, 4};
 		System.out.println(new Maze2().shortestDistance(maze, start, destination)); // 12

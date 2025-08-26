@@ -36,7 +36,7 @@ public class Maze {
 
 	int[][] directions = {{1, 0}, {0, 1}, {-1, 0}, {0, -1}};
 
-	public static void main(String[] args) {
+	static void main() {
 		var maze =
 				new int[][] {
 					{0, 0, 1, 0, 0},

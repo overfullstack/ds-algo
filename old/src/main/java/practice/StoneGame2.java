@@ -14,6 +14,8 @@ public class StoneGame2 {
 		return maxStones(prefixSum, 0, 1, new int[piles.length][piles.length]);
 	}
 
+  // * This builds from last to first, so your outcome can be derived from opponent's max outcome.
+  // * This is a DFS where we explore all possible paths with the `x` loop 
 	private static int maxStones(int[] prefixSum, int startIdx, int m, int[][] memo) {
 		if (startIdx + 2 * m - 1 >= prefixSum.length - 1) {
 			return prefixSum[startIdx]; // All stones including startIdx
@@ -37,7 +39,7 @@ public class StoneGame2 {
 		return maxStones;
 	}
 
-  public static void main(String[] args) {
+  static void main() {
     var obj = new StoneGame2();
     System.out.println(obj.stoneGameII(new int[]{2, 7, 9, 4, 4}));
     System.out.println(obj.stoneGameII(new int[]{1,2,3,4,5,100}));

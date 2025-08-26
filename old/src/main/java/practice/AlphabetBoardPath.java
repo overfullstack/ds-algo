@@ -46,7 +46,7 @@ public class AlphabetBoardPath {
 				&& (cell[0] == 5 ? cell[1] == 0 : cell[1] < board[0].length());
 	}
 
-	public static void main(String[] args) {
+	static void main() {
 		System.out.println(new AlphabetBoardPath().alphabetBoardPath("leet"));
 	}
 }
