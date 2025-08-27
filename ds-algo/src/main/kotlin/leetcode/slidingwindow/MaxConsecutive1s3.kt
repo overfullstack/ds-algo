@@ -9,14 +9,14 @@ fun longestOnes(nums: IntArray, k: Int): Int {
   var start = 0
   var maxWindow = 0
   for ((i, num) in nums.withIndex()) {
-    if (num == 0) zeroCount++
-    when {
-      zeroCount > k -> {
-        if (nums[start] == 0) zeroCount--
-        start++ // ! Shrink window
-      }
-      else -> maxWindow = i - start + 1
+    if (num == 0) {
+      zeroCount++
     }
+    if (zeroCount > k) {
+        if (nums[start] == 0) zeroCount--
+        start++ // ! Shrink window, it doesn't matter if it's 0 or not as window length remains same
+    }
+    else maxWindow = i - start + 1 // ! Either constant or increasing
   }
   return maxWindow
 }

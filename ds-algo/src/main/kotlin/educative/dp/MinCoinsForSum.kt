@@ -12,6 +12,7 @@ fun minCoinsForSum(coins: IntArray, sum: Int): Int {
   for (coin in coins) {
     // ! Forward iteration as we allow the same coin to be used multiple times
     for (i in coin..sum) {
+      // ! minOf exclude and include
       dp[i] = minOf(dp[i], dp[i - coin] + 1)
     }
   }

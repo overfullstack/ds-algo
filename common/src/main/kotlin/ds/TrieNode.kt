@@ -74,16 +74,16 @@ data class TrieNode(val value: Char = Char.MIN_VALUE) { // The First node of a T
         .filter { dotRegex[dotRegexIndex] == '.' || dotRegex[dotRegexIndex] == it.value }
         .flatMap { it.getAllWordsWithDotRegex(dotRegex, dotRegexIndex + 1, word + it.value) }
 
-  fun isDotRegexPresent(dotRegex: String, dotRegexIndex: Int = 0): Boolean =
+  fun isDotRegexPresent(dotRegex: String, nextDotRegexIndex: Int = 0): Boolean =
     when {
-      // ! + 1 coz the first level is a stub
-      dotRegexIndex == dotRegex.lastIndex + 1 -> isEnd
+      // ! `nextDotRegexIndex` is for children, so it overflows by `+1` for the last node
+      nextDotRegexIndex == dotRegex.lastIndex + 1 -> isEnd
       else ->
         children
           .asSequence()
           .filterNotNull()
-          .filter { dotRegex[dotRegexIndex] == '.' || dotRegex[dotRegexIndex] == it.value }
-          .any { it.isDotRegexPresent(dotRegex, dotRegexIndex + 1) }
+          .filter { dotRegex[nextDotRegexIndex] == '.' || dotRegex[nextDotRegexIndex] == it.value }
+          .any { it.isDotRegexPresent(dotRegex, nextDotRegexIndex + 1) }
     }
 
   fun recommendationsWhileTyping(key: String, limit: Int = Int.MAX_VALUE): List<List<String>> =

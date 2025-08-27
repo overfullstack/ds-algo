@@ -49,6 +49,6 @@ fun slidingWindowMaxIdiomatic(nums: IntArray, k: Int): IntArray {
 fun main() {
   val arr = readln().split(",").map { it.toInt() }.toIntArray()
   val k = readlnOrNull()?.toInt() ?: 0
-  // slidingWindowMax(arr, k).forEach { print("$it ") }
+  slidingWindowMax(arr, k).forEach { print("$it ") }
   slidingWindowMaxIdiomatic(arr, k).forEach { print("$it ") }
 }

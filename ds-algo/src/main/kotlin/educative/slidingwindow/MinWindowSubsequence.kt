@@ -1,4 +1,4 @@
-package educative.array.slidingwindow
+package educative.slidingwindow
 
 /* 04 Sep 2024 17:51 */
 
@@ -17,6 +17,7 @@ private fun findMinimumWindow(str1: String, str2: String): String =
     .mapNotNull { str1StartIndex ->
       // * Find the end first, go in reverse to eliminate the redundancy at the beginning
       findWindowEnd(str1, str2, str1StartIndex)?.let { windowEnd ->
+        // ! Go in reverse and find the window start
         val windowStart = findWindowStart(str1, str2, windowEnd)
         windowStart to windowEnd
       }
@@ -38,7 +39,6 @@ private tailrec fun findWindowEnd(
     else -> findWindowEnd(str1, str2, str1StartIndex + 1, str2StartIndex)
   }
 
-/** Go reverse and find the window start */
 private tailrec fun findWindowStart(
   str1: String,
   str2: String,

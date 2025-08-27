@@ -5,13 +5,13 @@ import java.util.Arrays;
 /* 26 Aug 2025 20:50 */
 
 /**
- * [1254. Number of Closed Islands](https://leetcode.com/problems/number-of-closed-islands/)
+ * 
  */
-public class NumberOfClosedIslands {
+public class NumberOfEnclaves {
 
   private static final int[][] directions = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
 
-  public int closedIsland(int[][] grid) {
+  public int numEnclaves(int[][] grid) {
     for (var row = 0; row < grid.length; row++) {
       floodFill(row, 0, grid);
       floodFill(row, grid[0].length - 1, grid);
@@ -25,9 +25,8 @@ public class NumberOfClosedIslands {
     var closedIslandCount = 0;
     for (var row = 0; row < grid.length; row++) {
       for (var col = 0; col < grid[0].length; col++) {
-        if (grid[row][col] == 0) {
+        if (grid[row][col] == 1) {
           closedIslandCount++;
-          floodFill(row, col, grid); // ! Fill them so we count the group as one island
         }
       }
     }
@@ -35,13 +34,13 @@ public class NumberOfClosedIslands {
   }
 
   private static void floodFill(int row, int col, int[][] grid) {
-    if (grid[row][col] != 0) { // ! Fill only land cells
+    if (grid[row][col] != 1) { // ! Fill only land cells
       return;
     }
-    grid[row][col] = 1;
+    grid[row][col] = 0;
     Arrays.stream(directions)
         .map(d -> new int[]{d[0] + row, d[1] + col})
-        .filter(nextCell -> isValid(nextCell, grid) && grid[nextCell[0]][nextCell[1]] == 0)
+        .filter(nextCell -> isValid(nextCell, grid) && grid[nextCell[0]][nextCell[1]] == 1)
         .forEach(landCell -> floodFill(landCell[0], landCell[1], grid));
   }
 
@@ -50,11 +49,8 @@ public class NumberOfClosedIslands {
   }
 
   static void main() {
-    var grid = new int[][]{{1, 1, 1, 1, 1, 1, 1, 0},
-        {1, 0, 0, 0, 0, 1, 1, 0},
-        {1, 0, 1, 0, 1, 1, 1, 0},
-        {1, 0, 0, 0, 0, 1, 0, 1},
-        {1, 1, 1, 1, 1, 1, 1, 0}};
-    System.out.println(new NumberOfClosedIslands().closedIsland(grid)); // 2
+    var grid = new int[][]{{0, 0, 0, 0}, {1, 0, 1, 0}, {0, 1, 1, 0}, {0, 0, 0, 0}};
+    var enclaves = new NumberOfEnclaves().numEnclaves(grid);
+    System.out.println(enclaves); // 3
   }
 }

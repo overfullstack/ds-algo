@@ -36,7 +36,7 @@ class FirstBadVersion(val firstBadVersionIndex: Int) {
       }
       callCount++
     }
-    return right to callCount
+    return right to callCount // ! `right` is the answer
   }
 }
 
