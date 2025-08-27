@@ -6,6 +6,8 @@ import java.util.PriorityQueue;
 
 public class FurthestBuildingYouCanReach {
 	public int furthestBuilding(int[] heights, int bricks, int ladders) {
+    // * Greedily use Bricks for lower heightDiffs 
+    // * Ladders shall auto-cover the higher heightDiffs
 		var minHeap = new PriorityQueue<Integer>();
 		for (var i = 1; i < heights.length; i++) {
 			var heightDiff = heights[i] - heights[i - 1];
