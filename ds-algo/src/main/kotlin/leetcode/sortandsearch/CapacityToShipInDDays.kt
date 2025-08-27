@@ -12,7 +12,7 @@ tailrec fun shipWithinDays(
   }
   val curCap = (minCap + maxCap) / 2
   // ! 1 instead of 0 to compensate last iteration where we can't do `daysRequired++`
-  var daysRequired = 1 
+  var daysRequired = 1
   weights.reduce { curSum, weight -> // loading weights to fill the cap
     if (curSum + weight > curCap) {
       daysRequired++

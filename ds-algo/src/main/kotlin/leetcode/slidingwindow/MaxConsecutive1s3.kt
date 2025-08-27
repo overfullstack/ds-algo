@@ -13,10 +13,9 @@ fun longestOnes(nums: IntArray, k: Int): Int {
       zeroCount++
     }
     if (zeroCount > k) {
-        if (nums[start] == 0) zeroCount--
-        start++ // ! Shrink window, it doesn't matter if it's 0 or not as window length remains same
-    }
-    else maxWindow = i - start + 1 // ! Either constant or increasing
+      if (nums[start] == 0) zeroCount--
+      start++ // ! Shrink window, it doesn't matter if it's 0 or not as window length remains same
+    } else maxWindow = i - start + 1 // ! Either constant or increasing
   }
   return maxWindow
 }

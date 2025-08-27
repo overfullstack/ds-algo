@@ -22,7 +22,7 @@ fun repeatedDNASequences(str: String, k: Int): Set<String> {
         dnaCompositionSize.toInt() + numStr[i + k - 1]
     val isAbsent = hashSet.add(hashForSubStr)
     if (!isAbsent) {
-      result.add(str.substring(i..i + k - 1))
+      result.add(str.substring(i until i + k))
     }
   }
   return result
