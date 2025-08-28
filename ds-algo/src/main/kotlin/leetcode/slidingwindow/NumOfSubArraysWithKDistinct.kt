@@ -14,10 +14,7 @@ fun subArraysWithAtMostKDistinct(a: IntArray, k: Int): Int {
     while (freqInWindow.size > k) {
       freqInWindow.computeIfPresent(a[start]) { _, freq ->
         start++
-        when (freq) {
-          1 -> null
-          else -> freq.dec()
-        }
+        if (freq == 1) null else freq.dec()
       }
     }
     windowLenWithAtMostK += (index - start + 1) // * This cumulates all sub array length

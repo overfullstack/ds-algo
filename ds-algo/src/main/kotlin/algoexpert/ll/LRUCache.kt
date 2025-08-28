@@ -30,7 +30,6 @@ fun lruCache(lruCacheArgs: LRUCacheArgs): Pair<List<String?>, List<Pair<String, 
 class LRUQueue(val capacity: Int) {
   var head: DLLNode<Pair<String, Int>>? = null
   var tail: DLLNode<Pair<String, Int>>? = null
-  var size: Int = 0
   val map: MutableMap<String, DLLNode<Pair<String, Int>>> = mutableMapOf()
 
   fun insertKeyValuePair(key: String, value: Int) {
@@ -42,17 +41,15 @@ class LRUQueue(val capacity: Int) {
           map.clear()
         }
         map[key] = head!!
-        size++
       }
       else -> {
         val node =
           map.compute(key) { key, curNode ->
             when (curNode) {
               null -> { // ! New Node
-                if (size == capacity) {
+                if (map.size == capacity) {
                   removeLRU()
                 }
-                size++
                 val nodeToInsert = DLLNode(key to value, null, head)
                 map[key] = nodeToInsert
                 nodeToInsert
@@ -87,7 +84,6 @@ class LRUQueue(val capacity: Int) {
   private fun removeLRU() {
     map.remove(tail!!.value.first)
     leftShiftTail()
-    size--
   }
 
   fun getMostRecentKey(): String? = head?.value?.first

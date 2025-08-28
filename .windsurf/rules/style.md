@@ -29,9 +29,16 @@ globs:
 - Cache/memoization: use MutableMap parameter with a default empty map   
 
 # Java-Specific Patterns
-- Use latest Java syntax
+- Prioritize **simplicity** and **readability** above all else. Do not trade readability for memory or performance efficiency, such as using Bitmask.
+- Use modern Java syntax, like `map.merge`, `map.computeIfPresent`, etc
 - Chain operations using stream: prefer `.stream()` for multiple transformations
-- If applicable, use functional combinators: stream, map, filter, flatMap, reduce, max, min, findFirst, findAny, anyMatch, allMatch, sum, etc, over imperative loops
+- If applicable, use functional combinators: map, filter, flatMap, reduce, max, min, sum, findFirst, findAny, anyMatch, allMatch, etc., over imperative loops
+- Don't use functional programming if it hurts readability and adds cognitive complexity.
+- Refer these Java files for Functional programming style guide in Java:
+  - ds-algo/src/main/java/practice/ParallelCourses.java
+  - ds-algo/src/main/java/practice/DetonateTheMaximumBombs.java
+  - ds-algo/src/main/java/practice/SurroundedRegions.java
+  - ds-algo/src/main/java/practice/FindTheSafestPathInGrid.java
 
 # Kotlin-Specific Patterns
 - Always use `when` expressions over if-else chains

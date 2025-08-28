@@ -23,7 +23,7 @@ public class IslandPerimeter {
 		for (var direction : directions) {
 			var nextRow = direction[0] + row;
 			var nextCol = direction[1] + col;
-			if (!isValid(nextRow, nextCol, grid) || grid[nextRow][nextCol] == 0) {
+			if (!isValid(nextRow, nextCol, grid) || grid[nextRow][nextCol] == 0) { // ! edges
 				edgeCount++;
 			} else if (grid[nextRow][nextCol] == 1) { // ! isValid as per above check
 				edgeCount += countPerimeter(nextRow, nextCol, grid);
