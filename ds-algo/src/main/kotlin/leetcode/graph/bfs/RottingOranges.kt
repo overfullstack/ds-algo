@@ -8,7 +8,7 @@ fun orangesRotting(grid: Array<IntArray>): Int {
   if (grid.isEmpty()) {
     return 0
   }
-  val queue = ArrayDeque<Triple<Int, Int, Int>>() // ! Store (row, col, time)
+  val queue = ArrayDeque<Triple<Int, Int, Int>>()
   var freshCount = 0
 
   for (row in grid.indices) {

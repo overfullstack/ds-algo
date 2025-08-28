@@ -15,7 +15,7 @@ public class WordBreak {
 						.reduce(
 								List.of(-1), // Initial accumulator
 								(wordEndIndices, index) -> {
-									boolean canFormWord =
+									var canFormWord =
 											wordEndIndices.stream()
 													.anyMatch(
 															prevEndIdx ->

@@ -2,6 +2,7 @@ package leetcode.graph.bfs
 
 /** [01-matrix](https://leetcode.com/problems/01-matrix/) */
 fun updateMatrix(matrix: Array<IntArray>): Array<IntArray> { // BFS
+  // ! Using normal queue instead of pq, as we don't have variable weights
   val queue = ArrayDeque<Triple<Int, Int, Int>>()
   for (row in matrix.indices) {
     for (col in matrix[0].indices) {
@@ -18,6 +19,8 @@ fun updateMatrix(matrix: Array<IntArray>): Array<IntArray> { // BFS
       .asSequence()
       .map { row + it.first to col + it.second }
       .filter { (nextRow, nextCol) ->
+        // ! Using visited instead of distance check, as with unit weights
+        // ! first visit is always the optimal and BFS naturally finds the shortest paths
         isValid(nextRow to nextCol, matrix) && matrix[nextRow][nextCol] == -1
       }
       .forEach { (nextRow, nextCol) ->

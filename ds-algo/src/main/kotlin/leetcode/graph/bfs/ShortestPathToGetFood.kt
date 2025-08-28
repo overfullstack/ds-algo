@@ -11,7 +11,7 @@ fun getFood(grid: Array<CharArray>): Int {
     grid.withIndex().firstNotNullOf { (rowIndex, row) ->
       row.withIndex().find { it.value == '*' }?.let { rowIndex to it.index }
     }
-  // ! Using normal queue instead of pq, as we don't have weights
+  // ! Using normal queue instead of pq, as we don't have variable weights
   val queue = ArrayDeque<Triple<Int, Int, Int>>()
   queue.add(Triple(myLocation.first, myLocation.second, 0))
 

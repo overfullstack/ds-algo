@@ -10,18 +10,16 @@ fun swimInWater(grid: Array<IntArray>): Int {
   // ! Possible path can stem from any cell in the current path
   val pq = PriorityQueue(compareBy<Triple<Int, Int, Int>> { it.third })
   pq.add(Triple(0, 0, grid[0][0]))
-  var maxInPath = Int.MIN_VALUE
-  val visited = mutableSetOf<Pair<Int, Int>>()
+  val visited = Array(grid.size) { BooleanArray(grid[0].size) }
   while (pq.isNotEmpty()) {
-    val (row, col, elevation) = pq.poll()
+    val (row, col, maxInPath) = pq.poll()
     if (row == grid.lastIndex && col == grid[0].lastIndex) {
-      return elevation // ! elevation in this problem represents time
+      return maxInPath // ! elevation in this problem represents time
     }
-    visited.add(row to col)
-    maxInPath = maxOf(maxInPath, elevation)
+    visited[row][col] = true
     directions
       .map { it.first + row to it.second + col }
-      .filter { isValid(it, grid) && it !in visited }
+      .filter { isValid(it, grid) && !visited[it.first][it.second] }
       .forEach { (row, col) ->
         val newMaxInPath = maxOf(maxInPath, grid[row][col])
         pq.add(Triple(row, col, newMaxInPath))
