@@ -7,6 +7,7 @@ import testcase.LRUCacheArgs
 
 /* 18 Aug 2024 21:21 */
 
+/** [146. LRU Cache](https://leetcode.com/problems/lru-cache) */
 fun lruCache(lruCacheArgs: LRUCacheArgs): Pair<List<String?>, List<Pair<String, Int>>> {
   val lruQueue = LRUQueue(lruCacheArgs.maxSize)
   val queryResults = mutableListOf<String?>()
@@ -17,6 +18,7 @@ fun lruCache(lruCacheArgs: LRUCacheArgs): Pair<List<String?>, List<Pair<String, 
         val value = args[1].jsonPrimitive.int
         lruQueue.insertKeyValuePair(key, value)
       }
+
       "getMostRecentKey" -> queryResults.add(lruQueue.getMostRecentKey())
       "getValueFromKey" -> {
         val key = args[0].jsonPrimitive.content
@@ -43,27 +45,27 @@ class LRUQueue(val capacity: Int) {
         map[key] = head!!
       }
       else -> {
-        val node =
-          map.compute(key) { key, curNode ->
-            when (curNode) {
-              null -> { // ! New Node
-                if (map.size == capacity) {
-                  removeLRU()
-                }
-                val nodeToInsert = DLLNode(key to value, null, head)
-                map[key] = nodeToInsert
-                nodeToInsert
+        if (!map.containsKey(key)) { // ! New Node
+          if (map.size == capacity) {
+            removeLRU()
+          }
+          val nodeToInsert = DLLNode(key to value, null, head)
+          map[key] = nodeToInsert
+          leftShiftHead(nodeToInsert)
+        } else { // ! Existing Node
+          map[key]?.let { curNode ->
+            curNode.value = key to value
+            if (curNode != head) {
+              if (curNode == tail) {
+                leftShiftTail()
               }
-              else -> { // ! Existing Node
-                curNode.value = key to value
-                unlink(curNode)
-                curNode.next = head
-                curNode.prev = null
-                curNode
-              }
+              unlink(curNode)
+              curNode.next = head
+              curNode.prev = null
+              leftShiftHead(curNode)
             }
-          }!!
-        leftShiftHead(node)
+          }
+        }
       }
     }
   }
@@ -76,6 +78,7 @@ class LRUQueue(val capacity: Int) {
       }
       unlink(node)
       node.next = head
+      node.prev = null
       leftShiftHead(node)
     }
     return node?.value?.second
@@ -106,4 +109,14 @@ class LRUQueue(val capacity: Int) {
   fun toList(): List<Pair<String, Int>> = head?.toList() ?: emptyList()
 
   override fun toString(): String = "[${toList().joinToString { "(${it.first}, ${it.second})" }}]"
+}
+
+fun main() {
+  val lruCache = LRUQueue(2)
+  lruCache.insertKeyValuePair("2", 1)
+  lruCache.insertKeyValuePair("1", 1)
+  lruCache.insertKeyValuePair("2", 3)
+  lruCache.insertKeyValuePair("4", 1)
+  println(lruCache.getValueFromKey("1")) // null
+  println(lruCache.getValueFromKey("2")) // 3
 }

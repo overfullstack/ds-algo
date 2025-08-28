@@ -9,7 +9,7 @@ import java.util.PriorityQueue;
 public class FindTheSafestPathInGrid {
 	public int maximumSafenessFactor(List<List<Integer>> grid) {
 		var minDistance = minDistanceFromThief(grid);
-    // ! Tread the path that's farthest from any thief 
+		// ! Tread the path that's farthest from any thief
 		var pq = new PriorityQueue<>(Comparator.comparingInt((int[] c) -> c[2]).reversed());
 		pq.add(new int[] {0, 0, minDistance[0][0]});
 		var visited = new boolean[grid.size()][grid.getFirst().size()];
@@ -27,7 +27,7 @@ public class FindTheSafestPathInGrid {
 					.filter(nextCell -> isValid2(nextCell, minDistance) && !visited[nextCell[0]][nextCell[1]])
 					.forEach(
 							nextCell -> {
-                visited[nextCell[0]][nextCell[1]] = true;
+								visited[nextCell[0]][nextCell[1]] = true;
 								var nextMinInPath = Math.min(minInPath, minDistance[nextCell[0]][nextCell[1]]);
 								pq.add(new int[] {nextCell[0], nextCell[1], nextMinInPath});
 							});
@@ -38,7 +38,7 @@ public class FindTheSafestPathInGrid {
 	private static final int[][] directions = {{-1, 0}, {1, 0}, {0, 1}, {0, -1}};
 
 	private static int[][] minDistanceFromThief(List<List<Integer>> grid) {
-    // ! ArrayDeque with visited, as we have unit weights and first visit with BFS is always optimal
+		// ! ArrayDeque with visited, as we have unit weights and first visit with BFS is always optimal
 		var pq = new ArrayDeque<int[]>();
 		var visited = new boolean[grid.size()][grid.getFirst().size()];
 		var minDistance = new int[grid.size()][grid.getFirst().size()];
