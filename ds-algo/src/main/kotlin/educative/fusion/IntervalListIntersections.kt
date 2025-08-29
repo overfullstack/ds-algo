@@ -9,7 +9,7 @@ fun intervalListIntersections(
   tailrec fun intervalListIntersections(
     aIndex: Int,
     bIndex: Int,
-    result: List<Pair<Int, Int>>,
+    result: List<Pair<Int, Int>> = emptyList(),
   ): List<Pair<Int, Int>> {
     if (aIndex > a.lastIndex || bIndex > b.lastIndex) return result
 
@@ -31,5 +31,5 @@ fun intervalListIntersections(
     }
   }
 
-  return intervalListIntersections(0, 0, emptyList())
+  return intervalListIntersections(0, 0)
 }

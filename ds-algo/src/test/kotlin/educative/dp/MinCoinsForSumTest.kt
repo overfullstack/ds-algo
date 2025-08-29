@@ -13,7 +13,7 @@ class MinCoinsForSumTest :
   StringSpec({
     "Minimum Coins For Sum" {
       parseJsonFileToTestCases("$PKG_PATH/test-cases-1.json").forAll { (input, output) ->
-        minCoinsForSum(input.first.toIntArray(), input.second) shouldBe output
+        change(input.second, input.first.toIntArray()) shouldBe output
       }
     }
   })

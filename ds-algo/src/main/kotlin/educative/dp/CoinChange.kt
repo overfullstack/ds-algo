@@ -3,7 +3,7 @@ package educative.dp
 /* 24/7/25 17:38 */
 
 /** [Coin Change](https://leetcode.com/problems/coin-change/)* */
-fun minCoinsForSum(coins: IntArray, sum: Int): Int {
+fun coinChange(coins: IntArray, sum: Int): Int {
   if (sum == 0) return 0
   if (sum < 0 || coins.isEmpty()) return -1
 
@@ -36,5 +36,5 @@ fun minCoinsForSum2(coins: IntArray, sum: Int): Int {
 }
 
 fun main() {
-  println(minCoinsForSum(intArrayOf(2, 3, 4, 6, 8), 23))
+  println(change(23, intArrayOf(2, 3, 4, 6, 8)))
 }

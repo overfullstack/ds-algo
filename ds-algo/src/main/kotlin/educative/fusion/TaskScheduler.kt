@@ -10,8 +10,8 @@ fun leastTime(tasks: CharArray, coolingPeriod: Int): Int {
   var idleTime = (maxFreq - 1) * coolingPeriod
   // ! drop the most frequent for which idleTime is calculated above
   for (freq in sortedFreqs.drop(1)) {
-    // ! We can only fill `maxFreq - 1` slots,
-    // ! so a same freq task can't utilize all tasks and can only reduce `maxFreq - 1`
+    // ! We can only fill `maxFreq - 1` slots
+    // ! so a same freq task can't utilize all and can only reduce `maxFreq - 1` idle slots
     idleTime -= minOf(maxFreq - 1, freq)
     if (idleTime <= 0) break
   }

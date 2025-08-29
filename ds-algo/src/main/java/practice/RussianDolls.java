@@ -9,7 +9,7 @@ public class RussianDolls {
 	public int maxEnvelopes(int[][] envelopes) {
 		final var sortedEnvelopes =
 				Arrays.stream(envelopes)
-						.sorted(Comparator.comparingInt((int[] o) -> o[0]).thenComparingInt(o -> -o[1]))
+						.sorted(Comparator.<int[]>comparingInt(o -> o[0]).thenComparingInt(o -> -o[1]))
 						.toList();
 		final var heights = sortedEnvelopes.stream().mapToInt(o -> o[1]).toArray();
 		return findLISSize(heights);

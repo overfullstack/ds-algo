@@ -2,12 +2,12 @@ package leetcode.heap
 
 import java.util.PriorityQueue
 
-/** https://leetcode.ca/2016-08-09-253-Meeting-Rooms-II/ */
+/** [253. Meeting Rooms II](https://leetcode.ca/2016-08-09-253-Meeting-Rooms-II/) */
 fun minMeetingRoomsRequired(meetings: Array<Pair<Int, Int>>): Int {
   val minEndTimeHeap = PriorityQueue<Int>() // ! Need Earliest ending meeting
-  val sortedMeetings = meetings.sortedBy { it.first }
-  minEndTimeHeap.add(sortedMeetings.first().second)
-  for (meeting in sortedMeetings.drop(1)) {
+  val sortedMeetingsByStart = meetings.sortedBy { it.first }
+  minEndTimeHeap.add(sortedMeetingsByStart.first().second)
+  for (meeting in sortedMeetingsByStart.drop(1)) {
     if (meeting.first >= minEndTimeHeap.peek()) { // Non-overlapping
       minEndTimeHeap.poll() // * Meeting room available, so pop it and add the new one
     }
