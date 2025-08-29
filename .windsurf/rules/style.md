@@ -32,9 +32,9 @@ globs:
 - Prioritize **simplicity** and **readability** above all else. Do not trade readability for memory or performance efficiency, such as using Bitmask.
 - Use modern Java syntax, like `map.merge`, `map.computeIfPresent`, etc
 - Chain operations using stream: prefer `.stream()` for multiple transformations
-- If applicable, use functional combinators: map, filter, flatMap, reduce, max, min, sum, findFirst, findAny, anyMatch, allMatch, etc., over imperative loops
+- If applicable, use functional combinators: map, filter, flatMap, reduce, max, min, sum, findFirst, findAny, anyMatch, allMatch, etc., over imperative loops with continue and break statements
 - Don't use functional programming if it hurts readability and adds cognitive complexity.
-- Refer these Java files for Functional programming style guide in Java:
+- Refer these Java files for Functional programming style guide for Java:
   - ds-algo/src/main/java/practice/ParallelCourses.java
   - ds-algo/src/main/java/practice/DetonateTheMaximumBombs.java
   - ds-algo/src/main/java/practice/SurroundedRegions.java

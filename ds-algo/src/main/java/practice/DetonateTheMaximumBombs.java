@@ -22,7 +22,7 @@ public class DetonateTheMaximumBombs {
 	private boolean inRange(int[] toBomb, int[] fromBomb) {
 		var dx = toBomb[0] - fromBomb[0];
 		var dy = toBomb[1] - fromBomb[1];
-		var radius = fromBomb[2] * fromBomb[2];
-		return (dx * dx + dy * dy) <= radius;
+		var fromBombRadius = fromBomb[2] * fromBomb[2];
+		return (dx * dx + dy * dy) <= fromBombRadius;
 	}
 }
