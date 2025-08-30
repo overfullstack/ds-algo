@@ -2,7 +2,7 @@ package leetcode.array
 
 /* 08 Aug 2025 07:52 */
 
-/** [2381. Shifting Letters II](https://leetcode.com/problems/shifting-letters-ii/) ⏱️ TLE */
+/** [2381. Shifting Letters II](https://leetcode.com/problems/shifting-letters-ii/) ⏰ TLE */
 fun shiftingLetters(s: String, shifts: Array<IntArray>): String {
   var result = s
   for ((start, end, direction) in shifts) {

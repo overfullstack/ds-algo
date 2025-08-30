@@ -51,7 +51,7 @@ fun shortestPath(grid: Array<IntArray>, k: Int): Int {
   else minDistanceFromSource.last().last()
 }
 
-/** This TLEs as `pq` gets bloated, as all cells are equidistant, we end-up processing all cells */
+/** This ⏰TLEs as `pq` gets bloated, as all cells are equidistant, we end-up processing all cells */
 fun shortestPath2(grid: Array<IntArray>, k: Int): Int {
   val minDistanceFromSource = Array(grid.size) { IntArray(grid[0].size) { Int.MAX_VALUE } }
   minDistanceFromSource[0][0] = 0

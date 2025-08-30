@@ -5,7 +5,8 @@ import utils.toPair
 
 /* 09 Aug 2025 00:00 */
 
-/** [2050. Parallel Courses III](https://leetcode.com/problems/parallel-courses-iii) ⏱️ TLE */
+/** [2050. Parallel Courses III](https://leetcode.com/problems/parallel-courses-iii) ⏰ TLE */
+// !! Refer the Java version
 fun minimumTime(n: Int, relations: Array<IntArray>, time: IntArray): Int {
   val diGraph = DiGraph(relations.map { it.toPair() })
   val cache = mutableMapOf<Int, Int>()

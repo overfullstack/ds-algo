@@ -8,7 +8,7 @@ import utils.toTriple
 
 /**
  * [787. Cheapest Flights Within K
- * Stops](https://leetcode.com/problems/cheapest-flights-within-k-stops/) ⏱️ TLE
+ * Stops](https://leetcode.com/problems/cheapest-flights-within-k-stops/) ⏰ TLE
  */
 fun findCheapestPrice(n: Int, flights: Array<IntArray>, src: Int, dst: Int, k: Int): Int {
   val edgeWeightedDiGraph: EdgeWeightedDiGraph<Int> =

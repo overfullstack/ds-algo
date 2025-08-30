@@ -1,23 +1,24 @@
 package leetcode.greedy
 
-/** https://leetcode.com/problems/minimum-number-of-arrows-to-burst-balloons/ */
+/**
+ * [452. Minimum Number of Arrows to Burst
+ * Balloons](https://leetcode.com/problems/minimum-number-of-arrows-to-burst-balloons/)
+ */
 fun findMinArrowShots(points: Array<IntArray>): Int {
   if (points.isEmpty()) {
     return 0
   }
-  val sortedPoints = points.map { it[0] to it[1] }.sortedBy { it.second }
-  var end = sortedPoints[0].second
+  // ! Sort by end time, as we shoot at end point of balloon.
+  // ! All balloons sharing this end point in their interval are burst by the same arrow
+  val sortedBalloonsByEnd = points.map { it[0] to it[1] }.sortedBy { it.second }
+  var end = sortedBalloonsByEnd[0].second
   val nonOverlapCount =
-    sortedPoints
-      .asSequence()
-      .drop(1)
-      .filter {
-        // ! > instead of >=, in this problem contact windows are treated as overlap
-        it.first > end
-      }
-      // ! `it.second` instead of `maxOf(it.second, end)`,
-      // as we need an arrow for all small balloons shadowed by a large balloon
-      .onEach { end = it.second }
-      .count()
-  return 1 + nonOverlapCount
+    1 + // ! +1 for the first balloon
+      sortedBalloonsByEnd
+        .asSequence()
+        .drop(1)
+        .filter { it.first > end } // * 1 arrow for all balloon starting before this end point
+        .onEach { end = it.second } // ! `it.second` instead of `maxOf(it.second, end)`
+        .count()
+  return nonOverlapCount
 }
