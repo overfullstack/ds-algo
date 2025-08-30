@@ -16,6 +16,7 @@ public class GameOfLife {
 		for (var row = 0; row < board.length; row++) {
 			for (var col = 0; col < board[0].length; col++) {
 				var aliveInNeighborsCount = aliveInNeighborsCount(row, col, board);
+        // ! Keep the previous state of the cell, for neighbours 
 				if (board[row][col] == 0 && aliveInNeighborsCount == 3) {
 					board[row][col] = DEAD_TO_ALIVE;
 				} else if (board[row][col] == 1 && aliveInNeighborsCount != 2 && aliveInNeighborsCount != 3) {

@@ -6,7 +6,7 @@ alwaysApply: true
 - Prioritize **simplicity** and **readability** above all else. Do not trade readability for memory or performance efficiency, such as using Bitmask.
 - Use **Modern and Latest Java syntax available**. Some examples are:
   - Use HashMap operations like `merge`, `computeIfPresent`, `computeIfAbsent` etc.
-  - **Modern Collection Operations**: Use `.toList()`, `.toSet()`, `.toMap()` instead of `.collect(Collectors.toList())`, etc.
+  - **Modern Collection Operations**: Use `.toList()` instead of `.collect(Collectors.toList())`.
   - **Local Variable Type Inference**: Use `var` for local variables when the type is obvious from context
   - **Enhanced Switch**: Use switch expressions with `->` syntax instead of traditional switch statements
   - **Text Blocks**: Use `"""` text blocks for multi-line strings
