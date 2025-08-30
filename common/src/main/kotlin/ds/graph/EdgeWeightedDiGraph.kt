@@ -16,6 +16,10 @@ class EdgeWeightedDiGraph<T>(
     data.forEach { (source, destination, weight) -> addEdge(source, destination, weight) }
   }
 
+  constructor(data: Array<IntArray>) : this() {
+    data.forEach { (source, destination, weight) -> addEdge(source as T, destination as T, weight) }
+  }
+
   val allNodes: Set<T>
     get() = adjacencyMap.keys + adjacencyMap.values.flatten().map { it.destination }
 

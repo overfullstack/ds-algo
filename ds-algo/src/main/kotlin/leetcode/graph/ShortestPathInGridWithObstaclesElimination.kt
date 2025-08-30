@@ -10,39 +10,28 @@ import java.util.*
  */
 fun shortestPath(grid: Array<IntArray>, k: Int): Int {
   // ! Notice, descending by `remainingK`, favoring cells with more `remainingK`
-  val pq = PriorityQueue(compareByDescending<Pair<Triple<Int, Int, Int>, Int>> { it.second })
-  pq.add(Triple(0, 0, 0) to k)
+  val pq = PriorityQueue(compareByDescending<Triple<Pair<Int, Int>, Int, Int>> { it.third })
+  pq.add(Triple(0 to 0, 0, k))
   val minDistanceFromSource = Array(grid.size) { IntArray(grid[0].size) { Int.MAX_VALUE } }
   minDistanceFromSource[0][0] = 0
   while (pq.isNotEmpty()) {
-    val nextCell = pq.poll()
-    val (row, col, distanceFromSource) = nextCell.first
-    val remainingK = nextCell.second
-    // ! Calculating `nextDistance` here instead of in the loop, as it's always `+1`
+    val (nextCell, distanceFromSource, remainingK) = pq.poll()
+    val (row, col) = nextCell
     val nextDistance = distanceFromSource + 1
     directions
       .asSequence()
       .map { it.first + row to it.second + col }
-      // * Takes care of making sure `nextDistance` is minimum
-      // ! Greedy here trades-off `remainingK` over `distanceFromSource`.
-      // ! This leads to reprocessing the same node later
-      // ! when `nextDistance < minDistanceFromSource[it.first][it.second]`
+      // ! You may revisit the same cell with less `remainingK` and shorter distance
       .filter { isValid(it, grid) && nextDistance < minDistanceFromSource[it.first][it.second] }
-      // ! No visited, because we need same node with a `remainingK` to be visited multiple times
-      // ! In this problem, the state is 3-dimensional: (row, col, remainingK)
-      // Same physical cell `(row, col)`
-      // can be visited multiple times with different k values
-      // Each visit with different `remainingK` represents a legitimate different state
       .forEach { (nextRow, nextCol) ->
         when {
           remainingK > 0 && grid[nextRow][nextCol] == 1 -> {
-            // ! This should be placed in the loop as we are comparing `remainingK`
             minDistanceFromSource[nextRow][nextCol] = nextDistance
-            pq.add(Triple(nextRow, nextCol, nextDistance) to remainingK - 1)
+            pq.add(Triple(nextRow to nextCol, nextDistance, remainingK - 1))
           }
           grid[nextRow][nextCol] == 0 -> {
             minDistanceFromSource[nextRow][nextCol] = nextDistance
-            pq.add(Triple(nextRow, nextCol, nextDistance) to remainingK)
+            pq.add(Triple(nextRow to nextCol, nextDistance, remainingK))
           }
         }
       }
@@ -51,32 +40,39 @@ fun shortestPath(grid: Array<IntArray>, k: Int): Int {
   else minDistanceFromSource.last().last()
 }
 
-/** This ⏰TLEs as `pq` gets bloated, as all cells are equidistant, we end-up processing all cells */
+// ! ⏰TLE because we let each cell visit `k` times
+// ! Unlike CheapestFlightsWithinKStops, we can't early terminate
+// ! need to visit all cells to reach the destination
 fun shortestPath2(grid: Array<IntArray>, k: Int): Int {
-  val minDistanceFromSource = Array(grid.size) { IntArray(grid[0].size) { Int.MAX_VALUE } }
-  minDistanceFromSource[0][0] = 0
-  val pq = PriorityQueue(compareBy<Pair<Triple<Int, Int, Int>, Int>> { it.first.third })
-  pq.add(Triple(0, 0, 0) to k)
+  val pq = PriorityQueue(compareBy<Triple<Pair<Int, Int>, Int, Int>> { it.second })
+  val visited = mutableSetOf<Triple<Pair<Int, Int>, Int, Int>>()
+  val start = Triple(0 to 0, 0, k)
+  pq.add(start)
+  visited += start
   while (pq.isNotEmpty()) {
-    val nextCell = pq.poll()
-    val (row, col, distanceFromSource) = nextCell.first
-    val remainingK = nextCell.second
+    val (nextCell, distanceFromSource, remainingK) = pq.poll()
+    val (row, col) = nextCell
     if (row == grid.lastIndex && col == grid[0].lastIndex) {
       return distanceFromSource
     }
-    minDistanceFromSource[row][col] = distanceFromSource
-    // ! Calculating `nextDistance` here instead of in the loop, as it's always `+1`
     val nextDistance = distanceFromSource + 1
     directions
       .asSequence()
       .map { it.first + row to it.second + col }
-      .filter { isValid(it, grid) && nextDistance < minDistanceFromSource[it.first][it.second] }
+      .filter { isValid(it, grid) }
       .forEach { (nextRow, nextCol) ->
-        when {
-          remainingK > 0 && grid[nextRow][nextCol] == 1 ->
-            pq.add(Triple(nextRow, nextCol, nextDistance) to remainingK - 1)
-          grid[nextRow][nextCol] == 0 ->
-            pq.add(Triple(nextRow, nextCol, nextDistance) to remainingK)
+        val nextRemainingK =
+          when {
+            remainingK > 0 && grid[nextRow][nextCol] == 1 -> remainingK - 1
+            grid[nextRow][nextCol] == 0 -> remainingK
+            else -> null
+          }
+        nextRemainingK?.let {
+          val next = Triple(nextRow to nextCol, nextDistance, it)
+          if (next !in visited) {
+            visited += next
+            pq.add(next)
+          }
         }
       }
   }

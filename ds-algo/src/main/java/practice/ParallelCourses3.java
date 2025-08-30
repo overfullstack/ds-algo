@@ -8,9 +8,7 @@ import java.util.Set;
 
 /* 30 Aug 2025 12:40 */
 
-/**
- * [2050. Parallel Courses III](https://leetcode.com/problems/parallel-courses-iii)
- */
+/** [2050. Parallel Courses III](https://leetcode.com/problems/parallel-courses-iii) */
 public class ParallelCourses3 {
 	public int minimumTime(int n, int[][] relations, int[] time) {
 		var diGraph = new HashMap<Integer, Set<Integer>>();

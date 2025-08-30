@@ -1,45 +1,74 @@
 package leetcode.graph
 
 import ds.graph.EdgeWeightedDiGraph
-import java.util.PriorityQueue
-import utils.toTriple
+import java.util.*
 
 /* 05 Aug 2025 15:57 */
 
 /**
  * [787. Cheapest Flights Within K
- * Stops](https://leetcode.com/problems/cheapest-flights-within-k-stops/) ⏰ TLE
+ * Stops](https://leetcode.com/problems/cheapest-flights-within-k-stops/)
  */
 fun findCheapestPrice(n: Int, flights: Array<IntArray>, src: Int, dst: Int, k: Int): Int {
-  val edgeWeightedDiGraph: EdgeWeightedDiGraph<Int> =
-    EdgeWeightedDiGraph(flights.map { it.toTriple() })
+  val edgeWeightedDiGraph: EdgeWeightedDiGraph<Int> = EdgeWeightedDiGraph(flights)
   val pq = PriorityQueue(compareBy<Triple<Int, Int, Int>> { it.second })
-  pq.add(Triple(src, 0, k))
-  var minDistance = Int.MAX_VALUE
+  // ! This works even without `visited`, but it helps perf, by pruning duplicate states
+  val visited = mutableSetOf<Triple<Int, Int, Int>>()
+  val start = Triple(src, 0, k + 1)
+  pq.add(start) // ! `k + 1` including the current stop
+  visited += start
   while (pq.isNotEmpty()) {
-    val (from, priceFromSource, k) = pq.poll()
-    // ! Don't terminate early, allow all paths to be processed
+    val (from, priceFromSource, remainingStops) = pq.poll()
     if (from == dst) {
-      minDistance = minOf(minDistance, priceFromSource)
+      return priceFromSource
     }
-    if (k >= 0) {
-      edgeWeightedDiGraph[from]?.forEach { (to, priceFromToTo) ->
-        val nextPrice = priceFromSource + priceFromToTo
-        // * We just need to prune the destination reaching edges.
-        // ! Any edge beyond minDistance can't lead to destination faster than already recorded
-        // * Others stay towards the end of pq and get ignored as they dequeue
-        if (nextPrice < minDistance) {
-          pq.add(Triple(to, nextPrice, k - 1))
+    if (remainingStops > 0) { // ! `> 0` as we enqueued `k + 1` for src
+      edgeWeightedDiGraph[from]
+        ?.asSequence()
+        ?.map { (to, priceFromToTo) ->
+          Triple(to, priceFromSource + priceFromToTo, remainingStops - 1)
+        }
+        // ! No tracking of global `priceFromSource` and no check `< curPriceFromSource`
+        // ! as we let all the possible paths to be enqueued in the ascending order of
+        // ! `priceFromSource` and the first path with `remainingStops > 0` reaches the destination
+        ?.filter { it !in visited }
+        ?.forEach {
+          visited += it
+          pq.add(it)
+        }
+    }
+  }
+  return -1
+}
+
+fun findCheapestPriceOptimized(n: Int, flights: Array<IntArray>, src: Int, dst: Int, k: Int): Int {
+  val edgeWeightedDiGraph =
+    flights.groupBy({ it[0] }, { it[1] to it[2] }).mapValues { it.value.toMap() }
+  val pq = PriorityQueue(compareBy<IntArray> { it[1] })
+  val visited = mutableSetOf<String>()
+  pq.add(intArrayOf(src, 0, k + 1)) // ! `k + 1` including the current stop
+  while (pq.isNotEmpty()) {
+    val current = pq.poll()
+    val stateKey = current.contentToString()
+    if (stateKey !in visited) {
+      visited += stateKey
+      val (from, priceFromSource, remainingStops) = current
+      if (from == dst) {
+        return priceFromSource
+      }
+      if (remainingStops > 0) { // ! `> 0` as we enqueued `k + 1` for src
+        edgeWeightedDiGraph[from]?.forEach { (to, priceFromToTo) ->
+          pq.add(intArrayOf(to, priceFromSource + priceFromToTo, remainingStops - 1))
         }
       }
     }
   }
-  return if (minDistance == Int.MAX_VALUE) -1 else minDistance
+  return -1
 }
 
 fun main() {
   println(
-    findCheapestPrice(
+    findCheapestPriceOptimized(
       4,
       arrayOf(
         intArrayOf(0, 1, 100),
@@ -54,7 +83,7 @@ fun main() {
     )
   ) // 700
   println(
-    findCheapestPrice(
+    findCheapestPriceOptimized(
       3,
       arrayOf(intArrayOf(0, 1, 100), intArrayOf(1, 2, 100), intArrayOf(0, 2, 500)),
       0,
@@ -63,7 +92,7 @@ fun main() {
     )
   ) // 200
   println(
-    findCheapestPrice(
+    findCheapestPriceOptimized(
       11,
       arrayOf(
         intArrayOf(0, 3, 3),
