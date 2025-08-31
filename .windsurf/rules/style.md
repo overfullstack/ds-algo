@@ -4,6 +4,13 @@ description:
 globs: 
 ---
 
+# CRITICAL: Coding Problem Rules
+- **MUST FOLLOW**: For all coding problems, follow `.cursor/rules/coding-problem-rules.md`
+- **Start Simple**: Default to simplest solution (20-50 lines typical)
+- **Avoid Over-Engineering**: No unnecessary abstractions or complex patterns
+- **Pattern Match First**: Check for existing solutions (e.g., NumberOfClosedIslands.java)
+- **Typical Sizes**: Easy: 15-30 lines, Medium: 30-80 lines, Hard: 50-150 lines
+
 # Functional Programming Patterns
 - Keep functional code simple: avoid nested functions, unnecessary data classes, and over-engineered chains
 - Use this codebase's functional style: pure functions, sequences/streams, immutable state

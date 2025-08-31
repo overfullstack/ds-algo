@@ -2,7 +2,108 @@
 alwaysApply: true
 ---
 
-# Java-Specific Patterns
+# Coding Problem Solution Rules
+
+## Core Principles
+
+### 1. **Start Simple, Always**
+- **FIRST** provide the simplest working solution (20-50 lines typical)
+- **AVOID** premature optimization or over-engineering
+- **PREFER** readability to marginal performance gains
+- **Pattern Recognition**: Check for existing patterns in codebase before creating new solutions
+- If a problem is similar to an existing LeetCode problem, follow that pattern
+
+### 2. **Solution Complexity Guidelines**
+
+#### Typical Problem Sizes:
+- **Easy problems**: 15-30 lines
+- **Medium problems**: 30-80 lines
+- **Hard problems**: 50-150 lines
+
+#### Red Flags - Solution is Too Complex If:
+- Solution exceeds 100 lines for a typical interview problem
+- Using multiple data structures when one suffices
+- Multiple passes when single pass works
+- Complex state tracking for simple problems
+- More than 3-4 helper functions for medium problems
+
+### 3. **Pattern Recognition First**
+Before coding, check if the problem matches:
+- Existing patterns in the codebase
+- Standard algorithms (Two Pointers, Sliding Window, DFS/BFS, etc.)
+- Similar LeetCode problems
+
+### 7. **Comments and Documentation**
+
+#### Comment Requirements:
+- Explain "why" not "what"
+- Mark critical algorithm steps
+- Note edge cases being handled
+- Explain complex calculations
+- NO JavaDoc/KDoc unless requested
+
+### 8. **Solution Progression**
+
+1. **Default**: Provide the simplest working solution
+2. **If Asked**: Mention possible optimizations
+3. **Only If Requested**: Provide optimized version
+
+### 9. **Anti-Patterns to Avoid**
+
+❌ **DON'T**:
+- Create unnecessary abstractions
+- Use complex data structures for simple problems
+- Write generic solutions for specific problems
+- Add features not requested
+- Optimize prematurely
+- Create multiple classes for single-file problems
+
+✅ **DO**:
+- Write direct, readable code
+- Use built-in functions and standard library
+- Keep it simple and maintainable
+- Match existing codebase patterns
+- Test with provided examples
+
+### 10. **When in Doubt**
+
+Ask yourself:
+1. Can this be solved in fewer lines?
+2. Would a junior developer understand this?
+3. Is every line necessary?
+4. Am I solving the actual problem or a general case?
+
+**Remember**: A 30-line clear solution beats a 300-line "clever" solution every time.
+
+## Examples
+
+### Good: Simple and Direct
+```kotlin
+fun countLakes(matrix: Array<IntArray>): Int {
+    val grid = matrix.map { it.clone() }.toTypedArray()
+    
+    // Flood-fill boundary water
+    for (row in grid.indices) {
+        floodFill(grid, row, 0)
+        floodFill(grid, row, grid[0].lastIndex)
+    }
+    // ... rest of simple solution
+}
+```
+
+### Bad: Over-Engineered
+```kotlin
+class IslandAnalyzer<T>(
+    private val matrix: Matrix<T>,
+    private val visitor: CellVisitor<T>
+) {
+    private val boundingBoxCalculator = BoundingBoxCalculator()
+    private val waterClassifier = WaterRegionClassifier()
+    // ... unnecessary complexity
+}
+```
+
+## Java-Specific Patterns
 - Prioritize **simplicity** and **readability** above all else. Do not trade readability for memory or performance efficiency, such as using Bitmask.
 - Use **Modern and Latest Java syntax available**. Some examples are:
   - Use HashMap operations like `merge`, `computeIfPresent`, `computeIfAbsent` etc.
