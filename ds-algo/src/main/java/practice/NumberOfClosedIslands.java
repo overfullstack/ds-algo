@@ -39,7 +39,7 @@ public class NumberOfClosedIslands {
 		grid[row][col] = 1;
 		Arrays.stream(directions)
 				.map(d -> new int[] {d[0] + row, d[1] + col})
-				.filter(nextCell -> isValid(nextCell, grid) && grid[nextCell[0]][nextCell[1]] == 0)
+				.filter(nextCell -> isValid(nextCell, grid))
 				.forEach(landCell -> floodFill(landCell[0], landCell[1], grid));
 	}
 

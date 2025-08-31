@@ -5,33 +5,30 @@ import java.util.Arrays;
 /** [1140. Stone Game II](https://leetcode.com/problems/stone-game-ii/) */
 public class StoneGame2 {
 	public int stoneGameII(int[] piles) {
-		var prefixSum = Arrays.copyOf(piles, piles.length);
-		for (var i = prefixSum.length - 2; i >= 0; i--) {
-			prefixSum[i] += prefixSum[i + 1];
+		var suffixSum = Arrays.copyOf(piles, piles.length);
+		for (var i = suffixSum.length - 2; i >= 0; i--) {
+			suffixSum[i] += suffixSum[i + 1];
 		}
-		return maxStones(prefixSum, 0, 1, new int[piles.length][piles.length]);
+		return maxStonesForTurn(suffixSum, 0, 1, new int[piles.length][piles.length]);
 	}
 
 	// * This builds from last to first, so your outcome can be derived from opponent's max outcome.
 	// * This is a DFS where we explore all possible paths with the `x` loop
-	private static int maxStones(int[] prefixSum, int startIdx, int m, int[][] memo) {
-		if (startIdx + 2 * m - 1 >= prefixSum.length - 1) {
-			return prefixSum[startIdx]; // All stones including startIdx
+	private static int maxStonesForTurn(int[] suffixSum, int startIdx, int m, int[][] memo) {
+		if (startIdx + 2 * m - 1 >= suffixSum.length - 1) {
+			return suffixSum[startIdx]; // ! All stones in `startIdx..lastIndex`
 		}
 		if (memo[startIdx][m] != 0) {
 			return memo[startIdx][m];
 		}
 		var maxStones = 0;
 		for (var x = 1; x <= 2 * m; x++) { // ! Pick one or more including startIdx
-			var pickStonesFromXPiles = prefixSum[startIdx] - prefixSum[startIdx + x];
 			maxStones =
 					Math.max(
 							maxStones,
-							pickStonesFromXPiles
-									// ! If you picked `x`, left over stones after opponent's picked max for his turn
-									// ! starting with `startIdx + x` and `m = max(m, x) - problem specific`
-									+ prefixSum[startIdx + x]
-									- maxStones(prefixSum, startIdx + x, Math.max(m, x), memo)); // ! Max for opponent
+							// ! (Total stones left from `startIdx..lastIndex`) - (Max for opponent's turn)
+							suffixSum[startIdx]
+									- maxStonesForTurn(suffixSum, startIdx + x, Math.max(m, x), memo));
 		}
 		memo[startIdx][m] = maxStones;
 		return maxStones;

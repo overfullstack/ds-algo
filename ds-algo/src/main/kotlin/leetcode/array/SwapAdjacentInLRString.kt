@@ -2,6 +2,7 @@ package leetcode.array
 
 /* 31 Jul 2025 12:55 */
 
+/** [777. Swap Adjacent in LR String](https://leetcode.com/problems/swap-adjacent-in-lr-string) */
 fun canTransform(start: String, end: String): Boolean {
   if (start.replace("X", "") != end.replace("X", "")) {
     return false

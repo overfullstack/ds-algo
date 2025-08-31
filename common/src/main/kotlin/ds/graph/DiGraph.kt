@@ -32,10 +32,7 @@ class DiGraph<T>(
 
   fun bfs(valToSearch: T): Boolean {
     val visited = mutableSetOf<T>()
-    return adjacencyMap.keys
-      .asSequence()
-      .filter { it !in visited }
-      .any { bfsPerGroup(valToSearch, visited, ArrayDeque(listOf(it))) }
+    return adjacencyMap.keys.any { bfsPerGroup(valToSearch, visited, ArrayDeque(listOf(it))) }
   }
 
   private tailrec fun bfsPerGroup(
@@ -62,21 +59,16 @@ class DiGraph<T>(
 
   fun dfs(valToSearch: T): Boolean {
     val visited = mutableSetOf<T>()
-    return adjacencyMap.keys
-      .asSequence()
-      .filter { it !in visited }
-      .any { dfsPerGroup(it, valToSearch, visited) }
+    return adjacencyMap.keys.any { dfsPerGroup(it, valToSearch, visited) }
   }
 
   private fun dfsPerGroup(currentNode: T, valToSearch: T, visited: MutableSet<T>): Boolean =
     when (currentNode) {
+      in visited -> false
       valToSearch -> true
       else -> {
         visited += currentNode
-        adjacencyMap[currentNode]
-          ?.asSequence()
-          ?.filter { it !in visited }
-          ?.any { dfsPerGroup(it, valToSearch, visited) } ?: false
+        adjacencyMap[currentNode]?.any { dfsPerGroup(it, valToSearch, visited) } ?: false
       }
     }
 
@@ -114,7 +106,6 @@ class DiGraph<T>(
     val visited = mutableSetOf<T>()
     return adjacencyMap.keys
       .asSequence()
-      .filter { it !in visited }
       .mapNotNull { dfsWithPathPerGroup(it, valToSearch, visited, emptyList()) }
       .firstOrNull()
   }
@@ -126,13 +117,13 @@ class DiGraph<T>(
     currentPath: List<T>,
   ): List<T>? =
     when (currentNode) {
+      in visited -> null
       valToSearch -> currentPath + currentNode
       else -> {
         visited += currentNode
         val newPath = currentPath + currentNode
         adjacencyMap[currentNode] // ! leaf nodes return null
           ?.asSequence()
-          ?.filter { it !in visited }
           ?.mapNotNull { dfsWithPathPerGroup(it, valToSearch, visited, newPath) }
           ?.firstOrNull()
       }

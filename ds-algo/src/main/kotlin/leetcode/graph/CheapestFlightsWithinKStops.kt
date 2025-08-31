@@ -33,6 +33,8 @@ fun findCheapestPrice(n: Int, flights: Array<IntArray>, src: Int, dst: Int, k: I
         // ! `priceFromSource` and the first path with `remainingStops > 0` reaches the destination
         ?.filter { it !in visited }
         ?.forEach {
+          // ! Immediately add to `visited` instead of waiting until it is dequeued.
+          // ! This helps prevent many duplicate entries in pq
           visited += it
           pq.add(it)
         }
