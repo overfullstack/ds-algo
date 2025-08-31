@@ -1,19 +1,19 @@
 /* gakshintala created on 9/6/19 */
-package techniques.sumforrange
+package ds.segment
 
 import kotlin.math.sqrt
 
-class SquareRootDecompositionSum(var arr: MutableList<Int>) {
-  private var sumArr = mutableListOf<Int>()
+class SquareRootDecompositionSum(val arr: IntArray) {
+  private var sumArr = IntArray(arr.size) { 0 }
   private var chunkSize: Int = 0
 
-  fun preProcess() {
+  init {
     chunkSize = sqrt(arr.size.toDouble()).toInt()
-    sumArr = arr.asSequence().chunked(chunkSize).map { it.sum() }.toMutableList()
+    sumArr = arr.asSequence().chunked(chunkSize).map { it.sum() }.toList().toIntArray()
   }
 
-  fun query(startIndex: Int, endIndex: Int): Int {
-    if (startIndex > endIndex || startIndex < 0 || endIndex > arr.lastIndex) {
+  fun querySum(startIndex: Int, endIndex: Int): Int {
+    if (startIndex !in 0..endIndex || endIndex > arr.lastIndex) {
       return -1
     }
     if (startIndex == endIndex) {
@@ -39,12 +39,11 @@ class SquareRootDecompositionSum(var arr: MutableList<Int>) {
 }
 
 fun main() {
-  val arr = readln().split(",").map { it.trim().toInt() }
-  val squareRootDecomposition = SquareRootDecompositionSum(arr as MutableList<Int>)
-  squareRootDecomposition.preProcess()
+  val arr = readln().split(",").map { it.trim().toInt() }.toIntArray()
+  val squareRootDecomposition = SquareRootDecompositionSum(arr)
   val noOfQueries = readln().trim().toInt()
   repeat(noOfQueries) {
     val (startIndex, endIndex) = readln().split(",").map { it.trim().toInt() }
-    println(squareRootDecomposition.query(startIndex, endIndex))
+    println(squareRootDecomposition.querySum(startIndex, endIndex))
   }
 }

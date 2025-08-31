@@ -1,31 +1,31 @@
 /* gakshintala created on 9/9/19 */
-package techniques.sumforrange
+package ds.segment
 
 import kotlin.math.ceil
 import kotlin.math.log2
 import kotlin.math.pow
 
-class SegmentTreeSum(var arr: IntArray) {
-  private var segmentTree = IntArray(2 * 2.0.pow(ceil(log2(arr.size.toDouble()))).toInt() - 1)
+class SegmentTreeSum(val nums: IntArray) {
+  // 2 * 2^ceil(log2(arr.size)) - 1
+  private var segmentTree = IntArray(2 * 2.0.pow(ceil(log2(nums.size.toDouble()))).toInt() - 1)
 
-  fun process() {
-    construct(0, 0, arr.lastIndex)
+  init {
+    construct(0, 0, nums.lastIndex)
   }
 
-  private fun construct(segmentTreeIndex: Int, startIndex: Int, endIndex: Int): Int {
-    segmentTree[segmentTreeIndex] =
-      if (startIndex == endIndex) {
-        arr[startIndex]
-      } else { // Going into mids of mids and ending up at individual arr elements.
+  private fun construct(segmentTreeIndex: Int, startIndex: Int, endIndex: Int): Int =
+    when (startIndex) {
+      endIndex -> nums[startIndex]
+      else -> {
         val mid = (startIndex + endIndex) / 2
-        construct(2 * segmentTreeIndex + 1, startIndex, mid) +
-          construct(2 * segmentTreeIndex + 2, mid + 1, endIndex)
+        val leftSegmentSum = construct(2 * segmentTreeIndex + 1, startIndex, mid)
+        val rightSegmentSum = construct(2 * segmentTreeIndex + 2, mid + 1, endIndex)
+        leftSegmentSum + rightSegmentSum
       }
-    return segmentTree[segmentTreeIndex]
-  }
+    }.also { segmentTree[segmentTreeIndex] = it }
 
   fun querySum(startIndex: Int, endIndex: Int): Int {
-    return getSumForRange(0, arr.lastIndex, startIndex, endIndex, 0)
+    return getSumForRange(0, nums.lastIndex, startIndex, endIndex, 0)
   }
 
   private fun getSumForRange(
@@ -35,27 +35,26 @@ class SegmentTreeSum(var arr: IntArray) {
     queryEndIndex: Int,
     segmentTreeIndex: Int,
   ): Int {
+    // * Segment is a piece of the query range
     if (queryStartIndex <= segmentStart && queryEndIndex >= segmentEnd) {
       return segmentTree[segmentTreeIndex]
     }
     if (queryStartIndex > segmentEnd || queryEndIndex < segmentStart) {
       return 0
     }
+    // * Break the segment and locate segment pieces that are part of and make-up the query range.
     val mid = (segmentStart + segmentEnd) / 2
-    return getSumForRange(
-      segmentStart,
-      mid,
-      queryStartIndex,
-      queryEndIndex,
-      2 * segmentTreeIndex + 1,
-    ) +
+    val leftSegmentSum =
+      getSumForRange(segmentStart, mid, queryStartIndex, queryEndIndex, 2 * segmentTreeIndex + 1)
+    val rightSegmentSum =
       getSumForRange(mid + 1, segmentEnd, queryStartIndex, queryEndIndex, 2 * segmentTreeIndex + 2)
+    return leftSegmentSum + rightSegmentSum
   }
 
   fun update(index: Int, value: Int) {
-    val diff = value - arr[index]
-    arr[index] = value
-    updateIndex(index, diff, 0, arr.lastIndex, 0)
+    val diff = value - nums[index]
+    nums[index] = value
+    updateIndex(index, diff, 0, nums.lastIndex, 0)
   }
 
   private fun updateIndex(
@@ -65,9 +64,10 @@ class SegmentTreeSum(var arr: IntArray) {
     segmentEnd: Int,
     segmentTreeIndex: Int,
   ) {
-    if (index < segmentStart || index > segmentEnd) {
+    if (index !in segmentStart..segmentEnd) {
       return
     }
+    // * Update the diff in all segments that contain the index.
     segmentTree[segmentTreeIndex] += diff
     if (segmentStart != segmentEnd) {
       val mid = (segmentStart + segmentEnd) / 2
@@ -80,12 +80,8 @@ class SegmentTreeSum(var arr: IntArray) {
 fun main() {
   val arr = readln().split(",").map { it.trim().toInt() }.toIntArray()
   val segmentTree = SegmentTreeSum(arr)
-  segmentTree.process()
-
   queries(segmentTree)
-
   updates(segmentTree)
-
   queries(segmentTree)
 }
 
