@@ -8,8 +8,8 @@ public class MaximizeDistanceToClosestPerson {
 		var res = Integer.MIN_VALUE;
 		for (var i = 0; i < seats.length; i++) {
 			if (seats[i] == 1) {
-				res =
-						startIdx < 0 ? i : Math.max(res, (i - startIdx) / 2); // div 2, sit in the window middle
+        // ! div 2 indicates to sit in the window middle
+				res = startIdx < 0 ? i : Math.max(res, (i - startIdx) / 2); 
 				startIdx = i;
 			}
 		}

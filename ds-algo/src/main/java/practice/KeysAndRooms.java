@@ -10,10 +10,11 @@ import java.util.Set;
 public class KeysAndRooms {
   public boolean canVisitAllRooms(List<List<Integer>> rooms) {
     var visited = new HashSet<Integer>();
-    dfs(0, rooms, visited);
+    dfs(0, rooms, visited); // all the rooms are locked except for room 0
     return visited.size() == rooms.size();
   }
 
+  // ! We can't do similar to CourseSchedule as it has cases like `[[1],[1]]`
   private static void dfs(int node, List<List<Integer>> rooms, Set<Integer> visited) {
     visited.add(node);
     rooms.get(node).stream().filter(v -> !visited.contains(v)).forEach(v -> dfs(v, rooms, visited));
