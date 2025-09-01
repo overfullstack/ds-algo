@@ -8,6 +8,7 @@ class BiDiGraph<T>(
   private val adjacencyMap: MutableMap<T, Set<T>> = mutableMapOf(),
 ) : MutableMap<T, Set<T>> by adjacencyMap {
 
+  // ! TODO 01 Sep 2025 gopala.akshintala: Improve perf for isNodeTypePrimitive = false
   val allNodes: Set<T>
     get() = adjacencyMap.keys + adjacencyMap.values.flatten()
 

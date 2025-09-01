@@ -26,6 +26,7 @@ class EdgeWeightedDiGraph<T>(
     data.forEach { (source, destination, weight) -> addEdge(source as T, destination as T, weight) }
   }
 
+  // ! TODO 01 Sep 2025 gopala.akshintala: Improve perf for isNodeTypePrimitive = false
   val allNodes: Set<T>
     get() = adjacencyMap.keys + adjacencyMap.values.flatten().map { it.destination }
 
