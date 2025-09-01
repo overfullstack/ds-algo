@@ -1,16 +1,16 @@
 package leetcode.greedy
 
 /**
- * https://leetcode.com/problems/car-pooling/ trips: arr[No.of Passengers, Start, End] Is it
- * possible to pick up and drop off all passengers for all the given trips
+ * [1094. Car Pooling](https://leetcode.com/problems/car-pooling/) trips: arr[No.of Passengers,
+ * Start, End] Is it possible to pick up and drop off all passengers for all the given trips
  */
 fun carPooling(trips: Array<IntArray>, capacity: Int): Boolean {
-  val tripsSortedByOrigin = trips.map { Triple(it[0], it[1], it[2]) }.sortedBy { it.second }
+  val tripsSortedByOrigin = trips.sortedBy { it[1] }
   // * This stores the net on-boarding at every point.
   val map = sortedMapOf<Int, Int>() // ! This is a SortedMap
   for ((passengersCount, start, end) in tripsSortedByOrigin) {
     map.merge(start, passengersCount, Int::plus)
-    map.merge(end, -passengersCount, Int::plus)
+    map.merge(end, passengersCount, Int::minus)
   }
   return map.values.asSequence().runningReduce(Int::plus).all { it <= capacity }
 }

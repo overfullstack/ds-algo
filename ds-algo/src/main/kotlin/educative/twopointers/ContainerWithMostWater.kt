@@ -2,6 +2,7 @@ package educative.twopointers
 
 /* 28 Jul 2025 08:26 */
 
+/** [11. Container With Most Water](https://leetcode.com/problems/container-with-most-water/) */
 fun containerWithMostWater(heights: IntArray): Int {
   var maxArea = 0
   var left = 0

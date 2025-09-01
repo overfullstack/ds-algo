@@ -22,7 +22,7 @@ fun numBusesToDestination(routes: Array<IntArray>, source: Int, destination: Int
   queue.add(source to 0)
   val visitedRouteIds = mutableSetOf<Int>()
   while (queue.isNotEmpty()) {
-    val (station, busCount) = queue.removeLast()
+    val (station, busCount) = queue.removeFirst()
     if (station == destination) {
       return busCount
     }
@@ -33,4 +33,18 @@ fun numBusesToDestination(routes: Array<IntArray>, source: Int, destination: Int
       ?.forEach { station -> queue.add((station to busCount + 1)) }
   }
   return -1
+}
+
+fun main() {
+  val routes =
+    arrayOf(
+      intArrayOf(0, 1, 6, 16, 22, 23),
+      intArrayOf(14, 15, 24, 32),
+      intArrayOf(4, 10, 12, 20, 24, 28, 33),
+      intArrayOf(1, 10, 11, 19, 27, 33),
+      intArrayOf(11, 23, 25, 28),
+      intArrayOf(15, 20, 21, 23, 29),
+      intArrayOf(29),
+    )
+  println(numBusesToDestination(routes, 4, 21)) // 2
 }

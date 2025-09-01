@@ -2,6 +2,7 @@ package educative.elegant.unionfind
 
 /* 05 Sep 2024 16:22 */
 
+/** [200. Number of Islands](https://leetcode.com/problems/number-of-islands/) */
 fun numberOfIslands(grid: Array<IntArray>): Int {
   val unionFind = UnionFind(grid)
   grid.indices

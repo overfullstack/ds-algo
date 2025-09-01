@@ -8,10 +8,11 @@ import utils.toPair
 
 /**
  * [1192. Critical Connections in a
- * Network](https://leetcode.com/problems/critical-connections-in-a-network/) ⏱️Time limit exceeded
+ * Network](https://leetcode.com/problems/critical-connections-in-a-network/) ⏰TLE
  */
 fun criticalConnections(n: Int, connections: List<List<Int>>): List<List<Int>> {
-  val graph = BiDiGraph(connections.map { it.map { TarjanNode(it) }.toPair() })
+  // ! isNodeTypePrimitive = false
+  val graph = BiDiGraph(connections.map { it.map { TarjanNode(it) }.toPair() }, false)
 
   val visited = mutableSetOf<TarjanNode>()
   val bridges = mutableListOf<Pair<Int, Int>>()

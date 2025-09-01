@@ -1,6 +1,8 @@
 package educative.elegant.unionfind
 
 /* 16 Sep 2024 15:47 */
+
+/** [684. Redundant Connection](https://leetcode.com/problems/redundant-connection/) */
 fun redundantConnection(edges: List<Pair<Int, Int>>): Pair<Int, Int> {
   val max = edges.flatMap { it.toList() }.max()
   val unionFind = UnionFind5(max + 1) // ! `+1` as it's 1-indexed

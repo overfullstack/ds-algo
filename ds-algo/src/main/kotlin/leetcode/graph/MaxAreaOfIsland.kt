@@ -1,5 +1,6 @@
 package leetcode.graph
 
+/** [695. Max Area of Island](https://leetcode.com/problems/max-area-of-island/) */
 fun maxAreaOfIsland(grid: Array<IntArray>): Int =
   grid.indices
     .asSequence()

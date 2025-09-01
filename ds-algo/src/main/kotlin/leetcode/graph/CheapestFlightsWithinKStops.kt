@@ -12,11 +12,10 @@ import java.util.*
 fun findCheapestPrice(n: Int, flights: Array<IntArray>, src: Int, dst: Int, k: Int): Int {
   val edgeWeightedDiGraph: EdgeWeightedDiGraph<Int> = EdgeWeightedDiGraph(flights)
   val pq = PriorityQueue(compareBy<Triple<Int, Int, Int>> { it.second })
-  // ! This works even without `visited`, but it helps perf, by pruning duplicate states
-  val visited = mutableSetOf<Triple<Int, Int, Int>>()
   val start = Triple(src, 0, k + 1)
+  // ! This works even without `visited`, but it helps perf, by pruning duplicate states
+  val visited = mutableSetOf(start)
   pq.add(start) // ! `k + 1` including the current stop
-  visited += start
   while (pq.isNotEmpty()) {
     val (from, priceFromSource, remainingStops) = pq.poll()
     if (from == dst) {
@@ -33,8 +32,8 @@ fun findCheapestPrice(n: Int, flights: Array<IntArray>, src: Int, dst: Int, k: I
         // ! `priceFromSource` and the first path with `remainingStops > 0` reaches the destination
         ?.filter { it !in visited }
         ?.forEach {
-          // ! Immediately add to `visited` instead of waiting until it is dequeued.
-          // ! This helps prevent many duplicate entries in pq
+          // ! Premature `visited` instead of waiting until it is dequeued.
+          // ! This helps prevent many duplicate state combos (node, price, remainingStops) in pq
           visited += it
           pq.add(it)
         }

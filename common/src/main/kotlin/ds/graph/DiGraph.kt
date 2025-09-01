@@ -1,29 +1,34 @@
 package ds.graph
 
 import com.salesforce.revoman.input.readFileToString
-import java.util.*
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
 
 class DiGraph<T>(
+  private val isNodeTypePrimitive: Boolean = true,
   private val adjacencyMap: MutableMap<T, Set<T>> = mutableMapOf(),
-  val isPrimitiveType: Boolean = false,
 ) : MutableMap<T, Set<T>> by adjacencyMap {
 
   val allNodes: Set<T>
     get() = adjacencyMap.keys + adjacencyMap.values.flatten()
 
-  constructor(edges: Iterable<Pair<T, T>>) : this() {
+  constructor(
+    edges: Iterable<Pair<T, T>>,
+    isNodeTypePrimitive: Boolean = true,
+  ) : this(isNodeTypePrimitive) {
     edges.forEach { (source, destination) -> addEdge(source, destination) }
   }
 
-  constructor(edges: Array<Pair<T, T>>) : this() {
+  constructor(
+    edges: Array<Pair<T, T>>,
+    isNodeTypePrimitive: Boolean = true,
+  ) : this(isNodeTypePrimitive) {
     edges.forEach { (source, destination) -> addEdge(source, destination) }
   }
 
   fun addEdge(source: T, destination: T) {
     val actualDestination =
-      if (isPrimitiveType) destination
+      if (isNodeTypePrimitive) destination
       else allNodes.firstOrNull { it == destination } ?: destination
     adjacencyMap.merge(source, setOf(actualDestination), Set<T>::plus)
   }
@@ -43,7 +48,7 @@ class DiGraph<T>(
     when {
       queue.isEmpty() -> false
       else -> {
-        when (val node = queue.poll()) {
+        when (val node = queue.removeFirst()) {
           valToSearch -> true
           // Skip this node, NoOp recursion with a polled queue
           in visited -> bfsPerGroup(valToSearch, visited, queue)
@@ -303,7 +308,7 @@ class DiGraph<T>(
       }
     }
 
-    return DiGraph(transposeAdjacency)
+    return DiGraph(adjacencyMap = transposeAdjacency)
   }
 
   /** DETECT CYCLE -> */
@@ -347,7 +352,8 @@ class DiGraph<T>(
       val graphJson = readFileToString(jsonFilePath)
       val jGraph = Json.decodeFromString<JDiGraph>(graphJson)
       return DiGraph(
-        jGraph.graph.nodes.associate { it.value to it.children.toSet() }.toMutableMap()
+        adjacencyMap =
+          jGraph.graph.nodes.associate { it.value to it.children.toSet() }.toMutableMap()
       )
     }
   }

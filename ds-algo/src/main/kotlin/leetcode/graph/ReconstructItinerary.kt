@@ -6,13 +6,12 @@ import java.util.*
 
 /** [332. Reconstruct Itinerary](https://leetcode.com/problems/reconstruct-itinerary/) */
 fun findItinerary(tickets: List<List<String>>): List<String> {
-  val graph =
-    tickets.groupBy({ it[0] }, { it[1] }).mapValues { PriorityQueue(it.value) }.toMutableMap()
+  val graph = tickets.groupBy({ it[0] }, { it[1] }).mapValues { PriorityQueue(it.value) }
   return dfsPostOrder("JFK", graph).reversed()
 }
 
 // ! Post order for Eulerian path
-fun dfsPostOrder(airport: String, graph: MutableMap<String, PriorityQueue<String>>): List<String> =
+fun dfsPostOrder(airport: String, graph: Map<String, PriorityQueue<String>>): List<String> =
   generateSequence { graph[airport]?.poll() }
     .flatMap { nextAirport -> dfsPostOrder(nextAirport, graph) }
     .toList() + airport

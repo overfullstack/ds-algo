@@ -6,17 +6,23 @@ import java.util.*
 /* 15 Jul 2025 15:36 */
 
 class EdgeWeightedDiGraph<T>(
+  private val isNodeTypePrimitive: Boolean = true,
   private val adjacencyMap: MutableMap<T, Set<WeightedEdge<T>>> = mutableMapOf(),
-  val isPrimitiveType: Boolean = false,
 ) : MutableMap<T, Set<WeightedEdge<T>>> by adjacencyMap {
 
   data class WeightedEdge<T>(val destination: T, val weight: Int)
 
-  constructor(data: List<Triple<T, T, Int>>) : this() {
+  constructor(
+    data: List<Triple<T, T, Int>>,
+    isNodeTypePrimitive: Boolean = true,
+  ) : this(isNodeTypePrimitive) {
     data.forEach { (source, destination, weight) -> addEdge(source, destination, weight) }
   }
 
-  constructor(data: Array<IntArray>) : this() {
+  constructor(
+    data: Array<IntArray>,
+    isNodeTypePrimitive: Boolean = true,
+  ) : this(isNodeTypePrimitive) {
     data.forEach { (source, destination, weight) -> addEdge(source as T, destination as T, weight) }
   }
 
@@ -25,7 +31,7 @@ class EdgeWeightedDiGraph<T>(
 
   fun addEdge(source: T, destination: T, weight: Int) {
     val actualDestination =
-      if (isPrimitiveType) destination
+      if (isNodeTypePrimitive) destination
       else allNodes.firstOrNull { it == destination } ?: destination
     adjacencyMap.merge(
       source,

@@ -2,10 +2,7 @@ package leetcode.graph
 
 import kotlin.math.pow
 
-/**
- * De Bruijn sequence generation using functional DFS
- * [753. Cracking the Safe](https://leetcode.com/problems/cracking-the-safe/)
- */
+/** [753. Cracking the Safe](https://leetcode.com/problems/cracking-the-safe/) */
 fun crackSafe(n: Int, k: Int): String =
   when (n) {
     1 -> (0 until k).joinToString("")

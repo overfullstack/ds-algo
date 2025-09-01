@@ -13,7 +13,7 @@ class NQueensTest :
   StringSpec({
     "n Queens" {
       parseJsonFileToTestCases("$PKG_PATH/test-cases-1.json").forAll { (n, output) ->
-        nQueens(n) shouldBe output
+        nQueensCombinationCount(n) shouldBe output
       }
     }
   })
