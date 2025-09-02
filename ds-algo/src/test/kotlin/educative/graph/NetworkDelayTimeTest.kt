@@ -4,7 +4,6 @@ import io.kotest.core.spec.style.StringSpec
 import io.kotest.inspectors.forAll
 import io.kotest.matchers.shouldBe
 import testcase.LListIntIntToInt.Companion.parseJsonFileToTestCases
-import utils.toTriple
 
 /* 15 Jul 2025 16:37 */
 
@@ -15,7 +14,7 @@ class NetworkDelayTimeTest :
     "network delay time" {
       parseJsonFileToTestCases("$PKG_PATH/test-cases-1.json").forAll { (input, output) ->
         val (times, n, origin) = input
-        networkDelayTime(times.map { it.toTriple() }, n, origin) shouldBe output
+        networkDelayTime(times.map { it.toIntArray() }.toTypedArray(), n, origin) shouldBe output
       }
     }
   })

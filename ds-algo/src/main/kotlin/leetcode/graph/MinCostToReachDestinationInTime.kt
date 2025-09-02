@@ -1,7 +1,7 @@
 package leetcode.graph
 
 import ds.graph.EdgeWeightedDiGraph
-import java.util.*
+import java.util.PriorityQueue
 
 /* 30 Jul 2025 18:42 */
 
@@ -22,15 +22,18 @@ fun minCost(maxTime: Int, edges: Array<IntArray>, passingFees: IntArray): Int {
 
   while (pq.isNotEmpty()) {
     val (node, timeFromSource, fee) = pq.poll()
-    // ! Early termination
-    if (nodeToTimeFromSource[node]?.let { timeFromSource >= it } ?: false) continue
-    if (node == passingFees.lastIndex) return fee
-    nodeToTimeFromSource[node] = timeFromSource
-    diGraph[node]?.forEach { (to, timeFromNodeToTo) ->
-      val newTime = timeFromSource + timeFromNodeToTo
-      if (newTime <= maxTime && (nodeToTimeFromSource[to]?.let { newTime < it } ?: true)) {
-        val newFee = fee + passingFees[to]
-        pq.add(Triple(to, newTime, newFee))
+    // ! Early termination as pq makes sure first visit is optimal
+    if (node == passingFees.lastIndex) {
+      return fee
+    }
+    if (nodeToTimeFromSource[node]?.let { timeFromSource < it } ?: true) {
+      nodeToTimeFromSource[node] = timeFromSource
+      diGraph[node]?.forEach { (to, timeFromNodeToTo) ->
+        val newTime = timeFromSource + timeFromNodeToTo
+        if (newTime <= maxTime && (nodeToTimeFromSource[to]?.let { newTime < it } ?: true)) {
+          val newFee = fee + passingFees[to]
+          pq.add(Triple(to, newTime, newFee))
+        }
       }
     }
   }

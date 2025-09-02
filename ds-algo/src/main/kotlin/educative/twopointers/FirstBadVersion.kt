@@ -40,7 +40,6 @@ class FirstBadVersion(val firstBadVersionIndex: Int) {
     }
     return right to callCount // return `right`
   }
-
 }
 
 fun main() {

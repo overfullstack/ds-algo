@@ -1,8 +1,6 @@
 package algoexpert.array
 
-/**
- * [704. Binary Search](https://leetcode.com/problems/binary-search/)
- */
+/** [704. Binary Search](https://leetcode.com/problems/binary-search/) */
 fun IntArray.binarySearchRightMost(valueToSearch: Int): Int {
   var left = 0
   var right = lastIndex
@@ -28,8 +26,8 @@ fun IntArray.binarySearchLeftMost(valueToSearch: Int): Int {
   while (left < right) {
     val mid = left + (right - left) / 2
     when {
-        this[mid] >= valueToSearch -> right = mid // ! Right moves towards left
-        else -> left = mid + 1
+      this[mid] >= valueToSearch -> right = mid // ! Right moves towards left
+      else -> left = mid + 1
     }
   }
   // After the loop, `left` is the leftmost index where `this[index] >= valueToSearch`

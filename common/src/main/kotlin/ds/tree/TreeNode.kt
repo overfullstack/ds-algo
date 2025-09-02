@@ -1,7 +1,6 @@
 package ds.tree
 
 import com.salesforce.revoman.input.readFileToString
-import java.util.*
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
 
@@ -144,15 +143,17 @@ constructor(
     }
 
     fun levelOrderToIncompleteTree(levelOrder: List<Int?>): TreeNode? {
-      val valQueue = LinkedList(levelOrder) // ! Can't use ArrayDeque as it doesn't allow nulls.
-      val rootVal = valQueue.poll() ?: return null
+      val valQueue = ArrayDeque(levelOrder)
+      val rootVal = valQueue.removeFirst() ?: return null
       val treeNodeQueue = ArrayDeque<TreeNode>()
       val root = TreeNode(rootVal)
-      treeNodeQueue.push(root)
+      treeNodeQueue.add(root)
       while (valQueue.isNotEmpty()) {
-        val curRoot = treeNodeQueue.poll()
-        curRoot.left = valQueue.poll()?.let { TreeNode(it).also { treeNodeQueue.addLast(it) } }
-        curRoot.right = valQueue.poll()?.let { TreeNode(it).also { treeNodeQueue.addLast(it) } }
+        val curRoot = treeNodeQueue.removeFirst()
+        curRoot.left =
+          valQueue.removeFirst()?.let { TreeNode(it).also { treeNodeQueue.addLast(it) } }
+        curRoot.right =
+          valQueue.removeFirst()?.let { TreeNode(it).also { treeNodeQueue.addLast(it) } }
       }
       return root
     }

@@ -42,7 +42,9 @@ fun dfsPerGroup(
   visited += node
   val allNeighborsExceptParent = graph[node]?.asSequence()?.filter { it != parent }
   val (nextDiscAfterChildren, bridgesFromChildren) =
-    allNeighborsExceptParent?.fold(node.discovery + 1 to emptySequence<Pair<Int, Int>>()) { (time, bridges), neighbor ->
+    allNeighborsExceptParent?.fold(node.discovery + 1 to emptySequence<Pair<Int, Int>>()) {
+      (time, bridges),
+      neighbor ->
       when {
         neighbor in visited -> {
           node.low = minOf(node.low, neighbor.discovery) // ! neighbor.discovery
@@ -51,9 +53,11 @@ fun dfsPerGroup(
         else -> {
           neighbor.discovery = time
           neighbor.low = time
-          val (nextDiscAfterChildren, bridgesFromChildren) = dfsPerGroup(neighbor, graph, visited, node)
+          val (nextDiscAfterChildren, bridgesFromChildren) =
+            dfsPerGroup(neighbor, graph, visited, node)
           node.low = minOf(node.low, neighbor.low) // ! neighbor.low
-          val newBridges = if (neighbor.low > node.discovery) bridges + (node.value to neighbor.value) else bridges
+          val newBridges =
+            if (neighbor.low > node.discovery) bridges + (node.value to neighbor.value) else bridges
           nextDiscAfterChildren to (newBridges + bridgesFromChildren)
         }
       }
@@ -139,5 +143,5 @@ fun main() {
       listOf(5, 3),
     )
   println(criticalConnections(6, connections2)) // [[1, 3]]
-  //println(criticalConnectionsOptimized(6, connections2))
+  // println(criticalConnectionsOptimized(6, connections2))
 }

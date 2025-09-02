@@ -24,7 +24,7 @@ public class MinimumHeightTrees {
 			graph.computeIfAbsent(edge[0], _ -> new HashSet<>()).add(edge[1]);
 			graph.computeIfAbsent(edge[1], _ -> new HashSet<>()).add(edge[0]);
 		}
-    // * This is a kind of Topological traversal with BFS 
+		// * This is a kind of Topological traversal with BFS
 		var leaves =
 				graph.entrySet().stream()
 						.filter(entry -> entry.getValue().size() == 1)
