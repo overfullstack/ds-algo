@@ -26,6 +26,8 @@ alwaysApply: true
 - Multiple passes when single pass works
 - Complex state tracking for simple problems
 - More than 3-4 helper functions for medium problems
+- Method has more than 15 lines
+- Need to scroll to see the entire solution
 
 ### 3. **Pattern Recognition First**
 Before coding, check if the problem matches:

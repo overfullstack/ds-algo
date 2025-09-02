@@ -14,7 +14,7 @@ class BinarySearchTest :
         row(intArrayOf(1, 5, 23, 111), 120, -1),
         row(intArrayOf(0, 1, 21, 33, 45, 45, 61, 71, 72, 73), 73, 9),
       ) { intArray, valueToSearch, result ->
-        intArray.binarySearch(valueToSearch) shouldBe result
+        intArray.binarySearchRightMost(valueToSearch) shouldBe result
       }
     }
     "binary search recursive" {

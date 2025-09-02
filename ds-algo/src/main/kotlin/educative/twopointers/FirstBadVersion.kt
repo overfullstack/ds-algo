@@ -24,6 +24,7 @@ class FirstBadVersion(val firstBadVersionIndex: Int) {
       }
     }
 
+  // * Leftmost where condition is true
   fun firstBadVersionIterative(n: Int): Pair<Int, Int> {
     var left = 1
     var right = n
@@ -31,16 +32,18 @@ class FirstBadVersion(val firstBadVersionIndex: Int) {
     while (left < right) {
       val mid = left + (right - left) / 2
       when {
-        isBadVersion(mid) -> right = mid
+        // ! `right` stays on mid where the condition is true
+        isBadVersion(mid) -> right = mid // ! Condition over right
         else -> left = mid + 1
       }
       callCount++
     }
-    return right to callCount // ! `right` is the answer
+    return right to callCount // return `right`
   }
+
 }
 
 fun main() {
-  val firstBadVersion = FirstBadVersion(10)
-  println(firstBadVersion.firstBadVersion(13))
+  val firstBadVersion = FirstBadVersion(2)
+  println(firstBadVersion.firstBadVersion(5))
 }
