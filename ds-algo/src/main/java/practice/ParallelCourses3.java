@@ -17,6 +17,7 @@ public class ParallelCourses3 {
 			diGraph.computeIfAbsent(relation[0], _ -> new HashSet<>()).add(relation[1]);
 			inDegree[relation[1]]++;
 		}
+    // * Topological sort with BFS
 		var queue = new ArrayDeque<Integer>();
 		var maxTime = new int[n + 1];
 		for (var i = 1; i < inDegree.length; i++) {

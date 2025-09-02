@@ -20,10 +20,11 @@ public class MinimumHeightTrees {
 			return Collections.singletonList(0);
 		}
 		var graph = new HashMap<Integer, Set<Integer>>();
-		for (var edge : edges) {
+		for (var edge : edges) { // ! Undirected BiDiGraph
 			graph.computeIfAbsent(edge[0], _ -> new HashSet<>()).add(edge[1]);
 			graph.computeIfAbsent(edge[1], _ -> new HashSet<>()).add(edge[0]);
 		}
+    // * This is a kind of Topological traversal with BFS 
 		var leaves =
 				graph.entrySet().stream()
 						.filter(entry -> entry.getValue().size() == 1)
