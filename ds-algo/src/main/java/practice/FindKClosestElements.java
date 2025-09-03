@@ -15,7 +15,8 @@ public class FindKClosestElements {
 		// ! `left..right` shirks `mid..<mid+k` window starts inside `left..right` but can extend beyond
 		// ! We keep moving window towards left or right based on which bound value is closer to x
 		// ! to minimize the distance between `x` and window bound values
-		// ! Imagine the window is oscillating around `x` which decreasing amplitude
+		// ! Imagine the window is oscillating around `x` with decreasing amplitude 
+    // ! Trying to find even closer window with lower distances, and finally stops at the leftmost
 		while (left < right) {
 			var mid = left + (right - left) / 2;
 			// ! This is measuring distance from lower and upper bound values (NOT indices)

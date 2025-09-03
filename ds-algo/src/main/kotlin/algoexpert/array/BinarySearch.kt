@@ -8,9 +8,8 @@ fun IntArray.binarySearchRightMost(valueToSearch: Int): Int {
   while (left <= right) {
     val mid = (left + right) / 2
     when {
-      // * This handles duplicates also by returning right most index
-      // * instead of instantly returning `mid` when match found
-      this[mid] <= valueToSearch -> left = mid + 1 // ! Left moves towards right
+      // ! Left moves towards right when condition is true, so we end up at the Rightmost
+      this[mid] <= valueToSearch -> left = mid + 1 
       else -> right = mid - 1
     }
   }
@@ -26,7 +25,8 @@ fun IntArray.binarySearchLeftMost(valueToSearch: Int): Int {
   while (left < right) {
     val mid = left + (right - left) / 2
     when {
-      this[mid] >= valueToSearch -> right = mid // ! Right moves towards left
+      // ! Right moves towards left when condition is true, so we end up at the Leftmost
+      this[mid] >= valueToSearch -> right = mid 
       else -> left = mid + 1
     }
   }
@@ -36,6 +36,8 @@ fun IntArray.binarySearchLeftMost(valueToSearch: Int): Int {
 }
 
 fun main() {
+  // * These searches handle duplicates also by returning right most index
+  // * instead of instantly returning `mid` when match found
   println("Rightmost:")
   println(intArrayOf(1, 2, 3, 4, 5, 6, 7, 8, 9, 10).binarySearchRightMost(7)) // 6
   println(intArrayOf(1, 2, 3, 4, 5, 6, 7, 7, 7, 7).binarySearchRightMost(7)) // 9

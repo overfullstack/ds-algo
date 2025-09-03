@@ -1,7 +1,7 @@
 /* gakshintala created on 10/2/19 */
 package leetcode.backtracking
 
-/** https://leetcode.com/problems/word-break-ii/ */
+/** [140. Word Break II](https://leetcode.com/problems/word-break-ii/) */
 fun wordBreakSentences(s: String, wordDict: List<String>): List<String> {
   return wordBreakSentencesInternal(s, wordDict.toSet()).map { it.joinToString(" ") }
 }
