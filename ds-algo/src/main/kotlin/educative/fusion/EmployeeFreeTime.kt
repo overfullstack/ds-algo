@@ -7,7 +7,7 @@ import java.util.PriorityQueue
 fun employeeFreeTime(allEmployeeMeetings: List<List<Pair<Int, Int>>>): List<Pair<Int, Int>> {
   val minHeap = PriorityQueue(compareBy<Triple<Int, Int, Int>> { it.first })
   // * Loading only first column instead of all intervals for Memory optimization
-  minHeap.addAll(
+  minHeap.addAll( // ! Add row, col into heap, so we can progress on each row to next col
     allEmployeeMeetings.withIndex().map { (row, empMeetings) ->
       Triple(empMeetings.first().first, row, 0)
     }

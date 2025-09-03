@@ -35,14 +35,14 @@ class SegmentTreeSum(val nums: IntArray) {
     queryEndIndex: Int,
     segmentTreeIndex: Int,
   ): Int {
-    // * Segment is a piece of the query range
+    // * Query can be broken down to multiple Segments. A Segment is a piece of the query range
     if (queryStartIndex <= segmentStart && queryEndIndex >= segmentEnd) {
       return segmentTree[segmentTreeIndex]
     }
     if (queryStartIndex > segmentEnd || queryEndIndex < segmentStart) {
       return 0
     }
-    // * Break the segment and locate segment pieces that are part of and make-up the query range.
+    // * Break the segment and locate segment pieces that make-up the query range.
     val mid = (segmentStart + segmentEnd) / 2
     val leftSegmentSum =
       getSumForRange(segmentStart, mid, queryStartIndex, queryEndIndex, 2 * segmentTreeIndex + 1)

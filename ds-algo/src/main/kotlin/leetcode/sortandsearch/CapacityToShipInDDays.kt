@@ -16,18 +16,19 @@ tailrec fun shipWithinDays(
   val curCap = (minCap + maxCap) / 2
   // ! We cannot use `(weights.sum() / curCap) + 1` as they need to be shipped in-order
   // ! curCap is always >= maxWeight as lowerBound is initialized to maxWeight
-  val daysRequired = weights
+  val daysRequired =
+    weights
       .fold(0 to 0) { (daysCount, accWeight), weight ->
         val curWeight = accWeight + weight
         when {
-            curWeight > curCap -> (daysCount + 1) to weight
-            else -> daysCount to curWeight
+          curWeight > curCap -> (daysCount + 1) to weight
+          else -> daysCount to curWeight
         }
       }
       .first + 1 // ! `+1` for the reminder
   // ! Minimum Capacity = Leftmost
   // ! Unlike classic Leftmost Binary search condition for Leftmost `this[mid] >= valueToSearch`
-  // ! this condition moves in reverse direction 
+  // ! this condition moves in reverse direction
   // ! as `capacity` and `daysRequired` are inversely proportional
   // ! so the condition is reverse `daysRequired <= d`
   return when {
