@@ -1,6 +1,6 @@
 package leetcode.graph
 
-import java.util.PriorityQueue
+import java.util.*
 
 /* 30 Jul 2025 12:26 */
 
@@ -9,49 +9,14 @@ import java.util.PriorityQueue
  * Elimination](https://leetcode.com/problems/shortest-path-in-a-grid-with-obstacles-elimination/)
  */
 fun shortestPath(grid: Array<IntArray>, k: Int): Int {
-  // ! Notice, descending by `remainingK`, favoring cells with more `remainingK`
-  val pq = PriorityQueue(compareByDescending<Triple<Pair<Int, Int>, Int, Int>> { it.third })
-  pq.add(Triple(0 to 0, 0, k))
-  val minDistanceFromSource = Array(grid.size) { IntArray(grid[0].size) { Int.MAX_VALUE } }
-  minDistanceFromSource[0][0] = 0
-  while (pq.isNotEmpty()) {
-    val (nextCell, distanceFromSource, remainingK) = pq.poll()
-    val (row, col) = nextCell
-    val nextDistance = distanceFromSource + 1
-    directions
-      .asSequence()
-      .map { it.first + row to it.second + col }
-      // ! You may revisit the same cell with less `remainingK` and shorter distance
-      .filter { isValid(it, grid) && nextDistance < minDistanceFromSource[it.first][it.second] }
-      .forEach { (nextRow, nextCol) ->
-        when {
-          remainingK > 0 && grid[nextRow][nextCol] == 1 -> {
-            minDistanceFromSource[nextRow][nextCol] = nextDistance
-            pq.add(Triple(nextRow to nextCol, nextDistance, remainingK - 1))
-          }
-          grid[nextRow][nextCol] == 0 -> {
-            minDistanceFromSource[nextRow][nextCol] = nextDistance
-            pq.add(Triple(nextRow to nextCol, nextDistance, remainingK))
-          }
-        }
-      }
-  }
-  return if (minDistanceFromSource[grid.lastIndex][grid[0].lastIndex] == Int.MAX_VALUE) -1
-  else minDistanceFromSource.last().last()
-}
-
-// ! ⏰TLE because we let each cell visit `k` times
-// ! Unlike CheapestFlightsWithinKStops, we can't early terminate
-// ! need to visit all cells to reach the destination
-fun shortestPath2(grid: Array<IntArray>, k: Int): Int {
-  val pq = PriorityQueue(compareBy<Triple<Pair<Int, Int>, Int, Int>> { it.second })
-  val visited = mutableSetOf<Triple<Pair<Int, Int>, Int, Int>>()
-  val start = Triple(0 to 0, 0, k)
-  pq.add(start)
-  visited += start
-  while (pq.isNotEmpty()) {
-    val (nextCell, distanceFromSource, remainingK) = pq.poll()
-    val (row, col) = nextCell
+  val queue = ArrayDeque<Pair<Triple<Int, Int, Int>, Int>>() // ! BFS
+  val visited = mutableSetOf<Triple<Int, Int, Int>>()
+  val start = Triple(0, 0, k) to 0
+  queue.add(start)
+  visited += start.first
+  while (queue.isNotEmpty()) {
+    val (nextCell, distanceFromSource) = queue.poll()
+    val (row, col, remainingK) = nextCell
     if (row == grid.lastIndex && col == grid[0].lastIndex) {
       return distanceFromSource
     }
@@ -68,10 +33,12 @@ fun shortestPath2(grid: Array<IntArray>, k: Int): Int {
             else -> null
           }
         nextRemainingK?.let {
-          val next = Triple(nextRow to nextCol, nextDistance, it)
-          if (next !in visited) {
-            visited += next
-            pq.add(next)
+          val next = Triple(nextRow, nextCol, it) to nextDistance
+          if (next.first !in visited) {
+            // ! Visit-on-Enqueue as we have unweighted paths.
+            // ! It's more efficient than bloating the `pq` with duplicate entries
+            visited += next.first
+            queue.add(next)
           }
         }
       }

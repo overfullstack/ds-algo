@@ -1,4 +1,4 @@
-package practice;
+package practice.graph;
 
 import java.util.HashMap;
 import java.util.TreeSet;

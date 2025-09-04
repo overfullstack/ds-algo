@@ -1,4 +1,4 @@
-package practice;
+package practice.graph;
 
 /* 27 Aug 2025 08:50 */
 

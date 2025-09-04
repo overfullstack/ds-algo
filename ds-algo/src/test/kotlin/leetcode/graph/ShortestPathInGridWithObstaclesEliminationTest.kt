@@ -62,7 +62,6 @@ class ShortestPathInGridWithObstaclesEliminationTest :
         ),
       ) { grid, k, result ->
         shortestPath(grid, k) shouldBe result
-        shortestPath2(grid, k) shouldBe result
       }
     }
   })

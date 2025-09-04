@@ -1,4 +1,4 @@
-package practice;
+package practice.graph;
 
 import java.util.Arrays;
 
@@ -20,9 +20,9 @@ public class PathWithMaximumGold {
 		if (!isValid(row, col, grid) || grid[row][col] == 0) {
 			return 0;
 		}
-		var gold = grid[row][col];
-		grid[row][col] = 0;
-		var maxGold =
+    var gold = grid[row][col];
+    grid[row][col] = 0; // ! Visiting
+    var maxGold =
 				gold
 						+ Arrays.stream(directions)
 								.map(d -> new int[] {d[0] + row, d[1] + col})

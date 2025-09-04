@@ -2,7 +2,10 @@ package practice;
 
 import java.util.Arrays;
 
-public class DetonateTheMaximumBombs {
+/**
+ * [2101. Detonate the Maximum Bombs](https://leetcode.com/problems/detonate-the-maximum-bombs/)
+ */
+public class DetonateMaximumBombs {
 	public int maximumDetonation(int[][] bombs) {
 		return Arrays.stream(bombs)
 				.mapToInt(bomb -> dfs(bomb, bombs, new boolean[bombs.length][bombs.length]))
