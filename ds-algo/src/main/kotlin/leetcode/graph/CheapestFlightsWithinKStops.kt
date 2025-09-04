@@ -42,34 +42,9 @@ fun findCheapestPrice(n: Int, flights: Array<IntArray>, src: Int, dst: Int, k: I
   return -1
 }
 
-fun findCheapestPriceOptimized(n: Int, flights: Array<IntArray>, src: Int, dst: Int, k: Int): Int {
-  val edgeWeightedDiGraph =
-    flights.groupBy({ it[0] }, { it[1] to it[2] }).mapValues { it.value.toMap() }
-  val pq = PriorityQueue(compareBy<IntArray> { it[1] })
-  val visited = mutableSetOf<String>()
-  pq.add(intArrayOf(src, 0, k + 1)) // ! `k + 1` including the current stop
-  while (pq.isNotEmpty()) {
-    val current = pq.poll()
-    val stateKey = current.contentToString()
-    if (stateKey !in visited) {
-      visited += stateKey
-      val (from, priceFromSource, remainingStops) = current
-      if (from == dst) {
-        return priceFromSource
-      }
-      if (remainingStops > 0) { // ! `> 0` as we enqueued `k + 1` for src
-        edgeWeightedDiGraph[from]?.forEach { (to, priceFromToTo) ->
-          pq.add(intArrayOf(to, priceFromSource + priceFromToTo, remainingStops - 1))
-        }
-      }
-    }
-  }
-  return -1
-}
-
 fun main() {
   println(
-    findCheapestPriceOptimized(
+    findCheapestPrice(
       4,
       arrayOf(
         intArrayOf(0, 1, 100),
@@ -81,19 +56,19 @@ fun main() {
       0,
       3,
       1,
-    )
+    ),
   ) // 700
   println(
-    findCheapestPriceOptimized(
+    findCheapestPrice(
       3,
       arrayOf(intArrayOf(0, 1, 100), intArrayOf(1, 2, 100), intArrayOf(0, 2, 500)),
       0,
       2,
       1,
-    )
+    ),
   ) // 200
   println(
-    findCheapestPriceOptimized(
+    findCheapestPrice(
       11,
       arrayOf(
         intArrayOf(0, 3, 3),
@@ -114,6 +89,6 @@ fun main() {
       0,
       2,
       4,
-    )
+    ),
   ) // 11
 }

@@ -106,4 +106,30 @@ class EdgeWeightedDiGraphTest :
       distances[3] shouldBe 2 // 1 -> 3
       distances[4] shouldBe 6 // 1 -> 3 -> 2 -> 4
     }
+
+    /**
+     * This test case is designed to fail a buggy implementation of Dijkstra's.
+     * It creates a graph where a direct path (A -> B) is more expensive than an indirect one (A -> C -> B).
+     *
+     *          10
+     *      A -----> B
+     *      |      ^
+     *      | 1    | 2
+     *      v      |
+     *      C -----+
+     *
+     * The shortest path from A to B is A -> C -> B (cost 1 + 2 = 3).
+     */
+    "dijkstraShortestPath should correctly handle path relaxation" {
+      val graph = EdgeWeightedDiGraph<String>()
+      graph.addEdge("A", "B", 10)
+      graph.addEdge("A", "C", 1)
+      graph.addEdge("C", "B", 2)
+
+      val distances = graph.dijkstraShortestPath("A")
+
+      distances["A"] shouldBe 0
+      distances["C"] shouldBe 1
+      distances["B"] shouldBe 3
+    }
   })

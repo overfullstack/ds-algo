@@ -1,7 +1,7 @@
 package ds.graph
 
 import ds.graph.EdgeWeightedDiGraph.WeightedEdge
-import java.util.PriorityQueue
+import java.util.*
 
 /* 15 Jul 2025 15:36 */
 
@@ -52,22 +52,26 @@ class EdgeWeightedDiGraph<T>(
   fun getNeighbours(node: T): Set<WeightedEdge<T>>? = adjacencyMap[node]
 
   fun dijkstraShortestPath(source: T): Map<T, Int> {
-    val nodeToDistanceFromSource = mutableMapOf<T, Int>()
+    val minDistanceNodeFromSource = mutableMapOf<T, Int>()
     val pq = PriorityQueue(compareBy<Pair<T, Int>> { it.second })
+
+    minDistanceNodeFromSource[source] = 0
     pq.add(source to 0)
+
     while (pq.isNotEmpty()) {
       val (from, distanceFromSource) = pq.poll()
-      nodeToDistanceFromSource[from] = distanceFromSource
-      // * Loop through Neighbour edges
-      adjacencyMap[from]?.forEach { (to, distanceFromNodeToTo) ->
-        val newDistance = distanceFromSource + distanceFromNodeToTo
-        // ! Priority Queue make sure a from node gets best distance in the first visit.
-        // ! This check prevents the same from being added to queue again for processing
-        if (nodeToDistanceFromSource[to]?.let { newDistance < it } ?: true) {
-          pq.add(to to newDistance)
+      // ! `pq` may contain the same node with farther distance
+      // ! so this check prevents from processing and recording a wrong distance 
+      if (distanceFromSource < minDistanceNodeFromSource.getOrDefault(from, Int.MAX_VALUE)) {
+        minDistanceNodeFromSource[from] = distanceFromSource
+        adjacencyMap[from]?.forEach { (to, weight) ->
+          val newDistance = distanceFromSource + weight
+          if (newDistance < minDistanceNodeFromSource.getOrDefault(to, Int.MAX_VALUE)) {
+            pq.add(to to newDistance)
+          }
         }
       }
     }
-    return nodeToDistanceFromSource
+    return minDistanceNodeFromSource
   }
 }

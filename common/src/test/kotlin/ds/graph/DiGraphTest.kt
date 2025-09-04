@@ -11,9 +11,9 @@ import io.kotest.matchers.shouldBe
 private const val PKG_PATH = "graph"
 
 val diGraph =
-  DiGraph(mutableMapOf(0 to setOf(1, 2, 3, 4), 1 to setOf(4), 2 to setOf(5), 6 to setOf(7, 8, 9)))
+  DiGraph(adjacencyMap = mutableMapOf(0 to setOf(1, 2, 3, 4), 1 to setOf(4), 2 to setOf(5), 6 to setOf(7, 8, 9)))
 
-val diGraphWithCycle = DiGraph(mutableMapOf(0 to setOf(1), 1 to setOf(2), 2 to setOf(0)))
+val diGraphWithCycle = DiGraph(adjacencyMap = mutableMapOf(0 to setOf(1), 1 to setOf(2), 2 to setOf(0)))
 
 class DiGraphTest :
   StringSpec({
@@ -43,7 +43,7 @@ class DiGraphTest :
 
     "topological sort 2" {
       val diGraph2 =
-        DiGraph(mutableMapOf(6 to setOf(2, 4), 4 to setOf(0), 5 to setOf(1, 2), 3 to emptySet()))
+        DiGraph(adjacencyMap = mutableMapOf(6 to setOf(2, 4), 4 to setOf(0), 5 to setOf(1, 2), 3 to emptySet()))
       diGraph2.topologicalSort() shouldContainExactly listOf(2, 0, 4, 6, 1, 5, 3)
       shouldThrow<IllegalArgumentException> { diGraphWithCycle.topologicalSort() }
     }
