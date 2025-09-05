@@ -80,8 +80,8 @@ public class MinimumCostToMakeAtLeastOneValidPathInAGrid {
 		return row >= 0 && row < grid.length && col >= 0 && col < grid[0].length;
 	}
 
-	// 1: right, 2: left, 3: down, 4: up
-	private static final int[][] directions =
+	// ! { y, x, direction } - 1: right, 2: left, 3: down, 4: up
+	private static final int[][] directions = 
 			new int[][] {{0, 1, 1}, {0, -1, 2}, {1, 0, 3}, {-1, 0, 4}};
 
 	static void main() {

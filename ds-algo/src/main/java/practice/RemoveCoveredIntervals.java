@@ -5,6 +5,9 @@ package practice;
 import java.util.Arrays;
 import java.util.Comparator;
 
+/**
+ * [1288. Remove Covered Intervals](https://leetcode.com/problems/remove-covered-intervals/)
+ */
 public class RemoveCoveredIntervals {
   public int removeCoveredIntervals(int[][] intervals) {
     Arrays.sort(intervals, Comparator.<int[]>comparingInt(interval -> interval[0])
