@@ -54,14 +54,11 @@ class EdgeWeightedDiGraph<T>(
   fun dijkstraShortestPath(source: T): Map<T, Int> {
     val minDistanceNodeFromSource = mutableMapOf<T, Int>()
     val pq = PriorityQueue(compareBy<Pair<T, Int>> { it.second })
-
-    minDistanceNodeFromSource[source] = 0
     pq.add(source to 0)
-
     while (pq.isNotEmpty()) {
       val (from, distanceFromSource) = pq.poll()
       // ! `pq` may contain the same node with farther distance
-      // ! so this check prevents from processing and recording a wrong distance 
+      // ! so this check prevents from processing and recording a wrong distance
       if (distanceFromSource < minDistanceNodeFromSource.getOrDefault(from, Int.MAX_VALUE)) {
         minDistanceNodeFromSource[from] = distanceFromSource
         adjacencyMap[from]?.forEach { (to, weight) ->

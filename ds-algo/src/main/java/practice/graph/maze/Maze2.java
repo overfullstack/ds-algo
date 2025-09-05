@@ -1,4 +1,4 @@
-package practice.graph;
+package practice.graph.maze;
 
 import java.util.Arrays;
 import java.util.Comparator;

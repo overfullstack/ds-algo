@@ -32,8 +32,8 @@ fun findCheapestPrice(n: Int, flights: Array<IntArray>, src: Int, dst: Int, k: I
         // ! `priceFromSource` and the first path with `remainingStops > 0` reaches the destination
         ?.filter { it !in visited }
         ?.forEach {
-          // ! Premature `visited` instead of waiting until it is dequeued.
-          // ! This helps prevent many duplicate state combos (node, price, remainingStops) in pq
+          // ! Visited-on-Enqueue as (src, price, remainingStops) combo is always optimal on the
+          // ! first visit. Note this is not just `src` but a combo, so this is not like BFS
           visited += it
           pq.add(it)
         }
@@ -56,7 +56,7 @@ fun main() {
       0,
       3,
       1,
-    ),
+    )
   ) // 700
   println(
     findCheapestPrice(
@@ -65,7 +65,7 @@ fun main() {
       0,
       2,
       1,
-    ),
+    )
   ) // 200
   println(
     findCheapestPrice(
@@ -89,6 +89,6 @@ fun main() {
       0,
       2,
       4,
-    ),
-  ) // 11
+    )
+  )
 }

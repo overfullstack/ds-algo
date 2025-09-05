@@ -1,4 +1,4 @@
-package practice.graph;
+package practice.graph.floodfill;
 
 import java.util.Arrays;
 

@@ -20,16 +20,16 @@ public class PathWithMaximumGold {
 		if (!isValid(row, col, grid) || grid[row][col] == 0) {
 			return 0;
 		}
-    var gold = grid[row][col];
-    grid[row][col] = 0; // ! Visiting
-    var maxGold =
+		var gold = grid[row][col];
+		grid[row][col] = 0; // ! Visiting
+		var maxGold =
 				gold
 						+ Arrays.stream(directions)
 								.map(d -> new int[] {d[0] + row, d[1] + col})
 								.mapToInt(nextCell -> dfs(nextCell[0], nextCell[1], grid))
 								.max()
 								.orElse(0);
-		grid[row][col] = gold; // ! Un-visiting, for other origins to use it
+		grid[row][col] = gold; // ! Backtracking. Un-visiting, for other origins to use it
 		return maxGold;
 	}
 

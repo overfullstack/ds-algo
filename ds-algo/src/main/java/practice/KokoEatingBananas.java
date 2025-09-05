@@ -8,14 +8,15 @@ public class KokoEatingBananas {
 	public int minEatingSpeed(int[] piles, int h) {
 		var left = 1;
 		var right = Arrays.stream(piles).max().orElse(0);
-		
-    while (left < right) {
+
+		// ! Leftmost with inversely proportional condition
+		while (left < right) {
 			var mid = left + (right - left) / 2;
 			var noOfHours = noOfHours(piles, mid);
-			if (noOfHours > h) {
-				left = mid + 1;
-			} else {
+			if (noOfHours <= h) {
 				right = mid;
+			} else {
+				left = mid + 1;
 			}
 		}
 		return left;

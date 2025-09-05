@@ -108,8 +108,8 @@ class EdgeWeightedDiGraphTest :
     }
 
     /**
-     * This test case is designed to fail a buggy implementation of Dijkstra's.
-     * It creates a graph where a direct path (A -> B) is more expensive than an indirect one (A -> C -> B).
+     * This test case is designed to fail a buggy implementation of Dijkstra's. It creates a graph
+     * where a direct path (A -> B) is more expensive than an indirect one (A -> C -> B).
      *
      *          10
      *      A -----> B

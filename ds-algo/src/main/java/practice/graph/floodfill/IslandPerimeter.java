@@ -1,4 +1,4 @@
-package practice.graph;
+package practice.graph.floodfill;
 
 /* 27 Aug 2025 08:50 */
 

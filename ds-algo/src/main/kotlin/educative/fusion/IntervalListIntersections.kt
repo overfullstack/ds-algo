@@ -9,7 +9,9 @@ import utils.toPair
  * [986. Interval List Intersections](https://leetcode.com/problems/interval-list-intersections/)
  */
 fun intervalIntersection(firstList: Array<IntArray>, secondList: Array<IntArray>): Array<IntArray> =
-  intervalListIntersections(firstList.map { it.toPair() }, secondList.map { it.toPair() }).map { it.toIntArray() }.toTypedArray()
+  intervalListIntersections(firstList.map { it.toPair() }, secondList.map { it.toPair() })
+    .map { it.toIntArray() }
+    .toTypedArray()
 
 fun intervalListIntersections(
   a: List<Pair<Int, Int>>,
@@ -37,7 +39,7 @@ fun intervalListIntersections(
       a[aIndex].second == b[bIndex].second ->
         intervalListIntersections(aIndex + 1, bIndex + 1, intervalIntersections)
       a[aIndex].second < b[bIndex].second ->
-      intervalListIntersections(aIndex + 1, bIndex, intervalIntersections)
+        intervalListIntersections(aIndex + 1, bIndex, intervalIntersections)
       else -> intervalListIntersections(aIndex, bIndex + 1, intervalIntersections)
     }
   }

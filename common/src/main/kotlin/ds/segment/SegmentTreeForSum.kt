@@ -5,7 +5,7 @@ import kotlin.math.ceil
 import kotlin.math.log2
 import kotlin.math.pow
 
-class SegmentTreeSum(val nums: IntArray) {
+class SegmentTreeForSum(val nums: IntArray) {
   // 2 * 2^ceil(log2(arr.size)) - 1
   private var segmentTree = IntArray(2 * 2.0.pow(ceil(log2(nums.size.toDouble()))).toInt() - 1)
 
@@ -79,28 +79,28 @@ class SegmentTreeSum(val nums: IntArray) {
 
 fun main() {
   val arr = readln().split(",").map { it.trim().toInt() }.toIntArray()
-  val segmentTree = SegmentTreeSum(arr)
+  val segmentTree = SegmentTreeForSum(arr)
   queries(segmentTree)
   updates(segmentTree)
   queries(segmentTree)
 }
 
-private fun updates(segmentTreeSum: SegmentTreeSum) {
+private fun updates(segmentTreeForSum: SegmentTreeForSum) {
   val noOfUpdates = readln().trim().toInt()
   val updates: ArrayList<Pair<Int, Int>> = arrayListOf()
   repeat(noOfUpdates) {
     val (index, value) = readln().split(",").map { it.trim().toInt() }
     updates.add(Pair(index, value))
   }
-  updates.forEach { segmentTreeSum.update(it.first, it.second) }
+  updates.forEach { segmentTreeForSum.update(it.first, it.second) }
 }
 
-private fun queries(segmentTreeSum: SegmentTreeSum) {
+private fun queries(segmentTreeForSum: SegmentTreeForSum) {
   val noOfQueries = readln().trim().toInt()
   val queries: ArrayList<Pair<Int, Int>> = arrayListOf()
   repeat(noOfQueries) {
     val (startIndex, endIndex) = readln().split(",").map { it.trim().toInt() }
     queries.add(Pair(startIndex, endIndex))
   }
-  queries.forEach { println(segmentTreeSum.querySum(it.first, it.second)) }
+  queries.forEach { println(segmentTreeForSum.querySum(it.first, it.second)) }
 }

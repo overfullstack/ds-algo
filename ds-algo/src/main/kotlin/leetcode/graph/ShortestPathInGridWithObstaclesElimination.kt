@@ -13,6 +13,7 @@ fun shortestPath(grid: Array<IntArray>, k: Int): Int {
   val visited = mutableSetOf<Triple<Int, Int, Int>>()
   val start = Triple(0, 0, k) to 0
   queue.add(start)
+  // ! `visited` to avoid processing same cell with same `remainingK`
   visited += start.first
   while (queue.isNotEmpty()) {
     val (nextCell, distanceFromSource) = queue.poll()
@@ -35,8 +36,9 @@ fun shortestPath(grid: Array<IntArray>, k: Int): Int {
         nextRemainingK?.let {
           val next = Triple(nextRow, nextCol, it) to nextDistance
           if (next.first !in visited) {
-            // ! Visit-on-Enqueue as we have unweighted paths.
-            // ! It's more efficient than bloating the `pq` with duplicate entries
+            // ! Visit-on-Enqueue as we have unweighted paths, we won't have a scenario of having
+            // ! better paths later in the queue
+            // ! It's more efficient as it avoids bloating `pq` with duplicate entries
             visited += next.first
             queue.add(next)
           }

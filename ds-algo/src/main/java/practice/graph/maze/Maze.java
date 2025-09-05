@@ -1,7 +1,8 @@
-package practice.graph;
+package practice.graph.maze;
 
 import java.util.LinkedList;
 
+/** [787 · The Maze](https://www.lintcode.com/problem/787/) */
 public class Maze {
 	public boolean hasPath(int[][] maze, int[] start, int[] destination) {
 		var queue = new LinkedList<int[]>();
