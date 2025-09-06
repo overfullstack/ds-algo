@@ -12,7 +12,7 @@ fun numOfDecodings(decodeStr: String): Int {
 
   // * Building the string, one index at a time
   // * `dp[i + 1]` holds the number of ways to decode the substring `(0..i)`
-  for (endIndex in 1..decodeStr.lastIndex) {
+  for (endIndex in 1..decodeStr.lastIndex) { // ! O(N) single pass
     if (decodeStr[endIndex] != '0') {
       dp[endIndex + 1] = dp[endIndex]
     }
@@ -21,7 +21,7 @@ fun numOfDecodings(decodeStr: String): Int {
       dp[endIndex + 1] += dp[endIndex - 1]
     }
   }
-  return dp[decodeStr.lastIndex + 1]
+  return dp.last()
 }
 
 fun main() {
