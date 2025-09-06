@@ -1,7 +1,5 @@
 package graph;
 
-import java.util.*;
-
 class MinimumBuses {
 	public static int minimumBuses(int[][] routes, int src, int dest) {
 		// Create adjacency list for graph.

@@ -1,7 +1,5 @@
 package tbd;
 
-import java.util.*;
-
 /**
  * Inventory Optimization Problem: Given inventory with quantities and vendor orders, serve orders
  * to maximize inventory usage. Can only serve orders if order quantity <= available inventory

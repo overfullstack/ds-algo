@@ -1,7 +1,5 @@
 package tbd;
 
-import java.util.*;
-
 public class CollectGoldCoins {
 
 	// State class to represent Chris's position and collected coins

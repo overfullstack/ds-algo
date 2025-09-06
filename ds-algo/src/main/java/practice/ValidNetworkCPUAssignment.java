@@ -1,7 +1,5 @@
 package practice;
 
-import java.util.*;
-
 public class ValidNetworkCPUAssignment {
 
 	private static final int MOD = 1_000_000_007;

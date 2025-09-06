@@ -3,7 +3,9 @@ package educative.heap
 import java.util.PriorityQueue
 
 fun minimumMachines(intervals: List<Pair<Int, Int>>): Int {
+  // ! Earliest starting
   val minHeapForNextStartingJob = PriorityQueue(compareBy<Pair<Int, Int>> { it.first })
+  // ! Earliest ending
   val minHeapForNextFreeMachine = PriorityQueue<Int>()
 
   minHeapForNextStartingJob.addAll(intervals)
@@ -13,11 +15,11 @@ fun minimumMachines(intervals: List<Pair<Int, Int>>): Int {
     if (
       minHeapForNextFreeMachine.isNotEmpty() && minHeapForNextFreeMachine.peek() <= nextJobStart
     ) {
-      minHeapForNextFreeMachine.poll() // Machine free to take up next tasks
+      minHeapForNextFreeMachine.poll() // ! Remove tasks that ended before current task
     }
     minHeapForNextFreeMachine.add(nextJobEnd)
   }
-  return minHeapForNextFreeMachine.size // All occupied machines
+  return minHeapForNextFreeMachine.size // ! All occupied machines
 }
 
 fun main() {
