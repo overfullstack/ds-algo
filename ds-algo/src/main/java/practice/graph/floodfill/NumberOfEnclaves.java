@@ -1,10 +1,10 @@
-package practice;
+package practice.graph.floodfill;
 
 import java.util.Arrays;
 
 /* 26 Aug 2025 20:50 */
 
-/** */
+/** [1020. Number of Enclaves](https://leetcode.com/problems/number-of-enclaves/) */
 public class NumberOfEnclaves {
 
 	private static final int[][] directions = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
@@ -20,30 +20,31 @@ public class NumberOfEnclaves {
 			floodFill(grid.length - 1, col, grid);
 		}
 
-		var closedIslandCount = 0;
+		var enclosedLandCellCount = 0;
 		for (var row = 0; row < grid.length; row++) {
 			for (var col = 0; col < grid[0].length; col++) {
 				if (grid[row][col] == 1) {
-					closedIslandCount++;
+					enclosedLandCellCount++;
+					// ! We count all land cells individually and not as a group, so no floodFill here
 				}
 			}
 		}
-		return closedIslandCount;
+		return enclosedLandCellCount;
 	}
 
 	private static void floodFill(int row, int col, int[][] grid) {
-		if (grid[row][col] != 1) { // ! Fill only land cells
+		if (!isValid(row, col, grid) || grid[row][col] == 0) { // ! Deal with only Land cells
 			return;
 		}
 		grid[row][col] = 0;
 		Arrays.stream(directions)
 				.map(d -> new int[] {d[0] + row, d[1] + col})
-				.filter(nextCell -> isValid(nextCell, grid) && grid[nextCell[0]][nextCell[1]] == 1)
+				.filter(nextCell -> grid[nextCell[0]][nextCell[1]] == 1)
 				.forEach(landCell -> floodFill(landCell[0], landCell[1], grid));
 	}
 
-	private static boolean isValid(int[] cell, int[][] grid) {
-		return cell[0] >= 0 && cell[0] < grid.length && cell[1] >= 0 && cell[1] < grid[0].length;
+	private static boolean isValid(int row, int col, int[][] grid) {
+		return row >= 0 && row < grid.length && col >= 0 && col < grid[0].length;
 	}
 
 	static void main() {

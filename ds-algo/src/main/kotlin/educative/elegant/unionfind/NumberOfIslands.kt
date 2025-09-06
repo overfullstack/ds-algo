@@ -64,7 +64,7 @@ private class UnionFind(grid: Array<IntArray>) {
           ranks[root2]++
         }
       }
-      countOf1s--
+      countOf1s-- // ! Negate `group-1` from the countOf1s
     }
   }
 }

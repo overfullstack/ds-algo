@@ -10,11 +10,13 @@ public class NumberOfClosedIslands {
 	private static final int[][] directions = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
 
 	public int closedIsland(int[][] grid) {
+		// ! FloodFill islands connected to grid borders: left, right
 		for (var row = 0; row < grid.length; row++) {
 			floodFill(row, 0, grid);
 			floodFill(row, grid[0].length - 1, grid);
 		}
 
+		// ! FloodFill islands connected to grid borders: top, bottom
 		for (var col = 0; col < grid[0].length; col++) {
 			floodFill(0, col, grid);
 			floodFill(grid.length - 1, col, grid);
@@ -32,11 +34,12 @@ public class NumberOfClosedIslands {
 		return closedIslandCount;
 	}
 
+	// ! 0s (land) and 1s (water)
 	private static void floodFill(int row, int col, int[][] grid) {
-		if (!isValid(row, col, grid) || grid[row][col] != 0) { // ! Fill only land cells
+		if (!isValid(row, col, grid) || grid[row][col] != 0) { // ! Deal with only Land cells
 			return;
 		}
-		grid[row][col] = 1;
+		grid[row][col] = 1; // ! Mark land cell as water cell
 		Arrays.stream(directions)
 				.map(d -> new int[] {d[0] + row, d[1] + col})
 				.forEach(landCell -> floodFill(landCell[0], landCell[1], grid));

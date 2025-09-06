@@ -1,7 +1,7 @@
 package leetcode.graph.bfs
 
 /** [01-matrix](https://leetcode.com/problems/01-matrix/) */
-fun updateMatrix(matrix: Array<IntArray>): Array<IntArray> { // BFS
+fun updateMatrix(matrix: Array<IntArray>): Array<IntArray> { // * BFS
   // ! Using normal queue instead of pq, as we don't have variable weights
   val queue = ArrayDeque<Triple<Int, Int, Int>>()
   for (row in matrix.indices) {
@@ -15,6 +15,7 @@ fun updateMatrix(matrix: Array<IntArray>): Array<IntArray> { // BFS
 
   while (queue.isNotEmpty()) {
     val (row, col, distance) = queue.removeFirst()
+    val nextDistance = distance + 1
     directions
       .asSequence()
       .map { row + it.first to col + it.second }
@@ -22,13 +23,13 @@ fun updateMatrix(matrix: Array<IntArray>): Array<IntArray> { // BFS
         // ! Using visited instead of distance check, as with unit weights
         // ! first visit is always the optimal and BFS naturally finds the shortest paths
         isValid(nextRow to nextCol, matrix) && matrix[nextRow][nextCol] == -1
+        // ! Nearest 1 starts with distance=1, so we filter-out farthest 0s
       }
       .forEach { (nextRow, nextCol) ->
-        val nextDistance = distance + 1
         matrix[nextRow][nextCol] = nextDistance // ! This also serves as visited
-        // all 0s are already in the queue. Let's say a 1 might be totally covered with 1s,
+        // All 0s are already in the queue. Let's say a 1 might be totally covered with 1s,
         // all those surrounding 1s need to be crossed to reach such.
-        // ! So adding all those 1s to queue
+        // ! So adding all those 1s to queue to go from border into the island depth
         queue.add(Triple(nextRow, nextCol, nextDistance))
       }
   }

@@ -7,8 +7,8 @@ import java.util.Comparator;
 import java.util.PriorityQueue;
 
 /**
- * [1584. Min Cost to Connect All
- * Points](https://leetcode.com/problems/maximum-number-of-events-that-can-be-attended)
+ * [1353. Maximum Number of Events That Can Be
+ * Attended](https://leetcode.com/problems/maximum-number-of-events-that-can-be-attended)
  */
 public class MaximumNumberOfEventsThatCanBeAttended {
 	public int maxEvents(int[][] events) {
@@ -17,10 +17,13 @@ public class MaximumNumberOfEventsThatCanBeAttended {
 		var day = 0;
 		var attendedEventCount = 0;
 		Arrays.sort(events, Comparator.comparingInt(e -> e[0]));
+		// ! `minEndHeap` or `eventIdx` exhausts
 		while (!minEndHeap.isEmpty() || eventIdx < events.length) {
 			if (minEndHeap.isEmpty()) {
-				day = events[eventIdx][0]; // ! Jump skip to next non-overlapping interval
+				day = events[eventIdx][0]; // ! Jump to next non-overlapping interval
 			}
+			// ! Add all events that start today to `minEndHeap` to pick the latest ending event
+			// ! If no meeting today, keep polling `minEndHeap` until we attend all the meetings
 			while (eventIdx < events.length && events[eventIdx][0] == day) {
 				minEndHeap.add(events[eventIdx][1]);
 				// ! `eventIdx` may exhaust here

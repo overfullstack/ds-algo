@@ -81,7 +81,7 @@ public class MinimumCostToMakeAtLeastOneValidPathInAGrid {
 	}
 
 	// ! { y, x, direction } - 1: right, 2: left, 3: down, 4: up
-	private static final int[][] directions = 
+	private static final int[][] directions =
 			new int[][] {{0, 1, 1}, {0, -1, 2}, {1, 0, 3}, {-1, 0, 4}};
 
 	static void main() {
