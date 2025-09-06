@@ -41,10 +41,10 @@ spotless {
   java {
     target("src/*/java/**/*.java")
     targetExclude("build/**", ".gradle/**", "generated/**", "**/bin/**", "out/**", "tmp/**")
-    toggleOffOn()
+    googleJavaFormat()
     importOrder()
     removeUnusedImports()
-    googleJavaFormat()
+    removeWildcardImports()
     trimTrailingWhitespace()
     leadingSpacesToTabs(2)
     endWithNewline()
