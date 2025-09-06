@@ -63,6 +63,7 @@ class EdgeWeightedDiGraph<T>(
         minDistanceNodeFromSource[from] = distanceFromSource
         adjacencyMap[from]?.forEach { (to, weight) ->
           val newDistance = distanceFromSource + weight
+          // ! This is an Optimization check to prevent redundant entries in `pq`
           if (newDistance < minDistanceNodeFromSource.getOrDefault(to, Int.MAX_VALUE)) {
             pq.add(to to newDistance)
           }

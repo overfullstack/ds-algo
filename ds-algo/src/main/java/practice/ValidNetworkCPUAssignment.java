@@ -1,5 +1,8 @@
 package practice;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ValidNetworkCPUAssignment {
 
 	private static final int MOD = 1_000_000_007;

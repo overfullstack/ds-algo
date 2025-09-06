@@ -1,5 +1,13 @@
 package tbd;
 
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.PriorityQueue;
+import java.util.TreeSet;
+
 /**
  * Inventory Optimization Problem: Given inventory with quantities and vendor orders, serve orders
  * to maximize inventory usage. Can only serve orders if order quantity <= available inventory

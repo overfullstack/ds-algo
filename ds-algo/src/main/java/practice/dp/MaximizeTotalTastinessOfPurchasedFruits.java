@@ -30,7 +30,7 @@ public class MaximizeTotalTastinessOfPurchasedFruits {
 		if (memo[idx][remainingAmount][remainingCoupons] != 0) {
 			return memo[idx][remainingAmount][remainingCoupons];
 		}
-    // ! 3 Choices - Skip, Buy, Buy with coupon
+		// ! 3 Choices - Skip, Buy, Buy with coupon
 		var maxTastiness =
 				maxTastiness(idx + 1, price, tastiness, remainingAmount, remainingCoupons, memo);
 		if (remainingAmount >= price[idx]) {

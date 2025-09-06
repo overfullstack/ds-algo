@@ -19,6 +19,13 @@ class BiDiGraph<T>(
     edges.forEach { (node1, node2) -> addEdge(node1, node2) }
   }
 
+  constructor(
+    data: Array<IntArray>,
+    isNodeTypePrimitive: Boolean = true,
+  ) : this(isNodeTypePrimitive) {
+    data.forEach { (source, destination) -> addEdge(source as T, destination as T) }
+  }
+
   fun addEdge(node1: T, node2: T) {
     val actualNode1 =
       if (isNodeTypePrimitive) node1 else allNodes.firstOrNull { it == node1 } ?: node1

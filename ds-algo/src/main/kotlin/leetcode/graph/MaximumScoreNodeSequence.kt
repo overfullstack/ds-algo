@@ -1,17 +1,20 @@
 package leetcode.graph
 
 import ds.graph.BiDiGraph
-import utils.toPair
 
 /**
  * [2242. Maximum Score of a Node
  * Sequence](https://leetcode.com/problems/maximum-score-of-a-node-sequence) `maximumScore` exceeds
  * time limit. `maximumScore2` doesn't
  */
+// ! ⏰TLE
 fun maximumScore(scores: IntArray, edges: Array<IntArray>): Int {
-  val graph = BiDiGraph(edges.map { it.toPair() })
+  val graph = BiDiGraph<Int>(edges)
   val graphWithTop3Neighbors =
-    graph.mapValues { it.value.sortedByDescending { scores[it] }.take(3).toSet() }
+    graph.mapValues {
+      if (it.value.size > 3) it.value.sortedByDescending { scores[it] }.take(3).toSet()
+      else it.value
+    }
   return edges
     .asSequence()
     .map { (u, v) -> findMaxScoreWithNeighboursForEdge(u, v, graphWithTop3Neighbors, scores) }
@@ -39,7 +42,7 @@ fun findMaxScoreWithNeighboursForEdge(
     .maxOrNull() ?: -1
 }
 
-fun maximumScore2(scores: IntArray, edges: Array<IntArray>): Int {
+fun maximumScoreOptimized(scores: IntArray, edges: Array<IntArray>): Int {
   val n: Int = scores.size
   val graph: Array<MutableList<Int>> = Array(n) { mutableListOf() }
 
