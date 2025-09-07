@@ -2,10 +2,7 @@ package leetcode.backtracking
 
 /* gakshintala created on 12/29/19 */
 
-/**
- * https://leetcode.com/problems/letter-combinations-of-a-phone-number/
- */
-
+/** https://leetcode.com/problems/letter-combinations-of-a-phone-number/ */
 val DICTIONARY = arrayOf("", "", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz")
 
 fun letterCombinations(digits: String): List<String> {

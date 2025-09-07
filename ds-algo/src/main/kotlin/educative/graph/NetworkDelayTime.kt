@@ -9,27 +9,6 @@ import java.util.PriorityQueue
 /** [743. Network Delay Time](https://leetcode.com/problems/network-delay-time) */
 fun networkDelayTime(times: Array<IntArray>, n: Int, origin: Int): Int {
   val graph = EdgeWeightedDiGraph<Int>(times)
-  // pq
-  val pq = PriorityQueue(compareBy<WeightedEdge<Int>> { it.weight })
-  pq.add(WeightedEdge(origin, 0))
-  val visited = mutableSetOf<Int>()
-  var timeToReachLastNode = 0
-  while (pq.isNotEmpty()) {
-    val (node, timeFromSource) = pq.poll()
-    if (node !in visited) {
-      visited += node
-      timeToReachLastNode = timeFromSource
-      graph[node]
-        ?.filter { (to, _) -> to !in visited }
-        ?.forEach { (to, timeFromToTo) -> pq.add(WeightedEdge(to, timeFromToTo + timeFromSource)) }
-    }
-  }
-  return if (visited.size == n) timeToReachLastNode else -1
-}
-
-// * This also works, based on classic Dijkstra's algorithm
-fun networkDelayTime2(times: Array<IntArray>, n: Int, origin: Int): Int {
-  val graph = EdgeWeightedDiGraph<Int>(times)
   val pq = PriorityQueue(compareBy<WeightedEdge<Int>> { it.weight })
   val time = IntArray(n + 1) { Int.MAX_VALUE }
 
@@ -51,6 +30,26 @@ fun networkDelayTime2(times: Array<IntArray>, n: Int, origin: Int): Int {
 
   val maxTime = time.slice(1..n).maxOrNull() ?: return -1
   return if (maxTime == Int.MAX_VALUE) -1 else maxTime
+}
+
+// * This also works, a variant of Dijkstra's algorithm. Less efficient pruning of queue
+fun networkDelayTime2(times: Array<IntArray>, n: Int, origin: Int): Int {
+  val graph = EdgeWeightedDiGraph<Int>(times)
+  val pq = PriorityQueue(compareBy<WeightedEdge<Int>> { it.weight })
+  pq.add(WeightedEdge(origin, 0))
+  val visited = mutableSetOf<Int>()
+  var timeToReachLastNode = 0
+  while (pq.isNotEmpty()) {
+    val (node, timeFromSource) = pq.poll()
+    if (node !in visited) {
+      visited += node
+      timeToReachLastNode = timeFromSource
+      graph[node]?.forEach { (to, timeFromToTo) ->
+        pq.add(WeightedEdge(to, timeFromToTo + timeFromSource))
+      }
+    }
+  }
+  return if (visited.size == n) timeToReachLastNode else -1
 }
 
 fun main() {
