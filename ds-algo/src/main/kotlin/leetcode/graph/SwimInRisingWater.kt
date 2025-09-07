@@ -16,7 +16,7 @@ fun swimInWater(grid: Array<IntArray>): Int {
     if (row == grid.lastIndex && col == grid[0].lastIndex) {
       return maxInPath // ! elevation in this problem represents time
     }
-    visited[row][col] = true
+    visited[row][col] = true // ! visit-on-dequeue
     directions
       .map { it.first + row to it.second + col }
       .filter { isValid(it, grid) && !visited[it.first][it.second] }
