@@ -26,17 +26,17 @@ public class NumberOfRestrictedPathsFromFirstToLastNode {
 		var pq = new PriorityQueue<>(Comparator.<int[]>comparingInt(node -> node[1]));
 		pq.add(new int[] {n, 0});
 		var waysCountFromN = new int[n + 1];
-    var minDistanceFromN = new int[n + 1];
-    Arrays.fill(minDistanceFromN, Integer.MAX_VALUE);
-    // ! Critical initializations
-    waysCountFromN[n] = 1;
+		var minDistanceFromN = new int[n + 1];
+		Arrays.fill(minDistanceFromN, Integer.MAX_VALUE);
+		// ! Critical initializations
+		waysCountFromN[n] = 1;
 		minDistanceFromN[n] = 0;
 		while (!pq.isEmpty()) {
 			var node = pq.poll();
-			var nodeIdx = node[0];
+			var u = node[0];
 			var uDistanceFromN = node[1];
-			if (uDistanceFromN <= minDistanceFromN[nodeIdx]) {
-				for (var v : graph.getOrDefault(nodeIdx, Collections.emptyMap()).entrySet()) {
+			if (uDistanceFromN <= minDistanceFromN[u]) {
+				for (var v : graph.getOrDefault(u, Collections.emptyMap()).entrySet()) {
 					var nextDistanceFromN = v.getValue() + uDistanceFromN;
 					if (nextDistanceFromN < minDistanceFromN[v.getKey()]) {
 						// ! Update `minDistanceFromN` on enqueue to keep it current and immediately compare
@@ -45,7 +45,7 @@ public class NumberOfRestrictedPathsFromFirstToLastNode {
 					}
 					// ! Neighbour closer to N found, add-up ways
 					if (uDistanceFromN > minDistanceFromN[v.getKey()]) {
-						waysCountFromN[nodeIdx] = (waysCountFromN[nodeIdx] + waysCountFromN[v.getKey()]) % MOD;
+						waysCountFromN[u] = (waysCountFromN[u] + waysCountFromN[v.getKey()]) % MOD;
 					}
 				}
 			}
