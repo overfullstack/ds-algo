@@ -1,4 +1,4 @@
-package practice.graph.dijkstra;
+package practice.graph.dijkstra.dp;
 
 import java.util.Arrays;
 import java.util.Collections;

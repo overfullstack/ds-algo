@@ -9,15 +9,17 @@ import kotlin.math.abs
  * [1584. Min Cost to Connect All
  * Points](https://leetcode.com/problems/min-cost-to-connect-all-points/)
  */
-fun minCostConnectPoints(points: Array<IntArray>): Int {
-  if (points.size <= 1) return 0
+fun minCostConnectPoints(points: Array<IntArray>): Int { // * Prim's MST Algorithm
+  if (points.size <= 1) {
+    return 0
+  }
   val pq = PriorityQueue(compareBy<Pair<Int, Int>> { it.second })
   pq.add(0 to 0)
   val visitedIdx = mutableSetOf<Int>()
   var totalCost = 0
   while (pq.isNotEmpty() && visitedIdx.size < points.size) {
-    val (idx, cost) = pq.poll()
-    if (idx !in visitedIdx) { // ! pq makes sure a point is always visited with minCost
+    val (idx, cost) = pq.poll() // ! Pick the nearest point to join
+    if (idx !in visitedIdx) {
       totalCost += cost
       visitedIdx += idx
       points.indices
