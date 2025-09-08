@@ -4,7 +4,7 @@ import io.kotest.core.spec.style.StringSpec
 import io.kotest.data.forAll
 import io.kotest.data.row
 import io.kotest.matchers.shouldBe
-import leetcode.graph.bfs.getFood
+import leetcode.graph.bfs.grid.getFood
 
 /* 30 Jul 2025 12:07 */
 

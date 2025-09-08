@@ -15,6 +15,6 @@ fun minimumNonConstructableChange(coins: IntArray): Int {
       table[i] = table[i] || table[i - coin]
     }
   }
-  return table.withIndex().firstOrNull { (_, value) -> value == false }?.index
-    ?: maxSumPossibleWithCurCoins + 1
+  return table.withIndex().firstOrNull { (_, value) -> !value }?.index
+    ?: (maxSumPossibleWithCurCoins + 1)
 }

@@ -3,18 +3,17 @@ package leetcode.unionfind
 /* 04 Aug 2025 10:49 */
 
 /**
- * [1101 - The Earliest Moment When Everyone Become
- * Friends](https://leetcode.ca/2018-12-05-1101-The-Earliest-Moment-When-Everyone-Become-Friends/)
+ * [3670 · The Earliest Moment When Everyone Become Friends](https://www.lintcode.com/problem/3670/)
  */
 fun earliestAcq(logs: Array<IntArray>, n: Int): Int {
   // ! Sorted by timestamp
-  val sortedLogs = logs.sortedBy { it[0] }
+  val sortedLogsByTimeStamp = logs.sortedBy { it[0] }
   val unionFind = UnionFind(n)
-  return sortedLogs
+  return sortedLogsByTimeStamp
     .asSequence()
     .takeWhile { unionFind.groupCount != 1 }
     .onEach { (_, u, v) -> unionFind.union(u, v) }
-    .last()[0] // ! last after takeWhile returns false
+    .last()[0] // ! last after takeWhile breaks by returning false
 }
 
 private class UnionFind(size: Int) {

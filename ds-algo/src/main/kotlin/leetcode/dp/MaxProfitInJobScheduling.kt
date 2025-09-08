@@ -1,7 +1,7 @@
 /* gakshintala created on 1/25/20 */
 package leetcode.dp
 
-import java.util.*
+import java.util.TreeMap
 
 /**
  * [1235. Maximum Profit in Job

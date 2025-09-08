@@ -11,16 +11,16 @@ public class DetonateMaximumBombs {
 				.orElse(0);
 	}
 
-	private int dfs(int[] bomb, int[][] bombs, boolean[][] visited) {
-		visited[bomb[0]][bomb[1]] = true;
+	private static int dfs(int[] bomb, int[][] bombs, boolean[][] visitedPerGroup) {
+		visitedPerGroup[bomb[0]][bomb[1]] = true;
 		return 1
 				+ Arrays.stream(bombs)
-						.filter(toBomb -> !visited[toBomb[0]][toBomb[1]] && inRange(toBomb, bomb))
-						.mapToInt(toBomb -> dfs(toBomb, bombs, visited))
+						.filter(toBomb -> !visitedPerGroup[toBomb[0]][toBomb[1]] && inRange(toBomb, bomb))
+						.mapToInt(toBomb -> dfs(toBomb, bombs, visitedPerGroup))
 						.sum();
 	}
 
-	private boolean inRange(int[] toBomb, int[] fromBomb) {
+	private static boolean inRange(int[] toBomb, int[] fromBomb) {
 		var dx = toBomb[0] - fromBomb[0];
 		var dy = toBomb[1] - fromBomb[1];
 		var fromBombRadius = fromBomb[2] * fromBomb[2];

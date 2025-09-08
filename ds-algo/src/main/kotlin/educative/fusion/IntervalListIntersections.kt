@@ -31,7 +31,7 @@ fun intervalListIntersections(
     val intervalIntersections =
       when {
         latestStart <= earliestEnd -> result + (latestStart to earliestEnd)
-        else -> result
+        else -> result // ! No Intersection
       }
 
     // ! Move past earliest ending Job

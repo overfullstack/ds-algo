@@ -3,6 +3,7 @@ package algoexpert.recursion
 fun productSum(splArr: List<Any>, depth: Int = 1): Int {
   var sum = 0
   for (i in splArr) {
+    @Suppress("UNCHECKED_CAST")
     sum +=
       depth *
         when {

@@ -17,8 +17,8 @@ public class Heaters {
 			var rightHeater = heatersTreeSet.ceiling(house);
 			var leftDistance = leftHeater == null ? Integer.MAX_VALUE : house - leftHeater;
 			var rightDistance = rightHeater == null ? Integer.MAX_VALUE : rightHeater - house;
-			var closestHeaterDistance = Math.min(leftDistance, rightDistance);
-			result = Math.max(result, closestHeaterDistance);
+			var closestHeaterToAnyHouseDistance = Math.min(leftDistance, rightDistance);
+			result = Math.max(result, closestHeaterToAnyHouseDistance);
 		}
 		return result;
 	}

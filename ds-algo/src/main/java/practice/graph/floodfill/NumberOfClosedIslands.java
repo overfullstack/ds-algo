@@ -25,7 +25,7 @@ public class NumberOfClosedIslands {
 		var closedIslandCount = 0;
 		for (var row = 0; row < grid.length; row++) {
 			for (var col = 0; col < grid[0].length; col++) {
-				if (grid[row][col] == 0) {
+				if (grid[row][col] == 0) { // ! Encroach the islands and flood them
 					closedIslandCount++;
 					floodFill(row, col, grid); // ! Fill them so we count the group as one island
 				}
@@ -36,7 +36,8 @@ public class NumberOfClosedIslands {
 
 	// ! 0s (land) and 1s (water)
 	private static void floodFill(int row, int col, int[][] grid) {
-		if (!isValid(row, col, grid) || grid[row][col] != 0) { // ! Deal with only Land cells
+		// ! Deal with only Land cells. Enclosed regions shall be guarded by a layer of this check
+		if (!isValid(row, col, grid) || grid[row][col] != 0) {
 			return;
 		}
 		grid[row][col] = 1; // ! Mark land cell as water cell

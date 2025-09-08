@@ -7,13 +7,13 @@ public class CombinationSum4 {
 	public int combinationSum4(int[] nums, int target) {
 		var dp = new int[target + 1];
 		dp[0] = 1;
-		for (var i = 1; i <= target; i++) {
+		for (var sum = 1; sum <= target; sum++) {
 			// !!! Layers multiple nums for same target
 			// ! we consider all possible numbers that could be the "last" number in the sequence
 			// ! Unlike Combination Sum 2
 			for (var num : nums) {
-				if (i >= num) {
-					dp[i] += dp[i - num];
+				if (num <= sum) {
+					dp[sum] += dp[sum - num]; // ! Count multiple combinations for the same sum
 				}
 			}
 		}

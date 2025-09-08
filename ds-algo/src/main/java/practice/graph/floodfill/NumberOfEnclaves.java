@@ -33,7 +33,8 @@ public class NumberOfEnclaves {
 	}
 
 	private static void floodFill(int row, int col, int[][] grid) {
-		if (!isValid(row, col, grid) || grid[row][col] == 0) { // ! Deal with only Land cells
+		// ! Deal with only Land cells. Enclosed regions shall be guarded by a layer of this check
+		if (!isValid(row, col, grid) || grid[row][col] == 0) {
 			return;
 		}
 		grid[row][col] = 0;
