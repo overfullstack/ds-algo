@@ -5,6 +5,9 @@ import utils.toPair
 
 /* 20 Jul 2025 12:28 */
 
+/**
+ * [57. Insert Interval](https://leetcode.com/problems/insert-interval/)
+ */
 fun insert(intervals: Array<IntArray>, newInterval: IntArray): Array<IntArray> =
   insertInterval(intervals.map { it.toPair() }, newInterval.toPair())
     .map { it.toIntArray() }

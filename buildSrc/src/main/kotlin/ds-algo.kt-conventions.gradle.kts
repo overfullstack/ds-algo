@@ -1,6 +1,8 @@
 @file:OptIn(ExperimentalKotlinGradlePluginApi::class)
 
 import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
+import org.jetbrains.kotlin.gradle.dsl.jvm.JvmTargetValidationMode
+import org.jetbrains.kotlin.gradle.tasks.KotlinJvmCompile
 
 plugins {
   kotlin("jvm")
@@ -15,4 +17,8 @@ kotlin { compilerOptions { freeCompilerArgs.addAll("-Xcontext-parameters", "-pro
 
 powerAssert {
   functions = listOf("io.kotest.matchers.shouldBe")
+}
+
+tasks.withType<KotlinJvmCompile>().configureEach {
+  jvmTargetValidationMode = JvmTargetValidationMode.WARNING
 }

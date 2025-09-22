@@ -4,6 +4,9 @@ package practice.binarysearch;
 
 import java.util.Arrays;
 
+/**
+ * [875. Koko Eating Bananas](https://leetcode.com/problems/koko-eating-bananas/)
+ */
 public class KokoEatingBananas {
 	public int minEatingSpeed(int[] piles, int h) {
 		var left = 1;
