@@ -1,4 +1,4 @@
-package practice;
+package practice.binarysearch;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -28,7 +28,7 @@ public class RussianDolls {
 		return tails.size();
 	}
 
-	// * leftMost search for
+	// * leftMost tail greater than or equal to num
 	private static int findInsertionPOS(List<Integer> tails, int num) {
 		var left = 0;
 		var right = tails.size();
@@ -40,6 +40,6 @@ public class RussianDolls {
 				left = mid + 1;
 			}
 		}
-		return left;
+		return right;
 	}
 }

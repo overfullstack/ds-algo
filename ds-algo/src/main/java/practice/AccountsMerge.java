@@ -55,7 +55,7 @@ public class AccountsMerge {
 		UnionFind(int size) {
 			this.size = size;
 			roots = new int[size];
-			for (int i = 0; i < size; i++) {
+			for (var i = 0; i < size; i++) {
 				roots[i] = i;
 			}
 			ranks = new int[size];

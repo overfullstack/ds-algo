@@ -4,7 +4,7 @@ package educative.elegant.unionfind
 fun longestConsecutiveSequence(nums: IntArray): Int {
   val unionFind = UnionFind6(nums)
   // * We are directly using the num values, no indexes being used
-  nums.asSequence().filter { (it + 1) in unionFind.roots }.forEach { unionFind.union(it, it + 1) }
+  nums.asSequence().filter { it + 1 in unionFind.roots }.forEach { unionFind.union(it, it + 1) }
   return unionFind.ranks.values.maxOrNull() ?: 0
 }
 

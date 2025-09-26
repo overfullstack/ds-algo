@@ -226,15 +226,12 @@ class DiGraph<T>(
         undirectedAdjacency[dest]!!.add(source)
       }
     }
-
     // Check if all nodes are reachable from any starting node using BFS
     val startNode = allNodes.first()
     val visited = mutableSetOf<T>()
     val queue = ArrayDeque<T>()
-
     queue.add(startNode)
     visited.add(startNode)
-
     while (queue.isNotEmpty()) {
       val current = queue.removeFirst()
       undirectedAdjacency[current]?.forEach { neighbor ->
@@ -244,7 +241,6 @@ class DiGraph<T>(
         }
       }
     }
-
     return visited.size == allNodes.size
   }
 
@@ -276,9 +272,7 @@ class DiGraph<T>(
   private fun getReachableNodes(startNode: T): Set<T> {
     val visited = mutableSetOf<T>()
     val stack = ArrayDeque<T>()
-
     stack.add(startNode)
-
     while (stack.isNotEmpty()) {
       val current = stack.removeLast()
       if (current !in visited) {
@@ -290,7 +284,6 @@ class DiGraph<T>(
         }
       }
     }
-
     return visited
   }
 
