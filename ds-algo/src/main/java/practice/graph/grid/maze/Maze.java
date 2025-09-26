@@ -1,38 +1,38 @@
-package practice.graph.maze;
+package practice.graph.grid.maze;
 
-import java.util.LinkedList;
+import java.util.ArrayDeque;
 
 /** [787 · The Maze](https://www.lintcode.com/problem/787/) */
 public class Maze {
 	public boolean hasPath(int[][] maze, int[] start, int[] destination) {
-		var queue = new LinkedList<int[]>();
+		var queue = new ArrayDeque<int[]>();
 		queue.add(start);
 		var visited = new boolean[maze.length][maze[0].length];
 		visited[start[0]][start[1]] = true;
 		while (!queue.isEmpty()) {
-			var cell = queue.poll();
+			var cell = queue.removeFirst();
 			for (var direction : directions) {
-				var nextX = cell[0];
-				var nextY = cell[1];
-				while (isValid(nextX + direction[0], nextY + direction[1], maze)
-						&& maze[nextX + direction[0]][nextY + direction[1]] != 1) {
-					nextX += direction[0];
-					nextY += direction[1];
+				var nextRow = cell[0];
+				var nextCol = cell[1];
+				while (isValid(nextRow + direction[0], nextCol + direction[1], maze)
+						&& maze[nextRow + direction[0]][nextCol + direction[1]] != 1) {
+					nextRow += direction[0];
+					nextCol += direction[1];
 				}
-				if (nextX == destination[0] && nextY == destination[1]) {
+				if (nextRow == destination[0] && nextCol == destination[1]) {
 					return true;
 				}
-				if (!visited[nextX][nextY]) {
-					visited[nextX][nextY] = true;
-					queue.add(new int[] {nextX, nextY});
+				if (!visited[nextRow][nextCol]) {
+					visited[nextRow][nextCol] = true;
+					queue.add(new int[] {nextRow, nextCol});
 				}
 			}
 		}
 		return false;
 	}
 
-	private boolean isValid(int x, int y, int[][] maze) {
-		return (x >= 0 && x < maze.length) && (y >= 0 && y < maze[0].length);
+	private boolean isValid(int row, int col, int[][] maze) {
+		return (row >= 0 && row < maze.length) && (col >= 0 && col < maze[0].length);
 	}
 
 	int[][] directions = {{1, 0}, {0, 1}, {-1, 0}, {0, -1}};

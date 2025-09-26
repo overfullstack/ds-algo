@@ -12,7 +12,6 @@ fun updateMatrix(matrix: Array<IntArray>): Array<IntArray> { // * BFS
       }
     }
   }
-
   while (queue.isNotEmpty()) {
     val (row, col, distance) = queue.removeFirst()
     val nextDistance = distance + 1
@@ -25,7 +24,7 @@ fun updateMatrix(matrix: Array<IntArray>): Array<IntArray> { // * BFS
         isValid(nextRow to nextCol, matrix) && matrix[nextRow][nextCol] == -1
       }
       .forEach { (nextRow, nextCol) ->
-        matrix[nextRow][nextCol] = nextDistance // ! This also serves as visited
+        matrix[nextRow][nextCol] = nextDistance // ! Visit-on-Enqueue for BFS
         // All 0s are already in the queue. Let's say a 1 might be totally covered with 1s,
         // all those surrounding 1s need to be crossed to reach such.
         // ! So adding all those 1s to queue to go from border into the island depth

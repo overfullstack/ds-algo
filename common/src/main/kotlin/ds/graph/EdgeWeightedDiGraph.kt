@@ -59,21 +59,21 @@ class EdgeWeightedDiGraph<T>(
     while (pq.isNotEmpty()) {
       val (from, distanceFromSource) = pq.poll()
       // ! `pq` may contain the same node with farther distance
-      // ! so this check prevents from processing and recording a wrong distance
+      // ! so this check prevents from processing that redundantly
       // ! The equals in `<=` is only needed for the first dequeue where `from == source`
       if (distanceFromSource <= minDistanceNodeFromSource.getOrDefault(from, Int.MAX_VALUE)) {
         adjacencyMap[from]?.forEach { (to, weight) ->
-          val newDistance = distanceFromSource + weight
+          val nextDistance = distanceFromSource + weight
           // ! This is an Optimization check to prevent redundant entries in `pq`
           // ! `newDistance <` counters the above `distanceFromSource <=` in preventing redundancy
-          if (newDistance < minDistanceNodeFromSource.getOrDefault(to, Int.MAX_VALUE)) {
+          if (nextDistance < minDistanceNodeFromSource.getOrDefault(to, Int.MAX_VALUE)) {
             // ! Record-on-Enqueue
             // ! Keeping the `minDistanceNodeFromSource` current leads to
             // ! better pruning and lesser `pq` size compared to `dijkstraShortestPathClassic`
             // ! as we don't even allow nodes with farther distances to be enqueued
             // !!! First recorded distance on enqueue may be overridden as it's not the most optimal
-            minDistanceNodeFromSource[to] = newDistance
-            pq.add(to to newDistance)
+            minDistanceNodeFromSource[to] = nextDistance
+            pq.add(to to nextDistance)
           }
         }
       }
