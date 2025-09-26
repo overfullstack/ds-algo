@@ -11,8 +11,9 @@ fun generateParenthesis(
     // ! left count should be greater than right. right is capped by left and left is capped at n
     !in right..n -> emptyList()
     n if right == n -> listOf(parenStr)
-    else -> (generateParenthesis(n, left + 1, right, "$parenStr(") +
-      generateParenthesis(n, left, right + 1, "$parenStr)"))
+    else ->
+      (generateParenthesis(n, left + 1, right, "$parenStr(") +
+        generateParenthesis(n, left, right + 1, "$parenStr)"))
   }
 
 fun main() {

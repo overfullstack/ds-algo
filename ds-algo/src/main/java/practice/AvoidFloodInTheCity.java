@@ -5,6 +5,7 @@ import java.util.TreeSet;
 
 /* 28 Aug 2025 16:15 */
 
+/** [1488. Avoid Flood in The City](https://leetcode.com/problems/avoid-flood-in-the-city) */
 public class AvoidFloodInTheCity {
 	public int[] avoidFlood(int[] rains) {
 		var result = new int[rains.length];

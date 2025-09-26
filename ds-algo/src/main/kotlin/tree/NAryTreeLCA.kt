@@ -15,8 +15,7 @@ data class NAryTreeNode(var value: Int) {
   fun addEdge(childNode: NAryTreeNode?) {
     childNode?.parent = this
     childNode?.depth = this.depth + 1
-    childNode?.jumpParent =
-      if (childNode?.depth?.rem(blockSize) ?: 0 == 0) this else parent?.jumpParent
+    childNode?.jumpParent = if (childNode.depth.rem(blockSize) == 0) this else parent?.jumpParent
     children.add(childNode)
   }
 }

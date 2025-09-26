@@ -9,8 +9,8 @@ import java.util.Arrays;
  * https://leetcode.com/problems/find-the-city-with-the-smallest-number-of-neighbors-at-a-threshold-distance/)
  */
 public class FindCityWithSmallestNumberOfNeighborsAtAThresholdDistance {
-	// * Floyd-Warshall Algorithm
-	public int findTheCity(int n, int[][] edges, int distanceThreshold) {
+
+	public int findTheCity(int n, int[][] edges, int distanceThreshold) { // * Floyd-Warshall
 		var distances = new int[n][n];
 		for (var i = 0; i < distances.length; i++) {
 			Arrays.fill(distances[i], 10001); // ! large number to prevent int overflow
@@ -44,8 +44,8 @@ public class FindCityWithSmallestNumberOfNeighborsAtAThresholdDistance {
 
 	static void main() {
 		var solution = new FindCityWithSmallestNumberOfNeighborsAtAThresholdDistance();
-		int[][] edges = {{0, 1, 2}, {0, 4, 8}, {1, 2, 3}, {1, 4, 2}, {2, 3, 1}, {3, 4, 1}};
-		int result = solution.findTheCity(5, edges, 2);
+		var edges = new int[][] {{0, 1, 2}, {0, 4, 8}, {1, 2, 3}, {1, 4, 2}, {2, 3, 1}, {3, 4, 1}};
+		var result = solution.findTheCity(5, edges, 2);
 		System.out.println(result);
 	}
 }

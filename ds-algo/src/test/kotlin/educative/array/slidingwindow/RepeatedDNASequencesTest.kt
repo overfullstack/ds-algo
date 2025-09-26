@@ -1,6 +1,6 @@
 package educative.array.slidingwindow
 
-import educative.slidingwindow.repeatedDNASequences
+import educative.elegant.slidingwindow.repeatedDNASequences
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.inspectors.forAll
 import io.kotest.matchers.collections.shouldContainExactlyInAnyOrder

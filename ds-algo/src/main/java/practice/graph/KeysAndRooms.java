@@ -13,9 +13,9 @@ public class KeysAndRooms {
 	}
 
 	// ! This isn't similar to CourseSchedule as it has cases like `[[1],[1]]`
-	private static void dfs(int node, List<List<Integer>> rooms, Set<Integer> visited) {
-		visited.add(node);
-		rooms.get(node).stream().filter(v -> !visited.contains(v)).forEach(v -> dfs(v, rooms, visited));
+	private static void dfs(int room, List<List<Integer>> rooms, Set<Integer> visited) {
+		visited.add(room);
+		rooms.get(room).stream().filter(r -> !visited.contains(r)).forEach(r -> dfs(r, rooms, visited));
 	}
 
 	static void main() {

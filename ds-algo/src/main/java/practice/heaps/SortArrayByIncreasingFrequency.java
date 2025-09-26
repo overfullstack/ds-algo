@@ -1,4 +1,4 @@
-package practice.graph.heaps;
+package practice.heaps;
 
 import java.util.Arrays;
 import java.util.Comparator;

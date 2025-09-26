@@ -1,4 +1,4 @@
-package leetcode.graph.bfs.grid
+package leetcode.graph.bfs.grid.state3d
 
 /* 30 Jul 2025 12:26 */
 
@@ -37,6 +37,7 @@ fun shortestPath(grid: Array<IntArray>, k: Int): Int { // * BFS
             // ! Spl Visit-on-Enqueue as we have unweighted paths.
             // ! We won't have a scenario of having better paths later in the queue
             // ! It's more efficient as it avoids bloating `pq` with duplicate entries
+            // ! It works here as it tracks a combo and not just `node`.
             visited += next.first
             queue.add(next)
           }

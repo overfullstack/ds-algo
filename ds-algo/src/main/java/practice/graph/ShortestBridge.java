@@ -23,24 +23,25 @@ public class ShortestBridge {
 						.orElseThrow();
 		var queue = new ArrayDeque<int[]>();
 		var visited = new boolean[grid.length][grid[0].length];
+		// ! Mark one of the islands 1s as visited
 		dfsGroup(firstLandCell[0], firstLandCell[1], grid, visited, queue);
+		// ! BFS to next island
 		while (!queue.isEmpty()) {
 			var cell = queue.poll();
 			var row = cell[0];
 			var col = cell[1];
 			var distance = cell[2];
-			var nextDistance = distance + 1;
-			// ! Can't have visited check here as we start with already visited cells in the queue
 			for (var d : directions) {
 				var nextRow = row + d[0];
 				var nextCol = col + d[1];
-				// ! Deeper 1s surrounded by 1s are filtered through visited
+				// ! Deeper 1s surrounded by 1s are filtered through visited check
+				// ! Only shore 1s are added to queue
 				if (isValid(nextRow, nextCol, grid) && !visited[nextRow][nextCol]) {
 					if (grid[nextRow][nextCol] == 1) {
 						return distance; // ! `distance` and not `nextDistance` as we need bridge length
 					}
 					visited[nextRow][nextCol] = true;
-					queue.add(new int[] {nextRow, nextCol, nextDistance});
+					queue.add(new int[] {nextRow, nextCol, distance + 1});
 				}
 			}
 		}

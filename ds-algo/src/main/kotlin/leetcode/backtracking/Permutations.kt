@@ -1,6 +1,6 @@
 package leetcode.backtracking
 
-/** https://leetcode.com/problems/permutations/ */
+/** [46. Permutations](https://leetcode.com/problems/permutations) */
 fun permute(nums: IntArray): List<List<Int>> = nums.permute()
 
 fun IntArray.permute(

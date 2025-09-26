@@ -27,8 +27,8 @@ public class NumberOfProvinces {
 		}
 		visited[row] = true;
 		IntStream.range(0, isConnected[row].length) // ! Indices
-				.filter(col -> isConnected[row][col] == 1)
-				.forEach(col -> dfsPerGroup(isConnected, visited, col)); // ! Go to the connected city
+				.filter(col -> isConnected[row][col] == 1) // ! row -connected-to-> col
+				.forEach(col -> dfsPerGroup(isConnected, visited, col)); // ! Go to connected col
 	}
 
 	static void main() {

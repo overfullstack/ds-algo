@@ -2,13 +2,21 @@ package educative.dp
 
 /* 26 Jul 2025 11:41 */
 
+/**
+ * [5. Longest Palindromic Substring](https://leetcode.com/problems/longest-palindromic-substring)
+ */
 fun longestPalindromicSubstring(str: String): String {
+  when {
+    str.isEmpty() -> return str
+    str.length == 1 -> return str
+    str.length == 2 -> return if (str[0] == str[1]) str else str[0].toString()
+  }
   val dp = Array(str.length) { BooleanArray(str.length) }
   for (i in 0..str.lastIndex) {
     dp[i][i] = true
   }
 
-  lateinit var result: Pair<Int, Int>
+  var result: Pair<Int, Int> = 0 to 0
   // ! For windowLen 2
   for (i in 0 until str.lastIndex) {
     dp[i][i + 1] = (str[i] == str[i + 1])
@@ -28,4 +36,11 @@ fun longestPalindromicSubstring(str: String): String {
     }
   }
   return str.substring(result.first..result.second)
+}
+
+fun main() {
+  println(longestPalindromicSubstring("babad")) // "bab" or "aba"
+  println(longestPalindromicSubstring("cbbd")) // "bb"
+  println(longestPalindromicSubstring("a")) // "a"
+  println(longestPalindromicSubstring("abcda")) // "a" or "c"
 }

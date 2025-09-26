@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedList;
 
+/** [1138. Alphabet Board Path](https://leetcode.com/problems/alphabet-board-path/) */
 public class AlphabetBoardPath {
 	private static final String[] board = {"abcde", "fghij", "klmno", "pqrst", "uvwxy", "z"};
 	private static final int[][] directions = {{-1, 0, 'U'}, {1, 0, 'D'}, {0, -1, 'L'}, {0, 1, 'R'}};
@@ -42,7 +43,7 @@ public class AlphabetBoardPath {
 	private static boolean isValid(int[] cell) {
 		return cell[0] >= 0
 				&& cell[0] < board.length
-				&& cell[1] >= 0
+				&& cell[1] >= 0 // ! last row has only one column
 				&& (cell[0] == 5 ? cell[1] == 0 : cell[1] < board[0].length());
 	}
 

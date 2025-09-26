@@ -1,5 +1,5 @@
 /* gakshintala created on 9/8/19 */
-package queryoptmization
+package ds
 
 import kotlin.math.abs
 import kotlin.math.ceil

@@ -7,13 +7,13 @@ package leetcode
  * Time](https://leetcode.com/problems/minimum-cost-to-set-cooking-time)
  */
 fun minCostSetTime(startAt: Int, moveCost: Int, pushCost: Int, targetSeconds: Int): Int =
-  (0..(targetSeconds / 60))
-    .map { it to (targetSeconds - it * 60) }
+  (0..targetSeconds / 60)
+    .map { it to targetSeconds - it * 60 }
     .filter { (minutes, seconds) -> minutes <= 99 && seconds <= 99 }
     .minOf { (minutes, seconds) -> cost(startAt, minutes, seconds, moveCost, pushCost) }
 
 fun cost(startAt: Int, minutes: Int, seconds: Int, moveCost: Int, pushCost: Int): Int =
-  "$startAt${(minutes * 100) + seconds}".zipWithNext().fold(0) { cost, (ch, nextCh) ->
+  "$startAt${minutes * 100 + seconds}".zipWithNext().fold(0) { cost, (ch, nextCh) ->
     when {
       ch == nextCh -> cost + pushCost
       else -> cost + moveCost + pushCost

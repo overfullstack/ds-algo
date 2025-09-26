@@ -23,10 +23,9 @@ public class PathWithMinimumEffort {
 			if (row == heights.length - 1 && col == heights[0].length - 1) {
 				return maxEffortInPath;
 			}
-			// ! visit-on-dequeue. This is Dijkstra with a difference that the `maxEffortInPath` is more
+			// ! This is Dijkstra with a difference that the `maxEffortInPath` is more
 			// ! like shortestDistance, but instead of sum it's maxDiff.
 			// ! So `minHeap` should handle which `(row, col)` to visit first.
-			// ! We shouldn't mark it ourselves in the order we visit.
 			if (!visited[row][col]) {
 				visited[row][col] = true;
 				Arrays.stream(directions)

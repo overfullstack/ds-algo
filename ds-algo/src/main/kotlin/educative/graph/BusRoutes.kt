@@ -3,6 +3,7 @@ package educative.graph
 import ds.graph.DiGraph
 
 /* 15 Jul 2025 21:35 */
+
 /** [815. Bus Routes](https://leetcode.com/problems/bus-routes/) */
 fun numBusesToDestination(routes: Array<IntArray>, source: Int, destination: Int): Int {
   // * Think of it like a DB, where you are maintaining 2 tables -
@@ -29,7 +30,7 @@ fun numBusesToDestination(routes: Array<IntArray>, source: Int, destination: Int
     graph[station]
       ?.filter { routeId -> routeId !in visitedRouteIds }
       ?.onEach { visitedRouteIds.add(it) }
-      ?.flatMap { routeId -> routes[routeId].toList() } // Neighbours connected by a bus route
+      ?.flatMap { routeId -> routes[routeId].toList() } // ! Neighbours connected by a bus route
       ?.forEach { station -> queue.add((station to busCount + 1)) }
   }
   return -1

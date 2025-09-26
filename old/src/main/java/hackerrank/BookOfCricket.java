@@ -1,4 +1,4 @@
-package hackerrank.DS;
+package hackerrank;
 
 /** gakshintala created on 11/10/19. */
 public class BookOfCricket {

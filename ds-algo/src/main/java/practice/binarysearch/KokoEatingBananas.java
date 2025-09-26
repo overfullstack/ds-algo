@@ -4,15 +4,13 @@ package practice.binarysearch;
 
 import java.util.Arrays;
 
-/**
- * [875. Koko Eating Bananas](https://leetcode.com/problems/koko-eating-bananas/)
- */
+/** [875. Koko Eating Bananas](https://leetcode.com/problems/koko-eating-bananas/) */
 public class KokoEatingBananas {
 	public int minEatingSpeed(int[] piles, int h) {
 		var left = 1;
 		var right = Arrays.stream(piles).max().orElse(0);
 
-		// ! Leftmost with inversely proportional condition
+		// ! Leftmost (min) with inversely proportional condition
 		while (left < right) {
 			var mid = left + (right - left) / 2;
 			var noOfHours = noOfHours(piles, mid);
@@ -22,7 +20,7 @@ public class KokoEatingBananas {
 				left = mid + 1;
 			}
 		}
-		return left;
+		return right;
 	}
 
 	private static int noOfHours(int[] piles, int speed) {

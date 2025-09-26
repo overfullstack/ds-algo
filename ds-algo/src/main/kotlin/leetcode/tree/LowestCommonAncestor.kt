@@ -4,8 +4,8 @@ import ds.tree.TreeNode
 
 fun lowestCommonAncestor(root: TreeNode?, p: TreeNode?, q: TreeNode?): TreeNode? {
   when (root) {
-      null -> return null
-      p if p == q -> return root
+    null -> return null
+    p if p == q -> return root
   }
 
   val fromLeft = lowestCommonAncestor(root.left, p, q)
@@ -36,7 +36,7 @@ fun main() {
     lowestCommonAncestor(
       TreeNode.levelOrderToIncompleteTree(listOf(1, null, 2, null, 3))!!,
       TreeNode(2),
-      TreeNode(3)
-    ),
+      TreeNode(3),
+    )
   )
 }

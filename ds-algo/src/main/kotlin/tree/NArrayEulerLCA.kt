@@ -1,7 +1,7 @@
 /* gakshintala created on 9/4/19 */
 package tree
 
-import queryoptmization.SparseTableRMQ
+import ds.SparseTableRMQ
 
 data class NArrayEulerTour(var value: Int) {
   private val children: MutableList<NArrayEulerTour?> = mutableListOf()

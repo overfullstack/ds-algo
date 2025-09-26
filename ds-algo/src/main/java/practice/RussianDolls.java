@@ -15,7 +15,7 @@ public class RussianDolls {
 		return findLISSize(heights);
 	}
 
-	private int findLISSize(int[] heights) {
+	private static int findLISSize(int[] heights) {
 		var tails = new ArrayList<Integer>();
 		for (var height : heights) {
 			var pos = findInsertionPOS(tails, height);
@@ -28,15 +28,16 @@ public class RussianDolls {
 		return tails.size();
 	}
 
-	private int findInsertionPOS(List<Integer> tails, int num) {
+	// * leftMost search for
+	private static int findInsertionPOS(List<Integer> tails, int num) {
 		var left = 0;
 		var right = tails.size();
 		while (left < right) {
 			final var mid = left + (right - left) / 2;
-			if (tails.get(mid) < num) {
-				left = mid + 1;
-			} else {
+			if (tails.get(mid) >= num) {
 				right = mid;
+			} else {
+				left = mid + 1;
 			}
 		}
 		return left;

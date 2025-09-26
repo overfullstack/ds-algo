@@ -1,4 +1,4 @@
-package leetcode.graph
+package leetcode.graph.prim
 
 import java.util.PriorityQueue
 import kotlin.math.abs

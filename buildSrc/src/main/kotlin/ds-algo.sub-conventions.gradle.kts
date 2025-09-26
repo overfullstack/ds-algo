@@ -44,7 +44,7 @@ spotless {
     googleJavaFormat()
     importOrder()
     removeUnusedImports()
-    removeWildcardImports()
+    forbidWildcardImports()
     trimTrailingWhitespace()
     leadingSpacesToTabs(2)
     endWithNewline()

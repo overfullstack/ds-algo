@@ -1,4 +1,4 @@
-package practice.greedy;
+package practice.heaps;
 
 import java.util.Arrays;
 import java.util.Comparator;
@@ -12,27 +12,32 @@ public class FoodSet {
 
 		var minHeapForLunchCalories =
 				new PriorityQueue<Integer>(Comparator.comparingInt(lIdx -> lunch[lIdx][0]));
-		var minCalories = Integer.MAX_VALUE;
 		for (var lIdx = 0; lIdx < lunch.length; lIdx++) {
 			minHeapForLunchCalories.add(lIdx);
-			if (lunch[lIdx][1] >= minDeliciousDegree && minCalories > lunch[lIdx][0]) {
-				minCalories = lunch[lIdx][0];
-			}
 		}
-		for (var d : dinner) {
-			if (d[1] >= minDeliciousDegree && minCalories > d[0]) {
-				minCalories = d[0];
-			}
-		}
-		var lIdx = 0;
-		var dIdx = dinner.length - 1;
+		var minLunchCalories =
+				Arrays.stream(lunch)
+						.filter(l -> l[1] >= minDeliciousDegree)
+						.mapToInt(l -> l[0])
+						.min()
+						.orElseThrow();
+		var minDinnerCalories =
+				Arrays.stream(dinner)
+						.filter(d -> d[1] >= minDeliciousDegree)
+						.mapToInt(d -> d[0])
+						.min()
+						.orElseThrow();
+		var minCalories = Math.min(minLunchCalories, minDinnerCalories);
+
+		var lIdx = 0; // ! Min delicious lunch
+		var dIdx = dinner.length - 1; // ! Max delicious dinner
 		while (lIdx < lunch.length && dIdx >= 0) {
 			var curDeliciousDegree = lunch[lIdx][1] + dinner[dIdx][1];
 			if (curDeliciousDegree >= minDeliciousDegree) {
-				// ! Can't pick these minCalories from lunch, as they reach maxDeliciousDegree
-				// ! even when paired with the max delicious dinner
-				// ! Increasing calories for lunch trading-off for delicious degree.
 				while (!minHeapForLunchCalories.isEmpty() && minHeapForLunchCalories.peek() < lIdx) {
+					// ! lunch entries before these are lesser delicious than `lIdx`
+					// ! poll them even if they have lesser calories
+					// ! as they can't meet `minDeliciousDegree` even when paired with max delicious `dIdx`
 					minHeapForLunchCalories.poll();
 				}
 				// ! Record `minCalories` for each lunch-dinner pair that meets the delicious degree
@@ -42,7 +47,7 @@ public class FoodSet {
 				}
 				dIdx--; // ! Decrease dinner delicious degree and check if we can find better pair
 			} else {
-				lIdx++;
+				lIdx++; // ! Increase lunch delicious degree and check if we can find better pair
 			}
 		}
 		return minCalories == Integer.MAX_VALUE ? -1 : minCalories;

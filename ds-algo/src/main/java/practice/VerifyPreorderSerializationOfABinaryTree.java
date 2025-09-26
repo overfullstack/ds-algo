@@ -11,7 +11,7 @@ public class VerifyPreorderSerializationOfABinaryTree {
 		var nodes = preorder.split(",");
 		var edgeDiff = 1;
 		for (var node : nodes) {
-			edgeDiff--; // Decrement for every node
+			edgeDiff--; // ! Decrement for every node
 			if (edgeDiff < 0) {
 				return false;
 			}

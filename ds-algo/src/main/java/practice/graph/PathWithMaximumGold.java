@@ -8,6 +8,7 @@ import java.util.Arrays;
 public class PathWithMaximumGold {
 	public int getMaximumGold(int[][] grid) {
 		var maxGold = 0;
+		// ! Each cell as origin
 		for (var row = 0; row < grid.length; row++) {
 			for (var col = 0; col < grid[0].length; col++) {
 				maxGold = Math.max(maxGold, dfs(row, col, grid));

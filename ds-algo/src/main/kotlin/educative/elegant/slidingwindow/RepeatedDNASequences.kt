@@ -1,4 +1,4 @@
-package educative.slidingwindow
+package educative.elegant.slidingwindow
 
 import kotlin.math.pow
 
@@ -15,7 +15,7 @@ fun repeatedDNASequences(str: String, k: Int): Set<String> {
     }
   val hashSet = mutableSetOf(hashForSubStr)
   val result = mutableSetOf<String>()
-  for (i in (1..str.lastIndex - k + 1)) {
+  for (i in 1..str.lastIndex - k + 1) {
     val prevHashForSubStr = hashForSubStr
     hashForSubStr =
       (prevHashForSubStr - numStr[i - 1] * dnaCompositionSize.pow(k - 1).toInt()) *

@@ -33,8 +33,9 @@ fun findCheapestPrice(n: Int, flights: Array<IntArray>, src: Int, dst: Int, k: I
         ?.filter { it !in visited }
         ?.forEach {
           // ! Spl Visit-on-Enqueue as (src, price, remainingStops) combo is always optimal on the
-          // ! first visit. Note this is not uncommon in a Dijkstra or BFS
-          // ! It works here as it tracks a combo and not just `node`.
+          // ! first visit. Note this is uncommon in a Dijkstra or BFS
+          // ! It's more efficient as it avoids bloating `pq` with duplicate entries
+          // ! It works here as it tracks a combo and not just `node`
           visited += it
           pq.add(it)
         }

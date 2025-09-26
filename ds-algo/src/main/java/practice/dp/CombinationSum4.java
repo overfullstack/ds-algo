@@ -1,4 +1,4 @@
-package practice;
+package practice.dp;
 
 /* 29 Aug 2025 20:38 */
 

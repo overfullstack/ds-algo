@@ -1,4 +1,4 @@
-package practice.graph;
+package practice.binarysearch;
 
 import java.util.TreeSet;
 
