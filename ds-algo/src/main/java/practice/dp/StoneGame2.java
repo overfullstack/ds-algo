@@ -16,7 +16,7 @@ public class StoneGame2 {
 	// * This is a DFS where we explore all possible paths with the `x` loop
 	private static int maxStonesForTurn(int[] suffixSum, int startIdx, int m, int[][] memo) {
 		if (startIdx + 2 * m - 1 >= suffixSum.length - 1) {
-			return suffixSum[startIdx]; // ! All stones in `startIdx..lastIndex`
+			return suffixSum[startIdx]; // ! All stones in `startIdx..lastIdx`
 		}
 		if (memo[startIdx][m] != 0) {
 			return memo[startIdx][m];

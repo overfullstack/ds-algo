@@ -1,9 +1,9 @@
 /* gakshintala created on 12/7/19 */
-package leetcode.backtracking.CombinationSum
+package leetcode.dp.CombinationSum
 
 /** [40. Combination Sum II](https://leetcode.com/problems/combination-sum-ii/) */
 fun combinationSum(arr: IntArray, targetSum: Int): List<IntArray> =
-  // ! Sort the array before calling. Sorting is to keep all duplicates together *
+  // ! Sort the array before calling. Sorting is to keep all duplicates together
   combinationSumInternal(arr.sorted(), targetSum)
 
 private fun combinationSumInternal(

@@ -10,8 +10,8 @@ fun IntArray.permute(
   if (permutation.size == size) {
     listOf(permutation)
   } else {
-    indices
-      .filterNot { used[it] }
+    indices // ! No need of `asSequence` as reset on `used` is used in the next iteration only
+      .filter { !used[it] }
       .flatMap { unusedIndex ->
         used[unusedIndex] = true
         permute(permutation + this[unusedIndex], used).also { used[unusedIndex] = false }
