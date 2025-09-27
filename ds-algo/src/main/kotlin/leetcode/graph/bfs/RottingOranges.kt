@@ -1,9 +1,6 @@
 package leetcode.graph.bfs
 
-/**
- * [Rotting Oranges](https://leetcode.com/problems/rotting-oranges/) 0 -> empty cell 1 -> fresh 2 ->
- * rotten
- */
+/** [Rotting Oranges](https://leetcode.com/problems/rotting-oranges/) */
 fun orangesRotting(grid: Array<IntArray>): Int { // * BFS
   if (grid.isEmpty()) {
     return 0
@@ -29,7 +26,6 @@ fun orangesRotting(grid: Array<IntArray>): Int { // * BFS
   while (queue.isNotEmpty()) {
     val (row, col, time) = queue.removeFirst()
     maxTime = maxOf(maxTime, time)
-    val newTime = time + 1
     freshCount -=
       directions
         .asSequence()
@@ -37,7 +33,7 @@ fun orangesRotting(grid: Array<IntArray>): Int { // * BFS
         .filter { (newRow, newCol) -> isValid(newRow to newCol, grid) && grid[newRow][newCol] == 1 }
         .onEach { (newRow, newCol) ->
           grid[newRow][newCol] = 2 // ! mark rotten, also serves as visited
-          queue.add(Triple(newRow, newCol, newTime))
+          queue.add(Triple(newRow, newCol, time + 1))
         }
         .count()
   }

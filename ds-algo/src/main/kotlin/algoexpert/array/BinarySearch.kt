@@ -8,7 +8,7 @@ fun IntArray.binarySearchRightMost(valueToSearch: Int): Int {
   while (left <= right) {
     // ! `mid` calculation is left biased
     // ! so we have `<=` and `left = mid + 1` to let left cross right to avoid infinite loop
-    val mid = (left + right) / 2
+    val mid = left + (right - left) / 2
     when {
       // ! Left moves towards right when condition is true, so we end up at the Rightmost
       this[mid] <= valueToSearch -> left = mid + 1

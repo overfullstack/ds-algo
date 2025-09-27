@@ -14,15 +14,16 @@ fun swimInWater(grid: Array<IntArray>): Int {
   while (pq.isNotEmpty()) {
     val (row, col, maxInPath) = pq.poll()
     if (row == grid.lastIndex && col == grid[0].lastIndex) {
-      return maxInPath // ! elevation in this problem represents time
+      // ! maxInPath represents the maximum time to wait to take this path to reach the destination
+      return maxInPath
     }
     visited[row][col] = true
     directions
       .map { it.first + row to it.second + col }
       .filter { isValid(it, grid) && !visited[it.first][it.second] }
-      .forEach { (row, col) ->
-        val newMaxInPath = maxOf(maxInPath, grid[row][col])
-        pq.add(Triple(row, col, newMaxInPath))
+      .forEach { (nextRow, nextCol) ->
+        val newMaxInPath = maxOf(maxInPath, grid[nextRow][nextCol])
+        pq.add(Triple(nextRow, nextCol, newMaxInPath))
       }
   }
   return 0
