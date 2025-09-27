@@ -1,4 +1,4 @@
-package practice.graph.dijkstra;
+package practice.graph.grid;
 
 import java.util.ArrayDeque;
 import java.util.Arrays;
@@ -21,7 +21,7 @@ public class EscapeTheSpreadingFire {
 				}
 			}
 		}
-		while (!queue.isEmpty()) {
+		while (!queue.isEmpty()) { // * BFS
 			var cell = queue.removeFirst();
 			var row = cell[0];
 			var col = cell[1];
@@ -55,7 +55,7 @@ public class EscapeTheSpreadingFire {
 		return right;
 	}
 
-	private static boolean canCross(int[][] grid, int[][] minTimes, int waitTime) {
+	private static boolean canCross(int[][] grid, int[][] minTimes, int waitTime) { // * BFS
 		var queue = new ArrayDeque<int[]>();
 		queue.add(new int[] {0, 0, waitTime});
 		var visited = new boolean[grid.length][grid[0].length];

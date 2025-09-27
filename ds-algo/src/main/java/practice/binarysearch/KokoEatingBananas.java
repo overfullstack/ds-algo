@@ -11,7 +11,6 @@ public class KokoEatingBananas {
 		var right = Arrays.stream(piles).max().orElse(0);
 
 		// ! MinNoOfHours = Leftmost
-		// ! Leftmost (min) with inversely proportional condition
 		while (left < right) {
 			var mid = left + (right - left) / 2;
 			var noOfHours = noOfHours(piles, mid);

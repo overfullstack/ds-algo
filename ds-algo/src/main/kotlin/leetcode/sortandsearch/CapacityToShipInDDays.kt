@@ -27,10 +27,6 @@ tailrec fun shipWithinDays(
       }
       .first + 1 // ! `+1` for the reminder
   // ! Minimum Capacity = Leftmost
-  // ! Unlike classic Leftmost Binary search condition for Leftmost `this[mid] >= valueToSearch`
-  // ! this condition moves in reverse direction
-  // ! as `capacity` and `daysRequired` are inversely proportional
-  // ! so the condition is reverse `daysRequired <= d`
   return when {
     daysRequired <= d -> shipWithinDays(weights, d, minCap, curCap)
     else -> shipWithinDays(weights, d, curCap + 1, maxCap)
