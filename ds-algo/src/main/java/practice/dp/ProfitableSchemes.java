@@ -6,7 +6,8 @@ import java.util.Arrays;
 
 /** [879. Profitable Schemes](https://leetcode.com/problems/profitable-schemes/) */
 public class ProfitableSchemes {
-  private static final int MOD = (int)1e9 + 7;
+	private static final int MOD = (int) 1e9 + 7;
+
 	public int profitableSchemes(int n, int minProfit, int[] group, int[] profit) {
 		var memo = new int[102][102][102];
 		for (var memo2 : memo) { // ! Fill with `-1` as the problem states profit can hold 0 too
@@ -49,7 +50,7 @@ public class ProfitableSchemes {
 						profit,
 						memo);
 		memo[idx][curGroup][curProfit] = (excludeGroup + includeGroup) % MOD;
-    return memo[idx][curGroup][curProfit];
+		return memo[idx][curGroup][curProfit];
 	}
 
 	static void main() {
