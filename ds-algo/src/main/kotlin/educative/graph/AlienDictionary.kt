@@ -2,9 +2,7 @@ package educative.graph
 
 /* 30 Aug 2024 10:46 */
 
-/**
- * [892 · Alien Dictionary](https://www.lintcode.com/problem/892/)
- */
+/** [892 · Alien Dictionary](https://www.lintcode.com/problem/892/) */
 fun orderAlienDictionary(words: Array<String>): String { // * Kahn's algorithm
   val diGraph: MutableMap<Char, Set<Char>> = mutableMapOf()
   val charToInConnectionCount = words.flatMap { it.toList() }.associateWith { 0 }.toMutableMap()

@@ -18,4 +18,13 @@ class `01KnapsackTest` :
           findMaxKnapsackProfit(capacity, weights.toIntArray(), values.toIntArray()) shouldBe output
         }
     }
+
+    "0/1 Knapsack Top down" {
+      parseJsonFileToTestCases("${PKG_PATH}/test-cases-1.json", "$PKG_PATH/test-cases-2.json")
+        .forAll { (input, output) ->
+          val (capacity, weights, values) = input
+          findMaxKnapsackProfitTopDown(capacity, weights.toIntArray(), values.toIntArray()) shouldBe
+            output
+        }
+    }
   })

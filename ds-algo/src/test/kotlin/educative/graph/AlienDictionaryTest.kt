@@ -37,7 +37,7 @@ class AlienDictionaryTest :
         row(listOf("alpha", "bravo", "charlie", "delta"), "alphrvoietbcd"),
         row(listOf("jupyter", "ascending"), "jupyterscndiga"),
         row(listOf("ba", "ba", "ba"), "ba"),
-        row(listOf("zy","zx"), "zyx"),
+        row(listOf("zy", "zx"), "zyx"),
       ) { words, result ->
         orderAlienDictionary(words.toTypedArray()) shouldBe result
       }

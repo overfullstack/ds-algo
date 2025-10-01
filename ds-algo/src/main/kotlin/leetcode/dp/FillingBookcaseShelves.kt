@@ -26,15 +26,9 @@ fun minHeightShelvesTopDown(
           remainingWidth - width,
           memo,
         )
-      val nextRow = curMaxHeight +
-        minHeightShelvesTopDown(
-          books,
-          shelfWidth,
-          idx + 1,
-          height,
-          shelfWidth - width,
-          memo,
-        )
+      val nextRow =
+        curMaxHeight +
+          minHeightShelvesTopDown(books, shelfWidth, idx + 1, height, shelfWidth - width, memo)
       minOf(sameRow, nextRow).also { memo[idx][remainingWidth] = it }
     }
   }
@@ -103,5 +97,10 @@ fun main() {
   println(
     minHeightShelvesTopDown(arrayOf(intArrayOf(1, 3), intArrayOf(2, 4), intArrayOf(3, 2)), 6)
   ) // 4
-  println(minHeightShelvesTopDown(arrayOf(intArrayOf(7,3), intArrayOf(8,7), intArrayOf(2,7), intArrayOf(2,5)), 10)) // 15
+  println(
+    minHeightShelvesTopDown(
+      arrayOf(intArrayOf(7, 3), intArrayOf(8, 7), intArrayOf(2, 7), intArrayOf(2, 5)),
+      10,
+    )
+  ) // 15
 }
