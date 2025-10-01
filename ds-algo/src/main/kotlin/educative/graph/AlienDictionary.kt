@@ -1,18 +1,20 @@
 package educative.graph
 
-import ds.graph.DiGraph
-
 /* 30 Aug 2024 10:46 */
 
-fun orderAlienDictionary(words: List<String>): String {
-  val diGraph = DiGraph<Char>()
+/**
+ * [892 · Alien Dictionary](https://www.lintcode.com/problem/892/)
+ */
+fun orderAlienDictionary(words: Array<String>): String { // * Kahn's algorithm
+  val diGraph: MutableMap<Char, Set<Char>> = mutableMapOf()
   val charToInConnectionCount = words.flatMap { it.toList() }.associateWith { 0 }.toMutableMap()
-  for (i in (0 until words.lastIndex)) {
+  val uniqueCharCount = charToInConnectionCount.size
+  for (i in 0 until words.lastIndex) {
     val unmatchedResult = firstUnmatchedLetterPair(words[i], words[i + 1])
     unmatchedResult?.fold(
       { (fromChar, toChar) ->
         if (diGraph[fromChar]?.contains(toChar) != true) {
-          diGraph.addEdge(fromChar, toChar)
+          diGraph.merge(fromChar, setOf(toChar), Set<Char>::plus)
           charToInConnectionCount.computeIfPresent(toChar) { _, value -> value.inc() }
         }
       },
@@ -34,6 +36,7 @@ fun orderAlienDictionary(words: List<String>): String {
             queue.add(it)
             null
           }
+
           else -> inConnectionCount.dec()
         }
       }
@@ -41,15 +44,16 @@ fun orderAlienDictionary(words: List<String>): String {
   }
 
   return when {
-    result.size < charToInConnectionCount.size -> ""
+    result.size < uniqueCharCount -> ""
     else -> result.joinToString("")
   }
 }
 
-fun firstUnmatchedLetterPair(word1: String, word2: String): Result<Pair<Char, Char>>? =
+private fun firstUnmatchedLetterPair(word1: String, word2: String): Result<Pair<Char, Char>>? =
   runCatching {
     var i = 0
     while (i <= word1.lastIndex) {
+      // ! if word1 is prefix of word2, word1 should come before word2
       require(i <= word2.lastIndex)
       if (word1[i] != word2[i]) {
         return Result.success(word1[i] to word2[i])
@@ -58,3 +62,7 @@ fun firstUnmatchedLetterPair(word1: String, word2: String): Result<Pair<Char, Ch
     }
     return null
   }
+
+fun main() {
+  println(orderAlienDictionary(arrayOf("zy", "zx"))) // "zyx"
+}
