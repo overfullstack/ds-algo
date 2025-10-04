@@ -1,8 +1,9 @@
 package practice.graph.kahn;
 
+import static java.util.Collections.emptySet;
+
 import java.util.ArrayDeque;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
@@ -20,28 +21,28 @@ public class ParallelCourses3 {
 		}
 		// * Topological sort with BFS
 		var queue = new ArrayDeque<Integer>();
-		var maxTime = new int[n + 1];
+		var maxTimes = new int[n + 1];
 		for (var i = 1; i <= n; i++) {
 			if (inDegree[i] == 0) { // ! Top Leaf-courses with only next courses
 				queue.add(i);
-				maxTime[i] = time[i - 1]; // ! `-1` as it's 0-indexed
+				maxTimes[i] = time[i - 1]; // ! `-1` as it's 0-indexed
 			}
 		}
 		while (!queue.isEmpty()) {
 			var prevCourse = queue.poll();
-			for (var course : diGraph.getOrDefault(prevCourse, Collections.emptySet())) {
+			for (var course : diGraph.getOrDefault(prevCourse, emptySet())) {
 				// ! The time to complete nextCourse is the time it takes to complete its
-				// ! longest prerequisite path (maxTime[prevCourse]) plus the time for nextCourse itself.
+				// ! longest prerequisite path (maxTimes[prevCourse]) plus the time for nextCourse itself.
 				// ! You arrive at a course from different prevCourse parents
 				// ! Record if another prevCourse arrived with a longer time
-				maxTime[course] = Math.max(maxTime[course], maxTime[prevCourse] + time[course - 1]);
+				maxTimes[course] = Math.max(maxTimes[course], maxTimes[prevCourse] + time[course - 1]);
 				inDegree[course]--;
 				if (inDegree[course] == 0) {
 					queue.add(course);
 				}
 			}
 		}
-		return Arrays.stream(maxTime).max().orElse(0);
+		return Arrays.stream(maxTimes).max().orElse(0);
 	}
 
 	static void main() {

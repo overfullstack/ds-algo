@@ -1,6 +1,9 @@
 package leetcode.backtracking
 
-/** https://leetcode.com/problems/partition-to-k-equal-sum-subsets/ */
+/**
+ * [698. Partition to K Equal Sum
+ * Subsets](https://leetcode.com/problems/partition-to-k-equal-sum-subsets/)
+ */
 fun canPartitionKSubsets(nums: IntArray, k: Int): Boolean {
   val sum = nums.sum()
   val max = nums.maxOrNull() ?: Int.MIN_VALUE
@@ -22,7 +25,7 @@ private fun canPartitionKSubsets(
     k == 0 -> true
     curSum > targetSum -> false
     curSum == targetSum ->
-      canPartitionKSubsets(nums, k - 1, targetSum, used) // * Restart after targetSum is met.
+      canPartitionKSubsets(nums, k - 1, targetSum, used) // ! Restart after targetSum is met.
     else ->
       (startIndex..nums.lastIndex)
         .filter { !used[it] }

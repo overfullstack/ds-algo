@@ -1,6 +1,6 @@
 package educative.dp
 
-fun findMaxKnapsackProfitTopDown(
+fun findMaxKnapsackProfitTopDown( // ! Optimize for less weight, more value
   capacity: Int,
   weights: IntArray,
   values: IntArray,
