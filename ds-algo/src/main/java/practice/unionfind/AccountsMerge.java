@@ -1,4 +1,4 @@
-package practice;
+package practice.unionfind;
 
 import static java.util.Collections.emptyList;
 

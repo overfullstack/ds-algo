@@ -1,6 +1,9 @@
 package leetcode.graph
 
-/** [3673 · Parallel Courses](https://www.lintcode.com/problem/3673/) */
+/**
+ * [3673 · Parallel Courses](https://www.lintcode.com/problem/3673/) ! Refer a faster approach with
+ * BFS in ParallelCourses.java
+ */
 fun minimumSemesters(relations: Array<IntArray>): Int {
   val diGraph = relations.groupBy({ it.first() }, { it.last() })
   val memo = mutableMapOf<Int, Int>()
@@ -34,9 +37,7 @@ private fun dftPerGroup(
 
 fun main() {
   println(minimumSemesters(arrayOf(intArrayOf(1, 3), intArrayOf(2, 3)))) // 2
-  println(
-    minimumSemesters(arrayOf(intArrayOf(1, 2), intArrayOf(2, 3), intArrayOf(3, 1)))
-  ) // -1
+  println(minimumSemesters(arrayOf(intArrayOf(1, 2), intArrayOf(2, 3), intArrayOf(3, 1)))) // -1
   println(
     minimumSemesters(
       arrayOf(

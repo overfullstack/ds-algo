@@ -11,7 +11,7 @@ fun numberOfIslands(grid: Array<CharArray>): Int =
 private val directions = listOf(0 to 1, 0 to -1, 1 to 0, -1 to 0)
 
 private fun Array<CharArray>.dftPerGroup(gridPoint: Pair<Int, Int>) {
-  this[gridPoint.first][gridPoint.second] = '0' // mark visited
+  this[gridPoint.first][gridPoint.second] = '0' // ! visited
   directions
     .asSequence()
     .map { (gridPoint.first + it.first) to (gridPoint.second + it.second) }

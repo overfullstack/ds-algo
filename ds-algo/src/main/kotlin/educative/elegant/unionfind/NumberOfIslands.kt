@@ -16,7 +16,7 @@ fun numberOfIslands(grid: Array<IntArray>): Int {
 private val directions = listOf(0 to 1, 0 to -1, 1 to 0, -1 to 0)
 
 private fun groupAdjacent1s(cell: Pair<Int, Int>, grid: Array<IntArray>, unionFind: UnionFind) {
-  grid[cell.first][cell.second] = 0
+  grid[cell.first][cell.second] = 0 // ! visited
   directions
     .asSequence()
     .map { cell.first + it.first to cell.second + it.second }
@@ -38,8 +38,8 @@ private class UnionFind(grid: Array<IntArray>) {
       .flatMap { row -> grid[0].indices.map { col -> row to col } }
       .filter { grid[it.first][it.second] == 1 }
       .onEach { (row, col) ->
-        val value = row * cols + col // ! converting row-col to 1D
-        roots[value] = value // Self root
+        val value = row * cols + col // ! Converting row-col to 1D
+        roots[value] = value
       }
       .count()
 
