@@ -4,13 +4,13 @@ package educative.dp
 
 /** [322. Coin Change](https://leetcode.com/problems/coin-change/) */
 fun coinChange(coins: IntArray, sum: Int): Int =
-// ! minOf exclude and include
+  // ! minOf exclude and include
   // ! Forward iteration as we allow the same coin to be used multiple times
   when {
     sum == 0 -> 0
     sum < 0 || coins.isEmpty() -> -1
     else -> {
-      val dp = IntArray(sum + 1) { Int.MAX_VALUE - 1 }
+      val dp = IntArray(sum + 1) { Int.MAX_VALUE - 1 } // ! `-1` as we do `dp[i-coin]+1` below
       dp[0] = 0
       // * Building the entire sum introducing one coin type at a time
       for (coin in coins) {

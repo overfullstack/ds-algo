@@ -39,6 +39,6 @@ private fun canPartitionKSubsets(
               curSum + nums[unusedIndex],
               unusedIndex + 1,
             )
-            .also { used[unusedIndex] = false }
+            .also { used[unusedIndex] = false } // ! Backtrack
         }
   }
