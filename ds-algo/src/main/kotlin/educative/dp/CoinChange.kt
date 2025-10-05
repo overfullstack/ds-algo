@@ -3,21 +3,26 @@ package educative.dp
 /* 24/7/25 17:38 */
 
 /** [322. Coin Change](https://leetcode.com/problems/coin-change/) */
-fun coinChange(coins: IntArray, sum: Int): Int {
-  if (sum == 0) return 0
-  if (sum < 0 || coins.isEmpty()) return -1
-
-  val dp = IntArray(sum + 1) { Int.MAX_VALUE - 999 }
-  // * Building the entire sum introducing one coin type at a time
-  for (coin in coins) {
-    // ! Forward iteration as we allow the same coin to be used multiple times
-    for (i in coin..sum) {
-      // ! minOf exclude and include
-      dp[i] = minOf(dp[i], dp[i - coin] + 1)
+fun coinChange(coins: IntArray, sum: Int): Int =
+// ! minOf exclude and include
+  // ! Forward iteration as we allow the same coin to be used multiple times
+  when {
+    sum == 0 -> 0
+    sum < 0 || coins.isEmpty() -> -1
+    else -> {
+      val dp = IntArray(sum + 1) { Int.MAX_VALUE - 1 }
+      dp[0] = 0
+      // * Building the entire sum introducing one coin type at a time
+      for (coin in coins) {
+        // ! Forward iteration as we allow the same coin to be used multiple times
+        for (i in coin..sum) {
+          // ! minOf exclude and include
+          dp[i] = minOf(dp[i], dp[i - coin] + 1)
+        }
+      }
+      if (dp[sum] == Int.MAX_VALUE - 1) -1 else dp[sum]
     }
   }
-  return if (dp[sum] == Int.MAX_VALUE - 999) -1 else dp[sum]
-}
 
 fun minCoinsForSum2(coins: IntArray, sum: Int): Int {
   if (sum == 0) return 0
@@ -36,5 +41,5 @@ fun minCoinsForSum2(coins: IntArray, sum: Int): Int {
 }
 
 fun main() {
-  println(change(23, intArrayOf(2, 3, 4, 6, 8)))
+  println(coinChange(intArrayOf(1, 2, 5), 11)) // 3
 }
