@@ -27,7 +27,7 @@ fun place(
   wordIndex: Int = 0,
 ): Boolean =
   when {
-    wordIndex == word.lastIndex + 1 -> isInvalidOrOccupied(cell, board)
+    wordIndex == word.lastIndex + 1 -> isInvalidOrOccupied(cell, board) // ! As per problem
     isInvalidOrOccupied(cell, board) -> false
     board[cell.first][cell.second] != ' ' && board[cell.first][cell.second] != word[wordIndex] ->
       false

@@ -4,7 +4,7 @@ package leetcode.backtracking
 /** [638. Shopping Offers](https://leetcode.com/problems/shopping-offers/) */
 fun shoppingOffers(
   price: List<Int>,
-  special: List<List<Int>>,
+  offers: List<List<Int>>,
   needs: List<Int>,
   memo: MutableMap<List<Int>, Int> = mutableMapOf(),
 ): Int {
@@ -14,12 +14,13 @@ fun shoppingOffers(
   if (needs.all { it == 0 }) return 0
   val totalPriceWithoutOffers = price.zip(needs).sumOf { it.first * it.second }
   val priceWithOffers =
-    special
+    offers
       .asSequence()
       .map { offer -> offer.last() to needs.zip(offer.dropLast(1)).map { it.first - it.second } }
       .filter { (_, remainingNeeds) -> remainingNeeds.all { it >= 0 } }
-      .minOfOrNull { (offerPrice, remainingNeeds) ->
-        offerPrice + shoppingOffers(price, special, remainingNeeds, memo)
+      .minOfOrNull { (priceWithOffer, remainingNeeds) ->
+        // ! offers can be reused multiple times
+        priceWithOffer + shoppingOffers(price, offers, remainingNeeds, memo)
       } ?: totalPriceWithoutOffers
   return minOf(totalPriceWithoutOffers, priceWithOffers).also { memo[needs] = it }
 }

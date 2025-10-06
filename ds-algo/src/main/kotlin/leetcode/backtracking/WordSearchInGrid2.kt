@@ -28,7 +28,7 @@ private fun TrieNode.findWords(
   (if (isEnd) setOf(word) else emptySet()) +
     directions
       .asSequence()
-      .map { (row + it.first) to (col + it.second) }
+      .map { row + it.first to col + it.second }
       .filter { it !in visited && it.isValid(board) }
       .flatMap { (row, col) ->
         children[board[row][col] - 'a']

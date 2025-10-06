@@ -21,14 +21,14 @@ public class OptimalAccountBalancing {
 	private static int dfs(int startIdx, List<Integer> txns) {
 		var firstUnsettledTxnIdx =
 				IntStream.range(startIdx, txns.size()).filter(i -> txns.get(i) != 0).findFirst();
-    // ! Either all txns are settled to 0 or startIdx == txn.size()
-    if (firstUnsettledTxnIdx.isEmpty()) { 
+		// ! Either all txns are settled to 0 or startIdx == txn.size()
+		if (firstUnsettledTxnIdx.isEmpty()) {
 			return 0;
 		}
 		var result = Integer.MAX_VALUE;
 		var unsettledTxnIdx = firstUnsettledTxnIdx.getAsInt();
-		// ! Permutations - Settle first txn with a every opposite txn 
-    for (var i = unsettledTxnIdx + 1; i < txns.size(); i++) {
+		// ! Permutations - Settle first txn with a every opposite txn
+		for (var i = unsettledTxnIdx + 1; i < txns.size(); i++) {
 			if (txns.get(unsettledTxnIdx) * txns.get(i) < 0) {
 				txns.set(i, txns.get(i) + txns.get(unsettledTxnIdx)); // ! Settle unsettledTxnIdx
 				result = Math.min(result, 1 + dfs(unsettledTxnIdx + 1, txns));

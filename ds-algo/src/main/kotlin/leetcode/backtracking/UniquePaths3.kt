@@ -29,8 +29,7 @@ private fun uniquePaths(grid: Array<IntArray>, zeroCount: Int, gridPoint: Pair<I
   grid[gridPoint.first][gridPoint.second] = -1
   val pathCount =
     directions.fold(0) { pathCount, direction ->
-      val nextGridPoint =
-        ((gridPoint.first + direction.first) to (gridPoint.second + direction.second))
+      val nextGridPoint = gridPoint.first + direction.first to gridPoint.second + direction.second
       pathCount + uniquePaths(grid, zeroCount - 1, nextGridPoint)
     }
   grid[gridPoint.first][gridPoint.second] = 0

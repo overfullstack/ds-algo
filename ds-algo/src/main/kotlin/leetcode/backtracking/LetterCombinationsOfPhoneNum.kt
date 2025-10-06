@@ -15,13 +15,15 @@ fun letterCombinations(digits: String): List<String> {
 private fun letterCombinationsUtil(
   digits: String,
   combination: String = "",
-  digitIndex: Int = 0,
+  digitIdx: Int = 0,
 ): List<String> =
   when (combination.length) {
     digits.length -> listOf(combination)
     // * Every letter in the current word starts a branch with next word letters.
+    // ! Backtracking is achieved with `combination` and `digitIdx`
+    // ! They remain same for the iteration.
     else ->
-      DICTIONARY[digits[digitIndex] - '0'].flatMap {
-        letterCombinationsUtil(digits, combination + it, digitIndex + 1)
+      DICTIONARY[digits[digitIdx] - '0'].flatMap {
+        letterCombinationsUtil(digits, combination + it, digitIdx + 1)
       }
   }
