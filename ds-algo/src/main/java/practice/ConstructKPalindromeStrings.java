@@ -10,12 +10,12 @@ import java.util.Arrays;
  */
 public class ConstructKPalindromeStrings {
 	public boolean canConstruct(String s, int k) {
-    if (s.length() < k) {
-      return false;
-    }
-    if (s.length() == k) {
-      return true; // ! Split each char to make a Palindrome
-    }
+		if (s.length() < k) {
+			return false;
+		}
+		if (s.length() == k) {
+			return true; // ! Split each char to make a Palindrome
+		}
 		var freq = new int[26];
 		for (var ch : s.toCharArray()) {
 			freq[ch - 'a']++;
