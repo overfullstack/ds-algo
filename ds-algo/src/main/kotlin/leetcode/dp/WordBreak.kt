@@ -28,6 +28,9 @@ fun wordBreakDP(s: String, wordDict: List<String>): Boolean {
   for (endIndex in 1..(s.lastIndex + 1)) {
     for (startIndex in 0..endIndex) {
       // ! dp[i] indicates a substring that ends at `i - 1` present in `dict`
+      // ! so `endIndex` is 1 ahead
+      // * Check if the words until `startIndex` are present in `dict` and the word from
+      // `startIndex` to `endIndex` is present in `dict`
       if (dp[startIndex] && dict.contains(s.substring(startIndex until endIndex))) {
         dp[endIndex] = true
         break
@@ -62,7 +65,8 @@ private fun wordBreakDP2(s: String, wordDict: List<String>): Boolean {
 }
 
 fun main() {
-  println(wordBreak("leetcode", listOf("leet", "code")))
+  println(wordBreak("leetcode", listOf("leet", "code"))) // true
+  println(wordBreakDP("leetcode", listOf("leet", "code"))) // true
   println(wordBreak("applepenapple", listOf("apple", "pen")))
   println(wordBreak("catsandog", listOf("cats", "dog", "sand", "and", "cat")))
   println(wordBreak("a", listOf("a")))

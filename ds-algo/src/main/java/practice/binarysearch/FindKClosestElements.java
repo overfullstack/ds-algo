@@ -1,4 +1,4 @@
-package practice;
+package practice.binarysearch;
 
 /* 01 Sep 2025 21:35 */
 
@@ -20,12 +20,14 @@ public class FindKClosestElements {
 		while (left < right) {
 			var mid = left + (right - left) / 2;
 			// ! This is measuring distance from lower and upper bound values (NOT indices)
-			if (x - arr[mid] > arr[mid + k] - x) {
+			// ! Using `<=` because it ensures that when distances are tied, as per problem
+			// ! the algorithm needs to prefer the leftmost window,
+			if (x - arr[mid] <= arr[mid + k] - x) {
+				right = mid;
+			} else {
 				// ! Move window to right. But if we step on a farther element on the right
 				// ! it automatically makes `x` closer to lower bound so window shifts left again
 				left = mid + 1;
-			} else {
-				right = mid;
 			}
 		}
 		return Arrays.stream(arr, left, left + k).boxed().toList();
