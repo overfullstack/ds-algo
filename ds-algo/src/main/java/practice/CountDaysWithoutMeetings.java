@@ -20,4 +20,11 @@ public class CountDaysWithoutMeetings {
 		dayCount += days - curEnd;
 		return dayCount;
 	}
+
+	static void main() {
+		var sol = new CountDaysWithoutMeetings();
+		System.out.println(sol.countDays(10, new int[][] {{5, 7}, {1, 3}, {9, 10}})); // 2
+		System.out.println(sol.countDays(5, new int[][] {{2, 4}, {1, 3}})); // 1
+		System.out.println(sol.countDays(6, new int[][] {{1, 6}})); // 0
+	}
 }

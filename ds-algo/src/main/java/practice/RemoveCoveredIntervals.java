@@ -12,16 +12,16 @@ public class RemoveCoveredIntervals {
 				intervals,
 				Comparator.<int[]>comparingInt(interval -> interval[0])
 						.thenComparing(Comparator.<int[]>comparingInt(interval -> interval[1]).reversed()));
-		var hiddenIntervals = 0;
+		var coveredIntervals = 0;
 		var curEnd = intervals[0][1];
 		for (var i = 1; i < intervals.length; i++) {
 			if (intervals[i][1] <= curEnd) {
-				hiddenIntervals++;
+				coveredIntervals++;
 			} else {
 				curEnd = intervals[i][1];
 			}
 		}
-		return intervals.length - hiddenIntervals;
+		return intervals.length - coveredIntervals;
 	}
 
 	static void main() {

@@ -24,7 +24,8 @@ fun mostBooked(n: Int, meetings: Array<IntArray>): Int {
         }
         else -> {
           val (earliestEnd, earliestAvailableRoomId) = occupiedRooms.poll()
-          occupiedRooms.add(earliestEnd + (end - start) to earliestAvailableRoomId)
+          val delayedEnd = earliestEnd + (end - start)
+          occupiedRooms.add(delayedEnd to earliestAvailableRoomId)
           earliestAvailableRoomId
         }
       }

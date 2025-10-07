@@ -41,7 +41,7 @@ public class EscapeTheSpreadingFire {
 								});
 			}
 		}
-		// * Rightmost maxWaitTime
+		// * Rightmost maxWaitTime Binary search
 		var left = 0;
 		var right = 1_000_000_000;
 		while (left <= right) {

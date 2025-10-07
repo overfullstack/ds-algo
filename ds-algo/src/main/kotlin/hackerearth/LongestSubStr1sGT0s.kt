@@ -8,9 +8,8 @@ fun longestSubStr(nums: IntArray): Int {
   for ((i, num) in nums.withIndex()) {
     count += (if (num == 1) 1 else -1)
     map.putIfAbsent(count, i)
-    if (
-      map.containsKey(count - 1)
-    ) { // This can be extended for -k in place of -1, 0 for same 1s = 0s
+    // ! This can be extended for -k in place of -1, 0 for same 1s = 0s
+    if (map.containsKey(count - 1)) {
       maxWindow = maxOf(maxWindow, i - map[count - 1]!!)
     }
   }

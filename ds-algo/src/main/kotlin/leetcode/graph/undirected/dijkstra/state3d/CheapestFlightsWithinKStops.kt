@@ -15,6 +15,9 @@ fun findCheapestPrice(n: Int, flights: Array<IntArray>, src: Int, dst: Int, k: I
   val start = Triple(src, 0, k + 1)
   // ! visited also holds 3d state (src, price, remainingStops)
   // ! This works even without `visited`, but it helps perf, by pruning duplicate states
+  // ! No Infinite Loops: Even without visited, the algorithm terminates because:
+  // ! remainingStops decreases with each hop
+  // ! When remainingStops == 0, no more neighbors are added, Eventually PQ empties
   val visited = mutableSetOf(start)
   pq.add(start) // ! `k + 1` including the current stop
   while (pq.isNotEmpty()) {

@@ -34,7 +34,7 @@ fun shortestPath(grid: Array<IntArray>, k: Int): Int { // * BFS
         nextRemainingK?.let {
           val next = Triple(nextRow, nextCol, it) to nextDistance
           if (next.first !in visited) {
-            // ! Spl Visit-on-Enqueue as we have unweighted paths.
+            // ! Visit-on-Enqueue for BFS with unweighted paths.
             // ! We won't have a scenario of having better paths later in the queue
             // ! It's more efficient as it avoids bloating `pq` with duplicate entries
             // ! It works here as it tracks a combo and not just `node`.

@@ -5,7 +5,7 @@ import ds.graph.DiGraph
 /* 15 Jul 2025 21:35 */
 
 /** [815. Bus Routes](https://leetcode.com/problems/bus-routes/) */
-fun numBusesToDestination(routes: Array<IntArray>, source: Int, destination: Int): Int {
+fun numBusesToDestination(routes: Array<IntArray>, source: Int, destination: Int): Int { // * BFS
   // * Think of it like a DB, where you are maintaining 2 tables -
   // graph(station:routeId), routes(routeId:connectedStations)
   // routeId is representing a group of nodes connected at same level, so unlike node to node
@@ -29,9 +29,9 @@ fun numBusesToDestination(routes: Array<IntArray>, source: Int, destination: Int
     }
     graph[station]
       ?.filter { routeId -> routeId !in visitedRouteIds }
-      ?.onEach { visitedRouteIds.add(it) }
-      ?.flatMap { routeId -> routes[routeId].toList() } // ! Neighbours connected by a bus route
-      ?.forEach { station -> queue.add((station to busCount + 1)) }
+      ?.onEach { visitedRouteIds.add(it) } // ! Visit-on-Enqueue for BFS
+      ?.flatMap { routeId -> routes[routeId].toList() } // ! Neighbors connected by a bus route
+      ?.forEach { station -> queue.add(station to busCount + 1) }
   }
   return -1
 }

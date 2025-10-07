@@ -3,7 +3,7 @@ package educative.graph
 /* 23/7/25 16:25 */
 
 fun estimateWaterFlow(grid: Array<IntArray>): Set<Pair<Int, Int>> {
-  // Using mutable global visited as reach
+  // ! Using mutable global visited as reach
   val pacificReach = mutableSetOf<Pair<Int, Int>>()
   val atlanticReach = mutableSetOf<Pair<Int, Int>>()
 

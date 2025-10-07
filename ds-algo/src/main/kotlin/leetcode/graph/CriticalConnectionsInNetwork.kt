@@ -1,4 +1,4 @@
-package educative.graph
+package leetcode.graph
 
 import ds.graph.BiDiGraph
 import ds.graph.TarjanNode

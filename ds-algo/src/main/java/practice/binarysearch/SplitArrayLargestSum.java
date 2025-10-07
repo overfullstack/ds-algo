@@ -1,4 +1,4 @@
-package practice;
+package practice.binarysearch;
 
 /* 03 Sep 2025 08:25 */
 
@@ -10,10 +10,6 @@ public class SplitArrayLargestSum {
 		var left = Arrays.stream(nums).max().orElse(0);
 		var right = Arrays.stream(nums).sum();
 		// ! Minimized Maximum = Leftmost
-		// ! Unlike classic Leftmost Binary search condition for Leftmost `this[mid] >= valueToSearch`
-		// ! this condition moves in reverse direction
-		// ! as `partitionSum` and `partitionCount` are inversely proportional
-		// ! so the condition is reverse `partitionCount <= k`
 		while (left < right) {
 			var partitionSum = left + (right - left) / 2;
 			var partitionCount = partitionCount(nums, partitionSum);

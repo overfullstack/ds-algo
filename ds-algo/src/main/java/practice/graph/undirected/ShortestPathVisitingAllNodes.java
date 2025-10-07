@@ -31,7 +31,13 @@ public class ShortestPathVisitingAllNodes {
 			}
 			for (var v : graph[u]) {
 				var nextNode = Pair.of(v, (bitMask | (1 << v)));
-				if (!visited.contains(nextNode)) { // ! prevent visiting same node with same path (bitMask)
+				// ! Prevent Cycles, visiting same node with the same node combination (bitMask) in the path
+				// ! We cannot just block nodes, as we need to traverse the same node multiple times
+				if (!visited.contains(nextNode)) {
+					// ! Spl Visit-on-Enqueue as we have unweighted paths.
+					// ! We won't have a scenario of having better paths later in the queue
+					// ! It's more efficient as it avoids bloating `queue` with duplicate entries
+					// ! It works here as it tracks a combo and not just `node`.
 					visited.add(nextNode);
 					queue.add(Triple.of(nextNode, curCost + 1));
 				}

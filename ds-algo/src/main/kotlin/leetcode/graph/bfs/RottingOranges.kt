@@ -32,7 +32,7 @@ fun orangesRotting(grid: Array<IntArray>): Int { // * BFS
         .map { row + it.first to col + it.second }
         .filter { (newRow, newCol) -> isValid(newRow to newCol, grid) && grid[newRow][newCol] == 1 }
         .onEach { (newRow, newCol) ->
-          grid[newRow][newCol] = 2 // ! mark rotten, also serves as visited
+          grid[newRow][newCol] = 2 // ! mark rotten, serves as Visit-on-Enqueue for BFS
           queue.add(Triple(newRow, newCol, time + 1))
         }
         .count()
