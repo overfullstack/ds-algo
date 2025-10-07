@@ -10,7 +10,7 @@ fun cloneGraph(node: Node?): Node? {
 
 private fun cloneGraphInternal(
   node: Node,
-  valToClonedNode: MutableMap<Int, Node> = mutableMapOf(),
+  valToClonedNode: MutableMap<Int, Node> = mutableMapOf(), // ! Node registry
 ): Node {
   val clonedNode = valToClonedNode.computeIfAbsent(node.`val`) { Node(it) }
   clonedNode.neighbors =

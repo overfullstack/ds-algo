@@ -5,6 +5,10 @@ public record Triple<F, S, T>(F first, S second, T third) {
 		return new Triple<>(first, second, third);
 	}
 
+	public static <F, S, T> Triple<F, S, T> of(Pair<F, S> pair, T third) {
+		return new Triple<>(pair.first(), pair.second(), third);
+	}
+
 	public static Triple<Integer, Integer, Integer> of(int[] arr) {
 		return new Triple<>(arr[0], arr[1], arr[2]);
 	}

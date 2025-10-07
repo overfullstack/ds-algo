@@ -1,4 +1,4 @@
-package leetcode.graph.dijkstra.state3d
+package leetcode.graph.undirected.dijkstra.state3d
 
 import ds.graph.EdgeWeightedDiGraph
 import java.util.PriorityQueue
@@ -13,6 +13,7 @@ fun findCheapestPrice(n: Int, flights: Array<IntArray>, src: Int, dst: Int, k: I
   val edgeWeightedDiGraph: EdgeWeightedDiGraph<Int> = EdgeWeightedDiGraph(flights)
   val pq = PriorityQueue(compareBy<Triple<Int, Int, Int>> { it.second })
   val start = Triple(src, 0, k + 1)
+  // ! visited also holds 3d state (src, price, remainingStops)
   // ! This works even without `visited`, but it helps perf, by pruning duplicate states
   val visited = mutableSetOf(start)
   pq.add(start) // ! `k + 1` including the current stop

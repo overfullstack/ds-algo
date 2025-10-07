@@ -23,7 +23,7 @@ public class ShortestBridge {
 						.orElseThrow();
 		var queue = new ArrayDeque<int[]>();
 		var visited = new boolean[grid.length][grid[0].length];
-		// ! Mark one of the islands 1s as visited
+		// ! Mark group of 1s on an island as visited
 		dfsGroup(firstLandCell[0], firstLandCell[1], grid, visited, queue);
 		// ! BFS to next island
 		while (!queue.isEmpty()) {

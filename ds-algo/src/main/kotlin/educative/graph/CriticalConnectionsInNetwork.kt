@@ -13,6 +13,7 @@ import utils.toPair
 fun criticalConnections(n: Int, connections: List<List<Int>>): List<List<Int>> {
   // ! isNodeTypePrimitive = false to reuse same TarjanNode instances
   // ! This may be causing TLE
+  // ! // ! TODO 07 Oct 2025 gopala.akshintala: Fix TLE
   val graph = BiDiGraph(connections.map { it.map { TarjanNode(it) }.toPair() }, false)
   val visited = mutableSetOf<TarjanNode>()
   var nextDiscovery = 0

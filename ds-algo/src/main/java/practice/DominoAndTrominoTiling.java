@@ -28,10 +28,10 @@ public class DominoAndTrominoTiling {
 			memo[idx][prevGapsVal] =
 					(int)
 							((solve(idx + 1, false, n, memo)
-													+ solve(idx + 2, false, n, memo) // ! Only 1 new way, horizontal `=`
-													// ! `2L * ` like binary digits, extra bit increases that combination by 2x
-													+ 2L * solve(idx + 2, true, n, memo)) // ! 2 new ways with trominos
-											% MOD);
+											+ solve(idx + 2, false, n, memo) // ! Only 1 new way, horizontal `=`
+											// ! `2L * ` like binary digits, extra bit increases that combination by 2x
+											+ 2L * solve(idx + 2, true, n, memo)) // ! 2 new ways with trominos
+									% MOD);
 		}
 		return memo[idx][prevGapsVal];
 	}
