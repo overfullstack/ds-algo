@@ -1,4 +1,4 @@
-package practice;
+package practice.backtracking;
 
 import java.util.HashMap;
 import java.util.List;
@@ -27,7 +27,7 @@ public class OptimalAccountBalancing {
 		}
 		var result = Integer.MAX_VALUE;
 		var unsettledTxnIdx = firstUnsettledTxnIdx.getAsInt();
-		// ! Permutations - Settle first txn with a every opposite txn
+		// ! Permutations - Settle first txn with every opposite-sign txn
 		for (var i = unsettledTxnIdx + 1; i < txns.size(); i++) {
 			if (txns.get(unsettledTxnIdx) * txns.get(i) < 0) {
 				txns.set(i, txns.get(i) + txns.get(unsettledTxnIdx)); // ! Settle unsettledTxnIdx
