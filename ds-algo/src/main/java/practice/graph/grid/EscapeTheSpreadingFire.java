@@ -26,20 +26,19 @@ public class EscapeTheSpreadingFire {
 			var row = cell[0];
 			var col = cell[1];
 			var time = cell[2];
-			if (time <= minFireArrivalTimes[row][col]) {
-				Arrays.stream(directions)
-						.map(d -> new int[] {row + d[0], col + d[1]})
-						.filter(
-								c ->
-										isValid(c[0], c[1], grid)
-												&& grid[c[0]][c[1]] != 2 // ! `2` is Wall cell
-												&& time + 1 < minFireArrivalTimes[c[0]][c[1]])
-						.forEach(
-								c -> {
-									minFireArrivalTimes[c[0]][c[1]] = time + 1;
-									queue.add(new int[] {c[0], c[1], time + 1});
-								});
-			}
+			Arrays.stream(directions)
+					.map(d -> new int[] {row + d[0], col + d[1]})
+					.filter(
+							c ->
+									isValid(c[0], c[1], grid)
+											&& grid[c[0]][c[1]] != 2 // ! `2` is Wall cell
+											&& minFireArrivalTimes[c[0]][c[1]] == Integer.MAX_VALUE) // ! Check unvisited
+					.forEach(
+							c -> {
+								// ! Record on First arrival. Visited-on-Enqueue for BFS
+								minFireArrivalTimes[c[0]][c[1]] = time + 1;
+								queue.add(new int[] {c[0], c[1], time + 1});
+							});
 		}
 		// * Rightmost maxWaitTime Binary search
 		var left = 0;
@@ -72,10 +71,10 @@ public class EscapeTheSpreadingFire {
 						&& !visited[nextRow][nextCol]
 						&& grid[nextRow][nextCol] != 2) {
 					var isSafeHouse = nextRow == grid.length - 1 && nextCol == grid[0].length - 1;
-					// ! As per problem, even if the fire spreads to the safehouse immediately after
-					// ! you have reached it, it will be counted as safely reaching the safehouse.
 					var arrivalTime = time + 1;
 					var fireArrivalTime = minFireArrivalTime[nextRow][nextCol];
+					// ! As per problem, even if the fire spreads to the safehouse immediately after
+					// ! you have reached it, it will be counted as safely reaching the safehouse.
 					var canReachCellBeforeFire =
 							isSafeHouse ? arrivalTime <= fireArrivalTime : arrivalTime < fireArrivalTime;
 					if (canReachCellBeforeFire) {

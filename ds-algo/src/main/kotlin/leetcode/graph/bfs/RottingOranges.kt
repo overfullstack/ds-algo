@@ -25,7 +25,7 @@ fun orangesRotting(grid: Array<IntArray>): Int { // * BFS
   var maxTime = 0
   while (queue.isNotEmpty()) {
     val (row, col, time) = queue.removeFirst()
-    maxTime = maxOf(maxTime, time)
+    maxTime = time
     freshCount -=
       directions
         .asSequence()

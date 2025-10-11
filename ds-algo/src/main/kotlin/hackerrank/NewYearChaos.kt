@@ -1,6 +1,6 @@
 package hackerrank
 
-fun newYearChaos(array: IntArray) =
+fun newYearChaos(array: IntArray): String =
   array
     .withIndex()
     .fold(0) { swaps, curEle ->

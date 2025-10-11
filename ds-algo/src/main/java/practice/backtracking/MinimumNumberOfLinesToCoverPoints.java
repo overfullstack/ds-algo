@@ -2,9 +2,7 @@ package practice.backtracking;
 
 /* 09 Oct 2025 21:03 */
 
-/**
- * [3808 · Minimum Number of Lines to Cover Points](https://www.lintcode.com/problem/3808/)
- */
+/** [3808 · Minimum Number of Lines to Cover Points](https://www.lintcode.com/problem/3808/) */
 public class MinimumNumberOfLinesToCoverPoints {
 	public int minimumLines(int[][] points) {
 		var visited = 0;
@@ -48,9 +46,9 @@ public class MinimumNumberOfLinesToCoverPoints {
 				== (point3[0] - point1[0]) * (point2[1] - point1[1]);
 	}
 
-  static void main() {
-    var sol = new MinimumNumberOfLinesToCoverPoints();
-    System.out.println(sol.minimumLines(new int[][]{{0, 1}, {2, 3}, {4, 5}, {4, 3}})); // 2
-    System.out.println(sol.minimumLines(new int[][]{{0, 1}, {1, 2}, {2, 3}, {3, 4}})); // 1
-  }
+	static void main() {
+		var sol = new MinimumNumberOfLinesToCoverPoints();
+		System.out.println(sol.minimumLines(new int[][] {{0, 1}, {2, 3}, {4, 5}, {4, 3}})); // 2
+		System.out.println(sol.minimumLines(new int[][] {{0, 1}, {1, 2}, {2, 3}, {3, 4}})); // 1
+	}
 }
