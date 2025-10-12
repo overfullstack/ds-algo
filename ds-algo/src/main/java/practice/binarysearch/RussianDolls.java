@@ -28,7 +28,7 @@ public class RussianDolls {
 		return tails.size();
 	}
 
-	// * leftMost tail greater than or equal to num
+	// * leftmost tail greater than or equal to num
 	private static int findInsertionPOS(List<Integer> tails, int num) {
 		var left = 0;
 		var right = tails.size();

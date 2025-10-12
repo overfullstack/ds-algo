@@ -10,6 +10,7 @@ fun strStr(haystack: String, needle: String): Int {
   if (haystack.length < needle.length) {
     return -1
   }
+  // ! Find match, starting from different start index
   for (idx in 0..haystack.lastIndex - needle.lastIndex) {
     var needleIdx = 0
     while (needleIdx <= needle.lastIndex && haystack[idx + needleIdx] == needle[needleIdx]) {

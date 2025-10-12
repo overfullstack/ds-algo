@@ -8,7 +8,7 @@ package practice;
  */
 public class MaximizeDistanceToClosestPerson {
 	public int maxDistToClosest(int[] seats) {
-		var startIdx = -1;
+		var startIdx = -1; // ! Negative to mark not initiated
 		var maxDistance = Integer.MIN_VALUE;
 		for (var i = 0; i < seats.length; i++) {
 			if (seats[i] == 1) {

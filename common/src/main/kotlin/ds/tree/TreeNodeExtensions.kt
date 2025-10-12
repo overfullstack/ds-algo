@@ -11,7 +11,7 @@ fun TreeNode?.inorderTraversalMorris() {
       var pre = cur.left
       while (
         pre?.right != null && pre.right != cur
-      ) { // Find inorder predecessor (rightMost). `pre.right != cur` to avoid cycle if link already
+      ) { // Find inorder predecessor (rightmost). `pre.right != cur` to avoid cycle if link already
         // exists
         pre = pre.right
       }

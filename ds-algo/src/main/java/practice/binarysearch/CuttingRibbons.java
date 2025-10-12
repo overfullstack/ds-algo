@@ -6,7 +6,7 @@ import java.util.Arrays;
 
 /** [3734 · Cutting Ribbons](https://www.lintcode.com/problem/3734/) */
 public class CuttingRibbons {
-	// * RightMost = MaxLength
+	// * Rightmost = MaxLength
 	public int maxLength(int[] ribbons, int k) {
 		var left = 1;
 		var right = Arrays.stream(ribbons).max().orElseThrow();

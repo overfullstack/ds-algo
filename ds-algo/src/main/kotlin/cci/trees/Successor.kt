@@ -4,7 +4,7 @@ import ds.tree.TreeNode
 
 fun TreeNode.successor(): TreeNode? =
   if (right != null) {
-    right!!.leftMost()
+    right!!.leftmost()
   } else {
     var node = this
     var parent = node.parent
@@ -15,4 +15,4 @@ fun TreeNode.successor(): TreeNode? =
     parent
   }
 
-fun TreeNode.leftMost(): TreeNode = left?.leftMost() ?: this
+fun TreeNode.leftmost(): TreeNode = left?.leftmost() ?: this

@@ -32,7 +32,7 @@ public class InorderSuccessor {
 		}
 		// Normally Inorder successor shall be right node, so emphasis is on checking the right side
 		if (root.right != null) {
-			return leftMostNode(root.right);
+			return leftmostNode(root.right);
 		}
 
 		// Return the nearest parent for which the subtree containing this node is on left
@@ -46,16 +46,16 @@ public class InorderSuccessor {
 		return p;
 	}
 
-	private static TreeNode leftMostNode(TreeNode root) {
+	private static TreeNode leftmostNode(TreeNode root) {
 		if (root.left == null) return root;
-		return leftMostNode(root.left);
+		return leftmostNode(root.left);
 	}
 
 	/** This only applies to BST. */
 	private static TreeNode findNexInorderSuccessorWithoutParent(
 			TreeNode root, TreeNode nodeForSuccessor) {
 		if (nodeForSuccessor.right != null) {
-			return leftMostNode(nodeForSuccessor.right);
+			return leftmostNode(nodeForSuccessor.right);
 		}
 		TreeNode successor = null;
 		while (root != null) { // Searching from the top, keeping reference to parent

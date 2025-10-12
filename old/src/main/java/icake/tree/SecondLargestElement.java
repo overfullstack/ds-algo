@@ -25,7 +25,7 @@ public class SecondLargestElement {
 		while (true) {
 			// No right child, then rightmost of left tree
 			if (root.right == null && root.left != null) {
-				return findRightMost(root.left);
+				return findRightmost(root.left);
 			}
 
 			// If no children for right child, return right child's parent i.e current node
@@ -38,7 +38,7 @@ public class SecondLargestElement {
 		}
 	}
 
-	private static int findRightMost(TreeNode root) {
+	private static int findRightmost(TreeNode root) {
 		while (root.right != null) {
 			root = root.right;
 		}

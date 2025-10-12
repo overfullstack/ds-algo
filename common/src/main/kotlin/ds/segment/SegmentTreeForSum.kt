@@ -13,16 +13,16 @@ class SegmentTreeForSum(val nums: IntArray) {
     construct(0, 0, nums.lastIndex)
   }
 
-  private fun construct(segmentTreeIndex: Int, startIndex: Int, endIndex: Int): Int =
+  private fun construct(segmentTreeIdx: Int, startIndex: Int, endIndex: Int): Int =
     when (startIndex) {
       endIndex -> nums[startIndex]
       else -> {
         val mid = (startIndex + endIndex) / 2
-        val leftSegmentSum = construct(2 * segmentTreeIndex + 1, startIndex, mid)
-        val rightSegmentSum = construct(2 * segmentTreeIndex + 2, mid + 1, endIndex)
+        val leftSegmentSum = construct(2 * segmentTreeIdx + 1, startIndex, mid)
+        val rightSegmentSum = construct(2 * segmentTreeIdx + 2, mid + 1, endIndex)
         leftSegmentSum + rightSegmentSum
       }
-    }.also { segmentTree[segmentTreeIndex] = it }
+    }.also { segmentTree[segmentTreeIdx] = it }
 
   fun querySum(startIndex: Int, endIndex: Int): Int {
     return getSumForRange(0, nums.lastIndex, startIndex, endIndex, 0)
@@ -33,21 +33,21 @@ class SegmentTreeForSum(val nums: IntArray) {
     segmentEnd: Int,
     queryStartIndex: Int,
     queryEndIndex: Int,
-    segmentTreeIndex: Int,
+    segmentTreeIdx: Int,
   ): Int {
     // * Query can be broken down to multiple Segments. A Segment is a piece of the query range
     if (queryStartIndex <= segmentStart && queryEndIndex >= segmentEnd) {
-      return segmentTree[segmentTreeIndex]
+      return segmentTree[segmentTreeIdx]
     }
     if (queryStartIndex > segmentEnd || queryEndIndex < segmentStart) {
       return 0
     }
-    // * Break the segment and locate segment pieces that make-up the query range.
+    // * Break the segment and locate segment pieces that makeup the query range.
     val mid = (segmentStart + segmentEnd) / 2
     val leftSegmentSum =
-      getSumForRange(segmentStart, mid, queryStartIndex, queryEndIndex, 2 * segmentTreeIndex + 1)
+      getSumForRange(segmentStart, mid, queryStartIndex, queryEndIndex, 2 * segmentTreeIdx + 1)
     val rightSegmentSum =
-      getSumForRange(mid + 1, segmentEnd, queryStartIndex, queryEndIndex, 2 * segmentTreeIndex + 2)
+      getSumForRange(mid + 1, segmentEnd, queryStartIndex, queryEndIndex, 2 * segmentTreeIdx + 2)
     return leftSegmentSum + rightSegmentSum
   }
 
@@ -62,17 +62,17 @@ class SegmentTreeForSum(val nums: IntArray) {
     diff: Int,
     segmentStart: Int,
     segmentEnd: Int,
-    segmentTreeIndex: Int,
+    segmentTreeIdx: Int,
   ) {
     if (index !in segmentStart..segmentEnd) {
       return
     }
     // * Update the diff in all segments that contain the index.
-    segmentTree[segmentTreeIndex] += diff
+    segmentTree[segmentTreeIdx] += diff
     if (segmentStart != segmentEnd) {
       val mid = (segmentStart + segmentEnd) / 2
-      updateIndex(index, diff, segmentStart, mid, 2 * segmentTreeIndex + 1)
-      updateIndex(index, diff, mid + 1, segmentEnd, 2 * segmentTreeIndex + 2)
+      updateIndex(index, diff, segmentStart, mid, 2 * segmentTreeIdx + 1)
+      updateIndex(index, diff, mid + 1, segmentEnd, 2 * segmentTreeIdx + 2)
     }
   }
 }

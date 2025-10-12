@@ -1,7 +1,7 @@
 package algoexpert.array
 
 /** [704. Binary Search](https://leetcode.com/problems/binary-search/) */
-fun IntArray.binarySearchRightMost(valueToSearch: Int): Int {
+fun IntArray.binarySearchRightmost(valueToSearch: Int): Int {
   var left = 0
   var right = lastIndex
   // * Rightmost where condition is true
@@ -17,10 +17,10 @@ fun IntArray.binarySearchRightMost(valueToSearch: Int): Int {
   }
   // After the loop, `right` is the rightmost index where `this[index] <= valueToSearch`
   // It either goes out of bounds on left or the value is not found
-  return if (right >= 0 && this[right] == valueToSearch) right else -1
+  return if (this[right] == valueToSearch) right else -1
 }
 
-fun IntArray.binarySearchLeftMost(valueToSearch: Int): Int {
+fun IntArray.binarySearchLeftmost(valueToSearch: Int): Int {
   var left = 0
   var right = lastIndex
   // * Leftmost where condition is true
@@ -41,14 +41,14 @@ fun main() {
   // * These searches handle duplicates also by returning right most index
   // * instead of instantly returning `mid` when match found
   println("Rightmost:")
-  println(intArrayOf(1, 2, 3, 4, 5, 6, 7, 8, 9, 10).binarySearchRightMost(7)) // 6
-  println(intArrayOf(1, 2, 3, 4, 5, 6, 7, 7, 7, 7).binarySearchRightMost(7)) // 9
-  println(intArrayOf(1, 2, 3, 4, 5, 6, 7, 7, 7, 7).binarySearchRightMost(10)) // -1
-  println(intArrayOf(1, 2, 3, 4, 5, 6, 7, 7, 7, 7).binarySearchRightMost(0)) // -1
+  println(intArrayOf(1, 2, 3, 4, 5, 6, 7, 8, 9, 10).binarySearchRightmost(7)) // 6
+  println(intArrayOf(1, 2, 3, 4, 5, 6, 7, 7, 7, 7).binarySearchRightmost(7)) // 9
+  println(intArrayOf(1, 2, 3, 4, 5, 6, 7, 7, 7, 7).binarySearchRightmost(10)) // -1
+  println(intArrayOf(1, 2, 3, 4, 5, 6, 7, 7, 7, 7).binarySearchRightmost(0)) // -1
 
   println("\nLeftmost:")
-  println(intArrayOf(1, 2, 3, 4, 5, 6, 7, 8, 9, 10).binarySearchLeftMost(7)) // 6
-  println(intArrayOf(1, 2, 3, 4, 5, 6, 7, 7, 7, 7).binarySearchLeftMost(7)) // 6
-  println(intArrayOf(1, 2, 3, 4, 5, 6, 7, 7, 7, 7).binarySearchLeftMost(10)) // -1
-  println(intArrayOf(1, 2, 3, 4, 5, 6, 7, 7, 7, 7).binarySearchLeftMost(0)) // -1
+  println(intArrayOf(1, 2, 3, 4, 5, 6, 7, 8, 9, 10).binarySearchLeftmost(7)) // 6
+  println(intArrayOf(1, 2, 3, 4, 5, 6, 7, 7, 7, 7).binarySearchLeftmost(7)) // 6
+  println(intArrayOf(1, 2, 3, 4, 5, 6, 7, 7, 7, 7).binarySearchLeftmost(10)) // -1
+  println(intArrayOf(1, 2, 3, 4, 5, 6, 7, 7, 7, 7).binarySearchLeftmost(0)) // -1
 }

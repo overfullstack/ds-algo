@@ -10,10 +10,10 @@ public class LeftmostColumnWithAtLeastAOne {
 	public int getLeftmostColumnWithOne(BinaryMatrix binaryMatrix) {
 		var dimensions = binaryMatrix.dimensions();
 		var rows = dimensions[0];
-		var leftMostCol = dimensions[1];
+		var leftmostCol = dimensions[1];
 		for (var row = 0; row < rows; row++) {
 			var left = 0;
-			var right = leftMostCol;
+			var right = leftmostCol;
 			while (left < right) {
 				var mid = left + (right - left) / 2;
 				if (binaryMatrix.get(row, mid) == 1) {
@@ -22,9 +22,9 @@ public class LeftmostColumnWithAtLeastAOne {
 					left = mid + 1;
 				}
 			}
-			leftMostCol = Math.min(leftMostCol, right);
+			leftmostCol = Math.min(leftmostCol, right);
 		}
-		return leftMostCol == dimensions[1] ? -1 : leftMostCol;
+		return leftmostCol == dimensions[1] ? -1 : leftmostCol;
 	}
 
 	static class BinaryMatrix {

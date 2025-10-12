@@ -26,7 +26,7 @@ private fun findMinimumWindow(s: String, t: String): String =
 
 private tailrec fun findWindowEnd(s: String, t: String, sIdx: Int, tIdx: Int = 0): Int? =
   when {
-    tIdx > t.lastIndex -> sIdx - 1 // ! This has be above `str1Idx > str1.lastIndex`
+    tIdx > t.lastIndex -> sIdx - 1 // ! This has be above `sIdx > s.lastIndex`
     sIdx > s.lastIndex -> null
     s[sIdx] == t[tIdx] -> findWindowEnd(s, t, sIdx + 1, tIdx + 1)
     else -> findWindowEnd(s, t, sIdx + 1, tIdx)
@@ -34,7 +34,7 @@ private tailrec fun findWindowEnd(s: String, t: String, sIdx: Int, tIdx: Int = 0
 
 private tailrec fun findWindowStart(s: String, t: String, sIdx: Int, tIdx: Int = t.lastIndex): Int =
   when {
-    // `str1EndIndex < 0 -> 0` Not Checking as we already found a valid window in str1
+    // `sEndIndex < 0 -> 0` Not Checking as we already found a valid window in str1
     tIdx < 0 -> sIdx + 1
     s[sIdx] == t[tIdx] -> findWindowStart(s, t, sIdx - 1, tIdx - 1)
     else -> findWindowStart(s, t, sIdx - 1, tIdx)
