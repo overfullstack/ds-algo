@@ -4,9 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-/**
- * [2055. Plates Between Candles](https://leetcode.com/problems/plates-between-candles)
- */
+/** [2055. Plates Between Candles](https://leetcode.com/problems/plates-between-candles) */
 public class PlatesBetweenCandles {
 	public int[] platesBetweenCandles(String s, int[][] queries) {
 		var candlesBeforePlateIdx = new ArrayList<Integer>();
