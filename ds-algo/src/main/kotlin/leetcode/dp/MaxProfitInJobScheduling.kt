@@ -30,7 +30,7 @@ fun jobScheduling2(startTimeArr: IntArray, endTimeArr: IntArray, profitArr: IntA
     .asSequence()
     .map { (profit, schedule) -> Triple(schedule.first, schedule.second, profit) }
     .sortedBy { it.second }
-    // ! This is not a 01 Knapsack problem, as Intervals are fixed
+    // ! This is NOT a 01 Knapsack problem, as Intervals are fixed
     // ! So we just compare with the previous
     .fold(listOf(0 to 0)) { endTimeToMaxProfit, (curStart, curEnd, curProfit) ->
       val previousClosestEndingJobIndex =
@@ -46,7 +46,7 @@ fun jobScheduling2(startTimeArr: IntArray, endTimeArr: IntArray, profitArr: IntA
     .last()
     .second
 
-// * Rightmost where condition is true
+// * Rightmost
 fun previousClosestEndingJobIndex(
   endTimeToMaxProfit: List<Pair<Int, Int>>,
   curStartTime: Int,
@@ -55,7 +55,7 @@ fun previousClosestEndingJobIndex(
   var right = endTimeToMaxProfit.lastIndex
   while (left <= right) {
     val mid = left + (right - left) / 2
-    if (endTimeToMaxProfit[mid].first <= curStartTime) {
+    if (curStartTime >= endTimeToMaxProfit[mid].first) {
       left = mid + 1
     } else {
       right = mid - 1

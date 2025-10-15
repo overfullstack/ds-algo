@@ -7,7 +7,8 @@ import java.util.PriorityQueue;
 /** [964 · Food Set](https://www.lintcode.com/problem/964) */
 public class FoodSet {
 	public int getMinCalories(int[][] lunch, int[][] dinner, int minDeliciousDegree) {
-		Arrays.sort(lunch, Comparator.comparingInt(l -> l[1])); // ! Sort by delicious degree
+    // ! Sort lunch and dinner by delicious degree
+    Arrays.sort(lunch, Comparator.comparingInt(l -> l[1])); 
 		Arrays.sort(dinner, Comparator.comparingInt(d -> d[1]));
 
 		var minHeapForLunchCalories =
@@ -20,13 +21,13 @@ public class FoodSet {
 						.filter(l -> l[1] >= minDeliciousDegree)
 						.mapToInt(l -> l[0])
 						.min()
-						.orElseThrow();
+						.orElse(Integer.MAX_VALUE);
 		var minDinnerCalories =
 				Arrays.stream(dinner)
 						.filter(d -> d[1] >= minDeliciousDegree)
 						.mapToInt(d -> d[0])
 						.min()
-						.orElseThrow();
+						.orElse(Integer.MAX_VALUE);
 		var minCalories = Math.min(minLunchCalories, minDinnerCalories);
 
 		var lIdx = 0; // ! Min delicious lunch
@@ -51,5 +52,13 @@ public class FoodSet {
 			}
 		}
 		return minCalories == Integer.MAX_VALUE ? -1 : minCalories;
+	}
+
+	static void main() {
+		FoodSet fs = new FoodSet();
+		int minCalories =
+				fs.getMinCalories(
+						new int[][] {{10, 10}, {20, 20}}, new int[][] {{20, 30}, {30, 30}}, 40); // 30
+		System.out.println(minCalories);
 	}
 }

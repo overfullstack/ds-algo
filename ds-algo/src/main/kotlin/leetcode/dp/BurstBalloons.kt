@@ -1,15 +1,13 @@
 /* gakshintala created on 9/22/19 */
-package leetcode.dp.burstballoons
+package leetcode.dp
 
 /** [Burst Balloons](https://leetcode.com/problems/burst-balloons/) */
 fun maxCoins(nums: IntArray): Int {
-  val balloonCoins =
-    arrayOf(1) + nums.toTypedArray() + arrayOf(1) // this is leetcode problem specific
+  val balloonCoins = arrayOf(1) + nums.toTypedArray() + arrayOf(1) // ! This is problem specific
   val table = Array(balloonCoins.size) { IntArray(balloonCoins.size) }
   // * Build from individual balloons to larger windows
   // * table[start][end] holds a non-zero value only if nums present are >= 3
   // * (end - start + 1 >= 3) or windowLen >= 2
-
   for (windowLen in 2..balloonCoins.lastIndex) {
     for ((wStart, wEnd) in (windowLen..balloonCoins.lastIndex).withIndex()) {
       table[wStart][wEnd] = // Max coins from this interval (wStart, wEnd)

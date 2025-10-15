@@ -7,13 +7,13 @@ import java.util.Arrays;
 /** [410. Split Array Largest Sum](https://leetcode.com/problems/split-array-largest-sum/) */
 public class SplitArrayLargestSum {
 	public int splitArray(int[] nums, int k) {
-		var left = Arrays.stream(nums).max().orElse(0);
-		var right = Arrays.stream(nums).sum();
+		var left = Arrays.stream(nums).max().orElse(0); // ! left = max
+		var right = Arrays.stream(nums).sum(); // ! right = sum
 		// ! Minimized Maximum = Leftmost
 		while (left < right) {
 			var partitionSum = left + (right - left) / 2;
 			var partitionCount = partitionCount(nums, partitionSum);
-			if (partitionCount <= k) {
+			if (partitionCount <= k) { // ! Minimizing sum only until partitions don't cross `k`
 				right = partitionSum;
 			} else {
 				left = partitionSum + 1;

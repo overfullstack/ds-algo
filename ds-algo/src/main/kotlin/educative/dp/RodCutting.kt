@@ -1,4 +1,4 @@
-package educative.dp.dp2
+package educative.dp
 
 /* 06 Aug 2025 18:45 */
 
