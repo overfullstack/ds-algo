@@ -1,6 +1,6 @@
 package cci.ll
 
-import ds.ll.SLLNode
+import ds.ll.ListNode
 import ds.ll.last
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.data.forAll
@@ -15,9 +15,9 @@ class IntersectionTest :
         row(intArrayOf(1), intArrayOf(1), intArrayOf(), 1),
         row(intArrayOf(), intArrayOf(1), intArrayOf(2), null),
       ) { half1, half2, intersection, result ->
-        val half1Node: SLLNode? = SLLNode.of(half1)
-        val half2Node = SLLNode.of(half2)
-        val intersectionNode = SLLNode.of(intersection)
+        val half1Node: ListNode? = ListNode.of(half1)
+        val half2Node = ListNode.of(half2)
+        val intersectionNode = ListNode.of(intersection)
 
         half1Node?.last()?.next = intersectionNode
         half2Node.last()?.next = intersectionNode

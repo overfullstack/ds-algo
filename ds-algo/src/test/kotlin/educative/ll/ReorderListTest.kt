@@ -1,6 +1,6 @@
 package educative.ll
 
-import ds.ll.SLLNode
+import ds.ll.ListNode
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.inspectors.forAll
 import io.kotest.matchers.shouldBe
@@ -12,7 +12,7 @@ class ReorderListTest :
   StringSpec({
     "reorder list" {
       parseJsonFileToTestCases("$PKG_PATH/test-cases.json").forAll { (inputs, output) ->
-        val head = SLLNode.of(inputs.filterNotNull().toIntArray())
+        val head = ListNode.of(inputs.filterNotNull().toIntArray())
         reorderList(head!!).toArray() shouldBe output.toIntArray()
       }
     }

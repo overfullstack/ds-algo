@@ -10,11 +10,11 @@ private fun wordBreakSentencesInternal(
   str: String,
   dict: Set<String>,
   startIndex: Int = 0,
-  cache: MutableMap<Int, List<List<String>>> = mutableMapOf(),
+  memo: MutableMap<Int, List<List<String>>> = mutableMapOf(),
 ): List<List<String>> {
   // * The cache is being built from the end, so the next time we reach here,
   // * we shall have all broken combinations starting with this index
-  cache[startIndex]?.let {
+  memo[startIndex]?.let {
     return it
   }
   val sentences =
@@ -27,7 +27,7 @@ private fun wordBreakSentencesInternal(
         when (index) {
           str.lastIndex -> listOf(listOf(wordInDict))
           else ->
-            wordBreakSentencesInternal(str, dict, index + 1, cache).map { sentence ->
+            wordBreakSentencesInternal(str, dict, index + 1, memo).map { sentence ->
               listOf(wordInDict) + sentence
             }
         }
@@ -35,7 +35,7 @@ private fun wordBreakSentencesInternal(
       .toList()
   // If the word can't be broken, the last recursion would return an empty list, which shall be
   // passed-on, so the end results in an empty list
-  return cache.merge(startIndex, sentences, Collection<List<String>>::plus)!!
+  return memo.merge(startIndex, sentences, Collection<List<String>>::plus)!!
 }
 
 fun main() {

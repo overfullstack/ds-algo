@@ -22,6 +22,7 @@ public class MinimumNumberOfLinesToCoverPoints {
 			if (((visited >> p1) & 1) == 0) {
 				for (var p2 = p1 + 1; p2 < points.length; p2++) {
 					if (((visited >> p2) & 1) == 0) {
+						// ! Using `nextVisited` to backtrack `visited`
 						var nextVisited = visited | (1 << p1) | (1 << p2);
 						for (var p3 = p2 + 1; p3 < points.length; p3++) {
 							if (((visited >> p3) & 1) == 0 && areCollinear(points[p1], points[p2], points[p3])) {

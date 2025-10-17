@@ -1,8 +1,8 @@
 package cci.ll
 
-import ds.ll.SLLNode
+import ds.ll.ListNode
 
-fun SLLNode?.partition(pivot: Int) {
+fun ListNode?.partition(pivot: Int) {
   var gPtr = this
   var lPtr = this
   while (lPtr != null) {
@@ -23,6 +23,6 @@ fun SLLNode?.partition(pivot: Int) {
   }
 }
 
-private fun SLLNode.swapValue(node: SLLNode) {
+private fun ListNode.swapValue(node: ListNode) {
   value = node.value.also { node.value = value }
 }

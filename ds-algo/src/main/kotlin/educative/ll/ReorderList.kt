@@ -1,11 +1,11 @@
 package educative.ll
 
-import ds.ll.SLLNode
+import ds.ll.ListNode
 
-fun reorderList(head: SLLNode): SLLNode {
-  var middle: SLLNode? = head.middle()
+fun reorderList(head: ListNode): ListNode {
+  var middle: ListNode? = head.middle()
   middle = middle?.reverse()
-  var mHead: SLLNode? = head
+  var mHead: ListNode? = head
   while (middle?.next != null) {
     val temp = mHead?.next
     mHead?.next = middle
@@ -17,5 +17,5 @@ fun reorderList(head: SLLNode): SLLNode {
 }
 
 fun main() {
-  println(reorderList(SLLNode.of(intArrayOf(10, 20, -22, 21, -12))!!))
+  println(reorderList(ListNode.of(intArrayOf(10, 20, -22, 21, -12))!!))
 }

@@ -7,8 +7,8 @@ import java.util.PriorityQueue;
 /** [964 · Food Set](https://www.lintcode.com/problem/964) */
 public class FoodSet {
 	public int getMinCalories(int[][] lunch, int[][] dinner, int minDeliciousDegree) {
-    // ! Sort lunch and dinner by delicious degree
-    Arrays.sort(lunch, Comparator.comparingInt(l -> l[1])); 
+		// ! Sort lunch and dinner by delicious degree
+		Arrays.sort(lunch, Comparator.comparingInt(l -> l[1]));
 		Arrays.sort(dinner, Comparator.comparingInt(d -> d[1]));
 
 		var minHeapForLunchCalories =

@@ -1,6 +1,6 @@
 package educative.ll
 
-import ds.ll.SLLNode
+import ds.ll.ListNode
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.inspectors.forAll
 import io.kotest.matchers.shouldBe
@@ -15,7 +15,7 @@ class RemoveKthToLastTest :
     "Remove kth to last" {
       parseJsonFileToTestCases("$PKG_PATH/test-cases-1.json", "$PKG_PATH/test-cases-2.json")
         .forAll { (inputs, k, output) ->
-          val head = SLLNode.of(inputs.toIntArray())!!
+          val head = ListNode.of(inputs.toIntArray())!!
           head.removeKthToLast(k).toArray() shouldBe output.toIntArray()
         }
     }

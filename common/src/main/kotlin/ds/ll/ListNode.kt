@@ -4,17 +4,17 @@ import com.salesforce.revoman.input.readFileToString
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
 
-data class SLLNode(var value: Int, var next: SLLNode? = null) {
+data class ListNode(var value: Int, var next: ListNode? = null) {
 
-  fun insertNext(nodeToInsert: SLLNode) {
+  fun insertNext(nodeToInsert: ListNode) {
     val next = next
     this.next = nodeToInsert
     nodeToInsert.next = next
   }
 
-  fun middle(): SLLNode {
-    var ptr: SLLNode? = this
-    var fPtr: SLLNode? = this
+  fun middle(): ListNode {
+    var ptr: ListNode? = this
+    var fPtr: ListNode? = this
     while (fPtr?.next != null) {
       ptr = ptr?.next
       fPtr = fPtr.next?.next
@@ -22,10 +22,10 @@ data class SLLNode(var value: Int, var next: SLLNode? = null) {
     return ptr!!
   }
 
-  fun getNodeForValue(valToFind: Int): SLLNode? =
+  fun getNodeForValue(valToFind: Int): ListNode? =
     if (value == valToFind) this else next?.getNodeForValue(valToFind)
 
-  fun reverse(prev: SLLNode? = null): SLLNode =
+  fun reverse(prev: ListNode? = null): ListNode =
     when {
       next == null -> {
         next = prev
@@ -43,20 +43,20 @@ data class SLLNode(var value: Int, var next: SLLNode? = null) {
   override fun toString(): String =
     when {
       next == null -> value.toString()
-      else -> "$value -> $next"
+      else -> "$value -> ${next?.value}"
     }
 
   companion object {
-    fun of(values: IntArray): SLLNode? = if (values.isEmpty()) null else ofNonEmpty(values)
+    fun of(values: IntArray): ListNode? = if (values.isEmpty()) null else ofNonEmpty(values)
 
     private tailrec fun ofNonEmpty(
       values: IntArray,
       index: Int = values.lastIndex,
-      next: SLLNode = SLLNode(values[index], null),
-    ): SLLNode =
+      next: ListNode = ListNode(values[index], null),
+    ): ListNode =
       when (index) {
         0 -> next
-        else -> ofNonEmpty(values, index - 1, SLLNode(values[index - 1], next))
+        else -> ofNonEmpty(values, index - 1, ListNode(values[index - 1], next))
       }
 
     @Serializable
@@ -67,28 +67,29 @@ data class SLLNode(var value: Int, var next: SLLNode? = null) {
       }
     }
 
-    fun parseJsonFileToSLL(jsonFilePath: String): SLLNode {
+    fun parseJsonFileToSLL(jsonFilePath: String): ListNode {
       val sllJson = readFileToString(jsonFilePath)
       val jSll = Json.decodeFromString<JSLL>(sllJson)
-      val idToSLLNode = jSll.linkedList.nodes.associate { it.id to (SLLNode(it.value) to it.next) }
-      for ((sllNode, nextId) in idToSLLNode.values) {
-        sllNode.next = idToSLLNode[nextId]?.first
+      val idToListNode =
+        jSll.linkedList.nodes.associate { it.id to (ListNode(it.value) to it.next) }
+      for ((sllNode, nextId) in idToListNode.values) {
+        sllNode.next = idToListNode[nextId]?.first
       }
-      return idToSLLNode[jSll.linkedList.head]!!.first
+      return idToListNode[jSll.linkedList.head]!!.first
     }
   }
 }
 
-tailrec fun SLLNode?.getNodeAtOrNull(pos: Int): SLLNode? =
+tailrec fun ListNode?.getNodeAtOrNull(pos: Int): ListNode? =
   if (pos == 1) this else this?.next?.getNodeAtOrNull(pos - 1)
 
-tailrec fun SLLNode?.length(len: Int = 1): Int =
+tailrec fun ListNode?.length(len: Int = 1): Int =
   when (this?.next) {
     null -> len
     else -> next.length(len + 1)
   } ?: 0
 
-tailrec fun SLLNode?.last(): SLLNode? =
+tailrec fun ListNode?.last(): ListNode? =
   when (this?.next) {
     null -> this
     else -> this.next.last()

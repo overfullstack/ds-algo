@@ -1,8 +1,8 @@
 package algoexpert.ll
 
-import ds.ll.SLLNode
+import ds.ll.ListNode
 
-fun SLLNode.removeDuplicates(): SLLNode {
+fun ListNode.removeDuplicates(): ListNode {
   var curPtr = this
   var nextPtr = this.next
   while (nextPtr != null) {
