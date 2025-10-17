@@ -1,8 +1,8 @@
 package cci.ll
 
-import ds.ll.SLLNode
+import ds.ll.ListNode
 
-fun SLLNode?.removeDupsFromSLL() {
+fun ListNode?.removeDupsFromSLL() {
   var current = this
   while (current?.next != null) {
     var runner = current

@@ -22,7 +22,7 @@ private fun wordSearchPerBranch(
   visited: MutableSet<Pair<Int, Int>> = mutableSetOf(row to col),
 ): Boolean =
   when {
-    wordIndex > word.lastIndex -> true // Not equal to, compare the last index also
+    wordIndex == word.lastIndex + 1 -> true
     else ->
       directions
         .asSequence()

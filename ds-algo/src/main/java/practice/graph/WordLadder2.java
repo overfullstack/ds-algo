@@ -63,11 +63,11 @@ public class WordLadder2 {
 		if (!endFound) {
 			return Collections.emptyList();
 		}
-		return dfsPredecessors(endWord, beginWord, new ArrayDeque<>(), predecessors);
+		return dfsPredecessors(endWord, beginWord, new ArrayList<>(), predecessors);
 	}
 
 	private static List<List<String>> dfsPredecessors(
-			String curWord, String beginWord, ArrayDeque<String> path, Map<String, Set<String>> graph) {
+			String curWord, String beginWord, List<String> path, Map<String, Set<String>> graph) {
 		path.addFirst(curWord); // ! `addFirst` to build in reverse direction
 		if (curWord.equals(beginWord)) {
 			return List.of(new ArrayList<>(path));

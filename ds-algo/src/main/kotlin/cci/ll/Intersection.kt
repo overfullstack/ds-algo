@@ -1,10 +1,10 @@
 package cci.ll
 
-import ds.ll.SLLNode
+import ds.ll.ListNode
 import ds.ll.getNodeAtOrNull
 import ds.ll.length
 
-fun SLLNode.getIntersectionNode(that: SLLNode?): SLLNode? {
+fun ListNode.getIntersectionNode(that: ListNode?): ListNode? {
   val thisLen = length()
   val thatLen = length()
   return when {
@@ -13,10 +13,10 @@ fun SLLNode.getIntersectionNode(that: SLLNode?): SLLNode? {
   }
 }
 
-private fun SLLNode.getMatchingNode(nthNodeToStart: Int, that: SLLNode?): SLLNode? =
+private fun ListNode.getMatchingNode(nthNodeToStart: Int, that: ListNode?): ListNode? =
   getNodeAtOrNull(nthNodeToStart)?.getMatchingNode(that)
 
-private tailrec fun SLLNode.getMatchingNode(that: SLLNode?): SLLNode? =
+private tailrec fun ListNode.getMatchingNode(that: ListNode?): ListNode? =
   when {
     that == null -> null
     value == that.value -> this

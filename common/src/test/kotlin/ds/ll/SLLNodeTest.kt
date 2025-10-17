@@ -1,6 +1,6 @@
 package ds.ll
 
-import ds.ll.SLLNode.Companion.parseJsonFileToSLL
+import ds.ll.ListNode.Companion.parseJsonFileToSLL
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.data.forAll
 import io.kotest.data.row
@@ -14,28 +14,28 @@ class SLLNodeTest :
   StringSpec({
     "Create SLL from array" {
       forAll(row(intArrayOf(1, 2, 3)), row(intArrayOf(1))) { arr ->
-        SLLNode.of(arr)?.toArray() shouldBe arr
+        ListNode.of(arr)?.toArray() shouldBe arr
       }
     }
 
-    "Create SLL from Empty array" { SLLNode.of(intArrayOf())?.toArray() shouldBe null }
+    "Create SLL from Empty array" { ListNode.of(intArrayOf())?.toArray() shouldBe null }
 
     "Check SLL equals" {
       forAll(row(intArrayOf(3, 2, 1, 1, 3)), row(intArrayOf(1))) { arr ->
-        val node1 = SLLNode.of(arr)!!
-        val node2 = SLLNode.of(arr)!!
+        val node1 = ListNode.of(arr)!!
+        val node2 = ListNode.of(arr)!!
         (node1 == node2) shouldBe true
       }
     }
 
     "Get Node for Value" {
       forAll(
-        row(intArrayOf(1, 2, 3, 4), 3, SLLNode(3, SLLNode(4, null))),
-        row(intArrayOf(1, 2, 3, 4), 4, SLLNode(4, null)),
-        row(intArrayOf(1), 1, SLLNode(1, null)),
+        row(intArrayOf(1, 2, 3, 4), 3, ListNode(3, ListNode(4, null))),
+        row(intArrayOf(1, 2, 3, 4), 4, ListNode(4, null)),
+        row(intArrayOf(1), 1, ListNode(1, null)),
         row(intArrayOf(), 1, null),
       ) { arr, valToFind, resultNode ->
-        SLLNode.of(arr)?.getNodeForValue(valToFind) shouldBe resultNode
+        ListNode.of(arr)?.getNodeForValue(valToFind) shouldBe resultNode
       }
     }
 
@@ -45,7 +45,7 @@ class SLLNodeTest :
           "$PKG_PATH/sll-reverse-test-cases-2.json",
         )
         .forAll { (inputs, output) ->
-          val head = SLLNode.of(inputs.filterNotNull().toIntArray())!!
+          val head = ListNode.of(inputs.filterNotNull().toIntArray())!!
           head.reverse().toArray() shouldBe output.toIntArray()
         }
     }
@@ -54,18 +54,18 @@ class SLLNodeTest :
       forAll(row(intArrayOf(1), 1), row(intArrayOf(1, 2), 2), row(intArrayOf(1, 2, 3), 3)) {
         arr,
         result ->
-        SLLNode.of(arr)?.length() shouldBe result
+        ListNode.of(arr)?.length() shouldBe result
       }
     }
 
     "Get Node at Pos" {
       forAll(
-        row(intArrayOf(1, 2, 3, 4), 2, SLLNode(3, SLLNode(4, null))),
-        row(intArrayOf(1, 2, 3, 4), 3, SLLNode(4, null)),
-        row(intArrayOf(1), 0, SLLNode(1, null)),
+        row(intArrayOf(1, 2, 3, 4), 2, ListNode(3, ListNode(4, null))),
+        row(intArrayOf(1, 2, 3, 4), 3, ListNode(4, null)),
+        row(intArrayOf(1), 0, ListNode(1, null)),
         row(intArrayOf(), 1, null),
       ) { arr, pos, resultNode ->
-        SLLNode.of(arr)?.getNodeAtOrNull(pos) shouldBe resultNode
+        ListNode.of(arr)?.getNodeAtOrNull(pos) shouldBe resultNode
       }
     }
 

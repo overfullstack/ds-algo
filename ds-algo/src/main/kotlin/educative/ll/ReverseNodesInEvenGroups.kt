@@ -1,11 +1,11 @@
 package educative.ll
 
-import ds.ll.SLLNode
+import ds.ll.ListNode
 
 /* 23 Aug 2024 11:55 */
 
-fun reverseNodesInEvenGroups(head: SLLNode): SLLNode {
-  var prevGrpTail: SLLNode? = head
+fun reverseNodesInEvenGroups(head: ListNode): ListNode {
+  var prevGrpTail: ListNode? = head
   var grpSizeToReverse = 2
   while (prevGrpTail?.next?.next != null) { // Break if only one or none left
     val (actualGrpSize, grpEndNode) = prevGrpTail.getNodeAfterOrLast(grpSizeToReverse)
@@ -23,7 +23,7 @@ fun reverseNodesInEvenGroups(head: SLLNode): SLLNode {
   return head
 }
 
-fun SLLNode.reverseInGroup(prev: SLLNode?, actualGrpSize: Int): SLLNode =
+fun ListNode.reverseInGroup(prev: ListNode?, actualGrpSize: Int): ListNode =
   when {
     actualGrpSize == 1 -> {
       next = prev
@@ -36,7 +36,7 @@ fun SLLNode.reverseInGroup(prev: SLLNode?, actualGrpSize: Int): SLLNode =
     }
   }
 
-fun SLLNode.getNodeAfterOrLast(stepCount: Int, curStepCount: Int = 0): Pair<Int, SLLNode> =
+fun ListNode.getNodeAfterOrLast(stepCount: Int, curStepCount: Int = 0): Pair<Int, ListNode> =
   when {
     next == null || stepCount == curStepCount -> curStepCount to this
     else -> next!!.getNodeAfterOrLast(stepCount, curStepCount + 1)

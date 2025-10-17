@@ -1,6 +1,6 @@
 package cci.ll
 
-import ds.ll.SLLNode
+import ds.ll.ListNode
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.data.forAll
 import io.kotest.data.row
@@ -18,7 +18,7 @@ class KthToLastTest :
         row(intArrayOf(), 0, null),
         row(intArrayOf(), 1, null),
       ) { arr, k, result ->
-        SLLNode.of(arr)?.getKthToLast(k)?.value shouldBe result
+        ListNode.of(arr)?.getKthToLast(k)?.value shouldBe result
       }
     }
   })

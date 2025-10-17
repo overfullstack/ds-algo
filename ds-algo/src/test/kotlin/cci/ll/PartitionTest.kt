@@ -1,6 +1,6 @@
 package cci.ll
 
-import ds.ll.SLLNode
+import ds.ll.ListNode
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.data.forAll
 import io.kotest.data.row
@@ -16,7 +16,7 @@ class PartitionTest :
         row(intArrayOf(1), 1, intArrayOf(1)),
         row(intArrayOf(), 1, null),
       ) { arr, pivot, result ->
-        val node = SLLNode.of(arr)
+        val node = ListNode.of(arr)
         node.partition(pivot)
         node?.toArray() shouldBe result
       }

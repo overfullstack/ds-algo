@@ -1,10 +1,10 @@
 package algoexpert.ll
 
-import ds.ll.SLLNode
+import ds.ll.ListNode
 
-fun SLLNode.middleNode(): SLLNode {
-  var ptr: SLLNode? = this
-  var ptr2: SLLNode? = this
+fun ListNode.middleNode(): ListNode {
+  var ptr: ListNode? = this
+  var ptr2: ListNode? = this
 
   if (ptr?.next == null) {
     return ptr!!
