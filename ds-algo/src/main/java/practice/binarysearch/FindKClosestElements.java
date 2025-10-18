@@ -7,26 +7,15 @@ import java.util.List;
 
 /** [658. Find K Closest Elements](https://leetcode.com/problems/find-k-closest-elements/) */
 public class FindKClosestElements {
+	// ! arr is sorted
 	public List<Integer> findClosestElements(int[] arr, int k, int x) {
 		var left = 0;
 		var right = arr.length - k;
-		// ! Search for start for the k window
-		// ! The window is `mid..<mid+k`, left and right help to move the window left or right
-		// ! `left..right` shirks `mid..<mid+k` window starts inside `left..right` but can extend beyond
-		// ! We keep moving window towards left or right based on which bound value is closer to x
-		// ! to minimize the distance between `x` and window bound values
-		// ! Imagine the window is oscillating around `x` with decreasing amplitude
-		// ! Trying to find even closer window with lower distances, and finally stops at the leftmost
 		while (left < right) {
 			var mid = left + (right - left) / 2;
-			// ! This is measuring distance from lower and upper bound values (NOT indices)
-			// ! Using `<=` because it ensures that when distances are tied, as per problem
-			// ! the algorithm needs to prefer the leftmost window,
-			if (x - arr[mid] <= arr[mid + k] - x) {
+			if (x - arr[mid] <= arr[mid + k] - x) { // ! Leftmost where delta with `x` is same
 				right = mid;
 			} else {
-				// ! Move window to right. But if we step on a farther element on the right
-				// ! it automatically makes `x` closer to lower bound so window shifts left again
 				left = mid + 1;
 			}
 		}
