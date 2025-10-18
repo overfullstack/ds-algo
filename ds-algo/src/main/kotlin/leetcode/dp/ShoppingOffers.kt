@@ -1,4 +1,4 @@
-package leetcode.backtracking
+package leetcode.dp
 
 /* 09 Aug 2025 12:49 */
 /** [638. Shopping Offers](https://leetcode.com/problems/shopping-offers/) */

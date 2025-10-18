@@ -16,7 +16,7 @@ public class ParallelCourses {
 		var diGraph = new HashMap<Integer, List<Integer>>();
 		var inDegree = new int[n + 1];
 		for (var relation : relations) {
-			diGraph.computeIfAbsent(relation[0], _ -> new ArrayList<>()).add(relation[1]);
+			diGraph.putIfAbsent(relation[0], new ArrayList<>()).add(relation[1]);
 			inDegree[relation[1]]++;
 		}
 		var queue = new ArrayDeque<int[]>();
