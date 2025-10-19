@@ -21,7 +21,7 @@ private fun wordBreakSentencesInternal(
     (startIndex..str.lastIndex)
       .asSequence()
       .map { index -> index to str.substring(startIndex..index) }
-      // filter for all the points which can be broken as word for this recursion.
+      // ! filter for all the points which can be broken as word for this recursion
       .filter { (_, word) -> word in dict }
       .flatMap { (index, wordInDict) ->
         when (index) {

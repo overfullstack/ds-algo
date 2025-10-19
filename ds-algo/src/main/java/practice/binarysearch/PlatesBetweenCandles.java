@@ -35,13 +35,13 @@ public class PlatesBetweenCandles {
 		return result;
 	}
 
-	// ! Ceiling - leftmost >= value
+	// ! Ceiling - value <= leftmost
 	private static int leftmostIdx(int value, List<Integer> candleIdx) {
 		var left = 0;
 		var right = candleIdx.size() - 1;
 		while (left < right) {
 			var mid = left + (right - left) / 2;
-			if (candleIdx.get(mid) >= value) {
+			if (value <= candleIdx.get(mid)) {
 				right = mid;
 			} else {
 				left = mid + 1;
@@ -50,13 +50,13 @@ public class PlatesBetweenCandles {
 		return right;
 	}
 
-	// ! Floor - rightmost <= value
+	// ! Floor - value >= rightmost
 	private static int rightmostIdx(int value, List<Integer> candleIdx) {
 		var left = 0;
 		var right = candleIdx.size() - 1;
 		while (left <= right) {
 			var mid = left + (right - left) / 2;
-			if (candleIdx.get(mid) <= value) {
+			if (value >= candleIdx.get(mid)) {
 				left = mid + 1;
 			} else {
 				right = mid - 1;
