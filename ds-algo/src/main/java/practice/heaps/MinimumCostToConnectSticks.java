@@ -5,9 +5,7 @@ package practice.heaps;
 import java.util.List;
 import java.util.PriorityQueue;
 
-/**
- * [1872 · Minimum Cost to Connect Sticks](https://www.lintcode.com/problem/1872/)
- */
+/** [1872 · Minimum Cost to Connect Sticks](https://www.lintcode.com/problem/1872/) */
 public class MinimumCostToConnectSticks {
 	public int minimumCost(List<Integer> sticks) {
 		final var pq = new PriorityQueue<>(sticks);

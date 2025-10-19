@@ -11,6 +11,7 @@ import java.util.TreeSet
  */
 fun busiestServers(k: Int, arrival: IntArray, load: IntArray): List<Int> {
   val busyServers = PriorityQueue(Comparator.comparingLong<Pair<Long, Int>> { it.first })
+  // ! Using TreeSet instead of minHeap, due to the constraint `preferredServer = requestIndex % k`
   val availableServers = TreeSet((0 until k).toList())
   val serverToRequestCount = IntArray(k)
 
@@ -18,7 +19,7 @@ fun busiestServers(k: Int, arrival: IntArray, load: IntArray): List<Int> {
     val (start, duration) = request
     val end = start + duration
 
-    // Free up servers that are no longer busy
+    // ! Free up servers that are no longer busy
     while (busyServers.isNotEmpty() && busyServers.peek().first <= start) {
       availableServers.add(busyServers.poll().second)
     }

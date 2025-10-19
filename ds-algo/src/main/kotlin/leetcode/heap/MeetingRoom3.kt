@@ -12,6 +12,7 @@ fun mostBooked(n: Int, meetings: Array<IntArray>): Int {
   val roomIdToMeetingCount = IntArray(n)
   val sortedMeetings = meetings.map { it[0].toLong() to it[1].toLong() }.sortedBy { it.first }
   for ((start, end) in sortedMeetings) {
+    // ! Gather all available rooms whose meeting ended before current meeting started
     while (occupiedRooms.isNotEmpty() && occupiedRooms.peek().first <= start) {
       availableRoomIds.add(occupiedRooms.poll().second)
     }
