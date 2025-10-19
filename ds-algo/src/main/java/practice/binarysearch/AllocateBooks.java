@@ -16,7 +16,7 @@ public class AllocateBooks {
 		while (left < right) {
 			var mid = left + (right - left) / 2;
 			var partitionCount = partitionCount(mid, books);
-			if (partitionCount <= m) {
+			if (partitionCount <= m) { // ! m is Ceiling
 				right = mid;
 			} else {
 				left = mid + 1;

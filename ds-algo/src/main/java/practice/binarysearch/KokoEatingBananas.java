@@ -14,7 +14,7 @@ public class KokoEatingBananas {
 		while (left < right) {
 			var mid = left + (right - left) / 2;
 			var noOfHours = noOfHours(piles, mid);
-			if (noOfHours <= h) {
+			if (noOfHours <= h) { // ! h is Ceiling
 				right = mid;
 			} else {
 				left = mid + 1;
