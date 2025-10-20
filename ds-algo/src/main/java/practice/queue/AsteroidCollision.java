@@ -16,10 +16,9 @@ public class AsteroidCollision {
 				while (!queue.isEmpty() && queue.getLast() > 0 && queue.getLast() < Math.abs(asteroid)) {
 					queue.removeLast();
 				}
-				// ! Whether to add the negative asteroid or not
 				if (!queue.isEmpty() && queue.getLast() == Math.abs(asteroid)) {
 					queue.removeLast();
-				} else if (queue.isEmpty() || queue.getLast() < 0) {
+				} else if (queue.isEmpty() || queue.getLast() < 0) { // ! Add a negative asteroid
 					queue.add(asteroid);
 				}
 			}

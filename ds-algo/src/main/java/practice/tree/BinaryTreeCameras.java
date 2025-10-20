@@ -1,8 +1,8 @@
 package practice.tree;
 
 import static java.lang.IO.println;
-import static practice.tree.BinaryTreeCameras.State.MONITORED_NO_CAM;
 import static practice.tree.BinaryTreeCameras.State.CAM_INSTALLED;
+import static practice.tree.BinaryTreeCameras.State.MONITORED_NO_CAM;
 import static practice.tree.BinaryTreeCameras.State.NOT_MONITORED;
 
 import ds.tree.TreeNode;
@@ -12,7 +12,7 @@ import java.util.Arrays;
 /** [968. Binary Tree Cameras](https://leetcode.com/problems/binary-tree-cameras/) */
 public class BinaryTreeCameras {
 	enum State {
-    CAM_INSTALLED,
+		CAM_INSTALLED,
 		MONITORED_NO_CAM,
 		NOT_MONITORED;
 	}

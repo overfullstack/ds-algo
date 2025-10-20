@@ -38,12 +38,13 @@ globs:
 # Java-Specific Patterns
 - Prioritize **simplicity** and **readability** above all else. Do not trade readability for memory or performance efficiency, such as using Bitmask.
 - Use **Modern and Latest Java syntax available**. Some examples are:
-  - Use HashMap operations like `merge`, `computeIfPresent`, `computeIfAbsent` etc. 
+  - Use `IO.println` instead of the legacy `System.out.println`
+  - Use HashMap operations like `merge`, `computeIfPresent`, `computeIfAbsent`, `putIfPresent`, `putIfAbsent` etc. 
   - **Modern Collection Operations**: Use `.toList()` instead of `.collect(Collectors.toList())`.
   - **Local Variable Type Inference**: Use `var` for local variables when the type is obvious from context
   - **Enhanced Switch**: Use switch expressions with `->` syntax instead of traditional switch statements
   - **Text Blocks**: Use `"""` text blocks for multi-line strings
-  - **Pattern Matching**: Use pattern matching for `instanceof` when available (Java 16+)
+  - **Pattern Matching**: Use pattern matching for `instanceof`
   - **Collection Factory Methods**: Use `List.of()`, `Set.of()`, `Map.of()` for immutable collections
 - Chain operations using stream: prefer `.stream()` for multiple transformations
 - If applicable, use functional combinators: map, filter, flatMap, reduce, max, min, sum, findFirst, findAny, anyMatch, allMatch, etc., over imperative loops with continue and break statements

@@ -108,6 +108,7 @@ class IslandAnalyzer<T>(
 ## Java-Specific Patterns
 - Prioritize **simplicity** and **readability** above all else. Do not trade readability for memory or performance efficiency, such as using Bitmask.
 - Use **Modern and Latest Java syntax available**. Some examples are:
+  - Use `IO.println` instead of the legacy `System.out.println`
   - Use HashMap operations like `merge`, `computeIfPresent`, `computeIfAbsent` etc.
   - **Modern Collection Operations**: Use `.toList()` instead of `.collect(Collectors.toList())`.
   - **Local Variable Type Inference**: Use `var` for local variables when the type is obvious from context

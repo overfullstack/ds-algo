@@ -1,8 +1,8 @@
 package gfg.regular.graph;
 
 import ds.DiGraph;
+import java.util.ArrayDeque;
 import java.util.Scanner;
-import java.util.Stack;
 
 /** Created by gakshintala on 4/19/16. */
 public class DFSWithoutRecursion {
@@ -32,7 +32,7 @@ public class DFSWithoutRecursion {
 	}
 
 	private static void dfsIterative(DiGraph g) {
-		var stk = new Stack<Integer>();
+		var stk = new ArrayDeque<Integer>();
 		var vertexCount = g.getVertexCount();
 		var visited = new boolean[vertexCount + 1];
 		stk.add(1);
