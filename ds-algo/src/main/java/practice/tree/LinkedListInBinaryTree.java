@@ -1,7 +1,7 @@
-package practice;
+package practice.tree;
 
-import ds.ListNode;
-import ds.TreeNode;
+import ds.ll.ListNode;
+import ds.tree.TreeNode;
 
 /** [1367. Linked List in Binary Tree](https://leetcode.com/problems/linked-list-in-binary-tree/) */
 public class LinkedListInBinaryTree {
@@ -22,6 +22,6 @@ public class LinkedListInBinaryTree {
 		if (root == null) {
 			return false;
 		}
-		return root.val == head.val && (dfs(head.next, root.left) || dfs(head.next, root.right));
+		return root.val == head.value && (dfs(head.next, root.left) || dfs(head.next, root.right));
 	}
 }

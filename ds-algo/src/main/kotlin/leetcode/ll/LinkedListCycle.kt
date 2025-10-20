@@ -1,6 +1,6 @@
 package leetcode.ll
 
-import ds.ListNode
+import ds.ll.ListNode
 
 /* 15 Oct 2025 20:24 */
 

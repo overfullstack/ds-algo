@@ -116,6 +116,7 @@ constructor(
   }
 
   companion object {
+    @JvmStatic
     fun arrayToBST(arr: IntArray): TreeNode? {
       if (arr.isEmpty()) {
         return null
@@ -123,6 +124,7 @@ constructor(
       return TreeNode(arr[0]).also { root -> arr.drop(1).forEach { root.insertForBST(it) } }
     }
 
+    @JvmStatic
     /** level order is the same as pre-order */
     fun levelOrderToCompleteTree(levelOrder: List<Int>): TreeNode? {
       if (levelOrder.isEmpty()) {
@@ -142,6 +144,7 @@ constructor(
       )
     }
 
+    @JvmStatic
     fun levelOrderToIncompleteTree(levelOrder: List<Int?>): TreeNode? {
       val valQueue = ArrayDeque(levelOrder)
       val rootVal = valQueue.removeFirst() ?: return null

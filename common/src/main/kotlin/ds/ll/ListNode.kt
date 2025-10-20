@@ -4,7 +4,7 @@ import com.salesforce.revoman.input.readFileToString
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
 
-data class ListNode(var value: Int, var next: ListNode? = null) {
+data class ListNode(@JvmField var value: Int, @JvmField var next: ListNode? = null) {
 
   fun insertNext(nodeToInsert: ListNode) {
     val next = next

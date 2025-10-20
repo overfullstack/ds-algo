@@ -9,6 +9,12 @@ fun diameterOfBinaryTree(root: TreeNode?): Int {
   return if (root == null) 0 else root.findMaxDiameter().second - 1 // n nodes shall have n-1 edges.
 }
 
+/**
+ * Three Cases:
+ * - Max diameter passes through current root
+ * - Max diameter already found in left/right
+ * - Max diameter will be found in parent nodes, with max of left pass or right pass
+ */
 fun TreeNode.findMaxDiameter(): Pair<Int, Int> { // Pair of height and diameter
   val (leftPassThroughHeight, maxDiameterInLeft) = left?.findMaxDiameter() ?: (0 to 0)
   val (rightPassThroughHeight, maxDiameterInRight) = right?.findMaxDiameter() ?: (0 to 0)

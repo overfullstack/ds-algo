@@ -1,8 +1,8 @@
-package practice;
+package practice.tree;
 
 /* 31 Aug 2025 18:34 */
 
-import ds.TreeNode;
+import ds.tree.TreeNode;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Stream;
