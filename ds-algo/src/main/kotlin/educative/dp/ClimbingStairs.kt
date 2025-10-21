@@ -2,7 +2,18 @@ package educative.dp
 
 /* 24/7/25 17:00 */
 
-fun distinctWaysToClimb(n: Int): Int {
+/** [70. Climbing Stairs](https://leetcode.com/problems/climbing-stairs/) */
+fun distinctWaysToClimbTopDown(n: Int, memo: IntArray = IntArray(n + 1)): Int =
+  when {
+    n <= 2 -> n
+    memo[n] != 0 -> memo[n]
+    else ->
+      (distinctWaysToClimbTopDown(n - 1, memo) + distinctWaysToClimbTopDown(n - 2, memo)).also {
+        memo[n] = it
+      }
+  }
+
+fun distinctWaysToClimbBottomUp(n: Int): Int {
   if (n <= 2) return n
   var first = 1
   var second = 2
@@ -15,5 +26,5 @@ fun distinctWaysToClimb(n: Int): Int {
 }
 
 fun main() {
-  println(distinctWaysToClimb(30)) // 1346269
+  println(distinctWaysToClimbBottomUp(30)) // 1346269
 }
