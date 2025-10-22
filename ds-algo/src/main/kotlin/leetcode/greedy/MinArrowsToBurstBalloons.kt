@@ -17,8 +17,8 @@ fun findMinArrowShots(points: Array<IntArray>): Int {
       sortedBalloonsByEnd
         .asSequence()
         .drop(1)
-        .filter { it.first > end } // * 1 arrow for all balloon starting before this end point
-        .onEach { end = it.second } // ! `it.second` instead of `maxOf(it.second, end)`
+        .filter { it.first > end } // ! 1 arrow for all balloon starting before this end point
+        .onEach { end = it.second } // ! Sorted by end, so `it.second` instead of `maxOf`
         .count()
   return nonOverlapCount
 }
