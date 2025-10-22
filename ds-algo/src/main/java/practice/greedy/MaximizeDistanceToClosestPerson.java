@@ -1,4 +1,4 @@
-package practice;
+package practice.greedy;
 
 /* 27 Aug 2025 16:24 */
 

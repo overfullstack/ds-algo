@@ -1,9 +1,13 @@
-package practice;
+package practice.greedy;
 
 import java.util.PriorityQueue;
 
 /* 26 Aug 2025 15:42 */
 
+/**
+ * [1642. Furthest Building You Can
+ * Reach](https://leetcode.com/problems/furthest-building-you-can-reach)
+ */
 public class FurthestBuildingYouCanReach {
 	public int furthestBuilding(int[] heights, int bricks, int ladders) {
 		// * Greedily use Bricks for lower heightDiffs
