@@ -15,7 +15,7 @@ public class NumberOfWonderfulSubstrings {
 		for (var ch : word.toCharArray()) { // ! All characters even
 			mask ^= (1 << (ch - 'a')); // ! Flip char state
 			result += count[mask]; // ! Same state again
-      // ! Flick each char to check if such state exists before
+			// ! Flick each char to check if such state exists before
 			for (var i = 0; i < 10; i++) {
 				var flipMaskForChar = mask ^ (1 << i);
 				result += count[flipMaskForChar];

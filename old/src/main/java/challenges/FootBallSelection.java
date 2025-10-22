@@ -1,6 +1,5 @@
 package challenges;
 
-import static java.util.stream.Collectors.joining;
 import static java.util.stream.Collectors.toList;
 
 import java.io.BufferedReader;
@@ -13,7 +12,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
 import java.util.Set;
-import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
@@ -24,28 +22,22 @@ public class FootBallSelection {
 		var bufferedWriter = new BufferedWriter(new FileWriter(System.getenv("OUTPUT_PATH")));
 
 		var applicationsRows = Integer.parseInt(bufferedReader.readLine().trim());
-		var applicationsColumns = Integer.parseInt(bufferedReader.readLine().trim());
-
 		List<List<String>> applications = new ArrayList<>();
-
 		IntStream.range(0, applicationsRows)
 				.forEach(
 						i -> {
 							try {
 								applications.add(
 										Stream.of(bufferedReader.readLine().replaceAll("\\s+$", "").split(" "))
-												.collect(toList()));
+												.toList());
 							} catch (IOException ex) {
 								throw new RuntimeException(ex);
 							}
 						});
-
 		var result = getSelectionStatus(applications);
-
 		result.stream()
-				.map(r -> r.stream().collect(joining(" ")))
+				.map(r -> String.join(" ", r))
 				.map(r -> r + "\n")
-				.collect(toList())
 				.forEach(
 						e -> {
 							try {
@@ -60,21 +52,13 @@ public class FootBallSelection {
 	}
 
 	public static List<List<String>> getSelectionStatus(List<List<String>> applications) {
-		final var allPlayers =
-				applications.stream().map(FootBallSelection::toPlayer).collect(Collectors.toList());
+		final var allPlayers = applications.stream().map(FootBallSelection::toPlayer).toList();
 		final var fitPlayers =
-				allPlayers.stream()
-						.filter(player -> player.height >= 5.8 && player.bmi <= 23)
-						.collect(toList());
-
+				allPlayers.stream().filter(player -> player.height >= 5.8 && player.bmi <= 23).toList();
 		final var strikersOnly =
-				fitPlayers.stream()
-						.filter(player -> player.scores >= 50 && player.defends < 30)
-						.collect(toList());
+				fitPlayers.stream().filter(player -> player.scores >= 50 && player.defends < 30).toList();
 		final var defendersOnly =
-				fitPlayers.stream()
-						.filter(player -> player.scores < 50 && player.defends >= 30)
-						.collect(toList());
+				fitPlayers.stream().filter(player -> player.scores < 50 && player.defends >= 30).toList();
 		final var both =
 				fitPlayers.stream()
 						.filter(player -> player.scores >= 50 && player.defends >= 30)
