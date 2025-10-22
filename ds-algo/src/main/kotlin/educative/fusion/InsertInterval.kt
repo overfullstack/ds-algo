@@ -26,7 +26,7 @@ fun insertInterval(
         else -> intervalsThatStartEarly + newInterval // Non-overlapping
       }
     } ?: listOf(newInterval)
-  // * Merge remaining intervals that intersect with the new appended interval
+  // ! Merge remaining intervals that intersect with the new appended interval
   return sortedIntervals.drop(intervalsThatStartEarly.size).fold(mergedIntervals) {
     mergedIntervals,
     curInterval ->

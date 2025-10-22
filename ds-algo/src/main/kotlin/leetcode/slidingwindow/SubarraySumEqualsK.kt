@@ -4,8 +4,7 @@ package leetcode.slidingwindow
 
 /** [560. Subarray Sum Equals K](https://leetcode.com/problems/subarray-sum-equals-k/) */
 fun subarraySum(nums: IntArray, k: Int): Int {
-  // ! For `k = 0`, `sum(0)..sum-k(0)` should be 1
-  val map = mutableMapOf(0 to 1)
+  val map = mutableMapOf(0 to 1) // ! init
   var sum = 0
   var count = 0
   for (num in nums) {
