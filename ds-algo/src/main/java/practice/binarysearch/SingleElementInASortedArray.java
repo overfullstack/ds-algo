@@ -14,7 +14,7 @@ public class SingleElementInASortedArray {
 		var left = 0;
 		var right = nums.length - 1;
 		while (left < right) {
-			final var mid = left + (right - left) / 2; // ! Mid is left inclined
+			final var mid = left + (right - left) / 2; // ! `mid` is left inclined
 			final var isEvenIndex = mid % 2 == 0;
 			final var pairMatchesRight = isEvenIndex && nums[mid] == nums[mid + 1];
 			final var pairMatchesLeft = !isEvenIndex && nums[mid] == nums[mid - 1];

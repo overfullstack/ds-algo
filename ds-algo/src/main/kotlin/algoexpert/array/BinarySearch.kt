@@ -11,7 +11,7 @@ fun IntArray.binarySearchRightmost(valueToSearch: Int): Int {
     val mid = left + (right - left) / 2
     when {
       // ! Left moves towards right when condition is true, so we end up at the Rightmost
-      this[mid] <= valueToSearch -> left = mid + 1
+      valueToSearch >= this[mid] -> left = mid + 1
       else -> right = mid - 1
     }
   }
@@ -28,7 +28,7 @@ fun IntArray.binarySearchLeftmost(valueToSearch: Int): Int {
     val mid = left + (right - left) / 2
     when {
       // ! Right moves towards left when condition is true, so we end up at the Leftmost
-      this[mid] >= valueToSearch -> right = mid
+      valueToSearch <= this[mid] -> right = mid
       else -> left = mid + 1
     }
   }

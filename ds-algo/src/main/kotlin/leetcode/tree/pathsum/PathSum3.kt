@@ -7,7 +7,7 @@ import ds.tree.TreeNode
 fun pathSum(
   root: TreeNode?,
   targetSum: Int,
-  sumToPathCount: MutableMap<Long, Int> = mutableMapOf(0L to 1), // ! For first sum occurrence
+  sumToPathCount: MutableMap<Long, Int> = mutableMapOf(0L to 1), // !!! For first sum occurrence
   runningSum: Long = 0,
 ): Int {
   if (root == null) {

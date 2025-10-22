@@ -4,17 +4,6 @@ import java.util.Scanner;
 
 /** Created by gakshintala on 7/3/16. */
 public class MajorityElement {
-	static void main() {
-		var scn = new Scanner(System.in);
-		var tests = scn.nextInt();
-		while (tests-- > 0) {
-			var len = scn.nextInt();
-			var arr = new int[len];
-			fillArray(arr, scn);
-			printMajorityElement(arr);
-		}
-	}
-
 	private static void printMajorityElement(int[] arr) {
 		int vote = 1;
 		int curEle = arr[0];
@@ -46,6 +35,17 @@ public class MajorityElement {
 			}
 		}
 		return count > (arr.length / 2);
+	}
+
+	static void main() {
+		var scn = new Scanner(System.in);
+		var tests = scn.nextInt();
+		while (tests-- > 0) {
+			var len = scn.nextInt();
+			var arr = new int[len];
+			fillArray(arr, scn);
+			printMajorityElement(arr);
+		}
 	}
 
 	private static void fillArray(int[] arr, Scanner scn) {
