@@ -1,16 +1,18 @@
 package educative.stack
 
-import java.util.Stack
-
 /* 27 Aug 2024 09:33 */
 
+/**
+ * [1047. Remove All Adjacent Duplicates In
+ * String](https://leetcode.com/problems/remove-all-adjacent-duplicates-in-string/)
+ */
 fun removeAdjacentDuplicates(str: String): String {
-  val stk = Stack<Char>()
+  val stk = ArrayDeque<Char>()
   for (ch in str) {
-    if (stk.isNotEmpty() && stk.peek() == ch) {
-      stk.pop()
+    if (stk.isNotEmpty() && stk.last() == ch) {
+      stk.removeLast()
     } else {
-      stk.push(ch)
+      stk.add(ch)
     }
   }
   return stk.joinToString("")

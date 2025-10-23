@@ -2,6 +2,10 @@ package educative.heap
 
 /* 29 Jul 2025 20:41 */
 
+/**
+ * [438. Find All Anagrams in a
+ * String](https://leetcode.com/problems/find-all-anagrams-in-a-string/)
+ */
 fun findAllAnagrams(a: String, b: String): List<Int> {
   if (a.length < b.length) return emptyList()
   val bFreq = b.groupingBy { it }.eachCount()

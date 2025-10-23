@@ -13,7 +13,9 @@ fun leastTime(tasks: CharArray, coolingPeriod: Int): Int {
     // ! We can only fill `maxFreq - 1` slots
     // ! so a same freq task can't utilize all and can only reduce `maxFreq - 1` idle slots
     idleTime -= minOf(maxFreq - 1, freq)
-    if (idleTime <= 0) break
+    if (idleTime <= 0) {
+      break
+    }
   }
   return tasks.size + maxOf(0, idleTime)
 }
