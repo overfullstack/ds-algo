@@ -2,9 +2,7 @@ package practice.greedy;
 
 /* 22 Oct 2025 20:58 */
 
-/**
- * [605. Can Place Flowers](https://leetcode.com/problems/can-place-flowers)
- */
+/** [605. Can Place Flowers](https://leetcode.com/problems/can-place-flowers) */
 public class CanPlaceFlowers {
 	public boolean canPlaceFlowers(int[] flowerbed, int n) {
 		if (flowerbed.length == 0) {
