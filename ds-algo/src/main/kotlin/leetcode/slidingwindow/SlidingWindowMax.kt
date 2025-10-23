@@ -15,17 +15,17 @@ fun slidingWindowMax(nums: IntArray, k: Int): IntArray {
       // (right to the left direction)
       deque.removeLast()
     }
-    deque.add(i) // deque only indexes.
+    deque.add(i)
   }
   // The windows are overlapping, so we have a result for each iteration.
   for (i in k..nums.lastIndex) {
     result.add(nums[deque.first()]) // peek holds max for that window.
-    // eliminate the ones irrelevant for this window.
-    // ! Enqueued Indexes instead of values for this reason
+    // ! Enqueue indices instead of values to eliminate the ones irrelevant for this window.
+    // ! This is not present for init window, so it's outside the loop.
     while (deque.isNotEmpty() && deque.first() <= (i - k)) {
       deque.removeFirst()
     }
-    // shatter the smaller ones.
+    // ! Shatter the smaller ones.
     while (deque.isNotEmpty() && nums[i] >= nums[deque.last()]) {
       deque.removeLast()
     }

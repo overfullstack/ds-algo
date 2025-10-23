@@ -1,5 +1,6 @@
 package educative.hashing
 
+import educative.stack.nextGreaterElement
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.inspectors.forAll
 import io.kotest.matchers.shouldBe

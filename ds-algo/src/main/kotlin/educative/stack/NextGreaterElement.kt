@@ -1,4 +1,4 @@
-package educative.hashing
+package educative.stack
 
 import java.util.Stack
 
