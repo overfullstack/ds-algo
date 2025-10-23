@@ -3,6 +3,8 @@ package educative.stack
 import java.util.Stack
 
 /* 25 Aug 2024 13:34 */
+
+/** [20. Valid Parentheses](https://leetcode.com/problems/valid-parentheses/) */
 private val PAREN_MATCH = mapOf(')' to '(', '}' to '{', ']' to '[')
 private val OPEN_PAREN = setOf('(', '{', '[')
 
