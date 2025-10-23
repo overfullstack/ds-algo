@@ -2,6 +2,7 @@ package educative.hashing
 
 /* 29 Jul 2025 21:12 */
 
+/** [1. Two Sum](https://leetcode.com/problems/two-sum/) */
 fun twoSum(nums: IntArray, target: Int): Pair<Int, Int>? {
   val map = mutableMapOf<Int, Int>()
   for ((index, num) in nums.withIndex()) {
