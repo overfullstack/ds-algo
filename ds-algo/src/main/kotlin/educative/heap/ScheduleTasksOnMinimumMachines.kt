@@ -7,9 +7,7 @@ fun minimumMachines(intervals: List<Pair<Int, Int>>): Int {
   val minHeapForNextStartingJob = PriorityQueue(compareBy<Pair<Int, Int>> { it.first })
   // ! Earliest ending
   val minHeapForNextFreeMachine = PriorityQueue<Int>()
-
   minHeapForNextStartingJob.addAll(intervals)
-
   while (minHeapForNextStartingJob.isNotEmpty()) {
     val (nextJobStart, nextJobEnd) = minHeapForNextStartingJob.poll()
     if (

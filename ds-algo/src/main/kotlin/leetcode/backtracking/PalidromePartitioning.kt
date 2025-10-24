@@ -1,7 +1,7 @@
 /* gakshintala created on 9/23/19 */
-package leetcode.backtracking.PalindromePartitioning
+package leetcode.backtracking
 
-/** https://leetcode.com/problems/palindrome-partitioning/ */
+/** [131. Palindrome Partitioning](https://leetcode.com/problems/palindrome-partitioning/) */
 fun palindromePartition(
   str: String,
   palindromes: List<String> = emptyList(),
@@ -11,8 +11,11 @@ fun palindromePartition(
     listOf(palindromes)
   } else {
     (startIndex..str.lastIndex)
-      .filter { isPalindrome(str.substring(startIndex..it)) }
-      .flatMap { palindromePartition(str, palindromes + str.substring(startIndex..it), it + 1) }
+      .asSequence()
+      .map { it to str.substring(startIndex..it) }
+      .filter { (_, substr) -> isPalindrome(substr) }
+      .flatMap { (idx, substr) -> palindromePartition(str, palindromes + substr, idx + 1) }
+      .toList()
   }
 
 fun isPalindrome(str: String): Boolean = str == str.reversed()

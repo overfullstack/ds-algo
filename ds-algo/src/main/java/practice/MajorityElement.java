@@ -20,11 +20,11 @@ public class MajorityElement {
 				votes = 1;
 			}
 		}
+		// ! This is not needed for this leetcode problem
+		// ! but it handles case where there is no majority element
 		return isNumMajority(curNum, nums) ? curNum : -1;
 	}
 
-	// ! This is not needed for this leetcode problem
-	// ! but it handles case where there is no majority element
 	private static boolean isNumMajority(int num, int[] nums) {
 		final var freq = Arrays.stream(nums).filter(n -> n == num).count();
 		return freq > nums.length / 2;

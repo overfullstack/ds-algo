@@ -1,4 +1,4 @@
-package practice;
+package practice.heaps;
 
 /* 29 Aug 2025 15:53 */
 
@@ -17,12 +17,11 @@ public class MaximumNumberOfEventsThatCanBeAttended {
 		var day = 0;
 		var attendedEventCount = 0;
 		Arrays.sort(events, Comparator.comparingInt(e -> e[0]));
-		// ! `minEndHeap` or `eventIdx` exhausts
 		while (!minEndHeap.isEmpty() || eventIdx < events.length) {
 			if (minEndHeap.isEmpty()) {
 				day = events[eventIdx][0]; // ! Jump to next non-overlapping interval
 			}
-			// ! Add all events that start today to `minEndHeap` to pick the latest ending event
+			// ! Add all events that start today to `minEndHeap` to pick the earliest ending event
 			// ! If no meeting today, keep polling `minEndHeap` until we attend all the meetings
 			while (eventIdx < events.length && events[eventIdx][0] == day) {
 				minEndHeap.add(events[eventIdx][1]);
@@ -32,9 +31,9 @@ public class MaximumNumberOfEventsThatCanBeAttended {
 			}
 			minEndHeap.poll(); // ! Only one event can be attended per day
 			attendedEventCount++;
-			day++; // ! Moving 1 day at a time
+			day++; // ! Moving 1 day at a time, use it to prune events we cannot attend
 			while (!minEndHeap.isEmpty() && minEndHeap.peek() < day) {
-				minEndHeap.poll(); // ! Events  we cannot attend
+				minEndHeap.poll();
 			}
 		}
 		return attendedEventCount;

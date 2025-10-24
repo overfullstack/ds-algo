@@ -1,14 +1,14 @@
-package leetcode.dp.HouseRobber
+package leetcode.dp
 
 /** [198. House Robber](https://leetcode.com/problems/house-robber) */
 fun rob1(nums: IntArray): Int {
+  var cur = 0
   var prev = 0
-  var prevPrev = 0
   for (num in nums) {
-    val tmp = prev
-    prev = maxOf(prev, num + prevPrev)
-    prevPrev = tmp
+    val tmp = cur
+    cur = maxOf(cur, num + prev)
+    prev = tmp
   }
 
-  return prev
+  return cur
 }

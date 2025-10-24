@@ -12,7 +12,7 @@ private fun wordBreakSentencesInternal(
   startIndex: Int = 0,
   memo: MutableMap<Int, List<List<String>>> = mutableMapOf(),
 ): List<List<String>> {
-  // * The cache is being built from the end, so the next time we reach here,
+  // * The memo is being built from the end, so the next time we reach here,
   // * we shall have all broken combinations starting with this index
   memo[startIndex]?.let {
     return it

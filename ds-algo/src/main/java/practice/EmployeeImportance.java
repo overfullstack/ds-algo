@@ -20,17 +20,7 @@ public class EmployeeImportance {
 				+ employee.subordinates.stream().mapToInt(seId -> dfs(seId, employeeRegistry)).sum();
 	}
 
-	private static class Employee {
-		public int id;
-		public int importance;
-		public List<Integer> subordinates;
-
-		public Employee(int id, int importance, List<Integer> subordinates) {
-			this.id = id;
-			this.importance = importance;
-			this.subordinates = subordinates;
-		}
-	}
+	private record Employee(int id, int importance, List<Integer> subordinates) {}
 
 	static void main() {
 		var employeeImportance = new EmployeeImportance();

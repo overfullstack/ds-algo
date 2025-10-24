@@ -8,7 +8,7 @@ import java.util.Comparator;
 /** [1288. Remove Covered Intervals](https://leetcode.com/problems/remove-covered-intervals/) */
 public class RemoveCoveredIntervals {
 	public int removeCoveredIntervals(int[][] intervals) {
-		Arrays.sort(
+		Arrays.sort( // ! Sort by start and descending end to pick the interval that covers others
 				intervals,
 				Comparator.<int[]>comparingInt(interval -> interval[0])
 						.thenComparing(Comparator.<int[]>comparingInt(interval -> interval[1]).reversed()));

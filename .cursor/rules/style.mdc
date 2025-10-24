@@ -77,35 +77,8 @@ Ask yourself:
 
 **Remember**: A 30-line clear solution beats a 300-line "clever" solution every time.
 
-## Examples
-
-### Good: Simple and Direct
-```kotlin
-fun countLakes(matrix: Array<IntArray>): Int {
-    val grid = matrix.map { it.clone() }.toTypedArray()
-    
-    // Flood-fill boundary water
-    for (row in grid.indices) {
-        floodFill(grid, row, 0)
-        floodFill(grid, row, grid[0].lastIndex)
-    }
-    // ... rest of simple solution
-}
-```
-
-### Bad: Over-Engineered
-```kotlin
-class IslandAnalyzer<T>(
-    private val matrix: Matrix<T>,
-    private val visitor: CellVisitor<T>
-) {
-    private val boundingBoxCalculator = BoundingBoxCalculator()
-    private val waterClassifier = WaterRegionClassifier()
-    // ... unnecessary complexity
-}
-```
-
 ## Java-Specific Patterns
+
 - Prioritize **simplicity** and **readability** above all else. Do not trade readability for memory or performance efficiency, such as using Bitmask.
 - Use **Modern and Latest Java syntax available**. Some examples are:
   - Use `IO.println` instead of the legacy `System.out.println`
@@ -117,5 +90,5 @@ class IslandAnalyzer<T>(
   - **Pattern Matching**: Use pattern matching for `instanceof` when available (Java 16+)
   - **Collection Factory Methods**: Use `List.of()`, `Set.of()`, `Map.of()` for immutable collections
 - Chain operations using stream: prefer `.stream()` for multiple transformations
-- If applicable, use functional combinators: map, filter, flatMap, reduce, max, min, sum, findFirst, findAny, anyMatch, allMatch, etc., over imperative loops with continue and break statements
+- If applicable, use functional combinators: `map`, `filter`, `flatMap`, `reduce`, `max`, `min`, `sum`, `findFirst`, `findAny`, `anyMatch`, `allMatch`, etc., over imperative loops with continue and break statements
 - Don't use functional programming if it hurts readability and adds cognitive complexity.

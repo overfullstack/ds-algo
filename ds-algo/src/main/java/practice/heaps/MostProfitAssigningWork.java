@@ -6,6 +6,7 @@ import java.util.PriorityQueue;
 
 /* 21 Oct 2025 19:54 */
 
+/** [1646. Most Profit Assigning Work](https://leetcode.com/problems/most-profit-assigning-work) */
 public class MostProfitAssigningWork {
 	public int maxProfitAssignment(int[] difficulty, int[] profit, int[] worker) {
 		var minHeapForDifficulty =
@@ -23,7 +24,7 @@ public class MostProfitAssigningWork {
 				maxHeapForProfit.add(minHeapForDifficulty.poll());
 			}
 			if (!maxHeapForProfit.isEmpty()) {
-				// ! `peek` as same job can be assigned to multiple workers
+				// ! `peek()` as same job can be assigned to multiple workers
 				maxProfit += profit[maxHeapForProfit.peek()];
 			}
 		}

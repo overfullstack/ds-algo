@@ -5,7 +5,8 @@ package practice.dp;
 /** [486. Predict the Winner](https://leetcode.com/problems/predict-the-winner/) */
 public class PredictTheWinner {
 	public boolean predictTheWinner(int[] nums) {
-		// ! '=' coz the problem says with equal also player 1 wins
+		// ! Starting with player-1 so if `scoreDiff` is positive, player-1 wins
+		// ! '=' coz the problem says with equal also player-1 wins
 		return scoreDiff(0, nums.length - 1, nums, new int[nums.length][nums.length]) >= 0;
 	}
 

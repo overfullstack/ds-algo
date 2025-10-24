@@ -1,4 +1,4 @@
-package leetcode.dp.HouseRobber
+package leetcode.dp
 
 /** https://leetcode.com/problems/house-robber-ii/ */
 fun rob2(nums: IntArray): Int {
@@ -9,12 +9,12 @@ fun rob2(nums: IntArray): Int {
 }
 
 private fun robUtil(nums: List<Int>): Int {
+  var cur = 0
   var prev = 0
-  var prevPrev = 0
   for (num in nums) {
-    val tmp = prev
-    prev = maxOf(prev, num + prevPrev)
-    prevPrev = tmp
+    val tmp = cur
+    cur = maxOf(cur, num + prev)
+    prev = tmp
   }
-  return prev
+  return cur
 }

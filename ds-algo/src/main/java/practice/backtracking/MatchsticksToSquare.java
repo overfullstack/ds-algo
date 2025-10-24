@@ -7,6 +7,7 @@ import java.util.stream.IntStream;
 
 /* 18 Oct 2025 14:16 */
 
+/** [473. Matchsticks to Square](https://leetcode.com/problems/matchsticks-to-square/) */
 public class MatchsticksToSquare {
 	public boolean makesquare(int[] matchsticks) {
 		final var sum = Arrays.stream(matchsticks).sum();
@@ -25,21 +26,25 @@ public class MatchsticksToSquare {
 		return solve(0, new int[4], sum / 4, matchsticks);
 	}
 
-	private static boolean solve(int idx, int[] acc, int sideLen, int[] matchsticks) {
+	private static boolean solve(int idx, int[] sides, int sideLen, int[] matchsticks) {
 		if (idx == matchsticks.length) {
-			return acc[0] == sideLen && acc[1] == sideLen && acc[2] == sideLen && acc[3] == sideLen;
+			return allSidesEqual(sides);
 		}
 		for (var i = 0; i < 4; i++) {
-			if (acc[i] + matchsticks[idx] <= sideLen) {
-				acc[i] += matchsticks[idx];
-				final var result = solve(idx + 1, acc, sideLen, matchsticks);
+			if (sides[i] + matchsticks[idx] <= sideLen) {
+				sides[i] += matchsticks[idx];
+				final var result = solve(idx + 1, sides, sideLen, matchsticks);
 				if (result) {
 					return true;
 				}
-				acc[i] -= matchsticks[idx];
+				sides[i] -= matchsticks[idx]; // ! backtrack
 			}
 		}
 		return false;
+	}
+
+	private static boolean allSidesEqual(int[] arr) {
+		return IntStream.range(1, arr.length).allMatch(i -> arr[i] == arr[0]);
 	}
 
 	static void main() {

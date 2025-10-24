@@ -2,6 +2,10 @@ package practice.backtracking;
 
 /* 18 Oct 2025 11:27 */
 
+/**
+ * [1250. Minimum Moves to Spread Stones Over
+ * Grid](https://leetcode.com/problems/minimum-moves-to-spread-stones-over-grid/)
+ */
 public class MinimumMovesToSpreadStonesOverGrid {
 	public int minimumMoves(int[][] grid) {
 		/*
@@ -10,7 +14,7 @@ public class MinimumMovesToSpreadStonesOverGrid {
 				.anyMatch(row -> Arrays.stream(row).anyMatch(col -> col == 0));
 		*/
 		var emptyCellFound = false;
-		for (var i = 0; i < 3 && !emptyCellFound; ++i) {
+		for (var i = 0; i < 3 && !emptyCellFound; ++i) { // ! Condition to break outer-loop
 			for (var j = 0; j < 3; ++j) {
 				if (grid[i][j] == 0) {
 					emptyCellFound = true;
@@ -27,7 +31,7 @@ public class MinimumMovesToSpreadStonesOverGrid {
 				if (grid[row][col] == 0) {
 					for (var nextRow = 0; nextRow < grid.length; nextRow++) {
 						for (var nextCol = 0; nextCol < grid.length; nextCol++) {
-							if (grid[nextRow][nextCol] > 1) {
+							if (grid[nextRow][nextCol] >= 2) {
 								var distance = Math.abs(nextRow - row) + Math.abs(nextCol - col);
 								grid[nextRow][nextCol]--;
 								grid[row][col]++;

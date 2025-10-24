@@ -1,4 +1,4 @@
-package leetcode.dp
+package leetcode.backtracking
 
 /* 09 Aug 2025 12:49 */
 /** [638. Shopping Offers](https://leetcode.com/problems/shopping-offers/) */
@@ -11,16 +11,19 @@ fun shoppingOffers(
   memo[needs]?.let {
     return it
   }
-  if (needs.all { it == 0 }) return 0
+  if (needs.all { it == 0 }) {
+    return 0
+  }
   val totalPriceWithoutOffers = price.zip(needs).sumOf { it.first * it.second }
   val priceWithOffers =
     offers
       .asSequence()
+      // ! last element is the price of the offer
       .map { offer -> offer.last() to needs.zip(offer.dropLast(1)).map { it.first - it.second } }
       .filter { (_, remainingNeeds) -> remainingNeeds.all { it >= 0 } }
-      .minOfOrNull { (priceWithOffer, remainingNeeds) ->
+      .minOfOrNull { (priceOfOffer, remainingNeeds) -> // ! Backtrack to remainingNeeds
         // ! offers can be reused multiple times
-        priceWithOffer + shoppingOffers(price, offers, remainingNeeds, memo)
+        priceOfOffer + shoppingOffers(price, offers, remainingNeeds, memo)
       } ?: totalPriceWithoutOffers
   return minOf(totalPriceWithoutOffers, priceWithOffers).also { memo[needs] = it }
 }

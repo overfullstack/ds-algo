@@ -27,7 +27,7 @@ fun minHeightShelvesTopDown(
           memo,
         )
       val nextRow =
-        curMaxHeight +
+        curMaxHeight + // ! stack on top, so cur max height adds-up
           minHeightShelvesTopDown(books, shelfWidth, idx + 1, height, shelfWidth - width, memo)
       minOf(sameRow, nextRow).also { memo[idx][remainingWidth] = it }
     }

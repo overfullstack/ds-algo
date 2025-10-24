@@ -9,7 +9,6 @@ package leetcode.dp
 fun longestLine(mat: Array<IntArray>): Int {
   val rows = mat.size
   val cols = mat.first().size
-
   // ! +2 for cols as we need padding on left (for first col) and right (for last col)
   // ! as we do both `col-1` and `col+1`
   val top = Array(rows + 1) { IntArray(cols + 2) }

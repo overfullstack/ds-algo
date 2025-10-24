@@ -10,7 +10,7 @@ fun riddle(arr: Array<Long>): Array<Long> {
   val stk = ArrayDeque<Int>()
   stk.push(0)
   for (i in 1 until arr.size) {
-    while (!stk.isEmpty() && arr[i] < arr[stk.peek()]) {
+    while (stk.isNotEmpty() && arr[i] < arr[stk.peek()]) {
       minIndexOnRight[stk.pop()] = i
     }
     stk.push(i)
@@ -20,7 +20,7 @@ fun riddle(arr: Array<Long>): Array<Long> {
   stk.push(arr.lastIndex)
 
   for (i in arr.size - 2 downTo 0) {
-    while (!stk.isEmpty() && arr[i] < arr[stk.peek()]) {
+    while (stk.isNotEmpty() && arr[i] < arr[stk.peek()]) {
       minIndexOnLeft[stk.pop()] = i
     }
     stk.push(i)

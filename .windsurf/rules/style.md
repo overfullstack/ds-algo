@@ -47,7 +47,7 @@ globs:
   - **Pattern Matching**: Use pattern matching for `instanceof`
   - **Collection Factory Methods**: Use `List.of()`, `Set.of()`, `Map.of()` for immutable collections
 - Chain operations using stream: prefer `.stream()` for multiple transformations
-- If applicable, use functional combinators: map, filter, flatMap, reduce, max, min, sum, findFirst, findAny, anyMatch, allMatch, etc., over imperative loops with continue and break statements
+- If applicable, use functional combinators: `map`, `filter`, `flatMap`, `reduce`, `max`, `min`, `sum`, `findFirst`, `findAny`, `anyMatch`, `allMatch`, etc., over imperative loops with continue and break statements
 - Don't use functional programming if it hurts readability and adds cognitive complexity.
 - Refer these Java files for Functional programming style guide for Java:
   - ds-algo/src/main/java/practice/ParallelCourses.java
@@ -60,7 +60,7 @@ globs:
 - Use ranges: `downTo`, `until`, `in`, `indices` for iterations
 - String operations: use `substring(range)` with IntRange, not separate indices
 - Chain operations using sequences: prefer `.asSequence()` for multiple transformations
-- If applicable, use functional combinators: map, filter, flatMap, fold, maxOrNull, minOrNull, firstOrNull, any, all, count, sum, etc, over imperative loops
+- If applicable, use functional combinators:` map`, `filter`, `flatMap`, `fold`, `maxOrNull`, `minOrNull`, `firstOrNull`, `any`, `all`, `count`, `sum`, etc, over imperative loops with continue and break statements
 - Default parameters for recursive accumulators: use `= emptySet()`, `= emptyList()`
 - Prefer single-expression functions that return directly from when/if expressions
 - Collection operations: use `+` operator for adding to immutable collections
