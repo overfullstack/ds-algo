@@ -22,26 +22,23 @@ public class PlatesBetweenCandles {
 		var result = new int[queries.length];
 		for (var i = 0; i < queries.length; i++) {
 			var query = queries[i];
-			var lowerCeiling = leftmostIdx(query[0], candleIndexes);
-			var higherFloor = rightmostIdx(query[1], candleIndexes);
-			if (lowerCeiling < higherFloor) {
-				if (lowerCeiling == -1) {
-					lowerCeiling = 0;
-				}
+			var leftmostCandleIdx = leftmostIdx(query[0], candleIndexes);
+			var rightMostCandleIdx = rightmostIdx(query[1], candleIndexes);
+			if (leftmostCandleIdx < rightMostCandleIdx) {
 				result[i] =
-						candlesBeforePlateIdx.get(higherFloor) - candlesBeforePlateIdx.get(lowerCeiling);
+						candlesBeforePlateIdx.get(rightMostCandleIdx)
+								- candlesBeforePlateIdx.get(leftmostCandleIdx);
 			}
 		}
 		return result;
 	}
 
-	// ! Ceiling - value <= leftmost
-	private static int leftmostIdx(int value, List<Integer> candleIdx) {
+	private static int leftmostIdx(int idx, List<Integer> candleIdx) {
 		var left = 0;
 		var right = candleIdx.size() - 1;
 		while (left < right) {
 			var mid = left + (right - left) / 2;
-			if (value <= candleIdx.get(mid)) {
+			if (idx <= candleIdx.get(mid)) {
 				right = mid;
 			} else {
 				left = mid + 1;
@@ -50,13 +47,12 @@ public class PlatesBetweenCandles {
 		return right;
 	}
 
-	// ! Floor - value >= rightmost
-	private static int rightmostIdx(int value, List<Integer> candleIdx) {
+	private static int rightmostIdx(int idx, List<Integer> candleIdx) {
 		var left = 0;
 		var right = candleIdx.size() - 1;
 		while (left <= right) {
 			var mid = left + (right - left) / 2;
-			if (value >= candleIdx.get(mid)) {
+			if (idx >= candleIdx.get(mid)) {
 				left = mid + 1;
 			} else {
 				right = mid - 1;
@@ -70,10 +66,10 @@ public class PlatesBetweenCandles {
 		var s = "**|**|***|";
 		var queries = new int[][] {{2, 5}, {5, 9}};
 		var result = platesBetweenCandles.platesBetweenCandles(s, queries);
-		System.out.println(Arrays.stream(result).mapToObj(r -> r + " ").toList());
+		System.out.println(Arrays.stream(result).mapToObj(r -> r + " ").toList()); // [2, 3]
 		s = "***|**|*****|**||**|*";
 		queries = new int[][] {{1, 17}, {4, 5}, {14, 17}, {5, 11}, {15, 16}};
 		result = platesBetweenCandles.platesBetweenCandles(s, queries);
-		System.out.println(Arrays.stream(result).mapToObj(r -> r + " ").toList());
+		System.out.println(Arrays.stream(result).mapToObj(r -> r + " ").toList()); // [9, 0, 0, 0, 0]
 	}
 }

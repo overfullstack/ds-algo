@@ -13,8 +13,7 @@ public class KokoEatingBananas {
 		// ! MinNoOfHours = Leftmost
 		while (left < right) {
 			var mid = left + (right - left) / 2;
-			var noOfHours = noOfHours(piles, mid);
-			if (noOfHours <= h) { // ! h is Ceiling
+			if (isMinimumSpeed(piles, mid, h)) { // ! Ceiling for speed
 				right = mid;
 			} else {
 				left = mid + 1;
@@ -23,8 +22,10 @@ public class KokoEatingBananas {
 		return right;
 	}
 
-	private static int noOfHours(int[] piles, int speed) {
-		return Arrays.stream(piles).map(pile -> pile / speed + (pile % speed == 0 ? 0 : 1)).sum();
+	private static boolean isMinimumSpeed(int[] piles, int minSpeed, int h) {
+		var noOfHours =
+				Arrays.stream(piles).map(pile -> pile / minSpeed + (pile % minSpeed == 0 ? 0 : 1)).sum();
+		return noOfHours <= h;
 	}
 
 	static void main() {
