@@ -9,21 +9,22 @@ public class ThreeSum {
 	public List<List<Integer>> threeSum(int[] nums) {
 		Arrays.sort(nums);
 		var result = new ArrayList<List<Integer>>();
-		for (var i = 0; i < nums.length; i++) {
-			if (i == 0 || nums[i] != nums[i - 1]) {
-				var j = i + 1;
-				var k = nums.length - 1;
-				while (j < k) {
-					var sum = nums[i] + nums[j] + nums[k];
+		for (var left1 = 0; left1 < nums.length; left1++) {
+			if (left1 == 0 || nums[left1] != nums[left1 - 1]) {
+        // ! init left2, right in the inner loop
+				var left2 = left1 + 1;
+				var right = nums.length - 1; 
+				while (left2 < right) {
+					var sum = nums[left1] + nums[left2] + nums[right];
 					if (sum > 0) {
-						k--;
+						right--;
 					} else if (sum < 0) {
-						j++;
+						left2++;
 					} else {
-						result.add(Arrays.asList(nums[i], nums[j], nums[k]));
-						do {
-							j++;
-						} while (nums[j] == nums[j - 1] && j < k);
+						result.add(Arrays.asList(nums[left1], nums[left2], nums[right]));
+            do {
+              left2++;
+            } while (nums[left2] == nums[left2 - 1] && left2 < right);
 					}
 				}
 			}
