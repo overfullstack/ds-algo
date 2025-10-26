@@ -9,7 +9,7 @@ public class CombinationSum4 {
 		dp[0] = 1;
 		for (var sum = 1; sum <= target; sum++) {
 			for (var num : nums) {
-        // ! Borrow from all previous sums, to add up to combinations
+				// ! Borrow from all previous sums, to add up to combinations
 				if (num <= sum) {
 					dp[sum] += dp[sum - num];
 				}

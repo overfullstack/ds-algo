@@ -9,9 +9,9 @@ fun robBottomUp(nums: IntArray): Int {
   dp[0] = nums[0]
   dp[1] = maxOf(nums[0], nums[1])
   for (i in 2..nums.lastIndex) {
-    dp[i] = maxOf(dp[i-1], nums[i] + dp[i - 2])
+    dp[i] = maxOf(dp[i - 1], nums[i] + dp[i - 2])
   }
-  return dp.last();
+  return dp.last()
 }
 
 fun robTopDown(nums: IntArray, idx: Int = 0, memo: IntArray = IntArray(nums.size) { -1 }): Int =
@@ -38,8 +38,8 @@ fun rob(nums: IntArray): Int {
 
 fun main() {
   println(robBottomUp(intArrayOf(1, 2, 3, 1))) // 4
-  println(robBottomUp(intArrayOf(2,7,9,3,1))) // 12
-  
+  println(robBottomUp(intArrayOf(2, 7, 9, 3, 1))) // 12
+
   println(robTopDown(intArrayOf(1, 2, 3, 1))) // 4
-  println(robTopDown(intArrayOf(2,7,9,3,1))) // 12
+  println(robTopDown(intArrayOf(2, 7, 9, 3, 1))) // 12
 }
