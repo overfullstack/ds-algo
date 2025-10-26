@@ -3,7 +3,6 @@ package leetcode.dp
 
 fun uniquePaths1d(m: Int, n: Int): Int {
   val table = IntArray(n) { 1 }
-
   repeat(m) {
     for (col in 1 until n) {
       table[col] += table[col - 1]

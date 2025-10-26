@@ -4,7 +4,7 @@ package leetcode.dp
 /** [63. Unique Paths II](https://leetcode.com/problems/unique-paths-ii/) */
 fun uniquePathsWithObstacles1d(obstacleGrid: Array<IntArray>): Int {
   val dp = IntArray(obstacleGrid.first().size)
-  dp[0] = 1
+  dp[0] = if (obstacleGrid[0][0] != 1) 1 else return 0
   for (row in obstacleGrid.indices) {
     for (col in obstacleGrid.first().indices) {
       // ! `table[row - 1][col]` is just borrowing from same col data from previous row.
@@ -30,7 +30,6 @@ fun uniquePathsWithObstacles2d(obstacleGrid: Array<IntArray>): Int {
   for (col in 1 until cols) {
     table[0][col] = if (obstacleGrid[0][col] == 1) 0 else table[0][col - 1]
   }
-
   for (row in 1 until rows) {
     for (col in 1 until cols) {
       if (obstacleGrid[row][col] != 1) {

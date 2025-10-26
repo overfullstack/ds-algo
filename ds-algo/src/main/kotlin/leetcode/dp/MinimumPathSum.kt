@@ -1,28 +1,8 @@
 /* gakshintala created on 12/29/19 */
 package leetcode.dp
 
-/** https://leetcode.com/problems/minimum-path-sum/ */
-fun minPathSumRecursive(
-  grid: Array<IntArray>,
-  row: Int = grid.lastIndex,
-  col: Int = grid[0].lastIndex,
-  cache: MutableMap<Pair<Int, Int>, Int> = mutableMapOf(),
-): Int {
-  cache[row to col]?.let {
-    return it
-  }
-  val result =
-    when {
-      row < 0 || col < 0 -> Int.MAX_VALUE
-      row == 0 && col == 0 -> grid[0][0]
-      else ->
-        grid[row][col] +
-          minOf(minPathSumRecursive(grid, row - 1, col), minPathSumRecursive(grid, row, col - 1))
-    }
-  return cache.merge(row to col, result, ::maxOf)!!
-}
-
-fun minPathSumDp(grid: Array<IntArray>): Int {
+/** [64. Minimum Path Sum](https://leetcode.com/problems/minimum-path-sum/) */
+fun minPathSumBottomUp(grid: Array<IntArray>): Int {
   if (grid.isEmpty()) {
     return 0
   }
@@ -43,4 +23,24 @@ fun minPathSumDp(grid: Array<IntArray>): Int {
     }
   }
   return table[rows][cols]
+}
+
+fun minPathSumTopDown(
+  grid: Array<IntArray>,
+  row: Int = grid.lastIndex,
+  col: Int = grid[0].lastIndex,
+  memo: MutableMap<Pair<Int, Int>, Int> = mutableMapOf(),
+): Int {
+  memo[row to col]?.let {
+    return it
+  }
+  val result =
+    when {
+      row < 0 || col < 0 -> Int.MAX_VALUE
+      row == 0 && col == 0 -> grid[0][0]
+      else ->
+        grid[row][col] +
+          minOf(minPathSumTopDown(grid, row - 1, col), minPathSumTopDown(grid, row, col - 1))
+    }
+  return memo.merge(row to col, result, ::maxOf)!!
 }
