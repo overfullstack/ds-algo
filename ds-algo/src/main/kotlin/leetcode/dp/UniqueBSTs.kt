@@ -9,7 +9,7 @@ fun numTrees(n: Int): Int {
     // Only `nodeCount - 1` elements are shuffled both sides `(it - 1) + (nodeCount - it)`. The
     // missing one is for root.
     // Increasing left side * Decreasing right side
-    table[nodeCount] = (1..nodeCount).map { table[it - 1] * table[nodeCount - it] }.sum()
+    table[nodeCount] = (1..nodeCount).sumOf { table[it - 1] * table[nodeCount - it] }
   }
   return table[n]
 }

@@ -8,12 +8,10 @@ public class CombinationSum4 {
 		var dp = new int[target + 1];
 		dp[0] = 1;
 		for (var sum = 1; sum <= target; sum++) {
-			// !!! Layers multiple nums for same target
-			// ! we consider all possible numbers that could be the "last" number in the sequence
-			// ! Unlike Combination Sum 2
 			for (var num : nums) {
+        // ! Borrow from all previous sums, to add up to combinations
 				if (num <= sum) {
-					dp[sum] += dp[sum - num]; // ! Count multiple combinations for the same sum
+					dp[sum] += dp[sum - num];
 				}
 			}
 		}

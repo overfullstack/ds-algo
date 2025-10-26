@@ -3,17 +3,18 @@ package educative.dp
 /* 24/7/25 17:38 */
 
 /** [518. Coin Change II](https://leetcode.com/problems/coin-change-ii/) */
-fun change(amount: Int, coins: IntArray): Int {
-  val dp = IntArray(amount + 1)
+fun change(targetAmount: Int, coins: IntArray): Int {
+  val dp = IntArray(targetAmount + 1)
   dp[0] = 1
   // * Building the entire sum introducing one coin type at a time
   for (coin in coins) {
+    // ! No.of ways => Borrow from previous indices and add-up
     // ! Forward iteration as we allow the same coin to be used multiple times
-    for (i in coin..amount) {
-      dp[i] += dp[i - coin]
+    for (amount in coin..targetAmount) {
+      dp[amount] += dp[amount - coin]
     }
   }
-  return dp[amount]
+  return dp[targetAmount]
 }
 
 fun main() {

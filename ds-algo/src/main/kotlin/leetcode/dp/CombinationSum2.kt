@@ -1,5 +1,5 @@
 /* gakshintala created on 12/7/19 */
-package leetcode.dp.CombinationSum
+package leetcode.dp
 
 /** [40. Combination Sum II](https://leetcode.com/problems/combination-sum-ii/) */
 fun combinationSum(arr: IntArray, targetSum: Int): List<IntArray> =

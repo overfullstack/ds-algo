@@ -3,24 +3,24 @@ package educative.dp
 /* 24/7/25 17:38 */
 
 /** [322. Coin Change](https://leetcode.com/problems/coin-change/) */
-fun coinChange(coins: IntArray, sum: Int): Int =
-  // ! minOf exclude and include
+fun coinChange(coins: IntArray, targetSum: Int): Int =
   // ! Forward iteration as we allow the same coin to be used multiple times
   when {
-    sum == 0 -> 0
-    sum < 0 || coins.isEmpty() -> -1
+    targetSum == 0 -> 0
+    targetSum < 0 || coins.isEmpty() -> -1
     else -> {
-      val dp = IntArray(sum + 1) { Int.MAX_VALUE - 1 } // ! `-1` as we do `dp[i-coin]+1` below
+      val dp = IntArray(targetSum + 1) { Int.MAX_VALUE - 1 } // ! `-1` as we do `dp[i-coin]+1` below
       dp[0] = 0
       // * Building the entire sum introducing one coin type at a time
       for (coin in coins) {
+        // ! `dp[i]` holds the fewest number of coins to make sum `i`
         // ! Forward iteration as we allow the same coin to be used multiple times
-        for (i in coin..sum) {
-          // ! minOf exclude and include
-          dp[i] = minOf(dp[i], dp[i - coin] + 1)
+        for (sum in coin..targetSum) {
+          // ! `minOf` exclude and include, for fewest number of coins
+          dp[sum] = minOf(dp[sum], dp[sum - coin] + 1)
         }
       }
-      if (dp[sum] == Int.MAX_VALUE - 1) -1 else dp[sum]
+      if (dp[targetSum] == Int.MAX_VALUE - 1) -1 else dp[targetSum]
     }
   }
 

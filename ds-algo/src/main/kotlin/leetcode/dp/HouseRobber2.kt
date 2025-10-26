@@ -9,12 +9,12 @@ fun rob2(nums: IntArray): Int {
 }
 
 private fun robUtil(nums: List<Int>): Int {
-  var cur = 0
   var prev = 0
+  var prevPrev = 0
   for (num in nums) {
-    val tmp = cur
-    cur = maxOf(cur, num + prev)
-    prev = tmp
+    val tmp = prev
+    prev = maxOf(prev, num + prevPrev)
+    prevPrev = tmp
   }
-  return cur
+  return prev
 }

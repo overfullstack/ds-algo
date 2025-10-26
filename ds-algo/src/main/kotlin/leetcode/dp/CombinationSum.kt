@@ -1,5 +1,5 @@
 /* gakshintala created on 12/7/19 */
-package leetcode.dp.CombinationSum
+package leetcode.dp
 
 /** https://leetcode.com/problems/combination-sum/ */
 fun combinationSumDP(coins: IntArray, target: Int): Set<List<Int>> {

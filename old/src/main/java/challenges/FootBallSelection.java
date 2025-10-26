@@ -25,7 +25,7 @@ public class FootBallSelection {
 		List<List<String>> applications = new ArrayList<>();
 		IntStream.range(0, applicationsRows)
 				.forEach(
-						i -> {
+						_ -> {
 							try {
 								applications.add(
 										Stream.of(bufferedReader.readLine().replaceAll("\\s+$", "").split(" "))

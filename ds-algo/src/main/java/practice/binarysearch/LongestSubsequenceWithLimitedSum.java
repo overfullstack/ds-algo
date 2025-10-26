@@ -10,7 +10,7 @@ import java.util.Arrays;
  */
 public class LongestSubsequenceWithLimitedSum {
 	public int[] answerQueries(int[] nums, int[] queries) {
-		Arrays.sort(nums);
+		Arrays.sort(nums); // ! Subsequence, so it's ok to lose order of elements
 		var prefix = new int[nums.length];
 		prefix[0] = nums[0];
 		for (var i = 1; i < nums.length; i++) {
