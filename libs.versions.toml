@@ -1,6 +1,6 @@
 [versions]
 jdk = "25"
-kotlin = "2.3.0-RC2"
+kotlin = "2.3.0-RC3"
 ksp = "2.3.3"
 kotlinx-serialization = "1.9.0"
 revoman = "0.80.4"
@@ -8,8 +8,8 @@ revoman = "0.80.4"
 # Common dependencies
 junit = "5.11.3"
 kotest = "6.0.7"
-power-assert = "2.3.0-RC2"
-kover = "0.9.3"
+power-assert = "2.3.0-RC3"
+kover = "0.9.4"
 testLogger = "4.0.0"
 spotless = "8.1.0"
 
