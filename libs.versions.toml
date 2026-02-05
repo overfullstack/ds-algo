@@ -7,7 +7,7 @@ revoman = "0.81.0"
 
 # Common dependencies
 junit = "5.11.3"
-kotest = "6.1.2"
+kotest = "6.1.3"
 power-assert = "2.3.20-Beta2"
 kover = "0.9.6"
 testLogger = "4.0.0"
