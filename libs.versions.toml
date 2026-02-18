@@ -1,7 +1,7 @@
 [versions]
 jdk = "25"
 kotlin = "2.3.20-Beta2"
-ksp = "2.3.5"
+ksp = "2.3.6"
 kotlinx-serialization = "1.10.0"
 revoman = "0.81.0"
 
