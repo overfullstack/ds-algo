@@ -9,7 +9,7 @@ revoman = "0.82.0"
 junit = "5.11.3"
 kotest = "6.2.2"
 power-assert = "2.4.20-Beta1"
-kover = "0.9.8"
+kover = "0.9.9"
 testLogger = "4.0.0"
 spotless = "8.8.0"
 
