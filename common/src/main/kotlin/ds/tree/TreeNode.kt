@@ -154,9 +154,9 @@ constructor(
       while (valQueue.isNotEmpty()) {
         val curRoot = treeNodeQueue.removeFirst()
         curRoot.left =
-          valQueue.removeFirst()?.let { TreeNode(it).also { treeNodeQueue.addLast(it) } }
+          valQueue.removeFirstOrNull()?.let { TreeNode(it).also { treeNodeQueue.addLast(it) } }
         curRoot.right =
-          valQueue.removeFirst()?.let { TreeNode(it).also { treeNodeQueue.addLast(it) } }
+          valQueue.removeFirstOrNull()?.let { TreeNode(it).also { treeNodeQueue.addLast(it) } }
       }
       return root
     }
