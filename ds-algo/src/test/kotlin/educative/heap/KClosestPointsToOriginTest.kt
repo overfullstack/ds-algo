@@ -5,7 +5,8 @@ import io.kotest.data.forAll
 import io.kotest.data.row
 import io.kotest.inspectors.forAll
 import io.kotest.matchers.shouldBe
-import testcase.ListPairIntToInt.Companion.parseJsonFileToTestCases
+import testcase.TestCases
+import utils.toPair
 
 /* 03 Aug 2025 11:52 */
 
@@ -48,7 +49,14 @@ class KClosestPointsToOriginTest :
 
     "k closest points to origin 2"
       .config(enabled = false) {
-        parseJsonFileToTestCases("$PKG_PATH/test-cases-1.json", "$PKG_PATH/test-cases-2.json")
+        TestCases.load("$PKG_PATH/test-cases-1.json", "$PKG_PATH/test-cases-2.json")
+          .map { case ->
+            Triple(
+              case.input<List<List<Int>>>(1).map { it.toPair() },
+              case.input<Int>(2),
+              case.output<Int>(1),
+            )
+          }
           .forAll { (coordinates, k, result) ->
             kClosestPointsToOrigin(coordinates, k) shouldBe result
           }
