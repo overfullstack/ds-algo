@@ -14,7 +14,9 @@ class LargestRectangleInHistogramTest :
     "Largest Rectangle" {
       TestCases.load("$PKG_PATH/test-cases-1.json")
         .map { case -> case.input<List<Int?>>(1) to case.output<Int>(1) }
-        .forAll { (input, output) -> largestRectangle(input.filterNotNull().toIntArray()) shouldBe output }
+        .forAll { (input, output) ->
+          largestRectangle(input.filterNotNull().toIntArray()) shouldBe output
+        }
     }
 
     "Largest Rectangle 2" {

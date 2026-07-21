@@ -17,7 +17,9 @@ class MeetingRoomsTest :
   StringSpec({
     "Can attend all meetings" {
       TestCases.load("$PKG_PATH/test-cases-1.json", "$PKG_PATH/test-cases-2.json")
-        .map { case -> case.input<List<List<Int>>>(1).map { it.toPair() } to case.output<Boolean>(1) }
+        .map { case ->
+          case.input<List<List<Int>>>(1).map { it.toPair() } to case.output<Boolean>(1)
+        }
         .forAll { (meetings, result) ->
           canAttendAllMeetings(meetings.toTypedArray()) shouldBe result
         }

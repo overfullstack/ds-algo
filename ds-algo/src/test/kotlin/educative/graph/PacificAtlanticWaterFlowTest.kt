@@ -15,7 +15,8 @@ class PacificAtlanticWaterFlowTest :
     "Pacific Atlantic Water Flow" {
       TestCases.load("$PKG_PATH/test-cases-1.json")
         .map { case ->
-          case.input<List<List<Int>>>(1) to case.output<List<List<Int>>>(1).map { it.toPair() }.toSet()
+          case.input<List<List<Int>>>(1) to
+            case.output<List<List<Int>>>(1).map { it.toPair() }.toSet()
         }
         .forAll { (grid, output) ->
           estimateWaterFlow(grid.map { it.toIntArray() }.toTypedArray()) shouldBe output

@@ -13,7 +13,9 @@ class KthSmallestInSortedListsTest :
   StringSpec({
     "kth smallest in sorted lists" {
       TestCases.load("$PKG_PATH/test-cases-1.json")
-        .map { case -> Triple(case.input<List<List<Int>>>(1), case.input<Int>(2), case.output<Int>(1)) }
+        .map { case ->
+          Triple(case.input<List<List<Int>>>(1), case.input<Int>(2), case.output<Int>(1))
+        }
         .forAll { (lists, k, result) ->
           kSmallestNumber(lists, k) shouldBe result
         }

@@ -19,7 +19,7 @@ class MaxProfitInJobSchedulingTest :
           Triple(
             case.input<List<Int>>(1).toIntArray(),
             case.input<List<Int>>(2).toIntArray(),
-            case.input<List<Int>>(3).toIntArray()
+            case.input<List<Int>>(3).toIntArray(),
           ) to case.output<Int>(1)
         }
         .forAll { (input, result) ->
@@ -34,13 +34,13 @@ class MaxProfitInJobSchedulingTest :
           Triple(
             case.input<List<Int>>(1).toIntArray(),
             case.input<List<Int>>(2).toIntArray(),
-            case.input<List<Int>>(3).toIntArray()
+            case.input<List<Int>>(3).toIntArray(),
           ) to case.output<Int>(1)
         }
         .forAll { (input, _) ->
-        val (startTimeArr, endTimeArr, profitArr) = input
-        println(jobScheduling(startTimeArr, endTimeArr, profitArr))
-      }
+          val (startTimeArr, endTimeArr, profitArr) = input
+          println(jobScheduling(startTimeArr, endTimeArr, profitArr))
+        }
     }
 
     "Max profit in job scheduling 2" {
@@ -49,7 +49,7 @@ class MaxProfitInJobSchedulingTest :
           Triple(
             case.input<List<Int>>(1).toIntArray(),
             case.input<List<Int>>(2).toIntArray(),
-            case.input<List<Int>>(3).toIntArray()
+            case.input<List<Int>>(3).toIntArray(),
           ) to case.output<Int>(1)
         }
         .forAll { (input, result) ->
@@ -64,12 +64,12 @@ class MaxProfitInJobSchedulingTest :
           Triple(
             case.input<List<Int>>(1).toIntArray(),
             case.input<List<Int>>(2).toIntArray(),
-            case.input<List<Int>>(3).toIntArray()
+            case.input<List<Int>>(3).toIntArray(),
           ) to case.output<Int>(1)
         }
         .forAll { (input, _) ->
-        val (startTimeArr, endTimeArr, profitArr) = input
-        println(jobScheduling2(startTimeArr, endTimeArr, profitArr))
-      }
+          val (startTimeArr, endTimeArr, profitArr) = input
+          println(jobScheduling2(startTimeArr, endTimeArr, profitArr))
+        }
     }
   })

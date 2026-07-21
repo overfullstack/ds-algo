@@ -18,7 +18,7 @@ class FloodFillTest :
           Triple(
             case.input<List<List<Int>>>(1),
             Triple(case.input<Int>(2), case.input<Int>(3), case.input<Int>(4)),
-            case.output<List<List<Int>>>(1).map { it.toIntArray() }.toTypedArray()
+            case.output<List<List<Int>>>(1).map { it.toIntArray() }.toTypedArray(),
           )
         }
         .forAll { (gridL, args, result) ->

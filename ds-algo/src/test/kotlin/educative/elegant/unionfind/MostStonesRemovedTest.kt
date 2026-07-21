@@ -13,8 +13,10 @@ private const val PKG_PATH = "educative/graph/unionfind/MostStonesRemoved"
 class MostStonesRemovedTest :
   StringSpec({
     "most stones removed with same row or column" {
-      TestCases.load("$PKG_PATH/test-cases-1.json", "$PKG_PATH/test-cases-2.json").map { case ->
-        Pair(case.input<List<List<Int>>>(1).map { it.toPair() }.toSet(), case.output<Int>(1))
-      }.forAll { (stones, result) -> mostStonesRemoved(stones) shouldBe result }
+      TestCases.load("$PKG_PATH/test-cases-1.json", "$PKG_PATH/test-cases-2.json")
+        .map { case ->
+          Pair(case.input<List<List<Int>>>(1).map { it.toPair() }.toSet(), case.output<Int>(1))
+        }
+        .forAll { (stones, result) -> mostStonesRemoved(stones) shouldBe result }
     }
   })

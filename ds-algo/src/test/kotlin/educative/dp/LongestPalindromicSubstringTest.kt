@@ -13,7 +13,7 @@ class LongestPalindromicSubstringTest :
       TestCases.load("$PKG_PATH/test-cases-2.json")
         .map { case -> case.input<String>(1) to case.output<String>(1) }
         .forAll { (input, output) ->
-        longestPalindromicSubstring(input) shouldBe output
-      }
+          longestPalindromicSubstring(input) shouldBe output
+        }
     }
   })

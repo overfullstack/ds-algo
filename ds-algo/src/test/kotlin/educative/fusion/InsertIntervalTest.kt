@@ -14,7 +14,8 @@ class InsertIntervalTest :
     "insert interval" {
       TestCases.load("$PKG_PATH/test-cases-1.json")
         .map { case ->
-          (case.input<List<List<Int>>>(1).map { it.toPair() } to case.input<List<Int>>(2).toPair()) to
+          (case.input<List<List<Int>>>(1).map { it.toPair() } to
+            case.input<List<Int>>(2).toPair()) to
             case.output<List<List<Int>>>(1).map { it.toPair() }
         }
         .forAll { (input, result) ->

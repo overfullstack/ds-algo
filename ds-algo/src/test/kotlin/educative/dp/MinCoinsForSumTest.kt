@@ -15,7 +15,7 @@ class MinCoinsForSumTest :
       TestCases.load("$PKG_PATH/test-cases-1.json")
         .map { case -> (case.input<List<Int>>(1) to case.input<Int>(2)) to case.output<Int>(1) }
         .forAll { (input, output) ->
-        change(input.second, input.first.toIntArray()) shouldBe output
-      }
+          change(input.second, input.first.toIntArray()) shouldBe output
+        }
     }
   })
