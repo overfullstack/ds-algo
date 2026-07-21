@@ -3,7 +3,8 @@ package leetcode.backtracking.CombinationSum
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.data.forAll
 import io.kotest.data.row
-import io.kotest.inspectors.forAll
+import io.kotest.matchers.collections.shouldContainExactlyInAnyOrder
+import leetcode.dp.combinationSum
 
 class CombinationSum2Test :
   StringSpec({
@@ -16,7 +17,7 @@ class CombinationSum2Test :
         ),
         row(listOf(2, 5, 2, 1, 2), 5, listOf(listOf(1, 2, 2), listOf(5))),
       ) { arr, target, result ->
-        TODO()
+        combinationSum(arr.toIntArray(), target).map { it.toList() } shouldContainExactlyInAnyOrder result
       }
     }
   })

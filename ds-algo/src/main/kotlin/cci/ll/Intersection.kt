@@ -6,7 +6,7 @@ import ds.ll.length
 
 fun ListNode.getIntersectionNode(that: ListNode?): ListNode? {
   val thisLen = length()
-  val thatLen = length()
+  val thatLen = that?.length() ?: 0
   return when {
     thisLen > thatLen -> this.getMatchingNode(thisLen - thatLen + 1, that)
     else -> that?.getMatchingNode(thatLen - thisLen + 1, this)

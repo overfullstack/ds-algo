@@ -9,7 +9,8 @@ fun isIsomorphic(s: String, t: String): Boolean {
   val tToS = mutableMapOf<Char, Char>()
   return s.zip(t).all { (sChar, tChar) ->
     when {
-      sToT[sChar] != tToS[tChar] -> false
+      sToT.containsKey(sChar) && sToT[sChar] != tChar -> false
+      tToS.containsKey(tChar) && tToS[tChar] != sChar -> false
       else -> {
         sToT[sChar] = tChar
         tToS[tChar] = sChar

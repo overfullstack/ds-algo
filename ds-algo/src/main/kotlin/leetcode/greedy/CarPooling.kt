@@ -8,7 +8,7 @@ fun carPooling(trips: Array<IntArray>, capacity: Int): Boolean {
   val map = sortedMapOf<Int, Int>() // ! This is a SortedMap
   for ((passengersCount, start, end) in tripsSortedByOrigin) {
     map.merge(start, passengersCount, Int::plus)
-    map.merge(end, passengersCount, Int::minus)
+    map.merge(end, -passengersCount, Int::plus)
   }
   return map.values.asSequence().runningReduce(Int::plus).all { it <= capacity }
 }

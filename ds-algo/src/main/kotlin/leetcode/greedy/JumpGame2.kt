@@ -2,17 +2,19 @@ package leetcode.greedy
 
 /** [45. Jump Game II](https://leetcode.com/problems/jump-game-ii/) */
 fun minJumps(nums: IntArray): Int {
-  var curMaxReachIndex = 0
-  var curIndex = 0
+  if (nums.size == 1) return 0
+  var currentEnd = 0
+  var farthest = 0
   var jumps = 0
-  while (curIndex < nums.lastIndex) {
-    val nextMaxReachIndex = (curIndex..curMaxReachIndex).maxOf { it + nums[it] }
-    if (nextMaxReachIndex >= nums.lastIndex) {
-      return jumps + 1
+  for (i in 0 until nums.lastIndex) {
+    farthest = maxOf(farthest, i + nums[i])
+    if (i == currentEnd) {
+      jumps++
+      currentEnd = farthest
+      if (currentEnd >= nums.lastIndex) {
+        return jumps
+      }
     }
-    curIndex = curMaxReachIndex // ! Jump to curMaxReachIndex
-    curMaxReachIndex = nextMaxReachIndex
-    jumps++
   }
   return jumps
 }

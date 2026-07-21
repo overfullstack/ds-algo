@@ -18,8 +18,7 @@ fun IntArray.binarySearchRightmost(valueToSearch: Int): Int {
     }
   }
   // After the loop, `right` is the rightmost index where `this[index] <= valueToSearch`
-  // return if (right >= 0 && this[right] == valueToSearch) right else -1
-  return right // ! It can be -1 if value being searched is lower than the least number
+  return if (right >= 0 && this[right] == valueToSearch) right else -1
 }
 
 fun IntArray.binarySearchLeftmost(valueToSearch: Int): Int {
@@ -37,8 +36,7 @@ fun IntArray.binarySearchLeftmost(valueToSearch: Int): Int {
     }
   }
   // After the loop, `right` is the leftmost index where `this[index] >= valueToSearch`
-  // return if (this[right] == valueToSearch) right else -1
-  return right // ! This can never be `-1`
+  return if (right <= lastIndex && this[right] == valueToSearch) right else -1
 }
 
 fun main() {
