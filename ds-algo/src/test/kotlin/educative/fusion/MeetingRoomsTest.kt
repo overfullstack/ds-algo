@@ -6,7 +6,8 @@ import io.kotest.data.row
 import io.kotest.inspectors.forAll
 import io.kotest.matchers.shouldBe
 import leetcode.greedy.canAttendAllMeetings
-import testcase.ListPairToBoolean.Companion.parseJsonFileToTestCases
+import testcase.TestCases
+import utils.toPair
 
 /* 29 Jul 2025 23:14 */
 
@@ -15,7 +16,8 @@ private const val PKG_PATH = "educative/fusion/MeetingRooms"
 class MeetingRoomsTest :
   StringSpec({
     "Can attend all meetings" {
-      parseJsonFileToTestCases("$PKG_PATH/test-cases-1.json", "$PKG_PATH/test-cases-2.json")
+      TestCases.load("$PKG_PATH/test-cases-1.json", "$PKG_PATH/test-cases-2.json")
+        .map { case -> case.input<List<List<Int>>>(1).map { it.toPair() } to case.output<Boolean>(1) }
         .forAll { (meetings, result) ->
           canAttendAllMeetings(meetings.toTypedArray()) shouldBe result
         }

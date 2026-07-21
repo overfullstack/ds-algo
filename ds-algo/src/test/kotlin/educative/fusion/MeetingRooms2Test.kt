@@ -6,7 +6,8 @@ import io.kotest.data.row
 import io.kotest.inspectors.forAll
 import io.kotest.matchers.shouldBe
 import leetcode.heap.minMeetingRoomsRequired
-import testcase.ListPairToInt.Companion.parseJsonFileToTestCases
+import testcase.TestCases
+import utils.toPair
 
 /* 29 Jul 2025 23:14 */
 
@@ -15,9 +16,11 @@ private const val PKG_PATH = "educative/fusion/MeetingRooms2"
 class MeetingRooms2Test :
   StringSpec({
     "Min meeting rooms required" {
-      parseJsonFileToTestCases("$PKG_PATH/test-cases-1.json").forAll { (meetings, result) ->
-        minMeetingRoomsRequired(meetings.toTypedArray()) shouldBe result
-      }
+      TestCases.load("$PKG_PATH/test-cases-1.json")
+        .map { case -> case.input<List<List<Int>>>(1).map { it.toPair() } to case.output<Int>(1) }
+        .forAll { (meetings, result) ->
+          minMeetingRoomsRequired(meetings.toTypedArray()) shouldBe result
+        }
     }
 
     "Min meetings rooms required 2" {
