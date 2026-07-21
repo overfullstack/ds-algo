@@ -4,7 +4,7 @@ import ds.ll.ListNode
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.inspectors.forAll
 import io.kotest.matchers.shouldBe
-import testcase.ListIntToList.Companion.parseJsonFileToTestCases
+import testcase.TestCases
 
 /* 27 Jul 2025 18:29 */
 
@@ -13,7 +13,10 @@ private const val PKG_PATH = "educative/ll/RemoveKthToLast"
 class RemoveKthToLastTest :
   StringSpec({
     "Remove kth to last" {
-      parseJsonFileToTestCases("$PKG_PATH/test-cases-1.json", "$PKG_PATH/test-cases-2.json")
+      TestCases.load("$PKG_PATH/test-cases-1.json", "$PKG_PATH/test-cases-2.json")
+        .map { case ->
+          Triple(case.input<List<Int>>(1), case.input<Int>(2), case.output<List<Int>>(1))
+        }
         .forAll { (inputs, k, output) ->
           val head = ListNode.of(inputs.toIntArray())!!
           head.removeKthToLast(k).toArray() shouldBe output.toIntArray()

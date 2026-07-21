@@ -4,7 +4,7 @@ import ds.tree.TreeNode.Companion.levelOrderToIncompleteTree
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.inspectors.forAll
 import io.kotest.matchers.shouldBe
-import testcase.ListToLList.Companion.parseJsonFileToTestCases
+import testcase.TestCases
 
 /* 19 Jul 2025 18:28 */
 
@@ -13,9 +13,11 @@ private const val PKG_PATH = "educative/tree/VerticalOrderTraversal"
 class VerticalOrderTraversalTest :
   StringSpec({
     "Vertical Order Traversal" {
-      parseJsonFileToTestCases("$PKG_PATH/test-cases-1.json").forAll { (input, output) ->
-        val treeNode = levelOrderToIncompleteTree(input)!!
-        treeNode.verticalTraversal() shouldBe output
-      }
+      TestCases.load("$PKG_PATH/test-cases-1.json")
+        .map { case -> case.input<List<Int?>>(1) to case.output<List<List<Int>>>(1) }
+        .forAll { (input, output) ->
+          val treeNode = levelOrderToIncompleteTree(input)!!
+          treeNode.verticalTraversal() shouldBe output
+        }
     }
   })
