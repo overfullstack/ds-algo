@@ -5,16 +5,16 @@ import io.kotest.data.forAll
 import io.kotest.data.row
 import io.kotest.inspectors.forAll
 import io.kotest.matchers.shouldBe
-import testcase.ListToInt.Companion.parseJsonFileToTestCases
+import testcase.TestCases
 
 private const val PKG_PATH = "educative/stack/LargestRectangleInHistogram"
 
 class LargestRectangleInHistogramTest :
   StringSpec({
     "Largest Rectangle" {
-      parseJsonFileToTestCases("$PKG_PATH/test-cases-1.json").forAll { (input, output) ->
-        largestRectangle(input.filterNotNull().toIntArray()) shouldBe output
-      }
+      TestCases.load("$PKG_PATH/test-cases-1.json")
+        .map { case -> case.input<List<Int?>>(1) to case.output<Int>(1) }
+        .forAll { (input, output) -> largestRectangle(input.filterNotNull().toIntArray()) shouldBe output }
     }
 
     "Largest Rectangle 2" {
