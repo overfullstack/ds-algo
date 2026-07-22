@@ -57,7 +57,6 @@ private fun Context.queryNext(groupRange: IntRange): List<Map<Id, ContextRecord>
     .map { it.associate { it.toPair() } }
     .sortedByDescending { it.values.sumOf { it.weight } }
 
-private fun Context.stampChunkNumber(ids: List<Id>, chunkNumber: Int) =
-  ids.forEach {
-    computeIfPresent(it) { _, contextRecord -> contextRecord.copy(chunkNumber = chunkNumber) }
-  }
+private fun Context.stampChunkNumber(ids: List<Id>, chunkNumber: Int) = ids.forEach {
+  computeIfPresent(it) { _, contextRecord -> contextRecord.copy(chunkNumber = chunkNumber) }
+}

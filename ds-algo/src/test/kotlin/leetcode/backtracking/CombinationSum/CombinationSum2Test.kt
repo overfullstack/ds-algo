@@ -17,7 +17,8 @@ class CombinationSum2Test :
         ),
         row(listOf(2, 5, 2, 1, 2), 5, listOf(listOf(1, 2, 2), listOf(5))),
       ) { arr, target, result ->
-        combinationSum(arr.toIntArray(), target).map { it.toList() } shouldContainExactlyInAnyOrder result
+        combinationSum(arr.toIntArray(), target).map { it.toList() } shouldContainExactlyInAnyOrder
+          result
       }
     }
   })

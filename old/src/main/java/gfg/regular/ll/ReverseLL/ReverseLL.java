@@ -6,32 +6,32 @@ import ds.ListNode;
 
 /** Created by gakshintala on 6/10/16. */
 public class ReverseLL {
-	static void main() {
-		ListNode l1, l2, l3, l4;
-		l1 = new ListNode(1);
-		l2 = new ListNode(2);
-		l3 = new ListNode(3);
-		l4 = new ListNode(4);
+  static void main() {
+    ListNode l1, l2, l3, l4;
+    l1 = new ListNode(1);
+    l2 = new ListNode(2);
+    l3 = new ListNode(3);
+    l4 = new ListNode(4);
 
-		l1.next = l2;
-		l2.next = l3;
-		l3.next = l4;
+    l1.next = l2;
+    l2.next = l3;
+    l3.next = l4;
 
-		reverseLinkedList(l1);
-		printSLL(l4);
-	}
+    reverseLinkedList(l1);
+    printSLL(l4);
+  }
 
-	public static ListNode reverseLinkedList(ListNode head) {
-		ListNode prev = null, cur = head, next = head;
+  public static ListNode reverseLinkedList(ListNode head) {
+    ListNode prev = null, cur = head, next = head;
 
-		while (next != null) {
-			// next will be leading and cur and prev shall be reversing pointers
-			cur = next;
-			next = next.next;
+    while (next != null) {
+      // next will be leading and cur and prev shall be reversing pointers
+      cur = next;
+      next = next.next;
 
-			cur.next = prev;
-			prev = cur;
-		}
-		return cur;
-	}
+      cur.next = prev;
+      prev = cur;
+    }
+    return cur;
+  }
 }

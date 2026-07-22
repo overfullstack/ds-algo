@@ -11,41 +11,41 @@ import java.util.PriorityQueue;
  * Attended](https://leetcode.com/problems/maximum-number-of-events-that-can-be-attended)
  */
 public class MaximumNumberOfEventsThatCanBeAttended {
-	public int maxEvents(int[][] events) {
-		var minEndHeap = new PriorityQueue<Integer>();
-		var eventIdx = 0;
-		var day = 0;
-		var attendedEventCount = 0;
-		Arrays.sort(events, Comparator.comparingInt(e -> e[0]));
-		while (!minEndHeap.isEmpty() || eventIdx < events.length) {
-			if (minEndHeap.isEmpty()) {
-				day = events[eventIdx][0]; // ! Jump to next non-overlapping interval
-			}
-			// ! Add all events that start today to `minEndHeap` to pick the earliest ending event
-			// ! If no meeting today, keep polling `minEndHeap` until we attend all the meetings
-			while (eventIdx < events.length && events[eventIdx][0] == day) {
-				minEndHeap.add(events[eventIdx][1]);
-				// ! `eventIdx` may exhaust here
-				// ! so the while loop above continues till `minEndHeap` is fully polled
-				eventIdx++;
-			}
-			minEndHeap.poll(); // ! Only one event can be attended per day
-			attendedEventCount++;
-			day++; // ! Moving 1 day at a time, use it to prune events we cannot attend
-			while (!minEndHeap.isEmpty() && minEndHeap.peek() < day) {
-				minEndHeap.poll();
-			}
-		}
-		return attendedEventCount;
-	}
+  public int maxEvents(int[][] events) {
+    var minEndHeap = new PriorityQueue<Integer>();
+    var eventIdx = 0;
+    var day = 0;
+    var attendedEventCount = 0;
+    Arrays.sort(events, Comparator.comparingInt(e -> e[0]));
+    while (!minEndHeap.isEmpty() || eventIdx < events.length) {
+      if (minEndHeap.isEmpty()) {
+        day = events[eventIdx][0]; // ! Jump to next non-overlapping interval
+      }
+      // ! Add all events that start today to `minEndHeap` to pick the earliest ending event
+      // ! If no meeting today, keep polling `minEndHeap` until we attend all the meetings
+      while (eventIdx < events.length && events[eventIdx][0] == day) {
+        minEndHeap.add(events[eventIdx][1]);
+        // ! `eventIdx` may exhaust here
+        // ! so the while loop above continues till `minEndHeap` is fully polled
+        eventIdx++;
+      }
+      minEndHeap.poll(); // ! Only one event can be attended per day
+      attendedEventCount++;
+      day++; // ! Moving 1 day at a time, use it to prune events we cannot attend
+      while (!minEndHeap.isEmpty() && minEndHeap.peek() < day) {
+        minEndHeap.poll();
+      }
+    }
+    return attendedEventCount;
+  }
 
-	static void main() {
-		var m = new MaximumNumberOfEventsThatCanBeAttended();
-		System.out.println(
-				m.maxEvents(new int[][] {{1, 1}, {1, 2}, {1, 3}, {1, 4}, {1, 5}, {1, 6}, {1, 7}})); // 7
-		System.out.println(m.maxEvents(new int[][] {{1, 4}, {4, 4}, {2, 2}, {3, 4}, {1, 1}})); // 4
-		System.out.println(m.maxEvents(new int[][] {{1, 2}, {2, 3}, {3, 4}})); // 3
-		System.out.println(m.maxEvents(new int[][] {{1, 2}, {2, 3}, {3, 4}, {1, 2}})); // 4
-		System.out.println(m.maxEvents(new int[][] {{1, 1}, {2, 3}, {3, 4}, {1, 1}})); // 3
-	}
+  static void main() {
+    var m = new MaximumNumberOfEventsThatCanBeAttended();
+    System.out.println(
+        m.maxEvents(new int[][] {{1, 1}, {1, 2}, {1, 3}, {1, 4}, {1, 5}, {1, 6}, {1, 7}})); // 7
+    System.out.println(m.maxEvents(new int[][] {{1, 4}, {4, 4}, {2, 2}, {3, 4}, {1, 1}})); // 4
+    System.out.println(m.maxEvents(new int[][] {{1, 2}, {2, 3}, {3, 4}})); // 3
+    System.out.println(m.maxEvents(new int[][] {{1, 2}, {2, 3}, {3, 4}, {1, 2}})); // 4
+    System.out.println(m.maxEvents(new int[][] {{1, 1}, {2, 3}, {3, 4}, {1, 1}})); // 3
+  }
 }

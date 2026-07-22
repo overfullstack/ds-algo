@@ -6,72 +6,72 @@ import ds.ListNode;
 
 /** Created by Gopala Akshintala on 2/26/17. */
 public class MergeSortLL {
-	static void main() {
-		var head = new ListNode(4);
-		head.next = new ListNode(3);
-		head.next.next = new ListNode(5);
-		head.next.next.next = new ListNode(1);
-		head.next.next.next.next = new ListNode(2);
-		printSLL(head);
-		System.out.println();
-		printSLL(mergeSortLL(head));
-	}
+  static void main() {
+    var head = new ListNode(4);
+    head.next = new ListNode(3);
+    head.next.next = new ListNode(5);
+    head.next.next.next = new ListNode(1);
+    head.next.next.next.next = new ListNode(2);
+    printSLL(head);
+    System.out.println();
+    printSLL(mergeSortLL(head));
+  }
 
-	// The idea is to split the LL into the smallest chains and merge them back
-	// 🕶 Cutting a half into a half into a half
-	private static ListNode mergeSortLL(ListNode head) {
-		// When the list has only 1 element return it
-		if (head == null || head.next == null) {
-			return head;
-		}
-		// Split the LL into two lists to the middle
-		var middle = frontBackSplit(head);
+  // The idea is to split the LL into the smallest chains and merge them back
+  // 🕶 Cutting a half into a half into a half
+  private static ListNode mergeSortLL(ListNode head) {
+    // When the list has only 1 element return it
+    if (head == null || head.next == null) {
+      return head;
+    }
+    // Split the LL into two lists to the middle
+    var middle = frontBackSplit(head);
 
-		// Split each list further by the recursion, in return we receive merged lists
-		head = mergeSortLL(head);
-		middle = mergeSortLL(middle);
+    // Split each list further by the recursion, in return we receive merged lists
+    head = mergeSortLL(head);
+    middle = mergeSortLL(middle);
 
-		// Merge the merged lists further
-		return sortAndMerge(head, middle);
-	}
+    // Merge the merged lists further
+    return sortAndMerge(head, middle);
+  }
 
-	private static ListNode frontBackSplit(ListNode source) {
-		// if the length is just 1
-		if (source == null || source.next == null) {
-			return null;
-		}
-		// To find middle node to split
-		ListNode fast, slow;
-		slow = source;
-		fast = source.next;
-		while (fast != null) {
-			fast = fast.next;
-			if (fast != null) {
-				fast = fast.next;
-				slow = slow.next;
-			}
-		}
-		var node = slow.next;
-		slow.next = null; // Split
-		return node;
-	}
+  private static ListNode frontBackSplit(ListNode source) {
+    // if the length is just 1
+    if (source == null || source.next == null) {
+      return null;
+    }
+    // To find middle node to split
+    ListNode fast, slow;
+    slow = source;
+    fast = source.next;
+    while (fast != null) {
+      fast = fast.next;
+      if (fast != null) {
+        fast = fast.next;
+        slow = slow.next;
+      }
+    }
+    var node = slow.next;
+    slow.next = null; // Split
+    return node;
+  }
 
-	private static ListNode sortAndMerge(ListNode a, ListNode b) {
-		if (a == null) {
-			return b;
-		}
-		if (b == null) {
-			return a;
-		}
-		ListNode result;
-		// Merging recursively
-		if (a.val <= b.val) {
-			result = a;
-			result.next = sortAndMerge(a.next, b);
-		} else {
-			result = b;
-			result.next = sortAndMerge(a, b.next);
-		}
-		return result;
-	}
+  private static ListNode sortAndMerge(ListNode a, ListNode b) {
+    if (a == null) {
+      return b;
+    }
+    if (b == null) {
+      return a;
+    }
+    ListNode result;
+    // Merging recursively
+    if (a.val <= b.val) {
+      result = a;
+      result.next = sortAndMerge(a.next, b);
+    } else {
+      result = b;
+      result.next = sortAndMerge(a, b.next);
+    }
+    return result;
+  }
 }

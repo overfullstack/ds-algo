@@ -8,7 +8,9 @@ fun getOperator(symbol: Int): (Int, Int) -> Int =
     -2 -> Int::minus
     -3 -> Int::div
     -4 -> Int::times
-    else -> { _, _ -> symbol }
+    else -> { _, _ ->
+      symbol
+    }
   }
 
 fun TreeNode.evaluateExpressionTree(): Int {

@@ -9,11 +9,9 @@ import ds.graph.BiDiGraph
 // ! ⏰TLE may be due to the usage of `BiDiGraph`
 fun maximumScore(scores: IntArray, edges: Array<IntArray>): Int {
   val graph = BiDiGraph<Int>(edges)
-  val graphWithTop3Neighbors =
-    graph.mapValues {
-      if (it.value.size > 3) it.value.sortedByDescending { scores[it] }.take(3).toSet()
-      else it.value
-    }
+  val graphWithTop3Neighbors = graph.mapValues {
+    if (it.value.size > 3) it.value.sortedByDescending { scores[it] }.take(3).toSet() else it.value
+  }
   return edges
     .asSequence()
     .map { (u, v) -> findMaxScoreWithNeighboursForEdge(u, v, graphWithTop3Neighbors, scores) }

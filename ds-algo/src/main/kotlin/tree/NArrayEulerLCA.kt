@@ -37,16 +37,15 @@ fun lcaMultipleNodes(
   treeGraph: Map<Int, NArrayEulerTour>,
   depthsSparseTableRMQ: SparseTableRMQ,
   eulersTourArr: Array<NArrayEulerTour>,
-) =
-  nodes.reduce { first, second ->
-    eulersTourArr[
-        depthsSparseTableRMQ
-          .rmqIndex( // Find min depth in the range. DepthArr is in same sequence as eulerTourArr.
-            treeGraph[first]?.firstOccurrence!!,
-            treeGraph[second]?.firstOccurrence!!,
-          )]
-      .value
-  }
+) = nodes.reduce { first, second ->
+  eulersTourArr[
+      depthsSparseTableRMQ
+        .rmqIndex( // Find min depth in the range. DepthArr is in same sequence as eulerTourArr.
+          treeGraph[first]?.firstOccurrence!!,
+          treeGraph[second]?.firstOccurrence!!,
+        )]
+    .value
+}
 
 fun main() {
   val delimiters = " "

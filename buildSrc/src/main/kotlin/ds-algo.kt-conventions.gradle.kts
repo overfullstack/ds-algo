@@ -13,7 +13,12 @@ val libs: VersionCatalog = extensions.getByType<VersionCatalogsExtension>().name
 
 dependencies { testImplementation(libs.kotestBundle) }
 
-kotlin { compilerOptions { freeCompilerArgs.addAll("-Xcontext-parameters", "-progressive", "-Xmulti-dollar-interpolation") } }
+kotlin {
+  jvmToolchain(libs.jdk.toString().toInt())
+  compilerOptions {
+    freeCompilerArgs.addAll("-jvm-default=enable", "-progressive", "-Xannotation-default-target=param-property", "-Xconsistent-data-class-copy-visibility")
+  }
+}
 
 powerAssert {
   functions = listOf("io.kotest.matchers.shouldBe")

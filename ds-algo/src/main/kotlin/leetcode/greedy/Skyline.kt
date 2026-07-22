@@ -2,10 +2,9 @@ package leetcode.greedy
 
 /** [218. The Skyline Problem](https://leetcode.com/problems/the-skyline-problem) */
 fun getSkyline(buildings: Array<IntArray>): List<List<Int>> {
-  val buildingStrips =
-    buildings.flatMap {
-      listOf(BuildingStrip(it[0], it[2], true), BuildingStrip(it[1], it[2], false))
-    }
+  val buildingStrips = buildings.flatMap {
+    listOf(BuildingStrip(it[0], it[2], true), BuildingStrip(it[1], it[2], false))
+  }
   val sortedBuildingStrips =
     buildingStrips.sortedWith(compareBy({ it.pt }, { if (it.isStart) -it.ht else it.ht }))
 

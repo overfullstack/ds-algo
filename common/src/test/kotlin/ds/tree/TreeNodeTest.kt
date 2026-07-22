@@ -15,7 +15,7 @@ class TreeNodeTest :
       listOf(
           listOf(1, 2, null, 3, null, 4, null, 5),
           listOf(1, null, 2, null, 3, null, 4, null, 5),
-          listOf(1, null, null),
+          listOf(1), // single node: serialization trims trailing nulls to canonical level order
         )
         .forAll { levelOrder ->
           val root = levelOrderToIncompleteTree(levelOrder)

@@ -16,10 +16,9 @@ private tailrec fun verticalTraversalInternal(
   currentLevel: List<Pair<Int, TreeNode>>,
   result: List<List<Pair<Int, TreeNode>>> = listOf(currentLevel),
 ): List<List<Pair<Int, TreeNode>>> {
-  val nextLevel =
-    currentLevel.flatMap { (colIndex, node) ->
-      listOfNotNull(node.left?.let { colIndex - 1 to it }, node.right?.let { colIndex + 1 to it })
-    }
+  val nextLevel = currentLevel.flatMap { (colIndex, node) ->
+    listOfNotNull(node.left?.let { colIndex - 1 to it }, node.right?.let { colIndex + 1 to it })
+  }
   return when {
     nextLevel.isEmpty() -> result
     else -> verticalTraversalInternal(nextLevel, result.plusElement(nextLevel))

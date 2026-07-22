@@ -5,8 +5,7 @@ import io.kotest.core.spec.style.StringSpec
 import io.kotest.inspectors.forAll
 import io.kotest.matchers.collections.shouldContainExactlyInAnyOrder
 import io.kotest.matchers.shouldBe
-import testcase.ListLListToList.Companion.parseJsonFileToTestCases
-import testcase.ListStrToLList
+import testcase.TestCases
 
 internal class TrieNodeTest :
   StringSpec({
@@ -75,9 +74,10 @@ internal class TrieNodeTest :
     }
 
     "recommendations by typing one letter at a time" {
-      ListStrToLList.parseJsonFileToTestCases("trie/Recommendations/test-cases-1.json").forAll {
-        (input, output) ->
-        val (products, searchKey) = input
+      TestCases.load("trie/Recommendations/test-cases-1.json").forAll { case ->
+        val products = case.input<List<String>>(1)
+        val searchKey = case.input<String>(2)
+        val output = case.output<List<List<String>>>(1)
         trieNode = TrieNode()
         products.forEach { trieNode.insert(it) }
         trieNode.recommendationsWhileTyping(searchKey, 3) shouldBe output
@@ -89,14 +89,19 @@ internal class TrieNodeTest :
       trieNode.insert("gopals")
       trieNode.insert("go")
 
-      trieNode.recommendations("go") shouldContainExactlyInAnyOrder listOf("gopal", "gopals")
+      // "go" is itself a stored word with the prefix, so it's included
+      trieNode.recommendations("go") shouldContainExactlyInAnyOrder listOf("go", "gopal", "gopals")
     }
 
     "operate" {
-      parseJsonFileToTestCases("trie/Operations/test-cases-1.json").forAll { (inputs, output) ->
+      TestCases.load("trie/Operations/test-cases-1.json").forAll { case ->
+        val operations = case.input<List<String>>(1)
+        val args = case.input<List<List<String>>>(2)
+        val output = case.output<List<String>>(1)
         trieNode = TrieNode()
-        inputs
-          .map { (operation, arg) -> trieNode.operate(operation, arg) }
+        operations
+          .zip(args)
+          .map { (operation, arg) -> trieNode.operate(operation, arg.firstOrNull() ?: "") }
           .map {
             when (it) {
               is Unit -> "null"

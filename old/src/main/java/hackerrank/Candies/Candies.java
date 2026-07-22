@@ -5,32 +5,32 @@ import java.util.Scanner;
 
 /** Created by gakshintala on 2/25/16. */
 public class Candies {
-	static void main() {
-		var scn = new Scanner(System.in);
-		var childrenCount = scn.nextInt();
-		var rating = new long[childrenCount];
-		for (var i = 0; i < childrenCount; i++) {
-			rating[i] = scn.nextInt();
-		}
+  static void main() {
+    var scn = new Scanner(System.in);
+    var childrenCount = scn.nextInt();
+    var rating = new long[childrenCount];
+    for (var i = 0; i < childrenCount; i++) {
+      rating[i] = scn.nextInt();
+    }
 
-		var candies = new long[childrenCount];
+    var candies = new long[childrenCount];
 
-		candies[0] = 1;
+    candies[0] = 1;
 
-		for (var i = 1; i < childrenCount; i++) {
-			if (rating[i - 1] < rating[i]) candies[i] = candies[i - 1] + 1;
-			else candies[i] = 1;
-		}
+    for (var i = 1; i < childrenCount; i++) {
+      if (rating[i - 1] < rating[i]) candies[i] = candies[i - 1] + 1;
+      else candies[i] = 1;
+    }
 
-		for (var i = childrenCount - 2; i >= 0; i--) {
-			if (rating[i + 1] < rating[i])
-				candies[i] = Math.max(candies[i], candies[i + 1] + 1); // This is required at peak points
-		}
+    for (var i = childrenCount - 2; i >= 0; i--) {
+      if (rating[i + 1] < rating[i])
+        candies[i] = Math.max(candies[i], candies[i + 1] + 1); // This is required at peak points
+    }
 
-		System.out.println("Distribution: " + Arrays.toString(candies));
-		var total = 0L;
-		for (var i = 0; i < childrenCount; i++) total += candies[i];
+    System.out.println("Distribution: " + Arrays.toString(candies));
+    var total = 0L;
+    for (var i = 0; i < childrenCount; i++) total += candies[i];
 
-		System.out.println(total);
-	}
+    System.out.println(total);
+  }
 }

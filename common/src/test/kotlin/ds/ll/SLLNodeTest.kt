@@ -6,7 +6,7 @@ import io.kotest.data.forAll
 import io.kotest.data.row
 import io.kotest.inspectors.forAll
 import io.kotest.matchers.shouldBe
-import testcase.ListToList.Companion.parseJsonFileToTestCases
+import testcase.TestCases
 
 private const val PKG_PATH = "ll/sll"
 
@@ -40,13 +40,14 @@ class SLLNodeTest :
     }
 
     "reverse" {
-      parseJsonFileToTestCases(
+      TestCases.load(
           "$PKG_PATH/sll-reverse-test-cases-1.json",
           "$PKG_PATH/sll-reverse-test-cases-2.json",
         )
-        .forAll { (inputs, output) ->
-          val head = ListNode.of(inputs.filterNotNull().toIntArray())!!
-          head.reverse().toArray() shouldBe output.toIntArray()
+        .map { case -> case.input<IntArray>(1) to case.output<IntArray>(1) }
+        .forAll { (input, output) ->
+          val head = ListNode.of(input)!!
+          head.reverse().toArray() shouldBe output
         }
     }
 
@@ -58,11 +59,11 @@ class SLLNodeTest :
       }
     }
 
-    "Get Node at Pos" {
+    "Get Node at Pos" { // getNodeAtOrNull is 1-based (pos 1 == head), matching its callers
       forAll(
-        row(intArrayOf(1, 2, 3, 4), 2, ListNode(3, ListNode(4, null))),
-        row(intArrayOf(1, 2, 3, 4), 3, ListNode(4, null)),
-        row(intArrayOf(1), 0, ListNode(1, null)),
+        row(intArrayOf(1, 2, 3, 4), 3, ListNode(3, ListNode(4, null))),
+        row(intArrayOf(1, 2, 3, 4), 4, ListNode(4, null)),
+        row(intArrayOf(1), 1, ListNode(1, null)),
         row(intArrayOf(), 1, null),
       ) { arr, pos, resultNode ->
         ListNode.of(arr)?.getNodeAtOrNull(pos) shouldBe resultNode

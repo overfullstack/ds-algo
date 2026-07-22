@@ -92,10 +92,9 @@ private fun findWaterRegion(
 // Check if a water region is a lake (completely surrounded by our island)
 private fun isLake(matrix: Array<IntArray>, waterRegion: Set<Pair<Int, Int>>): Boolean {
   // A lake must not touch the matrix boundary
-  val touchesBoundary =
-    waterRegion.any { (row, col) ->
-      row == 0 || row == matrix.lastIndex || col == 0 || col == matrix[0].lastIndex
-    }
+  val touchesBoundary = waterRegion.any { (row, col) ->
+    row == 0 || row == matrix.lastIndex || col == 0 || col == matrix[0].lastIndex
+  }
 
   if (touchesBoundary) return false
 

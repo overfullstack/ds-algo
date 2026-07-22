@@ -50,5 +50,6 @@ private fun DB.queryNext(queryCount: Int): Pair<List<Id>, List<Int>> =
     .sortedByDescending { (_, weight) -> weight }
     .unzip()
 
-private fun DB.stampChunkNumber(ids: List<Id>, chunkNumber: Int) =
-  ids.forEach { computeIfPresent(it) { _, value -> value.first to chunkNumber } }
+private fun DB.stampChunkNumber(ids: List<Id>, chunkNumber: Int) = ids.forEach {
+  computeIfPresent(it) { _, value -> value.first to chunkNumber }
+}

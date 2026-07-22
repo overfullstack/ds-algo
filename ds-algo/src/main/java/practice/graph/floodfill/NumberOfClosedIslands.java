@@ -7,58 +7,58 @@ import java.util.Arrays;
 /** [1254. Number of Closed Islands](https://leetcode.com/problems/number-of-closed-islands/) */
 public class NumberOfClosedIslands {
 
-	private static final int[][] directions = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
+  private static final int[][] directions = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
 
-	public int closedIsland(int[][] grid) {
-		// ! FloodFill islands connected to grid borders: left, right
-		for (var row = 0; row < grid.length; row++) {
-			floodFill(row, 0, grid);
-			floodFill(row, grid[0].length - 1, grid);
-		}
+  public int closedIsland(int[][] grid) {
+    // ! FloodFill islands connected to grid borders: left, right
+    for (var row = 0; row < grid.length; row++) {
+      floodFill(row, 0, grid);
+      floodFill(row, grid[0].length - 1, grid);
+    }
 
-		// ! FloodFill islands connected to grid borders: top, bottom
-		for (var col = 0; col < grid[0].length; col++) {
-			floodFill(0, col, grid);
-			floodFill(grid.length - 1, col, grid);
-		}
+    // ! FloodFill islands connected to grid borders: top, bottom
+    for (var col = 0; col < grid[0].length; col++) {
+      floodFill(0, col, grid);
+      floodFill(grid.length - 1, col, grid);
+    }
 
-		var closedIslandCount = 0;
-		for (var row = 0; row < grid.length; row++) {
-			for (var col = 0; col < grid[0].length; col++) {
-				if (grid[row][col] == 0) { // ! Encroach the islands and flood them
-					closedIslandCount++;
-					floodFill(row, col, grid); // ! Fill them so we count the group as one island
-				}
-			}
-		}
-		return closedIslandCount;
-	}
+    var closedIslandCount = 0;
+    for (var row = 0; row < grid.length; row++) {
+      for (var col = 0; col < grid[0].length; col++) {
+        if (grid[row][col] == 0) { // ! Encroach the islands and flood them
+          closedIslandCount++;
+          floodFill(row, col, grid); // ! Fill them so we count the group as one island
+        }
+      }
+    }
+    return closedIslandCount;
+  }
 
-	// ! 0s (land) and 1s (water)
-	private static void floodFill(int row, int col, int[][] grid) {
-		// ! Deal with only Land cells. Enclosed regions shall be guarded by a layer of this check
-		if (!isValid(row, col, grid) || grid[row][col] != 0) {
-			return;
-		}
-		grid[row][col] = 1; // ! Mark land cell as water cell
-		Arrays.stream(directions)
-				.map(d -> new int[] {d[0] + row, d[1] + col})
-				.forEach(landCell -> floodFill(landCell[0], landCell[1], grid));
-	}
+  // ! 0s (land) and 1s (water)
+  private static void floodFill(int row, int col, int[][] grid) {
+    // ! Deal with only Land cells. Enclosed regions shall be guarded by a layer of this check
+    if (!isValid(row, col, grid) || grid[row][col] != 0) {
+      return;
+    }
+    grid[row][col] = 1; // ! Mark land cell as water cell
+    Arrays.stream(directions)
+        .map(d -> new int[] {d[0] + row, d[1] + col})
+        .forEach(landCell -> floodFill(landCell[0], landCell[1], grid));
+  }
 
-	private static boolean isValid(int row, int col, int[][] grid) {
-		return row >= 0 && row < grid.length && col >= 0 && col < grid[0].length;
-	}
+  private static boolean isValid(int row, int col, int[][] grid) {
+    return row >= 0 && row < grid.length && col >= 0 && col < grid[0].length;
+  }
 
-	static void main() {
-		var grid =
-				new int[][] {
-					{1, 1, 1, 1, 1, 1, 1, 0},
-					{1, 0, 0, 0, 0, 1, 1, 0},
-					{1, 0, 1, 0, 1, 1, 1, 0},
-					{1, 0, 0, 0, 0, 1, 0, 1},
-					{1, 1, 1, 1, 1, 1, 1, 0}
-				};
-		System.out.println(new NumberOfClosedIslands().closedIsland(grid)); // 2
-	}
+  static void main() {
+    var grid =
+        new int[][] {
+          {1, 1, 1, 1, 1, 1, 1, 0},
+          {1, 0, 0, 0, 0, 1, 1, 0},
+          {1, 0, 1, 0, 1, 1, 1, 0},
+          {1, 0, 0, 0, 0, 1, 0, 1},
+          {1, 1, 1, 1, 1, 1, 1, 0}
+        };
+    System.out.println(new NumberOfClosedIslands().closedIsland(grid)); // 2
+  }
 }

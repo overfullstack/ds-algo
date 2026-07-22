@@ -179,13 +179,12 @@ constructor(
         jTree.tree.nodes.associate {
           it.id to Triple(TreeNode(id = it.id, `val` = it.value), it.left, it.right)
         }
-      val treeGraph: Map<String, TreeNode> =
-        idToTreeNode.mapValues { (_, value) ->
-          val (treeNode, leftId, rightId) = value
-          leftId?.let { treeNode.left = idToTreeNode[leftId]?.first }
-          rightId?.let { treeNode.right = idToTreeNode[rightId]?.first }
-          treeNode
-        }
+      val treeGraph: Map<String, TreeNode> = idToTreeNode.mapValues { (_, value) ->
+        val (treeNode, leftId, rightId) = value
+        leftId?.let { treeNode.left = idToTreeNode[leftId]?.first }
+        rightId?.let { treeNode.right = idToTreeNode[rightId]?.first }
+        treeNode
+      }
       return treeGraph[jTree.tree.root]!!
     }
   }

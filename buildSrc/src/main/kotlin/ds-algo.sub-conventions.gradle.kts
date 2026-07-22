@@ -46,19 +46,19 @@ spotless {
     removeUnusedImports()
     forbidWildcardImports()
     trimTrailingWhitespace()
-    leadingSpacesToTabs(2)
+    leadingTabsToSpaces(2)
     endWithNewline()
   }
   format("documentation") {
     target("*.md", "*.adoc")
     trimTrailingWhitespace()
-    leadingSpacesToTabs(2)
+    leadingTabsToSpaces()
     endWithNewline()
   }
 }
 
 testing {
   suites {
-    val test by getting(JvmTestSuite::class) { useJUnitJupiter(libs.junitVersion.toString()) }
+    getByName<JvmTestSuite>("test") { useJUnitJupiter(libs.junitVersion.toString()) }
   }
 }

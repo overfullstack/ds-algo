@@ -7,29 +7,29 @@ import java.util.Arrays;
 
 /** [735. Asteroid Collision](https://leetcode.com/problems/asteroid-collision) */
 public class AsteroidCollision {
-	public int[] asteroidCollision(int[] asteroids) {
-		var queue = new ArrayDeque<Integer>();
-		for (var asteroid : asteroids) {
-			if (asteroid > 0) {
-				queue.add(asteroid);
-			} else {
-				while (!queue.isEmpty() && queue.getLast() > 0 && queue.getLast() < Math.abs(asteroid)) {
-					queue.removeLast();
-				}
-				if (!queue.isEmpty() && queue.getLast() == Math.abs(asteroid)) {
-					queue.removeLast();
-				} else if (queue.isEmpty() || queue.getLast() < 0) { // ! Add a negative asteroid
-					queue.add(asteroid);
-				}
-			}
-		}
-		return queue.stream().mapToInt(i -> i).toArray();
-	}
+  public int[] asteroidCollision(int[] asteroids) {
+    var queue = new ArrayDeque<Integer>();
+    for (var asteroid : asteroids) {
+      if (asteroid > 0) {
+        queue.add(asteroid);
+      } else {
+        while (!queue.isEmpty() && queue.getLast() > 0 && queue.getLast() < Math.abs(asteroid)) {
+          queue.removeLast();
+        }
+        if (!queue.isEmpty() && queue.getLast() == Math.abs(asteroid)) {
+          queue.removeLast();
+        } else if (queue.isEmpty() || queue.getLast() < 0) { // ! Add a negative asteroid
+          queue.add(asteroid);
+        }
+      }
+    }
+    return queue.stream().mapToInt(i -> i).toArray();
+  }
 
-	static void main() {
-		var obj = new AsteroidCollision();
-		System.out.println(Arrays.toString(obj.asteroidCollision(new int[] {5, 10, -5}))); // [5,10]
-		System.out.println(Arrays.toString(obj.asteroidCollision(new int[] {8, -8}))); // []
-		System.out.println(Arrays.toString(obj.asteroidCollision(new int[] {10, 2, -5}))); // [10]
-	}
+  static void main() {
+    var obj = new AsteroidCollision();
+    System.out.println(Arrays.toString(obj.asteroidCollision(new int[] {5, 10, -5}))); // [5,10]
+    System.out.println(Arrays.toString(obj.asteroidCollision(new int[] {8, -8}))); // []
+    System.out.println(Arrays.toString(obj.asteroidCollision(new int[] {10, 2, -5}))); // [10]
+  }
 }

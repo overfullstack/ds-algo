@@ -11,7 +11,8 @@ fun shortestSubarrayWithSumAtLeastK(nums: IntArray, k: Int): Int {
   var minWindow = Int.MAX_VALUE
   for (i in sumTill.indices) {
     // ! Shrinking the window from start.
-    // ! `sumTill[i] - sumTill[dq.first()]` = sum of subarray from `dq.first()+1` to `i` in original array
+    // ! `sumTill[i] - sumTill[dq.first()]` = sum of subarray from `dq.first()+1` to `i` in original
+    // array
     while (dq.isNotEmpty() && sumTill[i] - sumTill[dq.first()] >= k) {
       minWindow = minOf(minWindow, i - dq.removeFirst())
     }

@@ -4,36 +4,36 @@ package practice.graph.floodfill;
 
 /** [463. Island Perimeter](https://leetcode.com/problems/island-perimeter/) */
 public class IslandPerimeter {
-	private static final int[][] directions = {{-1, 0}, {1, 0}, {0, 1}, {0, -1}};
+  private static final int[][] directions = {{-1, 0}, {1, 0}, {0, 1}, {0, -1}};
 
-	public int islandPerimeter(int[][] grid) {
-		var countPerimeter = 0;
-		for (var row = 0; row < grid.length; row++) {
-			for (var col = 0; col < grid[0].length; col++) {
-				if (grid[row][col] == 1) {
-					countPerimeter += countPerimeterDFS(row, col, grid);
-				}
-			}
-		}
-		return countPerimeter;
-	}
+  public int islandPerimeter(int[][] grid) {
+    var countPerimeter = 0;
+    for (var row = 0; row < grid.length; row++) {
+      for (var col = 0; col < grid[0].length; col++) {
+        if (grid[row][col] == 1) {
+          countPerimeter += countPerimeterDFS(row, col, grid);
+        }
+      }
+    }
+    return countPerimeter;
+  }
 
-	private static int countPerimeterDFS(int row, int col, int[][] grid) {
-		var borderCount = 0;
-		grid[row][col] = -1;
-		for (var direction : directions) {
-			var nextRow = direction[0] + row;
-			var nextCol = direction[1] + col;
-			if (!isValid(nextRow, nextCol, grid) || grid[nextRow][nextCol] == 0) { // ! border
-				borderCount++;
-			} else if (grid[nextRow][nextCol] == 1) { // ! isValid as per above check
-				borderCount += countPerimeterDFS(nextRow, nextCol, grid);
-			} // ! else grid[nextRow][nextCol] == -1
-		}
-		return borderCount;
-	}
+  private static int countPerimeterDFS(int row, int col, int[][] grid) {
+    var borderCount = 0;
+    grid[row][col] = -1;
+    for (var direction : directions) {
+      var nextRow = direction[0] + row;
+      var nextCol = direction[1] + col;
+      if (!isValid(nextRow, nextCol, grid) || grid[nextRow][nextCol] == 0) { // ! border
+        borderCount++;
+      } else if (grid[nextRow][nextCol] == 1) { // ! isValid as per above check
+        borderCount += countPerimeterDFS(nextRow, nextCol, grid);
+      } // ! else grid[nextRow][nextCol] == -1
+    }
+    return borderCount;
+  }
 
-	private static boolean isValid(int row, int col, int[][] grid) {
-		return row >= 0 && row < grid.length && col >= 0 && col < grid[0].length;
-	}
+  private static boolean isValid(int row, int col, int[][] grid) {
+    return row >= 0 && row < grid.length && col >= 0 && col < grid[0].length;
+  }
 }

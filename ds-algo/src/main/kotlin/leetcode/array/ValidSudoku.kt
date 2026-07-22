@@ -9,10 +9,9 @@ private fun Array<CharArray>.isValidRows(): Boolean = all { row ->
 }
 
 // Validate each column contains digits 1-9 without repetition
-private fun Array<CharArray>.isValidColumns(): Boolean =
-  indices.all { col ->
-    asSequence().map { it[col] }.filter { it.isDigit() }.map { it - '0' }.hasNoDuplicates()
-  }
+private fun Array<CharArray>.isValidColumns(): Boolean = indices.all { col ->
+  asSequence().map { it[col] }.filter { it.isDigit() }.map { it - '0' }.hasNoDuplicates()
+}
 
 // Validate each 3x3 sub-box contains digits 1-9 without repetition
 private fun Array<CharArray>.isValidSubBoxes(): Boolean =
