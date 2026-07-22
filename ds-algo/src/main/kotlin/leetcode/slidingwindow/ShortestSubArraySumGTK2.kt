@@ -6,19 +6,18 @@ package leetcode.slidingwindow
  * numbers.
  */
 fun shortestSubarrayWithSumAtLeastK(nums: IntArray, k: Int): Int {
-  val sumTill = nums.runningReduce(Int::plus)
-  val dq = ArrayDeque<Int>() // ! Stores excluding starting points
+  val sumTill = nums.runningFold(0, Int::plus)
+  val dq = ArrayDeque<Int>() // ! Stores indices in prefix sum array
   var minWindow = Int.MAX_VALUE
   for (i in sumTill.indices) {
     // ! Shrinking the window from start.
-    // ! `sumTill[i] - sumTill[dq.first()]` = sum of `nums[dq.first()+1..i]`, excluding `dq.first()`
+    // ! `sumTill[i] - sumTill[dq.first()]` = sum of subarray from `dq.first()+1` to `i` in original array
     while (dq.isNotEmpty() && sumTill[i] - sumTill[dq.first()] >= k) {
-      // ! No `+1` as we exclude the `dq.first()` as sum is made from its next index
       minWindow = minOf(minWindow, i - dq.removeFirst())
     }
-    // ! Exclude `-ve` indexes from the window
+    // ! Maintain monotonic deque: remove indices with greater or equal prefix sums
     while (dq.isNotEmpty() && sumTill[i] <= sumTill[dq.last()]) {
-      dq.removeLast() // ! The negative index now becomes the first excluding starting position
+      dq.removeLast()
     }
     dq.add(i)
   }

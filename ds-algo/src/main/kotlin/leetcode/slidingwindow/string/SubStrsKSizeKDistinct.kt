@@ -6,7 +6,7 @@ package leetcode.slidingwindow.string
 fun subStringsWithKSizeKDistinct(s: String, k: Int): List<String> {
   var start = 0
   val window = mutableSetOf<Char>()
-  val result = mutableListOf<String>()
+  val result = mutableSetOf<String>()
   for ((index, char) in s.withIndex()) {
     // We should strictly have unique character, no place for duplicates anywhere in the window.
     // Shrink window from start till lastOccurrence of char.
@@ -23,7 +23,7 @@ fun subStringsWithKSizeKDistinct(s: String, k: Int): List<String> {
       start++
     }
   }
-  return result
+  return result.toList()
 }
 
 fun main() {

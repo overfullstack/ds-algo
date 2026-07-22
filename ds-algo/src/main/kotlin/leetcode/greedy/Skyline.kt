@@ -23,7 +23,7 @@ fun getSkyline(buildings: Array<IntArray>): List<List<Int>> {
     when {
       prevMaxHt != curMaxHt -> {
         prevMaxHt = curMaxHt
-        skyline.plusElement(listOf(buildingStrip.pt, buildingStrip.ht))
+        skyline.plusElement(listOf(buildingStrip.pt, curMaxHt))
       }
       else -> skyline
     }

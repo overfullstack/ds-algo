@@ -17,9 +17,6 @@ fun getFood(grid: Array<CharArray>): Int {
 
   while (queue.isNotEmpty()) {
     val (row, col, distance) = queue.removeFirst()
-    if (grid[row][col] == '#') {
-      return distance
-    }
     directions
       .asSequence()
       .map { row + it.first to col + it.second }
@@ -27,6 +24,9 @@ fun getFood(grid: Array<CharArray>): Int {
         isValid(nextRow to nextCol, grid) && grid[nextRow][nextCol] != 'X'
       }
       .forEach { (nextRow, nextCol) ->
+        if (grid[nextRow][nextCol] == '#') {
+          return distance + 1
+        }
         grid[nextRow][nextCol] = 'X' // ! Mark visited
         queue.add(Triple(nextRow, nextCol, distance + 1)) // ! Distance added to queue itself
       }
