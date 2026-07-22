@@ -11,8 +11,8 @@ files). Follow it for any solution you write. This file covers only build/test/l
 
 ## Build & test
 
-Toolchain: **JDK 26** (`.sdkmanrc` → `26.0.1-amzn`), Kotlin 2.4.x, Gradle. Java
-compiles with `--enable-preview`.
+Toolchain versions are centralized in `libs.versions.toml` (JDK, Kotlin, JUnit,
+Kotest, …); the JDK is also pinned in `.sdkmanrc`. Java compiles with `--enable-preview`.
 
 ```shell
 ./gradlew clean build                                    # full build
