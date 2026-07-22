@@ -12,9 +12,8 @@ fun TreeNode.houseRobber3Internal(): Pair<Int, Int> {
   // * At any point we have access to 3 levels of data -
   // * cur, left, right, rest of the tree under
   // * current, left (with, without Root), right (with, without Root)
-  val (leftSumWithRoot, leftSumWithoutRoot) = left?.houseRobber3Internal() ?: (0 to Int.MIN_VALUE)
-  val (rightSumWithRoot, rightSumWithoutRoot) =
-    right?.houseRobber3Internal() ?: (0 to Int.MIN_VALUE)
+  val (leftSumWithRoot, leftSumWithoutRoot) = left?.houseRobber3Internal() ?: (0 to 0)
+  val (rightSumWithRoot, rightSumWithoutRoot) = right?.houseRobber3Internal() ?: (0 to 0)
 
   // ! With root is easy, you need to pick the skip level
   val sumWithRoot = `val` + leftSumWithoutRoot + rightSumWithoutRoot

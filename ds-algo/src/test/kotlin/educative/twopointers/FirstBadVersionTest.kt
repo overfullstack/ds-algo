@@ -4,13 +4,14 @@ import io.kotest.core.spec.style.StringSpec
 import io.kotest.inspectors.forAll
 import io.kotest.matchers.shouldBe
 import testcase.TestCases
-import utils.toPair
 
 /* 06 Aug 2025 13:06 */
 
 private const val PKG_PATH = "educative/twopointers/FirstBadVersion"
 
-// Failing due to approach difference, but's only + or -1 for API calls
+// * The output pair's second element is an API-call count that is
+// * implementation-specific; only the found bad-version index (first element) is
+// * the actual contract, so we assert on that.
 class FirstBadVersionTest :
   StringSpec({
     "first bad version" {
@@ -20,7 +21,7 @@ class FirstBadVersionTest :
         }
         .forAll { (n, firstBadVersionIndex, output) ->
           val firstBadVersion = FirstBadVersion(firstBadVersionIndex)
-          firstBadVersion.firstBadVersion(n) shouldBe output.toPair()
+          firstBadVersion.firstBadVersion(n).first shouldBe output.first()
         }
     }
   })

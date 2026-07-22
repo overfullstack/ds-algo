@@ -147,7 +147,7 @@ constructor(
     @JvmStatic
     fun levelOrderToIncompleteTree(levelOrder: List<Int?>): TreeNode? {
       val valQueue = ArrayDeque(levelOrder)
-      val rootVal = valQueue.removeFirst() ?: return null
+      val rootVal = valQueue.removeFirstOrNull() ?: return null
       val treeNodeQueue = ArrayDeque<TreeNode>()
       val root = TreeNode(rootVal)
       treeNodeQueue.add(root)

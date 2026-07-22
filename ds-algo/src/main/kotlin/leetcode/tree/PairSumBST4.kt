@@ -10,12 +10,12 @@ fun TreeNode.isPairWithSumPresent(targetSum: Int): Boolean {
   this.addLeftmost(smallStk)
   this.addRightmost(bigStk)
 
-  while (smallStk.first().`val` < bigStk.first().`val`) { // * Loop till they cross each other.
-    val curSum = smallStk.first().`val` + bigStk.first().`val`
+  while (smallStk.last().`val` < bigStk.last().`val`) { // * Loop till they cross each other.
+    val curSum = smallStk.last().`val` + bigStk.last().`val`
     when {
-      // * Next in inorder, or next smallest number. If no `right`, `pop()` takes care of exposing
-      // next smallest number.
-      curSum < targetSum -> smallStk.removeFirst().right?.addLeftmost(smallStk)
+      // * Next in inorder, or next smallest number. If no `right`, `removeLast()` takes care of
+      // exposing next smallest number.
+      curSum < targetSum -> smallStk.removeLast().right?.addLeftmost(smallStk)
       curSum > targetSum ->
         bigStk
           .removeLast()
