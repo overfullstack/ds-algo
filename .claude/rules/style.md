@@ -1,132 +1,103 @@
 # Coding Problem Solution Rules
 
-## Core Principles
+These are *policies and repo conventions* — the parts a general model won't infer.
+For plain language syntax (modern Java features, idiomatic Kotlin operators), rely
+on your own knowledge; if unsure of a specific API, query **context7** rather than
+bloating this file.
 
-### 1. **Start Simple, Always**
-- **FIRST** provide the simplest working solution (20-50 lines typical)
-- **AVOID** premature optimization or over-engineering
-- **PREFER** readability to marginal performance gains
-- **Pattern Recognition**: Check for existing patterns in codebase before creating new solutions
-- If a problem is similar to an existing LeetCode problem, follow that pattern
+## 1. Start simple, always
 
-### 2. **Solution Complexity Guidelines**
+- **FIRST** provide the simplest working solution.
+- **AVOID** premature optimization or over-engineering.
+- **PREFER** readability over marginal performance gains — do *not* trade
+  readability for memory/perf tricks (e.g. bitmasks).
+- Check for an existing pattern in the codebase before inventing a new solution.
+  If the problem mirrors a known LeetCode problem, follow that pattern.
 
-#### Typical Problem Sizes:
-- **Easy problems**: 15-30 lines
-- **Medium problems**: 30-80 lines
-- **Hard problems**: 50-150 lines
+## 2. Complexity budget
 
-#### Red Flags - Solution is Too Complex If:
-- Solution exceeds 100 lines for a typical interview problem
-- Using multiple data structures when one suffices
-- Multiple passes when single pass works
-- Complex state tracking for simple problems
-- More than 3-4 helper functions for medium problems
-- Method has more than 15 lines
-- Need to scroll to see the entire solution
+Typical sizes: **Easy** 15-30 lines · **Medium** 30-80 · **Hard** 50-150.
 
-### 3. **Pattern Recognition First**
-Before coding, check if the problem matches:
-- Existing patterns in the codebase
-- Standard algorithms (Two Pointers, Sliding Window, DFS/BFS, etc.)
-- Similar LeetCode problems
+Red flags the solution is too complex:
+- Exceeds ~100 lines for a typical interview problem.
+- Multiple data structures where one suffices, or multiple passes where one works.
+- Complex state tracking for a simple problem.
+- More than 3-4 helper functions (medium), or a method over ~15 lines.
+- You must scroll to see the whole solution.
 
-### 7. **Comments and Documentation**
+## 3. Solution progression
 
-#### Comment Requirements:
-- Explain "why" not "what"
-- Mark critical algorithm steps
-- Note edge cases being handled
-- Explain complex calculations
-- NO JavaDoc/KDoc unless requested
+1. **Default**: simplest working solution.
+2. **If asked**: mention possible optimizations.
+3. **Only if requested**: provide the optimized version.
 
-### 8. **Solution Progression**
+## 4. Comments
 
-1. **Default**: Provide the simplest working solution
-2. **If Asked**: Mention possible optimizations
-3. **Only If Requested**: Provide optimized version
+- Explain **why**, not **what**.
+- Mark critical algorithm steps and edge cases handled; explain non-obvious calculations.
+- **No** JavaDoc/KDoc unless explicitly requested.
 
-### 9. **Anti-Patterns to Avoid**
+## 5. Anti-patterns
 
-❌ **DON'T**:
-- Create unnecessary abstractions
-- Use complex data structures for simple problems
-- Write generic solutions for specific problems
-- Add features not requested
-- Optimize prematurely
-- Create multiple classes for single-file problems
+❌ Don't: unnecessary abstractions · complex structures for simple problems ·
+generic solutions to specific problems · unrequested features · premature
+optimization · multiple classes for a single-file problem.
 
-✅ **DO**:
-- Write direct, readable code
-- Use built-in functions and standard library
-- Keep it simple and maintainable
-- Match existing codebase patterns
-- Test with provided examples
+✅ Do: direct readable code · built-ins and standard library · match existing
+codebase patterns · test against the provided examples.
 
-### 10. **When in Doubt**
+## 6. When in doubt
 
-Ask yourself:
-1. Can this be solved in fewer lines?
-2. Would a junior developer understand this?
-3. Is every line necessary?
-4. Am I solving the actual problem or a general case?
+Can this be fewer lines? Would a junior understand it? Is every line necessary?
+Am I solving the actual problem or a general case?
+A 30-line clear solution beats a 300-line clever one every time.
 
-**Remember**: A 30-line clear solution beats a 300-line "clever" solution every time.
+---
 
-# Java-Specific Patterns
-- Prioritize **simplicity** and **readability** above all else. Do not trade readability for memory or performance efficiency, such as using Bitmask.
-- Use **Modern and Latest Java syntax available**. Some examples are:
-  - Use `IO.println` instead of the legacy `System.out.println`
-  - Use HashMap operations like `merge`, `computeIfPresent`, `computeIfAbsent`, `putIfPresent`, `putIfAbsent` etc.
-  - **Modern Collection Operations**: Use `.toList()` instead of `.collect(Collectors.toList())`.
-  - **Local Variable Type Inference**: Use `var` for local variables when the type is obvious from context
-  - **Enhanced Switch**: Use switch expressions with `->` syntax instead of traditional switch statements
-  - **Text Blocks**: Use `"""` text blocks for multi-line strings
-  - **Pattern Matching**: Use pattern matching for `instanceof`
-  - **Collection Factory Methods**: Use `List.of()`, `Set.of()`, `Map.of()` for immutable collections
-- Chain operations using stream: prefer `.stream()` for multiple transformations
-- If applicable, use functional combinators: `map`, `filter`, `flatMap`, `reduce`, `max`, `min`, `sum`, `findFirst`, `findAny`, `anyMatch`, `allMatch`, etc., over imperative loops with continue and break statements
-- Don't use functional programming if it hurts readability and adds cognitive complexity.
-- Refer these Java files for Functional programming style guide for Java:
-  - ds-algo/src/main/java/practice/ParallelCourses.java
-  - ds-algo/src/main/java/practice/DetonateTheMaximumBombs.java
-  - ds-algo/src/main/java/practice/SurroundedRegions.java
-  - ds-algo/src/main/java/practice/FindTheSafestPathInGrid.java
+# Language conventions
 
-# Kotlin-Specific Patterns
-- Always use `when` expressions over if-else chains
-- Use ranges: `downTo`, `until`, `in`, `indices` for iterations
-- String operations: use `substring(range)` with IntRange, not separate indices
-- Chain operations using sequences: prefer `.asSequence()` for multiple transformations
-- If applicable, use functional combinators:` map`, `filter`, `flatMap`, `fold`, `maxOrNull`, `minOrNull`, `firstOrNull`, `any`, `all`, `count`, `sum`, etc, over imperative loops with continue and break statements
-- Default parameters for recursive accumulators: use `= emptySet()`, `= emptyList()`
-- Prefer single-expression functions that return directly from when/if expressions
-- Collection operations: use `+` operator for adding to immutable collections
-- Use `?.let { }` with elvis `?:` for clean null handling
-- Use Extension functions only if they improve readability. Don't overuse
-- Use `tailrec` only when the recursive call is truly in tail position
-- While generating Kotlin code, specify all variable types and functional return types explicitly, unless redundant.
+## Java
+- Simplicity and readability above all — never trade them for memory/perf.
+- Use the newest Java syntax the toolchain allows (project is on JDK 26 with
+  `--enable-preview`): `var`, switch expressions, text blocks, pattern matching,
+  `List/Set/Map.of`, `Stream.toList()`, and `Map` combinators
+  (`merge`, `computeIfAbsent`, `putIfAbsent`, …).
+- Chain with streams for multiple transformations; use combinators
+  (`map`/`filter`/`flatMap`/`reduce`/`anyMatch`/…) over imperative loops with
+  `break`/`continue` — **unless** it hurts readability.
+- Functional-style Java exemplars to follow:
+  - `ds-algo/src/main/java/practice/graph/kahn/ParallelCourses.java`
+  - `ds-algo/src/main/java/practice/graph/DetonateMaximumBombs.java`
+  - `ds-algo/src/main/java/practice/graph/floodfill/SurroundedRegions.java`
+  - `ds-algo/src/main/java/practice/graph/grid/FindTheSafestPathInGrid.java`
 
-# Functional Programming Patterns
-- Keep functional code simple: avoid nested functions, unnecessary data classes, and over-engineered chains
-- Use this codebase's functional style: pure functions, sequences/streams, immutable state
-- Reduce state mutation as much as possible. Prefer state transformation
-- Build immutable data flow: pass state through parameters, return new state instead of mutating
-- Prefer direct recursion with parameters over complex state objects
-- Follow the functional style from code in these directories from this code repository:
-  - ds-algo/src/main/kotlin/leetcode/graph
-  - ds-algo/src/main/kotlin/leetcode/backtracking
-  - ds-algo/src/main/kotlin/educative/graph
-  - ds-algo/src/main/kotlin/educative/backtracking
-- Functional programming style may not apply to some problems that need mutation-heavy solutions. For example, solutions in these directories:
-  - ds-algo/src/main/kotlin/leetcode/dp
-  - ds-algo/src/main/kotlin/educative/dp
-  - ds-algo/src/main/kotlin/leetcode/slidingwindow
+## Kotlin
+- `when` for 3+ branches; plain `if/else` for binary conditions (Kotlin's own
+  convention — don't force `when` on two-way choices).
+- Ranges for iteration: `downTo`, `until`, `in`, `indices`.
+- `substring(range)` with an `IntRange`, not separate start/end indices.
+- Combinators (`map`/`filter`/`flatMap`/`fold`/`firstOrNull`/`any`/`all`/…) and
+  `.asSequence()` for multi-step transformations, over imperative loops.
+- Default params for recursive accumulators (`= emptySet()`, `= emptyList()`).
+- Prefer single-expression functions returning from a `when`/`if`.
+- `+` operator to add to immutable collections; `?.let { } ?: …` for null handling.
+- Extension functions and `tailrec` only when they genuinely improve things.
+- Specify variable and return types explicitly unless redundant.
 
-# Recursion Patterns
-- Follow the recursive style from code in these directories from this code repository:
-  - ds-algo/src/main/kotlin/leetcode/tree
-  - ds-algo/src/main/kotlin/educative/tree
-- For recursive functions with state, pass immutable state as parameters
-- Return complete result from base case, not accumulate via side effects
-- Cache/memoization: use MutableMap parameter with a default empty map 
+# Functional programming
+- Keep it simple: no nested functions, gratuitous data classes, or over-engineered
+  chains. Pure functions, sequences/streams, immutable state.
+- Transform state, don't mutate: pass state through parameters, return new state.
+- Prefer direct recursion with parameters over complex state objects.
+- Follow the functional style in:
+  `ds-algo/src/main/kotlin/{leetcode,educative}/{graph,backtracking}`.
+- Mutation-heavy problems are the exception — these dirs are legitimately imperative:
+  `ds-algo/src/main/kotlin/{leetcode,educative}/dp`,
+  `ds-algo/src/main/kotlin/leetcode/slidingwindow`.
+
+# Recursion
+- Follow the recursive style in
+  `ds-algo/src/main/kotlin/{leetcode,educative}/tree`.
+- Pass immutable state as parameters; return the complete result from the base
+  case rather than accumulating via side effects.
+- Memoization: a `MutableMap` parameter defaulting to an empty map.
