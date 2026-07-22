@@ -58,8 +58,9 @@ A 30-line clear solution beats a 300-line clever one every time.
 
 ## Java
 - Simplicity and readability above all — never trade them for memory/perf.
-- Use the newest Java syntax the toolchain allows (project is on JDK 26 with
-  `--enable-preview`): `var`, switch expressions, text blocks, pattern matching,
+- Use the newest Java syntax the toolchain allows (JDK version in
+  `libs.versions.toml`, compiled with `--enable-preview`): `var`, switch
+  expressions, text blocks, pattern matching,
   `List/Set/Map.of`, `Stream.toList()`, and `Map` combinators
   (`merge`, `computeIfAbsent`, `putIfAbsent`, …).
 - Chain with streams for multiple transformations; use combinators
