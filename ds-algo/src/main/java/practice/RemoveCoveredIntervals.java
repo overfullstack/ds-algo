@@ -26,11 +26,11 @@ public class RemoveCoveredIntervals {
 
   static void main() {
     var removeCoveredIntervals = new RemoveCoveredIntervals();
-    System.out.println(
+    IO.println(
         removeCoveredIntervals.removeCoveredIntervals(new int[][] {{1, 2}, {1, 4}, {3, 4}})); // 1
-    System.out.println(
+    IO.println(
         removeCoveredIntervals.removeCoveredIntervals(new int[][] {{1, 4}, {3, 6}, {2, 8}})); // 2
-    System.out.println(
+    IO.println(
         removeCoveredIntervals.removeCoveredIntervals(new int[][] {{1, 4}, {2, 3}})); // 1
   }
 }

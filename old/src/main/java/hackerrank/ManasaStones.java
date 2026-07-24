@@ -27,7 +27,7 @@ public class ManasaStones {
       }
       var out = new StringBuilder();
       for (int possible : possibles) out.append(possible).append(" ");
-      System.out.println(out);
+      IO.println(out);
     }
   }
 }

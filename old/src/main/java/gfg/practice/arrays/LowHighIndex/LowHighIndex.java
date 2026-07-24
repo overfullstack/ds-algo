@@ -17,11 +17,11 @@ public class LowHighIndex {
   private static void printFirstLastOccurence(int[] arr, int searchNum) {
     var firstOccurrence = findFirstOccurrence(arr, searchNum, 0, arr.length - 1);
     if (firstOccurrence == -1) {
-      System.out.println(-1);
+      IO.println(-1);
       return;
     }
     var lastOccurrence = findLastOccurrence(arr, searchNum, firstOccurrence, arr.length - 1);
-    System.out.println(firstOccurrence + " " + lastOccurrence);
+    IO.println(firstOccurrence + " " + lastOccurrence);
   }
 
   private static int findLastOccurrence(int[] arr, int searchNum, int left, int right) {

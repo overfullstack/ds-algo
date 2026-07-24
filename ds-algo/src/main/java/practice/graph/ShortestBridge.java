@@ -69,9 +69,9 @@ public class ShortestBridge {
 
   static void main() {
     var sb = new ShortestBridge();
-    System.out.println(sb.shortestBridge(new int[][] {{0, 1}, {1, 0}})); // 1
-    System.out.println(sb.shortestBridge(new int[][] {{0, 1, 0}, {0, 0, 0}, {0, 0, 1}})); // 2
-    System.out.println(
+    IO.println(sb.shortestBridge(new int[][] {{0, 1}, {1, 0}})); // 1
+    IO.println(sb.shortestBridge(new int[][] {{0, 1, 0}, {0, 0, 0}, {0, 0, 1}})); // 2
+    IO.println(
         sb.shortestBridge(
             new int[][] {
               {1, 1, 1, 1, 1}, {1, 0, 0, 0, 1}, {1, 0, 1, 0, 1}, {1, 0, 0, 0, 1}, {1, 1, 1, 1, 1}

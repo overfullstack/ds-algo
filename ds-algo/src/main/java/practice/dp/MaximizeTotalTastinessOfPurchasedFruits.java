@@ -63,9 +63,9 @@ public class MaximizeTotalTastinessOfPurchasedFruits {
 
   static void main() {
     var maxTastiness = new MaximizeTotalTastinessOfPurchasedFruits();
-    System.out.println(
+    IO.println(
         maxTastiness.maxTastiness(new int[] {10, 20, 20}, new int[] {5, 8, 8}, 20, 1)); // 13
-    System.out.println(
+    IO.println(
         maxTastiness.maxTastiness(new int[] {10, 15, 7}, new int[] {5, 8, 20}, 10, 2)); // 28
   }
 }

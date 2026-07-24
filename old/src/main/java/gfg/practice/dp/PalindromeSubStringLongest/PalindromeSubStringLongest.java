@@ -37,6 +37,6 @@ public class PalindromeSubStringLongest {
         }
       }
     }
-    System.out.println(str.substring(start, start + maxGap + 1));
+    IO.println(str.substring(start, start + maxGap + 1));
   }
 }

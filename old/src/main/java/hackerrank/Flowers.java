@@ -24,7 +24,7 @@ public class Flowers {
     /*for (int i = 0; i < N; i++) {
         result += (C[i] * ((i / K) + 1));
     }
-    System.out.println(result);*/
+    IO.println(result);*/
   }
 
   public static void descendingQuickSort(long[] c, int lowIndex, int highIndex) {

@@ -17,7 +17,7 @@ public class SnakesAndLadders {
       while (snakesOrLadders-- > 0) {
         snakesOrLaddersMap.put(scn.nextInt(), scn.nextInt());
       }
-      System.out.println(minDiceThrows(snakesOrLaddersMap));
+      IO.println(minDiceThrows(snakesOrLaddersMap));
     }
   }
 

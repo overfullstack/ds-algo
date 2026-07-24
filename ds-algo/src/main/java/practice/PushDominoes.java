@@ -35,6 +35,6 @@ public class PushDominoes {
 
   static void main() {
     var pushDominoes = new PushDominoes();
-    System.out.println(pushDominoes.pushDominoes(".L.R...LR..L..")); // LL.RR.LLRRLL..
+    IO.println(pushDominoes.pushDominoes(".L.R...LR..L..")); // LL.RR.LLRRLL..
   }
 }

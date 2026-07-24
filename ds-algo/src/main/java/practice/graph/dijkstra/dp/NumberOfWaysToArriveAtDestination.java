@@ -64,9 +64,9 @@ public class NumberOfWaysToArriveAtDestination {
       {0, 4, 5},
       {4, 6, 2}
     };
-    System.out.println(obj.countPaths(7, roads)); // 4
+    IO.println(obj.countPaths(7, roads)); // 4
     roads = new int[][] {{1, 0, 10}};
-    System.out.println(obj.countPaths(2, roads)); // 1
+    IO.println(obj.countPaths(2, roads)); // 1
     roads =
         new int[][] {
           {0, 1, 5},
@@ -77,6 +77,6 @@ public class NumberOfWaysToArriveAtDestination {
           {2, 4, 1},
           {3, 4, 1}
         };
-    System.out.println(obj.countPaths(6, roads)); // 2
+    IO.println(obj.countPaths(6, roads)); // 2
   }
 }

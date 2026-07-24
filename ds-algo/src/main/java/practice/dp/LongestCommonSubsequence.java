@@ -27,8 +27,8 @@ public class LongestCommonSubsequence {
 
   static void main() {
     var obj = new LongestCommonSubsequence();
-    System.out.println(obj.longestCommonSubsequence("abcde", "ace")); // 3
-    System.out.println(obj.longestCommonSubsequence("abc", "abc")); // 3
-    System.out.println(obj.longestCommonSubsequence("abc", "def")); // 0
+    IO.println(obj.longestCommonSubsequence("abcde", "ace")); // 3
+    IO.println(obj.longestCommonSubsequence("abc", "abc")); // 3
+    IO.println(obj.longestCommonSubsequence("abc", "def")); // 0
   }
 }

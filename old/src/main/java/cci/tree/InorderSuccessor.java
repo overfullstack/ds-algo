@@ -20,8 +20,8 @@ public class InorderSuccessor {
     t6.parent = t7.parent = t3;
     t8.parent = t4;
 
-    System.out.println(findNextInorderSuccessor(t7));
-    System.out.println(findNexInorderSuccessorWithoutParent(t1, t7));
+    IO.println(findNextInorderSuccessor(t7));
+    IO.println(findNexInorderSuccessorWithoutParent(t1, t7));
   }
 
   private static TreeNode findNextInorderSuccessor(TreeNode root) {

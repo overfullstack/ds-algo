@@ -30,13 +30,13 @@ public class PairsOfSongsWithTotalDurationsDivisibleBy_60 {
   static void main() {
     var pairsOfSongsWithTotalDurationsDivisibleBy_60 =
         new PairsOfSongsWithTotalDurationsDivisibleBy_60();
-    System.out.println(
+    IO.println(
         pairsOfSongsWithTotalDurationsDivisibleBy_60.numPairsDivisibleBy60(
             new int[] {0, 0, 0})); // 0
-    System.out.println(
+    IO.println(
         pairsOfSongsWithTotalDurationsDivisibleBy_60.numPairsDivisibleBy60(
             new int[] {30, 20, 150, 100, 40})); // 3
-    System.out.println(
+    IO.println(
         pairsOfSongsWithTotalDurationsDivisibleBy_60.numPairsDivisibleBy60(
             new int[] {60, 60, 60})); // 3
   }

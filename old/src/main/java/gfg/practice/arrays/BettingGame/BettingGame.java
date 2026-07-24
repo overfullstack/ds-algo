@@ -14,7 +14,7 @@ public class BettingGame {
 
     var initAmount = 4;
     for (var str : strings) {
-      System.out.println(bettingOutcome(initAmount, str));
+      IO.println(bettingOutcome(initAmount, str));
     }
   }
 

@@ -54,7 +54,7 @@ class SharedPrinter {
         Thread.currentThread().interrupt();
       }
     }
-    System.out.println("Odd: " + numToPrint);
+    IO.println("Odd: " + numToPrint);
     printOddNow = false;
     notifyAll();
   }
@@ -67,7 +67,7 @@ class SharedPrinter {
         Thread.currentThread().interrupt();
       }
     }
-    System.out.println("Even: " + numToPrint);
+    IO.println("Even: " + numToPrint);
     printOddNow = true;
     notifyAll();
   }

@@ -33,9 +33,9 @@ public class NumberOfProvinces {
 
   static void main() {
     var obj = new NumberOfProvinces();
-    System.out.println(obj.findCircleNum(new int[][] {{1, 1, 0}, {1, 1, 0}, {0, 0, 1}})); // 2
-    System.out.println(obj.findCircleNum(new int[][] {{1, 0, 0}, {0, 1, 0}, {0, 0, 1}})); // 3
-    System.out.println(
+    IO.println(obj.findCircleNum(new int[][] {{1, 1, 0}, {1, 1, 0}, {0, 0, 1}})); // 2
+    IO.println(obj.findCircleNum(new int[][] {{1, 0, 0}, {0, 1, 0}, {0, 0, 1}})); // 3
+    IO.println(
         obj.findCircleNum(
             new int[][] {
               {1, 0, 0, 1},

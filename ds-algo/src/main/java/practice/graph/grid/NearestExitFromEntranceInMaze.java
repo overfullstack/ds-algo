@@ -70,18 +70,18 @@ public class NearestExitFromEntranceInMaze {
       {'+', '.', '.', '+'}
     };
     int[] entrance5 = {0, 0};
-    System.out.println(obj.nearestExit(maze5, entrance5)); // 7
+    IO.println(obj.nearestExit(maze5, entrance5)); // 7
     char[][] maze4 = {{'.', '.'}};
     int[] entrance4 = {0, 1};
-    System.out.println(obj.nearestExit(maze4, entrance4)); // 1
+    IO.println(obj.nearestExit(maze4, entrance4)); // 1
     char[][] maze = {{'+', '+', '.', '+'}, {'.', '.', '.', '+'}, {'+', '+', '+', '.'}};
     int[] entrance = {1, 2};
-    System.out.println(obj.nearestExit(maze, entrance)); // 1
+    IO.println(obj.nearestExit(maze, entrance)); // 1
     char[][] maze2 = {{'+', '+', '+'}, {'.', '.', '.'}, {'+', '+', '+'}};
     int[] entrance2 = {1, 0};
-    System.out.println(obj.nearestExit(maze2, entrance2)); // 2
+    IO.println(obj.nearestExit(maze2, entrance2)); // 2
     char[][] maze3 = {{'.', '+'}};
     int[] entrance3 = {0, 0};
-    System.out.println(obj.nearestExit(maze3, entrance3)); // -1
+    IO.println(obj.nearestExit(maze3, entrance3)); // -1
   }
 }

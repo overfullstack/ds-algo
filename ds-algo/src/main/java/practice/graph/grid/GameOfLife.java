@@ -56,6 +56,6 @@ public class GameOfLife {
     var gameOfLife = new GameOfLife();
     var board = new int[][] {{0, 1, 0}, {0, 0, 1}, {1, 1, 1}, {0, 0, 0}};
     gameOfLife.gameOfLife(board);
-    System.out.println(Arrays.deepToString(board)); // [[0,0,0],[1,0,1],[0,1,1],[0,1,0]]
+    IO.println(Arrays.deepToString(board)); // [[0,0,0],[1,0,1],[0,1,1],[0,1,0]]
   }
 }

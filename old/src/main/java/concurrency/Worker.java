@@ -35,10 +35,10 @@ public class Worker extends Thread {
   public void run() {
     while (!quittingTime) {
       working();
-      System.out.println("Still working...");
+      IO.println("Still working...");
     }
 
-    System.out.println("Coffee is good !");
+    IO.println("Coffee is good !");
   }
 
   private void working() {
@@ -51,18 +51,18 @@ public class Worker extends Thread {
   synchronized void quit() throws InterruptedException {
     synchronized (lock) {
       quittingTime = true;
-      System.out.println("Calling join");
+      IO.println("Calling join");
       join(); // This is called as a part main thread, and join method is called on 'this', i.e.,
       // Worker object.
       // So it is hey main, stop and join at the end of Worker thread.
-      System.out.println("Back from join");
+      IO.println("Back from join");
     }
   }
 
   synchronized void keepWorking() {
     synchronized (lock) {
       quittingTime = false;
-      System.out.println("Keep working");
+      IO.println("Keep working");
     }
   }
 }

@@ -17,11 +17,11 @@ public class CloneLL {
     head.next.next.next.random = head.next.next.next.next.next;
     head.next.next.next.next.random = head.next;
 
-    System.out.println("**Original: ");
+    IO.println("**Original: ");
     print(head);
 
     var clonedHead = cloneLL(head);
-    System.out.println("**Cloned: ");
+    IO.println("**Cloned: ");
     print(clonedHead);
   }
 
@@ -69,7 +69,7 @@ public class CloneLL {
 
   public static void print(ListNode node) {
     while (node != null) {
-      System.out.println("(" + node.val + "," + node.random + ")");
+      IO.println("(" + node.val + "," + node.random + ")");
       node = node.next;
     }
   }

@@ -37,7 +37,7 @@ public class WordBreak {
       var subWord = word.substring(0, i);
       if (dictionary.contains(subWord)) {
         if (i == len) {
-          System.out.println(result + subWord);
+          IO.println(result + subWord);
           return;
         }
         wordBreak(word.substring(i, len), result + subWord + " ");

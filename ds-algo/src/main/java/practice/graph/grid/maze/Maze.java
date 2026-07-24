@@ -49,6 +49,6 @@ public class Maze {
     var start = new int[] {0, 4};
     var destination = new int[] {4, 4};
     var mazeSolver = new Maze();
-    System.out.println(mazeSolver.hasPath(maze, start, destination)); // true
+    IO.println(mazeSolver.hasPath(maze, start, destination)); // true
   }
 }

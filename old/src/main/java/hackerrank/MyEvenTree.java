@@ -48,7 +48,7 @@ public class MyEvenTree {
         edgesRemoveCount++;
       }
     }
-    System.out.println(edgesRemoveCount);
+    IO.println(edgesRemoveCount);
   }
 }
 

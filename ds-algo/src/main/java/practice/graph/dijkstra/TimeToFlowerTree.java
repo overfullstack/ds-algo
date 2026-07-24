@@ -39,6 +39,6 @@ public class TimeToFlowerTree {
 
   static void main() {
     var solution = new TimeToFlowerTree();
-    System.out.println(solution.timeToFlowerTree(new int[] {-1, 0, 0}, new int[] {-1, 3, 5}));
+    IO.println(solution.timeToFlowerTree(new int[] {-1, 0, 0}, new int[] {-1, 3, 5}));
   }
 }

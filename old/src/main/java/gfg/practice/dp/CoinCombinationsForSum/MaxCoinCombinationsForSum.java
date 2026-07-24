@@ -11,7 +11,7 @@ public class MaxCoinCombinationsForSum {
       var len = scn.nextInt();
       var arr = readArray(scn, len);
       var sum = scn.nextInt();
-      System.out.println(maximumPossibleCombinations(arr, sum));
+      IO.println(maximumPossibleCombinations(arr, sum));
     }
   }
 

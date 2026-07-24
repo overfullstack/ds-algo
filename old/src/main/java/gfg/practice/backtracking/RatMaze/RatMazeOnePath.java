@@ -8,12 +8,12 @@ public class RatMazeOnePath {
     int[][] maze = {{1, 0, 0, 0}, {1, 1, 0, 1}, {0, 1, 0, 0}, {1, 1, 1, 1}};
     var visited = new boolean[4][4];
     if (solveMaze(maze, 0, 0, visited)) {
-      System.out.println("Rat reached the end! :)");
+      IO.println("Rat reached the end! :)");
       for (var path : visited) {
-        System.out.println(Arrays.toString(path));
+        IO.println(Arrays.toString(path));
       }
     } else {
-      System.out.println("Rat can't be out :(");
+      IO.println("Rat can't be out :(");
     }
   }
 

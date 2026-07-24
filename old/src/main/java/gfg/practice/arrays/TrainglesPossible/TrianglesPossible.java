@@ -11,7 +11,7 @@ public class TrianglesPossible {
     while (testCases-- > 0) {
       var len = scn.nextInt();
       var arr = readArray(scn, len);
-      System.out.println(trianglesPossible(arr));
+      IO.println(trianglesPossible(arr));
     }
   }
 

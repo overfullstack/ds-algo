@@ -10,7 +10,7 @@ public class RainWaterTrap {
     while (tests-- > 0) {
       var len = scn.nextInt();
       var arr = fillArray(len, scn);
-      System.out.println(maxRainWaterTrap(arr, len));
+      IO.println(maxRainWaterTrap(arr, len));
     }
   }
 

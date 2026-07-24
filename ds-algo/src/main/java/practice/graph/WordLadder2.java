@@ -88,17 +88,17 @@ public class WordLadder2 {
     // Test case 1: Simple case
     var test1 = List.of("hot", "dot", "dog", "lot", "log", "cog");
     var result1a = wordLadder2.findLadders("hit", "cog", test1);
-    System.out.println("Test 1 - findLadders: " + result1a);
+    IO.println("Test 1 - findLadders: " + result1a);
 
     // Test case 2: No path case
     var test2 = List.of("hot", "dot", "dog", "lot", "log");
     var result2a = wordLadder2.findLadders("hit", "cog", test2);
-    System.out.println("Test 2 - findLadders: " + result2a);
+    IO.println("Test 2 - findLadders: " + result2a);
 
     // Test case 3: Multiple paths
     var test3 = List.of("ted", "tex", "red", "tax", "tad", "den", "rex", "pee");
     var result3a = wordLadder2.findLadders("red", "tax", test3);
-    System.out.println("Test 3 - findLadders: " + result3a);
+    IO.println("Test 3 - findLadders: " + result3a);
 
     // Test case 4: Large input (this was timing out before)
     var test4 =
@@ -159,11 +159,11 @@ public class WordLadder2 {
             "yyyww", "yywww", "ywwww", "wwwww", "wwvww", "wvvww", "vvvww", "vvvwz", "avvwz",
             "aavwz", "aaawz", "aaaaz");
 
-    System.out.println("Test 4 - Large input test (this was timing out before):");
+    IO.println("Test 4 - Large input test (this was timing out before):");
     long startTime = System.currentTimeMillis();
     var result4a = wordLadder2.findLadders("aaaaa", "ggggg", test4);
     long time1 = System.currentTimeMillis() - startTime;
 
-    System.out.println("Test 4 - findLadders: " + result4a.size() + " paths, " + time1 + "ms");
+    IO.println("Test 4 - findLadders: " + result4a.size() + " paths, " + time1 + "ms");
   }
 }

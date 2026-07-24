@@ -5,7 +5,7 @@ public class SearchInArrWithDiff1 {
   static void main() {
     int[] arr = {8, 7, 6, 7, 6, 5, 4, 3, 2, 3, 4, 3};
     var key = 3;
-    System.out.println(find(arr, key));
+    IO.println(find(arr, key));
   }
 
   private static int find(int[] arr, int key) {

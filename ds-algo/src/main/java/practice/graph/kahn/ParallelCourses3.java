@@ -47,9 +47,9 @@ public class ParallelCourses3 {
 
   static void main() {
     var parallelCourses3 = new ParallelCourses3();
-    System.out.println(
+    IO.println(
         parallelCourses3.minimumTime(3, new int[][] {{1, 3}, {2, 3}}, new int[] {3, 2, 5})); // 8
-    System.out.println(
+    IO.println(
         parallelCourses3.minimumTime(
             5,
             new int[][] {{1, 5}, {2, 5}, {3, 5}, {3, 4}, {4, 5}},

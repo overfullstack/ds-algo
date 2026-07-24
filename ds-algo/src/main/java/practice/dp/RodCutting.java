@@ -14,7 +14,7 @@ public class RodCutting {
   }
 
   static void main() {
-    System.out.println(cutRod(new int[] {2, 5, 7, 8, 10}, 5)); // 12
-    System.out.println(cutRod(new int[] {3, 5, 8, 9, 10, 17, 17, 20}, 8)); // 24
+    IO.println(cutRod(new int[] {2, 5, 7, 8, 10}, 5)); // 12
+    IO.println(cutRod(new int[] {3, 5, 8, 9, 10, 17, 17, 20}, 8)); // 24
   }
 }

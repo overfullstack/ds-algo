@@ -34,11 +34,11 @@ public class LongestSubsequenceWithLimitedSum {
 
   static void main() {
     var l = new LongestSubsequenceWithLimitedSum();
-    System.out.println(
+    IO.println(
         Arrays.stream(l.answerQueries(new int[] {4, 5, 2, 1}, new int[] {3, 10, 21}))
             .mapToObj(i -> i + " ")
             .toList()); // [2, 3, 4]
-    System.out.println(
+    IO.println(
         Arrays.stream(l.answerQueries(new int[] {2, 3, 4, 5}, new int[] {1}))
             .mapToObj(i -> i + " ")
             .toList()); // [0]

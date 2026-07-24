@@ -20,7 +20,7 @@ public class MirrorTree {
     printTreeInorder(t1);
     mirrorTree(t1);
 
-    System.out.println();
+    IO.println();
     printTreeInorder(t1);
   }
 

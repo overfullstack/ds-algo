@@ -6,7 +6,7 @@ import java.util.Arrays;
 public class SubsetMinDiff {
   static void main() {
     int[] arr = {3, 1, 4, 2, 2, 1};
-    System.out.println(minDiff(arr));
+    IO.println(minDiff(arr));
   }
 
   private static int minDiff(int[] arr) {

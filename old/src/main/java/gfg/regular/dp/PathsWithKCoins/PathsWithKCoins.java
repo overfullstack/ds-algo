@@ -13,7 +13,7 @@ public class PathsWithKCoins {
         Arrays.fill(arr, -1);
       }
     }
-    System.out.println(countPaths(mat, k, 2, 2, table));
+    IO.println(countPaths(mat, k, 2, 2, table));
   }
 
   private static int countPaths(int[][] mat, int k, int m, int n, int[][][] table) {

@@ -11,7 +11,7 @@ public class BiggestNumber {
     while (tests-- > 0) {
       var len = scn.nextInt();
       var arr = readArray(scn, len);
-      System.out.println(biggestNumberFromArray(arr));
+      IO.println(biggestNumberFromArray(arr));
     }
   }
 

@@ -92,6 +92,6 @@ public class FindTheSafestPathInGrid {
   static void main() {
     var findTheSafestPathInGrid = new FindTheSafestPathInGrid();
     var grid = List.of(List.of(0, 0, 1), List.of(0, 0, 0), List.of(0, 0, 0));
-    System.out.println(findTheSafestPathInGrid.maximumSafenessFactor(grid));
+    IO.println(findTheSafestPathInGrid.maximumSafenessFactor(grid));
   }
 }

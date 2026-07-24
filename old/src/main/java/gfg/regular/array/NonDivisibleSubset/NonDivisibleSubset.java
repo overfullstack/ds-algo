@@ -5,7 +5,7 @@ public class NonDivisibleSubset {
   static void main() {
     int[] arr = {3, 7, 2, 9, 1};
     var k = 3;
-    System.out.println(maxLenOfNonDivisibleSubset(arr, k));
+    IO.println(maxLenOfNonDivisibleSubset(arr, k));
   }
 
   private static int maxLenOfNonDivisibleSubset(int[] arr, int k) {

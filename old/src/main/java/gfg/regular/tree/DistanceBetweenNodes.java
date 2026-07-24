@@ -33,7 +33,7 @@ public class DistanceBetweenNodes {
 
     // This is where both the nodes bubble-up meet at their LCA.
     if (x != null && y != null) {
-      System.out.println(x.level + y.level - 2 * root.level);
+      IO.println(x.level + y.level - 2 * root.level);
       return root; // * Found Ancestor *
     }
 

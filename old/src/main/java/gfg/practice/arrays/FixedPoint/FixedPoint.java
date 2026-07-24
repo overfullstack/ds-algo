@@ -11,7 +11,7 @@ public class FixedPoint {
       var len = scn.nextInt();
       var arr = new int[len];
       fillArray(arr, scn);
-      System.out.println(findFixedPoint(arr, 0, len - 1));
+      IO.println(findFixedPoint(arr, 0, len - 1));
     }
   }
 

@@ -13,7 +13,7 @@ public class FindDuplicates {
       // printInAscendingOrder(arr, len);
       // printInSameOrder(arr, len);
       printDuplicates(arr, len);
-      System.out.println();
+      IO.println();
     }
   }
 

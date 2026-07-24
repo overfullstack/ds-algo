@@ -30,7 +30,7 @@ public class MinimumASCIIDeleteSumForTwoStrings {
 
   static void main() {
     var obj = new MinimumASCIIDeleteSumForTwoStrings();
-    System.out.println(obj.minimumDeleteSum("sea", "eat")); // 231
-    System.out.println(obj.minimumDeleteSum("delete", "leet")); // 403
+    IO.println(obj.minimumDeleteSum("sea", "eat")); // 231
+    IO.println(obj.minimumDeleteSum("delete", "leet")); // 403
   }
 }

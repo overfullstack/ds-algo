@@ -10,7 +10,7 @@ public class CheckBST {
     var right = new TreeNode(3, null, null);
     var root = new TreeNode(2, left, right);
 
-    System.out.println(check(root));
+    IO.println(check(root));
   }
 
   private static boolean check(TreeNode root) {

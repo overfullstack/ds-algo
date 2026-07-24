@@ -80,8 +80,8 @@ public class MinimumHeightTrees {
 
   static void main() {
     var minHeightTrees = new MinimumHeightTrees();
-    System.out.println(minHeightTrees.findMinHeightTrees(4, new int[][] {{1, 0}, {1, 2}, {1, 3}}));
-    System.out.println(
+    IO.println(minHeightTrees.findMinHeightTrees(4, new int[][] {{1, 0}, {1, 2}, {1, 3}}));
+    IO.println(
         minHeightTrees.findMinHeightTreesDFS(
             6, new int[][] {{3, 0}, {3, 1}, {3, 2}, {3, 4}, {5, 4}}));
   }

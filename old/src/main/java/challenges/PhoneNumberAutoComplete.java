@@ -81,7 +81,7 @@ public class PhoneNumberAutoComplete {
 
     private void printAutoComplete(Trie node, String curPrefix) {
       if (node.isEnd) {
-        System.out.println(curPrefix);
+        IO.println(curPrefix);
       }
       for (var child : node.children) {
         if (child != null) {

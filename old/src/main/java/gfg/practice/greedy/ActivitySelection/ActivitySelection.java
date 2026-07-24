@@ -13,7 +13,7 @@ public class ActivitySelection {
       var len = scn.nextInt();
       var activities = readActivities(scn, len);
       printSelectedActivities(activities);
-      System.out.println();
+      IO.println();
     }
   }
 

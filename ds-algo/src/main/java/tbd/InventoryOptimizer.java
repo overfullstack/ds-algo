@@ -28,15 +28,15 @@ public class InventoryOptimizer {
             new Order("orange", 4),
             new Order("banana", 2));
 
-    System.out.println("Test Case 1:");
-    System.out.println("Initial inventory: " + inventory1);
-    System.out.println("Orders: " + orders1);
+    IO.println("Test Case 1:");
+    IO.println("Initial inventory: " + inventory1);
+    IO.println("Orders: " + orders1);
 
     OptimizationResult result1 = optimizeInventoryUsage(inventory1, orders1);
-    System.out.println("Served orders: " + result1.servedOrders());
-    System.out.println("Remaining inventory: " + result1.remainingInventory());
-    System.out.println("Total inventory used: " + result1.totalInventoryUsed());
-    System.out.println();
+    IO.println("Served orders: " + result1.servedOrders());
+    IO.println("Remaining inventory: " + result1.remainingInventory());
+    IO.println("Total inventory used: " + result1.totalInventoryUsed());
+    IO.println();
 
     // Test case 2: Edge case with insufficient inventory
     Map<String, Integer> inventory2 =
@@ -46,29 +46,29 @@ public class InventoryOptimizer {
     List<Order> orders2 =
         List.of(new Order("item1", 5), new Order("item2", 1), new Order("item1", 2));
 
-    System.out.println("Test Case 2:");
-    System.out.println("Initial inventory: " + inventory2);
-    System.out.println("Orders: " + orders2);
+    IO.println("Test Case 2:");
+    IO.println("Initial inventory: " + inventory2);
+    IO.println("Orders: " + orders2);
 
     OptimizationResult result2 = optimizeInventoryUsage(inventory2, orders2);
-    System.out.println("Served orders: " + result2.servedOrders());
-    System.out.println("Remaining inventory: " + result2.remainingInventory());
-    System.out.println("Total inventory used: " + result2.totalInventoryUsed());
-    System.out.println();
+    IO.println("Served orders: " + result2.servedOrders());
+    IO.println("Remaining inventory: " + result2.remainingInventory());
+    IO.println("Total inventory used: " + result2.totalInventoryUsed());
+    IO.println();
 
     // Test case 3: Compare TreeSet approach with same data as Test Case 1
-    System.out.println("Test Case 3 - TreeSet Approach:");
-    System.out.println("Initial inventory: " + inventory1);
-    System.out.println("Orders: " + orders1);
+    IO.println("Test Case 3 - TreeSet Approach:");
+    IO.println("Initial inventory: " + inventory1);
+    IO.println("Orders: " + orders1);
 
     OptimizationResult result3 = optimizeWithTreeSet(inventory1, orders1);
-    System.out.println("Served orders (TreeSet): " + result3.servedOrders());
-    System.out.println("Remaining inventory: " + result3.remainingInventory());
-    System.out.println("Total inventory used: " + result3.totalInventoryUsed());
-    System.out.println(
+    IO.println("Served orders (TreeSet): " + result3.servedOrders());
+    IO.println("Remaining inventory: " + result3.remainingInventory());
+    IO.println("Total inventory used: " + result3.totalInventoryUsed());
+    IO.println(
         "Same result as Stream approach: "
             + (result1.totalInventoryUsed() == result3.totalInventoryUsed()));
-    System.out.println();
+    IO.println();
 
     // Test case 4: TreeSet with floor() - demonstrating capacity-based order selection
     Map<String, Integer> inventory4 =
@@ -85,14 +85,14 @@ public class InventoryOptimizer {
             new Order("gadget", 3) // Will fit after 6
             );
 
-    System.out.println("Test Case 4 - TreeSet Floor Approach:");
-    System.out.println("Initial inventory: " + inventory4);
-    System.out.println("Orders: " + orders4);
+    IO.println("Test Case 4 - TreeSet Floor Approach:");
+    IO.println("Initial inventory: " + inventory4);
+    IO.println("Orders: " + orders4);
 
     /*OptimizationResult result4 = optimizeWithTreeSetFloor(inventory4, orders4);
-    System.out.println("Served orders (Floor): " + result4.servedOrders());
-    System.out.println("Remaining inventory: " + result4.remainingInventory());
-    System.out.println("Total inventory used: " + result4.totalInventoryUsed());*/
+    IO.println("Served orders (Floor): " + result4.servedOrders());
+    IO.println("Remaining inventory: " + result4.remainingInventory());
+    IO.println("Total inventory used: " + result4.totalInventoryUsed());*/
   }
 
   /// Optimizes inventory usage by serving orders greedily to maximize total inventory consumption.

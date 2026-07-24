@@ -74,23 +74,23 @@ public class MinimumChangesForValidTaskDependencies {
     // Example from problem: [2, 3, 3, 4] (1-indexed values)
     // Task 1->2, Task 2->3, Task 3->3 (self), Task 4->4 (self)
     // Two components with two self-loops, need 1 change to merge
-    System.out.println("Test 1: " + solution.minChanges(new int[] {2, 3, 3, 4})); // Expected: 1
+    IO.println("Test 1: " + solution.minChanges(new int[] {2, 3, 3, 4})); // Expected: 1
 
     // Test 2: [2, 3, 1] - single cycle, no self-loop
     // Forms cycle: 1->2->3->1
     // Need 1 change to create a self-loop
-    System.out.println("Test 2: " + solution.minChanges(new int[] {2, 3, 1})); // Expected: 1
+    IO.println("Test 2: " + solution.minChanges(new int[] {2, 3, 1})); // Expected: 1
 
     // Test 3: [2, 1, 4, 4] - two components
     // Component 1: 1->2->1 (cycle)
     // Component 2: 3->4->4 (self-loop)
     // Need 1 change to connect components
-    System.out.println("Test 3: " + solution.minChanges(new int[] {2, 1, 4, 4})); // Expected: 1
+    IO.println("Test 3: " + solution.minChanges(new int[] {2, 1, 4, 4})); // Expected: 1
 
     // Test 4: [1, 3, 2] - two components
     // Component 1: 1->1 (self-loop)
     // Component 2: 2->3->2 (cycle)
     // Need 1 change to connect components
-    System.out.println("Test 4: " + solution.minChanges(new int[] {1, 3, 2})); // Expected: 1
+    IO.println("Test 4: " + solution.minChanges(new int[] {1, 3, 2})); // Expected: 1
   }
 }

@@ -17,7 +17,7 @@ public class IsSubTree {
     var t5 = new TreeNode(5, null, null);
     var t4 = new TreeNode(4, null, null);
     var t2 = new TreeNode(2, t5, t4);
-    System.out.println(isSubTree(treeNode1, t2));
+    IO.println(isSubTree(treeNode1, t2));
   }
 
   private static boolean isSubTree(TreeNode pt, TreeNode st) {

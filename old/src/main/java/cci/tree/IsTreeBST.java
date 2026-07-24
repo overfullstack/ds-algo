@@ -8,7 +8,7 @@ public class IsTreeBST {
     var treeNode1 = new TreeNode(1, null, null);
     var treeNode3 = new TreeNode(3, null, null);
     var treeNode2 = new TreeNode(2, treeNode1, treeNode3);
-    System.out.println(isBST(treeNode2, Integer.MIN_VALUE, Integer.MAX_VALUE));
+    IO.println(isBST(treeNode2, Integer.MIN_VALUE, Integer.MAX_VALUE));
   }
 
   private static boolean isBST(TreeNode root, int min, int max) {

@@ -11,7 +11,7 @@ public class Sort0s1s2s {
       var len = scn.nextInt();
       var arr = readArr(scn, len);
       Arrays.stream(sort0s1s2s(arr)).forEach(val -> System.out.print(val + " "));
-      System.out.println();
+      IO.println();
     }
   }
 

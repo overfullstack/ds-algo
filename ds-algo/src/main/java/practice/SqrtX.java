@@ -4,7 +4,7 @@ package practice;
 public class SqrtX {
   static void main() {
     var x = 81;
-    System.out.println(new SqrtX().mySqrt(x));
+    IO.println(new SqrtX().mySqrt(x));
   }
 
   public int mySqrt(int x) {

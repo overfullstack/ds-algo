@@ -16,7 +16,7 @@ public class UniqueInSortedArray {
     // like unique
     // element falls in middle of an array
     if ((arr[mid] != arr[mid - 1]) && (arr[mid] != arr[mid + 1])) {
-      System.out.println(arr[mid]);
+      IO.println(arr[mid]);
       return;
     }
 

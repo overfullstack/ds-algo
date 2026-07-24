@@ -84,14 +84,14 @@ public class MinimumCostToMakeAtLeastOneValidPathInAGrid {
 
   static void main() {
     var obj = new MinimumCostToMakeAtLeastOneValidPathInAGrid();
-    System.out.println(
+    IO.println(
         obj.minCost(new int[][] {{1, 1, 1, 1}, {2, 2, 2, 2}, {1, 1, 1, 1}, {2, 2, 2, 2}})); // 3
-    System.out.println(obj.minCost(new int[][] {{1, 1, 3}, {3, 2, 2}, {1, 1, 4}})); // 0
-    System.out.println(obj.minCost(new int[][] {{1, 2}, {4, 3}})); // 1
+    IO.println(obj.minCost(new int[][] {{1, 1, 3}, {3, 2, 2}, {1, 1, 4}})); // 0
+    IO.println(obj.minCost(new int[][] {{1, 2}, {4, 3}})); // 1
 
-    System.out.println(
+    IO.println(
         obj.minCost2(new int[][] {{1, 1, 1, 1}, {2, 2, 2, 2}, {1, 1, 1, 1}, {2, 2, 2, 2}})); // 3
-    System.out.println(obj.minCost2(new int[][] {{1, 1, 3}, {3, 2, 2}, {1, 1, 4}})); // 0
-    System.out.println(obj.minCost2(new int[][] {{1, 2}, {4, 3}})); // 1
+    IO.println(obj.minCost2(new int[][] {{1, 1, 3}, {3, 2, 2}, {1, 1, 4}})); // 0
+    IO.println(obj.minCost2(new int[][] {{1, 2}, {4, 3}})); // 1
   }
 }

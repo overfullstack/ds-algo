@@ -14,7 +14,7 @@ public class CountInRangeBST {
       var root = readTree(scn, len);
       var low = scn.nextInt();
       var high = scn.nextInt();
-      System.out.println(getCount(root, low, high));
+      IO.println(getCount(root, low, high));
     }
   }
 

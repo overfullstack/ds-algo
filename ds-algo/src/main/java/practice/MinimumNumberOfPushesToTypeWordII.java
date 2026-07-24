@@ -26,9 +26,9 @@ public class MinimumNumberOfPushesToTypeWordII {
 
   static void main() {
     var test = new MinimumNumberOfPushesToTypeWordII();
-    System.out.println(test.minimumPushes("abcde")); // 5
-    System.out.println(test.minimumPushes("xycdefghij")); // 12
-    System.out.println(test.minimumPushes("xyzxyzxyzxyz")); // 12
-    System.out.println(test.minimumPushes("aabbccddeeffgghhiiiiii")); // 24
+    IO.println(test.minimumPushes("abcde")); // 5
+    IO.println(test.minimumPushes("xycdefghij")); // 12
+    IO.println(test.minimumPushes("xyzxyzxyzxyz")); // 12
+    IO.println(test.minimumPushes("aabbccddeeffgghhiiiiii")); // 24
   }
 }

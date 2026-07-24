@@ -6,7 +6,7 @@ public class SortScores {
   static void main() {
     int[] scores = {9, 4, 3, 5, 5, 3, 4, 8, 9, 6, 9, 4, 6, 1, 4, 3, 7, 6, 6};
     var highestPossibleScore = 9;
-    System.out.println(Arrays.toString(sortScores(scores, highestPossibleScore)));
+    IO.println(Arrays.toString(sortScores(scores, highestPossibleScore)));
   }
 
   private static int[] sortScores(int[] scores, int highestPossibleScore) {

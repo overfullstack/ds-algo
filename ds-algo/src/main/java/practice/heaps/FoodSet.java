@@ -59,6 +59,6 @@ public class FoodSet {
     int minCalories =
         fs.getMinCalories(
             new int[][] {{10, 10}, {20, 20}}, new int[][] {{20, 30}, {30, 30}}, 40); // 30
-    System.out.println(minCalories);
+    IO.println(minCalories);
   }
 }

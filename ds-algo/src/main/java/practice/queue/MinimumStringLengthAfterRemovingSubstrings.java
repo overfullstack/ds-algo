@@ -26,7 +26,7 @@ public class MinimumStringLengthAfterRemovingSubstrings {
   static void main() {
     var minimumStringLengthAfterRemovingSubstrings =
         new MinimumStringLengthAfterRemovingSubstrings();
-    System.out.println(minimumStringLengthAfterRemovingSubstrings.minLength("ABFCACDB")); // 2
-    System.out.println(minimumStringLengthAfterRemovingSubstrings.minLength("ACBBD")); // 5
+    IO.println(minimumStringLengthAfterRemovingSubstrings.minLength("ABFCACDB")); // 2
+    IO.println(minimumStringLengthAfterRemovingSubstrings.minLength("ACBBD")); // 5
   }
 }

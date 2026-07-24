@@ -39,7 +39,7 @@ public class RotateArray {
     for (var e : arr) {
       strb.append(e).append(" ");
     }
-    System.out.println(strb);
+    IO.println(strb);
   }
 
   private static void fillArray(int[] arr, Scanner scn) {

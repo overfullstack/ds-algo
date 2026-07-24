@@ -55,7 +55,7 @@ public class ProfitableSchemes {
 
   static void main() {
     var obj = new ProfitableSchemes();
-    System.out.println(obj.profitableSchemes(5, 3, new int[] {2, 2}, new int[] {2, 3})); // 2
-    System.out.println(obj.profitableSchemes(10, 5, new int[] {2, 3, 5}, new int[] {6, 7, 8})); // 7
+    IO.println(obj.profitableSchemes(5, 3, new int[] {2, 2}, new int[] {2, 3})); // 2
+    IO.println(obj.profitableSchemes(10, 5, new int[] {2, 3, 5}, new int[] {6, 7, 8})); // 7
   }
 }

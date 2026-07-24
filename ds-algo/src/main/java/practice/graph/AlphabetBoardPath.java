@@ -48,6 +48,6 @@ public class AlphabetBoardPath {
   }
 
   static void main() {
-    System.out.println(new AlphabetBoardPath().alphabetBoardPath("leet"));
+    IO.println(new AlphabetBoardPath().alphabetBoardPath("leet"));
   }
 }

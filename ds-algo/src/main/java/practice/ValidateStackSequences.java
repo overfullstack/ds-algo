@@ -4,6 +4,8 @@ package practice;
 
 import java.util.ArrayDeque;
 
+import static java.lang.IO.println;
+
 /// [946. Validate Stack Sequences](https://leetcode.com/problems/validate-stack-sequences/) 
 public class ValidateStackSequences {
   public boolean validateStackSequences(int[] pushed, int[] popped) {
@@ -21,9 +23,7 @@ public class ValidateStackSequences {
 
   static void main() {
     var obj = new ValidateStackSequences();
-    System.out.println(
-        obj.validateStackSequences(new int[] {1, 2, 3, 4, 5}, new int[] {4, 5, 3, 2, 1}));
-    System.out.println(
-        obj.validateStackSequences(new int[] {1, 2, 3, 4, 5}, new int[] {4, 3, 5, 1, 2}));
+    println(obj.validateStackSequences(new int[] {1, 2, 3, 4, 5}, new int[] {4, 5, 3, 2, 1}));
+    println(obj.validateStackSequences(new int[] {1, 2, 3, 4, 5}, new int[] {4, 3, 5, 1, 2}));
   }
 }

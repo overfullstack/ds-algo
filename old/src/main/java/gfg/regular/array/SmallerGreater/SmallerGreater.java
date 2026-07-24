@@ -4,7 +4,7 @@ package gfg.regular.array.SmallerGreater;
 public class SmallerGreater {
   static void main() {
     int[] arr = {5, 1, 4, 3, 6, 8, 10, 7, 9};
-    System.out.println(findIndex(arr));
+    IO.println(findIndex(arr));
   }
 
   private static int findIndex(int[] arr) {

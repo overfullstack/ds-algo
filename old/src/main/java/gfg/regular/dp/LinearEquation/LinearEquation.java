@@ -5,7 +5,7 @@ public class LinearEquation {
   static void main() {
     int[] coeffs = {2, 2, 5};
     var rhs = 4;
-    System.out.println(solutionCount(coeffs, rhs));
+    IO.println(solutionCount(coeffs, rhs));
   }
 
   private static int solutionCount(int[] coefficients, int rhs) {

@@ -6,7 +6,7 @@ import java.util.Arrays;
 public class ProductOfAllExceptAtIndex {
   static void main() {
     int[] arr = {1, 7, 3, 4};
-    System.out.println(Arrays.toString(getProductOfAllExceptAtIndex(arr)));
+    IO.println(Arrays.toString(getProductOfAllExceptAtIndex(arr)));
   }
 
   private static int[] getProductOfAllExceptAtIndex(int[] arr) {

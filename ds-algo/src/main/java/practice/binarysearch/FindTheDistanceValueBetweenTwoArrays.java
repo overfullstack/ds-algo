@@ -33,16 +33,16 @@ public class FindTheDistanceValueBetweenTwoArrays {
 
   static void main() {
     var findTheDistanceValueBetweenTwoArrays = new FindTheDistanceValueBetweenTwoArrays();
-    System.out.println(
+    IO.println(
         findTheDistanceValueBetweenTwoArrays.findTheDistanceValue(
             new int[] {-3, 10, 2, 8, 0, 10}, new int[] {-9, -1, -4, -9, -8}, 9)); // 2
-    System.out.println(
+    IO.println(
         findTheDistanceValueBetweenTwoArrays.findTheDistanceValue(
             new int[] {4, 5, 8}, new int[] {10, 9, 1, 8}, 2)); // 2
-    System.out.println(
+    IO.println(
         findTheDistanceValueBetweenTwoArrays.findTheDistanceValue(
             new int[] {1, 4, 2, 3}, new int[] {-4, -3, 6, 10, 20, 30}, 3)); // 2
-    System.out.println(
+    IO.println(
         findTheDistanceValueBetweenTwoArrays.findTheDistanceValue(
             new int[] {2, 1, 100, 3}, new int[] {-5, -2, 10, -3, 7}, 6)); // 1
   }

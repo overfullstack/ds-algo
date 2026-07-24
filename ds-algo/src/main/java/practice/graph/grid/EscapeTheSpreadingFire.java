@@ -105,10 +105,10 @@ public class EscapeTheSpreadingFire {
       {0, 0, 2, 2, 2, 0, 2},
       {0, 0, 0, 0, 0, 0, 0}
     };
-    System.out.println(obj.maximumMinutes(grid)); // 3
+    IO.println(obj.maximumMinutes(grid)); // 3
     grid = new int[][] {{0, 0, 0, 0}, {0, 1, 2, 0}, {0, 2, 0, 0}};
-    System.out.println(obj.maximumMinutes(grid)); // -1
+    IO.println(obj.maximumMinutes(grid)); // -1
     grid = new int[][] {{0, 0, 0}, {2, 2, 0}, {1, 2, 0}};
-    System.out.println(obj.maximumMinutes(grid)); // 1_000_000_000
+    IO.println(obj.maximumMinutes(grid)); // 1_000_000_000
   }
 }

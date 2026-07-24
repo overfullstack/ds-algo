@@ -12,7 +12,7 @@ public class MinDiffBtPairs {
       var len = scn.nextInt();
       var arr = new int[len];
       fillArray(arr, scn);
-      System.out.println(minDiffBtPairs(arr));
+      IO.println(minDiffBtPairs(arr));
     }
   }
 

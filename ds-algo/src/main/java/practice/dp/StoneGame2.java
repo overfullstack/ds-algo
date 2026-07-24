@@ -36,7 +36,7 @@ public class StoneGame2 {
 
   static void main() {
     var obj = new StoneGame2();
-    System.out.println(obj.stoneGameII(new int[] {2, 7, 9, 4, 4}));
-    System.out.println(obj.stoneGameII(new int[] {1, 2, 3, 4, 5, 100}));
+    IO.println(obj.stoneGameII(new int[] {2, 7, 9, 4, 4}));
+    IO.println(obj.stoneGameII(new int[] {1, 2, 3, 4, 5, 100}));
   }
 }

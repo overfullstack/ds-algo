@@ -6,7 +6,7 @@ import java.util.Arrays;
 public class RotateArray {
   static void main() {
     int[] a = {1, 1, 2, 3, 5};
-    System.out.println(Arrays.toString(rotateArray(a, 42)));
+    IO.println(Arrays.toString(rotateArray(a, 42)));
   }
 
   private static int[] rotateArray(int[] a, int k) {

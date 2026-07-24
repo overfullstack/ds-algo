@@ -27,7 +27,7 @@ public class DeleteOperationForTwoStrings {
 
   static void main() {
     var obj = new DeleteOperationForTwoStrings();
-    System.out.println(obj.minDistance("sea", "eat")); // 2
-    System.out.println(obj.minDistance("leetcode", "etco")); // 4
+    IO.println(obj.minDistance("sea", "eat")); // 2
+    IO.println(obj.minDistance("leetcode", "etco")); // 4
   }
 }

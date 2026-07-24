@@ -81,7 +81,7 @@ public class Maze3 {
         };
     var ball1 = new int[] {4, 3};
     var hole1 = new int[] {0, 1};
-    System.out.println(
+    IO.println(
         "Test 1 - Expected: lul, Actual: " + maze3.findShortestWay(maze1, ball1, hole1));
 
     // Test Case 2: Impossible case
@@ -95,7 +95,7 @@ public class Maze3 {
         };
     var ball2 = new int[] {4, 3};
     var hole2 = new int[] {3, 0};
-    System.out.println(
+    IO.println(
         "Test 2 - Expected: impossible, Actual: " + maze3.findShortestWay(maze2, ball2, hole2));
 
     // Test Case 3: Complex path
@@ -108,7 +108,7 @@ public class Maze3 {
         };
     var ball3 = new int[] {0, 4};
     var hole3 = new int[] {3, 5};
-    System.out.println(
+    IO.println(
         "Test 3 - Expected: dldr, Actual: " + maze3.findShortestWay(maze3_test, ball3, hole3));
 
     // Test Case 4: Ball already at hole
@@ -120,14 +120,14 @@ public class Maze3 {
         };
     var ball4 = new int[] {1, 0};
     var hole4 = new int[] {1, 0};
-    System.out.println(
+    IO.println(
         "Test 4 - Expected: , Actual: " + maze3.findShortestWay(maze4, ball4, hole4));
 
     // Test Case 5: Single cell maze
     var maze5 = new int[][] {{0}};
     var ball5 = new int[] {0, 0};
     var hole5 = new int[] {0, 0};
-    System.out.println(
+    IO.println(
         "Test 5 - Expected: , Actual: " + maze3.findShortestWay(maze5, ball5, hole5));
 
     // Test Case 6: Lexicographically smaller path (same distance, prefer "d" over
@@ -140,7 +140,7 @@ public class Maze3 {
         };
     var ball6 = new int[] {0, 0};
     var hole6 = new int[] {2, 2};
-    System.out.println(
+    IO.println(
         "Test 6 - Expected: dr, Actual: " + maze3.findShortestWay(maze6, ball6, hole6));
 
     // Test Case 7: Hole in the middle - ball cannot reach without walls to stop it
@@ -154,7 +154,7 @@ public class Maze3 {
         };
     var ball7 = new int[] {0, 0};
     var hole7 = new int[] {2, 2};
-    System.out.println(
+    IO.println(
         "Test 7 - Expected: impossible, Actual: " + maze3.findShortestWay(maze7, ball7, hole7));
 
     // Test Case 7b: Simple "dr" case - hole at corner where ball naturally stops
@@ -166,7 +166,7 @@ public class Maze3 {
         };
     var ball7b = new int[] {0, 0};
     var hole7b = new int[] {2, 2};
-    System.out.println(
+    IO.println(
         "Test 7b - Expected: dr, Actual: " + maze3.findShortestWay(maze7b, ball7b, hole7b));
 
     // Test Case 8: Multiple paths with same distance - lexicographically first
@@ -179,7 +179,7 @@ public class Maze3 {
         };
     var ball8 = new int[] {0, 0};
     var hole8 = new int[] {3, 3};
-    System.out.println(
+    IO.println(
         "Test 8 - Expected: dr, Actual: " + maze3.findShortestWay(maze8, ball8, hole8));
 
     // Test Case 9: Wall blocking direct path - must go around
@@ -191,7 +191,7 @@ public class Maze3 {
         };
     var ball9 = new int[] {0, 1};
     var hole9 = new int[] {2, 1};
-    System.out.println(
+    IO.println(
         "Test 9 - Expected: impossible, Actual: " + maze3.findShortestWay(maze9, ball9, hole9));
 
     // Test Case 10: Hole at corner
@@ -204,7 +204,7 @@ public class Maze3 {
         };
     var ball10 = new int[] {1, 0};
     var hole10 = new int[] {0, 0};
-    System.out.println(
+    IO.println(
         "Test 10 - Expected: u, Actual: " + maze3.findShortestWay(maze10, ball10, hole10));
 
     // Test Case 11: Long straight path
@@ -216,7 +216,7 @@ public class Maze3 {
         };
     var ball11 = new int[] {0, 0};
     var hole11 = new int[] {0, 5};
-    System.out.println(
+    IO.println(
         "Test 11 - Expected: r, Actual: " + maze3.findShortestWay(maze11, ball11, hole11));
 
     // Test Case 12: Hole right next to ball - but ball will overshoot
@@ -228,7 +228,7 @@ public class Maze3 {
         };
     var ball12 = new int[] {1, 1};
     var hole12 = new int[] {1, 2};
-    System.out.println(
+    IO.println(
         "Test 12 - Expected: r, Actual: " + maze3.findShortestWay(maze12, ball12, hole12));
 
     // Test Case 13: Complex maze with multiple possible routes
@@ -242,7 +242,7 @@ public class Maze3 {
         };
     var ball13 = new int[] {0, 0};
     var hole13 = new int[] {4, 4};
-    System.out.println(
+    IO.println(
         "Test 13 - Expected: dr, Actual: " + maze3.findShortestWay(maze13, ball13, hole13));
 
     // Test Case 14: Ball surrounded by walls
@@ -254,7 +254,7 @@ public class Maze3 {
         };
     var ball14 = new int[] {1, 1};
     var hole14 = new int[] {0, 0};
-    System.out.println(
+    IO.println(
         "Test 14 - Expected: impossible, Actual: " + maze3.findShortestWay(maze14, ball14, hole14));
 
     // Test Case 15: Minimum size maze with valid solution
@@ -265,7 +265,7 @@ public class Maze3 {
         };
     var ball15 = new int[] {0, 0};
     var hole15 = new int[] {1, 1};
-    System.out.println(
+    IO.println(
         "Test 15 - Expected: dr, Actual: " + maze3.findShortestWay(maze15, ball15, hole15));
   }
 }

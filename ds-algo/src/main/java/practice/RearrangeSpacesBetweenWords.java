@@ -15,12 +15,12 @@ public class RearrangeSpacesBetweenWords {
 
   static void main() {
     var rearrangeSpacesBetweenWords = new RearrangeSpacesBetweenWords();
-    System.out.println(
+    IO.println(
         rearrangeSpacesBetweenWords.reorderSpaces(
             "  this   is  a sentence ")); // "this   is   a   sentence"
-    System.out.println(
+    IO.println(
         rearrangeSpacesBetweenWords.reorderSpaces(
             " practice   makes   perfect")); // "practice   makes   perfect "
-    System.out.println(rearrangeSpacesBetweenWords.reorderSpaces("  hello")); // "hello  "
+    IO.println(rearrangeSpacesBetweenWords.reorderSpaces("  hello")); // "hello  "
   }
 }

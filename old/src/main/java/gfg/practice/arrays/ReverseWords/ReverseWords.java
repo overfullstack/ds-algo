@@ -9,7 +9,7 @@ public class ReverseWords {
     var testCases = scn.nextInt();
     while (testCases-- > 0) {
       var str = scn.next();
-      System.out.println(reverseWords(str.toCharArray()));
+      IO.println(reverseWords(str.toCharArray()));
     }
   }
 

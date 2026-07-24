@@ -25,8 +25,8 @@ public class Heaters {
 
   static void main() {
     var heaters = new Heaters();
-    System.out.println(heaters.findRadius(new int[] {1, 2, 3}, new int[] {2}));
-    System.out.println(heaters.findRadius(new int[] {1, 2, 3, 4}, new int[] {1, 4}));
-    System.out.println(heaters.findRadius(new int[] {1, 5}, new int[] {2}));
+    IO.println(heaters.findRadius(new int[] {1, 2, 3}, new int[] {2}));
+    IO.println(heaters.findRadius(new int[] {1, 2, 3, 4}, new int[] {1, 4}));
+    IO.println(heaters.findRadius(new int[] {1, 5}, new int[] {2}));
   }
 }

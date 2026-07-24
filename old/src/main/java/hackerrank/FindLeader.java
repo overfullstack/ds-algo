@@ -5,7 +5,7 @@ public class FindLeader {
 
   static void main() {
     int[] A = {2, 2, 2, 2, 2, 3, 4, 5, 6};
-    System.out.println(solution(A));
+    IO.println(solution(A));
   }
 
   static int solution(int[] A) {

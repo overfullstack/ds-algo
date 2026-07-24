@@ -14,7 +14,7 @@ public class TripletSum {
       var arr = new int[len];
       fillArray(arr, scn);
       printTriplets(arr, sum);
-      System.out.println();
+      IO.println();
     }
   }
 
@@ -37,7 +37,7 @@ public class TripletSum {
       while (l < r) {
         var curSum = a[i] + a[l] + a[r];
         if (curSum == sum) {
-          // System.out.println("(" + a[i] + "," + a[l] + "," + a[r] + ")");
+          // IO.println("(" + a[i] + "," + a[l] + "," + a[r] + ")");
           System.out.print(1);
           return;
         } else if (curSum < sum) {

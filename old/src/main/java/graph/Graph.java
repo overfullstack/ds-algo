@@ -21,13 +21,13 @@ public class Graph {
   public static Graph readGraph() {
     var scn = new Scanner(System.in);
 
-    System.out.println("Enter Edges and Vertices:");
+    IO.println("Enter Edges and Vertices:");
     var e = scn.nextInt();
     var v = scn.nextInt();
 
     var g = new Graph(v);
 
-    System.out.println("Enter Connections:");
+    IO.println("Enter Connections:");
     for (var i = 0; i < e; i++) {
       g.addEdge(scn.nextInt(), scn.nextInt());
     }
@@ -38,11 +38,11 @@ public class Graph {
   static void main() {
     var g = readGraph();
     g.printGraph();
-    System.out.println("Enter Source and Vertex to Find:");
+    IO.println("Enter Source and Vertex to Find:");
     var scn = new Scanner(System.in);
 
-    if (g.areTheyConnectedBfs(scn.nextInt(), scn.nextInt())) System.out.println("Connected!!!");
-    else System.out.println("Not Connected!!!");
+    if (g.areTheyConnectedBfs(scn.nextInt(), scn.nextInt())) IO.println("Connected!!!");
+    else IO.println("Not Connected!!!");
   }
 
   public void addEdge(int v, int w) {
@@ -56,7 +56,7 @@ public class Graph {
 
   public void printGraph() {
     for (var v = 0; v < this.vertexCount; v++)
-      for (int w : this.getConnectedNodes(v)) System.out.println(v + " - " + w);
+      for (int w : this.getConnectedNodes(v)) IO.println(v + " - " + w);
   }
 
   public boolean areTheyConnectedDfs(int source, int vertexToFind, boolean[] visited) {

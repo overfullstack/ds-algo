@@ -29,8 +29,8 @@ public class EmployeeImportance {
             new Employee(1, 5, List.of(2, 3)),
             new Employee(2, 3, List.of()),
             new Employee(3, 3, List.of()));
-    System.out.println(employeeImportance.getImportance(employees, 1));
+    IO.println(employeeImportance.getImportance(employees, 1));
     var employees2 = List.of(new Employee(1, 2, List.of(5)), new Employee(5, -3, List.of()));
-    System.out.println(employeeImportance.getImportance(employees2, 5));
+    IO.println(employeeImportance.getImportance(employees2, 5));
   }
 }

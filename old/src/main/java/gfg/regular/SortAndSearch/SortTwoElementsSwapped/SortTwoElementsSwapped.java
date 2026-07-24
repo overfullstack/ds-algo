@@ -7,7 +7,7 @@ public class SortTwoElementsSwapped {
   static void main() {
     int[] arr = {10, 30, 20, 40, 50, 60, 70};
     correctArray(arr);
-    System.out.println(Arrays.toString(arr));
+    IO.println(Arrays.toString(arr));
   }
 
   private static void correctArray(int[] arr) {

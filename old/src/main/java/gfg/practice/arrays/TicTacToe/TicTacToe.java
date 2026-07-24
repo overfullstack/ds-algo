@@ -23,7 +23,7 @@ public class TicTacToe {
     while (tests-- > 0) {
       var board = new char[9];
       fillArray(board, scn);
-      System.out.println(isBoardValid(board) ? "Valid" : "Invalid");
+      IO.println(isBoardValid(board) ? "Valid" : "Invalid");
     }
   }
 

@@ -37,7 +37,7 @@ public class ExclusiveTimeOfFunctions {
 
   static void main() {
     var exclusiveTimeOfFunctions = new ExclusiveTimeOfFunctions();
-    System.out.println(
+    IO.println(
         Arrays.toString(
             exclusiveTimeOfFunctions.exclusiveTime(
                 1,
@@ -48,7 +48,7 @@ public class ExclusiveTimeOfFunctions {
                     "0:end:3",
                     "0:end:4",
                     "0:end:5")))); // [6]
-    System.out.println(
+    IO.println(
         Arrays.toString(
             exclusiveTimeOfFunctions.exclusiveTime(
                 1,
@@ -59,11 +59,11 @@ public class ExclusiveTimeOfFunctions {
                     "0:start:6",
                     "0:end:6",
                     "0:end:7")))); // [8]
-    System.out.println(
+    IO.println(
         Arrays.toString(
             exclusiveTimeOfFunctions.exclusiveTime(
                 2, List.of("0:start:0", "1:start:2", "1:end:5", "0:end:6")))); // [3, 4]
-    System.out.println(
+    IO.println(
         Arrays.toString(
             exclusiveTimeOfFunctions.exclusiveTime(
                 2,

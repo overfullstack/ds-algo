@@ -24,7 +24,7 @@ public class PrintAllPaths {
     path[level] = root;
 
     if (root == null || (root.left == null && root.right == null)) {
-      System.out.println(Arrays.toString(path));
+      IO.println(Arrays.toString(path));
       path[level] = null; // Like erasing these elements for backtracking
       return;
     }

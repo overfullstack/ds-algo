@@ -44,7 +44,7 @@ public class FindPathForSum {
   private static void printPath(int start, int end) {
     System.out.print("Path: ");
     for (var i = start; i <= end; i++) System.out.print(path[i] + " ");
-    System.out.println();
+    IO.println();
   }
 
   private static int depth(TreeNode root) {

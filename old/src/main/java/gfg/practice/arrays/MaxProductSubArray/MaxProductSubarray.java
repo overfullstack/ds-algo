@@ -13,7 +13,7 @@ public class MaxProductSubarray {
       for (var i = 0; i < arr.length; i++) {
         arr[i] = scn.nextInt();
       }
-      System.out.println(maxProductSubarray(arr));
+      IO.println(maxProductSubarray(arr));
     }
   }
 

@@ -37,6 +37,6 @@ public class ClosestIn3Lists {
       if (minOf3 == b[j]) j++;
       if (minOf3 == c[k]) k++;
     }
-    System.out.println(aResult + " " + bResult + " " + cResult);
+    IO.println(aResult + " " + bResult + " " + cResult);
   }
 }

@@ -54,7 +54,7 @@ class Producer extends Thread {
   @Override
   public void run() {
     for (var i = 0; i < 5; i++) {
-      System.out.println("Put: " + i);
+      IO.println("Put: " + i);
       queue.put(i);
     }
   }
@@ -70,7 +70,7 @@ class Consumer extends Thread {
   @Override
   public void run() {
     for (var i = 0; i < 5; i++) {
-      System.out.println("Get: " + queue.get());
+      IO.println("Get: " + queue.get());
     }
   }
 }

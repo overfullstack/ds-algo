@@ -24,7 +24,7 @@ public class MaximumWidthRamp {
 
   static void main() {
     var maxWidthRamp = new MaximumWidthRamp();
-    System.out.println(maxWidthRamp.maxWidthRamp(new int[] {6, 0, 8, 2, 1, 5})); // 4
-    System.out.println(maxWidthRamp.maxWidthRamp(new int[] {9, 8, 1, 0, 1, 9, 4, 0, 4, 1})); // 7
+    IO.println(maxWidthRamp.maxWidthRamp(new int[] {6, 0, 8, 2, 1, 5})); // 4
+    IO.println(maxWidthRamp.maxWidthRamp(new int[] {9, 8, 1, 0, 1, 9, 4, 0, 4, 1})); // 7
   }
 }

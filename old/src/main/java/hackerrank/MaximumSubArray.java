@@ -16,7 +16,7 @@ public class MaximumSubArray {
       while (size-- > 0) {
         arr.add(scn.nextInt());
       }
-      System.out.println(
+      IO.println(
           findMaximumSubarrayContiguous(arr).maxSum + " " + findMaximumSubarrayNonContiguous(arr));
     }
   }

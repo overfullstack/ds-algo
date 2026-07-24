@@ -29,10 +29,10 @@ public class KokoEatingBananas {
   }
 
   static void main() {
-    System.out.println(new KokoEatingBananas().minEatingSpeed(new int[] {3, 6, 7, 11}, 8)); // 4
-    System.out.println(
+    IO.println(new KokoEatingBananas().minEatingSpeed(new int[] {3, 6, 7, 11}, 8)); // 4
+    IO.println(
         new KokoEatingBananas().minEatingSpeed(new int[] {30, 11, 23, 4, 20}, 5)); // 30
-    System.out.println(
+    IO.println(
         new KokoEatingBananas().minEatingSpeed(new int[] {30, 11, 23, 4, 20}, 6)); // 23
   }
 }

@@ -44,6 +44,6 @@ public class FindCityWithSmallestNumberOfNeighborsAtAThresholdDistance {
     var solution = new FindCityWithSmallestNumberOfNeighborsAtAThresholdDistance();
     var edges = new int[][] {{0, 1, 2}, {0, 4, 8}, {1, 2, 3}, {1, 4, 2}, {2, 3, 1}, {3, 4, 1}};
     var result = solution.findTheCity(5, edges, 2);
-    System.out.println(result);
+    IO.println(result);
   }
 }

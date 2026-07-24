@@ -28,11 +28,11 @@ public class DetectCycleInDirectedGraph {
     // from all vertices to see which one of them can cause a cycle.
     for (var i = 1; i <= vertexCount; i++) {
       if (!visited[i] && isCyclePresent(i)) {
-        System.out.println("Cycle Detected!!!");
+        IO.println("Cycle Detected!!!");
         return;
       }
     }
-    System.out.println("No Cycle");
+    IO.println("No Cycle");
   }
 
   // This uses DFS

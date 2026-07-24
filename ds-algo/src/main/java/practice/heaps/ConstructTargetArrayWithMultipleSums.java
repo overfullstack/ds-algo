@@ -37,16 +37,16 @@ public class ConstructTargetArrayWithMultipleSums {
 
   static void main() {
     final var constructTargetArrayWithMultipleSums = new ConstructTargetArrayWithMultipleSums();
-    System.out.println(
+    IO.println(
         constructTargetArrayWithMultipleSums.isPossible(new int[] {9, 3, 5})); // true
-    System.out.println(constructTargetArrayWithMultipleSums.isPossible(new int[] {2})); // false
-    System.out.println(
+    IO.println(constructTargetArrayWithMultipleSums.isPossible(new int[] {2})); // false
+    IO.println(
         constructTargetArrayWithMultipleSums.isPossible(new int[] {1, 1, 1, 2})); // false
-    System.out.println(
+    IO.println(
         constructTargetArrayWithMultipleSums.isPossible(new int[] {1, 1, 1})); // true
-    System.out.println(constructTargetArrayWithMultipleSums.isPossible(new int[] {8, 5})); // true
-    System.out.println(constructTargetArrayWithMultipleSums.isPossible(new int[] {8, 7})); // true
-    System.out.println(
+    IO.println(constructTargetArrayWithMultipleSums.isPossible(new int[] {8, 5})); // true
+    IO.println(constructTargetArrayWithMultipleSums.isPossible(new int[] {8, 7})); // true
+    IO.println(
         constructTargetArrayWithMultipleSums.isPossible(new int[] {1, 1000000})); // true
   }
 }

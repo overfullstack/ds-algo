@@ -22,7 +22,7 @@ public class TopologicalSort {
     for (var i = 1; i <= vertexCount; i++) {
       if (!visited[i]) dfs(graph, i);
     }
-    System.out.println(reversePostOrder);
+    IO.println(reversePostOrder);
   }
 
   private static void dfs(Digraph graph, int vertex) {

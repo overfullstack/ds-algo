@@ -113,7 +113,7 @@ public class NumberOfRestrictedPathsFromFirstToLastNode {
       {3, 5, 1},
       {5, 4, 10}
     };
-    System.out.println(obj.countRestrictedPaths(n, edges)); // 3
+    IO.println(obj.countRestrictedPaths(n, edges)); // 3
     n = 7;
     edges =
         new int[][] {
@@ -126,6 +126,6 @@ public class NumberOfRestrictedPathsFromFirstToLastNode {
           {7, 5, 3},
           {2, 6, 4}
         };
-    System.out.println(obj.countRestrictedPaths(n, edges)); // 1
+    IO.println(obj.countRestrictedPaths(n, edges)); // 1
   }
 }

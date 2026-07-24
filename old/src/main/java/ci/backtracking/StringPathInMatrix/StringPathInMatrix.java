@@ -12,13 +12,13 @@ public class StringPathInMatrix {
     for (var i = 0; i < 3; i++) {
       for (var j = 0; j < 3; j++) {
         if (find(matrix, stringToFind, i, j, 0, visited)) {
-          System.out.println("Found! :)");
+          IO.println("Found! :)");
           found = true;
           break outerLoop;
         }
       }
     }
-    if (!found) System.out.println("Not Found :(");
+    if (!found) IO.println("Not Found :(");
   }
 
   private static boolean find(

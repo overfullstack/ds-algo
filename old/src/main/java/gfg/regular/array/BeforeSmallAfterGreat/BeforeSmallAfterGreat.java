@@ -4,7 +4,7 @@ package gfg.regular.array.BeforeSmallAfterGreat;
 public class BeforeSmallAfterGreat {
   static void main() {
     int[] arr = {5, 1, 4, 3, 6, 8, 10, 7, 9};
-    System.out.println(findPos(arr));
+    IO.println(findPos(arr));
   }
 
   private static int findPos(int[] arr) {

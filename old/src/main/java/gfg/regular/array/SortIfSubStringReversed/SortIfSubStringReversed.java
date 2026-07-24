@@ -4,7 +4,7 @@ package gfg.regular.array.SortIfSubStringReversed;
 public class SortIfSubStringReversed {
   static void main() {
     int[] arr = {1, 2, 5, 4, 3};
-    System.out.println(sortIfSubStringReversed(arr));
+    IO.println(sortIfSubStringReversed(arr));
   }
 
   private static boolean sortIfSubStringReversed(int[] arr) {

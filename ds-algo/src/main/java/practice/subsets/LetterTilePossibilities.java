@@ -26,7 +26,7 @@ public class LetterTilePossibilities {
 
   static void main() {
     var l = new LetterTilePossibilities();
-    System.out.println(l.numTilePossibilities("AAB")); // 8
-    System.out.println(l.numTilePossibilities("AAABBC")); // 188
+    IO.println(l.numTilePossibilities("AAB")); // 8
+    IO.println(l.numTilePossibilities("AAABBC")); // 188
   }
 }

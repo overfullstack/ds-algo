@@ -77,11 +77,11 @@ class MinimumBuses {
     for (int i = 0; i < routes.length; i++) {
       System.out.print((i + 1) + ".\tBus Routes: ");
       System.out.print(Arrays.deepToString(routes[i]));
-      System.out.println();
-      System.out.println("\tSource: " + src[i]);
-      System.out.println("\tDestination: " + dest[i]);
-      System.out.println("\n\tMinimum Buses Required: " + minimumBuses(routes[i], src[i], dest[i]));
-      System.out.println(new String(new char[100]).replace('\0', '-'));
+      IO.println();
+      IO.println("\tSource: " + src[i]);
+      IO.println("\tDestination: " + dest[i]);
+      IO.println("\n\tMinimum Buses Required: " + minimumBuses(routes[i], src[i], dest[i]));
+      IO.println(new String(new char[100]).replace('\0', '-'));
     }
   }
 }

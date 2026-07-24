@@ -24,7 +24,7 @@ public class MinSumWithDigitsOfArray {
         num2 = num2 * 10 + arr[i];
       }
     }
-    System.out.println(num1 + num2);
+    IO.println(num1 + num2);
   }
 
   private static int[] readArray(Scanner scn, int len) {

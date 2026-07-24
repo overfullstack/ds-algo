@@ -37,7 +37,7 @@ public class SplitArrayLargestSum {
 
   static void main() {
     var sol = new SplitArrayLargestSum();
-    System.out.println(sol.splitArray(new int[] {7, 2, 5, 10, 8}, 2)); // 18
-    System.out.println(sol.splitArray(new int[] {1, 2, 3, 4, 5}, 2)); // 9
+    IO.println(sol.splitArray(new int[] {7, 2, 5, 10, 8}, 2)); // 18
+    IO.println(sol.splitArray(new int[] {1, 2, 3, 4, 5}, 2)); // 9
   }
 }

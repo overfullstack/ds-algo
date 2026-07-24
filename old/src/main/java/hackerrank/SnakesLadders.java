@@ -29,7 +29,7 @@ public class SnakesLadders {
         var square = boardQueue.poll();
         if (square.vertex == 100) {
           pathFound = true;
-          System.out.println(square.stepsFromSource);
+          IO.println(square.stepsFromSource);
           break;
         }
 
@@ -46,7 +46,7 @@ public class SnakesLadders {
           }
         }
       }
-      if (!pathFound) System.out.println("-1");
+      if (!pathFound) IO.println("-1");
     }
   }
 }

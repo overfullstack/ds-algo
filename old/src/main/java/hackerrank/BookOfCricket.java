@@ -3,7 +3,7 @@ package hackerrank;
 /// gakshintala created on 11/10/19. 
 public class BookOfCricket {
   static void main() {
-    System.out.println(combinationCount(new int[6], 6, new int[] {2, 4, 6}, 0));
+    IO.println(combinationCount(new int[6], 6, new int[] {2, 4, 6}, 0));
   }
 
   static int combinationCount(int[] arr, int score, int[] pageNumbers, int i) {

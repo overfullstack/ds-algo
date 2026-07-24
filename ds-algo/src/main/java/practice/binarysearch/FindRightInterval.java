@@ -40,17 +40,17 @@ public class FindRightInterval {
   static void main() {
     var findRightInterval = new FindRightInterval();
     var intervals = new int[][] {{3, 4}, {2, 3}, {1, 2}};
-    System.out.println(
+    IO.println(
         Arrays.stream(findRightInterval.findRightInterval(intervals))
             .mapToObj(i -> i + " ")
             .toList()); // [-1,0,1]
     intervals = new int[][] {{1, 4}, {2, 3}, {3, 4}};
-    System.out.println(
+    IO.println(
         Arrays.stream(findRightInterval.findRightInterval(intervals))
             .mapToObj(i -> i + " ")
             .toList()); // [-1,2,-1]
     intervals = new int[][] {{1, 2}};
-    System.out.println(
+    IO.println(
         Arrays.stream(findRightInterval.findRightInterval(intervals))
             .mapToObj(i -> i + " ")
             .toList()); // [-1]

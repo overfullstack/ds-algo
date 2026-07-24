@@ -16,7 +16,7 @@ public class MinPlatforms {
       var dep = new int[len];
       fillArray(dep, scn);
 
-      System.out.println(minPlatforms(arr, dep));
+      IO.println(minPlatforms(arr, dep));
     }
   }
 

@@ -21,9 +21,9 @@ public class KeysAndRooms {
   static void main() {
     List<List<Integer>> rooms = List.of(List.of(1), List.of(2), List.of(3), List.of());
     var keysAndRooms = new KeysAndRooms();
-    System.out.println(keysAndRooms.canVisitAllRooms(rooms));
+    IO.println(keysAndRooms.canVisitAllRooms(rooms));
     rooms = List.of(List.of(1, 3), List.of(3, 0, 1), List.of(2), List.of(0));
-    System.out.println(keysAndRooms.canVisitAllRooms(rooms));
-    System.out.println(keysAndRooms.canVisitAllRooms(List.of(List.of(1), List.of(1))));
+    IO.println(keysAndRooms.canVisitAllRooms(rooms));
+    IO.println(keysAndRooms.canVisitAllRooms(List.of(List.of(1), List.of(1))));
   }
 }

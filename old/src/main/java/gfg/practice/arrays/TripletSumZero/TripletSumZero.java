@@ -12,7 +12,7 @@ public class TripletSumZero {
       var len = scn.nextInt();
       var arr = new int[len];
       fillArray(arr, scn);
-      System.out.println(tripletSumZero(arr, len) ? 1 : 0);
+      IO.println(tripletSumZero(arr, len) ? 1 : 0);
     }
   }
 

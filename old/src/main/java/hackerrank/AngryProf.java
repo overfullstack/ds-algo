@@ -18,8 +18,8 @@ public class AngryProf {
         }
       }
 
-      if (k == 0) System.out.println("NO");
-      else System.out.println("YES");
+      if (k == 0) IO.println("NO");
+      else IO.println("YES");
     }
   }
 }

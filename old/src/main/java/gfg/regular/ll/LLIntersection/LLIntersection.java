@@ -19,7 +19,7 @@ public class LLIntersection {
     k2 = new ListNode(8, k3);
     k1 = new ListNode(7, k2);
 
-    System.out.println(mergePoint(l1, k1));
+    IO.println(mergePoint(l1, k1));
   }
 
   private static ListNode mergePoint(ListNode l1, ListNode k1) {

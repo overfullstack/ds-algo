@@ -25,7 +25,7 @@ public class SolvingQuestionsWithBrainpower {
 
   static void main() {
     var sol = new SolvingQuestionsWithBrainpower();
-    System.out.println(sol.mostPoints(new int[][] {{3, 2}, {4, 3}, {4, 4}, {2, 5}})); // 5
-    System.out.println(sol.mostPoints(new int[][] {{1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}})); // 7
+    IO.println(sol.mostPoints(new int[][] {{3, 2}, {4, 3}, {4, 4}, {2, 5}})); // 5
+    IO.println(sol.mostPoints(new int[][] {{1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}})); // 7
   }
 }

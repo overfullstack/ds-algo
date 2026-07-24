@@ -23,7 +23,7 @@ public class GridSearch {
         var start = pMat[i].indexOf(cMat[0]);
         if (start != -1) isPresent = checkPresence(pMat, cMat, start, i, cRow, cCol);
       }
-      System.out.println(isPresent ? "YES" : "NO");
+      IO.println(isPresent ? "YES" : "NO");
     }
   }
 

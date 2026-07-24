@@ -12,7 +12,7 @@ public class BalancedBinaryTree {
     t2 = new TreeNode(2, t4, null);
     t1 = new TreeNode(1, t2, t3);
 
-    System.out.println(isTreeBalanced(t1) != -1);
+    IO.println(isTreeBalanced(t1) != -1);
   }
 
   private static int isTreeBalanced(TreeNode root) {

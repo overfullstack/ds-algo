@@ -37,7 +37,7 @@ public class JobSchedulingForMaxProfit {
         profit += job.profit;
       }
     }
-    System.out.println(jobCount + " " + profit);
+    IO.println(jobCount + " " + profit);
   }
 
   private static List<Job> readJobs(Scanner scn, int size) {

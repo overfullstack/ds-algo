@@ -13,8 +13,8 @@ public class MergeMeetings {
     meetings[3] = new Meeting(10, 12);
     meetings[4] = new Meeting(9, 10);
 
-    System.out.println(Arrays.toString(meetings));
-    System.out.println(Arrays.toString(mergeMeetings(meetings)));
+    IO.println(Arrays.toString(meetings));
+    IO.println(Arrays.toString(mergeMeetings(meetings)));
   }
 
   private static Meeting[] mergeMeetings(Meeting[] meetings) {

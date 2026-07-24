@@ -21,7 +21,7 @@ public class MergeOverlaps {
     inputIntervals.forEach(
         intervals -> {
           mergeIntervals(intervals).forEach(System.out::print);
-          System.out.println();
+          IO.println();
         });
   }
 

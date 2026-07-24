@@ -95,21 +95,21 @@ public class NumberOfIslands2 {
 
   static void main() {
     var obj = new NumberOfIslands2();
-    System.out.println(
+    IO.println(
         obj.numIslands2(
             4,
             5,
             new Point[] {
               new Point(1, 1), new Point(0, 1), new Point(3, 3), new Point(3, 4)
             })); // [1,1,2,2]
-    System.out.println(
+    IO.println(
         obj.numIslands2(
             3,
             3,
             new Point[] {
               new Point(0, 0), new Point(0, 1), new Point(2, 2), new Point(2, 1)
             })); // [1,1,2,2]
-    System.out.println(
+    IO.println(
         obj.numIslands2(
             3,
             3,

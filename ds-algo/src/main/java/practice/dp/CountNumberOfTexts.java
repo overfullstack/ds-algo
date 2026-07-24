@@ -28,9 +28,9 @@ public class CountNumberOfTexts {
 
   static void main() {
     var c = new CountNumberOfTexts();
-    System.out.println(c.countTexts("344644885")); // 8
-    System.out.println(c.countTexts("444479999555588866")); // 3136
-    System.out.println(c.countTexts("22233"));
-    System.out.println(c.countTexts("222222222222222222222222222222222222"));
+    IO.println(c.countTexts("344644885")); // 8
+    IO.println(c.countTexts("444479999555588866")); // 3136
+    IO.println(c.countTexts("22233"));
+    IO.println(c.countTexts("222222222222222222222222222222222222"));
   }
 }

@@ -47,7 +47,7 @@ public class ShortestReach {
         var distance = d != null ? d : -1;
         System.out.print(distance + " ");
       }
-      System.out.println();
+      IO.println();
     }
   }
 

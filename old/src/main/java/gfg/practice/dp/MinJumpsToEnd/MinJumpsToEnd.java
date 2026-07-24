@@ -10,11 +10,11 @@ public class MinJumpsToEnd {
     while (testCases-- > 0) {
       var len = scn.nextInt();
       if (len == 0) { // This is only for a test case having len = 0
-        System.out.println(0);
+        IO.println(0);
         continue;
       }
       var arr = readArray(scn, len);
-      System.out.println(minJumpsToEnd(arr));
+      IO.println(minJumpsToEnd(arr));
     }
   }
 

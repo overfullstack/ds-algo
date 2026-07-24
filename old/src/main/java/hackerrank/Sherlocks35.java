@@ -32,7 +32,7 @@ public class Sherlocks35 {
         if (d < 0) System.out.print(-1);
         else System.out.print(print('5', d).append(print('3', digits - d)));
       }
-      System.out.println();
+      IO.println();
     }
   }
 

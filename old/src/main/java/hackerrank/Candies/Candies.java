@@ -27,10 +27,10 @@ public class Candies {
         candies[i] = Math.max(candies[i], candies[i + 1] + 1); // This is required at peak points
     }
 
-    System.out.println("Distribution: " + Arrays.toString(candies));
+    IO.println("Distribution: " + Arrays.toString(candies));
     var total = 0L;
     for (var i = 0; i < childrenCount; i++) total += candies[i];
 
-    System.out.println(total);
+    IO.println(total);
   }
 }

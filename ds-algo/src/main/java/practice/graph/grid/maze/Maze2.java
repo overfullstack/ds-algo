@@ -102,7 +102,7 @@ public class Maze2 {
         };
     var start = new int[] {0, 4};
     var destination = new int[] {4, 4};
-    System.out.println(new Maze2().shortestDistance(maze, start, destination)); // 12
+    IO.println(new Maze2().shortestDistance(maze, start, destination)); // 12
 
     var maze2 =
         new int[][] {
@@ -110,7 +110,7 @@ public class Maze2 {
         };
     int[] start2 = {0, 4};
     int[] destination2 = {0, 0};
-    System.out.println(new Maze2().shortestDistance(maze2, start2, destination2)); // 6
+    IO.println(new Maze2().shortestDistance(maze2, start2, destination2)); // 6
 
     int[][] maze3 = {
       {0, 0, 0, 1, 1, 1, 1, 1},
@@ -120,6 +120,6 @@ public class Maze2 {
     };
     int[] start3 = {3, 0};
     int[] destination3 = {1, 2};
-    System.out.println(new Maze2().shortestDistance(maze3, start3, destination3)); // 6
+    IO.println(new Maze2().shortestDistance(maze3, start3, destination3)); // 6
   }
 }

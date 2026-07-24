@@ -28,8 +28,8 @@ public class AsteroidCollision {
 
   static void main() {
     var obj = new AsteroidCollision();
-    System.out.println(Arrays.toString(obj.asteroidCollision(new int[] {5, 10, -5}))); // [5,10]
-    System.out.println(Arrays.toString(obj.asteroidCollision(new int[] {8, -8}))); // []
-    System.out.println(Arrays.toString(obj.asteroidCollision(new int[] {10, 2, -5}))); // [10]
+    IO.println(Arrays.toString(obj.asteroidCollision(new int[] {5, 10, -5}))); // [5,10]
+    IO.println(Arrays.toString(obj.asteroidCollision(new int[] {8, -8}))); // []
+    IO.println(Arrays.toString(obj.asteroidCollision(new int[] {10, 2, -5}))); // [10]
   }
 }

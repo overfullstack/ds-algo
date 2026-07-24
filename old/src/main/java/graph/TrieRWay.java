@@ -10,12 +10,12 @@ public class TrieRWay {
     trie.put("gopal", 7);
     trie.put("gokul", 6);
 
-    System.out.println(trie.get("gopal"));
-    System.out.println(trie.get("gokul"));
+    IO.println(trie.get("gopal"));
+    IO.println(trie.get("gokul"));
 
     trie.delete("gokul");
-    System.out.println(trie.get("gopal"));
-    System.out.println(trie.get("gokul"));
+    IO.println(trie.get("gopal"));
+    IO.println(trie.get("gokul"));
   }
 
   private void put(String key, int val) {

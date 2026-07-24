@@ -28,7 +28,7 @@ public class ConnectAtSameLevelForIncompleteTree {
       System.out.print(node.val + " -> ");
       node = node.nextRight;
     }
-    System.out.println();
+    IO.println();
   }
 
   private static void connect(Node root) {

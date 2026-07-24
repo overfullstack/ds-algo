@@ -27,8 +27,8 @@ public class CustomSortString {
 
   static void main() {
     var c = new CustomSortString();
-    System.out.println(c.customSortString("cba", "abcd")); // "cbad"
-    System.out.println(c.customSortString("bcafg", "abcd")); // "bcad"
-    System.out.println(c.customSortString("kqep", "pekeq")); // "kqeep"
+    IO.println(c.customSortString("cba", "abcd")); // "cbad"
+    IO.println(c.customSortString("bcafg", "abcd")); // "bcad"
+    IO.println(c.customSortString("kqep", "pekeq")); // "kqeep"
   }
 }

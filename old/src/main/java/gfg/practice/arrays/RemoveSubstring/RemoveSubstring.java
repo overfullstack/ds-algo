@@ -28,7 +28,7 @@ public class RemoveSubstring {
     for (var c : chars) {
       strb.append(c);
     }
-    System.out.println(strb);
+    IO.println(strb);
   }
 
   private static char[] removeSubstring(char[] str, String[] subStrings) {

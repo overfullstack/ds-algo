@@ -23,8 +23,8 @@ public class FruitIntoBaskets {
 
   static void main() {
     var sol = new FruitIntoBaskets();
-    System.out.println(sol.totalFruit(new int[] {1, 2, 1})); // 3
-    System.out.println(sol.totalFruit(new int[] {0, 1, 2, 2})); // 3
-    System.out.println(sol.totalFruit(new int[] {1, 2, 3, 2, 2})); // 4
+    IO.println(sol.totalFruit(new int[] {1, 2, 1})); // 3
+    IO.println(sol.totalFruit(new int[] {0, 1, 2, 2})); // 3
+    IO.println(sol.totalFruit(new int[] {1, 2, 3, 2, 2})); // 4
   }
 }

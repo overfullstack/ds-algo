@@ -9,13 +9,13 @@ public class SortPortionToSortAll {
   static void main() {
     int[] arr = {1, 2, 3, 4, 5, 6, 7, 8};
     sortPortion(arr);
-    System.out.println(Arrays.toString(arr));
+    IO.println(Arrays.toString(arr));
   }
 
   private static void sortPortion(int[] arr) {
     var i = findAnomalyFromLeft(arr);
     if (i == arr.length - 1) {
-      System.out.println("Already sorted");
+      IO.println("Already sorted");
       return;
     }
     var j = findAnomalyFromRight(arr);
@@ -31,7 +31,7 @@ public class SortPortionToSortAll {
     // We find the max and min elements inside anomaly to check how broad does this portion spread.
     var m = findStartOfPortion(arr, minIndex);
     var n = findEndOfPortion(arr, maxIndex);
-    System.out.println("Sort Portion Start:" + m + " End:" + n);
+    IO.println("Sort Portion Start:" + m + " End:" + n);
     sort(arr, m, n + 1);
   }
 

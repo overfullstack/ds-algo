@@ -43,6 +43,6 @@ public class PathWithMaximumGold {
   static void main() {
     var obj = new PathWithMaximumGold();
     var grid = new int[][] {{0, 6, 0}, {5, 8, 7}, {0, 9, 0}};
-    System.out.println(obj.getMaximumGold(grid));
+    IO.println(obj.getMaximumGold(grid));
   }
 }

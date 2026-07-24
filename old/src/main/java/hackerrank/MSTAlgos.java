@@ -19,9 +19,9 @@ public class MSTAlgos {
 
     var edgeWeightedGraph = readGraph(vertexCount, edgeCount, scn);
 
-    System.out.println(krusalsAlgo(edgeWeightedGraph, vertexCount, edgeCount));
+    IO.println(krusalsAlgo(edgeWeightedGraph, vertexCount, edgeCount));
     // int startVertex = scn.nextInt();
-    // System.out.println(primsLazyAlgo(edgeWeightedGraph,vertexCount,edgeCount,startVertex));
+    // IO.println(primsLazyAlgo(edgeWeightedGraph,vertexCount,edgeCount,startVertex));
   }
 
   private static int primsLazyAlgo(

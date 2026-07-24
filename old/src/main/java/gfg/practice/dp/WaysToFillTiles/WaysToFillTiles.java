@@ -9,7 +9,7 @@ public class WaysToFillTiles {
     var tests = scn.nextInt();
     while (tests-- > 0) {
       var gridDim = scn.nextInt();
-      System.out.println(numberOfWaysToFillGrid(gridDim));
+      IO.println(numberOfWaysToFillGrid(gridDim));
     }
   }
 

@@ -28,7 +28,7 @@ public class ComputerGame {
       }
       i++;
     }
-    System.out.println(count);
+    IO.println(count);
   }
 
   private static long gcd(long a, long b) {

@@ -6,7 +6,7 @@ public class SwapAndSort {
 
   static void main() {
     int[] arr = {1, 5, 5, 5, 5};
-    System.out.println(solution(arr));
+    IO.println(solution(arr));
   }
 
   public static boolean solution(int[] A) {
@@ -19,7 +19,7 @@ public class SwapAndSort {
         var j = i - 1;
         while (j >= 0 && A[i] < A[j]) j--;
         swap(A, k, j + 1);
-        System.out.println(Arrays.toString(A));
+        IO.println(Arrays.toString(A));
         return isArraySorted(A, length);
       }
     }

@@ -18,7 +18,7 @@ public class EvenTree {
     var eventree = new EvenTree();
     eventree.numVertices = ob.nextInt();
     if (eventree.numVertices % 2 != 0) {
-      System.out.println("Number of vertices are not even. Exiting...");
+      IO.println("Number of vertices are not even. Exiting...");
       return;
     }
     eventree.edges = ob.nextInt();
@@ -53,7 +53,7 @@ public class EvenTree {
         ++edgesRemoved;
       }
     }
-    System.out.println(edgesRemoved);
+    IO.println(edgesRemoved);
   }
 
   // Method to populate the number of children below each node

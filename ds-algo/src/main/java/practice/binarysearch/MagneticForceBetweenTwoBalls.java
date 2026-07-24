@@ -43,8 +43,8 @@ public class MagneticForceBetweenTwoBalls {
 
   static void main() {
     var m = new MagneticForceBetweenTwoBalls();
-    System.out.println(m.maxDistance(new int[] {1, 2, 3, 4, 7}, 3)); // 3
-    System.out.println(m.maxDistance(new int[] {79, 74, 57, 22}, 4)); // 5
-    System.out.println(m.maxDistance(new int[] {5, 4, 3, 2, 1, 1000000000}, 2)); // 999999999
+    IO.println(m.maxDistance(new int[] {1, 2, 3, 4, 7}, 3)); // 3
+    IO.println(m.maxDistance(new int[] {79, 74, 57, 22}, 4)); // 5
+    IO.println(m.maxDistance(new int[] {5, 4, 3, 2, 1, 1000000000}, 2)); // 999999999
   }
 }

@@ -33,11 +33,11 @@ public class TwoSumLessThanTarget {
 
   static void main() {
     var l = new TwoSumLessThanTarget();
-    System.out.println(l.twoSumLessThanTarget(new int[] {-2, -3}, -4)); // -5
-    System.out.println(l.twoSumLessThanTarget(new int[] {1, 1, 1, 1, 1}, 2)); // -1
-    System.out.println(l.twoSumLessThanTarget(new int[] {2, 7, 11, 15}, 24)); // 22
-    System.out.println(l.twoSumLessThanTarget(new int[] {3, 5, 1, 9, 7}, 3)); // -1
-    System.out.println(l.twoSumLessThanTarget(new int[] {34, 23, 1, 24, 75, 33, 54, 8}, 60)); // 58
-    System.out.println(l.twoSumLessThanTarget(new int[] {10, 20, 30}, 15)); // -1
+    IO.println(l.twoSumLessThanTarget(new int[] {-2, -3}, -4)); // -5
+    IO.println(l.twoSumLessThanTarget(new int[] {1, 1, 1, 1, 1}, 2)); // -1
+    IO.println(l.twoSumLessThanTarget(new int[] {2, 7, 11, 15}, 24)); // 22
+    IO.println(l.twoSumLessThanTarget(new int[] {3, 5, 1, 9, 7}, 3)); // -1
+    IO.println(l.twoSumLessThanTarget(new int[] {34, 23, 1, 24, 75, 33, 54, 8}, 60)); // 58
+    IO.println(l.twoSumLessThanTarget(new int[] {10, 20, 30}, 15)); // -1
   }
 }

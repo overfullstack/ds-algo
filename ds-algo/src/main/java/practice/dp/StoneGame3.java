@@ -46,8 +46,8 @@ public class StoneGame3 {
 
   static void main() {
     var stoneGame3 = new StoneGame3();
-    System.out.println(stoneGame3.stoneGameIII(new int[] {1, 2, 3, 7}));
-    System.out.println(stoneGame3.stoneGameIII(new int[] {1, 2, 3, -9}));
-    System.out.println(stoneGame3.stoneGameIII(new int[] {1, 2, 3, 6}));
+    IO.println(stoneGame3.stoneGameIII(new int[] {1, 2, 3, 7}));
+    IO.println(stoneGame3.stoneGameIII(new int[] {1, 2, 3, -9}));
+    IO.println(stoneGame3.stoneGameIII(new int[] {1, 2, 3, 6}));
   }
 }

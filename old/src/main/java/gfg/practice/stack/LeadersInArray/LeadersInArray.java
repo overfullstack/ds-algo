@@ -34,7 +34,7 @@ public class LeadersInArray {
     while (!stk.isEmpty()) {
       System.out.print(stk.pop() + " ");
     }
-    System.out.println();
+    IO.println();
   }
 
   private static void fillArray(int[] arr, Scanner scn) {

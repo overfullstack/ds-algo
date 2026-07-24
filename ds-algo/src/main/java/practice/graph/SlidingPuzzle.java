@@ -51,9 +51,9 @@ public class SlidingPuzzle {
 
   static void main() {
     var slidingPuzzle = new SlidingPuzzle();
-    System.out.println(slidingPuzzle.slidingPuzzle(new int[][] {{1, 2, 3}, {4, 0, 5}})); // 1
-    System.out.println(slidingPuzzle.slidingPuzzle(new int[][] {{1, 2, 3}, {5, 4, 0}})); // -1
-    System.out.println(slidingPuzzle.slidingPuzzle(new int[][] {{1, 2, 3}, {4, 5, 0}})); // 0
-    System.out.println(slidingPuzzle.slidingPuzzle(new int[][] {{4, 1, 2}, {5, 0, 3}})); // 5
+    IO.println(slidingPuzzle.slidingPuzzle(new int[][] {{1, 2, 3}, {4, 0, 5}})); // 1
+    IO.println(slidingPuzzle.slidingPuzzle(new int[][] {{1, 2, 3}, {5, 4, 0}})); // -1
+    IO.println(slidingPuzzle.slidingPuzzle(new int[][] {{1, 2, 3}, {4, 5, 0}})); // 0
+    IO.println(slidingPuzzle.slidingPuzzle(new int[][] {{4, 1, 2}, {5, 0, 3}})); // 5
   }
 }

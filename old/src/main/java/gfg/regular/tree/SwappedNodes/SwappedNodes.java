@@ -16,12 +16,12 @@ public class SwappedNodes {
     var bstNode1 = new TreeNode(4, bstNode2, bstNode3);
 
     printInorder(bstNode1);
-    System.out.println();
+    IO.println();
 
     var refs = correctSwappedNodes(bstNode1, null, new TreeNode[3]);
 
     if (refs[0] == null && refs[1] == null && refs[2] == null) {
-      System.out.println("Tree doesn't contain any swapped Nodes");
+      IO.println("Tree doesn't contain any swapped Nodes");
     } else if (refs[2] == null) swap(refs[0], refs[1]);
     else swap(refs[0], refs[2]);
 

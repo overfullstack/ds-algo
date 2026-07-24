@@ -63,14 +63,14 @@ public class BombEnemy {
 
   static void main() {
     var bombEnemy = new BombEnemy();
-    System.out.println(
+    IO.println(
         bombEnemy.maxKilledEnemies(
             new char[][] {
               {'0', 'E', '0', '0'},
               {'E', '0', 'W', 'E'},
               {'0', 'E', '0', '0'}
             })); // 3
-    System.out.println(
+    IO.println(
         bombEnemy.maxKilledEnemies(
             new char[][] {
               {'0', 'E', '0', '0'},

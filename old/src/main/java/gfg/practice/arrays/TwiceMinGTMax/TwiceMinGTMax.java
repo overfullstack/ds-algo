@@ -11,7 +11,7 @@ public class TwiceMinGTMax {
       var len = scn.nextInt();
       var arr = new int[len];
       fillArray(arr, scn);
-      System.out.println(minElementsToRemove(arr));
+      IO.println(minElementsToRemove(arr));
     }
   }
 

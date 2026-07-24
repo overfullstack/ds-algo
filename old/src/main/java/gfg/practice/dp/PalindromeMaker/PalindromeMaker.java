@@ -9,7 +9,7 @@ public class PalindromeMaker {
     var tests = scn.nextInt();
     while (tests-- > 0) {
       var str = scn.next();
-      System.out.println(minCharsToInsertForPalindrome(str));
+      IO.println(minCharsToInsertForPalindrome(str));
     }
   }
 

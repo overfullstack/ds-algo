@@ -27,11 +27,11 @@ public class CuttingRibbons {
 
   static void main() {
     var obj = new CuttingRibbons();
-    System.out.println(obj.maxLength(new int[] {9, 7, 5}, 3)); // 5
-    System.out.println(obj.maxLength(new int[] {9, 4, 1}, 3)); // 4
-    System.out.println(obj.maxLength(new int[] {7, 5, 9}, 4)); // 4
-    System.out.println(obj.maxLength(new int[] {5, 7, 9}, 22)); // 0
-    System.out.println(obj.maxLength(new int[] {1, 2, 3}, 7)); // 0
-    System.out.println(obj.maxLength(new int[] {1, 2, 3}, 6)); // 1
+    IO.println(obj.maxLength(new int[] {9, 7, 5}, 3)); // 5
+    IO.println(obj.maxLength(new int[] {9, 4, 1}, 3)); // 4
+    IO.println(obj.maxLength(new int[] {7, 5, 9}, 4)); // 4
+    IO.println(obj.maxLength(new int[] {5, 7, 9}, 22)); // 0
+    IO.println(obj.maxLength(new int[] {1, 2, 3}, 7)); // 0
+    IO.println(obj.maxLength(new int[] {1, 2, 3}, 6)); // 1
   }
 }

@@ -38,8 +38,8 @@ public class DominoAndTrominoTiling {
 
   static void main() {
     var obj = new DominoAndTrominoTiling();
-    System.out.println(obj.numTilings(3)); // 5
-    System.out.println(obj.numTilings(1)); // 1
-    System.out.println(obj.numTilings(30)); // 312342182
+    IO.println(obj.numTilings(3)); // 5
+    IO.println(obj.numTilings(1)); // 1
+    IO.println(obj.numTilings(30)); // 312342182
   }
 }

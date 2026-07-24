@@ -35,10 +35,10 @@ public class MinimumRemoveToMakeValidParentheses {
 
   static void main() {
     var minimumRemoveToMakeValidParentheses = new MinimumRemoveToMakeValidParentheses();
-    System.out.println(
+    IO.println(
         minimumRemoveToMakeValidParentheses.minRemoveToMakeValid("lee(t(c)o)de")); // "lee(t(c)o)de"
-    System.out.println(
+    IO.println(
         minimumRemoveToMakeValidParentheses.minRemoveToMakeValid("a)b(c)d")); // "ab(c)d)"
-    System.out.println(minimumRemoveToMakeValidParentheses.minRemoveToMakeValid("))((")); // ""
+    IO.println(minimumRemoveToMakeValidParentheses.minRemoveToMakeValid("))((")); // ""
   }
 }

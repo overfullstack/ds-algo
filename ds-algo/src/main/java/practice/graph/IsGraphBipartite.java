@@ -26,9 +26,9 @@ public class IsGraphBipartite {
   static void main() {
     var graph = new int[][] {{1, 2, 3}, {0, 2}, {0, 1, 3}, {0, 2}};
     var isGraphBipartite = new IsGraphBipartite();
-    System.out.println(isGraphBipartite.isBipartite(graph));
+    IO.println(isGraphBipartite.isBipartite(graph));
 
     int[][] graph2 = {{1, 3}, {0, 2}, {1, 3}, {0, 2}};
-    System.out.println(isGraphBipartite.isBipartite(graph2));
+    IO.println(isGraphBipartite.isBipartite(graph2));
   }
 }

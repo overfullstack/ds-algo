@@ -32,7 +32,7 @@ public class MatrixRotation {
       for (var j = 0; j < col; j++) str.append(mat[i][j]).append(" ");
       str.append("\n");
     }
-    System.out.println(str);
+    IO.println(str);
   }
 
   /*private static void rotateLayerOneByOne(int row, int col, long[][] mat, int layer, int layerRotateCount) {

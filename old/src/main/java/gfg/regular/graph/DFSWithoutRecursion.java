@@ -12,12 +12,12 @@ public class DFSWithoutRecursion {
     var edgeCount = scn.nextInt();
 
     var g = readGraph(scn, vertexCount, edgeCount);
-    System.out.println("Normal DFS: ");
+    IO.println("Normal DFS: ");
     dfsIterative(g);
 
-    System.out.println();
+    IO.println();
     var visited = new boolean[vertexCount + 1];
-    System.out.println("g4g.regular.backtracking DFS: ");
+    IO.println("g4g.regular.backtracking DFS: ");
     dfsRecursive(g, 1, visited);
   }
 

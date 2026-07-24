@@ -4,7 +4,7 @@ package icake.array.AppleStocks;
 public class AppleStocks {
   static void main() {
     final var stocks = new int[] {4, 3, 2, 1};
-    System.out.println(maxProfit2(stocks));
+    IO.println(maxProfit2(stocks));
   }
 
   private static int maxProfit(int[] stocks) {

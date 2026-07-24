@@ -37,7 +37,7 @@ public class SubArrayWithSum {
       }
       if (curSum == sum) {
         foundFlag = true;
-        System.out.println(start + 1 + " " + i); // Print 1-based indices
+        IO.println(start + 1 + " " + i); // Print 1-based indices
         break;
       }
       // Just to avoid this in the last iteration.
@@ -46,7 +46,7 @@ public class SubArrayWithSum {
       }
     }
     if (!foundFlag) {
-      System.out.println(-1);
+      IO.println(-1);
     }
   }
 
@@ -63,7 +63,7 @@ public class SubArrayWithSum {
         // we crossed a point
         // curSum-sum and from that point to current point shall make sum.
         foundFlag = true;
-        System.out.println(
+        IO.println(
             (map.get(curSum - sum) + 2)
                 + " "
                 + i
@@ -73,7 +73,7 @@ public class SubArrayWithSum {
       map.put(curSum, i);
     }
     if (!foundFlag) {
-      System.out.println(-1);
+      IO.println(-1);
     }
   }
 

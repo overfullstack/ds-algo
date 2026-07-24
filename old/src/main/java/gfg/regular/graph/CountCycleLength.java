@@ -32,14 +32,14 @@ public class CountCycleLength {
       if (!visited[i]) {
         var CycleNode = checkCycle(i);
         if (CycleNode.nodeValue != -1) {
-          System.out.println("Cycle Detected at: " + CycleNode.nodeValue);
+          IO.println("Cycle Detected at: " + CycleNode.nodeValue);
           // int cycleLen = countCycleLength(CycleNode);
-          System.out.println("Cycle length: " + CycleNode.count);
+          IO.println("Cycle length: " + CycleNode.count);
           // return;
         }
       }
     }
-    System.out.println("No Cycle");
+    IO.println("No Cycle");
   }
 
   // This uses DFS

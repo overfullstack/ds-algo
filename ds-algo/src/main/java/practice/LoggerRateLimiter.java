@@ -22,9 +22,9 @@ public class LoggerRateLimiter {
 
   static void main() {
     final var logger = new LoggerRateLimiter();
-    System.out.println(logger.couldPrintMessage(1, "foo")); // true
-    System.out.println(logger.couldPrintMessage(2, "bar")); // true
-    System.out.println(logger.couldPrintMessage(3, "foo")); // false
+    println(logger.couldPrintMessage(1, "foo")); // true
+    println(logger.couldPrintMessage(2, "bar")); // true
+    println(logger.couldPrintMessage(3, "foo")); // false
     println(logger.couldPrintMessage(8, "bar")); // false
     println(logger.couldPrintMessage(10, "foo")); // false
     println(logger.couldPrintMessage(11, "foo")); // true

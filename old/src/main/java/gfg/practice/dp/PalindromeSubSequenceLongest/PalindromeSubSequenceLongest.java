@@ -9,7 +9,7 @@ public class PalindromeSubSequenceLongest {
     var tests = scn.nextInt();
     while (tests-- > 0) {
       var str = scn.next();
-      System.out.println(longestPalindromeSequence(str.toCharArray()));
+      IO.println(longestPalindromeSequence(str.toCharArray()));
     }
   }
 

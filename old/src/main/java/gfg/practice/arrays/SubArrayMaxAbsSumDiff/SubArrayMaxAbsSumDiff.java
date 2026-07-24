@@ -10,7 +10,7 @@ public class SubArrayMaxAbsSumDiff {
     while (testCases-- > 0) {
       var len = scn.nextInt();
       var arr = readArray(scn, len);
-      System.out.println(maxAbsSumDiff(arr));
+      IO.println(maxAbsSumDiff(arr));
     }
   }
 

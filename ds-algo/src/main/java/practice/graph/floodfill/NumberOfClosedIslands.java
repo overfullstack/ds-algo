@@ -59,6 +59,6 @@ public class NumberOfClosedIslands {
           {1, 0, 0, 0, 0, 1, 0, 1},
           {1, 1, 1, 1, 1, 1, 1, 0}
         };
-    System.out.println(new NumberOfClosedIslands().closedIsland(grid)); // 2
+    IO.println(new NumberOfClosedIslands().closedIsland(grid)); // 2
   }
 }

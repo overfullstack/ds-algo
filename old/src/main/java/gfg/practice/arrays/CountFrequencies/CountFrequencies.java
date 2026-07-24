@@ -12,7 +12,7 @@ public class CountFrequencies {
       var arr = new int[len];
       fillArray(arr, scn);
       printFrequency(arr);
-      System.out.println();
+      IO.println();
     }
   }
 

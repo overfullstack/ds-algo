@@ -15,7 +15,7 @@ public class PairWithSum {
     while (left < right) {
       var lrSum = arr[left] + arr[right];
       if (lrSum == sum) {
-        System.out.println("(" + arr[left] + "," + arr[right] + ")");
+        IO.println("(" + arr[left] + "," + arr[right] + ")");
         break;
       } else if (lrSum < sum) left++;
       else right--;

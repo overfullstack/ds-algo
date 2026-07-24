@@ -12,7 +12,7 @@ public class MinCostToConnectRopes {
       var len = scn.nextInt();
       var arr = new int[len];
       fillArray(arr, scn);
-      System.out.println(minCostToConnectRopes(arr));
+      IO.println(minCostToConnectRopes(arr));
     }
   }
 

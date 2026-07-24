@@ -41,7 +41,7 @@ public class NextGreaterForAll {
     for (var ele : arr) {
       System.out.print(eleToGreaterEleMap.get(ele) + " ");
     }
-    System.out.println();
+    IO.println();
   }
 
   private static int[] fillArray(int len, Scanner scn) {

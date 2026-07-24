@@ -31,6 +31,6 @@ public class LongestWordInDictionaryThroughDeleting {
 
   static void main() {
     final var obj = new LongestWordInDictionaryThroughDeleting();
-    System.out.println(obj.findLongestWord("abpcplea", List.of("ale", "apple", "monkey", "plea")));
+    IO.println(obj.findLongestWord("abpcplea", List.of("ale", "apple", "monkey", "plea")));
   }
 }

@@ -40,8 +40,8 @@ public class TheNumberOfTheSmallestUnoccupiedChair {
   static void main() {
     var smallestChair = new TheNumberOfTheSmallestUnoccupiedChair();
     var times2 = new int[][] {{3, 10}, {1, 5}, {2, 6}};
-    System.out.println(smallestChair.smallestChair(times2, 0)); // 2
+    IO.println(smallestChair.smallestChair(times2, 0)); // 2
     var times = new int[][] {{1, 4}, {2, 3}, {3, 5}};
-    System.out.println(smallestChair.smallestChair(times, 1)); // 1
+    IO.println(smallestChair.smallestChair(times, 1)); // 1
   }
 }

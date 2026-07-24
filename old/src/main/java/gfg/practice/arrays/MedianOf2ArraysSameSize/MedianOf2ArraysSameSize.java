@@ -14,7 +14,7 @@ public class MedianOf2ArraysSameSize {
       fillArray(arr1, scn);
       var arr2 = new int[len];
       fillArray(arr2, scn);
-      System.out.println(medianOf2Arrays(arr1, arr2));
+      IO.println(medianOf2Arrays(arr1, arr2));
     }
   }
 

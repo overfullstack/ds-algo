@@ -7,7 +7,7 @@ public class RobotMove {
     int m = 3, n = 3;
     var threshold = 3;
     var visited = new boolean[m][n];
-    System.out.println(traversableGridCount(0, 0, threshold, visited));
+    IO.println(traversableGridCount(0, 0, threshold, visited));
   }
 
   private static int traversableGridCount(int i, int j, int threshold, boolean[][] visited) {

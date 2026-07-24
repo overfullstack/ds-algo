@@ -73,10 +73,10 @@ public class ParallelCourses {
 
   static void main() {
     var parallelCourses = new ParallelCourses();
-    System.out.println(parallelCourses.minimumSemesters(3, new int[][] {{1, 3}, {2, 3}})); // 2
-    System.out.println(
+    IO.println(parallelCourses.minimumSemesters(3, new int[][] {{1, 3}, {2, 3}})); // 2
+    IO.println(
         parallelCourses.minimumSemesters(3, new int[][] {{1, 2}, {2, 3}, {3, 1}})); // -1
-    System.out.println(
+    IO.println(
         parallelCourses.minimumSemesters(
             5,
             new int[][] {

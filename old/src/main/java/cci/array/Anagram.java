@@ -3,8 +3,8 @@ package cci.array;
 /// Created by Gopala Akshintala on 11/2/16. 
 public class Anagram {
   static void main() {
-    System.out.println(areStringAnagrams("abc", "cab"));
-    System.out.println(areStringAnagrams("abc", "acd"));
+    IO.println(areStringAnagrams("abc", "cab"));
+    IO.println(areStringAnagrams("abc", "acd"));
   }
 
   private static boolean areStringAnagrams(String str1, String str2) {

@@ -32,8 +32,8 @@ public class MinCostClimbingStairs {
 
   static void main() {
     var obj = new MinCostClimbingStairs();
-    System.out.println(obj.minCostClimbingStairs(new int[] {10, 15, 20})); // 15
-    System.out.println(
+    IO.println(obj.minCostClimbingStairs(new int[] {10, 15, 20})); // 15
+    IO.println(
         obj.minCostClimbingStairs(new int[] {1, 100, 1, 1, 1, 100, 1, 1, 100, 1})); // 6
   }
 }

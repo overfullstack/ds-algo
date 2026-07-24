@@ -32,7 +32,7 @@ public class NumberOfGoodWaysToSplitAString {
 
   static void main() {
     var numberOfGoodWaysToSplitAString = new NumberOfGoodWaysToSplitAString();
-    System.out.println(numberOfGoodWaysToSplitAString.numSplits("abcd")); // 1
-    System.out.println(numberOfGoodWaysToSplitAString.numSplits("aacaba")); // 2
+    IO.println(numberOfGoodWaysToSplitAString.numSplits("abcd")); // 1
+    IO.println(numberOfGoodWaysToSplitAString.numSplits("aacaba")); // 2
   }
 }

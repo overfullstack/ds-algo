@@ -13,7 +13,7 @@ public class MergeSortLL {
     head.next.next.next = new ListNode(1);
     head.next.next.next.next = new ListNode(2);
     printSLL(head);
-    System.out.println();
+    IO.println();
     printSLL(mergeSortLL(head));
   }
 

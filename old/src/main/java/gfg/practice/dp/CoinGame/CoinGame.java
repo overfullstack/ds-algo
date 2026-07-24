@@ -11,7 +11,7 @@ public class CoinGame {
       var len = scn.nextInt();
       var arr = new int[len];
       fillArray(arr, scn);
-      System.out.println(maxValueInGame(arr));
+      IO.println(maxValueInGame(arr));
     }
   }
 

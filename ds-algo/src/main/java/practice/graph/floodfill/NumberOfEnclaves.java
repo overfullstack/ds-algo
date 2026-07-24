@@ -51,6 +51,6 @@ public class NumberOfEnclaves {
   static void main() {
     var grid = new int[][] {{0, 0, 0, 0}, {1, 0, 1, 0}, {0, 1, 1, 0}, {0, 0, 0, 0}};
     var enclaves = new NumberOfEnclaves().numEnclaves(grid);
-    System.out.println(enclaves); // 3
+    IO.println(enclaves); // 3
   }
 }

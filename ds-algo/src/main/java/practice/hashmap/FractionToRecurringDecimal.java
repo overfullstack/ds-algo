@@ -40,14 +40,14 @@ public class FractionToRecurringDecimal {
 
   static void main() {
     var obj = new FractionToRecurringDecimal();
-    System.out.println(obj.fractionToDecimal(1, 2)); // 0.5
-    System.out.println(obj.fractionToDecimal(2, 1)); // 2
-    System.out.println(obj.fractionToDecimal(2, 3)); // 0.(6)
-    System.out.println(obj.fractionToDecimal(4, 333)); // 0.(012)
-    System.out.println(obj.fractionToDecimal(1, 5)); // 0.2
-    System.out.println(obj.fractionToDecimal(1, 6)); // 0.1(6)
-    System.out.println(obj.fractionToDecimal(2, 7)); // 0.(285714)
-    System.out.println(obj.fractionToDecimal(1, 3)); // 0.(3)
-    System.out.println(obj.fractionToDecimal(1, 1)); // 1
+    IO.println(obj.fractionToDecimal(1, 2)); // 0.5
+    IO.println(obj.fractionToDecimal(2, 1)); // 2
+    IO.println(obj.fractionToDecimal(2, 3)); // 0.(6)
+    IO.println(obj.fractionToDecimal(4, 333)); // 0.(012)
+    IO.println(obj.fractionToDecimal(1, 5)); // 0.2
+    IO.println(obj.fractionToDecimal(1, 6)); // 0.1(6)
+    IO.println(obj.fractionToDecimal(2, 7)); // 0.(285714)
+    IO.println(obj.fractionToDecimal(1, 3)); // 0.(3)
+    IO.println(obj.fractionToDecimal(1, 1)); // 1
   }
 }

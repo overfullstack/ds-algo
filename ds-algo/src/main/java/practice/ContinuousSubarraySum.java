@@ -27,11 +27,11 @@ public class ContinuousSubarraySum {
 
   static void main() {
     var continuousSubarraySum = new ContinuousSubarraySum();
-    System.out.println(
+    IO.println(
         continuousSubarraySum.checkSubarraySum(new int[] {23, 2, 4, 6, 7}, 6)); // true
-    System.out.println(
+    IO.println(
         continuousSubarraySum.checkSubarraySum(new int[] {23, 2, 6, 4, 7}, 6)); // true
-    System.out.println(
+    IO.println(
         continuousSubarraySum.checkSubarraySum(new int[] {23, 2, 6, 4, 7}, 13)); // false
   }
 }

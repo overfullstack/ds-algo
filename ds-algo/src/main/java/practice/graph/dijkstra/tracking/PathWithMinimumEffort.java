@@ -48,13 +48,13 @@ public class PathWithMinimumEffort {
 
   static void main() {
     var pathWithMinimumEffort = new PathWithMinimumEffort();
-    System.out.println(
+    IO.println(
         pathWithMinimumEffort.minimumEffortPath(
             new int[][] {{1, 2, 2}, {3, 8, 2}, {5, 3, 5}})); // 2
-    System.out.println(
+    IO.println(
         pathWithMinimumEffort.minimumEffortPath(
             new int[][] {{1, 2, 3}, {3, 8, 4}, {5, 3, 5}})); // 1
-    System.out.println(
+    IO.println(
         pathWithMinimumEffort.minimumEffortPath(
             new int[][] {
               {1, 2, 1, 1, 1}, {1, 2, 1, 2, 1}, {1, 2, 1, 2, 1}, {1, 2, 1, 2, 1}, {1, 1, 1, 2, 1}

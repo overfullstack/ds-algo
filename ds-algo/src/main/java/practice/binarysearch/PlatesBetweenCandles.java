@@ -66,10 +66,10 @@ public class PlatesBetweenCandles {
     var s = "**|**|***|";
     var queries = new int[][] {{2, 5}, {5, 9}};
     var result = platesBetweenCandles.platesBetweenCandles(s, queries);
-    System.out.println(Arrays.stream(result).mapToObj(r -> r + " ").toList()); // [2, 3]
+    IO.println(Arrays.stream(result).mapToObj(r -> r + " ").toList()); // [2, 3]
     s = "***|**|*****|**||**|*";
     queries = new int[][] {{1, 17}, {4, 5}, {14, 17}, {5, 11}, {15, 16}};
     result = platesBetweenCandles.platesBetweenCandles(s, queries);
-    System.out.println(Arrays.stream(result).mapToObj(r -> r + " ").toList()); // [9, 0, 0, 0, 0]
+    IO.println(Arrays.stream(result).mapToObj(r -> r + " ").toList()); // [9, 0, 0, 0, 0]
   }
 }

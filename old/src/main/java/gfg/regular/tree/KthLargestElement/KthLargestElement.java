@@ -26,7 +26,7 @@ public class KthLargestElement {
     reverseInorderTraversal(root.right);
     k--;
     if (k == 0) {
-      System.out.println(root.val);
+      IO.println(root.val);
       return;
     }
     reverseInorderTraversal(root.left);
@@ -39,7 +39,7 @@ public class KthLargestElement {
 
     count = kthLargestInBST(root.right, count);
     if (count == k) {
-      System.out.println(root);
+      IO.println(root);
       return 0;
     }
     return kthLargestInBST(root.left, count + 1);

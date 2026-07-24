@@ -10,7 +10,7 @@ public class KSwapsMaxNum {
     while (tests-- > 0) {
       var swaps = scn.nextInt();
       var str = scn.next();
-      System.out.println(findMaxAfterKSwaps(str, swaps, Long.parseLong(str)));
+      IO.println(findMaxAfterKSwaps(str, swaps, Long.parseLong(str)));
     }
   }
 

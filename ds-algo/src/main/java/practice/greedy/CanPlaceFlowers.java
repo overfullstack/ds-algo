@@ -37,12 +37,12 @@ public class CanPlaceFlowers {
 
   static void main() {
     var canPlaceFlowers = new CanPlaceFlowers();
-    System.out.println(canPlaceFlowers.canPlaceFlowers(new int[] {0, 1, 0}, 1)); // false
-    System.out.println(canPlaceFlowers.canPlaceFlowers(new int[] {0, 0, 1, 0, 1}, 1)); // true
-    System.out.println(canPlaceFlowers.canPlaceFlowers(new int[] {1, 0}, 1)); // false
-    System.out.println(canPlaceFlowers.canPlaceFlowers(new int[] {1, 0, 0, 0}, 2)); // false
-    System.out.println(canPlaceFlowers.canPlaceFlowers(new int[] {1, 0, 0, 0, 0, 1}, 2)); // false
-    System.out.println(canPlaceFlowers.canPlaceFlowers(new int[] {1, 0, 0, 0, 1}, 1)); // true
-    System.out.println(canPlaceFlowers.canPlaceFlowers(new int[] {1, 0, 0, 0, 1}, 2)); // false
+    IO.println(canPlaceFlowers.canPlaceFlowers(new int[] {0, 1, 0}, 1)); // false
+    IO.println(canPlaceFlowers.canPlaceFlowers(new int[] {0, 0, 1, 0, 1}, 1)); // true
+    IO.println(canPlaceFlowers.canPlaceFlowers(new int[] {1, 0}, 1)); // false
+    IO.println(canPlaceFlowers.canPlaceFlowers(new int[] {1, 0, 0, 0}, 2)); // false
+    IO.println(canPlaceFlowers.canPlaceFlowers(new int[] {1, 0, 0, 0, 0, 1}, 2)); // false
+    IO.println(canPlaceFlowers.canPlaceFlowers(new int[] {1, 0, 0, 0, 1}, 1)); // true
+    IO.println(canPlaceFlowers.canPlaceFlowers(new int[] {1, 0, 0, 0, 1}, 2)); // false
   }
 }

@@ -72,7 +72,7 @@ public class EvaluateDivision {
             Arrays.asList("a", "a"),
             Arrays.asList("x", "x"));
     var result = new EvaluateDivision().calcEquation(equations, values, queries);
-    System.out.println(
+    IO.println(
         Arrays.stream(result)
             .mapToObj(r -> r + " ")
             .toList()
@@ -87,7 +87,7 @@ public class EvaluateDivision {
             Arrays.asList("bc", "cd"),
             Arrays.asList("cd", "bc"));
     var result2 = new EvaluateDivision().calcEquation(equations2, values2, queries2);
-    System.out.println(
+    IO.println(
         Arrays.stream(result2).mapToObj(r -> r + " ").toList()); // 3.75, 0.4, 5.0, 0.2
   }
 }

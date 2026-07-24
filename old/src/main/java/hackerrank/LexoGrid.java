@@ -26,8 +26,8 @@ public class LexoGrid {
         }
       }
 
-      if (j == n && k == n - 1) System.out.println("YES");
-      else System.out.println("NO");
+      if (j == n && k == n - 1) IO.println("YES");
+      else IO.println("NO");
     }
   }
 

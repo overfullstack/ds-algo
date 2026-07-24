@@ -34,7 +34,7 @@ public class WaveArray {
     for (var e : arr) {
       System.out.print(e + " ");
     }
-    System.out.println();
+    IO.println();
   }
 
   public static void swap(int[] arr, int pos1, int pos2) {

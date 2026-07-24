@@ -7,7 +7,7 @@ public class KthSmallest {
   static void main() {
     int[] arr = {7, 10, 4, 3, 20, 15};
     var k = 5;
-    System.out.println(quickSelect(arr, 0, arr.length - 1, k));
+    IO.println(quickSelect(arr, 0, arr.length - 1, k));
   }
 
   private static int quickSelect(int[] arr, int l, int r, int k) {

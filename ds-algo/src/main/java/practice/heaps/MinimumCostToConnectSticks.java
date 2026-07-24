@@ -21,7 +21,7 @@ public class MinimumCostToConnectSticks {
 
   static void main() {
     var minimumCostToConnectSticks = new MinimumCostToConnectSticks();
-    System.out.println(minimumCostToConnectSticks.minimumCost(List.of(2, 4, 3))); // 14
-    System.out.println(minimumCostToConnectSticks.minimumCost(List.of(1, 8, 3, 5))); // 30
+    IO.println(minimumCostToConnectSticks.minimumCost(List.of(2, 4, 3))); // 14
+    IO.println(minimumCostToConnectSticks.minimumCost(List.of(1, 8, 3, 5))); // 30
   }
 }

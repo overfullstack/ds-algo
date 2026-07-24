@@ -37,10 +37,10 @@ public class RankTeamsByVotes {
 
   static void main() {
     var rankTeamsByVotes = new RankTeamsByVotes();
-    System.out.println(
+    IO.println(
         rankTeamsByVotes.rankTeams(new String[] {"ABC", "ACB", "ABC", "ACB", "ACB"})); // "ACB"
-    System.out.println(rankTeamsByVotes.rankTeams(new String[] {"WXYZ", "XYZW"})); // "XWYZ"
-    System.out.println(
+    IO.println(rankTeamsByVotes.rankTeams(new String[] {"WXYZ", "XYZW"})); // "XWYZ"
+    IO.println(
         rankTeamsByVotes.rankTeams(
             new String[] {"ZMNAGUEDSJYLBOPHRQICWF"})); // "ZMNAGUEDSJYLBOPHRQICWF"
   }

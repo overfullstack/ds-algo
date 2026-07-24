@@ -19,7 +19,7 @@ public class LinkedListPerLevel {
 
     var levelLinkedList = convertToLevelLinkedList(t1);
     for (var l : levelLinkedList) {
-      System.out.println(l);
+      IO.println(l);
     }
   }
 

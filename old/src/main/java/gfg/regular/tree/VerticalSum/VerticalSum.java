@@ -20,7 +20,7 @@ public class VerticalSum {
 
     Map<Integer, Integer> map = new HashMap<>();
     verticalSumWithMap(root, map, 0);
-    System.out.println(map.values());
+    IO.println(map.values());
 
     var dll = new DLLNode(0);
     verticalSumWithDll(root, dll);

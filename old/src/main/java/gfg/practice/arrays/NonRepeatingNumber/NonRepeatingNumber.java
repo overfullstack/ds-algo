@@ -11,7 +11,7 @@ public class NonRepeatingNumber {
       var len = scn.nextInt();
       var arr = new int[len];
       fillArray(arr, scn);
-      System.out.println(nonRepeatingNumber(arr));
+      IO.println(nonRepeatingNumber(arr));
     }
   }
 

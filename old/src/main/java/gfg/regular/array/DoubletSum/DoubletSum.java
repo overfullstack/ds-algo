@@ -16,7 +16,7 @@ public class DoubletSum {
     int l = 0, r = len - 1;
     while (l < r) {
       if (a[l] + a[r] == sum) {
-        System.out.println("(" + a[l] + "," + a[r] + ")");
+        IO.println("(" + a[l] + "," + a[r] + ")");
         return;
       } else if (a[l] + a[r] < sum) {
         l++;

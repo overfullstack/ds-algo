@@ -24,9 +24,9 @@ public class HamiltonianCycle {
 
     // Checking for nextRight pos 1
     if (hasHamCycle(graph, path, 1)) {
-      System.out.println(Arrays.toString(path));
+      IO.println(Arrays.toString(path));
     } else {
-      System.out.println("No Hamilton Exists");
+      IO.println("No Hamilton Exists");
     }
   }
 

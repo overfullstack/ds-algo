@@ -36,13 +36,13 @@ public class PaintersPartition {
 
   static void main() {
     var paintersPartition = new PaintersPartition();
-    System.out.println(
+    IO.println(
         paintersPartition.findLargestMinDistance(
             new ArrayList<>(List.of(2, 1, 5, 6, 2, 3)), 2)); // 11
-    System.out.println(
+    IO.println(
         paintersPartition.findLargestMinDistance(
             new ArrayList<>(List.of(10, 20, 30, 40)), 2)); // 60
-    System.out.println(
+    IO.println(
         paintersPartition.findLargestMinDistance(new ArrayList<>(List.of(48, 90)), 2)); // 90
   }
 }

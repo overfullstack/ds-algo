@@ -23,21 +23,21 @@ public class SpiralLevelOrderTraversal {
     var s2 = new Stack<TreeNode>();
 
     s1.add(root);
-    System.out.println(root);
+    IO.println(root);
     while (!s1.isEmpty() || !s2.isEmpty()) {
       while (!s1.isEmpty()) {
         var node = s1.pop();
         if (node.left != null) s2.push(node.left);
         if (node.right != null) s2.push(node.right);
       }
-      System.out.println(s2);
+      IO.println(s2);
 
       while (!s2.isEmpty()) {
         var node = s2.pop();
         if (node.right != null) s1.push(node.right);
         if (node.left != null) s1.push(node.left);
       }
-      System.out.println(s1);
+      IO.println(s1);
     }
   }
 }

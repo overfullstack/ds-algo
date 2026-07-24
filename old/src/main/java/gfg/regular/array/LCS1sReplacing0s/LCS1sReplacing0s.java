@@ -6,7 +6,7 @@ import java.util.Arrays;
 public class LCS1sReplacing0s {
   static void main() {
     int[] arr = {1, 1, 0, 0, 1, 0, 1, 1, 1, 0, 1, 1, 1};
-    System.out.println(Arrays.toString(findMax1s(arr)));
+    IO.println(Arrays.toString(findMax1s(arr)));
   }
 
   private static int[] findMax1s(int[] arr) {

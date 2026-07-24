@@ -13,7 +13,7 @@ public class RotateMatrixBy90 {
       {21, 22, 23, 24, 25}
     };
     printMat(mat);
-    System.out.println();
+    IO.println();
     rotateMatBy90(mat);
     printMat(mat);
   }
@@ -36,7 +36,7 @@ public class RotateMatrixBy90 {
 
   private static void printMat(int[][] mat) {
     for (var row : mat) {
-      System.out.println(Arrays.toString(row));
+      IO.println(Arrays.toString(row));
     }
   }
 }

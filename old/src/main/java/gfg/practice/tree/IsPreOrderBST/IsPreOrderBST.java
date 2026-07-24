@@ -12,7 +12,7 @@ public class IsPreOrderBST {
       var len = scn.nextInt();
       var preArr = new int[len];
       fillArray(preArr, scn);
-      System.out.println(isPreOrderBST(preArr) ? 1 : 0);
+      IO.println(isPreOrderBST(preArr) ? 1 : 0);
     }
   }
 

@@ -70,7 +70,7 @@ public class Utils {
       System.out.print(head + " -> ");
       head = head.next;
     }
-    System.out.println();
+    IO.println();
   }
 
   public static int findLLLength(ListNode head) {

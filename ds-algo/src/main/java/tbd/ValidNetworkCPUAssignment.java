@@ -98,7 +98,7 @@ public class ValidNetworkCPUAssignment {
     // Valid assignments: 2 ways
     // Option 1: 0=odd, 1=even, 2=odd
     // Option 2: 0=even, 1=odd, 2=even
-    System.out.println(
+    IO.println(
         solution.countValidAssignments(3, new int[] {0, 1}, new int[] {1, 2})); // Expected: 2
 
     // Example 2: Triangle graph (not bipartite)
@@ -106,7 +106,7 @@ public class ValidNetworkCPUAssignment {
     // | |
     // 2 -- 3
     // No valid assignment possible
-    System.out.println(
+    IO.println(
         solution.countValidAssignments(
             4, new int[] {0, 1, 2, 3, 0, 2}, new int[] {1, 2, 3, 0, 2, 0})); // Expected: 0
 
@@ -114,7 +114,7 @@ public class ValidNetworkCPUAssignment {
     // Component 1: 0 -- 1
     // Component 2: 2 -- 3
     // Each component has 2 choices, total = 2 × 2 = 4
-    System.out.println(
+    IO.println(
         solution.countValidAssignments(4, new int[] {0, 2}, new int[] {1, 3})); // Expected: 4
   }
 }

@@ -22,7 +22,7 @@ public class ConnectAtSameLevel {
       System.out.print(node.val + " -> ");
       node = node.next;
     }
-    System.out.println();
+    IO.println();
   }
 
   private static void connectNodesAtSameLevel(Node root) {

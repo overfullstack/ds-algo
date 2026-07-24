@@ -24,7 +24,7 @@ public class JourneyToMoon {
     var inEligibleCombinations = 0;
     for (var count : groupCount) inEligibleCombinations += getCombinations(count);
 
-    System.out.println(getCombinations(n) - inEligibleCombinations);
+    IO.println(getCombinations(n) - inEligibleCombinations);
   }
 
   private static long getCombinations(long n) {

@@ -11,7 +11,7 @@ public class TreeDiameter {
     var treeNode2 = new TreeNode(2, treeNode4, treeNode5);
     var treeNode1 = new TreeNode(1, treeNode2, treeNode3);
 
-    System.out.println(diameter(treeNode1, new Height()));
+    IO.println(diameter(treeNode1, new Height()));
   }
 
   private static int diameter(TreeNode root, Height height) {

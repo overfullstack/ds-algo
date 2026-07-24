@@ -13,7 +13,7 @@ public class SortWithFrequency {
       var len = scn.nextInt();
       var arr = readArray(scn, len);
       printSortedWithFrequency(arr);
-      System.out.println();
+      IO.println();
     }
   }
 

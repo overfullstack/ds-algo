@@ -47,8 +47,8 @@ public class ShortestPathVisitingAllNodes {
   static void main() {
     var sol = new ShortestPathVisitingAllNodes();
     int[][] graph = {{1, 2, 3}, {0}, {0}, {0}};
-    System.out.println(sol.shortestPathLength(graph)); // 4
+    IO.println(sol.shortestPathLength(graph)); // 4
     int[][] graph2 = {{1}, {0, 2, 4}, {1, 3, 4}, {2}, {1, 2}};
-    System.out.println(sol.shortestPathLength(graph2)); // 4
+    IO.println(sol.shortestPathLength(graph2)); // 4
   }
 }

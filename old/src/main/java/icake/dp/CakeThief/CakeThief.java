@@ -10,7 +10,7 @@ public class CakeThief {
 
     var capacity = 20;
 
-    System.out.println(maxDuffelBagValue(cakes, capacity));
+    IO.println(maxDuffelBagValue(cakes, capacity));
   }
 
   private static int maxDuffelBagValue(Cake[] cakes, int capacity) {

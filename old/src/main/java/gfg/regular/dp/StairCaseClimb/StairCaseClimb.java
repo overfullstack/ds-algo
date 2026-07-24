@@ -4,7 +4,7 @@ package gfg.regular.dp.StairCaseClimb;
 public class StairCaseClimb {
   static void main() {
     int stairsCount = 4, numWaysToJump = 2;
-    System.out.println(numberOfWaysToJump(stairsCount, numWaysToJump));
+    IO.println(numberOfWaysToJump(stairsCount, numWaysToJump));
   }
 
   private static int numberOfWaysToJump(int stairsCount, int numWaysToJump) {

@@ -27,7 +27,7 @@ public class MinimumFallingPathSum {
 
   static void main() {
     var l = new MinimumFallingPathSum();
-    System.out.println(l.minFallingPathSum(new int[][] {{2, 1, 3}, {6, 5, 4}, {7, 8, 9}})); // 13
-    System.out.println(l.minFallingPathSum(new int[][] {{-19, 57}, {-40, -5}})); // -59
+    IO.println(l.minFallingPathSum(new int[][] {{2, 1, 3}, {6, 5, 4}, {7, 8, 9}})); // 13
+    IO.println(l.minFallingPathSum(new int[][] {{-19, 57}, {-40, -5}})); // -59
   }
 }

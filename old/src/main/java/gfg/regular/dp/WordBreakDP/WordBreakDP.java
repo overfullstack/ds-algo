@@ -24,8 +24,8 @@ public class WordBreakDP {
               "cream"));
 
   static void main() {
-    System.out.println(wordBreak("ilikesamsung"));
-    System.out.println(wordBreak("samsungandmangok"));
+    IO.println(wordBreak("ilikesamsung"));
+    IO.println(wordBreak("samsungandmangok"));
   }
 
   private static boolean wordBreak(String word) {

@@ -44,12 +44,12 @@ public class LeftmostColumnWithAtLeastAOne {
   static void main() {
     var leftmostColumnWithOne = new LeftmostColumnWithAtLeastAOne();
     var binaryMatrix = new BinaryMatrix(new int[][] {{0, 0, 0, 1}, {0, 0, 1, 1}, {0, 1, 1, 1}});
-    System.out.println(leftmostColumnWithOne.getLeftmostColumnWithOne(binaryMatrix)); // 1
+    IO.println(leftmostColumnWithOne.getLeftmostColumnWithOne(binaryMatrix)); // 1
     var binaryMatrix2 = new BinaryMatrix(new int[][] {{0, 0}, {1, 1}});
-    System.out.println(leftmostColumnWithOne.getLeftmostColumnWithOne(binaryMatrix2)); // 0
+    IO.println(leftmostColumnWithOne.getLeftmostColumnWithOne(binaryMatrix2)); // 0
     var binaryMatrix3 = new BinaryMatrix(new int[][] {{0, 0}, {0, 1}});
-    System.out.println(leftmostColumnWithOne.getLeftmostColumnWithOne(binaryMatrix3)); // 1
+    IO.println(leftmostColumnWithOne.getLeftmostColumnWithOne(binaryMatrix3)); // 1
     var binaryMatrix4 = new BinaryMatrix(new int[][] {{0, 0}, {0, 0}});
-    System.out.println(leftmostColumnWithOne.getLeftmostColumnWithOne(binaryMatrix4)); // -1
+    IO.println(leftmostColumnWithOne.getLeftmostColumnWithOne(binaryMatrix4)); // -1
   }
 }

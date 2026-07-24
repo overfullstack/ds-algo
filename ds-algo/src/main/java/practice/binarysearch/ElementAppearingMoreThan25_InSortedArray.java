@@ -42,10 +42,10 @@ public class ElementAppearingMoreThan25_InSortedArray {
 
   static void main() {
     var elementAppearingMoreThan25_InSortedArray = new ElementAppearingMoreThan25_InSortedArray();
-    System.out.println(
+    IO.println(
         elementAppearingMoreThan25_InSortedArray.findSpecialInteger(
             new int[] {1, 2, 2, 6, 6, 6, 6, 7, 10})); // 6
-    System.out.println(
+    IO.println(
         elementAppearingMoreThan25_InSortedArray.findSpecialInteger(new int[] {1, 1})); // 1
   }
 }

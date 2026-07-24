@@ -27,7 +27,7 @@ public class NutsBolts {
     for (var c : arr) {
       System.out.print(c + " ");
     }
-    System.out.println();
+    IO.println();
   }
 
   private static void matchNutsToBolts(char[] nuts, char[] bolts) {

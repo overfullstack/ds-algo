@@ -6,7 +6,7 @@ public class LongestCommonSubString {
     var a = "OldSite:GeeksforGeeks.org";
     var b = "NewSite:GeeksQuiz.com";
 
-    System.out.println(longestCommonSubSequence(a, b));
+    IO.println(longestCommonSubSequence(a, b));
   }
 
   private static int longestCommonSubSequence(String a, String b) {

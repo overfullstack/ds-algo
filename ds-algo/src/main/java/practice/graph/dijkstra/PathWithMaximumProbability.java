@@ -44,12 +44,12 @@ public class PathWithMaximumProbability {
 
   static void main() {
     var p = new PathWithMaximumProbability();
-    System.out.println(
+    IO.println(
         p.maxProbability(
             3, new int[][] {{0, 1}, {1, 2}, {0, 2}}, new double[] {0.5, 0.5, 0.2}, 0, 2)); // 0.25
-    System.out.println(
+    IO.println(
         p.maxProbability(
             3, new int[][] {{0, 1}, {1, 2}, {0, 2}}, new double[] {0.5, 0.5, 0.3}, 0, 2)); // 0.3
-    System.out.println(p.maxProbability(3, new int[][] {{0, 1}}, new double[] {0.5}, 0, 2)); // 0.0
+    IO.println(p.maxProbability(3, new int[][] {{0, 1}}, new double[] {0.5}, 0, 2)); // 0.0
   }
 }

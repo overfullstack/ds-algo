@@ -43,6 +43,6 @@ public class OptimalAccountBalancing {
   }
 
   static void main() {
-    System.out.println(settleDebt(List.of(List.of(0, 1, 10), List.of(2, 0, 5)))); // 2
+    IO.println(settleDebt(List.of(List.of(0, 1, 10), List.of(2, 0, 5)))); // 2
   }
 }

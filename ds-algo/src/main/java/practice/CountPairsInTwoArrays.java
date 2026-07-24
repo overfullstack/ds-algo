@@ -28,9 +28,9 @@ public class CountPairsInTwoArrays {
 
   static void main() {
     var countPairsInTwoArrays = new CountPairsInTwoArrays();
-    System.out.println(
+    IO.println(
         countPairsInTwoArrays.countPairs(new int[] {1, 1, 2, 2}, new int[] {2, 2, 1, 1})); // 1
-    System.out.println(
+    IO.println(
         countPairsInTwoArrays.countPairs(new int[] {1, 2, 3, 4}, new int[] {4, 3, 2, 1})); // 2
   }
 }

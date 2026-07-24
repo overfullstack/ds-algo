@@ -35,9 +35,9 @@ public class MaximumProfitFromTradingStocks {
 
   static void main() {
     var sol = new MaximumProfitFromTradingStocks();
-    System.out.println(
+    IO.println(
         sol.maximumProfit(new int[] {5, 4, 6, 2, 3}, new int[] {8, 5, 4, 3, 5}, 10)); // 6
-    System.out.println(sol.maximumProfit(new int[] {2, 2, 5}, new int[] {3, 4, 10}, 6)); // 5
-    System.out.println(sol.maximumProfit(new int[] {3, 3, 12}, new int[] {0, 3, 15}, 10)); // 0
+    IO.println(sol.maximumProfit(new int[] {2, 2, 5}, new int[] {3, 4, 10}, 6)); // 5
+    IO.println(sol.maximumProfit(new int[] {3, 3, 12}, new int[] {0, 3, 15}, 10)); // 0
   }
 }

@@ -13,7 +13,7 @@ public class PairCountWithDiff {
       var diffReq = scn.nextInt();
       var arr = new int[len];
       fillArray(arr, scn);
-      System.out.println(pairCountWithDiff(arr, diffReq));
+      IO.println(pairCountWithDiff(arr, diffReq));
     }
   }
 

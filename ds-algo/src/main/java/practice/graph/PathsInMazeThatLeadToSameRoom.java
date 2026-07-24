@@ -35,8 +35,8 @@ public class PathsInMazeThatLeadToSameRoom {
     var solution = new PathsInMazeThatLeadToSameRoom();
     int n = 5;
     int[][] corridors = {{1, 2}, {5, 2}, {4, 1}, {2, 4}, {3, 1}, {3, 4}};
-    System.out.println(solution.numberOfPaths(n, corridors));
+    IO.println(solution.numberOfPaths(n, corridors));
     int[][] corridors2 = {{1, 2}, {3, 4}};
-    System.out.println(solution.numberOfPaths(n, corridors2));
+    IO.println(solution.numberOfPaths(n, corridors2));
   }
 }

@@ -64,13 +64,13 @@ public class CountUnreachablePairsOfNodesInAnUndirectedGraph {
 
   static void main() {
     var c = new CountUnreachablePairsOfNodesInAnUndirectedGraph();
-    System.out.println(
+    IO.println(
         c.countPairs(
             11,
             new int[][] {
               {5, 0}, {1, 0}, {10, 7}, {9, 8}, {7, 2}, {1, 3}, {0, 2}, {8, 5}, {4, 6}, {4, 2}
             }));
-    System.out.println(c.countPairs(7, new int[][] {{0, 2}, {0, 5}, {2, 4}, {1, 6}, {5, 4}})); // 14
-    System.out.println(c.countPairs(3, new int[][] {{0, 1}, {0, 2}, {1, 2}})); // 0
+    IO.println(c.countPairs(7, new int[][] {{0, 2}, {0, 5}, {2, 4}, {1, 6}, {5, 4}})); // 14
+    IO.println(c.countPairs(3, new int[][] {{0, 1}, {0, 2}, {1, 2}})); // 0
   }
 }

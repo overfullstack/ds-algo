@@ -6,7 +6,7 @@ import java.util.Arrays;
 public class ZigZagSubsequence {
   static void main() {
     int[] arr = {10, 22, 9, 33, 49, 50, 31, 60};
-    System.out.println(longestZigZagSubsequence(arr));
+    IO.println(longestZigZagSubsequence(arr));
   }
 
   private static int longestZigZagSubsequence(int[] arr) {

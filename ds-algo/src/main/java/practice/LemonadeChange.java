@@ -30,7 +30,7 @@ public class LemonadeChange {
 
   static void main() {
     var l = new LemonadeChange();
-    System.out.println(l.lemonadeChange(new int[] {5, 5, 5, 10, 20})); // true
-    System.out.println(l.lemonadeChange(new int[] {5, 5, 10, 10, 20})); // false
+    IO.println(l.lemonadeChange(new int[] {5, 5, 5, 10, 20})); // true
+    IO.println(l.lemonadeChange(new int[] {5, 5, 10, 10, 20})); // false
   }
 }

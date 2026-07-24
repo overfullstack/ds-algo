@@ -26,8 +26,8 @@ public class IceCream {
       index1 = find(a, aSort[index1], -1);
       index2 = find(a, aSort[index2], index1 - 1);
 
-      if (index1 < index2) System.out.println(index1 + " " + index2);
-      else System.out.println(index2 + " " + index1);
+      if (index1 < index2) IO.println(index1 + " " + index2);
+      else IO.println(index2 + " " + index1);
     }
   }
 

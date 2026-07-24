@@ -28,8 +28,8 @@ public class MaximumAveragePassRatio {
 
   static void main() {
     var l = new MaximumAveragePassRatio();
-    System.out.println(l.maxAverageRatio(new int[][] {{1, 2}, {3, 5}, {2, 2}}, 2)); // 0.78333
-    System.out.println(
+    IO.println(l.maxAverageRatio(new int[][] {{1, 2}, {3, 5}, {2, 2}}, 2)); // 0.78333
+    IO.println(
         l.maxAverageRatio(new int[][] {{2, 4}, {3, 9}, {4, 5}, {2, 10}}, 4)); // 0.53485
   }
 }

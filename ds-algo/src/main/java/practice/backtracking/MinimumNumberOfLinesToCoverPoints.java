@@ -49,7 +49,7 @@ public class MinimumNumberOfLinesToCoverPoints {
 
   static void main() {
     var sol = new MinimumNumberOfLinesToCoverPoints();
-    System.out.println(sol.minimumLines(new int[][] {{0, 1}, {2, 3}, {4, 5}, {4, 3}})); // 2
-    System.out.println(sol.minimumLines(new int[][] {{0, 1}, {1, 2}, {2, 3}, {3, 4}})); // 1
+    IO.println(sol.minimumLines(new int[][] {{0, 1}, {2, 3}, {4, 5}, {4, 3}})); // 2
+    IO.println(sol.minimumLines(new int[][] {{0, 1}, {1, 2}, {2, 3}, {3, 4}})); // 1
   }
 }

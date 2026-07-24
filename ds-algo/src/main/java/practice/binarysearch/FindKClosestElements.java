@@ -24,7 +24,7 @@ public class FindKClosestElements {
 
   static void main() {
     var obj = new FindKClosestElements();
-    System.out.println(obj.findClosestElements(new int[] {1, 2, 3, 4, 5}, 4, 3));
-    System.out.println(obj.findClosestElements(new int[] {1, 1, 2, 3, 4, 5}, 4, -1));
+    IO.println(obj.findClosestElements(new int[] {1, 2, 3, 4, 5}, 4, 3));
+    IO.println(obj.findClosestElements(new int[] {1, 1, 2, 3, 4, 5}, 4, -1));
   }
 }

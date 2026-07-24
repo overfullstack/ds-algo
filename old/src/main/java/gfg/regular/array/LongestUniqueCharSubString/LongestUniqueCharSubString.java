@@ -7,7 +7,7 @@ import java.util.Map;
 public class LongestUniqueCharSubString {
   static void main() {
     var str = "ABDEFGABEF";
-    System.out.println(longestUniqueCharSubString(str));
+    IO.println(longestUniqueCharSubString(str));
   }
 
   private static int longestUniqueCharSubString(String str) {

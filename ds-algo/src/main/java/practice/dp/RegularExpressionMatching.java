@@ -36,11 +36,11 @@ public class RegularExpressionMatching {
 
   static void main() {
     var sol = new RegularExpressionMatching();
-    System.out.println(sol.isMatch("aa", "a")); // false
-    System.out.println(sol.isMatch("aa", "a*")); // true
-    System.out.println(sol.isMatch("ab", ".*")); // true
-    System.out.println(sol.isMatch("mississippi", "mis*is*p*")); // false
-    System.out.println(sol.isMatch("mississippi", "mis*is*ip.*")); // true
-    System.out.println(sol.isMatch("ab", ".*c")); // false
+    IO.println(sol.isMatch("aa", "a")); // false
+    IO.println(sol.isMatch("aa", "a*")); // true
+    IO.println(sol.isMatch("ab", ".*")); // true
+    IO.println(sol.isMatch("mississippi", "mis*is*p*")); // false
+    IO.println(sol.isMatch("mississippi", "mis*is*ip.*")); // true
+    IO.println(sol.isMatch("ab", ".*c")); // false
   }
 }

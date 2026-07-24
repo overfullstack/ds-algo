@@ -52,6 +52,6 @@ public class SwapNodes {
     curY.next = temp;
 
     printSLL(head);
-    System.out.println();
+    IO.println();
   }
 }

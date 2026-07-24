@@ -46,7 +46,7 @@ public class ConstructQuadTree {
           {1, 1, 1, 1, 0, 0, 0, 0}
         };
     var constructQuadTree = new ConstructQuadTree();
-    System.out.println(constructQuadTree.construct(grid));
+    IO.println(constructQuadTree.construct(grid));
   }
 
   private static class Node {

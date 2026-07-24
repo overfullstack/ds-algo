@@ -13,7 +13,7 @@ public class LongestConsecutiveSubsequence {
       var len = scn.nextInt();
       var arr = new int[len];
       fillArray(arr, scn);
-      System.out.println(longestConsecutiveSubsequenceOptimistic(arr));
+      IO.println(longestConsecutiveSubsequenceOptimistic(arr));
     }
   }
 

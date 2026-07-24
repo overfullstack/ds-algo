@@ -12,7 +12,7 @@ public class MaxSquareSubMatrix {
       {0, 0, 0, 0, 0}
     };
 
-    System.out.println(maxSquareSubMatrix(M, 6, 5));
+    IO.println(maxSquareSubMatrix(M, 6, 5));
   }
 
   private static int maxSquareSubMatrix(int[][] m, int row, int col) {

@@ -20,6 +20,6 @@ public class CombinationSum4 {
 
   static void main() {
     var combinationSum4 = new CombinationSum4();
-    System.out.println(combinationSum4.combinationSum4(new int[] {1, 2, 3}, 4)); // 7
+    IO.println(combinationSum4.combinationSum4(new int[] {1, 2, 3}, 4)); // 7
   }
 }

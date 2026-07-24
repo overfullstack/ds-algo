@@ -31,10 +31,10 @@ public class DietPlanPerformance {
 
   static void main() {
     var dietPlanPerformance = new DietPlanPerformance();
-    System.out.println(
+    IO.println(
         dietPlanPerformance.dietPlanPerformance(new int[] {6, 5, 0, 0}, 2, 1, 5)); // 0
-    System.out.println(
+    IO.println(
         dietPlanPerformance.dietPlanPerformance(new int[] {1, 2, 3, 4, 5}, 1, 3, 3)); // 0
-    System.out.println(dietPlanPerformance.dietPlanPerformance(new int[] {3, 2}, 2, 0, 1)); // 1
+    IO.println(dietPlanPerformance.dietPlanPerformance(new int[] {3, 2}, 2, 0, 1)); // 1
   }
 }

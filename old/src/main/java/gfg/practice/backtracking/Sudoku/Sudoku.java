@@ -12,7 +12,7 @@ public class Sudoku {
       if (solveSudoku(grid)) {
         printGrid(grid);
       } else {
-        System.out.println("No Solution");
+        IO.println("No Solution");
       }
     }
   }
@@ -23,7 +23,7 @@ public class Sudoku {
         System.out.print(grid[i][j] + " ");
       }
     }
-    System.out.println();
+    IO.println();
   }
 
   private static int[][] readGrid(Scanner scn) {

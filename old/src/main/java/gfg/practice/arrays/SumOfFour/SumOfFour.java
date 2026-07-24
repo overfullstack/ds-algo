@@ -16,7 +16,7 @@ public class SumOfFour {
       var arr = new int[len];
       fillArray(arr, scn);
       sumOfFour(arr, sumOfFour);
-      System.out.println();
+      IO.println();
     }
   }
 

@@ -28,8 +28,8 @@ public class FindEventualSafeStates {
 
   static void main() {
     var fs = new FindEventualSafeStates();
-    System.out.println(fs.eventualSafeNodes(new int[][] {{1, 2}, {2, 3}, {5}, {0}, {5}, {}, {}}));
-    System.out.println(
+    IO.println(fs.eventualSafeNodes(new int[][] {{1, 2}, {2, 3}, {5}, {0}, {5}, {}, {}}));
+    IO.println(
         fs.eventualSafeNodes(new int[][] {{1, 2, 3, 4}, {1, 2}, {3, 4}, {0, 4}, {}}));
   }
 }

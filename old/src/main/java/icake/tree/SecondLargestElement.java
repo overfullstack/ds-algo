@@ -14,7 +14,7 @@ public class SecondLargestElement {
     var treeNode2 = new TreeNode(2, treeNode4, treeNode5);
     var treeNode1 = new TreeNode(1, treeNode2, treeNode3);
 
-    System.out.println(secondLargest(treeNode1));
+    IO.println(secondLargest(treeNode1));
   }
 
   private static int secondLargest(TreeNode root) {

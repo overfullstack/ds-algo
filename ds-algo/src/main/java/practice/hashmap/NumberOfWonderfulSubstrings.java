@@ -25,8 +25,8 @@ public class NumberOfWonderfulSubstrings {
 
   static void main() {
     var numberOfWonderfulSubstrings = new NumberOfWonderfulSubstrings();
-    System.out.println(numberOfWonderfulSubstrings.wonderfulSubstrings("aba")); // 4
-    System.out.println(numberOfWonderfulSubstrings.wonderfulSubstrings("aabb")); // 9
-    System.out.println(numberOfWonderfulSubstrings.wonderfulSubstrings("he")); // 2
+    IO.println(numberOfWonderfulSubstrings.wonderfulSubstrings("aba")); // 4
+    IO.println(numberOfWonderfulSubstrings.wonderfulSubstrings("aabb")); // 9
+    IO.println(numberOfWonderfulSubstrings.wonderfulSubstrings("he")); // 2
   }
 }

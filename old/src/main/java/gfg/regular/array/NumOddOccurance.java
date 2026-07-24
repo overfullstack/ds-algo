@@ -8,6 +8,6 @@ public class NumOddOccurance {
     for (var i : arr) {
       result ^= i;
     }
-    System.out.println(result);
+    IO.println(result);
   }
 }

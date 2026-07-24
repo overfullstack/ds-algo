@@ -3,8 +3,8 @@ package gfg.regular.dp.SubSetSum;
 /// Created by gakshintala on 3/21/16. 
 public class SubSetSum {
   static void main() {
-    System.out.println(isSumPresent(new int[] {3, 34, 4, 12, 5, 2}, 9));
-    System.out.println(isSumPresent(new int[] {3, 34, 4, 12, 5, 2}, 30));
+    IO.println(isSumPresent(new int[] {3, 34, 4, 12, 5, 2}, 9));
+    IO.println(isSumPresent(new int[] {3, 34, 4, 12, 5, 2}, 30));
   }
 
   private static String isSumPresent(int[] set, int sum) {

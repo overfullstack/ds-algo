@@ -10,7 +10,7 @@ public class MatrixPathCount {
     while (tests-- > 0) {
       var row = scn.nextInt();
       var col = scn.nextInt();
-      System.out.println(pathCountForMatrixTopToBottom(row, col));
+      IO.println(pathCountForMatrixTopToBottom(row, col));
     }
   }
 

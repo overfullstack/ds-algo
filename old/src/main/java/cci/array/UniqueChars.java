@@ -3,8 +3,8 @@ package cci.array;
 /// Created by Gopala Akshintala on 11/2/16. 
 public class UniqueChars {
   static void main() {
-    System.out.println(isStringContainsAllUniqueChars("abcd"));
-    System.out.println(isStringContainsAllUniqueChars("abca"));
+    IO.println(isStringContainsAllUniqueChars("abcd"));
+    IO.println(isStringContainsAllUniqueChars("abca"));
   }
 
   private static boolean isStringContainsAllUniqueChars(String str) {

@@ -27,7 +27,7 @@ public class HIndex {
 
   static void main() {
     var l = new HIndex();
-    System.out.println(l.hIndex(new int[] {3, 0, 6, 1, 5})); // 3
-    System.out.println(l.hIndex(new int[] {1, 3, 1})); // 1
+    IO.println(l.hIndex(new int[] {3, 0, 6, 1, 5})); // 3
+    IO.println(l.hIndex(new int[] {1, 3, 1})); // 1
   }
 }

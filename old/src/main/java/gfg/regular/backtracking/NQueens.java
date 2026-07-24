@@ -9,10 +9,10 @@ public class NQueens {
 
     if (solveNQueen(board, 0)) {
       for (var arr : board) {
-        System.out.println(Arrays.toString(arr));
+        IO.println(Arrays.toString(arr));
       }
     } else {
-      System.out.println("Solution Doesn't exist");
+      IO.println("Solution Doesn't exist");
     }
   }
 

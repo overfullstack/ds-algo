@@ -10,7 +10,7 @@ public class Maze {
     var n = scn.nextInt();
 
     if (m <= 0 || n <= 0) {
-      System.out.println("Invalid Maze");
+      IO.println("Invalid Maze");
       return;
     }
 
@@ -48,7 +48,7 @@ public class Maze {
     }
 
     // Check every reachable door out on the border from current door In.
-    System.out.println("Door In: [" + i + "," + j + "] ***************************");
+    IO.println("Door In: [" + i + "," + j + "] ***************************");
     // Left border
     for (int k = 0, l = 0; k < m; k++) {
       printPathIfReachedDoorOut(m, n, maze, i, j, k, l);
@@ -89,7 +89,7 @@ public class Maze {
       i = next[0];
       j = next[1];
     }
-    System.out.println("[" + i + "," + j + "] -> Out!!!");
+    IO.println("[" + i + "," + j + "] -> Out!!!");
   }
 
   private static int[] checkNeighboursForOpenDoor(boolean[][] visited, int i, int j, int m, int n) {

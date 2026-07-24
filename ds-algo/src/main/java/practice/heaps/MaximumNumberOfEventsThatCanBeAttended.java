@@ -39,11 +39,11 @@ public class MaximumNumberOfEventsThatCanBeAttended {
 
   static void main() {
     var m = new MaximumNumberOfEventsThatCanBeAttended();
-    System.out.println(
+    IO.println(
         m.maxEvents(new int[][] {{1, 1}, {1, 2}, {1, 3}, {1, 4}, {1, 5}, {1, 6}, {1, 7}})); // 7
-    System.out.println(m.maxEvents(new int[][] {{1, 4}, {4, 4}, {2, 2}, {3, 4}, {1, 1}})); // 4
-    System.out.println(m.maxEvents(new int[][] {{1, 2}, {2, 3}, {3, 4}})); // 3
-    System.out.println(m.maxEvents(new int[][] {{1, 2}, {2, 3}, {3, 4}, {1, 2}})); // 4
-    System.out.println(m.maxEvents(new int[][] {{1, 1}, {2, 3}, {3, 4}, {1, 1}})); // 3
+    IO.println(m.maxEvents(new int[][] {{1, 4}, {4, 4}, {2, 2}, {3, 4}, {1, 1}})); // 4
+    IO.println(m.maxEvents(new int[][] {{1, 2}, {2, 3}, {3, 4}})); // 3
+    IO.println(m.maxEvents(new int[][] {{1, 2}, {2, 3}, {3, 4}, {1, 2}})); // 4
+    IO.println(m.maxEvents(new int[][] {{1, 1}, {2, 3}, {3, 4}, {1, 1}})); // 3
   }
 }

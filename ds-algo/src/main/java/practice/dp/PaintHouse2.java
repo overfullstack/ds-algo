@@ -51,12 +51,12 @@ public class PaintHouse2 {
 
   static void main() {
     var paintHouse2 = new PaintHouse2();
-    System.out.println(
+    IO.println(
         paintHouse2.minCostII(new int[][] {{14, 2, 11}, {11, 14, 5}, {14, 3, 10}})); // 10
-    System.out.println(paintHouse2.minCostII(new int[][] {{5}})); // 5
+    IO.println(paintHouse2.minCostII(new int[][] {{5}})); // 5
 
-    System.out.println(
+    IO.println(
         paintHouse2.minCostIITopDown(new int[][] {{14, 2, 11}, {11, 14, 5}, {14, 3, 10}})); // 10
-    System.out.println(paintHouse2.minCostIITopDown(new int[][] {{5}})); // 5
+    IO.println(paintHouse2.minCostIITopDown(new int[][] {{5}})); // 5
   }
 }

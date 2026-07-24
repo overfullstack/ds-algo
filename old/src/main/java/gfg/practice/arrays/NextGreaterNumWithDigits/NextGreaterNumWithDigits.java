@@ -21,7 +21,7 @@ public class NextGreaterNumWithDigits {
     for (var e : arr) {
       System.out.print(e + " ");
     }
-    System.out.println();
+    IO.println();
   }
 
   private static void nextGreaterNum(int[] arr) {
