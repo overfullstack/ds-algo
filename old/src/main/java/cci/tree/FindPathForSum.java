@@ -2,7 +2,7 @@ package cci.tree;
 
 import ds.TreeNode;
 
-/** Created by gakshintala on 3/29/16. */
+/// Created by gakshintala on 3/29/16. 
 public class FindPathForSum {
   private static final int SUM_TO_FIND = 6;
   private static int[]

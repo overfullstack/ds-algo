@@ -7,7 +7,7 @@ import java.util.PriorityQueue;
 
 /* 25 Oct 2025 18:48 */
 
-/** [1792. Maximum Average Pass Ratio](https://leetcode.com/problems/maximum-average-pass-ratio/) */
+/// [1792. Maximum Average Pass Ratio](https://leetcode.com/problems/maximum-average-pass-ratio/) 
 public class MaximumAveragePassRatio {
   public double maxAverageRatio(int[][] classes, int extraStudents) {
     var maxProfitHeap =

@@ -3,7 +3,7 @@ package hackerrank;
 import java.util.Arrays;
 import java.util.Scanner;
 
-/** Created by gakshintala on 12/10/15. */
+/// Created by gakshintala on 12/10/15. 
 public class MatrixRotation {
   static void main() {
     var scn = new Scanner(System.in);

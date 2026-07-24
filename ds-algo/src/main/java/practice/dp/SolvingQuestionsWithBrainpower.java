@@ -2,10 +2,8 @@ package practice.dp;
 
 /* 01 Oct 2025 16:59 */
 
-/**
- * [2140. Solving Questions With
- * Brainpower](https://leetcode.com/problems/solving-questions-with-brainpower/)
- */
+/// [2140. Solving Questions With
+/// Brainpower](https://leetcode.com/problems/solving-questions-with-brainpower/)
 public class SolvingQuestionsWithBrainpower {
   public long mostPoints(int[][] questions) {
     return solve(0, questions, new long[questions.length]);

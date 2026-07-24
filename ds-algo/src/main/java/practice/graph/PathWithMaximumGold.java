@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 /* 31 Aug 2025 20:47 */
 
-/** [1219. Path with Maximum Gold](https://leetcode.com/problems/path-with-maximum-gold/) */
+/// [1219. Path with Maximum Gold](https://leetcode.com/problems/path-with-maximum-gold/) 
 public class PathWithMaximumGold {
   public int getMaximumGold(int[][] grid) {
     var maxGold = 0;

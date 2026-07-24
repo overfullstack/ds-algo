@@ -2,7 +2,7 @@ package gfg.practice.arrays.TicTacToe;
 
 import java.util.Scanner;
 
-/** Created by gakshintala on 6/14/16. */
+/// Created by gakshintala on 6/14/16. 
 public class TicTacToe {
   // This matrix is used to find indexes to check all
   // possible wining triplets in board[0..8]

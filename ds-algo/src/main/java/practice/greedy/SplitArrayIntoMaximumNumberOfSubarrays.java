@@ -2,10 +2,8 @@ package practice.greedy;
 
 /* 18 Oct 2025 18:59 */
 
-/**
- * [2871. Split Array Into Maximum Number of
- * Subarrays](https://leetcode.com/problems/split-array-into-maximum-number-of-subarrays)
- */
+/// [2871. Split Array Into Maximum Number of
+/// Subarrays](https://leetcode.com/problems/split-array-into-maximum-number-of-subarrays)
 public class SplitArrayIntoMaximumNumberOfSubarrays {
   public int maxSubarrays(int[] nums) {
     var value = -1;

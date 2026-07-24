@@ -2,7 +2,7 @@ package icake.array.ProductOfAllExceptAtIndex;
 
 import java.util.Arrays;
 
-/** Created by Gopala Akshintala on 10/15/16. */
+/// Created by Gopala Akshintala on 10/15/16. 
 public class ProductOfAllExceptAtIndex {
   static void main() {
     int[] arr = {1, 7, 3, 4};

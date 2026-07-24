@@ -6,7 +6,7 @@ import java.util.PriorityQueue;
 
 /* 21 Oct 2025 19:54 */
 
-/** [1646. Most Profit Assigning Work](https://leetcode.com/problems/most-profit-assigning-work) */
+/// [1646. Most Profit Assigning Work](https://leetcode.com/problems/most-profit-assigning-work) 
 public class MostProfitAssigningWork {
   public int maxProfitAssignment(int[] difficulty, int[] profit, int[] worker) {
     var minHeapForDifficulty =

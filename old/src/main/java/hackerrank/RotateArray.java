@@ -2,7 +2,7 @@ package hackerrank;
 
 import java.util.Arrays;
 
-/** Created by gakshintala on 3/14/16. */
+/// Created by gakshintala on 3/14/16. 
 public class RotateArray {
   static void main() {
     int[] a = {1, 1, 2, 3, 5};

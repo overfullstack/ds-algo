@@ -2,7 +2,7 @@ package challenges.Maze;
 
 import java.util.Scanner;
 
-/** Created by gakshintala on 4/18/16. */
+/// Created by gakshintala on 4/18/16. 
 public class Maze {
   static void main() {
     var scn = new Scanner(System.in);

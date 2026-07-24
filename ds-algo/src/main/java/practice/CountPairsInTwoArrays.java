@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 /* 24 Oct 2025 16:17 */
 
-/** [3733 · Count Pairs in Two Arrays](https://www.lintcode.com/problem/3733/) */
+/// [3733 · Count Pairs in Two Arrays](https://www.lintcode.com/problem/3733/) 
 public class CountPairsInTwoArrays {
   public long countPairs(int[] nums1, int[] nums2) {
     var diff = new int[nums1.length];

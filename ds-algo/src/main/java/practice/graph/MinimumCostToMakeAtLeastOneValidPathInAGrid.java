@@ -7,10 +7,8 @@ import java.util.PriorityQueue;
 
 /* 04 Sep 2025 08:39 */
 
-/**
- * [1368. Minimum Cost to Make at Least One Valid Path in a
- * Grid](https://leetcode.com/problems/minimum-cost-to-make-at-least-one-valid-path-in-a-grid/)
- */
+/// [1368. Minimum Cost to Make at Least One Valid Path in a
+/// Grid](https://leetcode.com/problems/minimum-cost-to-make-at-least-one-valid-path-in-a-grid/)
 public class MinimumCostToMakeAtLeastOneValidPathInAGrid {
   public int minCost(int[][] grid) { // * 0-1 BFS, more performant O(V+E)
     var queue = new ArrayDeque<int[]>();

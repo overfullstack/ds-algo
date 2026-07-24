@@ -5,7 +5,7 @@ import static ds.Utils.treeDepth;
 import ds.TreeNode;
 import java.util.Arrays;
 
-/** Created by gakshintala on 6/10/16. */
+/// Created by gakshintala on 6/10/16. 
 public class PrintAllPaths {
   static void main() {
     var treeNode6 = new TreeNode(6, null, null);

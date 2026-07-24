@@ -3,7 +3,7 @@ package gfg.practice.greedy.MinCostToConnectRopes;
 import java.util.PriorityQueue;
 import java.util.Scanner;
 
-/** Created by gakshintala on 6/20/16. */
+/// Created by gakshintala on 6/20/16. 
 public class MinCostToConnectRopes {
   static void main() {
     var scn = new Scanner(System.in);

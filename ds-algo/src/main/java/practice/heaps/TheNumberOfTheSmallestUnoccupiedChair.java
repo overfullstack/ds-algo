@@ -6,10 +6,8 @@ import java.util.stream.IntStream;
 
 /* 19 Oct 2025 17:04 */
 
-/**
- * [1942. The Number of the Smallest Unoccupied
- * Chair](https://leetcode.com/problems/the-number-of-the-smallest-unoccupied-chair/)
- */
+/// [1942. The Number of the Smallest Unoccupied
+/// Chair](https://leetcode.com/problems/the-number-of-the-smallest-unoccupied-chair/)
 public class TheNumberOfTheSmallestUnoccupiedChair {
   public int smallestChair(int[][] times, int targetFriend) {
     final var occupiedChairs =

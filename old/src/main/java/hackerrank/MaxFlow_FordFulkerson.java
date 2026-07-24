@@ -3,7 +3,7 @@ package hackerrank;
 import java.util.LinkedList;
 import java.util.Queue;
 
-/** Created by gakshintala on 1/13/16. */
+/// Created by gakshintala on 1/13/16. 
 public class MaxFlow_FordFulkerson {
   private FlowEdge[] edgeTo;
   private int maxFlowValue;
@@ -100,7 +100,7 @@ class FlowEdge {
   }
 }
 
-/** Undirected graph */
+/// Undirected graph 
 class FlowNetwork {
   public int N;
   private final LinkedList<FlowEdge>[] adj;

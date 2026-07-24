@@ -4,7 +4,7 @@ import java.util.ArrayDeque;
 
 /* 28 Aug 2025 17:52 */
 
-/** [962. Maximum Width Ramp](https://leetcode.com/problems/maximum-width-ramp/) */
+/// [962. Maximum Width Ramp](https://leetcode.com/problems/maximum-width-ramp/) 
 public class MaximumWidthRamp {
   public int maxWidthRamp(int[] nums) {
     var stk = new ArrayDeque<Integer>();

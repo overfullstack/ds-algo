@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 
-/** Created by Gopala Akshintala on 10/04/17. */
+/// Created by Gopala Akshintala on 10/04/17. 
 public class MergeOverlaps {
   static void main() {
     var scn = new Scanner(System.in);

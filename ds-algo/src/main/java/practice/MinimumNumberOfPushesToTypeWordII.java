@@ -5,10 +5,8 @@ import java.util.HashMap;
 
 /* 23 Oct 2025 12:06 */
 
-/**
- * [3016. Minimum Number of Pushes to Type Word
- * II](https://leetcode.com/problems/minimum-number-of-pushes-to-type-word-ii/)
- */
+/// [3016. Minimum Number of Pushes to Type Word
+/// II](https://leetcode.com/problems/minimum-number-of-pushes-to-type-word-ii/)
 public class MinimumNumberOfPushesToTypeWordII {
   public int minimumPushes(String word) {
     var freq = new HashMap<Character, Integer>();

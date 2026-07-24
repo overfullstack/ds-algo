@@ -6,7 +6,7 @@ import static java.lang.IO.println;
 
 import java.util.Arrays;
 
-/** [611. Valid Triangle Number](https://leetcode.com/problems/valid-triangle-number/) */
+/// [611. Valid Triangle Number](https://leetcode.com/problems/valid-triangle-number/) 
 public class ValidTriangleNumber {
   public int triangleNumber(int[] nums) {
     Arrays.sort(nums);

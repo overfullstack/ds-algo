@@ -4,10 +4,8 @@ import java.util.Arrays;
 
 /* 25 Oct 2025 13:25 */
 
-/**
- * [2389. Longest Subsequence With Limited
- * Sum](https://leetcode.com/problems/longest-subsequence-with-limited-sum/)
- */
+/// [2389. Longest Subsequence With Limited
+/// Sum](https://leetcode.com/problems/longest-subsequence-with-limited-sum/)
 public class LongestSubsequenceWithLimitedSum {
   public int[] answerQueries(int[] nums, int[] queries) {
     Arrays.sort(nums); // ! Subsequence, so it's ok to lose order of elements

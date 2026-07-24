@@ -1,6 +1,6 @@
 package gfg.regular.dp.StairCaseClimb;
 
-/** Created by Gopala Akshintala on 6/2/17. */
+/// Created by Gopala Akshintala on 6/2/17. 
 public class StairCaseClimb {
   static void main() {
     int stairsCount = 4, numWaysToJump = 2;

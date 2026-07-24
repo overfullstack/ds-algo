@@ -1,6 +1,6 @@
 package gfg.regular.array.SmallerGreater;
 
-/** Created by gakshintala on 4/14/16. */
+/// Created by gakshintala on 4/14/16. 
 public class SmallerGreater {
   static void main() {
     int[] arr = {5, 1, 4, 3, 6, 8, 10, 7, 9};

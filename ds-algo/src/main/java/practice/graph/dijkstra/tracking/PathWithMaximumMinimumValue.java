@@ -6,10 +6,8 @@ import java.util.PriorityQueue;
 
 /* 05 Sep 2025 12:40 */
 
-/**
- * [1102 - Path With Maximum Minimum
- * Value](https://leetcode.ca/2018-12-06-1102-Path-With-Maximum-Minimum-Value/)
- */
+/// [1102 - Path With Maximum Minimum
+/// Value](https://leetcode.ca/2018-12-06-1102-Path-With-Maximum-Minimum-Value/)
 public class PathWithMaximumMinimumValue {
   public int maximumMinimumPath(int[][] grid) {
     // ! Greedily pick the path with maximum `minValueInPath`

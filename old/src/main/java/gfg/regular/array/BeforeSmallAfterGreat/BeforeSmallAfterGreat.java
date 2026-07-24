@@ -1,6 +1,6 @@
 package gfg.regular.array.BeforeSmallAfterGreat;
 
-/** Created by gakshintala on 6/13/16. */
+/// Created by gakshintala on 6/13/16. 
 public class BeforeSmallAfterGreat {
   static void main() {
     int[] arr = {5, 1, 4, 3, 6, 8, 10, 7, 9};

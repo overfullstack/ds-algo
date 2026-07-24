@@ -6,7 +6,7 @@ package concurrency; /*
 import java.util.LinkedList;
 import java.util.Queue;
 
-/** Created by gakshintala on 6/16/16. */
+/// Created by gakshintala on 6/16/16. 
 public class ThreadSafeQueue {
   private final Queue<Integer> queue = new LinkedList<>();
 

@@ -2,7 +2,7 @@ package practice.dp;
 
 import java.util.Arrays;
 
-/** [1140. Stone Game II](https://leetcode.com/problems/stone-game-ii/) */
+/// [1140. Stone Game II](https://leetcode.com/problems/stone-game-ii/) 
 public class StoneGame2 {
   public int stoneGameII(int[] piles) {
     var suffixSum = Arrays.copyOf(piles, piles.length);

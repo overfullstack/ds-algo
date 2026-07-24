@@ -7,10 +7,8 @@ import java.util.HashSet;
 
 /* 07 Oct 2025 10:41 */
 
-/**
- * [847. Shortest Path Visiting All
- * Nodes](https://leetcode.com/problems/shortest-path-visiting-all-nodes/)
- */
+/// [847. Shortest Path Visiting All
+/// Nodes](https://leetcode.com/problems/shortest-path-visiting-all-nodes/)
 public class ShortestPathVisitingAllNodes {
   public int shortestPathLength(int[][] graph) { // * BFS
     var queue = new ArrayDeque<Triple<Integer, Integer, Integer>>();

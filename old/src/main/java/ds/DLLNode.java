@@ -1,6 +1,6 @@
 package ds;
 
-/** Created by gakshintala on 4/22/16. */
+/// Created by gakshintala on 4/22/16. 
 public class DLLNode {
   public int val;
   public DLLNode next;

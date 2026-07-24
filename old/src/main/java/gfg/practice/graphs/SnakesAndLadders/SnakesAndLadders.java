@@ -6,7 +6,7 @@ import java.util.Map;
 import java.util.Queue;
 import java.util.Scanner;
 
-/** Created by Gopala Akshintala on 22/02/17. */
+/// Created by Gopala Akshintala on 22/02/17. 
 public class SnakesAndLadders {
   static void main() {
     var scn = new Scanner(System.in);

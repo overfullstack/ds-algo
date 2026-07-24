@@ -9,10 +9,8 @@ import java.util.PriorityQueue;
 
 /* 07 Sep 2025 13:06 */
 
-/**
- * [1976. Number of Ways to Arrive at
- * Destination](https://leetcode.com/problems/number-of-ways-to-arrive-at-destination/)
- */
+/// [1976. Number of Ways to Arrive at
+/// Destination](https://leetcode.com/problems/number-of-ways-to-arrive-at-destination/)
 public class NumberOfWaysToArriveAtDestination {
   private static final int MOD = 1_000_000_007;
 

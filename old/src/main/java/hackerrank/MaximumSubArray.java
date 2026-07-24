@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-/** Created by gakshintala on 2/25/16. */
+/// Created by gakshintala on 2/25/16. 
 public class MaximumSubArray {
 
   static void main() {

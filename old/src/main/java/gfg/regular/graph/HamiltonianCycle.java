@@ -2,7 +2,7 @@ package gfg.regular.graph;
 
 import java.util.Arrays;
 
-/** Created by gakshintala on 4/20/16. */
+/// Created by gakshintala on 4/20/16. 
 public class HamiltonianCycle {
   static void main() {
 

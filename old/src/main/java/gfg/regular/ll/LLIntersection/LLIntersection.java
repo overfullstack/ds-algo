@@ -4,7 +4,7 @@ import static ds.Utils.findLLLength;
 
 import ds.ListNode;
 
-/** Created by gakshintala on 6/10/16. */
+/// Created by gakshintala on 6/10/16. 
 public class LLIntersection {
   static void main() {
     ListNode l1, l2, l3, l4, l5;

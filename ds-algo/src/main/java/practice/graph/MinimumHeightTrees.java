@@ -12,7 +12,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-/** [310. Minimum Height Trees](https://leetcode.com/problems/minimum-height-trees) */
+/// [310. Minimum Height Trees](https://leetcode.com/problems/minimum-height-trees) 
 public class MinimumHeightTrees {
 
   public List<Integer> findMinHeightTrees(int n, int[][] edges) {

@@ -1,6 +1,6 @@
 package gfg.regular.SortAndSearch.UniqueInSortedArray;
 
-/** Created by gakshintala on 6/22/16. */
+/// Created by gakshintala on 6/22/16. 
 public class UniqueInSortedArray {
   static void main() {
     int[] arr = {1, 1, 2, 4, 4, 5, 5, 6, 6};

@@ -2,7 +2,7 @@ package gfg.practice.backtracking.KSwapsMaxNum;
 
 import java.util.Scanner;
 
-/** Created by gakshintala on 6/27/16. */
+/// Created by gakshintala on 6/27/16. 
 public class KSwapsMaxNum {
   static void main() {
     var scn = new Scanner(System.in);

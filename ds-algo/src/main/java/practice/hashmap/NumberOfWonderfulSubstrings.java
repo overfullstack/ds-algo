@@ -2,10 +2,8 @@ package practice.hashmap;
 
 /* 21 Oct 2025 20:25 */
 
-/**
- * [1915. Number of Wonderful
- * Substrings](https://leetcode.com/problems/number-of-wonderful-substrings/)
- */
+/// [1915. Number of Wonderful
+/// Substrings](https://leetcode.com/problems/number-of-wonderful-substrings/)
 public class NumberOfWonderfulSubstrings {
   public long wonderfulSubstrings(String word) {
     var count = new int[(int) Math.pow(2, 10)]; // ! For `a..j` 10 letters

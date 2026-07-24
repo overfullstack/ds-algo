@@ -2,10 +2,8 @@ package practice.dp;
 
 /* 06 Sep 2025 17:46 */
 
-/**
- * [2431 - Maximize Total Tastiness of Purchased
- * Fruits](https://leetcode.ca/2022-07-27-2431-Maximize-Total-Tastiness-of-Purchased-Fruits/)
- */
+/// [2431 - Maximize Total Tastiness of Purchased
+/// Fruits](https://leetcode.ca/2022-07-27-2431-Maximize-Total-Tastiness-of-Purchased-Fruits/)
 public class MaximizeTotalTastinessOfPurchasedFruits {
   public int maxTastiness(int[] price, int[] tastiness, int maxAmount, int maxCoupons) {
     return maxTastiness(

@@ -2,10 +2,8 @@ package practice;
 
 /* 22 Oct 2025 11:42 */
 
-/**
- * [1592. Rearrange Spaces Between
- * Words](https://leetcode.com/problems/rearrange-spaces-between-words/)
- */
+/// [1592. Rearrange Spaces Between
+/// Words](https://leetcode.com/problems/rearrange-spaces-between-words/)
 public class RearrangeSpacesBetweenWords {
   public String reorderSpaces(String text) {
     var words = text.trim().split("\\s+");

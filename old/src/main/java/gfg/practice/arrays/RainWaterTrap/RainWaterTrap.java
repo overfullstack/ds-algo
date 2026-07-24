@@ -2,7 +2,7 @@ package gfg.practice.arrays.RainWaterTrap;
 
 import java.util.Scanner;
 
-/** Created by Gopala Akshintala on 8/15/17. */
+/// Created by Gopala Akshintala on 8/15/17. 
 public class RainWaterTrap {
   static void main() {
     var scn = new Scanner(System.in);

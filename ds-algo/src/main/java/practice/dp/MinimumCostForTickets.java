@@ -2,7 +2,7 @@ package practice.dp;
 
 /* 28 Sep 2025 16:51 */
 
-/** [983. Minimum Cost For Tickets](https://leetcode.com/problems/minimum-cost-for-tickets/) */
+/// [983. Minimum Cost For Tickets](https://leetcode.com/problems/minimum-cost-for-tickets/) 
 public class MinimumCostForTickets {
   public int mincostTickets(int[] days, int[] costs) {
     var memo = new int[days.length + 1]; // Cost starts with `1` as per problem, so no `-1` init

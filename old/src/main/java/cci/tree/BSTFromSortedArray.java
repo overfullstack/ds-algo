@@ -2,7 +2,7 @@ package cci.tree;
 
 import ds.TreeNode;
 
-/** Created by gakshintala on 3/30/16. */
+/// Created by gakshintala on 3/30/16. 
 public class BSTFromSortedArray {
   static void main() {
     int[] arr = {1, 2, 3, 4, 5, 6, 7, 8};

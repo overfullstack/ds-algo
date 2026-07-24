@@ -2,7 +2,7 @@ package gfg.practice.arrays.BitonicSubArray;
 
 import java.util.Scanner;
 
-/** Created by gakshintala on 6/15/16. */
+/// Created by gakshintala on 6/15/16. 
 public class BitonicSubArray {
   static void main() {
     var scn = new Scanner(System.in);

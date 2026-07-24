@@ -2,7 +2,7 @@ package gfg.practice.arrays.NutsBolts;
 
 import java.util.Scanner;
 
-/** Created by gakshintala on 6/21/16. */
+/// Created by gakshintala on 6/21/16. 
 public class NutsBolts {
   static void main() {
     var scn = new Scanner(System.in);

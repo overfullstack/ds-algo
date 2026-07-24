@@ -2,7 +2,7 @@ package practice.dp;
 
 /* 06 Oct 2025 19:18 */
 
-/** [790. Domino and Tromino Tiling](https://leetcode.com/problems/domino-and-tromino-tiling/) */
+/// [790. Domino and Tromino Tiling](https://leetcode.com/problems/domino-and-tromino-tiling/) 
 public class DominoAndTrominoTiling {
   private static final int MOD = (int) 1e9 + 7;
 

@@ -2,7 +2,7 @@ package gfg.practice.backtracking.Sudoku;
 
 import java.util.Scanner;
 
-/** Created by Go on 9-4-16. */
+/// Created by Go on 9-4-16. 
 public class Sudoku {
   static void main() {
     var scn = new Scanner(System.in);

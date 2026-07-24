@@ -2,7 +2,7 @@ package practice.dp;
 
 /* 31 Aug 2025 14:17 */
 
-/** [Stone Game III](https://leetcode.com/problems/stone-game-iii/) */
+/// [Stone Game III](https://leetcode.com/problems/stone-game-iii/) 
 public class StoneGame3 {
   public String stoneGameIII(int[] stoneValue) {
     var stoneDiffForFirstTurn = maxStoneDiffForTurn(0, stoneValue, new int[stoneValue.length]);

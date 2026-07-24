@@ -2,7 +2,7 @@ package gfg.practice.dp.CoinGame;
 
 import java.util.Scanner;
 
-/** Created by gakshintala on 6/10/16. */
+/// Created by gakshintala on 6/10/16. 
 public class CoinGame {
   static void main() {
     var scn = new Scanner(System.in);

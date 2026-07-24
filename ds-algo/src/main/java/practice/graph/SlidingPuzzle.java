@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
 
 /* 05 Oct 2025 09:12 */
 
-/** [773. Sliding Puzzle](https://leetcode.com/problems/sliding-puzzle) */
+/// [773. Sliding Puzzle](https://leetcode.com/problems/sliding-puzzle) 
 public class SlidingPuzzle {
   private static final int[][] directions = {{1, 3}, {0, 2, 4}, {1, 5}, {0, 4}, {1, 3, 5}, {2, 4}};
   private static final String TARGET = "123450";

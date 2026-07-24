@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedList;
 
-/** [1138. Alphabet Board Path](https://leetcode.com/problems/alphabet-board-path/) */
+/// [1138. Alphabet Board Path](https://leetcode.com/problems/alphabet-board-path/) 
 public class AlphabetBoardPath {
   private static final String[] board = {"abcde", "fghij", "klmno", "pqrst", "uvwxy", "z"};
   private static final int[][] directions = {{-1, 0, 'U'}, {1, 0, 'D'}, {0, -1, 'L'}, {0, 1, 'R'}};

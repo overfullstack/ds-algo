@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-/** [Optimal Account Balancing](https://www.naukri.com/code360/problems/settle-debt_1232658) */
+/// [Optimal Account Balancing](https://www.naukri.com/code360/problems/settle-debt\_1232658) 
 public class OptimalAccountBalancing {
   public static int settleDebt(List<List<Integer>> arr) {
     var balances = new HashMap<Integer, Integer>();

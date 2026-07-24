@@ -6,10 +6,8 @@ import java.util.List;
 
 /* 04 Oct 2025 10:56 */
 
-/**
- * [2077 - Paths in Maze That Lead to Same
- * Room](https://leetcode.ca/2021-08-07-2077-Paths-in-Maze-That-Lead-to-Same-Room/)
- */
+/// [2077 - Paths in Maze That Lead to Same
+/// Room](https://leetcode.ca/2021-08-07-2077-Paths-in-Maze-That-Lead-to-Same-Room/)
 public class PathsInMazeThatLeadToSameRoom {
   public int numberOfPaths(int n, int[][] corridors) {
     var diGraph = new HashMap<Integer, List<Integer>>();

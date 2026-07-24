@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
-/** Created by gakshintala on 12/21/15. */
+/// Created by gakshintala on 12/21/15. 
 public class JourneyToMoon {
   static void main() {
     var scn = new Scanner(System.in);

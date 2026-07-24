@@ -4,7 +4,7 @@ import static ds.Utils.printSLL;
 
 import ds.ListNode;
 
-/** Created by Gopala Akshintala on 2/25/17. */
+/// Created by Gopala Akshintala on 2/25/17. 
 public class SwapNodes {
   static void main() {
     var head = new ListNode(7);

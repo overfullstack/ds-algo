@@ -1,6 +1,6 @@
 package icake.array.HighestProductOf3;
 
-/** Created by gakshintala on 6/21/16. */
+/// Created by gakshintala on 6/21/16. 
 public class HighestProductOf3 {
   static void main() {
     int[] arr = {1, -2, 3, 4};

@@ -1,6 +1,6 @@
 package gfg.regular.array.ClosestIn3Lists;
 
-/** Created by gakshintala on 6/11/16. */
+/// Created by gakshintala on 6/11/16. 
 public class ClosestIn3Lists {
   static void main() {
     int[] a = {1, 4, 10};

@@ -1,6 +1,6 @@
 package gfg.regular.dp.MaxSquareSubMatrix;
 
-/** Created by gakshintala on 6/10/16. */
+/// Created by gakshintala on 6/10/16. 
 public class MaxSquareSubMatrix {
   static void main() {
     int[][] M = {

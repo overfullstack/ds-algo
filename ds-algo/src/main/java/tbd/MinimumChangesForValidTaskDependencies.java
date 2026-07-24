@@ -1,6 +1,6 @@
 package tbd;
 
-/** Hackerrank library */
+/// Hackerrank library 
 public class MinimumChangesForValidTaskDependencies {
 
   public int minChanges(int[] taskDependency) {

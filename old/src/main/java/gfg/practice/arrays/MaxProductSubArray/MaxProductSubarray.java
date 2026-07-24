@@ -2,7 +2,7 @@ package gfg.practice.arrays.MaxProductSubArray;
 
 import java.util.Scanner;
 
-/** Created by gakshintala on 7/3/16. */
+/// Created by gakshintala on 7/3/16. 
 public class MaxProductSubarray {
   static void main() {
     var scn = new Scanner(System.in);

@@ -5,7 +5,7 @@ import java.util.stream.Collectors;
 
 /* 23 Oct 2025 07:04 */
 
-/** [1366. Rank Teams by Votes](https://leetcode.com/problems/rank-teams-by-votes) */
+/// [1366. Rank Teams by Votes](https://leetcode.com/problems/rank-teams-by-votes) 
 public class RankTeamsByVotes {
   public String rankTeams(String[] votes) {
     if (votes.length == 0) {

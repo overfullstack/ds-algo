@@ -2,10 +2,8 @@ package practice.backtracking;
 
 /* 18 Oct 2025 11:27 */
 
-/**
- * [1250. Minimum Moves to Spread Stones Over
- * Grid](https://leetcode.com/problems/minimum-moves-to-spread-stones-over-grid/)
- */
+/// [1250. Minimum Moves to Spread Stones Over
+/// Grid](https://leetcode.com/problems/minimum-moves-to-spread-stones-over-grid/)
 public class MinimumMovesToSpreadStonesOverGrid {
   public int minimumMoves(int[][] grid) {
     /*

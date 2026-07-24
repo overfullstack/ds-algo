@@ -4,7 +4,7 @@ import java.util.Scanner;
 import java.util.Set;
 import java.util.TreeSet;
 
-/** Created by gakshintala on 12/8/15. */
+/// Created by gakshintala on 12/8/15. 
 public class ManasaStones {
   static void main() {
     var scn = new Scanner(System.in);

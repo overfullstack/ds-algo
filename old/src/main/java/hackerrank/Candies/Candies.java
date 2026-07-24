@@ -3,7 +3,7 @@ package hackerrank.Candies;
 import java.util.Arrays;
 import java.util.Scanner;
 
-/** Created by gakshintala on 2/25/16. */
+/// Created by gakshintala on 2/25/16. 
 public class Candies {
   static void main() {
     var scn = new Scanner(System.in);

@@ -2,7 +2,7 @@ package gfg.regular.array.LCS1sReplacing0s;
 
 import java.util.Arrays;
 
-/** Created by gakshintala on 4/12/16. */
+/// Created by gakshintala on 4/12/16. 
 public class LCS1sReplacing0s {
   static void main() {
     int[] arr = {1, 1, 0, 0, 1, 0, 1, 1, 1, 0, 1, 1, 1};

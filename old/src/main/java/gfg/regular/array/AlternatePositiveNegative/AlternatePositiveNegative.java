@@ -2,7 +2,7 @@ package gfg.regular.array.AlternatePositiveNegative;
 
 import java.util.Arrays;
 
-/** Created by gakshintala on 6/12/16. */
+/// Created by gakshintala on 6/12/16. 
 public class AlternatePositiveNegative {
   static void main() {
     int[] arr = {-5, -2, 5, 2, 4, 7, 1, 8, 0, -8};

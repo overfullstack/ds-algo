@@ -1,6 +1,6 @@
 package gfg.regular.dp.LongestCommonSubString;
 
-/** Created by gakshint on 17/04/18. */
+/// Created by gakshint on 17/04/18. 
 public class LongestCommonSubString {
   static void main() {
     var a = "OldSite:GeeksforGeeks.org";

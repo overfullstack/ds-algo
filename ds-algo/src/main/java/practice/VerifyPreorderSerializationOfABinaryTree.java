@@ -2,10 +2,8 @@ package practice;
 
 /* 02 Sep 2025 17:32 */
 
-/**
- * [331. Verify Preorder Serialization of a Binary
- * Tree](https://leetcode.com/problems/verify-preorder-serialization-of-a-binary-tree/)
- */
+/// [331. Verify Preorder Serialization of a Binary
+/// Tree](https://leetcode.com/problems/verify-preorder-serialization-of-a-binary-tree/)
 public class VerifyPreorderSerializationOfABinaryTree {
   public boolean isValidSerialization(String preorder) {
     var nodes = preorder.split(",");

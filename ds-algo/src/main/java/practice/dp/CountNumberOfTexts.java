@@ -2,7 +2,7 @@ package practice.dp;
 
 /* 06 Sep 2025 22:49 */
 
-/** [2266. Count Number of Texts](https://leetcode.com/problems/count-number-of-texts/) */
+/// [2266. Count Number of Texts](https://leetcode.com/problems/count-number-of-texts/) 
 public class CountNumberOfTexts {
   private static final int MOD = 1_000_000_007;
 

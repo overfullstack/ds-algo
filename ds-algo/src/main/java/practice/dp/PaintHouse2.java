@@ -5,7 +5,7 @@ import java.util.stream.IntStream;
 
 /* 14 Oct 2025 18:51 */
 
-/** [516 · Paint House II](https://www.lintcode.com/problem/516/) */
+/// [516 · Paint House II](https://www.lintcode.com/problem/516/) 
 public class PaintHouse2 {
   public int minCostII(int[][] costs) {
     if (costs.length == 0) {

@@ -4,9 +4,7 @@ import java.util.ArrayDeque;
 import java.util.Arrays;
 import java.util.List;
 
-/**
- * [636. Exclusive Time of Functions](https://leetcode.com/problems/exclusive-time-of-functions/)
- */
+/// [636. Exclusive Time of Functions](https://leetcode.com/problems/exclusive-time-of-functions/)
 public class ExclusiveTimeOfFunctions {
   public int[] exclusiveTime(int n, List<String> logs) {
     var stk = new ArrayDeque<Log>();

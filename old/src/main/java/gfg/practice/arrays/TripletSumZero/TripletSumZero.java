@@ -3,7 +3,7 @@ package gfg.practice.arrays.TripletSumZero;
 import java.util.Arrays;
 import java.util.Scanner;
 
-/** Created by Gopala Akshintala on 3/3/17. */
+/// Created by Gopala Akshintala on 3/3/17. 
 public class TripletSumZero {
   static void main() {
     var scn = new Scanner(System.in);

@@ -6,7 +6,7 @@ import java.util.Arrays;
 
 /* 02 Oct 2025 00:07 */
 
-/** [2742. Painting the Walls](https://leetcode.com/problems/painting-the-walls/) */
+/// [2742. Painting the Walls](https://leetcode.com/problems/painting-the-walls/) 
 public class PaintingTheWalls {
   public int paintWalls(int[] cost, int[] time) {
     var memo = new int[cost.length + 1][cost.length + 1]; // allow idx == n and walls 0..n

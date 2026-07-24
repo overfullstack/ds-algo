@@ -2,10 +2,8 @@ package practice.binarysearch;
 
 /* 22 Oct 2025 07:13 */
 
-/**
- * [1287. Element Appearing More Than 25% In Sorted
- * Array](https://leetcode.com/problems/element-appearing-more-than-25-in-sorted-array/)
- */
+/// [1287. Element Appearing More Than 25% In Sorted
+/// Array](https://leetcode.com/problems/element-appearing-more-than-25-in-sorted-array/)
 public class ElementAppearingMoreThan25_InSortedArray {
   public int findSpecialInteger(int[] arr) {
     if (arr.length == 0) {

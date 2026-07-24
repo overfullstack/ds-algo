@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 
-/** Created by gakshintala on 6/20/16. */
+/// Created by gakshintala on 6/20/16. 
 public class LongestConsecutiveSubsequence {
   static void main() {
     var scn = new Scanner(System.in);

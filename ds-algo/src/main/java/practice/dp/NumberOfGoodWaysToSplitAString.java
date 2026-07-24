@@ -4,10 +4,8 @@ import java.util.HashSet;
 
 /* 05 Sep 2025 18:16 */
 
-/**
- * [1525. Number of Good Ways to Split a
- * String](https://leetcode.com/problems/number-of-good-ways-to-split-a-string/)
- */
+/// [1525. Number of Good Ways to Split a
+/// String](https://leetcode.com/problems/number-of-good-ways-to-split-a-string/)
 public class NumberOfGoodWaysToSplitAString {
   public int numSplits(String s) {
     var len = s.length();

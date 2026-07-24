@@ -11,7 +11,7 @@ import java.util.Map;
 
 /* 07 Sep 2025 19:09 */
 
-/** [851. Loud and Rich](https://leetcode.com/problems/loud-and-rich) */
+/// [851. Loud and Rich](https://leetcode.com/problems/loud-and-rich) 
 public class LoudAndRich {
   public int[] loudAndRich(int[][] richer, int[] quiet) {
     var graph = new HashMap<Integer, List<Integer>>();

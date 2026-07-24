@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
-/** Created by gakshintala on 12/7/15. */
+/// Created by gakshintala on 12/7/15. 
 // Is it to delete minimum edges or to make maximum groups?
 public class MyEvenTree {
   static void main() {

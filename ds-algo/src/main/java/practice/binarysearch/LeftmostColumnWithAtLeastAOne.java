@@ -2,9 +2,7 @@ package practice.binarysearch;
 
 /* 06 Oct 2025 06:52 */
 
-/**
- * [3683 · Columns with at Least a One on the Leftmost Side](https://www.lintcode.com/problem/3683/)
- */
+/// [3683 · Columns with at Least a One on the Leftmost Side](https://www.lintcode.com/problem/3683/)
 public class LeftmostColumnWithAtLeastAOne {
 
   public int getLeftmostColumnWithOne(BinaryMatrix binaryMatrix) {

@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 /* 28 Sep 2025 07:50 */
 
-/** [746. Min Cost Climbing Stairs](https://leetcode.com/problems/min-cost-climbing-stairs/) */
+/// [746. Min Cost Climbing Stairs](https://leetcode.com/problems/min-cost-climbing-stairs/) 
 public class MinCostClimbingStairs {
   public int minCostClimbingStairs(int[] cost) {
     var memo = new int[cost.length];

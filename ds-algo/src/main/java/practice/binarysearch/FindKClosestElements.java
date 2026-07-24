@@ -5,7 +5,7 @@ package practice.binarysearch;
 import java.util.Arrays;
 import java.util.List;
 
-/** [658. Find K Closest Elements](https://leetcode.com/problems/find-k-closest-elements/) */
+/// [658. Find K Closest Elements](https://leetcode.com/problems/find-k-closest-elements/) 
 public class FindKClosestElements {
   // ! arr is sorted
   public List<Integer> findClosestElements(int[] arr, int k, int x) {

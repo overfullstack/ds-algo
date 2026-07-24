@@ -2,7 +2,7 @@ package practice.graph.grid.maze;
 
 import java.util.ArrayDeque;
 
-/** [787 · The Maze](https://www.lintcode.com/problem/787/) */
+/// [787 · The Maze](https://www.lintcode.com/problem/787/) 
 public class Maze {
   public boolean hasPath(int[][] maze, int[] start, int[] destination) {
     var queue = new ArrayDeque<int[]>();

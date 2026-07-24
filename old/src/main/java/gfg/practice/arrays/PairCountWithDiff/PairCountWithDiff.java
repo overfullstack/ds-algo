@@ -3,7 +3,7 @@ package gfg.practice.arrays.PairCountWithDiff;
 import java.util.Arrays;
 import java.util.Scanner;
 
-/** Created by gakshintala on 7/3/16. */
+/// Created by gakshintala on 7/3/16. 
 public class PairCountWithDiff {
   static void main() {
     var scn = new Scanner(System.in);

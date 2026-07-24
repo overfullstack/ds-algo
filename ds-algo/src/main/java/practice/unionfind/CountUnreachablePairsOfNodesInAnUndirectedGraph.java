@@ -4,10 +4,8 @@ import java.util.Arrays;
 
 /* 26 Sep 2025 21:07 */
 
-/**
- * [2316. Count Unreachable Pairs of Nodes in an Undirected
- * Graph](https://leetcode.com/problems/count-unreachable-pairs-of-nodes-in-an-undirected-graph/)
- */
+/// [2316. Count Unreachable Pairs of Nodes in an Undirected
+/// Graph](https://leetcode.com/problems/count-unreachable-pairs-of-nodes-in-an-undirected-graph/)
 public class CountUnreachablePairsOfNodesInAnUndirectedGraph {
   public long countPairs(int n, int[][] edges) {
     var uf = new UnionFind(n);

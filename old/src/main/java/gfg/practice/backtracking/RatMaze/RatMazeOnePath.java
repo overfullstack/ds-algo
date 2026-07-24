@@ -2,7 +2,7 @@ package gfg.practice.backtracking.RatMaze;
 
 import java.util.Arrays;
 
-/** Created by gakshintala on 4/7/16. */
+/// Created by gakshintala on 4/7/16. 
 public class RatMazeOnePath {
   static void main() {
     int[][] maze = {{1, 0, 0, 0}, {1, 1, 0, 1}, {0, 1, 0, 0}, {1, 1, 1, 1}};

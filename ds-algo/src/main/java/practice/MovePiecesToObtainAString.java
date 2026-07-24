@@ -2,10 +2,8 @@ package practice;
 
 /* 26 Aug 2025 17:08 */
 
-/**
- * [2337. Move Pieces to Obtain a
- * String](https://leetcode.com/problems/move-pieces-to-obtain-a-string/)
- */
+/// [2337. Move Pieces to Obtain a
+/// String](https://leetcode.com/problems/move-pieces-to-obtain-a-string/)
 public class MovePiecesToObtainAString {
   public boolean canChange(String start, String target) {
     var i = 0;

@@ -2,7 +2,7 @@ package gfg.regular.ll.CloneLL;
 
 import ds.ListNode;
 
-/** Created by gakshintala on 6/21/16. */
+/// Created by gakshintala on 6/21/16. 
 public class CloneLL {
   static void main() {
     var head = new ListNode(1);

@@ -2,7 +2,7 @@ package practice.backtracking;
 
 /* 09 Oct 2025 21:03 */
 
-/** [3808 · Minimum Number of Lines to Cover Points](https://www.lintcode.com/problem/3808/) */
+/// [3808 · Minimum Number of Lines to Cover Points](https://www.lintcode.com/problem/3808/) 
 public class MinimumNumberOfLinesToCoverPoints {
   public int minimumLines(int[][] points) {
     var visited = 0;

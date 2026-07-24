@@ -6,7 +6,7 @@ import java.util.Map;
 
 /* 31 Aug 2025 18:06 */
 
-/** [911. Online Election](https://leetcode.com/problems/online-election/) */
+/// [911. Online Election](https://leetcode.com/problems/online-election/) 
 public class OnlineElection {
   private final Map<Integer, Integer> timeIdxToLeader;
   private final int[] times;

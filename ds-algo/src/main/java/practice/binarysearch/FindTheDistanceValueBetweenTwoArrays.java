@@ -4,10 +4,8 @@ import java.util.Arrays;
 
 /* 24 Oct 2025 17:34 */
 
-/**
- * [1385. Find the Distance Value Between Two
- * Arrays](https://leetcode.com/problems/find-the-distance-value-between-two-arrays/)
- */
+/// [1385. Find the Distance Value Between Two
+/// Arrays](https://leetcode.com/problems/find-the-distance-value-between-two-arrays/)
 public class FindTheDistanceValueBetweenTwoArrays {
   public int findTheDistanceValue(int[] arr1, int[] arr2, int d) {
     Arrays.sort(arr2); // ! Sort

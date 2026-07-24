@@ -10,10 +10,8 @@ import java.util.stream.IntStream;
 
 /* 07 Sep 2025 08:54 */
 
-/**
- * [1786. Number of Restricted Paths From First to Last
- * Node](https://leetcode.com/problems/number-of-restricted-paths-from-first-to-last-node/)
- */
+/// [1786. Number of Restricted Paths From First to Last
+/// Node](https://leetcode.com/problems/number-of-restricted-paths-from-first-to-last-node/)
 public class NumberOfRestrictedPathsFromFirstToLastNode {
   private static final int MOD = 1_000_000_007;
 

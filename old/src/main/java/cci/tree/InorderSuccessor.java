@@ -2,7 +2,7 @@ package cci.tree;
 
 import ds.TreeNode;
 
-/** Created by gakshintala on 3/30/16. */
+/// Created by gakshintala on 3/30/16. 
 public class InorderSuccessor {
   static void main() {
     TreeNode t1, t2, t3, t4, t5, t6, t7, t8;
@@ -51,7 +51,7 @@ public class InorderSuccessor {
     return leftmostNode(root.left);
   }
 
-  /** This only applies to BST. */
+  /// This only applies to BST. 
   private static TreeNode findNexInorderSuccessorWithoutParent(
       TreeNode root, TreeNode nodeForSuccessor) {
     if (nodeForSuccessor.right != null) {

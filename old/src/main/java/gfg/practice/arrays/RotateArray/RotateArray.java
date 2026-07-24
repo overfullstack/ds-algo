@@ -2,7 +2,7 @@ package gfg.practice.arrays.RotateArray;
 
 import java.util.Scanner;
 
-/** Created by gakshintala on 6/22/16. */
+/// Created by gakshintala on 6/22/16. 
 public class RotateArray {
   static void main() {
     var scn = new Scanner(System.in);

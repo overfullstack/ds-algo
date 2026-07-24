@@ -2,7 +2,7 @@ package gfg.regular.tree;
 
 import ds.TreeNode;
 
-/** Created by gakshintala on 4/22/16. */
+/// Created by gakshintala on 4/22/16. 
 public class DistanceBetweenNodes {
 
   static void main() {

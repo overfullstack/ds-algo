@@ -2,7 +2,7 @@ package practice.graph.floodfill;
 
 import java.util.Arrays;
 
-/** [130. Surrounded Regions](https://leetcode.com/problems/surrounded-regions) */
+/// [130. Surrounded Regions](https://leetcode.com/problems/surrounded-regions) 
 public class SurroundedRegions {
   public void solve(char[][] board) {
     // ! Mark 'O' groups attached to left, right edges

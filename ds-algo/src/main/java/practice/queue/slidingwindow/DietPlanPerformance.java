@@ -2,7 +2,7 @@ package practice.queue.slidingwindow;
 
 /* 23 Oct 2025 17:44 */
 
-/** [1176 - Diet Plan Performance](https://leetcode.ca/2019-02-18-1176-Diet-Plan-Performance/) */
+/// [1176 - Diet Plan Performance](https://leetcode.ca/2019-02-18-1176-Diet-Plan-Performance/) 
 public class DietPlanPerformance {
   public int dietPlanPerformance(int[] calories, int k, int lower, int upper) {
     var sum = 0;

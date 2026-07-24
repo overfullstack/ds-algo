@@ -7,7 +7,7 @@ import ds.TreeNode;
 import java.util.HashMap;
 import java.util.Map;
 
-/** Created by gakshintala on 6/11/16. */
+/// Created by gakshintala on 6/11/16. 
 public class VerticalSum {
   static void main() {
     var root = new TreeNode(1);

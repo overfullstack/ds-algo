@@ -3,7 +3,7 @@ package gfg.practice.stack.LeadersInArray;
 import java.util.Scanner;
 import java.util.Stack;
 
-/** Created by gakshintala on 7/3/16. */
+/// Created by gakshintala on 7/3/16. 
 public class LeadersInArray {
   static void main() {
     var scn = new Scanner(System.in);

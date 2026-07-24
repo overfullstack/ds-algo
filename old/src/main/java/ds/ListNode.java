@@ -1,6 +1,6 @@
 package ds;
 
-/** Created by gakshintala on 4/22/16. */
+/// Created by gakshintala on 4/22/16. 
 public class ListNode {
   public int val;
   public ListNode next;

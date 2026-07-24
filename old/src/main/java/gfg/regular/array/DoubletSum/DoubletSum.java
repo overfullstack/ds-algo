@@ -2,7 +2,7 @@ package gfg.regular.array.DoubletSum;
 
 import java.util.Arrays;
 
-/** Created by gakshintala on 6/16/16. */
+/// Created by gakshintala on 6/16/16. 
 public class DoubletSum {
   static void main() {
     int[] A = {1, 4, 45, 6, 10, 8};

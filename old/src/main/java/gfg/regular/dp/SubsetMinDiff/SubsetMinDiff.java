@@ -2,7 +2,7 @@ package gfg.regular.dp.SubsetMinDiff;
 
 import java.util.Arrays;
 
-/** Created by gakshintala on 6/13/16. */
+/// Created by gakshintala on 6/13/16. 
 public class SubsetMinDiff {
   static void main() {
     int[] arr = {3, 1, 4, 2, 2, 1};

@@ -5,10 +5,8 @@ import java.util.stream.IntStream;
 
 /* 24 Oct 2025 21:14 */
 
-/**
- * [1552. Magnetic Force Between Two
- * Balls](https://leetcode.com/problems/magnetic-force-between-two-balls/)
- */
+/// [1552. Magnetic Force Between Two
+/// Balls](https://leetcode.com/problems/magnetic-force-between-two-balls/)
 public class MagneticForceBetweenTwoBalls {
   public int maxDistance(int[] position, int m) {
     Arrays.sort(position);

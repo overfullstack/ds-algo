@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 /* 26 Aug 2025 20:50 */
 
-/** [1254. Number of Closed Islands](https://leetcode.com/problems/number-of-closed-islands/) */
+/// [1254. Number of Closed Islands](https://leetcode.com/problems/number-of-closed-islands/)
 public class NumberOfClosedIslands {
 
   private static final int[][] directions = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};

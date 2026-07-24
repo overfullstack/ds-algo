@@ -2,7 +2,7 @@ package gfg.practice.tree.TreeDiameter;
 
 import ds.TreeNode;
 
-/** Created by gakshintala on 6/10/16. */
+/// Created by gakshintala on 6/10/16. 
 public class TreeDiameter {
   static void main() {
     var treeNode5 = new TreeNode(5, null, null);

@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
-/** Created by Gopala Akshintala on 5/3/17. */
+/// Created by Gopala Akshintala on 5/3/17. 
 public class WordBreakDP {
   private static final Set<String> dictionary =
       new HashSet<>(

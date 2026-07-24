@@ -1,6 +1,6 @@
 package hackerrank;
 
-/** Created by gakshintala on 2/29/16. */
+/// Created by gakshintala on 2/29/16. 
 public class CheckBST {
 
   static int lastNode = Integer.MIN_VALUE;

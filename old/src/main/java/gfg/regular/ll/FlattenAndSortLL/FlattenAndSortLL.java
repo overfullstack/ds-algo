@@ -2,7 +2,7 @@ package gfg.regular.ll.FlattenAndSortLL;
 
 import ds.ListNode;
 
-/** Created by gakshintala on 6/21/16. */
+/// Created by gakshintala on 6/21/16. 
 public class FlattenAndSortLL {
 
   private static ListNode flattenLinkedList(ListNode head) {

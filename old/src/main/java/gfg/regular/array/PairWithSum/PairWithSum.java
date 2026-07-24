@@ -2,7 +2,7 @@ package gfg.regular.array.PairWithSum;
 
 import static ds.Utils.quickSort;
 
-/** Created by gakshintala on 6/10/16. */
+/// Created by gakshintala on 6/10/16. 
 public class PairWithSum {
   static void main() {
     var sum = 16;

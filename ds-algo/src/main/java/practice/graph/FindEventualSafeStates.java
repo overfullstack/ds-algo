@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.IntStream;
 
-/** [802. Find Eventual Safe States](https://leetcode.com/problems/find-eventual-safe-states/) */
+/// [802. Find Eventual Safe States](https://leetcode.com/problems/find-eventual-safe-states/) 
 public class FindEventualSafeStates {
   public List<Integer> eventualSafeNodes(int[][] graph) {
     var visited = new int[graph.length];

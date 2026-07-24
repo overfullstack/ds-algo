@@ -1,6 +1,6 @@
 package gfg.regular.SortAndSearch.SearchInArrWithDiff1;
 
-/** Created by gakshintala on 6/13/16. */
+/// Created by gakshintala on 6/13/16. 
 public class SearchInArrWithDiff1 {
   static void main() {
     int[] arr = {8, 7, 6, 7, 6, 5, 4, 3, 2, 3, 4, 3};

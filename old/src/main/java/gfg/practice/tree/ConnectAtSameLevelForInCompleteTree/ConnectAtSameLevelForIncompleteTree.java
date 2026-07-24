@@ -1,6 +1,6 @@
 package gfg.practice.tree.ConnectAtSameLevelForInCompleteTree;
 
-/** Created by gakshintala on 6/13/16. */
+/// Created by gakshintala on 6/13/16. 
 public class ConnectAtSameLevelForIncompleteTree {
   static void main() {
 

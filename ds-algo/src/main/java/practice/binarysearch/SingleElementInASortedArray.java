@@ -4,10 +4,8 @@ package practice.binarysearch;
 
 import static java.lang.IO.println;
 
-/**
- * [540. Single Element in a Sorted
- * Array](https://leetcode.com/problems/single-element-in-a-sorted-array/)
- */
+/// [540. Single Element in a Sorted
+/// Array](https://leetcode.com/problems/single-element-in-a-sorted-array/)
 public class SingleElementInASortedArray {
   // ! This can be achieved with rightMost search also, but leftMost is more intuitive
   public int singleNonDuplicate(int[] nums) {

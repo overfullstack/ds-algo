@@ -1,6 +1,6 @@
 package gfg.regular.array.SortIfSubStringReversed;
 
-/** Created by Gopala Akshintala on 2/26/17. */
+/// Created by Gopala Akshintala on 2/26/17. 
 public class SortIfSubStringReversed {
   static void main() {
     int[] arr = {1, 2, 5, 4, 3};

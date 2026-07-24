@@ -2,7 +2,7 @@ package gfg.regular.dp.ZigZagSubsequence;
 
 import java.util.Arrays;
 
-/** Created by gakshintala on 6/13/16. */
+/// Created by gakshintala on 6/13/16. 
 public class ZigZagSubsequence {
   static void main() {
     int[] arr = {10, 22, 9, 33, 49, 50, 31, 60};

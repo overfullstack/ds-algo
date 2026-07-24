@@ -5,9 +5,7 @@ package practice.binarysearch;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * [Painters Partition](https://www.naukri.com/code360/problems/painter-s-partition-problem_1089557)
- */
+/// [Painters Partition](https://www.naukri.com/code360/problems/painter-s-partition-problem\_1089557)
 public class PaintersPartition {
   public static int findLargestMinDistance(ArrayList<Integer> boards, int k) {
     var left = boards.stream().mapToInt(i -> i).max().orElseThrow();

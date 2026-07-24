@@ -2,7 +2,7 @@ package gfg.practice.arrays.ReverseWords;
 
 import java.util.Scanner;
 
-/** Created by Gopala Akshintala on 5/21/17. */
+/// Created by Gopala Akshintala on 5/21/17. 
 public class ReverseWords {
   static void main() {
     var scn = new Scanner(System.in);

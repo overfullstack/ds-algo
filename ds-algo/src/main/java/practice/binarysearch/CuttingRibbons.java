@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 /* 27 Sep 2025 20:23 */
 
-/** [3734 · Cutting Ribbons](https://www.lintcode.com/problem/3734/) */
+/// [3734 · Cutting Ribbons](https://www.lintcode.com/problem/3734/) 
 public class CuttingRibbons {
   // * Rightmost = MaxLength
   public int maxLength(int[] ribbons, int k) {

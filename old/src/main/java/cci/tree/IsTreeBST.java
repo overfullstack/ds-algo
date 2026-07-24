@@ -2,7 +2,7 @@ package cci.tree;
 
 import ds.TreeNode;
 
-/** Created by gakshintala on 3/21/16. */
+/// Created by gakshintala on 3/21/16. 
 public class IsTreeBST {
   static void main() {
     var treeNode1 = new TreeNode(1, null, null);

@@ -2,7 +2,7 @@ package gfg.regular.array.KthSmallest;
 
 import static ds.Utils.swap;
 
-/** Created by gakshintala on 6/11/16. */
+/// Created by gakshintala on 6/11/16. 
 public class KthSmallest {
   static void main() {
     int[] arr = {7, 10, 4, 3, 20, 15};

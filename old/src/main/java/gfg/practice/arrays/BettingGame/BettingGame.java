@@ -2,7 +2,7 @@ package gfg.practice.arrays.BettingGame;
 
 import java.util.Scanner;
 
-/** Created by gakshintala on 6/14/16. */
+/// Created by gakshintala on 6/14/16. 
 public class BettingGame {
   static void main() {
     var scn = new Scanner(System.in);

@@ -5,7 +5,7 @@ import java.util.HashSet;
 import java.util.Scanner;
 import java.util.Set;
 
-/** Created by Gopala Akshintala on 2/4/17. */
+/// Created by Gopala Akshintala on 2/4/17. 
 public class SumOfFour {
   static void main() {
     var scn = new Scanner(System.in);

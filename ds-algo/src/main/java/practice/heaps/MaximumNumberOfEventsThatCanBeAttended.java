@@ -6,10 +6,8 @@ import java.util.Arrays;
 import java.util.Comparator;
 import java.util.PriorityQueue;
 
-/**
- * [1353. Maximum Number of Events That Can Be
- * Attended](https://leetcode.com/problems/maximum-number-of-events-that-can-be-attended)
- */
+/// [1353. Maximum Number of Events That Can Be
+/// Attended](https://leetcode.com/problems/maximum-number-of-events-that-can-be-attended)
 public class MaximumNumberOfEventsThatCanBeAttended {
   public int maxEvents(int[][] events) {
     var minEndHeap = new PriorityQueue<Integer>();

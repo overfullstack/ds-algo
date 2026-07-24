@@ -2,7 +2,7 @@ package practice.dp;
 
 /* Created by gakshintala on 6/11/16. */
 
-/** [1143. Longest Common Subsequence](https://leetcode.com/problems/longest-common-subsequence/) */
+/// [1143. Longest Common Subsequence](https://leetcode.com/problems/longest-common-subsequence/) 
 public class LongestCommonSubsequence {
   public int longestCommonSubsequence(String text1, String text2) {
     var table = new int[text1.length() + 1][text2.length() + 1];

@@ -8,10 +8,8 @@ import java.util.stream.IntStream;
 
 /* 23 Oct 2025 16:15 */
 
-/**
- * [1249. Minimum Remove to Make Valid
- * Parentheses](https://leetcode.com/problems/minimum-remove-to-make-valid-parentheses/)
- */
+/// [1249. Minimum Remove to Make Valid
+/// Parentheses](https://leetcode.com/problems/minimum-remove-to-make-valid-parentheses/)
 public class MinimumRemoveToMakeValidParentheses {
   public String minRemoveToMakeValid(String s) {
     var idxToRemove = new HashSet<Integer>();

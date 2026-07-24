@@ -8,10 +8,8 @@ import java.util.PriorityQueue;
 
 /* 07 Sep 2025 14:00 */
 
-/**
- * [1636. Sort Array by Increasing
- * Frequency](https://leetcode.com/problems/sort-array-by-increasing-frequency)
- */
+/// [1636. Sort Array by Increasing
+/// Frequency](https://leetcode.com/problems/sort-array-by-increasing-frequency)
 public class SortArrayByIncreasingFrequency {
   public int[] frequencySort(int[] nums) {
     var freqMap = new HashMap<Integer, Integer>();

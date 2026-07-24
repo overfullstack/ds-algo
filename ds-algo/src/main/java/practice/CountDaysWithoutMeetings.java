@@ -5,9 +5,7 @@ import java.util.Comparator;
 
 /* 03 Sep 2025 21:18 */
 
-/**
- * [3169. Count Days Without Meetings](https://leetcode.com/problems/count-days-without-meetings/)
- */
+/// [3169. Count Days Without Meetings](https://leetcode.com/problems/count-days-without-meetings/)
 public class CountDaysWithoutMeetings {
   public int countDays(int days, int[][] meetings) {
     Arrays.sort(meetings, Comparator.<int[]>comparingInt(m -> m[0]));

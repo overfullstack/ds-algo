@@ -10,7 +10,7 @@ import java.util.List;
 
 /* 04 Oct 2025 13:53 */
 
-/** [3673 · Parallel Courses](https://www.lintcode.com/problem/3673/) */
+/// [3673 · Parallel Courses](https://www.lintcode.com/problem/3673/) 
 public class ParallelCourses {
   public int minimumSemesters(int n, int[][] relations) { // * BFS
     var diGraph = new HashMap<Integer, List<Integer>>();

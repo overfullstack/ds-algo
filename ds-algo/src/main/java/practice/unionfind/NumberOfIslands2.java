@@ -5,7 +5,7 @@ package practice.unionfind;
 import java.util.Arrays;
 import java.util.List;
 
-/** [434 · Number of Islands II](https://www.lintcode.com/problem/434/) */
+/// [434 · Number of Islands II](https://www.lintcode.com/problem/434/) 
 public class NumberOfIslands2 {
   public List<Integer> numIslands2(int n, int m, Point[] operators) {
     var uf = new UnionFind(n, m);

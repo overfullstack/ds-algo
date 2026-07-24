@@ -5,7 +5,7 @@ import java.util.Arrays;
 
 /* 26 Aug 2025 13:19 */
 
-/** [735. Asteroid Collision](https://leetcode.com/problems/asteroid-collision) */
+/// [735. Asteroid Collision](https://leetcode.com/problems/asteroid-collision) 
 public class AsteroidCollision {
   public int[] asteroidCollision(int[] asteroids) {
     var queue = new ArrayDeque<Integer>();

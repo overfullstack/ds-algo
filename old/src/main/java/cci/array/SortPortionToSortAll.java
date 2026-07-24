@@ -4,7 +4,7 @@ import static java.util.Arrays.sort;
 
 import java.util.Arrays;
 
-/** Created by gakshintala on 4/14/16. */
+/// Created by gakshintala on 4/14/16. 
 public class SortPortionToSortAll {
   static void main() {
     int[] arr = {1, 2, 3, 4, 5, 6, 7, 8};

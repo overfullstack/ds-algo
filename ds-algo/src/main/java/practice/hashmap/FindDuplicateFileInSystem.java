@@ -7,10 +7,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
-/**
- * [609. Find Duplicate File in
- * System](https://leetcode.com/problems/find-duplicate-file-in-system/)
- */
+/// [609. Find Duplicate File in System](https://leetcode.com/problems/find-duplicate-file-in-system/)
 public class FindDuplicateFileInSystem {
   public List<List<String>> findDuplicate(String[] paths) {
     if (paths.length == 0) {

@@ -2,7 +2,7 @@ package hackerrank;
 
 import java.util.Scanner;
 
-/** Created by gakshintala on 12/15/15. */
+/// Created by gakshintala on 12/15/15. 
 public class GridSearch {
 
   static void main() {

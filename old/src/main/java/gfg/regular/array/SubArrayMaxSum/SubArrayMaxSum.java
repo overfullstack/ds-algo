@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.IntStream;
 
-/** Created by gakshintala on 2/25/16. */
+/// Created by gakshintala on 2/25/16. 
 public class SubArrayMaxSum {
 
   static void main() {
@@ -17,12 +17,10 @@ public class SubArrayMaxSum {
             + findMaximumSubArrayNonContiguous(arrList));
   }
 
-  /**
-   * Kadane Algorithm.
-   *
-   * @param arr
-   * @return
-   */
+  /// Kadane Algorithm.
+  ///
+  /// @param arr
+  /// @return
   private static Subarray findMaximumSubArrayContiguous(List<Integer> arr) {
     var subarray = new Subarray(0, 0, 0);
     int curSum = 0, startIndex = 0, maxSum = 0;

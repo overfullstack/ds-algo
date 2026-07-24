@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.Comparator;
 import java.util.PriorityQueue;
 
-/** [788 · The Maze II](https://www.lintcode.com/problem/788) */
+/// [788 · The Maze II](https://www.lintcode.com/problem/788) 
 public class Maze2 {
   public int shortestDistance(int[][] maze, int[] start, int[] destination) { // * Dijkstra
     var pq = new PriorityQueue<int[]>(Comparator.comparingInt(c -> c[2]));

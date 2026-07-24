@@ -7,7 +7,7 @@ import static java.lang.IO.println;
 import java.util.HashMap;
 import java.util.Map;
 
-/** [3620 · Logger Rate Limiter](https://www.lintcode.com/problem/3620/) */
+/// [3620 · Logger Rate Limiter](https://www.lintcode.com/problem/3620/) 
 public class LoggerRateLimiter {
   private final Map<String, Integer> messageToTimestamp = new HashMap<>();
 

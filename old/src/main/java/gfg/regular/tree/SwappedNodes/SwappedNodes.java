@@ -2,11 +2,9 @@ package gfg.regular.tree.SwappedNodes;
 
 import ds.TreeNode;
 
-/**
- * Created by gakshintala on 4/13/16.
- *
- * <p>Not complete
- */
+/// Created by gakshintala on 4/13/16.
+///
+/// Not complete
 public class SwappedNodes {
   static void main() {
     var bstNode7 = new TreeNode(7, null, null);

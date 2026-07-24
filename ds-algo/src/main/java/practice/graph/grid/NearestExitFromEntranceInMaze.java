@@ -4,10 +4,8 @@ import java.util.ArrayDeque;
 
 /* 06 Sep 2025 13:06 */
 
-/**
- * [1926. Nearest Exit from Entrance in
- * Maze](https://leetcode.com/problems/nearest-exit-from-entrance-in-maze/)
- */
+/// [1926. Nearest Exit from Entrance in
+/// Maze](https://leetcode.com/problems/nearest-exit-from-entrance-in-maze/)
 public class NearestExitFromEntranceInMaze {
   public int nearestExit(char[][] maze, int[] entrance) {
     var queue = new ArrayDeque<int[]>();

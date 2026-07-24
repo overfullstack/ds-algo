@@ -2,10 +2,8 @@ package practice.greedy;
 
 /* 27 Aug 2025 16:24 */
 
-/**
- * [849. Maximize Distance to Closest
- * Person](https://leetcode.com/problems/maximize-distance-to-closest-person)
- */
+/// [849. Maximize Distance to Closest
+/// Person](https://leetcode.com/problems/maximize-distance-to-closest-person)
 public class MaximizeDistanceToClosestPerson {
   public int maxDistToClosest(int[] seats) {
     var startIdx = -1; // ! Negative to mark not initiated

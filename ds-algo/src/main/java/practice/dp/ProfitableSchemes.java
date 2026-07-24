@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 /* 27 Sep 2025 18:00 */
 
-/** [879. Profitable Schemes](https://leetcode.com/problems/profitable-schemes/) */
+/// [879. Profitable Schemes](https://leetcode.com/problems/profitable-schemes/) 
 public class ProfitableSchemes {
   private static final int MOD = (int) 1e9 + 7;
 

@@ -3,7 +3,7 @@ package gfg.practice.arrays.TrainglesPossible;
 import java.util.Arrays;
 import java.util.Scanner;
 
-/** Created by gakshintala on 4/22/16. */
+/// Created by gakshintala on 4/22/16. 
 public class TrianglesPossible {
   static void main() {
     var scn = new Scanner(System.in);

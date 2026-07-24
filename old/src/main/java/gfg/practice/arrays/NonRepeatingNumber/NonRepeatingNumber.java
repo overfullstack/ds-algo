@@ -2,7 +2,7 @@ package gfg.practice.arrays.NonRepeatingNumber;
 
 import java.util.Scanner;
 
-/** Created by gakshintala on 6/22/16. */
+/// Created by gakshintala on 6/22/16. 
 public class NonRepeatingNumber {
   static void main() {
     var scn = new Scanner(System.in);

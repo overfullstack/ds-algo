@@ -3,7 +3,7 @@ package gfg.regular.array.LongestUniqueCharSubString;
 import java.util.HashMap;
 import java.util.Map;
 
-/** Created by gakshintala on 6/10/16. */
+/// Created by gakshintala on 6/10/16. 
 public class LongestUniqueCharSubString {
   static void main() {
     var str = "ABDEFGABEF";

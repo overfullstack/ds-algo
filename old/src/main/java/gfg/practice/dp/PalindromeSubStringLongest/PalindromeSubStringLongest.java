@@ -2,7 +2,7 @@ package gfg.practice.dp.PalindromeSubStringLongest;
 
 import java.util.Scanner;
 
-/** Created by gakshintala on 6/22/16. */
+/// Created by gakshintala on 6/22/16. 
 public class PalindromeSubStringLongest {
   static void main() {
     var scn = new Scanner(System.in);

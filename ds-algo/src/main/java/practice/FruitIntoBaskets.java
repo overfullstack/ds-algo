@@ -4,7 +4,7 @@ import java.util.HashMap;
 
 /* 27 Aug 2025 21:09 */
 
-/** [904. Fruit Into Baskets](https://leetcode.com/problems/fruit-into-baskets) */
+/// [904. Fruit Into Baskets](https://leetcode.com/problems/fruit-into-baskets) 
 public class FruitIntoBaskets {
   public int totalFruit(int[] fruits) {
     var startIdx = 0;

@@ -3,7 +3,7 @@ package gfg.regular.array.TripletSum;
 import java.util.Arrays;
 import java.util.Scanner;
 
-/** Created by gakshintala on 6/16/16. */
+/// Created by gakshintala on 6/16/16. 
 public class TripletSum {
   static void main() {
     var scn = new Scanner(System.in);

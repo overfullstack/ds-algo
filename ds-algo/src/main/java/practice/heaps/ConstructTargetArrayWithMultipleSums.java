@@ -5,10 +5,8 @@ package practice.heaps;
 import java.util.Comparator;
 import java.util.PriorityQueue;
 
-/**
- * [1354. Construct Target Array With Multiple
- * Sums](https://leetcode.com/problems/construct-target-array-with-multiple-sums/)
- */
+/// [1354. Construct Target Array With Multiple
+/// Sums](https://leetcode.com/problems/construct-target-array-with-multiple-sums/)
 public class ConstructTargetArrayWithMultipleSums {
   public boolean isPossible(int[] target) {
     if (target.length == 1) {

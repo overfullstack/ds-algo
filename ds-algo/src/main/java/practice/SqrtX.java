@@ -1,6 +1,6 @@
 package practice;
 
-/** Created by gakshintala on 7/2/16. [69. Sqrt(x)](https://leetcode.com/problems/sqrtx/) */
+/// Created by gakshintala on 7/2/16. [69. Sqrt(x)](https://leetcode.com/problems/sqrtx/) 
 public class SqrtX {
   static void main() {
     var x = 81;

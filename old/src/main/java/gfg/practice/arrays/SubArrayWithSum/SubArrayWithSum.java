@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
-/** Created by gakshintala on 6/29/16. */
+/// Created by gakshintala on 6/29/16. 
 public class SubArrayWithSum {
   static void main() {
     var scn = new Scanner(System.in);

@@ -2,7 +2,7 @@ package practice;
 
 /* 25 Oct 2025 20:32 */
 
-/** [274. H-Index](https://leetcode.com/problems/h-index) */
+/// [274. H-Index](https://leetcode.com/problems/h-index) 
 public class HIndex {
   public int hIndex(int[] citations) {
     var buckets = new int[citations.length + 1];

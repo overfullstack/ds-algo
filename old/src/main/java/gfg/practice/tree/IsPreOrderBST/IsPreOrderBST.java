@@ -3,7 +3,7 @@ package gfg.practice.tree.IsPreOrderBST;
 import java.util.Scanner;
 import java.util.Stack;
 
-/** Created by gakshintala on 6/12/16. */
+/// Created by gakshintala on 6/12/16. 
 public class IsPreOrderBST {
   static void main() {
     var scn = new Scanner(System.in);

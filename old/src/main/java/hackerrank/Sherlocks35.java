@@ -2,7 +2,7 @@ package hackerrank;
 
 import java.util.Scanner;
 
-/** Created by gakshintala on 12/8/15. */
+/// Created by gakshintala on 12/8/15. 
 public class Sherlocks35 {
   static void main() {
     var scn = new Scanner(System.in);

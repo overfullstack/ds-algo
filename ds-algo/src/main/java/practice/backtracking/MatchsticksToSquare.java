@@ -7,7 +7,7 @@ import java.util.stream.IntStream;
 
 /* 18 Oct 2025 14:16 */
 
-/** [473. Matchsticks to Square](https://leetcode.com/problems/matchsticks-to-square/) */
+/// [473. Matchsticks to Square](https://leetcode.com/problems/matchsticks-to-square/) 
 public class MatchsticksToSquare {
   public boolean makesquare(int[] matchsticks) {
     final var sum = Arrays.stream(matchsticks).sum();

@@ -8,10 +8,8 @@ import java.util.PriorityQueue;
 
 /* 06 Sep 2025 20:36 */
 
-/**
- * [1514. Path with Maximum
- * Probability](https://leetcode.com/problems/path-with-maximum-probability/)
- */
+/// [1514. Path with Maximum
+/// Probability](https://leetcode.com/problems/path-with-maximum-probability/)
 public class PathWithMaximumProbability {
   public double maxProbability(
       int n, int[][] edges, double[] succProb, int start_node, int end_node) {

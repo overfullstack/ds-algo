@@ -1,6 +1,6 @@
 package icake.dp.CakeThief;
 
-/** Created by gakshintala on 3/22/16. */
+/// Created by gakshintala on 3/22/16. 
 public class CakeThief {
   static void main() {
     var cakes =

@@ -3,7 +3,7 @@ package gfg.practice.arrays.MedianOf2ArraysSameSize;
 import java.util.Arrays;
 import java.util.Scanner;
 
-/** Created by gakshintala on 7/2/16. */
+/// Created by gakshintala on 7/2/16. 
 public class MedianOf2ArraysSameSize {
   static void main() {
     var scn = new Scanner(System.in);

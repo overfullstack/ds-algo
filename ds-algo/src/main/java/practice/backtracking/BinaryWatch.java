@@ -8,7 +8,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.stream.Stream;
 
-/** [401. Binary Watch](https://leetcode.com/problems/binary-watch/) */
+/// [401. Binary Watch](https://leetcode.com/problems/binary-watch/) 
 public class BinaryWatch {
   public List<String> readBinaryWatch(int turnedOn) {
     var result = new ArrayList<String>();

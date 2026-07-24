@@ -5,7 +5,7 @@ import static ds.Utils.printSLL;
 import ds.ListNode;
 import java.util.Scanner;
 
-/** Created by Gopala Akshintala on 6/2/17. */
+/// Created by Gopala Akshintala on 6/2/17. 
 public class ReverseLLInGroups {
   static void main() {
     var scn = new Scanner(System.in);

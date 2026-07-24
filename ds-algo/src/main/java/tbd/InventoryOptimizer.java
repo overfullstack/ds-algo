@@ -8,11 +8,9 @@ import java.util.Map;
 import java.util.PriorityQueue;
 import java.util.TreeSet;
 
-/**
- * Inventory Optimization Problem: Given inventory with quantities and vendor orders, serve orders
- * to maximize inventory usage. Can only serve orders if order quantity <= available inventory
- * quantity.
- */
+/// Inventory Optimization Problem: Given inventory with quantities and vendor orders, serve orders
+/// to maximize inventory usage. Can only serve orders if order quantity <= available inventory
+/// quantity.
 public class InventoryOptimizer {
 
   static void main() {
@@ -97,14 +95,12 @@ public class InventoryOptimizer {
     System.out.println("Total inventory used: " + result4.totalInventoryUsed());*/
   }
 
-  /**
-   * Optimizes inventory usage by serving orders greedily to maximize total inventory consumption.
-   * Strategy: Sort orders by quantity in descending order to prioritize larger orders.
-   *
-   * @param initialInventory Map of item -> available quantity
-   * @param orders List of vendor orders
-   * @return OptimizationResult containing served orders and remaining inventory
-   */
+  /// Optimizes inventory usage by serving orders greedily to maximize total inventory consumption.
+  /// Strategy: Sort orders by quantity in descending order to prioritize larger orders.
+  ///
+  /// @param initialInventory Map of item -> available quantity
+  /// @param orders List of vendor orders
+  /// @return OptimizationResult containing served orders and remaining inventory
   public static OptimizationResult optimizeInventoryUsage(
       Map<String, Integer> initialInventory, List<Order> orders) {
 
@@ -143,10 +139,8 @@ public class InventoryOptimizer {
         List.copyOf(servedOrders), Map.copyOf(currentInventory), totalInventoryUsed);
   }
 
-  /**
-   * TreeSet-based approach: Automatically sorts orders by quantity (descending) and breaks ties by
-   * item name. TreeSet maintains sorted order without manual sorting, making the algorithm cleaner.
-   */
+  /// TreeSet-based approach: Automatically sorts orders by quantity (descending) and breaks ties by
+  /// item name. TreeSet maintains sorted order without manual sorting, making the algorithm cleaner.
   public static OptimizationResult optimizeWithTreeSet(
       Map<String, Integer> initialInventory, List<Order> orders) {
 
@@ -181,11 +175,9 @@ public class InventoryOptimizer {
         List.copyOf(servedOrders), Map.copyOf(currentInventory), totalInventoryUsed);
   }
 
-  /**
-   * Advanced TreeSet approach using floor() method for efficient capacity-based order selection.
-   * Groups orders by item and uses floor() to find the largest order that fits within capacity.
-   * More efficient when there are many orders for the same item with different quantities.
-   */
+  /// Advanced TreeSet approach using floor() method for efficient capacity-based order selection.
+  /// Groups orders by item and uses floor() to find the largest order that fits within capacity.
+  /// More efficient when there are many orders for the same item with different quantities.
   /*public static OptimizationResult optimizeWithTreeSetFloor(
           Map<String, Integer> initialInventory,
           List<Order> orders) {
@@ -246,10 +238,8 @@ public class InventoryOptimizer {
       );
   }*/
 
-  /**
-   * Alternative approach: Using priority queue to serve highest quantity orders first. This ensures
-   * we maximize inventory usage by prioritizing larger orders.
-   */
+  /// Alternative approach: Using priority queue to serve highest quantity orders first. This ensures
+  /// we maximize inventory usage by prioritizing larger orders.
   public static OptimizationResult optimizeWithPriorityQueue(
       Map<String, Integer> initialInventory, List<Order> orders) {
 
@@ -282,7 +272,7 @@ public class InventoryOptimizer {
         List.copyOf(servedOrders), Map.copyOf(currentInventory), totalInventoryUsed);
   }
 
-  /** Represents a vendor order for a specific item and quantity. */
+  /// Represents a vendor order for a specific item and quantity. 
   public record Order(String item, int quantity) {
     @Override
     public String toString() {
@@ -290,7 +280,7 @@ public class InventoryOptimizer {
     }
   }
 
-  /** Result of inventory optimization containing served orders and remaining state. */
+  /// Result of inventory optimization containing served orders and remaining state. 
   public record OptimizationResult(
       List<Order> servedOrders, Map<String, Integer> remainingInventory, int totalInventoryUsed) {}
 }

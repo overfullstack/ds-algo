@@ -5,7 +5,7 @@ import java.util.Map;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
-/** [690. Employee Importance](https://leetcode.com/problems/employee-importance/) */
+/// [690. Employee Importance](https://leetcode.com/problems/employee-importance/) 
 public class EmployeeImportance {
 
   public int getImportance(List<Employee> employees, int id) {

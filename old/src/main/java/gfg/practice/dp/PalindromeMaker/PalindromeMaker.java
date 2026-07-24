@@ -2,7 +2,7 @@ package gfg.practice.dp.PalindromeMaker;
 
 import java.util.Scanner;
 
-/** Created by gakshintala on 6/20/16. */
+/// Created by gakshintala on 6/20/16. 
 public class PalindromeMaker {
   static void main() {
     var scn = new Scanner(System.in);

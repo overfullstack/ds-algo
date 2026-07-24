@@ -5,7 +5,7 @@ import java.util.Comparator;
 
 /* 22 Oct 2025 20:19 */
 
-/** [1029. Two City Scheduling](https://leetcode.com/problems/two-city-scheduling/) */
+/// [1029. Two City Scheduling](https://leetcode.com/problems/two-city-scheduling/)
 public class TwoCityScheduling {
   public int twoCitySchedCost(int[][] costs) {
     // ! Sort based on savings if traveled to A instead of B.
@@ -21,14 +21,14 @@ public class TwoCityScheduling {
 
   static void main() {
     var t = new TwoCityScheduling();
-    System.out.println(
+    IO.println(
         t.twoCitySchedCost(new int[][] {{10, 20}, {30, 200}, {400, 50}, {30, 20}})); // 110
-    System.out.println(
+    IO.println(
         t.twoCitySchedCost(
             new int[][] {
               {259, 770}, {448, 54}, {926, 667}, {184, 139}, {840, 118}, {577, 469}
             })); // 1859
-    System.out.println(
+    IO.println(
         t.twoCitySchedCost(
             new int[][] {
               {515, 563},

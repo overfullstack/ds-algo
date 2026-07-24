@@ -2,7 +2,7 @@ package practice;
 
 /* 06 Oct 2025 15:59 */
 
-/** [427. Construct Quad Tree](https://leetcode.com/problems/construct-quad-tree/) */
+/// [427. Construct Quad Tree](https://leetcode.com/problems/construct-quad-tree/) 
 public class ConstructQuadTree {
   public Node construct(int[][] grid) {
     return solve(0, 0, grid.length, grid);

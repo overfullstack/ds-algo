@@ -4,10 +4,8 @@ package practice;
 
 import java.util.Arrays;
 
-/**
- * [1400. Construct K Palindrome
- * Strings](https://leetcode.com/problems/construct-k-palindrome-strings/)
- */
+/// [1400. Construct K Palindrome
+/// Strings](https://leetcode.com/problems/construct-k-palindrome-strings/)
 public class ConstructKPalindromeStrings {
   public boolean canConstruct(String s, int k) {
     if (s.length() < k) {

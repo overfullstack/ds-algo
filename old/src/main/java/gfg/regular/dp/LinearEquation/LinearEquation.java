@@ -1,6 +1,6 @@
 package gfg.regular.dp.LinearEquation;
 
-/** Created by gakshintala on 6/10/16. */
+/// Created by gakshintala on 6/10/16. 
 public class LinearEquation {
   static void main() {
     int[] coeffs = {2, 2, 5};

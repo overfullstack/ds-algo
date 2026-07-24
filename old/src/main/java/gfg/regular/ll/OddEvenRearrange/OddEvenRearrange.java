@@ -4,7 +4,7 @@ import static ds.Utils.printSLL;
 
 import ds.ListNode;
 
-/** Created by gakshintala on 4/22/16. */
+/// Created by gakshintala on 4/22/16. 
 public class OddEvenRearrange {
   static void main() {
     var head = new ListNode(1);

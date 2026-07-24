@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.Comparator;
 import java.util.PriorityQueue;
 
-/** [964 · Food Set](https://www.lintcode.com/problem/964) */
+/// [964 · Food Set](https://www.lintcode.com/problem/964) 
 public class FoodSet {
   public int getMinCalories(int[][] lunch, int[][] dinner, int minDeliciousDegree) {
     // ! Sort lunch and dinner by delicious degree

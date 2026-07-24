@@ -2,7 +2,7 @@ package gfg.regular.tree.PrintCousins;
 
 import ds.TreeNode;
 
-/** Created by gakshintala on 7/5/16. */
+/// Created by gakshintala on 7/5/16. 
 public class PrintCousins {
   static void main() {
     TreeNode t1, t2, t3, t4, t5, t6, t7;

@@ -2,7 +2,7 @@ package practice;
 
 /* 25 Oct 2025 21:20 */
 
-/** [860. Lemonade Change](https://leetcode.com/problems/lemonade-change/) */
+/// [860. Lemonade Change](https://leetcode.com/problems/lemonade-change/) 
 public class LemonadeChange {
   public boolean lemonadeChange(int[] bills) {
     var five = 0;

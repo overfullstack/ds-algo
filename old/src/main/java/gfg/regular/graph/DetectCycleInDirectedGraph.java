@@ -3,7 +3,7 @@ package gfg.regular.graph;
 import ds.DiGraph;
 import java.util.Scanner;
 
-/** Created by gakshintala on 3/28/16. */
+/// Created by gakshintala on 3/28/16. 
 public class DetectCycleInDirectedGraph {
 
   private static boolean[]

@@ -6,7 +6,7 @@ import java.util.stream.IntStream;
 
 /* 19 Oct 2025 07:16 */
 
-/** [436. Find Right Interval](https://leetcode.com/problems/find-right-interval/) */
+/// [436. Find Right Interval](https://leetcode.com/problems/find-right-interval/) 
 public class FindRightInterval {
   public int[] findRightInterval(int[][] intervals) {
     final var sortedStartIntervalIdx =

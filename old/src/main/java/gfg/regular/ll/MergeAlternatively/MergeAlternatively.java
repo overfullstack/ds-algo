@@ -3,7 +3,7 @@ package gfg.regular.ll.MergeAlternatively;
 import ds.ListNode;
 import ds.Utils;
 
-/** Created by gakshintala on 6/12/16. */
+/// Created by gakshintala on 6/12/16. 
 public class MergeAlternatively {
   static void main() {
     ListNode k1, k2, k3;

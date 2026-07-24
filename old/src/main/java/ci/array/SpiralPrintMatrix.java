@@ -1,6 +1,6 @@
 package ci.array;
 
-/** Created by Gopala Akshintala on 11/2/16. */
+/// Created by Gopala Akshintala on 11/2/16. 
 public class SpiralPrintMatrix {
   static void main() {
     int[][] matrix = {{1, 2, 3, 4}, {12, 13, 14, 5}, {11, 16, 15, 6}, {10, 9, 8, 7}};

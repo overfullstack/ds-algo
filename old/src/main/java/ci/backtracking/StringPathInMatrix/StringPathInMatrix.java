@@ -1,6 +1,6 @@
 package ci.backtracking.StringPathInMatrix;
 
-/** Created by gakshintala on 4/7/16. */
+/// Created by gakshintala on 4/7/16. 
 public class StringPathInMatrix {
   static void main() {
     char[][] matrix = {{'a', 'b', 'c'}, {'d', 'e', 'f'}, {'g', 'h', 'i'}};

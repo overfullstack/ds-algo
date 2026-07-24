@@ -8,7 +8,7 @@ import java.util.PriorityQueue;
 
 /* 01 Sep 2025 17:39 */
 
-/** [1862 · Time to Flower Tree](https://www.lintcode.com/problem/1862/) */
+/// [1862 · Time to Flower Tree](https://www.lintcode.com/problem/1862/) 
 public class TimeToFlowerTree {
   public int timeToFlowerTree(int[] father, int[] time) {
     var graph = new HashMap<Integer, List<int[]>>();

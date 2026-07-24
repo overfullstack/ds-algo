@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 /* 22 Oct 2025 11:06 */
 
-/** [169. Majority Element](https://leetcode.com/problems/majority-element/) */
+/// [169. Majority Element](https://leetcode.com/problems/majority-element/) 
 public class MajorityElement {
   public int majorityElement(int[] nums) {
     var votes = 1; // ! 1 for nums[0]

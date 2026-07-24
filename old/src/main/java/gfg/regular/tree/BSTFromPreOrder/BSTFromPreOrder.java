@@ -5,7 +5,7 @@ import static ds.Utils.treeInorder;
 import ds.TreeNode;
 import java.util.Stack;
 
-/** Created by gakshintala on 6/12/16. */
+/// Created by gakshintala on 6/12/16. 
 public class BSTFromPreOrder {
   static void main() {
     int[] pre = {10, 5, 1, 7, 40, 50};

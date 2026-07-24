@@ -4,7 +4,7 @@ package practice.binarysearch;
 
 import java.util.Arrays;
 
-/** [410. Split Array Largest Sum](https://leetcode.com/problems/split-array-largest-sum/) */
+/// [410. Split Array Largest Sum](https://leetcode.com/problems/split-array-largest-sum/) 
 public class SplitArrayLargestSum {
   public int splitArray(int[] nums, int k) {
     var left = Arrays.stream(nums).max().orElse(0); // ! left = max

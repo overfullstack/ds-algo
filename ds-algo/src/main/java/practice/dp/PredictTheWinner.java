@@ -2,7 +2,7 @@ package practice.dp;
 
 /* 28 Aug 2025 20:32 */
 
-/** [486. Predict the Winner](https://leetcode.com/problems/predict-the-winner/) */
+/// [486. Predict the Winner](https://leetcode.com/problems/predict-the-winner/) 
 public class PredictTheWinner {
   public boolean predictTheWinner(int[] nums) {
     // ! Starting with player-1 so if `scoreDiff` is positive, player-1 wins

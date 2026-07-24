@@ -3,11 +3,9 @@ package gfg.regular.graph;
 import ds.DiGraph;
 import java.util.Scanner;
 
-/**
- * Created by gakshintala on 3/28/16.
- *
- * <p>This can only calculate the length of first encountered Cycle.
- */
+/// Created by gakshintala on 3/28/16.
+///
+/// This can only calculate the length of first encountered Cycle.
 public class CountCycleLength {
 
   private static boolean[]

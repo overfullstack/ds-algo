@@ -2,7 +2,7 @@ package practice.dp;
 
 /* 15 Oct 2025 10:26 */
 
-/** [Rod cutting](https://www.naukri.com/code360/problems/rod-cutting-problem_800284) */
+/// [Rod cutting](https://www.naukri.com/code360/problems/rod-cutting-problem\_800284) 
 public class RodCutting {
   public static int cutRod(int[] price, int n) {
     var dp = new int[price.length + 1];

@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 /* 30 Aug 2025 17:26 */
 
-/** [289. Game of Life](https://leetcode.com/problems/game-of-life) */
+/// [289. Game of Life](https://leetcode.com/problems/game-of-life) 
 public class GameOfLife {
   private static final int ALIVE_TO_DEAD = 2;
   private static final int DEAD_TO_ALIVE = 3;

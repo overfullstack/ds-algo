@@ -2,7 +2,7 @@ package practice;
 
 /* 06 Oct 2025 16:53 */
 
-/** [553 · Bomb Enemy](https://www.lintcode.com/problem/553/) */
+/// [553 · Bomb Enemy](https://www.lintcode.com/problem/553/) 
 public class BombEnemy {
   public int maxKilledEnemies(char[][] grid) {
     if (grid.length == 0) {

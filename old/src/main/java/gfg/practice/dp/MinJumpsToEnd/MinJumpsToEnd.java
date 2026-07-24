@@ -2,7 +2,7 @@ package gfg.practice.dp.MinJumpsToEnd;
 
 import java.util.Scanner;
 
-/** Created by gakshintala on 4/22/16. */
+/// Created by gakshintala on 4/22/16. 
 public class MinJumpsToEnd {
   static void main() {
     var scn = new Scanner(System.in);
@@ -26,7 +26,7 @@ public class MinJumpsToEnd {
     return arr;
   }
 
-  /** This is comparatively better and cleaner approach */
+  /// This is comparatively better and cleaner approach 
   private static int minJumpsToEnd(int[] arr) {
     var len = arr.length;
     if (len == 0 || arr[0] == 0) {

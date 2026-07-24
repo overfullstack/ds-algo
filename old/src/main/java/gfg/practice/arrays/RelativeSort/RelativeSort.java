@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-/** Created by gakshintala on 6/22/16. INCOMPLETE */
+/// Created by gakshintala on 6/22/16. INCOMPLETE 
 public class RelativeSort {
   static void main() {
     var scn = new Scanner(System.in);

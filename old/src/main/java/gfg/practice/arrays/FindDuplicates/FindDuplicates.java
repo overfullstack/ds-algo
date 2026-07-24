@@ -2,7 +2,7 @@ package gfg.practice.arrays.FindDuplicates;
 
 import java.util.Scanner;
 
-/** Created by Gopala Akshintala on 20/02/17. */
+/// Created by Gopala Akshintala on 20/02/17. 
 public class FindDuplicates {
   static void main() {
     var scn = new Scanner(System.in);

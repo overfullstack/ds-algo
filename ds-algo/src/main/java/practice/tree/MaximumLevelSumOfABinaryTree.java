@@ -7,10 +7,8 @@ import java.util.List;
 import java.util.Objects;
 import java.util.stream.Stream;
 
-/**
- * [1161. Maximum Level Sum of a Binary
- * Tree](https://leetcode.com/problems/maximum-level-sum-of-a-binary-tree/)
- */
+/// [1161. Maximum Level Sum of a Binary
+/// Tree](https://leetcode.com/problems/maximum-level-sum-of-a-binary-tree/)
 public class MaximumLevelSumOfABinaryTree {
   public int maxLevelSum(TreeNode root) {
     var currentLevel = List.of(root);

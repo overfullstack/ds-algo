@@ -2,7 +2,7 @@ package gfg.regular.backtracking;
 
 import java.util.Arrays;
 
-/** Created by Go on 9-4-16. */
+/// Created by Go on 9-4-16. 
 public class NQueens {
   static void main() {
     int[][] board = {{0, 0, 0, 0}, {0, 0, 0, 0}, {0, 0, 0, 0}, {0, 0, 0, 0}};

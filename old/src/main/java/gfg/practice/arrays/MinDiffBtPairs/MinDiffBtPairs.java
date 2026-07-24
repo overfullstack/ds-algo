@@ -3,7 +3,7 @@ package gfg.practice.arrays.MinDiffBtPairs;
 import java.util.Arrays;
 import java.util.Scanner;
 
-/** Created by Gopala Akshintala on 30/01/17. */
+/// Created by Gopala Akshintala on 30/01/17. 
 public class MinDiffBtPairs {
   static void main() {
     var scn = new Scanner(System.in);

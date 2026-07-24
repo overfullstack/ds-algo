@@ -2,7 +2,7 @@ package gfg.practice.dp.MatrixPathCount;
 
 import java.util.Scanner;
 
-/** Created by gakshintala on 7/2/16. */
+/// Created by gakshintala on 7/2/16. 
 public class MatrixPathCount {
   static void main() {
     var scn = new Scanner(System.in);

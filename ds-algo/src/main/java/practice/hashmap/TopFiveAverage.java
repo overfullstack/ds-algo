@@ -11,10 +11,8 @@ import java.util.PriorityQueue;
 import java.util.Queue;
 import java.util.stream.Collectors;
 
-/**
- * [Top Five Average](https://www.naukri.com/code360/problems/top-five-average_1214648) ! This is
- * not running for large input below, not sure if it's platform issue
- */
+/// [Top Five Average](https://www.naukri.com/code360/problems/top-five-average\_1214648) 
+/// ! This is not running for large input below, not sure if it's platform issue
 public class TopFiveAverage {
   public static ArrayList<ArrayList<Integer>> findTopFiveAverages(
       ArrayList<ArrayList<Integer>> arr) {

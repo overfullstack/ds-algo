@@ -2,7 +2,7 @@ package gfg.practice.arrays.CountFrequencies;
 
 import java.util.Scanner;
 
-/** Created by gakshintala on 7/6/16. */
+/// Created by gakshintala on 7/6/16. 
 public class CountFrequencies {
   static void main() {
     var scn = new Scanner(System.in);

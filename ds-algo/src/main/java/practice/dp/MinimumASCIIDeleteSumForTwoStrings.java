@@ -2,10 +2,8 @@ package practice.dp;
 
 /* 26 Oct 2025 17:19 */
 
-/**
- * [712. Minimum ASCII Delete Sum for Two
- * Strings](https://leetcode.com/problems/minimum-ascii-delete-sum-for-two-strings/)
- */
+/// [712. Minimum ASCII Delete Sum for Two
+/// Strings](https://leetcode.com/problems/minimum-ascii-delete-sum-for-two-strings/)
 public class MinimumASCIIDeleteSumForTwoStrings {
   public int minimumDeleteSum(String s1, String s2) {
     var commonSubsequenceCost = commonSubsequenceCost(s1, s2);

@@ -3,7 +3,7 @@ package icake.array.MergeMeetings;
 import java.util.Arrays;
 import java.util.Comparator;
 
-/** Created by gakshintala on 6/22/16. */
+/// Created by gakshintala on 6/22/16. 
 public class MergeMeetings {
   static void main() {
     var meetings = new Meeting[5];

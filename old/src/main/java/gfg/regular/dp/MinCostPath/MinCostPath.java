@@ -1,6 +1,6 @@
 package gfg.regular.dp.MinCostPath;
 
-/** Created by gakshintala on 7/2/16. */
+/// Created by gakshintala on 7/2/16. 
 public class MinCostPath {
   static void main() {
     int[][] mat = {{1, 2, 3}, {4, 8, 2}, {1, 5, 3}};

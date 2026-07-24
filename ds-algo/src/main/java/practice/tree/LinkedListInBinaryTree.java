@@ -3,7 +3,7 @@ package practice.tree;
 import ds.ll.ListNode;
 import ds.tree.TreeNode;
 
-/** [1367. Linked List in Binary Tree](https://leetcode.com/problems/linked-list-in-binary-tree/) */
+/// [1367. Linked List in Binary Tree](https://leetcode.com/problems/linked-list-in-binary-tree/) 
 public class LinkedListInBinaryTree {
   public boolean isSubPath(ListNode head, TreeNode root) {
     if (head == null) {

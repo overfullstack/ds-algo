@@ -4,10 +4,8 @@ import java.util.ArrayDeque;
 
 /* 23 Oct 2025 17:09 */
 
-/**
- * [2696. Minimum String Length After Removing
- * Substrings](https://leetcode.com/problems/minimum-string-length-after-removing-substrings/)
- */
+/// [2696. Minimum String Length After Removing
+/// Substrings](https://leetcode.com/problems/minimum-string-length-after-removing-substrings/)
 public class MinimumStringLengthAfterRemovingSubstrings {
   public int minLength(String s) {
     var stk = new ArrayDeque<Character>();

@@ -1,6 +1,6 @@
 package concurrency;
 
-/** Created by Gopala Akshintala on 5/20/17. */
+/// Created by Gopala Akshintala on 5/20/17. 
 public class PrintEvenOdd {
   static void main() {
     var max = 10;

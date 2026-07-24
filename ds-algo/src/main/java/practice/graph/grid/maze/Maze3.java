@@ -7,7 +7,7 @@ import java.util.PriorityQueue;
 
 /* 26 Sep 2025 16:19 */
 
-/** [499 - The Maze III](https://leetcode.com/problems/the-maze-iii/) */
+/// [499 - The Maze III](https://leetcode.com/problems/the-maze-iii/) 
 public class Maze3 {
   public String findShortestWay(int[][] maze, int[] ball, int[] hole) {
     var pq =

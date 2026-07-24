@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-/** Created by gakshintala on 12/21/15. THIS IS INCOMPLETE */
+/// Created by gakshintala on 12/21/15. THIS IS INCOMPLETE 
 public class ComputerGame {
   static void main() {
     var scn = new Scanner(System.in);

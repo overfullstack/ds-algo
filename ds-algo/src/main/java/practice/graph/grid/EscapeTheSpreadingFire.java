@@ -5,7 +5,7 @@ import java.util.Arrays;
 
 /* 27 Sep 2025 12:07 */
 
-/** [2258. Escape the Spreading Fire](https://leetcode.com/problems/escape-the-spreading-fire/) */
+/// [2258. Escape the Spreading Fire](https://leetcode.com/problems/escape-the-spreading-fire/) 
 public class EscapeTheSpreadingFire {
   public int maximumMinutes(int[][] grid) {
     var queue = new ArrayDeque<int[]>();

@@ -1,6 +1,6 @@
 package graph;
 
-/** Created by gakshintala on 12/16/15. */
+/// Created by gakshintala on 12/16/15. 
 public class UnionFind {
   private final int[] id;
 

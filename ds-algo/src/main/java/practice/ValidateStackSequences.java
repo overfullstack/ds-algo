@@ -4,7 +4,7 @@ package practice;
 
 import java.util.ArrayDeque;
 
-/** [946. Validate Stack Sequences](https://leetcode.com/problems/validate-stack-sequences/) */
+/// [946. Validate Stack Sequences](https://leetcode.com/problems/validate-stack-sequences/) 
 public class ValidateStackSequences {
   public boolean validateStackSequences(int[] pushed, int[] popped) {
     var stk = new ArrayDeque<Integer>();

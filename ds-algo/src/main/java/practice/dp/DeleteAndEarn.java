@@ -4,7 +4,7 @@ package practice.dp;
 
 import static java.lang.IO.println;
 
-/** [740. Delete and Earn](https://leetcode.com/problems/delete-and-earn/) */
+/// [740. Delete and Earn](https://leetcode.com/problems/delete-and-earn/) 
 public class DeleteAndEarn {
   public int deleteAndEarn(int[] nums) {
     var buckets = new int[1 + (int) Math.pow(10, 4)];

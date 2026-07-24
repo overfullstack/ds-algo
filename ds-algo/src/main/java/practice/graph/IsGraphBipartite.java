@@ -5,7 +5,7 @@ import java.util.stream.IntStream;
 
 /* 02 Sep 2025 16:08 */
 
-/** [785. Is Graph Bipartite?](https://leetcode.com/problems/is-graph-bipartite/) */
+/// [785. Is Graph Bipartite?](https://leetcode.com/problems/is-graph-bipartite/) 
 public class IsGraphBipartite {
   public boolean isBipartite(int[][] graph) {
     var colors = new int[graph.length];

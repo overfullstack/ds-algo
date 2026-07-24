@@ -2,7 +2,7 @@ package practice.hashmap;
 
 /* 21 Oct 2025 17:22 */
 
-/** [791. Custom Sort String](https://leetcode.com/problems/custom-sort-string/) */
+/// [791. Custom Sort String](https://leetcode.com/problems/custom-sort-string/) 
 public class CustomSortString {
   public String customSortString(String order, String s) {
     var bucket = new int[26];
