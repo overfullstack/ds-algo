@@ -13,6 +13,7 @@ files). Follow it for any solution you write. This file covers only build/test/l
 
 Toolchain versions are centralized in `libs.versions.toml` (JDK, Kotlin, JUnit,
 Kotest, …); the JDK is also pinned in `.sdkmanrc`. Java compiles with `--enable-preview`.
+Always use `-q/--quiet` when running `./gradlew` commands to avoid noisy output.
 
 ```shell
 ./gradlew clean build                                    # full build

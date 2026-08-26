@@ -7,6 +7,8 @@ class FirstBadVersion(val firstBadVersionIndex: Int) {
 
   private fun isBadVersion(indexToCheck: Int) = indexToCheck >= firstBadVersionIndex
 
+  /// * Need to find the first bad version, so Leftmost in the range of bad versions, where
+  // condition is true
   tailrec fun firstBadVersion(
     n: Int,
     callCount: Int = 0,
@@ -24,7 +26,6 @@ class FirstBadVersion(val firstBadVersionIndex: Int) {
       }
     }
 
-  // * Leftmost where condition is true
   fun firstBadVersionIterative(n: Int): Pair<Int, Int> {
     var left = 1
     var right = n
