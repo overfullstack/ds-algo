@@ -1,6 +1,5 @@
 plugins {
-  id("ds-algo.kt-conventions")
-  id("ds-algo.sub-conventions")
+  id("ds-algo.kotlin-library-conventions")
   alias(libs.plugins.kotlinx.serialization)
 }
 

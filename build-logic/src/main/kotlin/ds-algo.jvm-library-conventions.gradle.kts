@@ -1,9 +1,12 @@
 import com.diffplug.spotless.LineEnding.PLATFORM_NATIVE
+import com.adarshr.gradle.testlogger.theme.ThemeType.MOCHA_PARALLEL
+import org.gradle.api.tasks.testing.Test
 
 plugins {
-  application
+  `java-library`
   id("org.jetbrains.kotlinx.kover")
   id("com.diffplug.spotless")
+  id("com.adarshr.test-logger")
 }
 
 repositories { mavenCentral() }
@@ -20,6 +23,14 @@ tasks.withType<JavaCompile>().configureEach {
 
 tasks.withType<JavaExec>().configureEach {
   jvmArgs("--enable-preview")
+}
+
+tasks.withType<Test>().configureEach { jvmArgs("--enable-preview") }
+
+testlogger {
+  theme = MOCHA_PARALLEL
+  showCauses = false
+  showSimpleNames = true
 }
 
 spotless {

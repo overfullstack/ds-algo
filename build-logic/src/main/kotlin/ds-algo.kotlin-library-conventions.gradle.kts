@@ -5,6 +5,7 @@ import org.jetbrains.kotlin.gradle.dsl.jvm.JvmTargetValidationMode
 import org.jetbrains.kotlin.gradle.tasks.KotlinJvmCompile
 
 plugins {
+  id("ds-algo.jvm-library-conventions")
   kotlin("jvm")
   kotlin("plugin.power-assert")
 }

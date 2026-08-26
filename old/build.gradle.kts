@@ -1,4 +1,4 @@
-plugins { id("ds-algo.sub-conventions") }
+plugins { id("ds-algo.jvm-library-conventions") }
 
 dependencies {
   implementation(project(":common"))
