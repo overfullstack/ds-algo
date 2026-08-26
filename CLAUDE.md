@@ -47,8 +47,9 @@ import ordering, unused-import removal, no wildcard imports. Indent: **tabs**
   - `src/test/kotlin/…` mirrors main; test fixtures in `src/test/resources/`
 - **`old`** — legacy Java (`ds/`, `cci/`, `graph/`, `sorting/`, …); depends on both.
 
-## Conventions plugins (`buildSrc/`)
+## Conventions plugins (`build-logic/`)
 
 `ds-algo.root-conventions`, `ds-algo.kt-conventions` (Kotlin + power-assert +
 kotest), `ds-algo.sub-conventions` (spotless + kover + JUnit + JDK toolchain).
+Root `settings.gradle.kts` includes this standalone plugin build through `pluginManagement`.
 Versions are centralized in `libs.versions.toml`.
