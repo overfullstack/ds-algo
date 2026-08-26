@@ -3,6 +3,7 @@ import com.adarshr.gradle.testlogger.theme.ThemeType.MOCHA_PARALLEL
 plugins {
   java
   id("org.jetbrains.kotlinx.kover")
+  id("com.diffplug.spotless")
   id("com.adarshr.test-logger")
 }
 
@@ -17,6 +18,13 @@ repositories {
   maven("https://s01.oss.sonatype.org/content/repositories/snapshots")
   maven("https://oss.sonatype.org/content/repositories/snapshots")
   maven("https://repo.spring.io/milestone")
+}
+
+spotlessPredeclare {
+  fromProjectRepositories()
+  java { googleJavaFormat() }
+  kotlin { ktfmt() }
+  kotlinGradle { ktfmt() }
 }
 
 testlogger {
