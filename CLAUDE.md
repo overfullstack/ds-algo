@@ -50,7 +50,10 @@ import ordering, unused-import removal, no wildcard imports. Indent: **tabs**
 
 ## Conventions plugins (`build-logic/`)
 
-`ds-algo.root-conventions`, `ds-algo.kt-conventions` (Kotlin + power-assert +
-kotest), `ds-algo.sub-conventions` (spotless + kover + JUnit + JDK toolchain).
+`ds-algo.root-conventions` provides root metadata and aggregated Kover reporting.
+`ds-algo.jvm-library-conventions` provides Java libraries, the toolchain, preview,
+JUnit, Spotless, Kover instrumentation, and Test Logger.
+`ds-algo.kotlin-library-conventions` composes the JVM library convention with
+Kotlin, power-assert, and Kotest.
 Root `settings.gradle.kts` includes this standalone plugin build through `pluginManagement`.
 Versions are centralized in `libs.versions.toml`.

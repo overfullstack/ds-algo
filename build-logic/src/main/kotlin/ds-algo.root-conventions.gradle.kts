@@ -1,10 +1,7 @@
-import com.adarshr.gradle.testlogger.theme.ThemeType.MOCHA_PARALLEL
-
 plugins {
   java
   id("org.jetbrains.kotlinx.kover")
   id("com.diffplug.spotless")
-  id("com.adarshr.test-logger")
 }
 
 version = VERSION
@@ -20,17 +17,17 @@ repositories {
   maven("https://repo.spring.io/milestone")
 }
 
+dependencies {
+  kover(project(":common"))
+  kover(project(":ds-algo"))
+  kover(project(":old"))
+}
+
 spotlessPredeclare {
   fromProjectRepositories()
   java { googleJavaFormat() }
   kotlin { ktfmt() }
   kotlinGradle { ktfmt() }
-}
-
-testlogger {
-  theme = MOCHA_PARALLEL
-  showCauses = false
-  showSimpleNames = true
 }
 
 kover { reports { total { html { onCheck = true } } } }
