@@ -1,6 +1,4 @@
 import com.adarshr.gradle.testlogger.theme.ThemeType.MOCHA_PARALLEL
-import com.diffplug.spotless.LineEnding.PLATFORM_NATIVE
-import com.diffplug.spotless.extra.wtp.EclipseWtpFormatterStep.XML
 
 plugins {
   java
@@ -26,3 +24,5 @@ testlogger {
   showCauses = false
   showSimpleNames = true
 }
+
+kover { reports { total { html { onCheck = true } } } }
