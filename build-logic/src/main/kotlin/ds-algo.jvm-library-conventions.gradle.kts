@@ -1,4 +1,5 @@
 import com.diffplug.spotless.LineEnding.PLATFORM_NATIVE
+import com.diffplug.gradle.spotless.SpotlessTask
 import com.adarshr.gradle.testlogger.theme.ThemeType.MOCHA_PARALLEL
 import org.gradle.api.tasks.testing.Test
 
@@ -26,6 +27,12 @@ tasks.withType<JavaExec>().configureEach {
 }
 
 tasks.withType<Test>().configureEach { jvmArgs("--enable-preview") }
+
+tasks.withType<SpotlessTask>().configureEach {
+  notCompatibleWithConfigurationCache(
+    "Pinned Spotless formatter classloader state fails after configuration-cache restoration.",
+  )
+}
 
 testlogger {
   theme = MOCHA_PARALLEL
