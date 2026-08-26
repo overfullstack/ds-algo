@@ -5,7 +5,7 @@ package practice.binarysearch;
 import java.util.ArrayList;
 import java.util.List;
 
-/// [Allocate Books](https://www.naukri.com/code360/problems/allocate-books\_1090540) 
+/// [Allocate Books](https://www.naukri.com/code360/problems/allocate-books\_1090540)
 public class AllocateBooks {
   public static int findPages(ArrayList<Integer> books, int n, int m) {
     if (m > books.size()) {

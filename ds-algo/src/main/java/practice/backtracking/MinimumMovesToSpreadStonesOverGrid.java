@@ -50,7 +50,6 @@ public class MinimumMovesToSpreadStonesOverGrid {
     int[][] grid = {{1, 1, 0}, {1, 1, 1}, {1, 2, 1}};
     IO.println("Minimum moves to spread stones over grid: " + sol.minimumMoves(grid)); // 3
     int[][] grid2 = {{1, 3, 0}, {1, 0, 0}, {1, 0, 3}};
-    IO.println(
-        "Minimum moves to spread stones over grid2: " + sol.minimumMoves(grid2)); // 4
+    IO.println("Minimum moves to spread stones over grid2: " + sol.minimumMoves(grid2)); // 4
   }
 }

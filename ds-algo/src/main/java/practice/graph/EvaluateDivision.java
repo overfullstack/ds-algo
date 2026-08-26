@@ -12,7 +12,7 @@ import java.util.Map;
 
 /* 07 Oct 2025 22:21 */
 
-/// [399. Evaluate Division](https://leetcode.com/problems/evaluate-division/) 
+/// [399. Evaluate Division](https://leetcode.com/problems/evaluate-division/)
 public class EvaluateDivision {
   public double[] calcEquation(
       List<List<String>> equations, double[] values, List<List<String>> queries) {
@@ -87,7 +87,6 @@ public class EvaluateDivision {
             Arrays.asList("bc", "cd"),
             Arrays.asList("cd", "bc"));
     var result2 = new EvaluateDivision().calcEquation(equations2, values2, queries2);
-    IO.println(
-        Arrays.stream(result2).mapToObj(r -> r + " ").toList()); // 3.75, 0.4, 5.0, 0.2
+    IO.println(Arrays.stream(result2).mapToObj(r -> r + " ").toList()); // 3.75, 0.4, 5.0, 0.2
   }
 }

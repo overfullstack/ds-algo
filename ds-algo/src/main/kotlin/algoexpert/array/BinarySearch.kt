@@ -4,7 +4,7 @@ package algoexpert.array
 fun IntArray.binarySearchRightmost(valueToSearch: Int): Int {
   var left = 0
   var right = lastIndex
-  // * Rightmost where condition is true
+  // * Rightmost in the **range**, where condition is true
   while (left <= right) {
     // ! `mid` calculation is left biased
     // ! so we have `<=` and `left = mid + 1` to let left cross right to avoid infinite loop
@@ -24,13 +24,14 @@ fun IntArray.binarySearchRightmost(valueToSearch: Int): Int {
 fun IntArray.binarySearchLeftmost(valueToSearch: Int): Int {
   var left = 0
   var right = lastIndex
-  // * Leftmost where condition is true
+  // * Leftmost in the **range**, where condition is true
   while (left < right) {
     val mid = left + (right - left) / 2
     when {
       // ! Right moves towards left when condition is true, so we end up at the Leftmost
       // ! It ends at the **Ceiling** that satisfies this condition
-      // ! equal or next greater value than `valueToSearch`
+      // ! equal or next greater value than `valueToSearch`.
+      // ! All values left to it are less
       valueToSearch <= this[mid] -> right = mid
       else -> left = mid + 1
     }

@@ -45,7 +45,6 @@ public class ElementAppearingMoreThan25_InSortedArray {
     IO.println(
         elementAppearingMoreThan25_InSortedArray.findSpecialInteger(
             new int[] {1, 2, 2, 6, 6, 6, 6, 7, 10})); // 6
-    IO.println(
-        elementAppearingMoreThan25_InSortedArray.findSpecialInteger(new int[] {1, 1})); // 1
+    IO.println(elementAppearingMoreThan25_InSortedArray.findSpecialInteger(new int[] {1, 1})); // 1
   }
 }

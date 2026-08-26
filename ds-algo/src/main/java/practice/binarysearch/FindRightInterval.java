@@ -1,12 +1,14 @@
 package practice.binarysearch;
 
+import static java.lang.IO.println;
+
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.stream.IntStream;
 
 /* 19 Oct 2025 07:16 */
 
-/// [436. Find Right Interval](https://leetcode.com/problems/find-right-interval/) 
+/// [436. Find Right Interval](https://leetcode.com/problems/find-right-interval/)
 public class FindRightInterval {
   public int[] findRightInterval(int[][] intervals) {
     final var sortedStartIntervalIdx =
@@ -40,17 +42,17 @@ public class FindRightInterval {
   static void main() {
     var findRightInterval = new FindRightInterval();
     var intervals = new int[][] {{3, 4}, {2, 3}, {1, 2}};
-    IO.println(
+    println(
         Arrays.stream(findRightInterval.findRightInterval(intervals))
             .mapToObj(i -> i + " ")
             .toList()); // [-1,0,1]
     intervals = new int[][] {{1, 4}, {2, 3}, {3, 4}};
-    IO.println(
+    println(
         Arrays.stream(findRightInterval.findRightInterval(intervals))
             .mapToObj(i -> i + " ")
             .toList()); // [-1,2,-1]
     intervals = new int[][] {{1, 2}};
-    IO.println(
+    println(
         Arrays.stream(findRightInterval.findRightInterval(intervals))
             .mapToObj(i -> i + " ")
             .toList()); // [-1]

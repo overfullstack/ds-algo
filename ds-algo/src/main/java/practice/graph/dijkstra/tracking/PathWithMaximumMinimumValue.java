@@ -46,8 +46,7 @@ public class PathWithMaximumMinimumValue {
   static void main() {
     var obj = new PathWithMaximumMinimumValue();
     IO.println(obj.maximumMinimumPath(new int[][] {{5, 4, 5}, {1, 2, 6}, {7, 3, 4}})); // 4
-    IO.println(
-        obj.maximumMinimumPath(new int[][] {{2, 2, 1, 2, 2, 2}, {1, 2, 2, 2, 1, 2}})); // 2
+    IO.println(obj.maximumMinimumPath(new int[][] {{2, 2, 1, 2, 2, 2}, {1, 2, 2, 2, 1, 2}})); // 2
     IO.println(
         obj.maximumMinimumPath(
             new int[][] {

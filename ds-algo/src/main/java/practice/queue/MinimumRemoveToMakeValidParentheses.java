@@ -37,8 +37,7 @@ public class MinimumRemoveToMakeValidParentheses {
     var minimumRemoveToMakeValidParentheses = new MinimumRemoveToMakeValidParentheses();
     IO.println(
         minimumRemoveToMakeValidParentheses.minRemoveToMakeValid("lee(t(c)o)de")); // "lee(t(c)o)de"
-    IO.println(
-        minimumRemoveToMakeValidParentheses.minRemoveToMakeValid("a)b(c)d")); // "ab(c)d)"
+    IO.println(minimumRemoveToMakeValidParentheses.minRemoveToMakeValid("a)b(c)d")); // "ab(c)d)"
     IO.println(minimumRemoveToMakeValidParentheses.minRemoveToMakeValid("))((")); // ""
   }
 }

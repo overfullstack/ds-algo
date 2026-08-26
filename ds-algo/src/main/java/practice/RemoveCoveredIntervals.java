@@ -5,7 +5,7 @@ package practice;
 import java.util.Arrays;
 import java.util.Comparator;
 
-/// [1288. Remove Covered Intervals](https://leetcode.com/problems/remove-covered-intervals/) 
+/// [1288. Remove Covered Intervals](https://leetcode.com/problems/remove-covered-intervals/)
 public class RemoveCoveredIntervals {
   public int removeCoveredIntervals(int[][] intervals) {
     Arrays.sort( // ! Sort by start and descending end to pick the interval that covers others
@@ -30,7 +30,6 @@ public class RemoveCoveredIntervals {
         removeCoveredIntervals.removeCoveredIntervals(new int[][] {{1, 2}, {1, 4}, {3, 4}})); // 1
     IO.println(
         removeCoveredIntervals.removeCoveredIntervals(new int[][] {{1, 4}, {3, 6}, {2, 8}})); // 2
-    IO.println(
-        removeCoveredIntervals.removeCoveredIntervals(new int[][] {{1, 4}, {2, 3}})); // 1
+    IO.println(removeCoveredIntervals.removeCoveredIntervals(new int[][] {{1, 4}, {2, 3}})); // 1
   }
 }

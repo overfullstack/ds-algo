@@ -4,7 +4,7 @@ package practice.binarysearch;
 
 import java.util.Arrays;
 
-/// [875. Koko Eating Bananas](https://leetcode.com/problems/koko-eating-bananas/) 
+/// [875. Koko Eating Bananas](https://leetcode.com/problems/koko-eating-bananas/)
 public class KokoEatingBananas {
   public int minEatingSpeed(int[] piles, int h) {
     var left = 1;
@@ -30,9 +30,7 @@ public class KokoEatingBananas {
 
   static void main() {
     IO.println(new KokoEatingBananas().minEatingSpeed(new int[] {3, 6, 7, 11}, 8)); // 4
-    IO.println(
-        new KokoEatingBananas().minEatingSpeed(new int[] {30, 11, 23, 4, 20}, 5)); // 30
-    IO.println(
-        new KokoEatingBananas().minEatingSpeed(new int[] {30, 11, 23, 4, 20}, 6)); // 23
+    IO.println(new KokoEatingBananas().minEatingSpeed(new int[] {30, 11, 23, 4, 20}, 5)); // 30
+    IO.println(new KokoEatingBananas().minEatingSpeed(new int[] {30, 11, 23, 4, 20}, 6)); // 23
   }
 }

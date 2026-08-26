@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 /* 26 Aug 2025 20:50 */
 
-/// [1020. Number of Enclaves](https://leetcode.com/problems/number-of-enclaves/) 
+/// [1020. Number of Enclaves](https://leetcode.com/problems/number-of-enclaves/)
 public class NumberOfEnclaves {
 
   private static final int[][] directions = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
@@ -21,9 +21,9 @@ public class NumberOfEnclaves {
     }
 
     var enclosedLandCellCount = 0;
-    for (var row = 0; row < grid.length; row++) {
+    for (var row : grid) {
       for (var col = 0; col < grid[0].length; col++) {
-        if (grid[row][col] == 1) {
+        if (row[col] == 1) {
           enclosedLandCellCount++;
           // ! We count all land cells individually and not as a group, so no floodFill here
         }

@@ -140,7 +140,8 @@ public class InventoryOptimizer {
   }
 
   /// TreeSet-based approach: Automatically sorts orders by quantity (descending) and breaks ties by
-  /// item name. TreeSet maintains sorted order without manual sorting, making the algorithm cleaner.
+  /// item name. TreeSet maintains sorted order without manual sorting, making the algorithm
+  // cleaner.
   public static OptimizationResult optimizeWithTreeSet(
       Map<String, Integer> initialInventory, List<Order> orders) {
 
@@ -238,7 +239,8 @@ public class InventoryOptimizer {
       );
   }*/
 
-  /// Alternative approach: Using priority queue to serve highest quantity orders first. This ensures
+  /// Alternative approach: Using priority queue to serve highest quantity orders first. This
+  // ensures
   /// we maximize inventory usage by prioritizing larger orders.
   public static OptimizationResult optimizeWithPriorityQueue(
       Map<String, Integer> initialInventory, List<Order> orders) {
@@ -272,7 +274,7 @@ public class InventoryOptimizer {
         List.copyOf(servedOrders), Map.copyOf(currentInventory), totalInventoryUsed);
   }
 
-  /// Represents a vendor order for a specific item and quantity. 
+  /// Represents a vendor order for a specific item and quantity.
   public record Order(String item, int quantity) {
     @Override
     public String toString() {
@@ -280,7 +282,7 @@ public class InventoryOptimizer {
     }
   }
 
-  /// Result of inventory optimization containing served orders and remaining state. 
+  /// Result of inventory optimization containing served orders and remaining state.
   public record OptimizationResult(
       List<Order> servedOrders, Map<String, Integer> remainingInventory, int totalInventoryUsed) {}
 }

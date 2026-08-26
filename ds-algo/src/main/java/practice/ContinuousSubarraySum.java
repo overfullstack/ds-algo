@@ -4,7 +4,7 @@ import java.util.HashMap;
 
 /* 22 Oct 2025 15:54 */
 
-/// [523. Continuous Subarray Sum](https://leetcode.com/problems/continuous-subarray-sum) 
+/// [523. Continuous Subarray Sum](https://leetcode.com/problems/continuous-subarray-sum)
 public class ContinuousSubarraySum {
   public boolean checkSubarraySum(int[] nums, int k) {
     var map = new HashMap<Integer, Integer>();
@@ -27,11 +27,8 @@ public class ContinuousSubarraySum {
 
   static void main() {
     var continuousSubarraySum = new ContinuousSubarraySum();
-    IO.println(
-        continuousSubarraySum.checkSubarraySum(new int[] {23, 2, 4, 6, 7}, 6)); // true
-    IO.println(
-        continuousSubarraySum.checkSubarraySum(new int[] {23, 2, 6, 4, 7}, 6)); // true
-    IO.println(
-        continuousSubarraySum.checkSubarraySum(new int[] {23, 2, 6, 4, 7}, 13)); // false
+    IO.println(continuousSubarraySum.checkSubarraySum(new int[] {23, 2, 4, 6, 7}, 6)); // true
+    IO.println(continuousSubarraySum.checkSubarraySum(new int[] {23, 2, 6, 4, 7}, 6)); // true
+    IO.println(continuousSubarraySum.checkSubarraySum(new int[] {23, 2, 6, 4, 7}, 13)); // false
   }
 }

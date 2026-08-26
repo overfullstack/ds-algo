@@ -5,7 +5,8 @@ package practice.binarysearch;
 import java.util.ArrayList;
 import java.util.List;
 
-/// [Painters Partition](https://www.naukri.com/code360/problems/painter-s-partition-problem\_1089557)
+/// [Painters
+// Partition](https://www.naukri.com/code360/problems/painter-s-partition-problem\_1089557)
 public class PaintersPartition {
   public static int findLargestMinDistance(ArrayList<Integer> boards, int k) {
     var left = boards.stream().mapToInt(i -> i).max().orElseThrow();
@@ -42,7 +43,6 @@ public class PaintersPartition {
     IO.println(
         paintersPartition.findLargestMinDistance(
             new ArrayList<>(List.of(10, 20, 30, 40)), 2)); // 60
-    IO.println(
-        paintersPartition.findLargestMinDistance(new ArrayList<>(List.of(48, 90)), 2)); // 90
+    IO.println(paintersPartition.findLargestMinDistance(new ArrayList<>(List.of(48, 90)), 2)); // 90
   }
 }

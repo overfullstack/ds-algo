@@ -34,13 +34,13 @@ public class NumberOfClosedIslands {
     return closedIslandCount;
   }
 
-  // ! 0s (land) and 1s (water)
+  // ! dfs - 0s (land) and 1s (water)
   private static void floodFill(int row, int col, int[][] grid) {
     // ! Deal with only Land cells. Enclosed regions shall be guarded by a layer of this check
     if (!isValid(row, col, grid) || grid[row][col] != 0) {
       return;
     }
-    grid[row][col] = 1; // ! Mark land cell as water cell
+    grid[row][col] = 1; // ! Mark land cell as water cell, visited
     Arrays.stream(directions)
         .map(d -> new int[] {d[0] + row, d[1] + col})
         .forEach(landCell -> floodFill(landCell[0], landCell[1], grid));

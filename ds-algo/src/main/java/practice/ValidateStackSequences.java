@@ -2,11 +2,11 @@ package practice;
 
 /* 31 Aug 2025 20:40 */
 
-import java.util.ArrayDeque;
-
 import static java.lang.IO.println;
 
-/// [946. Validate Stack Sequences](https://leetcode.com/problems/validate-stack-sequences/) 
+import java.util.ArrayDeque;
+
+/// [946. Validate Stack Sequences](https://leetcode.com/problems/validate-stack-sequences/)
 public class ValidateStackSequences {
   public boolean validateStackSequences(int[] pushed, int[] popped) {
     var stk = new ArrayDeque<Integer>();

@@ -21,8 +21,7 @@ public class TwoCityScheduling {
 
   static void main() {
     var t = new TwoCityScheduling();
-    IO.println(
-        t.twoCitySchedCost(new int[][] {{10, 20}, {30, 200}, {400, 50}, {30, 20}})); // 110
+    IO.println(t.twoCitySchedCost(new int[][] {{10, 20}, {30, 200}, {400, 50}, {30, 20}})); // 110
     IO.println(
         t.twoCitySchedCost(
             new int[][] {

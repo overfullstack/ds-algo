@@ -5,7 +5,7 @@ import java.util.stream.IntStream;
 
 /* 14 Oct 2025 18:51 */
 
-/// [516 · Paint House II](https://www.lintcode.com/problem/516/) 
+/// [516 · Paint House II](https://www.lintcode.com/problem/516/)
 public class PaintHouse2 {
   public int minCostII(int[][] costs) {
     if (costs.length == 0) {
@@ -51,8 +51,7 @@ public class PaintHouse2 {
 
   static void main() {
     var paintHouse2 = new PaintHouse2();
-    IO.println(
-        paintHouse2.minCostII(new int[][] {{14, 2, 11}, {11, 14, 5}, {14, 3, 10}})); // 10
+    IO.println(paintHouse2.minCostII(new int[][] {{14, 2, 11}, {11, 14, 5}, {14, 3, 10}})); // 10
     IO.println(paintHouse2.minCostII(new int[][] {{5}})); // 5
 
     IO.println(

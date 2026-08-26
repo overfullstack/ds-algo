@@ -2,23 +2,27 @@ package practice;
 
 /* 25 Oct 2025 21:20 */
 
-/// [860. Lemonade Change](https://leetcode.com/problems/lemonade-change/) 
+import static java.lang.IO.println;
+
+/// [860. Lemonade Change](https://leetcode.com/problems/lemonade-change/)
 public class LemonadeChange {
   public boolean lemonadeChange(int[] bills) {
     var five = 0;
     var ten = 0;
     for (var bill : bills) {
-      if (bill == 5) {
-        five++;
-      } else if (bill == 10) {
-        five--;
-        ten++;
-      } else {
-        if (ten > 0) {
-          ten--;
+      switch (bill) {
+        case 5 -> five++;
+        case 10 -> {
           five--;
-        } else {
-          five -= 3;
+          ten++;
+        }
+        default -> {
+          if (ten > 0) {
+            ten--;
+            five--;
+          } else {
+            five -= 3;
+          }
         }
       }
       if (five < 0) {
@@ -30,7 +34,7 @@ public class LemonadeChange {
 
   static void main() {
     var l = new LemonadeChange();
-    IO.println(l.lemonadeChange(new int[] {5, 5, 5, 10, 20})); // true
-    IO.println(l.lemonadeChange(new int[] {5, 5, 10, 10, 20})); // false
+    println(l.lemonadeChange(new int[] {5, 5, 5, 10, 20})); // true
+    println(l.lemonadeChange(new int[] {5, 5, 10, 10, 20})); // false
   }
 }

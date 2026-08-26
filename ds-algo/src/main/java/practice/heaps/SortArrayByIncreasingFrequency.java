@@ -39,7 +39,6 @@ public class SortArrayByIncreasingFrequency {
     var sol = new SortArrayByIncreasingFrequency();
     IO.println(Arrays.toString(sol.frequencySort(new int[] {1, 1, 2, 2, 2, 3})));
     IO.println(Arrays.toString(sol.frequencySort(new int[] {2, 3, 1, 3, 2})));
-    IO.println(
-        Arrays.toString(sol.frequencySort(new int[] {-1, 1, -6, 4, 5, -6, 1, 4, 1})));
+    IO.println(Arrays.toString(sol.frequencySort(new int[] {-1, 1, -6, 4, 5, -6, 1, 4, 1})));
   }
 }

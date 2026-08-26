@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 /* 01 Oct 2025 21:19 */
 
-/// [3823 · Maximum Profit From Trading Stocks](https://www.lintcode.com/problem/3823/) 
+/// [3823 · Maximum Profit From Trading Stocks](https://www.lintcode.com/problem/3823/)
 public class MaximumProfitFromTradingStocks {
   public int maximumProfit(int[] present, int[] future, int budget) {
     var memo = new int[present.length][budget + 1];
@@ -35,8 +35,7 @@ public class MaximumProfitFromTradingStocks {
 
   static void main() {
     var sol = new MaximumProfitFromTradingStocks();
-    IO.println(
-        sol.maximumProfit(new int[] {5, 4, 6, 2, 3}, new int[] {8, 5, 4, 3, 5}, 10)); // 6
+    IO.println(sol.maximumProfit(new int[] {5, 4, 6, 2, 3}, new int[] {8, 5, 4, 3, 5}, 10)); // 6
     IO.println(sol.maximumProfit(new int[] {2, 2, 5}, new int[] {3, 4, 10}, 6)); // 5
     IO.println(sol.maximumProfit(new int[] {3, 3, 12}, new int[] {0, 3, 15}, 10)); // 0
   }
