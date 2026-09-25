@@ -11,7 +11,7 @@ kotest = "6.2.5"
 power-assert = "2.5.0-Beta1"
 kover = "0.9.9"
 testLogger = "4.0.0"
-spotless = "8.10.2"
+spotless = "8.10.3"
 
 [libraries]
 revoman = { module = "com.salesforce.revoman:revoman", version.ref = "revoman" }
