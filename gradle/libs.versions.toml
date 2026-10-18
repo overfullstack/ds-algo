@@ -3,7 +3,7 @@ jdk = "26"
 kotlin = "2.5.0-Beta1"
 ksp = "2.3.12"
 kotlinx-serialization = "1.12.0-RC"
-revoman = "0.90.0"
+revoman = "0.90.1"
 
 # Common dependencies
 junit = "5.11.3"
