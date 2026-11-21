@@ -1,17 +1,17 @@
 [versions]
 jdk = "26"
-kotlin = "2.5.0-Beta2"
-ksp = "2.3.13"
-kotlinx-serialization = "1.12.0"
+kotlin = "2.5.0-RC"
+ksp = "2.3.14"
+kotlinx-serialization = "1.13.0"
 revoman = "0.90.1"
 
 # Common dependencies
 junit = "5.11.3"
-kotest = "6.2.6"
-power-assert = "2.5.0-Beta2"
+kotest = "6.2.7"
+power-assert = "2.5.0-RC"
 kover = "0.9.11"
 testLogger = "4.0.0"
-spotless = "8.10.4"
+spotless = "8.12.0"
 
 [libraries]
 revoman = { module = "com.salesforce.revoman:revoman", version.ref = "revoman" }
